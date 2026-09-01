@@ -61,26 +61,26 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
               <div
                 key={opt.id}
                 onClick={() => !isCrossed && setAnswer(question.id, opt.id)}
-                className={`p-4 sm:p-4.5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between group active:scale-[0.99] ${
+                className={`p-4 sm:p-4.5 rounded-2xl cursor-pointer flex items-center justify-between group ${
                   isSelected
-                    ? 'bg-emerald-950/80 border-emerald-500 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+                    ? 'glass-choice-selected'
                     : isCrossed
-                    ? 'bg-slate-950/40 border-slate-900 opacity-40 line-through'
-                    : 'bg-slate-900/60 border-slate-800/80 text-slate-200 hover:border-slate-700/80 hover:bg-slate-900/90'
+                    ? 'opacity-35 bg-slate-950/40 border border-slate-900 line-through'
+                    : 'glass-choice'
                 }`}
               >
                 <div className="flex items-center space-x-4">
                   {/* Selection Radio Circle */}
                   <div
-                    className={`w-7 h-7 rounded-xl font-mono font-bold text-xs flex items-center justify-center transition-all ${
+                    className={`w-7 h-7 rounded-xl font-mono font-bold text-xs flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
                       isSelected
-                        ? 'bg-emerald-500 text-slate-950 shadow-sm'
-                        : 'bg-slate-950 border border-slate-800 text-slate-400 group-hover:border-slate-600'
+                        ? 'bg-emerald-400 text-slate-950 shadow-[0_0_12px_rgba(52,211,153,0.5)]'
+                        : 'glass-pill text-slate-300 group-hover:text-white'
                     }`}
                   >
                     {opt.id}
                   </div>
-                  <div className="text-sm font-semibold text-slate-100">
+                  <div className={`text-sm font-semibold ${isSelected ? 'text-emerald-100' : 'text-slate-100'}`} style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
                     <MathRenderer content={opt.text} inline />
                   </div>
                 </div>

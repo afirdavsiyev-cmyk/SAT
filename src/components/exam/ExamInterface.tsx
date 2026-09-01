@@ -211,27 +211,30 @@ export const ExamInterface: React.FC = () => {
       />
 
       {/* Docked Bottom Control Bar */}
-      <footer className="bg-slate-950/90 border-t border-slate-800/80 px-6 py-3.5 flex items-center justify-between z-40 backdrop-blur-xl">
-        
+      <footer
+        className="px-6 py-3.5 flex items-center justify-between z-40 backdrop-blur-2xl bg-slate-950/75 border-t border-white/[0.07]"
+        style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 -8px 32px rgba(0,0,0,0.35)' }}
+      >
         {/* Left: Question Navigator Trigger */}
         <button
           onClick={() => setIsNavigatorOpen(true)}
-          className="flex items-center space-x-2 bg-slate-900 border border-slate-800 hover:border-emerald-500/50 px-4 py-2 rounded-full text-xs font-bold text-slate-200 transition-all active:scale-95 shadow-sm"
+          className="glass-pill flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold text-slate-200 hover:text-white"
         >
           <Grid className="w-4 h-4 text-emerald-400" />
           <span>Question {currentIndex + 1} of {questions.length}</span>
         </button>
 
-        {/* Right: Back, Next & Submit Section */}
+        {/* Right: Back, Next & Submit */}
         <div className="flex items-center space-x-3">
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            className={`px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 transition-all active:scale-95 ${
+            className={`px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 ${
               currentIndex === 0
-                ? 'bg-slate-900 text-slate-600 border border-slate-800 cursor-not-allowed opacity-50'
-                : 'bg-slate-900 text-slate-200 hover:bg-slate-800 border border-slate-800'
+                ? 'opacity-30 cursor-not-allowed glass-pill text-slate-500'
+                : 'glass-pill text-slate-200 hover:text-white'
             }`}
+            style={{ transition: 'all 300ms cubic-bezier(0.16,1,0.3,1)' }}
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back</span>
@@ -240,7 +243,7 @@ export const ExamInterface: React.FC = () => {
           {currentIndex < questions.length - 1 ? (
             <button
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs flex items-center space-x-1.5 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:bg-emerald-400 transition-all active:scale-95"
+              className="glass-pill-emerald px-6 py-2.5 rounded-full text-xs font-extrabold text-emerald-100 flex items-center space-x-1.5"
             >
               <span>Next</span>
               <ArrowRight className="w-4 h-4" />
@@ -248,14 +251,13 @@ export const ExamInterface: React.FC = () => {
           ) : (
             <button
               onClick={finishExam}
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-950 font-extrabold text-xs flex items-center space-x-2 shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:scale-105 transition-all active:scale-95"
+              className="glass-pill-emerald px-6 py-2.5 rounded-full text-xs font-extrabold text-emerald-100 flex items-center space-x-2"
             >
               <Send className="w-4 h-4" />
               <span>Submit Section & Review</span>
             </button>
           )}
         </div>
-
       </footer>
 
     </div>

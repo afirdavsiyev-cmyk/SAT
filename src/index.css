@@ -28,7 +28,109 @@
   background: #10b981;
 }
 
-/* Glassmorphism utility */
+/* ─── iOS Liquid Glassmorphism Token System ─────────────────────────────── */
+
+/* Base glass pill — neutral frosted */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.28);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(52, 211, 153, 0.35);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    0 0 22px rgba(16, 185, 129, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.32);
+}
+
+.glass-pill:active {
+  transform: scale(0.96);
+  transition-duration: 150ms;
+}
+
+/* Emerald accent glass — selected state / primary actions */
+.glass-pill-emerald {
+  background: rgba(16, 185, 129, 0.18);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 0 28px rgba(16, 185, 129, 0.28),
+    0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-pill-emerald:active {
+  transform: scale(0.96);
+  transition-duration: 150ms;
+}
+
+/* Teal accent glass */
+.glass-pill-teal {
+  background: rgba(20, 184, 166, 0.16);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(45, 212, 191, 0.40);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    0 0 24px rgba(45, 212, 191, 0.20),
+    0 8px 20px rgba(0, 0, 0, 0.22);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-pill-teal:active {
+  transform: scale(0.96);
+  transition-duration: 150ms;
+}
+
+/* Choice card glass — A/B/C/D options */
+.glass-choice {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.22);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-choice:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.28);
+  transform: translateY(-1px);
+}
+
+.glass-choice:active {
+  transform: scale(0.98) translateY(0);
+  transition-duration: 150ms;
+}
+
+/* Choice card selected — glowing emerald frosted selection */
+.glass-choice-selected {
+  background: rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 28px rgba(16, 185, 129, 0.30),
+    0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* ─── Legacy glass panels ───────────────────────────────────────────────── */
 .glass-panel {
   background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(16px);
@@ -64,11 +166,34 @@
   @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-700/80 hover:shadow-xl;
 }
 
-/* KaTeX custom override for dark mode */
+/* ─── KaTeX — high-contrast over frosted glass backgrounds ─────────────── */
 .katex {
   font-size: 1.05em;
-  color: #f1f5f9;
+  color: #f8fafc;
+  text-rendering: geometricPrecision;
 }
+
 .katex-display {
-  margin: 0.4em 0;
+  margin: 0.6em 0 !important;
+  text-align: center !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
 }
+
+/* Strictly hide any stray MathML fallback elements */
+.katex-mathml {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.katex-html {
+  display: inline-block;
+  white-space: normal;
+}
+

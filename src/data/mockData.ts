@@ -87,8 +87,8 @@ export const mockQuestions: Question[] = [
       { id: 'C', text: '$5$' },
       { id: 'D', text: '$6$' }
     ],
-    correctAnswer: 'C',
-    explanation: 'Factor out $3^x$ from the left side of the equation:\n$$3^{x+1} - 3^x = 3^x(3^1 - 1) = 3^x(2)$$\nSet this equal to $162$:\n$$2 \\cdot 3^x = 162 \\implies 3^x = 81$$\nSince $81 = 3^4$, we have $x = 4$. Wait! Let\'s verify: $3^5 - 3^4 = 243 - 81 = 162$. Thus $x = 4$.',
+    correctAnswer: 'B',
+    explanation: 'Factor out $3^x$ from the left side of the equation:\n$$3^{x+1} - 3^x = 3^x(3^1 - 1) = 2 \\cdot 3^x$$\nSet this equal to $162$:\n$$2 \\cdot 3^x = 162 \\implies 3^x = 81$$\nSince $81 = 3^4$, we obtain $x = 4$. Verifying: $3^{4+1} - 3^4 = 243 - 81 = 162$. Thus, the correct value of $x$ is $4$ (Choice B).',
     type: 'multiple_choice',
     hint: 'Factor out $3^x$ to get $3^x(3 - 1) = 2 \\cdot 3^x = 162$.'
   }

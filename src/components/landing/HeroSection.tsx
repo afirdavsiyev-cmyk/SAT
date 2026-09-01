@@ -31,7 +31,7 @@ export const HeroSection: React.FC = () => {
 
         {/* Subtext */}
         <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-          Train inside an exact replica of College Board's <span className="text-emerald-300 font-semibold">Bluebook test room</span> with built-in Desmos shortcuts, <span className="text-teal-300 font-semibold">Preppy AI</span> tutor, and step-by-step KaTeX math breakdowns.
+          Train inside an exact replica of College Board's <span className="text-emerald-300 font-semibold">Bluebook test room</span> with built-in Desmos shortcuts, <span className="text-teal-300 font-semibold">ScoreUP AI</span> tutor, and step-by-step KaTeX math breakdowns.
         </p>
 
         {/* Action Buttons */}
@@ -82,7 +82,7 @@ export const HeroSection: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2 bg-emerald-950/60 border border-emerald-800/50 px-3 py-1 rounded-full text-xs text-emerald-300 font-medium">
                 <Star className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
-                <span>Preppy AI Active</span>
+                <span>ScoreUP AI Active</span>
               </div>
             </div>
 
@@ -92,29 +92,29 @@ export const HeroSection: React.FC = () => {
                   Advanced Math
                 </span>
                 <p className="text-base text-slate-200 font-medium leading-relaxed mb-4">
-                  Find the minimum value of the quadratic function below for all real numbers $x$:
+                  Find the minimum value of the quadratic function below for all real numbers x:
                 </p>
-                <div className="p-4 bg-slate-900/90 rounded-xl border border-slate-800 font-mono text-center mb-4 text-emerald-300">
+                <div className="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 text-center mb-4 text-emerald-300">
                   <MathRenderer content="$$f(x) = x^2 - 6x + 13$$" />
                 </div>
               </div>
 
-              <div className="bg-slate-900/60 rounded-xl p-4 border border-emerald-500/20 text-xs space-y-3">
+              <div className="bg-slate-900/60 rounded-2xl p-4 border border-emerald-500/20 text-xs space-y-3">
                 <div className="flex items-center justify-between text-slate-400 font-bold border-b border-slate-800 pb-2">
                   <span className="flex items-center space-x-1 text-emerald-400">
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Preppy AI Instant Solution</span>
+                    <span>ScoreUP AI Instant Solution</span>
                   </span>
                   <span className="text-[10px] text-slate-500">Step-by-step</span>
                 </div>
                 <p className="text-slate-300">
-                  Complete the square to express $f(x)$ in vertex form $(x - h)^2 + k$:
+                  Complete the square to express f(x) in vertex form (x - h)² + k:
                 </p>
-                <div className="p-2 bg-slate-950 rounded text-emerald-300 font-mono text-center">
+                <div className="p-2 bg-slate-950 rounded-xl text-emerald-300 text-center">
                   <MathRenderer content="$$f(x) = (x - 3)^2 + 4$$" />
                 </div>
                 <p className="text-slate-400 text-[11px]">
-                  Since $(x - 3)^2 \ge 0$, the minimum value is $f(3) = 4$.
+                  Since (x - 3)² ≥ 0, the minimum value is f(3) = 4.
                 </p>
               </div>
             </div>

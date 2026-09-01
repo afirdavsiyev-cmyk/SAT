@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Send, Bot, Settings, Key, ExternalLink, Loader2, CheckCircle2, Lightbulb, Target, Calculator, Search } from 'lucide-react';
+import { X, Sparkles, Send, Bot, Settings, Key, ExternalLink, Loader2 } from 'lucide-react';
 import { Question } from '../../types';
 import { MathRenderer } from '../common/MathRenderer';
 import { generateTutorResponse, getGeminiApiKey, setGeminiApiKey, ChatMessage } from '../../services/gemini';
@@ -7,10 +7,16 @@ import { generateTutorResponse, getGeminiApiKey, setGeminiApiKey, ChatMessage } 
 interface AITutorDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  question: Question;
+  question?: Question;
+  isGeneralMode?: boolean;
 }
 
-export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, question }) => {
+export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
+  isOpen,
+  onClose,
+  question,
+  isGeneralMode = false
+}) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -18,20 +24,30 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [hasApiKey, setHasApiKey] = useState(false);
 
-  // Initialize messages and key state when question changes or drawer opens
+  const isExamContext = !isGeneralMode && !!question;
+
+  // Initialize messages and key state when drawer opens or mode/question changes
   useEffect(() => {
     const currentKey = getGeminiApiKey();
     setHasApiKey(!!currentKey);
     setApiKeyInput(currentKey);
 
-    // Initial welcome message
-    setMessages([
-      {
-        sender: 'ai',
-        text: `Hello! I'm **Preppy AI**, your Digital SAT Math tutor.\n\nI'm ready to help with **Question #${question.number}** (${question.domain}). Select a quick action chip below or ask me any question!`
-      }
-    ]);
-  }, [question, isOpen]);
+    if (isExamContext && question) {
+      setMessages([
+        {
+          sender: 'ai',
+          text: `Hello! I'm **ScoreUP AI**, your Digital SAT Math tutor.\n\nI'm ready to help with **Question #${question.number}** (${question.domain}). Select a quick action chip below or ask me any question!`
+        }
+      ]);
+    } else {
+      setMessages([
+        {
+          sender: 'ai',
+          text: `Hello! I'm **ScoreUP AI**, your 24/7 Digital SAT Math tutor.\n\nHow can I help you master Digital SAT Math today? Ask me about any formula, Desmos shortcut, or topic!`
+        }
+      ]);
+    }
+  }, [question, isOpen, isGeneralMode, isExamContext]);
 
   if (!isOpen) return null;
 
@@ -51,9 +67,23 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
     setIsLoading(true);
 
     try {
-      const aiReplyText = await generateTutorResponse(textToSend, question, messages);
+      // Use fallback question if general mode
+      const activeQ: Question = question || {
+        id: 'general',
+        number: 1,
+        section: 'math',
+        module: 1,
+        domain: 'Advanced Math',
+        difficulty: 'Medium',
+        prompt: 'General SAT Math Inquiry',
+        correctAnswer: '',
+        explanation: '',
+        type: 'multiple_choice'
+      };
+
+      const aiReplyText = await generateTutorResponse(textToSend, activeQ, messages);
       setMessages((prev) => [...prev, { sender: 'ai', text: aiReplyText }]);
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { sender: 'ai', text: 'Sorry, I encountered an error. Please try again or check your Gemini API key.' }
@@ -63,12 +93,21 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
     }
   };
 
-  const quickChips = [
+  const questionChips = [
     { label: "💡 Explain step by step", prompt: "Explain this question step by step." },
     { label: "🎯 Best strategy", prompt: "What is the best time-saving strategy for this question?" },
     { label: "📈 Desmos solution", prompt: "How do I solve this question using Desmos?" },
     { label: "🔍 Hint only", prompt: "Give me a subtle hint without spoiling the final answer." }
   ];
+
+  const generalChips = [
+    { label: "💡 Quadratic Vertex Form", prompt: "Explain quadratic vertex form f(x) = a(x-h)^2 + k with examples." },
+    { label: "🎯 Desmos Speed Tips", prompt: "What are the top 5 Desmos shortcuts for the Digital SAT Math?" },
+    { label: "📈 Circle Equations", prompt: "How do I convert a circle equation into standard form (x-h)^2 + (y-k)^2 = r^2?" },
+    { label: "🏆 Boost to 800", prompt: "What is the best strategy to score 800 in SAT Math?" }
+  ];
+
+  const activeChips = isExamContext ? questionChips : generalChips;
 
   return (
     <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[440px] bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between select-none">
@@ -81,14 +120,16 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h3 className="font-extrabold text-white text-sm">Preppy AI Tutor</h3>
+              <h3 className="font-extrabold text-white text-sm">ScoreUP AI Tutor</h3>
               <span className={`px-1.5 py-0.5 text-[9px] font-bold rounded uppercase font-mono ${
                 hasApiKey ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
               }`}>
                 {hasApiKey ? 'Gemini 2.5 Live' : 'Demo Mode'}
               </span>
             </div>
-            <span className="text-[10px] text-slate-400 font-mono">Digital SAT Socratic Assistant</span>
+            <span className="text-[10px] text-slate-400 font-mono">
+              {isExamContext ? `Question #${question?.number} Context` : 'Digital SAT Math Tutor'}
+            </span>
           </div>
         </div>
 
@@ -189,7 +230,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
                 <div>
                   <div className="flex items-center space-x-1.5 text-teal-400 font-bold mb-1.5 pb-1 border-b border-slate-900">
                     <Bot className="w-3.5 h-3.5" />
-                    <span>Preppy AI</span>
+                    <span>ScoreUP AI</span>
                   </div>
                   <MathRenderer content={m.text} />
                 </div>
@@ -205,7 +246,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
           <div className="flex justify-start">
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex items-center space-x-2 text-xs text-teal-400">
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Preppy is analyzing Question #{question.number}...</span>
+              <span>ScoreUP AI is analyzing...</span>
             </div>
           </div>
         )}
@@ -213,14 +254,16 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
       </div>
 
       {/* Interactive Quick-Action Chips */}
-      <div className="p-3 bg-slate-950/80 border-t border-slate-800/80 space-y-2">
+      <div className="p-3 bg-slate-950/80 border-t border-white/[0.06] space-y-2"
+        style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)' }}
+      >
         <div className="flex flex-wrap gap-1.5">
-          {quickChips.map((chip, idx) => (
+          {activeChips.map((chip, idx) => (
             <button
               key={idx}
               disabled={isLoading}
               onClick={() => handleSendMessage(chip.prompt)}
-              className="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 hover:border-teal-500/50 text-slate-300 hover:text-teal-300 text-[11px] font-medium transition-all text-left flex-shrink-0 disabled:opacity-50"
+              className="glass-pill px-2.5 py-1 rounded-full text-slate-300 hover:text-teal-200 text-[11px] font-medium text-left flex-shrink-0 disabled:opacity-40"
             >
               {chip.label}
             </button>
@@ -240,13 +283,14 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({ isOpen, onClose, q
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             disabled={isLoading}
-            placeholder="Ask Preppy AI a question..."
-            className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-teal-500 font-sans"
+            placeholder="Ask ScoreUP AI a question..."
+            className="flex-1 bg-white/[0.05] backdrop-blur-lg border border-white/[0.1] rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 outline-none focus:border-teal-400/60 focus:bg-white/[0.08] transition-all duration-200 font-sans"
+            style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)' }}
           />
           <button
             type="submit"
             disabled={isLoading || !inputText.trim()}
-            className="p-2 rounded-xl bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition-colors disabled:opacity-50"
+            className="glass-pill-teal p-2.5 rounded-xl text-teal-100 font-bold disabled:opacity-40"
           >
             <Send className="w-4 h-4" />
           </button>

@@ -25,7 +25,7 @@ export const generateTutorResponse = async (
   // If API key is present, make real call to Google Gemini 2.5 Flash API
   if (apiKey) {
     try {
-      const systemInstruction = `You are Preppy, an elite Digital SAT Math Tutor. You help students understand concepts deeply using the Socratic method.
+      const systemInstruction = `You are ScoreUP AI, an elite Digital SAT Math Tutor. You help students understand concepts deeply using the Socratic method.
 Always reference the active question context:
 - Question #${question.number} (${question.domain}, ${question.difficulty}): ${question.prompt}
 - Options: ${question.options ? question.options.map(o => `${o.id}: ${o.text}`).join(', ') : 'Student-produced input'}

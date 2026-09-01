@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Award, CheckCircle2, XCircle, Bookmark, RefreshCw, LayoutDashboard, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { Award, CheckCircle2, XCircle, RefreshCw, LayoutDashboard, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
+
+export function calculateMathEstimate(correct: number, total: number): number {
+  if (total === 0) return 200;
+  if (correct === 0) return 200;
+  if (correct === total) return 800;
+
+  const accuracy = correct / total;
+  // Scaled score between 200 and 800, rounded to nearest 10
+  const rawScore = 200 + Math.round((accuracy * 600) / 10) * 10;
+  return Math.min(800, Math.max(200, rawScore));
+}
 
 export const ResultsReviewView: React.FC = () => {
   const { questions, currentExamAnswers, markedForReview, resetExam, setCurrentView } = useApp();
@@ -17,7 +28,8 @@ export const ResultsReviewView: React.FC = () => {
   });
 
   const accuracy = Math.round((correctCount / questions.length) * 100) || 0;
-  const estimatedMathScore = 700 + Math.round((correctCount / questions.length) * 100);
+  const estimatedMathScore = calculateMathEstimate(correctCount, questions.length);
+  const earnedXP = correctCount > 0 ? Math.round((correctCount / questions.length) * 450) : 0;
 
   const toggleSolution = (qId: string) => {
     setExpandedSolutions((prev) =>
@@ -62,7 +74,7 @@ export const ResultsReviewView: React.FC = () => {
           <div className="text-center font-mono">
             <span className="text-xs text-slate-400 block font-semibold">ACCURACY</span>
             <span className="text-4xl font-extrabold text-teal-400">{accuracy}%</span>
-            <span className="text-[10px] text-emerald-400 block">+450 XP Earned</span>
+            <span className="text-[10px] text-emerald-400 block">+{earnedXP} XP Earned</span>
           </div>
         </div>
 
@@ -146,16 +158,20 @@ export const ResultsReviewView: React.FC = () => {
                         {q.domain}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                      {q.prompt.replace(/[\$\\]/g, '')}
-                    </p>
+                    <div className="text-xs text-slate-300 mt-1 line-clamp-2 overflow-hidden">
+                      <MathRenderer content={q.prompt} inline />
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-3 text-xs font-mono">
-                  <span className={`px-2.5 py-1 rounded font-bold ${isCorrect ? 'bg-emerald-950 text-emerald-400 border border-emerald-800/40' : 'bg-red-950 text-red-300 border border-red-800/40'}`}>
-                    Your Ans: {userAns || 'Omitted'} (Correct: {q.correctAnswer})
-                  </span>
+                <div className="flex items-center space-x-3 text-xs font-mono flex-shrink-0">
+                  <div className={`px-2.5 py-1 rounded font-bold flex items-center space-x-1 ${isCorrect ? 'bg-emerald-950 text-emerald-400 border border-emerald-800/40' : 'bg-red-950 text-red-300 border border-red-800/40'}`}>
+                    <span>Your Ans:</span>
+                    <span>{userAns ? <MathRenderer content={userAns} inline /> : 'Omitted'}</span>
+                    <span className="opacity-60 ml-1">(Correct:</span>
+                    <span><MathRenderer content={q.correctAnswer} inline /></span>
+                    <span className="opacity-60">)</span>
+                  </div>
                   {isExpanded ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
                 </div>
               </div>

@@ -18,8 +18,8 @@ const MainContent: React.FC = () => {
       {/* Ambient Math Visual Background (Cartesian Grid & Floating Geometry) */}
       <MathBackground />
 
-      {/* Show Navbar on all pages except full-screen Bluebook exam environment */}
-      {currentView !== 'exam' && <Navbar />}
+      {/* Show Global Navbar on landing, onboarding, leaderboard, review (hidden on study hub workspace & exam) */}
+      {currentView !== 'exam' && currentView !== 'dashboard' && <Navbar />}
 
       <main className="flex-1 relative z-10">
         {currentView === 'landing' && <LandingPage />}
@@ -30,8 +30,8 @@ const MainContent: React.FC = () => {
         {currentView === 'leaderboard' && <LeaderboardView />}
       </main>
 
-      {/* Show Footer on all pages except full-screen Bluebook exam environment */}
-      {currentView !== 'exam' && <Footer />}
+      {/* Render Footer EXCLUSIVELY on root Landing/Welcome page */}
+      {currentView === 'landing' && <Footer />}
     </div>
   );
 };

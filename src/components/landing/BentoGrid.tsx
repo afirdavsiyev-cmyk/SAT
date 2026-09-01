@@ -130,10 +130,10 @@ export const BentoGrid: React.FC = () => {
                 </div>
 
                 <h4 className="text-xl font-bold text-white mb-2 group-hover:text-teal-300 transition-colors">
-                  2. Preppy AI Step-by-Step Tutor
+                  2. ScoreUP AI Step-by-Step Tutor
                 </h4>
                 <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                  Stuck on a problem? Ask Preppy AI for instant targeted hints, Socratic questions, or step-by-step KaTeX math breakdowns.
+                  Stuck on a problem? Ask ScoreUP AI for instant targeted hints, Socratic questions, or step-by-step KaTeX math breakdowns.
                 </p>
               </div>
 
@@ -156,30 +156,32 @@ export const BentoGrid: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-900/90 rounded-xl text-xs space-y-2 border border-slate-800">
+                <div className="p-4 bg-slate-900/90 rounded-2xl text-xs space-y-3 border border-slate-800">
                   {aiStep === 1 && (
-                    <>
-                      <p className="text-slate-300 font-medium">Step 1: Identify given formula parameters</p>
-                      <div className="text-teal-300 font-mono">
-                        <MathRenderer content="$$\\text{Radius } r = 7, \\quad \\text{Center } (h,k) = (2, -5)$$" />
+                    <div className="space-y-2">
+                      <p className="text-slate-300 font-semibold">Step 1: Identify given formula parameters</p>
+                      <div className="p-3 bg-slate-950/90 rounded-xl text-center space-y-1 font-mono text-xs border border-slate-800/80">
+                        <p className="text-slate-300">Radius: <span className="text-emerald-400 font-bold">r = 7</span></p>
+                        <p className="text-slate-300">Center: <span className="text-emerald-400 font-bold">(h, k) = (2, -5)</span></p>
+                        <p className="text-[11px] text-slate-400 pt-1 font-sans">Target: Circle Standard Equation</p>
                       </div>
-                    </>
+                    </div>
                   )}
                   {aiStep === 2 && (
-                    <>
-                      <p className="text-slate-300 font-medium">Step 2: Plug into Circle Standard Equation</p>
-                      <div className="text-teal-300 font-mono">
+                    <div className="space-y-2">
+                      <p className="text-slate-300 font-semibold">Step 2: Plug into Circle Standard Equation</p>
+                      <div className="p-3 bg-slate-950/90 rounded-xl text-center border border-slate-800/80">
                         <MathRenderer content="$$(x - h)^2 + (y - k)^2 = r^2$$" />
                       </div>
-                    </>
+                    </div>
                   )}
                   {aiStep === 3 && (
-                    <>
-                      <p className="text-slate-300 font-medium">Step 3: Simplify signs and square radius</p>
-                      <div className="text-emerald-400 font-mono font-bold">
+                    <div className="space-y-2">
+                      <p className="text-slate-300 font-semibold">Step 3: Simplify signs and square radius</p>
+                      <div className="p-3 bg-slate-950/90 rounded-xl text-center text-emerald-400 font-bold border border-slate-800/80">
                         <MathRenderer content="$$(x - 2)^2 + (y + 5)^2 = 49$$" />
                       </div>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>

@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen overflow-x-hidden;
+    background-color: #060913;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-emerald {
+  background: rgba(6, 78, 59, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* Background Patterns & Glows */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.05) 45%, rgba(6, 9, 19, 0) 75%);
+}
+
+/* Micro-interaction helper classes */
+.btn-interactive {
+  @apply transition-all duration-200 active:scale-95 hover:shadow-[0_0_20px_rgba(16,185,129,0.25)];
+}
+
+.card-interactive {
+  @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-700/80 hover:shadow-xl;
+}
+
+/* KaTeX custom override for dark mode */
+.katex {
+  font-size: 1.05em;
+  color: #f1f5f9;
+}
+.katex-display {
+  margin: 0.4em 0;
+}

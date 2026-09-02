@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ps-001",
+    "source": "Official Bluebook Practice Test 1",
+    "domain": "Problem-Solving & Data Analysis",
+    "topic": "Percentages",
+    "difficulty": "Medium",
+    "question": "An initial investment of $1,200 increases in value by $8\\%$ each year. Which function $V(t)$ models the value of the investment, in dollars, after $t$ years?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$V(t) = 1,200(0.08)^t$" },
+      { "id": "B", "text": "$V(t) = 1,200(1.08)^t$" },
+      { "id": "C", "text": "$V(t) = 1,200 + (1.08)^t$" },
+      { "id": "D", "text": "$V(t) = 1,200(1.80)^t$" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Exponential growth is modeled by $V(t) = P(1 + r)^t$, where $P$ is the principal and $r$ is the growth rate in decimal form.\n\nHere $P = 1,200$ and $r = 0.08$. Thus, the growth multiplier is $1 + 0.08 = 1.08$, yielding:\n$$V(t) = 1,200(1.08)^t$$",
+    "hint": "An $8\\%$ increase corresponds to multiplying by $1 + 0.08 = 1.08$.",
+    "desmosTip": "Compare values at $t=1$: $1,200 \\times 1.08 = 1,296$."
+  },
+  {
+    "id": "ps-002",
+    "source": "College Board Question Bank",
+    "domain": "Problem-Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "difficulty": "Easy",
+    "question": "A vehicle travels at an average speed of $72$ kilometers per hour. What is the vehicle's speed in meters per second?",
+    "type": "student_produced",
+    "correctAnswer": "20",
+    "explanation": "To convert from $\\text{km/h}$ to $\\text{m/s}$:\n1. Convert kilometers to meters: $72 \\text{ km} = 72 \\times 1,000 = 72,000 \\text{ m}$.\n2. Convert 1 hour to seconds: $1 \\text{ h} = 3,600 \\text{ s}$.\n3. Divide:\n$$\\text{Speed} = \\frac{72,000 \\text{ m}}{3,600 \\text{ s}} = 20 \\text{ m/s}$$",
+    "hint": "Shortcut conversion: divide speed in $\\text{km/h}$ by $3.6$. $\\frac{72}{3.6} = 20$.",
+    "desmosTip": "Type `72 * 1000 / 3600` in Desmos to immediately get `20`."
+  },
+  {
+    "id": "ps-003",
+    "source": "Official Bluebook Practice Test 2",
+    "domain": "Problem-Solving & Data Analysis",
+    "topic": "Probability and conditional probability",
+    "difficulty": "Medium",
+    "question": "A bag contains $12$ blue marbles, $8$ red marbles, and $5$ green marbles. If one marble is randomly selected, what is the probability that it is NOT blue?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$\\frac{12}{25}$" },
+      { "id": "B", "text": "$\\frac{13}{25}$" },
+      { "id": "C", "text": "$\\frac{8}{25}$" },
+      { "id": "D", "text": "$\\frac{17}{25}$" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Total marbles $= 12 + 8 + 5 = 25$.\nMarbles that are NOT blue $= 8 \\text{ (red)} + 5 \\text{ (green)} = 13$.\n$$P(\\text{not blue}) = \\frac{13}{25}$$",
+    "hint": "Complement rule: $P(\\text{not blue}) = 1 - P(\\text{blue}) = 1 - \\frac{12}{25} = \\frac{13}{25}$.",
+    "desmosTip": "Type `13/25` in Desmos to confirm decimal `0.52`."
+  },
+  {
+    "id": "ps-004",
+    "source": "Official Bluebook Practice Test 3",
+    "domain": "Problem-Solving & Data Analysis",
+    "topic": "One-variable data: distributions and measures of center and spread",
+    "difficulty": "Hard",
+    "question": "A data set contains the values $\\{14, 18, 22, 22, 26, 30, 95\\}$. If the outlier $95$ is removed from the data set, which measure of center or spread will decrease by the greatest amount?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "The median" },
+      { "id": "B", "text": "The mean" },
+      { "id": "C", "text": "The mode" },
+      { "id": "D", "text": "The range and mean are unchanged" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "The extreme positive outlier $95$ pulls the mean strongly to the right. When $95$ is removed:\n1. Original mean: $\\frac{14+18+22+22+26+30+95}{7} = \\frac{227}{7} \\approx 32.43$.\n2. New mean: $\\frac{14+18+22+22+26+30}{6} = \\frac{132}{6} = 22.00$ (decreases by over $10.4$).\n3. The median only shifts from $22$ to $22$, and mode remains $22$.\nTherefore, the mean experiences the greatest decrease among measures of center.",
+    "hint": "Mean is heavily sensitive to extreme outliers, whereas the median is resistant.",
+    "desmosTip": "Type `mean([14, 18, 22, 22, 26, 30, 95])` vs `mean([14, 18, 22, 22, 26, 30])` in Desmos."
+  }
+]

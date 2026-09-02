@@ -2,11 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light Theme: Vivid SAT Amber/Orange Palette */
+  --accent-primary: #ea580c;        /* orange-600 */
+  --accent-primary-hover: #c2410c;  /* orange-700 */
+  --accent-surface: #fff7ed;        /* orange-50 */
+  --accent-border: #fdba74;         /* orange-300 */
+  --accent-ring: rgba(234, 88, 12, 0.25);
+  --accent-badge-text: #9a3412;     /* orange-800 */
+  --accent-badge-bg: #ffedd5;       /* orange-100 */
+}
+
+.dark, html.dark {
+  /* Dark Theme: Core Cyber Emerald Palette */
+  --accent-primary: #10b981;        /* emerald-500 */
+  --accent-primary-hover: #059669;  /* emerald-600 */
+  --accent-surface: rgba(6, 78, 59, 0.25);
+  --accent-border: rgba(16, 185, 129, 0.3);
+  --accent-ring: rgba(16, 185, 129, 0.25);
+  --accent-badge-text: #34d399;     /* emerald-400 */
+  --accent-badge-bg: rgba(6, 78, 59, 0.4);
+}
+
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen overflow-x-hidden;
-    background-color: #060913;
+    @apply font-sans antialiased selection:bg-orange-500/25 selection:text-orange-900 dark:selection:bg-emerald-500/30 dark:selection:text-emerald-300 min-h-screen overflow-x-hidden transition-colors duration-200;
   }
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light body {
+  background-color: #FAF8F5;
+  color: #0f172a;
+}
+
+html.dark body {
+  background-color: #060913;
+  color: #f8fafc;
 }
 
 /* Custom Scrollbars */
@@ -15,17 +54,26 @@
   height: 6px;
 }
 
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: #060913;
 }
 
-::-webkit-scrollbar-thumb {
+html.light ::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 9999px;
 }
 
+html.light ::-webkit-scrollbar-thumb {
+  background: #d6cbbe;
+  border-radius: 9999px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: #f59e0b;
 }
 
 /* ─── iOS Liquid Glassmorphism Token System ─────────────────────────────── */
@@ -54,6 +102,19 @@
 .glass-pill:active {
   transform: scale(0.96);
   transition-duration: 150ms;
+}
+
+html.light .glass-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(217, 119, 6, 0.18);
+  color: #78350f;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(245, 158, 11, 0.05);
+}
+
+html.light .glass-pill:hover {
+  background: #ffffff;
+  border-color: rgba(245, 158, 11, 0.45);
+  color: #451a03;
 }
 
 /* Emerald accent glass — selected state / primary actions */
@@ -118,6 +179,18 @@
   transition-duration: 150ms;
 }
 
+html.light .glass-choice {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  color: #1e293b;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.04);
+}
+
+html.light .glass-choice:hover {
+  background: #ffffff;
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
 /* Choice card selected — glowing emerald frosted selection */
 .glass-choice-selected {
   background: rgba(16, 185, 129, 0.15);
@@ -138,6 +211,12 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(217, 119, 6, 0.12);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.06);
+}
+
 .glass-panel-emerald {
   background: rgba(6, 78, 59, 0.2);
   backdrop-filter: blur(16px);
@@ -153,8 +232,18 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
 
+html.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+}
+
 .bg-radial-glow {
   background: radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.05) 45%, rgba(6, 9, 19, 0) 75%);
+}
+
+html.light .bg-radial-glow {
+  background: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.09) 0%, rgba(251, 146, 60, 0.04) 45%, rgba(250, 248, 245, 0) 75%);
 }
 
 /* Micro-interaction helper classes */
@@ -163,14 +252,18 @@
 }
 
 .card-interactive {
-  @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-700/80 hover:shadow-xl;
+  @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-slate-700/80 hover:shadow-xl;
 }
 
-/* ─── KaTeX — high-contrast over frosted glass backgrounds ─────────────── */
+/* ─── KaTeX — high-contrast over all surfaces ─────────────── */
 .katex {
   font-size: 1.05em;
-  color: #f8fafc;
+  color: inherit !important;
   text-rendering: geometricPrecision;
+}
+
+.katex * {
+  color: inherit;
 }
 
 .katex-display {
@@ -195,5 +288,92 @@
 .katex-html {
   display: inline-block;
   white-space: normal;
+}
+
+/* ─── Continuous Domain Background SVG Animations ─────────────────── */
+@keyframes domainDrift {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-35px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes domainFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.6deg);
+  }
+}
+
+@keyframes domainFloatAlt {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-0.5deg);
+  }
+}
+
+@keyframes domainDash {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes domainPulseSoft {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-domain-drift {
+  animation: domainDrift 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-domain-float {
+  animation: domainFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-domain-float-alt {
+  animation: domainFloatAlt 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-domain-dash {
+  animation: domainDash 18s linear infinite;
+}
+
+.animate-domain-dash-fast {
+  animation: domainDash 10s linear infinite;
+}
+
+.animate-domain-pulse {
+  animation: domainPulseSoft 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-domain-drift,
+  .animate-domain-float,
+  .animate-domain-float-alt,
+  .animate-domain-dash,
+  .animate-domain-dash-fast,
+  .animate-domain-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 

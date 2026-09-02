@@ -45,19 +45,73 @@ export interface UserProgress {
   }[];
 }
 
+export interface ExamHistoryEntry {
+  date: string;
+  score: number;
+  module1Correct: number;
+  module2Correct: number;
+  module2Type: 'easy' | 'hard';
+}
+
+export interface UserProgressState {
+  planner: {
+    targetExamDate: string; // e.g. "October 2026"
+    targetScore: number;    // e.g. 800
+    baselineScore: number;  // e.g. 720
+    dailyGoalMinutes: number; // e.g. 45
+    weakDomains: string[];  // e.g. ["Advanced Math", "Geometry & Trigonometry"]
+    currentDay: number;     // e.g. 1
+  };
+  stats: {
+    streakDays: number;
+    totalQuestionsSolved: number;
+    totalQuestionsCorrect: number;
+    globalXP: number;
+    completedExamsCount: number;
+    domainMastery: {
+      algebra: number;             // percentage (0 - 100)
+      advancedMath: number;        // percentage
+      problemSolving: number;     // percentage
+      geometryTrig: number;        // percentage
+    };
+    examHistory: ExamHistoryEntry[];
+  };
+}
+
+export interface StudyPlanDay {
+  dayNumber: number; // 1 - 7
+  dayLabel: string; // e.g. "Day 1", "Day 2", etc.
+  title: string;
+  domain: string;
+  skillFocus: string;
+  questionCount: number;
+  easyCount: number;
+  mediumCount: number;
+  hardCount: number;
+  targetMinutes: number;
+  advice: string;
+  type: 'drill' | 'review' | 'mock';
+  completed?: boolean;
+}
+
+export interface StudyPlanWeek {
+  week: number;
+  title: string;
+  focus: string;
+  estimatedHrs: number;
+  completed: boolean;
+  days: StudyPlanDay[];
+}
+
 export interface StudyPlan {
   targetDate: string;
   targetScore: number;
   currentScore: number;
+  baselineBand?: string;
   weakAreas: string[];
   dailyTimeMinutes: number;
-  weeklyRoadmap: {
-    week: number;
-    title: string;
-    focus: string;
-    estimatedHrs: number;
-    completed: boolean;
-  }[];
+  pacePreference?: string;
+  weeklyRoadmap: StudyPlanWeek[];
 }
 
 export interface LeaderboardUser {

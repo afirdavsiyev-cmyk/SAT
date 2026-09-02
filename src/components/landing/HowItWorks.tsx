@@ -12,7 +12,7 @@ export const HowItWorks: React.FC = () => {
   const steps = [
     {
       step: 1,
-      icon: <Target className="w-6 h-6 text-emerald-400" />,
+      icon: <Target className="w-6 h-6 text-orange-500 dark:text-emerald-400" />,
       title: '1. Complete Adaptive Diagnostic',
       desc: 'Take a short 15-minute diagnostic test to pinpoint your current mastery level across Math (Algebra, Geometry, Advanced) and Reading & Writing.',
       highlight: 'Pinpoint weakness down to exact SAT topic domain',
@@ -20,7 +20,7 @@ export const HowItWorks: React.FC = () => {
     },
     {
       step: 2,
-      icon: <Cpu className="w-6 h-6 text-teal-400" />,
+      icon: <Cpu className="w-6 h-6 text-orange-500 dark:text-teal-400" />,
       title: '2. AI Guided Practice & Desmos Training',
       desc: 'Work through tailored drill modules. Receive step-by-step KaTeX math solutions and master Desmos calculator shortcuts for rapid speed.',
       highlight: 'Step-by-step hints powered by Preppy AI 24/7',
@@ -28,7 +28,7 @@ export const HowItWorks: React.FC = () => {
     },
     {
       step: 3,
-      icon: <Award className="w-6 h-6 text-emerald-400" />,
+      icon: <Award className="w-6 h-6 text-orange-500 dark:text-emerald-400" />,
       title: '3. Crush Test Day in Bluebook Environment',
       desc: 'Practice under full timed exam conditions with College Board standard layouts, equation scratchpads, formula reference sheets, and score analytics.',
       highlight: '+140 points average score increase verified',
@@ -37,7 +37,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-900/40 border-y border-slate-800/80 relative overflow-hidden">
+    <section className="py-24 bg-amber-50/20 dark:bg-slate-900/40 border-y border-amber-900/10 dark:border-slate-800/80 relative overflow-hidden transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -51,13 +51,13 @@ export const HowItWorks: React.FC = () => {
             willChange: 'opacity, transform',
           }}
         >
-          <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3 bg-emerald-950/80 border border-emerald-800/50 px-3 py-1 rounded-full inline-block">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-orange-800 dark:text-emerald-400 mb-3 bg-orange-100 border border-orange-200 dark:bg-emerald-950/40 dark:border-emerald-800/50 px-3 py-1 rounded-full inline-block">
             Simple 3-Step Journey
           </h2>
-          <h3 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             How SAT Master Prepares You
           </h3>
-          <p className="mt-4 text-base text-slate-400">
+          <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
             From initial score diagnosis to test day mastery in three structured phases.
           </p>
         </div>
@@ -70,27 +70,27 @@ export const HowItWorks: React.FC = () => {
                 onClick={() => setActiveStep(s.step)}
                 className={`rounded-3xl p-6 sm:p-8 transition-all duration-300 cursor-pointer border flex flex-col justify-between h-full ${
                   activeStep === s.step
-                    ? 'bg-slate-900 border-emerald-500/60 shadow-[0_0_30px_rgba(16,185,129,0.12)]'
-                    : 'bg-slate-950/80 border-slate-800/80 hover:border-emerald-500/30 hover:-translate-y-0.5'
+                    ? 'bg-white dark:bg-slate-900 border-orange-500/60 dark:border-emerald-500/60 shadow-[0_4px_25px_rgba(234,88,12,0.12)] dark:shadow-[0_0_30px_rgba(16,185,129,0.15)]'
+                    : 'bg-white/90 dark:bg-slate-950/80 border-amber-900/10 dark:border-slate-800/80 hover:border-orange-500/30 hover:-translate-y-0.5 shadow-sm'
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 shadow-sm">
+                    <div className="p-3.5 rounded-2xl bg-orange-50/70 dark:bg-slate-950 border border-orange-200 dark:border-slate-800 shadow-sm">
                       {s.icon}
                     </div>
-                    <span className="text-xs font-extrabold font-mono text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800/40">
+                    <span className="text-xs font-extrabold font-mono text-orange-600 bg-orange-50 border border-orange-200 dark:text-emerald-400 dark:bg-emerald-950/50 dark:border-emerald-800/40 px-3 py-1 rounded-full">
                       STEP 0{s.step}
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-bold text-white mb-3">{s.title}</h4>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-6">{s.desc}</p>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{s.title}</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">{s.desc}</p>
                 </div>
 
                 <div>
-                  <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-400 bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-800/30 mb-4">
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                  <div className="flex items-center space-x-2 text-xs font-semibold bg-orange-50 border border-orange-200 text-orange-800 dark:bg-emerald-950/30 dark:border-emerald-500/30 dark:text-emerald-300 p-2.5 rounded-xl mb-4">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-orange-600 dark:text-emerald-400" />
                     <span>{s.highlight}</span>
                   </div>
 
@@ -101,7 +101,7 @@ export const HowItWorks: React.FC = () => {
                       else if (s.step === 2) setCurrentView('dashboard');
                       else setCurrentView('exam');
                     }}
-                    className="w-full py-3 rounded-xl bg-slate-800 hover:bg-emerald-500 text-white hover:text-slate-950 font-bold text-xs transition-all flex items-center justify-center space-x-2 group active:scale-95"
+                    className="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-bold text-xs transition-all flex items-center justify-center space-x-2 group active:scale-95 shadow-md shadow-orange-500/20 dark:shadow-none"
                   >
                     <span>{s.actionText}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

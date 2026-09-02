@@ -1,0 +1,98 @@
+[
+  {
+    "id": "alg-001",
+    "source": "Official Bluebook Practice Test 1",
+    "domain": "Algebra",
+    "topic": "Linear equations in one variable",
+    "difficulty": "Easy",
+    "question": "If $4x + 12 = 36$, what is the value of $x + 3$?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$6$" },
+      { "id": "B", "text": "$9$" },
+      { "id": "C", "text": "$12$" },
+      { "id": "D", "text": "$15$" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "We can solve this directly by dividing the entire equation $4x + 12 = 36$ by $4$:\n$$\\frac{4x + 12}{4} = \\frac{36}{4} \\implies x + 3 = 9$$\nAlternatively, subtract $12$ from both sides to get $4x = 24 \\implies x = 6$. Then calculate $x + 3 = 6 + 3 = 9$.",
+    "hint": "Notice that the expression asked ($x + 3$) is exactly $\\frac{1}{4}$ of the left side $(4x + 12)$.",
+    "desmosTip": "Type `4x + 12 = 36` in Desmos to find the vertical line intersection $x = 6$, then evaluate `6 + 3`."
+  },
+  {
+    "id": "alg-002",
+    "source": "Official Bluebook Practice Test 2",
+    "domain": "Algebra",
+    "topic": "Systems of two linear equations in two variables",
+    "difficulty": "Hard",
+    "question": "A system of linear equations is given below, where $k$ is a constant:\n$$\\begin{cases} 3x - 5y = 15 \\\\ 9x - ky = 45 \\end{cases}$$\nIf the system has infinitely many solutions, what is the value of $k$?",
+    "type": "student_produced",
+    "correctAnswer": "15",
+    "explanation": "For a system of two linear equations in two variables to have infinitely many solutions, the two equations must be linearly dependent (i.e., multiples of each other).\n\nMultiplying the first equation by $3$ gives:\n$$3(3x - 5y) = 3(15) \\implies 9x - 15y = 45$$\n\nComparing this with $9x - ky = 45$, we see that $-ky = -15y$, which implies $k = 15$.",
+    "hint": "Check the ratio between the $x$-coefficients: $\\frac{9}{3} = 3$. Multiply the entire first equation by $3$.",
+    "desmosTip": "Slider method: Type `3x - 5y = 15` and `9x - ky = 45`. Add slider $k$ and slide until both lines completely overlap at $k = 15$."
+  },
+  {
+    "id": "alg-003",
+    "source": "College Board Question Bank",
+    "domain": "Algebra",
+    "topic": "Linear functions",
+    "difficulty": "Medium",
+    "question": "The linear function $f$ satisfies $f(0) = 8$ and $f(4) = 20$. Which equation defines $f(x)$?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$f(x) = 3x + 8$" },
+      { "id": "B", "text": "$f(x) = 4x + 8$" },
+      { "id": "C", "text": "$f(x) = 3x + 4$" },
+      { "id": "D", "text": "$f(x) = 5x + 8$" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "A linear function can be written in slope-intercept form $f(x) = mx + b$.\n\n1. Since $f(0) = 8$, the $y$-intercept is $b = 8$.\n2. Use the points $(0, 8)$ and $(4, 20)$ to calculate slope $m$:\n$$m = \\frac{20 - 8}{4 - 0} = \\frac{12}{4} = 3$$\n\nTherefore, $f(x) = 3x + 8$.",
+    "hint": "Use $m = \\frac{y_2 - y_1}{x_2 - x_1}$ to find the slope.",
+    "desmosTip": "Add a table in Desmos with points $(0, 8)$ and $(4, 20)$, then type `y1 ~ m x1 + b`."
+  },
+  {
+    "id": "alg-004",
+    "source": "Official Bluebook Practice Test 3",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "difficulty": "Medium",
+    "question": "Which of the following points $(x, y)$ is a solution to the system of inequalities below?\n$$\\begin{cases} y > 2x - 3 \\\\ y \\le -x + 5 \\end{cases}$$",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$(0, 6)$" },
+      { "id": "B", "text": "$(2, 2)$" },
+      { "id": "C", "text": "$(4, 0)$" },
+      { "id": "D", "text": "$(1, -2)$" }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Let us test point $(2, 2)$:\n1. First inequality: $y > 2x - 3 \\implies 2 > 2(2) - 3 \\implies 2 > 1$ (True).\n2. Second inequality: $y \\le -x + 5 \\implies 2 \\le -2 + 5 \\implies 2 \\le 3$ (True).\n\nSince $(2, 2)$ satisfies both inequalities, Choice B is the correct answer.",
+    "hint": "Substitute $(x, y)$ from each choice into both inequalities simultaneously.",
+    "desmosTip": "Type `y > 2x - 3` and `y <= -x + 5` in Desmos and see which candidate point falls inside the overlapping shaded region."
+  },
+  {
+    "id": "alg-005",
+    "source": "ScoreUP Math Vault",
+    "domain": "Algebra",
+    "topic": "Linear equations in two variables",
+    "difficulty": "Hard",
+    "question": "Line $L$ in the $xy$-plane passes through the point $(3, -2)$ and is perpendicular to the line with equation $2x - 6y = 11$. What is the $y$-intercept of line $L$?",
+    "type": "student_produced",
+    "correctAnswer": "7",
+    "explanation": "1. Find the slope of the given line $2x - 6y = 11$ by rearranging into slope-intercept form:\n$$-6y = -2x + 11 \\implies y = \\frac{1}{3}x - \\frac{11}{6}$$\nSo the given line has slope $m_1 = \\frac{1}{3}$.\n\n2. The perpendicular line $L$ has a slope $m_2$ that is the negative reciprocal of $\\frac{1}{3}$:\n$$m_2 = -\\frac{1}{1/3} = -3$$\n\n3. Using the point-slope form with point $(3, -2)$ and slope $m = -3$:\n$$y - (-2) = -3(x - 3) \\implies y + 2 = -3x + 9 \\implies y = -3x + 7$$\n\nThus, the $y$-intercept is $7$.",
+    "hint": "Perpendicular lines have slopes that multiply to $-1$: $m_1 \\cdot m_2 = -1$.",
+    "desmosTip": "Type `2x - 6y = 11` and line `y - (-2) = -3(x - 3)`. Tap the $y$-axis intercept $(0, 7)$."
+  },
+  {
+    "id": "alg-006",
+    "source": "Official Bluebook Practice Test 4",
+    "domain": "Algebra",
+    "topic": "Linear equations in one variable",
+    "difficulty": "Easy",
+    "question": "A technician charges a flat diagnostic fee of $45 plus an hourly labor rate of $65 per hour. If a customer was billed a total of $240 before taxes, how many hours of labor were performed?",
+    "type": "student_produced",
+    "correctAnswer": "3",
+    "explanation": "Set up the linear equation representing the total charge $C(h)$ for $h$ hours:\n$$45 + 65h = 240$$\n\nSubtract $45$ from both sides:\n$$65h = 195$$\n\nDivide by $65$:\n$$h = \\frac{195}{65} = 3$$\n\nTherefore, $3$ hours of labor were performed.",
+    "hint": "Formula: Total Cost = Fixed Fee + (Hourly Rate × Hours).",
+    "desmosTip": "Type `45 + 65h = 240` in Desmos to view the solution line at $h = 3$."
+  }
+]

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "geo-001",
+    "source": "Official Bluebook Practice Test 3",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Right triangles and trigonometry",
+    "difficulty": "Medium",
+    "question": "In right triangle $DEF$, the measure of angle $F$ is $90^\\circ$. If $\\cos(D) = \\frac{15}{17}$, what is the value of $\\sin(E)$?",
+    "type": "student_produced",
+    "correctAnswer": "15/17",
+    "explanation": "In any right triangle where angle $F = 90^\\circ$, acute angles $D$ and $E$ are complementary: $D + E = 90^\\circ$.\n\nBy cofunction trigonometric identities:\n$$\\sin(E) = \\sin(90^\\circ - D) = \\cos(D)$$\n\nSince $\\cos(D) = \\frac{15}{17}$, it follows that $\\sin(E) = \\frac{15}{17}$.",
+    "hint": "Cofunction identity: $\\sin(\\theta) = \\cos(90^\\circ - \\theta)$.",
+    "desmosTip": "Cofunction theorem guarantees $\\sin(E) = \\cos(D)$ without calculating side lengths."
+  },
+  {
+    "id": "geo-002",
+    "source": "Official Bluebook Practice Test 4",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Circles",
+    "difficulty": "Hard",
+    "question": "A circle in the $xy$-plane is defined by the equation $x^2 + y^2 - 8x + 6y = 24$. What is the radius of this circle?",
+    "type": "student_produced",
+    "correctAnswer": "7",
+    "explanation": "Complete the square for both $x$ and $y$ terms:\n1. For $x$: $x^2 - 8x = (x - 4)^2 - 16$\n2. For $y$: $y^2 + 6y = (y + 3)^2 - 9$\n\nSubstitute into the equation:\n$$(x - 4)^2 - 16 + (y + 3)^2 - 9 = 24$$\n$$(x - 4)^2 + (y + 3)^2 - 25 = 24$$\n$$(x - 4)^2 + (y + 3)^2 = 49$$\n\nSince $r^2 = 49$, the radius is $r = \\sqrt{49} = 7$.",
+    "hint": "Complete the square: add $\\left(\\frac{-8}{2}\\right)^2 = 16$ and $\\left(\\frac{6}{2}\\right)^2 = 9$ to both sides.",
+    "desmosTip": "Type `x^2 + y^2 - 8x + 6y = 24` in Desmos. Observe the circle center $(4, -3)$ and horizontal point $(11, -3) \\implies r = 11 - 4 = 7$."
+  },
+  {
+    "id": "geo-003",
+    "source": "Official Bluebook Practice Test 1",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Area and volume",
+    "difficulty": "Easy",
+    "question": "A right circular cylinder has a base radius of $4$ inches and a height of $9$ inches. What is the volume, in cubic inches, of the cylinder?",
+    "type": "multiple_choice",
+    "options": [
+      { "id": "A", "text": "$36\\pi$" },
+      { "id": "B", "text": "$72\\pi$" },
+      { "id": "C", "text": "$144\\pi$" },
+      { "id": "D", "text": "$288\\pi$" }
+    ],
+    "correctAnswer": "C",
+    "explanation": "The formula for the volume of a right circular cylinder is:\n$$V = \\pi r^2 h$$\nSubstitute $r = 4$ and $h = 9$:\n$$V = \\pi (4)^2 (9) = \\pi (16)(9) = 144\\pi$$",
+    "hint": "Formula: $V = \\pi r^2 h$.",
+    "desmosTip": "Calculate `pi * 4^2 * 9` to verify `144*pi`."
+  },
+  {
+    "id": "geo-004",
+    "source": "College Board Question Bank",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Lines, angles, and triangles",
+    "difficulty": "Medium",
+    "question": "In triangle $PQR$, the measure of $\\angle P$ is $45^\\circ$ and the measure of $\\angle Q$ is $65^\\circ$. What is the measure of the exterior angle at vertex $R$?",
+    "type": "student_produced",
+    "correctAnswer": "110",
+    "explanation": "By the Exterior Angle Theorem, the measure of an exterior angle of a triangle is equal to the sum of the measures of the two non-adjacent interior angles:\n$$\\text{Exterior } \\angle R = \\angle P + \\angle Q = 45^\\circ + 65^\\circ = 110^\\circ$$",
+    "hint": "Exterior angle = Sum of the two remote interior angles.",
+    "desmosTip": "Calculate `45 + 65 = 110`."
+  }
+]

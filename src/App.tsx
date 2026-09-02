@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
@@ -9,12 +11,25 @@ import { DashboardView } from './components/dashboard/DashboardView';
 import { ExamInterface } from './components/exam/ExamInterface';
 import { ResultsReviewView } from './components/review/ResultsReviewView';
 import { LeaderboardView } from './components/leaderboard/LeaderboardView';
+import { OnboardingWizardModal } from './components/auth/OnboardingWizardModal';
+import { AuthModal } from './components/auth/AuthModal';
 
 const MainContent: React.FC = () => {
-  const { currentView } = useApp();
+  const { currentView, setCurrentView } = useApp();
+
+  useEffect(() => {
+    const handleLoginSuccess = (e: Event) => {
+      const customEvent = e as CustomEvent<{ view?: string }>;
+      if (customEvent.detail?.view) {
+        setCurrentView(customEvent.detail.view as any);
+      }
+    };
+    window.addEventListener('scoreup_login_success', handleLoginSuccess);
+    return () => window.removeEventListener('scoreup_login_success', handleLoginSuccess);
+  }, [setCurrentView]);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-slate-950 text-slate-100 relative">
+    <div className="bg-[#FAF7F2] text-slate-900 dark:bg-[#070b12] dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-200 relative">
       {/* Ambient Math Visual Background (Cartesian Grid & Floating Geometry) */}
       <MathBackground />
 
@@ -32,15 +47,25 @@ const MainContent: React.FC = () => {
 
       {/* Render Footer EXCLUSIVELY on root Landing/Welcome page */}
       {currentView === 'landing' && <Footer />}
+
+      {/* Interactive Onboarding Wizard Modal */}
+      <OnboardingWizardModal />
+
+      {/* Global Authentication Modal */}
+      <AuthModal />
     </div>
   );
 };
 
 export function App() {
   return (
-    <AppProvider>
-      <MainContent />
-    </AppProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <AppProvider>
+          <MainContent />
+        </AppProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

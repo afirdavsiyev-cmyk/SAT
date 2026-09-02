@@ -4,6 +4,7 @@ import { BluebookHeader } from './BluebookHeader';
 import { QuestionCard } from './QuestionCard';
 import { QuestionNavigator } from './QuestionNavigator';
 import { DesmosModal } from './DesmosModal';
+import { DesmosSplitPanel } from '../study/DesmosSplitPanel';
 import { ReferenceSheetModal } from './ReferenceSheetModal';
 import { ScratchpadCanvas } from './ScratchpadCanvas';
 import { AITutorDrawer } from './AITutorDrawer';
@@ -25,7 +26,13 @@ export const ExamInterface: React.FC = () => {
   const hasTriggered1Min = useRef<boolean>(false);
   const hasTriggeredTimeout = useRef<boolean>(false);
 
-  // Modal & Drawer States
+  // Split Panel & Modal States
+  const [isSplitCalculatorOpen, setIsSplitCalculatorOpen] = useState<boolean>(false);
+  const [calcWidthPercent, setCalcWidthPercent] = useState<number>(45);
+  const [isDraggingDivider, setIsDraggingDivider] = useState<boolean>(false);
+  const splitContainerRef = useRef<HTMLDivElement>(null);
+  const splitResizeFnRef = useRef<(() => void) | null>(null);
+
   const [isDesmosOpen, setIsDesmosOpen] = useState<boolean>(false);
   const [isReferenceOpen, setIsReferenceOpen] = useState<boolean>(false);
   const [isScratchpadActive, setIsScratchpadActive] = useState<boolean>(false);
@@ -50,6 +57,43 @@ export const ExamInterface: React.FC = () => {
 
     return () => clearInterval(timerInterval);
   }, [isPaused, isTimeoutSubmitting]);
+
+  // Handle draggable divider between calculator and question
+  useEffect(() => {
+    if (!isDraggingDivider) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!splitContainerRef.current) return;
+      const rect = splitContainerRef.current.getBoundingClientRect();
+      const relativeX = e.clientX - rect.left;
+      let newPercent = (relativeX / rect.width) * 100;
+
+      // Minimum widths
+      const minCalcPercent = (320 / rect.width) * 100;
+      const maxCalcPercent = ((rect.width - 340) / rect.width) * 100;
+
+      newPercent = Math.max(minCalcPercent, Math.min(maxCalcPercent, newPercent));
+      setCalcWidthPercent(newPercent);
+
+      if (splitResizeFnRef.current) {
+        splitResizeFnRef.current();
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDraggingDivider(false);
+      if (splitResizeFnRef.current) {
+        splitResizeFnRef.current();
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDraggingDivider]);
 
   // Handle specific sound chimes & banners on time thresholds
   useEffect(() => {
@@ -95,14 +139,15 @@ export const ExamInterface: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-between relative overflow-hidden select-none">
+    <div className="min-h-screen bg-slate-100 text-slate-900 dark:bg-[#070b12] dark:text-slate-100 flex flex-col justify-between h-screen overflow-hidden select-none transition-colors duration-200">
       
       {/* Top Header */}
       <BluebookHeader
         secondsRemaining={secondsRemaining}
         isPaused={isPaused}
         onTogglePause={() => setIsPaused(!isPaused)}
-        onOpenDesmos={() => setIsDesmosOpen(true)}
+        onOpenDesmos={() => setIsSplitCalculatorOpen(!isSplitCalculatorOpen)}
+        isSplitCalculatorOpen={isSplitCalculatorOpen}
         onOpenReference={() => setIsReferenceOpen(true)}
         onToggleScratchpad={() => setIsScratchpadActive(!isScratchpadActive)}
         onToggleAiTutor={() => setIsAiTutorOpen(!isAiTutorOpen)}
@@ -124,13 +169,55 @@ export const ExamInterface: React.FC = () => {
         </div>
       )}
 
-      {/* Main Question View & Scratchpad Layer (Blurs when paused) */}
-      <div className={`flex-1 relative flex flex-col justify-center transition-all ${isPaused ? 'filter blur-md pointer-events-none' : ''}`}>
+      {/* Main Split Canvas / Question View & Scratchpad Layer */}
+      <div
+        ref={splitContainerRef}
+        className={`flex-1 flex flex-row overflow-hidden relative transition-all ${isPaused ? 'filter blur-md pointer-events-none' : ''}`}
+      >
         <ScratchpadCanvas
           isActive={isScratchpadActive}
           onClose={() => setIsScratchpadActive(false)}
         />
-        <QuestionCard question={currentQuestion} />
+
+        {/* Embedded Desmos Calculator Split Panel (Left) */}
+        {isSplitCalculatorOpen && (
+          <>
+            <div
+              style={{ width: `${calcWidthPercent}%`, minWidth: '320px' }}
+              className="h-full flex-shrink-0 z-20"
+            >
+              <DesmosSplitPanel
+                isOpen={isSplitCalculatorOpen}
+                onClose={() => setIsSplitCalculatorOpen(false)}
+                onPopOut={() => {
+                  setIsSplitCalculatorOpen(false);
+                  setIsDesmosOpen(true);
+                }}
+                onResizeCalculatorRef={(fn) => {
+                  splitResizeFnRef.current = fn;
+                }}
+              />
+            </div>
+
+            {/* Draggable Resizing Center Divider */}
+            <div
+              onMouseDown={() => setIsDraggingDivider(true)}
+              className="w-2.5 bg-slate-900 hover:bg-emerald-500/30 border-x border-slate-800 flex items-center justify-center cursor-col-resize select-none transition-colors group z-20 flex-shrink-0"
+              title="Drag to resize calculator"
+            >
+              <div className="flex flex-col space-y-1 text-slate-500 group-hover:text-emerald-400 items-center">
+                <div className="w-1 h-1 rounded-full bg-current" />
+                <div className="w-1 h-1 rounded-full bg-current" />
+                <div className="w-1 h-1 rounded-full bg-current" />
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Active Question View (Right / Center) */}
+        <div className="flex-1 h-full overflow-y-auto flex items-center justify-center py-6 px-4">
+          <QuestionCard question={currentQuestion} />
+        </div>
       </div>
 
       {/* Sleek Exam Paused Overlay Modal */}
@@ -212,15 +299,14 @@ export const ExamInterface: React.FC = () => {
 
       {/* Docked Bottom Control Bar */}
       <footer
-        className="px-6 py-3.5 flex items-center justify-between z-40 backdrop-blur-2xl bg-slate-950/75 border-t border-white/[0.07]"
-        style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 -8px 32px rgba(0,0,0,0.35)' }}
+        className="px-6 py-3.5 flex items-center justify-between z-40 backdrop-blur-md bg-white/95 border-t border-slate-200 dark:bg-[#090d16]/95 dark:border-slate-800 transition-colors duration-200 shadow-sm dark:shadow-none"
       >
         {/* Left: Question Navigator Trigger */}
         <button
           onClick={() => setIsNavigatorOpen(true)}
-          className="glass-pill flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold text-slate-200 hover:text-white"
+          className="bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-200 flex items-center space-x-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm"
         >
-          <Grid className="w-4 h-4 text-emerald-400" />
+          <Grid className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>Question {currentIndex + 1} of {questions.length}</span>
         </button>
 
@@ -229,12 +315,11 @@ export const ExamInterface: React.FC = () => {
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            className={`px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 ${
+            className={`px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 transition-all shadow-sm ${
               currentIndex === 0
-                ? 'opacity-30 cursor-not-allowed glass-pill text-slate-500'
-                : 'glass-pill text-slate-200 hover:text-white'
+                ? 'opacity-30 cursor-not-allowed bg-slate-100 text-slate-400 border border-slate-200 dark:bg-slate-800/40 dark:text-slate-500 dark:border-slate-800'
+                : 'bg-slate-100 text-slate-700 border border-slate-300 hover:bg-slate-200 dark:bg-slate-800/80 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700'
             }`}
-            style={{ transition: 'all 300ms cubic-bezier(0.16,1,0.3,1)' }}
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back</span>
@@ -243,7 +328,7 @@ export const ExamInterface: React.FC = () => {
           {currentIndex < questions.length - 1 ? (
             <button
               onClick={handleNext}
-              className="glass-pill-emerald px-6 py-2.5 rounded-full text-xs font-extrabold text-emerald-100 flex items-center space-x-1.5"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-full text-xs flex items-center space-x-1.5 shadow-sm active:scale-95 transition-all"
             >
               <span>Next</span>
               <ArrowRight className="w-4 h-4" />
@@ -251,7 +336,7 @@ export const ExamInterface: React.FC = () => {
           ) : (
             <button
               onClick={finishExam}
-              className="glass-pill-emerald px-6 py-2.5 rounded-full text-xs font-extrabold text-emerald-100 flex items-center space-x-2"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-full text-xs flex items-center space-x-2 shadow-sm active:scale-95 transition-all"
             >
               <Send className="w-4 h-4" />
               <span>Submit Section & Review</span>

@@ -1,13 +1,70 @@
 import { QuestionItem, QuestionDomain, DomainDirectoryCategory } from '../../types/questionBank';
-import algebraQuestions from './algebra.json';
-import advancedMathQuestions from './advanced-math.json';
-import problemSolvingQuestions from './problem-solving.json';
-import geometryTrigQuestions from './geometry-trig.json';
+import { SATQuestion } from '../../types/question';
+import algebraQuestionsRaw from './algebra.json';
+import advancedMathQuestionsRaw from './advanced-math.json';
+import problemSolvingQuestionsRaw from './problem-solving.json';
+import geometryTrigQuestionsRaw from './geometry-trig.json';
 
-export const ALGEBRA_QUESTIONS = algebraQuestions as QuestionItem[];
-export const ADVANCED_MATH_QUESTIONS = advancedMathQuestions as QuestionItem[];
-export const PROBLEM_SOLVING_QUESTIONS = problemSolvingQuestions as QuestionItem[];
-export const GEOMETRY_TRIG_QUESTIONS = geometryTrigQuestions as QuestionItem[];
+export const SAT_ALGEBRA_QUESTIONS = algebraQuestionsRaw as unknown as SATQuestion[];
+export const SAT_ADVANCED_MATH_QUESTIONS = advancedMathQuestionsRaw as unknown as SATQuestion[];
+export const SAT_PROBLEM_SOLVING_QUESTIONS = problemSolvingQuestionsRaw as unknown as SATQuestion[];
+export const SAT_GEOMETRY_TRIG_QUESTIONS = geometryTrigQuestionsRaw as unknown as SATQuestion[];
+
+export const ALGEBRA_QUESTIONS: QuestionItem[] = (algebraQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
+  id: q.id,
+  source: q.source,
+  domain: 'Algebra' as QuestionDomain,
+  topic: q.topic,
+  difficulty: (q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1)) as 'Easy' | 'Medium' | 'Hard',
+  question: q.questionText,
+  questionText: q.questionText,
+  type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
+  options: q.options,
+  correctAnswer: q.correctAnswer,
+  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+}));
+
+export const ADVANCED_MATH_QUESTIONS: QuestionItem[] = (advancedMathQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
+  id: q.id,
+  source: q.source,
+  domain: 'Advanced Math' as QuestionDomain,
+  topic: q.topic,
+  difficulty: (q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1)) as 'Easy' | 'Medium' | 'Hard',
+  question: q.questionText,
+  questionText: q.questionText,
+  type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
+  options: q.options,
+  correctAnswer: q.correctAnswer,
+  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+}));
+
+export const PROBLEM_SOLVING_QUESTIONS: QuestionItem[] = (problemSolvingQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
+  id: q.id,
+  source: q.source,
+  domain: 'Problem-Solving & Data Analysis' as QuestionDomain,
+  topic: q.topic,
+  difficulty: (q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1)) as 'Easy' | 'Medium' | 'Hard',
+  question: q.questionText,
+  questionText: q.questionText,
+  type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
+  options: q.options,
+  correctAnswer: q.correctAnswer,
+  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+}));
+
+export const GEOMETRY_TRIG_QUESTIONS: QuestionItem[] = (geometryTrigQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
+  id: q.id,
+  source: q.source,
+  domain: 'Geometry & Trigonometry' as QuestionDomain,
+  topic: q.topic,
+  difficulty: (q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1)) as 'Easy' | 'Medium' | 'Hard',
+  question: q.questionText,
+  questionText: q.questionText,
+  type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
+  options: q.options,
+  correctAnswer: q.correctAnswer,
+  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+}));
 
 export const ALL_QUESTIONS: QuestionItem[] = [
   ...ALGEBRA_QUESTIONS,
@@ -31,165 +88,179 @@ export const OFFICIAL_DOMAIN_TAXONOMY: DomainDirectoryCategory[] = [
   {
     domain: 'Algebra',
     title: 'Algebra',
-    subtitle: 'Linear equations, systems, inequalities, and functions',
+    subtitle: 'Expressions, linear equations, systems, functions, and inequalities',
     iconName: 'Calculator',
     skills: [
       {
-        id: 'alg-linear-one',
-        name: 'Linear equations in one variable',
+        id: 'alg-expressions',
+        name: 'Expressions',
         domain: 'Algebra',
-        description: 'Single-variable linear equations, algebraic manipulation, and word problems.',
-        totalOfficialCount: 159,
+        description: 'Algebraic terms, substitution, simplifying expressions, and word modeling.',
+        totalOfficialCount: 94,
       },
       {
-        id: 'alg-linear-two',
-        name: 'Linear equations in two variables',
+        id: 'alg-linear-eqs',
+        name: 'Linear Equations',
         domain: 'Algebra',
-        description: 'Slope-intercept, standard form, perpendicular/parallel lines, and graphs.',
-        totalOfficialCount: 124,
-      },
-      {
-        id: 'alg-linear-funcs',
-        name: 'Linear functions',
-        domain: 'Algebra',
-        description: 'Function notation, rate of change, intercepts, and linear models.',
+        description: 'One-variable linear equations, absolute values, and single-solution criteria.',
         totalOfficialCount: 118,
       },
       {
         id: 'alg-systems',
-        name: 'Systems of two linear equations in two variables',
+        name: 'Linear System of Equations',
         domain: 'Algebra',
-        description: 'Simultaneous equations, infinite/no solution criteria, and intersections.',
-        totalOfficialCount: 96,
+        description: 'Simultaneous linear equations, substitution, elimination, and solution types.',
+        totalOfficialCount: 65,
+      },
+      {
+        id: 'alg-functions',
+        name: 'Linear Functions',
+        domain: 'Algebra',
+        description: 'Slope, rate of change, intercepts, function notation, and linear graphs.',
+        totalOfficialCount: 72,
       },
       {
         id: 'alg-inequalities',
-        name: 'Linear inequalities in one or two variables',
+        name: 'Linear Inequalities',
         domain: 'Algebra',
-        description: 'Inequality systems, half-planes, bounds, and feasible regions.',
-        totalOfficialCount: 68,
+        description: 'Single and two-variable linear inequalities, number line, and coordinate planes.',
+        totalOfficialCount: 45,
       },
     ],
   },
   {
     domain: 'Advanced Math',
-    title: 'Advanced Math',
-    subtitle: 'Quadratics, polynomials, exponents, and nonlinear systems',
+    title: 'Advanced math',
+    subtitle: 'Polynomials, radicals, functions, exponentials, and quadratics',
     iconName: 'Sparkles',
     skills: [
       {
-        id: 'adv-equivalent',
-        name: 'Equivalent expressions',
-        domain: 'Advanced Math',
-        description: 'Polynomial expansion, factoring, difference of squares, and rational forms.',
-        totalOfficialCount: 142,
-      },
-      {
-        id: 'adv-nonlinear-eqs',
-        name: 'Nonlinear equations in one variable and systems of equations in two variables',
-        domain: 'Advanced Math',
-        description: 'Quadratic formula, extraneous solutions, and curve intersections.',
-        totalOfficialCount: 135,
-      },
-      {
-        id: 'adv-quadratics-exp',
-        name: 'Quadratic and exponential functions',
-        domain: 'Advanced Math',
-        description: 'Vertex form, growth models, decay constants, and parabolas.',
-        totalOfficialCount: 168,
-      },
-      {
         id: 'adv-polynomials',
-        name: 'Polynomial factors & remainders',
+        name: 'Polynomials',
         domain: 'Advanced Math',
-        description: 'Factor theorem, roots, zeros, multiplicity, and polynomial division.',
+        description: 'Operations, factoring, roots, zeros, and polynomial remainder theorem.',
         totalOfficialCount: 88,
       },
       {
         id: 'adv-exponents-radicals',
-        name: 'Exponents & radicals',
+        name: 'Exponents&Radicals',
         domain: 'Advanced Math',
-        description: 'Rational exponents, radical operations, and exponential power laws.',
-        totalOfficialCount: 112,
+        description: 'Exponent rules, rational exponents, radical equations, and fractional powers.',
+        totalOfficialCount: 75,
+      },
+      {
+        id: 'adv-functions-notation',
+        name: 'Functions&Function Notation',
+        domain: 'Advanced Math',
+        description: 'Composite functions, transformations, evaluation, and domain/range.',
+        totalOfficialCount: 60,
+      },
+      {
+        id: 'adv-exponential-funcs',
+        name: 'Exponential Functions',
+        domain: 'Advanced Math',
+        description: 'Exponential growth, decay, percentage rates, and asymptote behavior.',
+        totalOfficialCount: 82,
+      },
+      {
+        id: 'adv-quadratics',
+        name: 'Quadratics',
+        domain: 'Advanced Math',
+        description: 'Factoring, quadratic formula, vertex form, discriminant, and parabolas.',
+        totalOfficialCount: 110,
       },
     ],
   },
   {
     domain: 'Problem-Solving & Data Analysis',
-    title: 'Problem-Solving and Data Analysis',
-    subtitle: 'Ratios, percentages, statistics, probability, and models',
+    title: 'Problem solving',
+    subtitle: 'Percentages, units, probability, statistics, and scatterplots',
     iconName: 'BarChart3',
     skills: [
       {
-        id: 'ps-ratios',
-        name: 'Ratios, rates, proportional relationships, and units',
+        id: 'ps-percent-ratio',
+        name: 'Percent; Ratio&Proportion',
         domain: 'Problem-Solving & Data Analysis',
-        description: 'Unit conversion, speed/density rates, dimensional analysis, and proportions.',
-        totalOfficialCount: 176,
+        description: 'Ratios, proportions, percent increase/decrease, and mixture problems.',
+        totalOfficialCount: 95,
       },
       {
-        id: 'ps-percentages',
-        name: 'Percentages',
+        id: 'ps-unit-conversion',
+        name: 'Unit Conversion',
         domain: 'Problem-Solving & Data Analysis',
-        description: 'Percent increase/decrease, compound growth, and base value calculation.',
-        totalOfficialCount: 140,
-      },
-      {
-        id: 'ps-one-var-data',
-        name: 'One-variable data: distributions and measures of center and spread',
-        domain: 'Problem-Solving & Data Analysis',
-        description: 'Mean, median, mode, range, standard deviation, and box plots.',
-        totalOfficialCount: 104,
-      },
-      {
-        id: 'ps-two-var-data',
-        name: 'Two-variable data: models and scatterplots',
-        domain: 'Problem-Solving & Data Analysis',
-        description: 'Scatter plots, best-fit regression lines, residuals, and correlation.',
-        totalOfficialCount: 92,
+        description: 'Dimensional analysis, rates of change, multi-step metric and US conversions.',
+        totalOfficialCount: 48,
       },
       {
         id: 'ps-probability',
-        name: 'Probability and conditional probability',
+        name: 'Probability',
         domain: 'Problem-Solving & Data Analysis',
-        description: 'Two-way frequency tables, conditional probabilities, and mutually exclusive events.',
-        totalOfficialCount: 84,
+        description: 'Simple probability, conditional probability, and two-way tables.',
+        totalOfficialCount: 52,
+      },
+      {
+        id: 'ps-stats',
+        name: 'Mean, Median, Mode, Range',
+        domain: 'Problem-Solving & Data Analysis',
+        description: 'Central tendency, spread, standard deviation, and data set distributions.',
+        totalOfficialCount: 70,
+      },
+      {
+        id: 'ps-scatterplots',
+        name: 'Scatterplots',
+        domain: 'Problem-Solving & Data Analysis',
+        description: 'Line of best fit, correlation, trend lines, and regression modeling.',
+        totalOfficialCount: 64,
+      },
+      {
+        id: 'ps-research',
+        name: 'Research organizing(Margin of Error; Outliers)',
+        domain: 'Problem-Solving & Data Analysis',
+        description: 'Margin of error, sample size, population inferences, and outlier effects.',
+        totalOfficialCount: 40,
       },
     ],
   },
   {
     domain: 'Geometry & Trigonometry',
     title: 'Geometry and Trigonometry',
-    subtitle: 'Triangles, circles, area/volume, and trigonometry',
+    subtitle: 'Lines, angles, triangles, trigonometry, circles, area, and volume',
     iconName: 'Compass',
     skills: [
       {
-        id: 'geo-area-volume',
-        name: 'Area and volume',
+        id: 'geo-lines-angles',
+        name: 'Lines&Angles',
         domain: 'Geometry & Trigonometry',
-        description: '2D composite polygons, 3D solids, cylinder/cone/sphere volume and surface area.',
-        totalOfficialCount: 98,
+        description: 'Parallel lines, transversals, vertical angles, and angle sum rules.',
+        totalOfficialCount: 54,
       },
       {
-        id: 'geo-lines-triangles',
-        name: 'Lines, angles, and triangles',
+        id: 'geo-triangles',
+        name: 'Triangles',
         domain: 'Geometry & Trigonometry',
-        description: 'Parallel lines, transversal angles, similarity, and congruence theorems.',
-        totalOfficialCount: 110,
+        description: 'Similar triangles, congruence, isosceles, and Pythagorean theorem.',
+        totalOfficialCount: 68,
       },
       {
-        id: 'geo-right-trig',
-        name: 'Right triangles and trigonometry',
+        id: 'geo-trigonometry',
+        name: 'Trigonometry',
         domain: 'Geometry & Trigonometry',
-        description: 'SOH-CAH-TOA, cofunction identities, radians, and unit circle basics.',
-        totalOfficialCount: 128,
+        description: 'SOH CAH TOA, sine-cosine cofunction relationship, and unit circle radians.',
+        totalOfficialCount: 72,
       },
       {
         id: 'geo-circles',
         name: 'Circles',
         domain: 'Geometry & Trigonometry',
-        description: 'Standard circle equation, completing square for center/radius, arcs & sectors.',
-        totalOfficialCount: 85,
+        description: 'Circle equations, arc length, sector area, and inscribed angle theorems.',
+        totalOfficialCount: 58,
+      },
+      {
+        id: 'geo-areas-volumes',
+        name: 'Areas&Volumes',
+        domain: 'Geometry & Trigonometry',
+        description: '2D plane figures, 3D solids, cylinder, sphere, and cone formulas.',
+        totalOfficialCount: 66,
       },
     ],
   },

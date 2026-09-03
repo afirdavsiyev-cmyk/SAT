@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { X, Bookmark, Check, HelpCircle, Layers } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QuestionItem } from '../../types/questionBank';
 
 export interface QuestionAttemptRecord {
@@ -29,27 +28,33 @@ export const PracticeRoomGridModal: React.FC<PracticeRoomGridModalProps> = ({
   onSelectIndex,
   attemptsMap,
 }) => {
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [groupByAnswered, setGroupByAnswered] = useState(false);
 
+  // Outside click dismissal: close when clicking outside popover and trigger button
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const trigger = document.getElementById('question-navigator-trigger');
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(event.target as Node) &&
+        (!trigger || !trigger.contains(event.target as Node))
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
-
-  // Compute status counts
-  let correctCount = 0;
-  let incorrectCount = 0;
-  let reviewCount = 0;
-  let answeredCount = 0;
-
-  questions.forEach((q) => {
-    const record = attemptsMap[q.id];
-    if (record?.isAnswered) {
-      answeredCount++;
-      if (record.isCorrect) correctCount++;
-      else incorrectCount++;
-    }
-    if (record?.isMarkedForReview) {
-      reviewCount++;
-    }
-  });
 
   // Filter or group questions
   const displayedQuestionIndices = questions.map((_, idx) => idx);
@@ -63,168 +68,107 @@ export const PracticeRoomGridModal: React.FC<PracticeRoomGridModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 select-none"
-      onClick={onClose}
+      ref={popoverRef}
+      className="fixed bottom-16 left-4 z-50 w-[380px] max-w-[calc(100vw-2rem)] rounded-2xl bg-white dark:bg-[#0d131a] border border-slate-200 dark:border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.25)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-2 duration-150 select-none text-slate-900 dark:text-slate-100"
     >
-      <div
-        className="w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh] relative"
-        style={{
-          background: 'rgba(11, 17, 32, 0.96)',
-          backdropFilter: 'blur(28px) saturate(190%)',
-          WebkitBackdropFilter: 'blur(28px) saturate(190%)',
-          border: '1px solid rgba(255, 255, 255, 0.14)',
-          boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Header */}
-        <div className="p-4 sm:p-5 bg-slate-950/80 border-b border-white/[0.08] flex items-center justify-between flex-shrink-0">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              <Layers className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-extrabold text-white text-base">Question Navigator</h3>
-              <p className="text-xs text-slate-400 font-mono">
-                {answeredCount} of {questions.length} Answered • {reviewCount} Marked for Review
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-3">
-            {/* Group Answered Toggle */}
-            <label className="hidden sm:flex items-center space-x-2 text-xs text-slate-300 cursor-pointer bg-white/[0.04] px-3 py-1.5 rounded-xl border border-white/[0.08]">
-              <input
-                type="checkbox"
-                checked={groupByAnswered}
-                onChange={(e) => setGroupByAnswered(e.target.checked)}
-                className="w-3.5 h-3.5 rounded bg-slate-950 border-slate-700 text-emerald-500 focus:ring-0 accent-emerald-500 cursor-pointer"
-              />
-              <span className="font-semibold text-[11px]">Group Answered</span>
-            </label>
-
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.12] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+      {/* Header */}
+      <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800/80">
+        <div className="flex items-center gap-2">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">Question Bank</h3>
+          <span className="text-xs text-slate-500 font-mono">
+            ({currentIndex + 1} of {questions.length})
+          </span>
         </div>
-
-        {/* Status Legend Bar */}
-        <div className="px-5 py-3 bg-slate-950/50 border-b border-white/[0.06] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-          <div className="flex items-center space-x-4 flex-wrap gap-y-1.5">
-            {/* Correct */}
-            <div className="flex items-center space-x-1.5">
-              <span className="w-3.5 h-3.5 rounded-md bg-emerald-500 text-slate-950 flex items-center justify-center text-[10px] font-bold">
-                ✓
-              </span>
-              <span className="text-slate-300 text-[11px]">Correct ({correctCount})</span>
-            </div>
-
-            {/* Incorrect */}
-            <div className="flex items-center space-x-1.5">
-              <span className="w-3.5 h-3.5 rounded-md bg-rose-500 text-white flex items-center justify-center text-[10px] font-bold">
-                ✕
-              </span>
-              <span className="text-slate-300 text-[11px]">Incorrect ({incorrectCount})</span>
-            </div>
-
-            {/* For Review */}
-            <div className="flex items-center space-x-1.5">
-              <span className="w-3.5 h-3.5 rounded-md bg-amber-500 text-slate-950 flex items-center justify-center text-[10px]">
-                <Bookmark className="w-2.5 h-2.5 fill-slate-950" />
-              </span>
-              <span className="text-slate-300 text-[11px]">For Review ({reviewCount})</span>
-            </div>
-
-            {/* Unanswered */}
-            <div className="flex items-center space-x-1.5">
-              <span className="w-3.5 h-3.5 rounded-md bg-white/[0.08] border border-white/[0.15]" />
-              <span className="text-slate-400 text-[11px]">Unanswered</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Scrollable Question Number Grid */}
-        <div className="p-5 sm:p-6 overflow-y-auto max-h-[55vh] scrollbar-thin scrollbar-thumb-slate-800">
-          <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2.5">
-            {displayedQuestionIndices.map((origIdx) => {
-              const q = questions[origIdx];
-              const record = attemptsMap[q.id];
-              const isCurrent = origIdx === currentIndex;
-              const isAnswered = record?.isAnswered;
-              const isCorrect = record?.isCorrect;
-              const isMarked = record?.isMarkedForReview;
-              const hasMultipleAttempts = (record?.attemptsCount || 0) > 1;
-
-              // Determine pill styling
-              let pillStyle = 'bg-white/[0.04] text-slate-300 border-white/[0.08] hover:bg-white/[0.09]';
-              let badgeIndicator: React.ReactNode = null;
-
-              if (isAnswered) {
-                if (isCorrect) {
-                  if (hasMultipleAttempts) {
-                    // Correct after previous incorrect attempts
-                    pillStyle = 'bg-amber-500/25 border-amber-500/60 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.25)] font-bold';
-                  } else {
-                    // Correct on first attempt
-                    pillStyle = 'bg-emerald-500/25 border-emerald-500/60 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.25)] font-bold';
-                  }
-                } else {
-                  // Incorrect
-                  pillStyle = 'bg-rose-500/25 border-rose-500/60 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.25)] font-bold';
-                }
-              }
-
-              if (isCurrent) {
-                pillStyle += ' ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-950 font-extrabold';
-              }
-
-              return (
-                <button
-                  key={q.id}
-                  onClick={() => {
-                    onSelectIndex(origIdx);
-                    onClose();
-                  }}
-                  className={`relative aspect-square rounded-2xl border flex flex-col items-center justify-center text-sm font-mono transition-all duration-150 active:scale-90 group ${pillStyle}`}
-                >
-                  <span>{origIdx + 1}</span>
-
-                  {/* Top-Right Review Bookmark Flag */}
-                  {isMarked && (
-                    <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-md">
-                      <Bookmark className="w-2.5 h-2.5 fill-slate-950" />
-                    </span>
-                  )}
-
-                  {/* Bottom Status Dot */}
-                  {isAnswered && (
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full mt-0.5 ${
-                        isCorrect ? 'bg-emerald-400' : 'bg-rose-400'
-                      }`}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Modal Footer */}
-        <div className="p-4 bg-slate-950/80 border-t border-white/[0.08] flex items-center justify-between text-xs text-slate-400">
-          <span>Click any question number to jump immediately.</span>
+        <div className="flex items-center gap-2">
           <button
-            onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-white font-bold transition-colors"
+            type="button"
+            onClick={() => setGroupByAnswered((prev) => !prev)}
+            className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-colors ${
+              groupByAnswered
+                ? 'bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-700/60'
+                : 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-900 dark:border-slate-700/60 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600'
+            }`}
           >
-            Close
+            Group Answered
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-6 h-6 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            title="Close Navigator"
+          >
+            ✕
           </button>
         </div>
+      </div>
 
+      {/* Legend Row */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500 dark:text-slate-400 pb-1">
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400" /> Easy
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-400" /> Medium
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-rose-500 dark:bg-rose-400" /> Hard
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-amber-400" /> For Review
+        </span>
+      </div>
+
+      {/* Compact Scrollable Question Matrix */}
+      <div className="max-h-[380px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
+        <div className="grid grid-cols-6 gap-2">
+          {displayedQuestionIndices.map((origIdx) => {
+            const q = questions[origIdx];
+            const record = attemptsMap[q.id];
+            const isCurrent = origIdx === currentIndex;
+            const isMarked = record?.isMarkedForReview || (q as any)?.isMarked;
+            const isAnswered = record?.isAnswered;
+            const isCorrect = record?.isCorrect;
+
+            const diffClasses = {
+              easy: 'bg-[#D1FAE5] dark:bg-emerald-950/40 text-[#047857] dark:text-emerald-400 border-[#A7F3D0] dark:border-emerald-500/30 hover:bg-[#A7F3D0]/60 dark:hover:bg-emerald-900/50',
+              medium: 'bg-[#FEF3C7] dark:bg-amber-950/40 text-[#B45309] dark:text-amber-400 border-[#FDE68A] dark:border-amber-500/30 hover:bg-[#FDE68A]/60 dark:hover:bg-amber-900/50',
+              hard: 'bg-[#FFE4E6] dark:bg-rose-950/40 text-[#E11D48] dark:text-rose-400 border-[#FECDD3] dark:border-rose-500/30 hover:bg-[#FECDD3]/60 dark:hover:bg-rose-900/50',
+            }[(q.difficulty?.toLowerCase() || 'medium') as 'easy' | 'medium' | 'hard'] || 'bg-amber-950/40 text-amber-400 border-amber-500/30';
+
+            return (
+              <button
+                key={q.id || origIdx}
+                type="button"
+                onClick={() => {
+                  onSelectIndex(origIdx);
+                  onClose();
+                }}
+                className={`relative h-10 rounded-xl flex items-center justify-center font-bold text-xs border transition-all ${diffClasses} ${
+                  isCurrent
+                    ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-white dark:ring-offset-slate-950 font-black scale-105 shadow-md z-10'
+                    : 'active:scale-95'
+                }`}
+                title={`Question ${origIdx + 1} (${(q.difficulty || 'medium').toUpperCase()})`}
+              >
+                <span>{origIdx + 1}</span>
+
+                {/* Bookmark Indicator */}
+                {isMarked && (
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 border border-slate-950 shadow-sm" />
+                )}
+
+                {/* Answer Status Indicator */}
+                {isAnswered && (
+                  <span
+                    className={`absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full flex items-center justify-center text-[7px] font-bold text-white border border-slate-950 ${
+                      isCorrect ? 'bg-emerald-500' : 'bg-rose-500'
+                    }`}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

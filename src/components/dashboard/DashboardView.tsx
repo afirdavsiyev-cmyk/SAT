@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { StudySidebar, StudySidebarTab } from '../study/StudySidebar';
 import { ThemeToggle } from '../common/ThemeToggle';
@@ -13,6 +13,7 @@ import {
   Sparkles,
   BookOpen,
   ArrowRight,
+  ArrowLeft,
   FolderKanban,
   Target,
   FileText,
@@ -25,13 +26,16 @@ import {
   X,
   PanelLeftClose,
   PanelLeft,
-  ArrowLeft,
   GraduationCap,
   Bell,
   Calendar
 } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
 import { mockQuestions } from '../../data/mockData';
+import { ALL_QUESTIONS } from '../../data/questions';
+import { QuestionItem } from '../../types/questionBank';
+import { PracticeRoomView } from '../study/PracticeRoomView';
+import { getProgress, getBookmarks, toggleBookmark } from '../../services/userProgress';
 import { BOOKS_LIBRARY, BookItem } from '../../data/booksData';
 import { ScoreUpAITutorView } from '../study/ScoreUpAITutorView';
 import { QuestionBankView } from '../study/QuestionBankView';
@@ -49,6 +53,45 @@ export const DashboardView: React.FC = () => {
   const [activeTab, setActiveTab] = useState<StudySidebarTab>('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [selectedBookModal, setSelectedBookModal] = useState<BookItem | null>(null);
+
+  // Active Practice Room session state for saved items & mistakes
+  const [practiceSession, setPracticeSession] = useState<{
+    questions: QuestionItem[];
+    topicName: string;
+    initialIndex: number;
+  } | null>(null);
+
+  // Saved & Mistake Log state
+  const [savedSubtab, setSavedSubtab] = useState<'bookmarks' | 'mistakes'>('bookmarks');
+  const [progressState, setProgressState] = useState(() => getProgress());
+  const [bookmarksState, setBookmarksState] = useState(() => getBookmarks());
+
+  useEffect(() => {
+    const handleProgressUpdate = () => {
+      setProgressState(getProgress());
+    };
+    const handleBookmarksUpdate = () => {
+      setBookmarksState(getBookmarks());
+    };
+    window.addEventListener('scoreup_progress_updated', handleProgressUpdate);
+    window.addEventListener('scoreup_bookmarks_updated', handleBookmarksUpdate);
+    return () => {
+      window.removeEventListener('scoreup_progress_updated', handleProgressUpdate);
+      window.removeEventListener('scoreup_bookmarks_updated', handleBookmarksUpdate);
+    };
+  }, []);
+
+  const bookmarkedQuestions = useMemo(() => {
+    const set = new Set(bookmarksState);
+    return ALL_QUESTIONS.filter((q) => set.has(q.id));
+  }, [bookmarksState]);
+
+  const mistakeQuestions = useMemo(() => {
+    return ALL_QUESTIONS.filter((q) => {
+      const att = progressState[q.id];
+      return att && !att.isCorrect;
+    });
+  }, [progressState]);
 
   const studentFirstName = activeUser.firstName || 'Student';
   const studentTargetScore = activeUser.targetScore || `${plannerData.targetMath}`;
@@ -96,6 +139,17 @@ export const DashboardView: React.FC = () => {
 
   // Today's Prescriptive Plan Item
   const todayScheduledDay = studyPlan?.weeklyRoadmap?.[0]?.days?.[(userProgressState.planner.currentDay || 1) - 1] || studyPlan?.weeklyRoadmap?.[0]?.days?.[0];
+
+  if (practiceSession && practiceSession.questions.length > 0) {
+    return (
+      <PracticeRoomView
+        questions={practiceSession.questions}
+        selectedTopicName={practiceSession.topicName}
+        initialIndex={practiceSession.initialIndex}
+        onGoBack={() => setPracticeSession(null)}
+      />
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col bg-[#FAF8F5] dark:bg-[#070b12] text-slate-900 dark:text-slate-100 relative overflow-hidden select-none transition-colors duration-200">
@@ -598,12 +652,227 @@ export const DashboardView: React.FC = () => {
 
           {/* ─── TAB 10: SAVED & MISTAKES ───────────────────────────────── */}
           {activeTab === 'saved' && (
-            <div className="max-w-4xl mx-auto space-y-6">
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Saved Questions & Mistake Log</h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Review marked items from your previous Bluebook exam sessions.</p>
-              <div className="p-6 rounded-2xl bg-white/95 dark:bg-slate-900/80 border border-emerald-500/30 dark:border-emerald-500/40 text-center text-xs text-slate-500 dark:text-slate-400 shadow-sm">
-                No bookmarked mistakes currently. Complete an exam module to automatically track missed items!
+            <div className="max-w-5xl mx-auto space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                  <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Saved Questions & Mistake Log</h2>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Review your bookmarked problems and practice questions you missed.</p>
+                </div>
+
+                {/* Subtab Switcher */}
+                <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <button
+                    type="button"
+                    onClick={() => setSavedSubtab('bookmarks')}
+                    className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      savedSubtab === 'bookmarks'
+                        ? 'bg-amber-500 text-white dark:bg-emerald-500 dark:text-slate-950 shadow-sm'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    Bookmarks ({bookmarkedQuestions.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSavedSubtab('mistakes')}
+                    className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      savedSubtab === 'mistakes'
+                        ? 'bg-amber-500 text-white dark:bg-emerald-500 dark:text-slate-950 shadow-sm'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    Mistake Log ({mistakeQuestions.length})
+                  </button>
+                </div>
               </div>
+
+              {/* Subtab 1: Bookmarks */}
+              {savedSubtab === 'bookmarks' && (
+                <div>
+                  {bookmarkedQuestions.length === 0 ? (
+                    <div className="p-8 rounded-3xl bg-white/95 dark:bg-slate-900/80 border border-emerald-500/30 dark:border-emerald-500/40 text-center space-y-3 shadow-sm">
+                      <div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto text-xl">
+                        🔖
+                      </div>
+                      <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">No Bookmarked Questions Yet</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                        While practicing in the Bluebook Practice Room or browsing the Question Bank, toggle "Mark for Review" to save items here for targeted revision.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab('question_bank')}
+                        className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950 font-bold text-xs shadow-sm hover:opacity-90 transition-opacity"
+                      >
+                        Explore Question Bank →
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                          Showing {bookmarkedQuestions.length} saved item{bookmarkedQuestions.length > 1 ? 's' : ''}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPracticeSession({
+                              questions: bookmarkedQuestions,
+                              topicName: 'Saved Bookmarks Practice',
+                              initialIndex: 0,
+                            });
+                          }}
+                          className="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-sm transition-all"
+                        >
+                          Practice All Bookmarks ({bookmarkedQuestions.length}) →
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {bookmarkedQuestions.map((q) => (
+                          <div
+                            key={q.id}
+                            className="p-4 rounded-2xl bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm hover:border-emerald-500/60 transition-colors"
+                          >
+                            <div className="space-y-1.5 flex-1 pr-4">
+                              <div className="flex items-center space-x-2 flex-wrap gap-y-1 text-[11px] font-mono">
+                                <span className="px-2 py-0.5 rounded-md font-bold uppercase bg-amber-50 text-amber-900 border border-amber-200 dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-500/30">
+                                  {q.domain}
+                                </span>
+                                <span className="text-slate-500 dark:text-slate-400 font-medium">
+                                  {q.topic}
+                                </span>
+                                <span className="px-1.5 py-0.5 rounded text-[10px] uppercase font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                                  {q.difficulty}
+                                </span>
+                                <span className="text-slate-400">ID: {q.id.toUpperCase()}</span>
+                              </div>
+                              <p className="text-xs text-slate-800 dark:text-slate-200 line-clamp-2 font-medium">
+                                {q.question}
+                              </p>
+                            </div>
+
+                            <div className="flex items-center space-x-2 flex-shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setPracticeSession({
+                                    questions: [q],
+                                    topicName: `Saved: ${q.topic}`,
+                                    initialIndex: 0,
+                                  });
+                                }}
+                                className="px-3 py-1.5 rounded-xl bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 font-bold text-xs hover:opacity-90 transition-opacity"
+                              >
+                                Practice →
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => toggleBookmark(q.id)}
+                                className="p-1.5 rounded-xl text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors"
+                                title="Remove bookmark"
+                              >
+                                <Bookmark className="w-4 h-4 fill-current" />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Subtab 2: Mistake Log */}
+              {savedSubtab === 'mistakes' && (
+                <div>
+                  {mistakeQuestions.length === 0 ? (
+                    <div className="p-8 rounded-3xl bg-white/95 dark:bg-slate-900/80 border border-emerald-500/30 dark:border-emerald-500/40 text-center space-y-3 shadow-sm">
+                      <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto text-xl">
+                        🎯
+                      </div>
+                      <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">Zero Logged Mistakes</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                        Any question you get wrong during Bluebook practice sessions will automatically appear here for targeted review and remediation.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab('question_bank')}
+                        className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950 font-bold text-xs shadow-sm hover:opacity-90 transition-opacity"
+                      >
+                        Start Practicing Now →
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                          {mistakeQuestions.length} missed question{mistakeQuestions.length > 1 ? 's' : ''} to remediate
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPracticeSession({
+                              questions: mistakeQuestions,
+                              topicName: 'Mistakes Remediation Session',
+                              initialIndex: 0,
+                            });
+                          }}
+                          className="px-3.5 py-1.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-extrabold text-xs shadow-sm transition-all"
+                        >
+                          Retry All Missed Questions ({mistakeQuestions.length}) →
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {mistakeQuestions.map((q) => {
+                          const att = progressState[q.id];
+                          return (
+                            <div
+                              key={q.id}
+                              className="p-4 rounded-2xl bg-white dark:bg-[#0c1424] border border-rose-300 dark:border-rose-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm hover:border-rose-500/60 transition-colors"
+                            >
+                              <div className="space-y-1.5 flex-1 pr-4">
+                                <div className="flex items-center space-x-2 flex-wrap gap-y-1 text-[11px] font-mono">
+                                  <span className="px-2 py-0.5 rounded-md font-bold uppercase bg-rose-50 text-rose-800 border border-rose-200 dark:bg-rose-950/60 dark:text-rose-400 dark:border-rose-500/30">
+                                    Missed
+                                  </span>
+                                  <span className="text-slate-500 dark:text-slate-400 font-medium">
+                                    {q.domain} • {q.topic}
+                                  </span>
+                                  <span className="text-slate-400">ID: {q.id.toUpperCase()}</span>
+                                </div>
+                                <p className="text-xs text-slate-800 dark:text-slate-200 line-clamp-2 font-medium">
+                                  {q.question}
+                                </p>
+                                <div className="text-[11px] font-mono flex items-center space-x-3">
+                                  <span className="text-rose-600 dark:text-rose-400 font-bold">Your answer: {att?.selectedAnswer || 'N/A'}</span>
+                                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Correct key: {q.correctAnswer}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center space-x-2 flex-shrink-0">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setPracticeSession({
+                                      questions: [q],
+                                      topicName: `Remediate: ${q.topic}`,
+                                      initialIndex: 0,
+                                    });
+                                  }}
+                                  className="px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-sm transition-all"
+                                >
+                                  Retry Now →
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 

@@ -134,3 +134,6 @@ export interface Achievement {
   unlocked: boolean;
   progress: number; // 0 - 100
 }
+
+export * from './question';
+

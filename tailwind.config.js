@@ -35,6 +35,7 @@ export default {
         'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
         'float': 'float 6s ease-in-out infinite',
         'shine': 'shine 2s linear infinite',
+        'swing': 'swing 6s ease-in-out infinite',
       },
       keyframes: {
         pulseGlow: {
@@ -48,6 +49,10 @@ export default {
         shine: {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
+        },
+        swing: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
         }
       }
     },

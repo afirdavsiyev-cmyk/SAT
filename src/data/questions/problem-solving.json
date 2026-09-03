@@ -1,72 +1,4630 @@
 [
   {
-    "id": "ps-001",
-    "source": "Official Bluebook Practice Test 1",
-    "domain": "Problem-Solving & Data Analysis",
-    "topic": "Percentages",
-    "difficulty": "Medium",
-    "question": "An initial investment of $1,200 increases in value by $8\\%$ each year. Which function $V(t)$ models the value of the investment, in dollars, after $t$ years?",
+    "id": "ps-prp-001",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "If $x > 0$ and $p\\%$ of $x$ is $13$, which expression represents $x$ in terms of $p$?",
     "type": "multiple_choice",
     "options": [
-      { "id": "A", "text": "$V(t) = 1,200(0.08)^t$" },
-      { "id": "B", "text": "$V(t) = 1,200(1.08)^t$" },
-      { "id": "C", "text": "$V(t) = 1,200 + (1.08)^t$" },
-      { "id": "D", "text": "$V(t) = 1,200(1.80)^t$" }
+      {
+        "id": "A",
+        "text": "$\\frac{13}{p}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{13p}{100}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{100p}{13}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{(100)(13)}{p}$"
+      }
     ],
-    "correctAnswer": "B",
-    "explanation": "Exponential growth is modeled by $V(t) = P(1 + r)^t$, where $P$ is the principal and $r$ is the growth rate in decimal form.\n\nHere $P = 1,200$ and $r = 0.08$. Thus, the growth multiplier is $1 + 0.08 = 1.08$, yielding:\n$$V(t) = 1,200(1.08)^t$$",
-    "hint": "An $8\\%$ increase corresponds to multiplying by $1 + 0.08 = 1.08$.",
-    "desmosTip": "Compare values at $t=1$: $1,200 \\times 1.08 = 1,296$."
+    "correctAnswer": "D",
+    "difficulty": "easy"
   },
   {
-    "id": "ps-002",
-    "source": "College Board Question Bank",
-    "domain": "Problem-Solving & Data Analysis",
-    "topic": "Ratios, rates, proportional relationships, and units",
-    "difficulty": "Easy",
-    "question": "A vehicle travels at an average speed of $72$ kilometers per hour. What is the vehicle's speed in meters per second?",
-    "type": "student_produced",
-    "correctAnswer": "20",
-    "explanation": "To convert from $\\text{km/h}$ to $\\text{m/s}$:\n1. Convert kilometers to meters: $72 \\text{ km} = 72 \\times 1,000 = 72,000 \\text{ m}$.\n2. Convert 1 hour to seconds: $1 \\text{ h} = 3,600 \\text{ s}$.\n3. Divide:\n$$\\text{Speed} = \\frac{72,000 \\text{ m}}{3,600 \\text{ s}} = 20 \\text{ m/s}$$",
-    "hint": "Shortcut conversion: divide speed in $\\text{km/h}$ by $3.6$. $\\frac{72}{3.6} = 20$.",
-    "desmosTip": "Type `72 * 1000 / 3600` in Desmos to immediately get `20`."
-  },
-  {
-    "id": "ps-003",
-    "source": "Official Bluebook Practice Test 2",
-    "domain": "Problem-Solving & Data Analysis",
-    "topic": "Probability and conditional probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $12$ blue marbles, $8$ red marbles, and $5$ green marbles. If one marble is randomly selected, what is the probability that it is NOT blue?",
+    "id": "ps-prp-002",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "What is $90\\%$ of $80$?",
     "type": "multiple_choice",
     "options": [
-      { "id": "A", "text": "$\\frac{12}{25}$" },
-      { "id": "B", "text": "$\\frac{13}{25}$" },
-      { "id": "C", "text": "$\\frac{8}{25}$" },
-      { "id": "D", "text": "$\\frac{17}{25}$" }
+      {
+        "id": "A",
+        "text": "$10$"
+      },
+      {
+        "id": "B",
+        "text": "$72$"
+      },
+      {
+        "id": "C",
+        "text": "$88$"
+      },
+      {
+        "id": "D",
+        "text": "$152$"
+      }
     ],
     "correctAnswer": "B",
-    "explanation": "Total marbles $= 12 + 8 + 5 = 25$.\nMarbles that are NOT blue $= 8 \\text{ (red)} + 5 \\text{ (green)} = 13$.\n$$P(\\text{not blue}) = \\frac{13}{25}$$",
-    "hint": "Complement rule: $P(\\text{not blue}) = 1 - P(\\text{blue}) = 1 - \\frac{12}{25} = \\frac{13}{25}$.",
-    "desmosTip": "Type `13/25` in Desmos to confirm decimal `0.52`."
+    "difficulty": "easy"
   },
   {
-    "id": "ps-004",
-    "source": "Official Bluebook Practice Test 3",
-    "domain": "Problem-Solving & Data Analysis",
-    "topic": "One-variable data: distributions and measures of center and spread",
-    "difficulty": "Hard",
-    "question": "A data set contains the values $\\{14, 18, 22, 22, 26, 30, 95\\}$. If the outlier $95$ is removed from the data set, which measure of center or spread will decrease by the greatest amount?",
+    "id": "ps-prp-003",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A scientist analyzed a soil sample with a mass of $900$ grams and determined that it contained $189$ grams of water. What is the percentage of water, by mass, in this soil sample?",
     "type": "multiple_choice",
     "options": [
-      { "id": "A", "text": "The median" },
-      { "id": "B", "text": "The mean" },
-      { "id": "C", "text": "The mode" },
-      { "id": "D", "text": "The range and mean are unchanged" }
+      {
+        "id": "A",
+        "text": "$9\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$9.9\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$18.9\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$21\\%$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-004",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The ratio of green tiles to blue tiles in a piece of artwork is $5$ to $2$. If there are $16$ blue tiles in the piece of artwork, how many green tiles are there?",
+    "type": "free_response",
+    "correctAnswer": "40",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-005",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "$$\\frac{g}{h} = \\frac{1}{100} \\quad \\text{and} \\quad \\frac{10g}{kh} = \\frac{1}{100}$$\n\nIf the given equations are true, what is the value of $k$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.1$"
+      },
+      {
+        "id": "B",
+        "text": "$10$"
+      },
+      {
+        "id": "C",
+        "text": "$100$"
+      },
+      {
+        "id": "D",
+        "text": "$1,000$"
+      }
     ],
     "correctAnswer": "B",
-    "explanation": "The extreme positive outlier $95$ pulls the mean strongly to the right. When $95$ is removed:\n1. Original mean: $\\frac{14+18+22+22+26+30+95}{7} = \\frac{227}{7} \\approx 32.43$.\n2. New mean: $\\frac{14+18+22+22+26+30}{6} = \\frac{132}{6} = 22.00$ (decreases by over $10.4$).\n3. The median only shifts from $22$ to $22$, and mode remains $22$.\nTherefore, the mean experiences the greatest decrease among measures of center.",
-    "hint": "Mean is heavily sensitive to extreme outliers, whereas the median is resistant.",
-    "desmosTip": "Type `mean([14, 18, 22, 22, 26, 30, 95])` vs `mean([14, 18, 22, 22, 26, 30])` in Desmos."
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-006",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The positive quantity $r$ is increased by $20\\%$, and then the resulting quantity is decreased by $25\\%$. Which expression represents the result of these two changes?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.90r$"
+      },
+      {
+        "id": "B",
+        "text": "$0.95r$"
+      },
+      {
+        "id": "C",
+        "text": "$1.05r$"
+      },
+      {
+        "id": "D",
+        "text": "$15.0r$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-007",
+    "source": "November 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Julia purchased $600$ feet of fencing. She used $70\\%$ of this fencing to surround a vegetable garden. How many feet of fencing did Julia use to surround the vegetable garden?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$14$"
+      },
+      {
+        "id": "B",
+        "text": "$35$"
+      },
+      {
+        "id": "C",
+        "text": "$420$"
+      },
+      {
+        "id": "D",
+        "text": "$530$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-008",
+    "source": "November 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The ratio $36$ to $m$ is equivalent to the ratio $2$ to $12$. What is the value of $m$?",
+    "type": "free_response",
+    "correctAnswer": "216",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-009",
+    "source": "December 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A clothing store buys shirts at a wholesale price of $\\$5.00$ each and resells them each at a price that is $270\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $70\\%$ of the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "type": "free_response",
+    "correctAnswer": "9.45",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-010",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "If $\\frac{2a}{b} = 5.8$ and $\\frac{a}{bn} = 23.2$, what is the value of $\\frac{1}{n}$?",
+    "type": "free_response",
+    "correctAnswer": "8",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-011",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A real estate company offers a series of three webinars. $1,250$ people attended the first webinar. $68\\%$ of the people who attended the first webinar attended the second webinar, and $32\\%$ of the people who attended the first and second webinars attended the third webinar. How many people attended all three webinars?",
+    "type": "free_response",
+    "correctAnswer": "272",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-012",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The speeds of particles A, B, and C are $a$ meters per second, $b$ meters per second, and $c$ meters per second, respectively. If the speed of particle A is $7,900\\%$ of the speed of particle C and the speed of particle C is $0.008\\%$ of the speed of particle B, which expression represents the value of $a + b$ in terms of $c$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$12,579c$"
+      },
+      {
+        "id": "B",
+        "text": "$8,025c$"
+      },
+      {
+        "id": "C",
+        "text": "$7,908c$"
+      },
+      {
+        "id": "D",
+        "text": "$2,040c$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-013",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "For a certain rectangular region, the ratio of its length to its width is $10:4$. If the width of the rectangular region increases by $7$ units, how must the length change to maintain this ratio?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "It must decrease by 7 units."
+      },
+      {
+        "id": "B",
+        "text": "It must increase by 7 units."
+      },
+      {
+        "id": "C",
+        "text": "It must increase by 17.5 units."
+      },
+      {
+        "id": "D",
+        "text": "It must decrease by 17.5 units."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-014",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The composition of an animal is defined as the muscles, bones, and fat of the animal. A scientist studied the composition of one young swamp buffalo and determined the buffalo had $133$ kilograms of muscle, which made up approximately $65.9\\%$ of its composition. Of the remaining composition of this buffalo, approximately $46.2\\%$ was bone, and the remainder was fat. Based on these approximations, to the nearest tenth, how many kilograms of this buffalo's composition was bone?",
+    "type": "free_response",
+    "correctAnswer": "31.8",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-015",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The positive number $a$ is $2,800\\%$ of the number $c$, and $c$ is $20\\%$ of the number $b$. What is the value of $a - b$ in terms of $c$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$23c$"
+      },
+      {
+        "id": "B",
+        "text": "$140c$"
+      },
+      {
+        "id": "C",
+        "text": "$560c$"
+      },
+      {
+        "id": "D",
+        "text": "$2,240c$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-016",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The combined original price for a towel and chair is $\\$36$. After a $45\\%$ discount to the chair and a $25\\%$ discount to the towel are applied, the combined sale price for the two items is $\\$25$. Which system of equations gives the original price $t$ in dollars of the towel and $c$ in dollars of the chair?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$$\\begin{cases} t + c = 36 \\\\ 0.45t + 0.25c = 25 \\end{cases}$$"
+      },
+      {
+        "id": "B",
+        "text": "$$\\begin{cases} t + c = 36 \\\\ 0.55t + 0.75c = 25 \\end{cases}$$"
+      },
+      {
+        "id": "C",
+        "text": "$$\\begin{cases} t + c = 36 \\\\ 0.25t + 0.45c = 25 \\end{cases}$$"
+      },
+      {
+        "id": "D",
+        "text": "$$\\begin{cases} t + c = 36 \\\\ 0.75t + 0.55c = 25 \\end{cases}$$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-017",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "After $20\\%$ of the original number of objects in a group were removed from the group, $180$ objects remained in the group. How many objects were removed from the group?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$36$"
+      },
+      {
+        "id": "B",
+        "text": "$45$"
+      },
+      {
+        "id": "C",
+        "text": "$225$"
+      },
+      {
+        "id": "D",
+        "text": "$900$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-018",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "When a collection of books is sorted, $52\\%$ are nonfiction and the remaining books are fiction. Of those that are fiction, $75\\%$ are westerns and the remaining fiction books are romance. If there are $933$ romance books in this collection, what is the total number of books in the collection?",
+    "type": "free_response",
+    "correctAnswer": "7775",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-019",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "For each of two rectangles, the ratio of the rectangle's length to its width is $10$ to $5$. The width of rectangle X is $16.5$ times the width of rectangle Y. How does the length of rectangle X compare to the length of rectangle Y?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The length of rectangle X is 0.5 times the length of rectangle Y."
+      },
+      {
+        "id": "B",
+        "text": "The length of rectangle X is 2 times the length of rectangle Y."
+      },
+      {
+        "id": "C",
+        "text": "The length of rectangle X is 16.5 times the length of rectangle Y."
+      },
+      {
+        "id": "D",
+        "text": "The length of rectangle X is 33 times the length of rectangle Y."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-020",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The mass of object A is $498\\%$ of the mass of object B, and the mass of object A is $0.830\\%$ of the mass of object C. If the mass of object C is $p\\%$ of the mass of object B, what is the value of $p$?",
+    "type": "free_response",
+    "correctAnswer": "60000",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-021",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "There is a proportional relationship between $p$ and $t$. If $p = 2,340$ when $t = 3,120$, then what is the value of $p$ when $t = 2,496$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1,716$"
+      },
+      {
+        "id": "B",
+        "text": "$1,872$"
+      },
+      {
+        "id": "C",
+        "text": "$3,276$"
+      },
+      {
+        "id": "D",
+        "text": "$3,328$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-022",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A square map has a side length of $35$ inches, and $1$ inch on the map represents an actual distance of $17$ miles. A smaller version of the same map is printed as a square with the side length $55\\%$ shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by $1$ inch?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$7.65$"
+      },
+      {
+        "id": "B",
+        "text": "$10.97$"
+      },
+      {
+        "id": "C",
+        "text": "$19.25$"
+      },
+      {
+        "id": "D",
+        "text": "$37.78$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-023",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Which expression is equivalent to $\\sqrt{x^{153}}$, where $x > 0$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$x^{2/153}$"
+      },
+      {
+        "id": "B",
+        "text": "$x^{153/2}$"
+      },
+      {
+        "id": "C",
+        "text": "$x^{151}$"
+      },
+      {
+        "id": "D",
+        "text": "$x^{306}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-024",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "For the positive quantities $h, j$, and $k$, $94\\%$ of $h$ is equivalent to $47\\%$ of $j$, and $j$ is equivalent to $30\\%$ of $k$. What percentage of $k$ is $h$? (Disregard the % sign when entering your answer. For example, if your answer is 39%, enter 39)",
+    "type": "free_response",
+    "correctAnswer": "15",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-025",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A company studied a random sample of $20$ lawns in a small town. The company found that $4$ of these lawns contain fertilizer. If there are $260$ lawns in the town, which of the following is the best estimate of the number of lawns that contain fertilizer?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$5$"
+      },
+      {
+        "id": "C",
+        "text": "$13$"
+      },
+      {
+        "id": "D",
+        "text": "$52$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-026",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Each side of square A has a length of $24$ inches. Each side of square A is multiplied by a scale factor of $2$ to create square B. What is the length, in inches, of each side of square B?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$22$"
+      },
+      {
+        "id": "B",
+        "text": "$24$"
+      },
+      {
+        "id": "C",
+        "text": "$26$"
+      },
+      {
+        "id": "D",
+        "text": "$48$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-027",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The table summarizes the number of objects in each group:\n\n| Group | Number of objects |\n| :--- | :--- |\n| A | 325 |\n| B | 68 |\n| C | 572 |\n| D | 102 |\n| **Total** | **1,067** |\n\nThe number of objects in group C is $p\\%$ of the number of objects in group A. What is the value of $p$?",
+    "type": "free_response",
+    "correctAnswer": "176",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-028",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A clothing store buys shirts at a wholesale price of $\\$4.00$ each and resells them each at a retail price that is $280\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $80\\%$ off the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "type": "free_response",
+    "correctAnswer": "2.24",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-029",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A clothing store buys shirts at a wholesale price of $\\$7.00$ each and resells them each at a retail price that is $260\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $75\\%$ off the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "type": "free_response",
+    "correctAnswer": "4.55",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-030",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The mass of object A is $483\\%$ of the mass of object B, and the mass of object A is $0.069\\%$ of the mass of object C. If the mass of object C is $p\\%$ of the mass of object B, what is the value of $\\frac{p}{1,000}$?",
+    "type": "free_response",
+    "correctAnswer": "700",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-031",
+    "source": "October 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A clothing store buys shirts at a wholesale price of $\\$5.00$ each and resells them each at a retail price that is $270\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $70\\%$ off the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "type": "free_response",
+    "correctAnswer": "4.05",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-032",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The positive number $a$ is $3,700\\%$ of the number $c$, and $c$ is $20\\%$ of the number $b$. If $a - b = wc$, where $w$ is a constant, what is the value of $w$?",
+    "type": "free_response",
+    "correctAnswer": "32",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-033",
+    "source": "October 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The positive number $a$ is $2,352\\%$ of the sum of the positive numbers $b$ and $c$, and $b$ is $84\\%$ of $c$. What percent of $b$ is $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$5,152\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$2,436\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$51.52\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$24.36\\%$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-034",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The composition of an animal is defined as the muscles, bones, and fat of the animal. A scientist studied the composition of one young swamp buffalo and determined that the buffalo had $139.2$ kilograms of muscle, which made up approximately $67.7\\%$ of its composition. Of the remaining composition of this buffalo, approximately $51.4\\%$ was bone, and the remainder was fat. Based on these approximations, to the nearest tenth, how many kilograms of this buffalo's composition was bone?",
+    "type": "free_response",
+    "correctAnswer": "34.1",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-035",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A researcher surveyed undergraduate students, graduate students, and postdoctoral students. The number of undergraduate students surveyed was $7,450\\%$ of the number of postdoctoral students surveyed, and the number of graduate students surveyed was $24\\%$ of the undergraduate students surveyed. If there were $3,576$ graduate students surveyed, what was the sum of the number of undergraduate students and postdoctoral students surveyed?",
+    "type": "free_response",
+    "correctAnswer": "15100",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-036",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The ratio of $12$ to $x$ is equal to the ratio of $156$ to $y$. Which expression represents $y$ in terms of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{1}{13}x$"
+      },
+      {
+        "id": "B",
+        "text": "$13x$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{1}{12}x$"
+      },
+      {
+        "id": "D",
+        "text": "$12x$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-037",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "For the positive quantities $h, j$, and $k$, $27\\%$ of $h$ is the equivalent of $24\\%$ of $j$, and $j$ is equivalent to $45\\%$ of $k$. What percentage of $k$ is $h$? (Disregard the % sign when entering your answer. For example, if your answer is 39%, enter 39)",
+    "type": "free_response",
+    "correctAnswer": "40",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-038",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A chemist mixed $x$ liters of a $2\\%$ saline solution with $y$ liters of a $5\\%$ saline solution to produce a $3\\%$ saline solution. Which equation best represents this situation? (Assume the volumes of the solutions are additive.)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.02x + 0.05y = 3(x + y)$"
+      },
+      {
+        "id": "B",
+        "text": "$0.02x + 0.05y = 0.03(x + y)$"
+      },
+      {
+        "id": "C",
+        "text": "$0.2x + 0.5y = 3(x + y)$"
+      },
+      {
+        "id": "D",
+        "text": "$0.2x + 0.5y = 0.3(x + y)$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-039",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The ratio $5$ to $x$ is equivalent to the ratio $y$ to $8$. Which equation represents $x$ in terms of $y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$x = \\frac{5y}{8}$"
+      },
+      {
+        "id": "B",
+        "text": "$x = \\frac{8y}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$x = \\frac{y}{40}$"
+      },
+      {
+        "id": "D",
+        "text": "$x = \\frac{40}{y}$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-040",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The mass of object A is $416\\%$ of the mass of object B, and the mass of object A is $0.064\\%$ of the mass of object C. If the mass of object C is $p\\%$ of the mass of object B, what is the value of $\\frac{p}{1,000}$?",
+    "type": "free_response",
+    "correctAnswer": "650",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-041",
+    "source": "December US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Julia purchased $800$ feet of fencing. She used $60\\%$ of this fencing to surround a vegetable garden. How many feet of fencing did Julia use to surround a vegetable garden?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$12$"
+      },
+      {
+        "id": "B",
+        "text": "$30$"
+      },
+      {
+        "id": "C",
+        "text": "$480$"
+      },
+      {
+        "id": "D",
+        "text": "$740$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-042",
+    "source": "December US 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The value of an autographed baseball increased by $178\\%$ from the end of 2012 to the end of 2013 and then decreased by $21\\%$ from the end of 2013 to the end of 2014. What was the net percentage increase in the value of the autographed baseball from the end of 2012 to the end of 2014?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$119.62\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$140.62\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$157.00\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$236.38\\%$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-043",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "On a plot of land, $52.0\\%$ of the square footage is farmland and the remaining square footage is pasture. There are buildings on exactly $21.5\\%$ of the square footage of the farmland, and there are buildings on exactly $14.0\\%$ of the square footage of the pasture. If there are buildings on exactly $p\\%$ of the square footage of the plot of land, what is the value of $p$?",
+    "type": "free_response",
+    "correctAnswer": "17.9",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-044",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The speeds of particles A, B, and C are $a$ meters per second, $b$ meters per second, and $c$ meters per second, respectively. If the speed of particle A is $6,000\\%$ of the speed of particle C and the speed of particle C is $0.008\\%$ of the speed of particle B, which expression represents the value of $a + b$ in terms of $c$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$12,560c$"
+      },
+      {
+        "id": "B",
+        "text": "$6,125c$"
+      },
+      {
+        "id": "C",
+        "text": "$6,008c$"
+      },
+      {
+        "id": "D",
+        "text": "$1,850c$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-045",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "If $x > 0$ and $x$ is $33\\%$ of $y$, which expression represents $y$ in terms of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{100}{33}x$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{10}{33}x$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{1}{33}x$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{67}{100}x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-046",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Jasmin grows bean pods in her garden. This year, she harvested $330$ bean pods and saved $10\\%$ of them to plant next year. How many of the harvested bean pods did Jasmin save to plant next year?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$23$"
+      },
+      {
+        "id": "B",
+        "text": "$33$"
+      },
+      {
+        "id": "C",
+        "text": "$41$"
+      },
+      {
+        "id": "D",
+        "text": "$43$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-047",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Levi and Marissa each have stamp collections. The number of stamps in Levi's collection is $200\\%$ of the number of stamps in Marissa's collection. If there are $460$ stamps in Marissa's collection, how many stamps are in Levi's collection?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$230$"
+      },
+      {
+        "id": "B",
+        "text": "$460$"
+      },
+      {
+        "id": "C",
+        "text": "$920$"
+      },
+      {
+        "id": "D",
+        "text": "$1,380$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-048",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The positive number $a$ is $2,047\\%$ of the sum of the positive numbers $b$ and $c$, and $b$ is $89\\%$ of $c$. What percent of $b$ is $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$21.36\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$36.69\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$2,300\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$4,347\\%$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-049",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A square map has a side length of $55$ inches, and $1$ inch on the map represents an actual distance of $13$ miles. A smaller version of the same map is printed as a square with the side length $70\\%$ shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by $1$ inch?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$3.90$"
+      },
+      {
+        "id": "B",
+        "text": "$7.65$"
+      },
+      {
+        "id": "C",
+        "text": "$38.50$"
+      },
+      {
+        "id": "D",
+        "text": "$43.33$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-050",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A furniture company is selling all tables with a $20\\%$ discount off their original price for the month of October. What is the discount, in dollars, on a table with an original price of $\\$130$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\$110$"
+      },
+      {
+        "id": "B",
+        "text": "$\\$90$"
+      },
+      {
+        "id": "C",
+        "text": "$\\$52$"
+      },
+      {
+        "id": "D",
+        "text": "$\\$26$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-051",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "In a collection of items, $10\\%$ are red, $25\\%$ are green, $35\\%$ are blue, and $30\\%$ are yellow. If there are $40$ green items, how many blue items are in the collection?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$14$"
+      },
+      {
+        "id": "B",
+        "text": "$16$"
+      },
+      {
+        "id": "C",
+        "text": "$48$"
+      },
+      {
+        "id": "D",
+        "text": "$56$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-052",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A square map has a side length of $30$ inches, and $1$ inch on the map represents an actual distance of $17$ miles. A smaller version of the same map is printed as a square with the side length $65\\%$ shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by $1$ inch?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$5.95$"
+      },
+      {
+        "id": "B",
+        "text": "$10.30$"
+      },
+      {
+        "id": "C",
+        "text": "$19.50$"
+      },
+      {
+        "id": "D",
+        "text": "$48.57$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-053",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A square map has a side length of $35$ inches, and $1$ inch on the map represents an actual distance of $13$ miles. A smaller version of the same map is printed as a square with the side length $70\\%$ shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by $1$ inch?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$3.90$"
+      },
+      {
+        "id": "B",
+        "text": "$7.65$"
+      },
+      {
+        "id": "C",
+        "text": "$24.50$"
+      },
+      {
+        "id": "D",
+        "text": "$43.33$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-054",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "If $350\\%$ of $n$ is $35$, what is the value of $n$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$12,250$"
+      },
+      {
+        "id": "B",
+        "text": "$1,225$"
+      },
+      {
+        "id": "C",
+        "text": "$1,000$"
+      },
+      {
+        "id": "D",
+        "text": "$10$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-055",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A number $f$ is $120\\%$ greater than a positive number $g$. A number $h$ is $90\\%$ less than the number $f$. The number $h$ is how many times the number $g$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.12$"
+      },
+      {
+        "id": "B",
+        "text": "$0.22$"
+      },
+      {
+        "id": "C",
+        "text": "$1.08$"
+      },
+      {
+        "id": "D",
+        "text": "$1.98$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-056",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A researcher surveyed undergraduate students, graduate students, and postdoctoral students. The number of undergraduate students surveyed was $7,150\\%$ of the number of postdoctoral students surveyed and the number of graduate students surveyed was $45\\%$ of the number of undergraduate students surveyed. If there were $6,435$ graduate students surveyed, what was the sum of the number of undergraduate students and postdoctoral students surveyed?",
+    "type": "free_response",
+    "correctAnswer": "14500",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-057",
+    "source": "June 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The table summarizes the number of objects in each group:\n\n| Group | Number of objects |\n| :--- | :--- |\n| A | 325 |\n| B | 64 |\n| C | 611 |\n| D | 96 |\n| **Total** | **1,096** |\n\nThe number of objects in group C is $p\\%$ of the number of objects in group A. What is the value of $p$?",
+    "type": "free_response",
+    "correctAnswer": "188",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-058",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A scientist analyzed a soil sample with a mass of $900$ grams and determined that it contained $189$ grams of water. What is the percentage of water, by mass, in this soil sample?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$9\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$9.9\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$18.9\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$21\\%$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-059",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "While the mass of an object is the same everywhere, the weight of an object is not the same on different planets. An object has a weight of $170.00$ pounds on Earth and a weight of $186.32$ pounds on Neptune. The object's weight on Jupiter is $252.8\\%$ of its weight on Earth. If the object's weight on Neptune is $x\\%$ of its weight on Jupiter, which of the following is closest to the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$43.35$"
+      },
+      {
+        "id": "B",
+        "text": "$71.73$"
+      },
+      {
+        "id": "C",
+        "text": "$277.07$"
+      },
+      {
+        "id": "D",
+        "text": "$429.76$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-060",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A proposal for a construction project was included on a city election ballot. A TV news report stated that $8$ times as many people voted in favor of the proposal as people who voted against it. An internet article reported that $24,500$ more people voted in favor of the proposal than voted against it. Based on these data, how many people voted against the proposal?",
+    "type": "free_response",
+    "correctAnswer": "3500",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-061",
+    "source": "November 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "In a random sample of $276$ residents in a certain building, $9$ residents reported that they take the train to work. If there are a total of $1,380$ residents in this building, which of the following is the best estimate of the number of building residents who take the train to work?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$9$"
+      },
+      {
+        "id": "B",
+        "text": "$45$"
+      },
+      {
+        "id": "C",
+        "text": "$276$"
+      },
+      {
+        "id": "D",
+        "text": "$1,095$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-062",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A researcher investigated two species of mites: a predator and its prey. At the start of a week, there was an equal number of the two species. At the end of the week, the number of prey had increased by $2,700\\%$ of the number of prey at the start of the week, and the number of predators had increased by $180\\%$ of the number of predators at the start of the week. The number of prey at the end of the week was $p\\%$ greater than the number of predators at the end of the week. What is the value of $p$?",
+    "type": "free_response",
+    "correctAnswer": "90",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-063",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The result of increasing the quantity $x$ by $600\\%$ is $126$. What is the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$18$"
+      },
+      {
+        "id": "B",
+        "text": "$21$"
+      },
+      {
+        "id": "C",
+        "text": "$474$"
+      },
+      {
+        "id": "D",
+        "text": "$756$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-064",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A gallery had $x$ artifacts in a collection. When more artifacts were added to the collection, the number of artifacts increased by $149\\%$. What is the number of artifacts in the collection in terms of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$5.10x$"
+      },
+      {
+        "id": "B",
+        "text": "$0.51x$"
+      },
+      {
+        "id": "C",
+        "text": "$1.49x$"
+      },
+      {
+        "id": "D",
+        "text": "$2.49x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-065",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "If $380\\%$ of $n$ is $38$, what is the value of $n$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$14,440$"
+      },
+      {
+        "id": "B",
+        "text": "$1,444$"
+      },
+      {
+        "id": "C",
+        "text": "$1,000$"
+      },
+      {
+        "id": "D",
+        "text": "$10$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prp-066",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Questions 66 and 67 refer to the following information:\n\n| County | Candidate 1 | Candidate 2 | Other candidates | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| County A | 35,954 | 34,777 | 1,640 | 72,371 |\n| County B | 165,973 | 77,837 | 6,862 | 250,672 |\n| County C | 46,475 | 54,235 | 2,026 | 102,736 |\n| **Total** | **248,402** | **166,849** | **10,528** | **425,779** |\n\nFor three counties, the table summarizes the number of residents who voted, by county and by candidate, during a 2016 US gubernatorial election. In 2016, the total number of residents in all three of these counties was $960,000$, and the total area of these three counties was $1,949$ square miles.\n\nTo the nearest whole percent, the total number of residents who voted for Candidate 1 is what percent of the total number of residents who voted for Candidate 2?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$67\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$86\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$103\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$149\\%$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-067",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Questions 66 and 67 refer to the following information:\n\n| County | Candidate 1 | Candidate 2 | Other candidates | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| County A | 35,954 | 34,777 | 1,640 | 72,371 |\n| County B | 165,973 | 77,837 | 6,862 | 250,672 |\n| County C | 46,475 | 54,235 | 2,026 | 102,736 |\n| **Total** | **248,402** | **166,849** | **10,528** | **425,779** |\n\nFor three counties, the table summarizes the number of residents who voted, by county and by candidate, during a 2016 US gubernatorial election. In 2016, the total number of residents in all three of these counties was $960,000$, and the total area of these three counties was $1,949$ square miles.\n\nFor these three counties, which of the following is closest to the number of residents per square mile?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$650$"
+      },
+      {
+        "id": "B",
+        "text": "$493$"
+      },
+      {
+        "id": "C",
+        "text": "$218$"
+      },
+      {
+        "id": "D",
+        "text": "$127$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-001",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A scientist takes two samples of Earth's crust, each with a mass of $3,240$ grams. Sample A has a density of $3.0$ grams per cubic centimeter, and sample B has a density of $2.7$ grams per cubic centimeter. How much greater is the volume, in cubic centimeters, of sample B than sample A?",
+    "type": "free_response",
+    "correctAnswer": "120",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-002",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The walls of a small apartment were covered using exactly $3$ gallons of paint. The paint was spread uniformly over a total area of $960$ square feet. What was the rate, in gallons per square foot, at which the paint was used?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{1}{960}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{1}{320}$"
+      },
+      {
+        "id": "C",
+        "text": "$320$"
+      },
+      {
+        "id": "D",
+        "text": "$960$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-003",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The area of a rectangular region is increasing at a rate of $20$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.03$"
+      },
+      {
+        "id": "B",
+        "text": "$0.10$"
+      },
+      {
+        "id": "C",
+        "text": "$1.09$"
+      },
+      {
+        "id": "D",
+        "text": "$2.03$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-004",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The speed of a white-throated needletail, a type of bird, in flight was measured to be $49$ miles per hour. What was the white-throated needletail's measured speed, in kilometers per hour? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$30.6$"
+      },
+      {
+        "id": "B",
+        "text": "$47.4$"
+      },
+      {
+        "id": "C",
+        "text": "$50.6$"
+      },
+      {
+        "id": "D",
+        "text": "$78.4$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-005",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object traveled $30$ miles in $2$ hours. What was the average speed, in miles per hour, of the object?",
+    "type": "free_response",
+    "correctAnswer": "15",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-006",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed is increasing at a rate of $6.80$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "free_response",
+    "correctAnswer": "15.2",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-007",
+    "source": "November 2023",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $198$ dollars. What is the unit cost, in dollars, per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "free_response",
+    "correctAnswer": "33",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-008",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A certain town has an area of $3.99$ square miles. What is the area, in square yards, of this town? ($1\\text{ mile} = 1,760\\text{ yards}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$441$"
+      },
+      {
+        "id": "B",
+        "text": "$7,022$"
+      },
+      {
+        "id": "C",
+        "text": "$776,341$"
+      },
+      {
+        "id": "D",
+        "text": "$12,359,424$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-009",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The area of a rectangular region is increasing at a rate of $260$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.40$"
+      },
+      {
+        "id": "B",
+        "text": "$1.32$"
+      },
+      {
+        "id": "C",
+        "text": "$14.21$"
+      },
+      {
+        "id": "D",
+        "text": "$24.17$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-010",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A remotely operated vehicle (ROV) is used for underwater ocean research. When the ROV is at a depth of $41$ fathoms, what is the ROV's depth in feet? ($1\\text{ fathom} = 6\\text{ feet}$)",
+    "type": "free_response",
+    "correctAnswer": "246",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-011",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed is increasing at a rate of $3.9$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.1$"
+      },
+      {
+        "id": "B",
+        "text": "$8.7$"
+      },
+      {
+        "id": "C",
+        "text": "$104.6$"
+      },
+      {
+        "id": "D",
+        "text": "$412.6$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-012",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $234$ dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "free_response",
+    "correctAnswer": "39",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-013",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed is increasing at the rate of $12.1$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.5$"
+      },
+      {
+        "id": "B",
+        "text": "$27.1$"
+      },
+      {
+        "id": "C",
+        "text": "$133$"
+      },
+      {
+        "id": "D",
+        "text": "$324.5$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-014",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed is increasing at a rate of $5.70$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "free_response",
+    "correctAnswer": "12.8",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-015",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "How many centimeters are equivalent to $35$ meters? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "type": "free_response",
+    "correctAnswer": "3500",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-016",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed is increasing at a rate of $1.1$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0$"
+      },
+      {
+        "id": "B",
+        "text": "$2.5$"
+      },
+      {
+        "id": "C",
+        "text": "$29.5$"
+      },
+      {
+        "id": "D",
+        "text": "$1,462.7$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-017",
+    "source": "December US 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The area of a rectangular region is increasing at a rate of $280$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.43$"
+      },
+      {
+        "id": "B",
+        "text": "$1.42$"
+      },
+      {
+        "id": "C",
+        "text": "$15.31$"
+      },
+      {
+        "id": "D",
+        "text": "$26.03$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-018",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object moves at a speed of $\\frac{3}{50}$ feet per second. What is this speed, in yards per second? ($3\\text{ feet} = 1\\text{ yard}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$50$"
+      },
+      {
+        "id": "B",
+        "text": "$6$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{9}{50}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{1}{50}$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-019",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The table shows the distribution of people in a certain city by age group:\n\n| Age group | Proportion |\n| :--- | :--- |\n| Less than 18 years old | 34% |\n| 18–40 years old | 23% |\n| 41–65 years old | 22% |\n| Greater than 65 years old | 21% |\n\nIf a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.21$"
+      },
+      {
+        "id": "B",
+        "text": "$0.32$"
+      },
+      {
+        "id": "C",
+        "text": "$0.45$"
+      },
+      {
+        "id": "D",
+        "text": "$0.62$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-020",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A certain hybrid car uses $39$ gallons of gasoline to travel $1,950$ miles. At this rate, how many kilometers does the car travel using $39$ gallons of gasoline? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$312$"
+      },
+      {
+        "id": "B",
+        "text": "$3,120$"
+      },
+      {
+        "id": "C",
+        "text": "$31,200$"
+      },
+      {
+        "id": "D",
+        "text": "$312,000$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-021",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "The bone mineral density of a certain person's thoracic spine was estimated to be $0.812$ grams per square centimeter. What is this estimated bone mineral density in grams per square millimeter? ($1\\text{ centimeter} = 10\\text{ millimeters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$81.2$"
+      },
+      {
+        "id": "B",
+        "text": "$8.12$"
+      },
+      {
+        "id": "C",
+        "text": "$0.0812$"
+      },
+      {
+        "id": "D",
+        "text": "$0.00812$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-uc-022",
+    "source": "June 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An object's speed, in meters per hour, is increasing at a rate of $1,490$ meters per hour per second. Which of the following is closest to this rate in feet per second squared? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.126$"
+      },
+      {
+        "id": "B",
+        "text": "$1.36$"
+      },
+      {
+        "id": "C",
+        "text": "$7.57$"
+      },
+      {
+        "id": "D",
+        "text": "$81.5$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-023",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "A container has a volume of $0.84$ cubic meters. Which of the following is closest to this volume, in quarts? (Note: $100.00\\text{ centimeters} = 1\\text{ meter}$. Use $946.35\\text{ cubic centimeters} = 1.00\\text{ quart}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.09$"
+      },
+      {
+        "id": "B",
+        "text": "$7.95$"
+      },
+      {
+        "id": "C",
+        "text": "$794.93$"
+      },
+      {
+        "id": "D",
+        "text": "$887.62$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-uc-024",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "How many centimeters are equivalent to $47$ meters? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "type": "free_response",
+    "correctAnswer": "4700",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-uc-025",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion",
+    "questionText": "An area of $56.00$ square nautical miles is equivalent to $k$ square kilometers. To the nearest tenth, what is the value of $k$? ($1\\text{ nautical mile} = 1.852\\text{ kilometers}$)",
+    "type": "free_response",
+    "correctAnswer": "192.1",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-001",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "A certain book has $250$ pages, and $21$ of these pages have an illustration. If one of the book's pages is selected at random, what is the probability of selecting a page with an illustration? (Express your answer as a decimal or fraction, not as a percent.)",
+    "type": "free_response",
+    "correctAnswer": "21/250",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-002",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "At a convention center, there are a total of $325$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.16$. How many visitors are located in room C?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$25$"
+      },
+      {
+        "id": "B",
+        "text": "$36$"
+      },
+      {
+        "id": "C",
+        "text": "$104$"
+      },
+      {
+        "id": "D",
+        "text": "$117$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-003",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "There are $20$ marbles in a bag: $8$ red marbles, $10$ green marbles, and $2$ blue marbles. If one of these marbles is selected at random, what is the probability of selecting a red marble?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{2}{20}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{8}{20}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{10}{20}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{12}{20}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-004",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "A choir of $48$ singers has $12$ members who sing bass. If one singer from the choir is selected at random, what is the probability of selecting a singer who sings bass?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{1}{48}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{12}{48}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{36}{48}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{48}{48}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-005",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "The table shows the distribution of people in a certain city by age group:\n\n| Age group | Proportion |\n| :--- | :--- |\n| Less than 18 years old | 27% |\n| 18–40 years old | 24% |\n| 41–65 years old | 28% |\n| Greater than 65 years old | 21% |\n\nIf a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.21$"
+      },
+      {
+        "id": "B",
+        "text": "$0.29$"
+      },
+      {
+        "id": "C",
+        "text": "$0.35$"
+      },
+      {
+        "id": "D",
+        "text": "$0.41$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-006",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "At a convention center, there are a total of $375$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.32$. How many visitors are located in room C?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$20$"
+      },
+      {
+        "id": "B",
+        "text": "$58$"
+      },
+      {
+        "id": "C",
+        "text": "$60$"
+      },
+      {
+        "id": "D",
+        "text": "$75$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-007",
+    "source": "December US 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "A sleep study consisted of $59$ participants, of which $53$ participants each had an average of more than $120$ minutes of rapid eye movement (REM) sleep per night. If a participant from this study is selected at random, what is the probability of selecting a participant that had an average of more than $120$ minutes of REM sleep per night?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{53}{100}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{59}{100}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{53}{59}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{59}{53}$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-008",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "At a convention center, there are a total of $275$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.68$, and the probability of selecting a visitor who is located in room B is $0.24$. How many visitors are located in room C?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$22$"
+      },
+      {
+        "id": "C",
+        "text": "$45$"
+      },
+      {
+        "id": "D",
+        "text": "$121$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-009",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "At a convention center, there are a total of $375$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.24$. How many visitors are located in room C?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$28$"
+      },
+      {
+        "id": "B",
+        "text": "$43$"
+      },
+      {
+        "id": "C",
+        "text": "$90$"
+      },
+      {
+        "id": "D",
+        "text": "$105$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-010",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "Hakim has a bag of $50$ tiles, where $45$ are labeled with a letter and $5$ are black. If Hakim selects a tile from the bag at random, what is the probability of selecting a black tile? (Express your answer as a decimal or fraction, not as a percent.)",
+    "type": "free_response",
+    "correctAnswer": "1/10",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-011",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "Each rock in a collection of $70$ rocks was classified as either igneous, metamorphic, or sedimentary, as shown in the frequency table:\n\n| Classification | Frequency |\n| :--- | :--- |\n| Igneous | 10 |\n| Metamorphic | 38 |\n| Sedimentary | 22 |\n\nIf one of these rocks is selected at random, what is the probability of selecting a rock that is igneous?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{10}{70}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{10}{60}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{10}{38}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{10}{22}$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-012",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "At a convention center, there are a total of $375$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.68$, and the probability of selecting a visitor who is located in room B is $0.24$. How many visitors are located in room C?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$30$"
+      },
+      {
+        "id": "C",
+        "text": "$61$"
+      },
+      {
+        "id": "D",
+        "text": "$165$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-013",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "The table summarizes the distribution of age and assigned group for participants in a study:\n\n| | 0–9 years | 10–19 years | 20+ years | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| Group A | 14 | 19 | 27 | 60 |\n| Group B | 27 | 7 | 26 | 60 |\n| Group C | 19 | 34 | 7 | 60 |\n| **Total** | **60** | **60** | **60** | **180** |\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age? (Express your answer as a decimal or fraction, not as a percent.)",
+    "type": "free_response",
+    "correctAnswer": "23/60",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prob-014",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "A bin contains a mixture of T-shirts for two sports teams. The table shows the number of T-shirts in the bin, classified by size and sports team:\n\n| | Flames | Panthers | Total |\n| :--- | :--- | :--- | :--- |\n| Small | 6 | 9 | 15 |\n| Medium | 24 | 33 | 57 |\n| Large | 18 | 24 | 42 |\n| **Total** | **48** | **66** | **114** |\n\nOne T-shirt from the bin will be selected at random. What is the probability of selecting a T-shirt that is medium, given that the T-shirt is a Flames T-shirt? (Express your answer as a decimal or fraction, not as a percent.)",
+    "type": "free_response",
+    "correctAnswer": "1/2",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prob-015",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "The table summarizes the distribution of age and assigned group for $105$ participants in a study:\n\n| | 0–9 years | 10–19 years | 20+ years | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| Group A | 5 | 19 | 11 | 35 |\n| Group B | 4 | 8 | 23 | 35 |\n| Group C | 26 | 8 | 1 | 35 |\n| **Total** | **35** | **35** | **35** | **105** |\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{2}{7}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{3}{7}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{19}{35}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{6}{7}$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prob-016",
+    "source": "October 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "The table summarizes members of a local organization by age and whether they live north or south of Center St.:\n\n| | Live north of Center St. | Live south of Center St. | Total |\n| :--- | :--- | :--- | :--- |\n| Less than 45 years old | 13 | 12 | 25 |\n| At least 45 years old | 22 | 88 | 110 |\n| **Total** | **35** | **100** | **135** |\n\nIf a member of the organization is selected at random, what is the probability that the selected member is at least 45 years old?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{25}{135}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{35}{135}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{100}{135}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{110}{135}$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-prob-017",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "A researcher calculated the mitochondrial genome sizes $g$, in kilobase pairs (kbp), and the number of mitochondrial genes for $34$ different species. The table summarizes these data:\n\n| Number of mitochondrial genes | $g < 16$ | $16 \\le g < 18$ | $18 \\le g < 20$ | $g \\ge 20$ | Total |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| 36 or less | 3 | 0 | 0 | 0 | 3 |\n| 37 | 1 | 19 | 0 | 0 | 20 |\n| 38 or more | 2 | 0 | 4 | 0 | 6 |\n| **Total** | **6** | **19** | **4** | **0** | **29** |\n\nOne of these species is selected at random. What is the probability of selecting a species with a mitochondrial genome size greater than or equal to $18\\text{ kbp}$, given that it has $37$ or more mitochondrial genes? (Express your answer as a decimal or fraction, not as a percent.)",
+    "type": "free_response",
+    "correctAnswer": "2/13",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prob-018",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "For $100$ neurons, the table summarizes the distribution of classification and cell body diameter:\n\n| Classification | Less than 20 $\\mu\\text{m}$ | 20 to 30 $\\mu\\text{m}$ | Greater than 30 $\\mu\\text{m}$ | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| Sensory neuron | 13 | 7 | 3 | 23 |\n| Motor neuron | 0 | 15 | 18 | 33 |\n| Interneuron | 10 | 34 | 0 | 44 |\n\nOne of these neurons will be selected at random. What is the probability of selecting a neuron with a cell body diameter that is less than or equal to $30\\text{ micrometers}$, given that it is not classified as a motor neuron? (Express your answer as a fraction.)",
+    "type": "free_response",
+    "correctAnswer": "64/67",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prob-019",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Probability",
+    "questionText": "The given table shows the number of even and odd integers contained in list A and list B. No integer is contained in both lists:\n\n| | Even integers | Odd integers | Total |\n| :--- | :--- | :--- | :--- |\n| List A | 12 | 44 | 56 |\n| List B | 40 | 4 | 44 |\n| **Total** | **52** | **48** | **100** |\n\nWhat fraction of even integers represented in the table are in list A?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{12}{52}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{12}{56}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{52}{100}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{52}{56}$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-001",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Each of the frequency tables represents a data set:\n\n**Data Set 1:**\n\n| Value | Frequency |\n| :---: | :---: |\n| $3$ | $1$ |\n| $4$ | $0$ |\n| $5$ | $2$ |\n| $6$ | $4$ |\n| $7$ | $2$ |\n\n**Data Set 2:**\n\n| Value | Frequency |\n| :---: | :---: |\n| $3$ | $2$ |\n| $4$ | $3$ |\n| $5$ | $2$ |\n| $6$ | $1$ |\n| $7$ | $1$ |\n\nWhich statement best compares the medians of the two data sets?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The median of data set 2 is greater than the median of data set 1."
+      },
+      {
+        "id": "B",
+        "text": "The median of data set 1 is greater than the median of data set 2."
+      },
+      {
+        "id": "C",
+        "text": "The medians are the same."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the medians."
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-002",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Estimated market value dot plot](/images/questions/mmm-002.png)\n\nThe dot plot shows the estimated market values for $15$ houses in a neighborhood. What is the maximum estimated market value, in thousands of dollars, for the data set?",
+    "type": "free_response",
+    "correctAnswer": "178",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-003",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Dot plot 38 to 46](/images/questions/mmm-003.png)\n\nThe dot plot shows the $9$ values of a data set with a mean value of $a$ and a median value of $b$. The value of $46$ is removed to create a new data set of $8$ values with a mean value of $y$ and a median value of $z$. Which statement best compares the mean values and the median values for the two data sets?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$a = y$ and $b < z$"
+      },
+      {
+        "id": "B",
+        "text": "$a = y$ and $b > z$"
+      },
+      {
+        "id": "C",
+        "text": "$a < y$ and $b = z$"
+      },
+      {
+        "id": "D",
+        "text": "$a > y$ and $b = z$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-004",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Scientists examined water samples from different water springs. For these samples, the partial pressure of carbon dioxide in a closed system (limited carbon dioxide supply) had a minimum of $0.014$ atmosphere ($\\text{atm}$) and a maximum of $0.180\\text{ atm}$. The partial pressure of carbon dioxide in an open system (unlimited carbon dioxide supply) had a minimum of $0.00049\\text{ atm}$ and a maximum of $0.05900\\text{ atm}$. Which statement best compares the range of the partial pressure of carbon dioxide for closed systems and open systems?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The range for closed systems is less than the range for open systems."
+      },
+      {
+        "id": "B",
+        "text": "The range for closed systems is greater than the range for open systems."
+      },
+      {
+        "id": "C",
+        "text": "The ranges are equal."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the ranges."
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-005",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The list gives the mass, in grams, of $5$ ruffed lemurs:\n\n$$3910, 3910, 3130, 3950, 3150$$\n\nWhat is the mean mass, in grams, of these $5$ ruffed lemurs?",
+    "type": "free_response",
+    "correctAnswer": "3610",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-006",
+    "source": "March US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the yearly snowfall in centimeters ($\\text{cm}$) in Toronto for $9$ years:\n\n| Year | Snowfall ($\\text{cm}$) |\n| :---: | :---: |\n| 2002 | $114.9$ |\n| 2003 | $129.6$ |\n| 2004 | $134.9$ |\n| 2005 | $162.6$ |\n| 2006 | $32.4$ |\n| 2007 | $114.1$ |\n| 2008 | $216.5$ |\n| 2009 | $89.0$ |\n| 2010 | $45.6$ |\n\nWhat was the median snowfall, in $\\text{cm}$, in Toronto for these years?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$32.4$"
+      },
+      {
+        "id": "B",
+        "text": "$114.9$"
+      },
+      {
+        "id": "C",
+        "text": "$115.5$"
+      },
+      {
+        "id": "D",
+        "text": "$184.1$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-007",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table summarizes the UV index value recorded by a research assistant at noon each day for $49$ days:\n\n| UV index | Number of days |\n| :---: | :---: |\n| $1$ | $9$ |\n| $2$ | $15$ |\n| $3$ | $12$ |\n| $4$ | $13$ |\n\nAccording to the table, a UV index value of $1$ was recorded on how many days?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$4$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$40$"
+      },
+      {
+        "id": "D",
+        "text": "$49$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-008",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Dot plot 1 to 10](/images/questions/mmm-008.png)\n\nA data set containing $9$ values is summarized in the dot plot shown. Which of the following statements about the relationship between the mean and the median of the data set must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean is equal to the median."
+      },
+      {
+        "id": "B",
+        "text": "The mean is less than the median."
+      },
+      {
+        "id": "C",
+        "text": "The mean is greater than the median."
+      },
+      {
+        "id": "D",
+        "text": "The relationship between the mean and the median cannot be determined from this dot plot."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-009",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Bar graph Trees planted](/images/questions/mmm-009.png)\n\nThe bar graph shows the number of trees planted for $4$ separate plots of land on a tree farm. What is the maximum number of trees planted on one of these $4$ plots of land?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$100$"
+      },
+      {
+        "id": "B",
+        "text": "$95$"
+      },
+      {
+        "id": "C",
+        "text": "$85$"
+      },
+      {
+        "id": "D",
+        "text": "$78$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-010",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Temperature dot plot](/images/questions/mmm-010.png)\n\nScientists placed $50$ temperature probes along a coral reef. The dot plot gives the temperature readings from $49$ of the $50$ probes. The temperature reading from the probe not recorded in the dot plot was $73.27$ degrees Fahrenheit ($^\\circ\\text{F}$). Which statement correctly compares the mean temperature reading of the $49$ probes recorded in the dot plot to the mean temperature reading of all $50$ probes?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean temperature reading of the 49 probes is greater than the mean temperature reading of all 50 probes."
+      },
+      {
+        "id": "B",
+        "text": "The mean temperature reading of the 49 probes is less than the mean temperature reading of all 50 probes."
+      },
+      {
+        "id": "C",
+        "text": "The mean temperature reading of the 49 probes is the same as the mean temperature reading of all 50 probes."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the means."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-011",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "$$6, 6, 12, 16, 35$$\n\nWhat is the median of the data shown?",
+    "type": "free_response",
+    "correctAnswer": "12",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-012",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Dot plot 10 to 17](/images/questions/mmm-012.png)\n\nThe dot plot shown gives the distribution of values in a data set. What is the minimum value in the data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$9$"
+      },
+      {
+        "id": "D",
+        "text": "$11$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-013",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the frequency of values in a data set:\n\n| Value | Frequency |\n| :---: | :---: |\n| $11$ | $9$ |\n| $18$ | $1$ |\n| $25$ | $9$ |\n| $32$ | $15$ |\n\nWhat is the minimum value of the data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$11$"
+      },
+      {
+        "id": "D",
+        "text": "$18$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-014",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Units sold per day box plot](/images/questions/mmm-014.png)\n\nA store owner recorded the number of units of a certain product that were sold per day for $28$ days. What is the minimum number of units of this product sold per day for these $28$ days?",
+    "type": "free_response",
+    "correctAnswer": "85",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-015",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the frequency of values in a data set:\n\n| Value | Frequency |\n| :---: | :---: |\n| $13$ | $8$ |\n| $20$ | $1$ |\n| $27$ | $8$ |\n| $34$ | $6$ |\n\nWhat is the minimum value of the data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$13$"
+      },
+      {
+        "id": "D",
+        "text": "$20$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-016",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Ari examined a set of $86$ plants. The lightest plant has a mass of $2.8$ kilograms ($\\text{kg}$) and the heaviest plant has a mass of $6.2\\text{ kg}$. Chihiro examined the same set of $86$ plants and also an additional plant with a mass of $11.7\\text{ kg}$. Which of the following must be true about the set of plants that Ari examined and the set of plants that Chihiro examined?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The standard deviation of the masses, in kg, of the plants that Ari examined is greater than the standard deviation of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "B",
+        "text": "The range of the masses, in kg, of the plants that Ari examined is greater than the range of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "C",
+        "text": "The median of the masses, in kg, of the plants that Ari examined is less than the median of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "D",
+        "text": "The mean of the masses, in kg, of the plants that Ari examined is less than the mean of the masses, in kg, of the plants that Chihiro examined."
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-017",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The list gives the number of individuals in each of $6$ groups of ring-tailed lemurs:\n\n$$17, 4, 20, 17, 18, 6$$\n\nWhat is the range of the numbers of individuals for the $6$ groups of ring-tailed lemurs?",
+    "type": "free_response",
+    "correctAnswer": "16",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-018",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "A science class studied the feeding behavior of the birds that visited a bird feeder each school day for a period of time. The table summarizes the number of birds the class observed visiting the bird feeder each school day during this period of time:\n\n| Number of birds | Number of days |\n| :---: | :---: |\n| $14$ | $3$ |\n| $15$ | $3$ |\n| $16$ | $4$ |\n| $17$ | $1$ |\n| $18$ | $3$ |\n| $19$ | $9$ |\n\nWhat is the median number of birds the class observed visiting the bird feeder each school day during this period of time?",
+    "type": "free_response",
+    "correctAnswer": "18",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-019",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Data set A: $8, 11, 12, 15, 21, 27$\n\nData set B: $9, 12, 13, 16, 22, h$\n\nData sets A and B each consist of $6$ values as shown, where $h$ is a constant. If the standard deviation of data set A is greater than the standard deviation of data set B, which of the following could be the value of $h$?\n\nI. $23$\nII. $28$\nIII. $29$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "III only"
+      },
+      {
+        "id": "D",
+        "text": "II or III"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-020",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the frequency of each value in a data set:\n\n| Value | Frequency |\n| :---: | :---: |\n| $120$ | $3$ |\n| $130$ | $8$ |\n| $140$ | $18$ |\n| $150$ | $8$ |\n| $160$ | $1$ |\n\nWhat is the minimum value of the data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$120$"
+      },
+      {
+        "id": "D",
+        "text": "$160$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-021",
+    "source": "December US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "$$1, 4, 7, 10, 33$$\n\nWhat is the mean of the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$11$"
+      },
+      {
+        "id": "C",
+        "text": "$17$"
+      },
+      {
+        "id": "D",
+        "text": "$33$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-022",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Orbital period dot plot](/images/questions/mmm-022.png)\n\nA data set of the orbital periods, rounded to the nearest whole number of Earth days, for $13$ of Jupiter's moons is represented in the dot plot. An additional moon with an orbital period of $628$ days is added to the original data set to create a new data set of $14$ orbital periods. Which statement best compares the mean and median of the new data set to the mean and median of the original data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is equal to the median of the original data set."
+      },
+      {
+        "id": "B",
+        "text": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is less than the median of the original data set."
+      },
+      {
+        "id": "C",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is less than the median of the original data set."
+      },
+      {
+        "id": "D",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is equal to the median of the original data set."
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-023",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table gives the distribution of stamps by age in Ari's collection:\n\n| Age $x$ (years) | Frequency $y$ |\n| :---: | :---: |\n| $85$ | $6$ |\n| $90$ | $5$ |\n| $95$ | $10$ |\n| **Total** | **$21$** |\n\nAri will add a $135$-year-old stamp to her original collection, creating a new collection of $22$ stamps. Which statement correctly compares the mean ages and median ages of Ari's original and new collections?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean age for the new collection is greater than the mean age for the original collection, and the median age for the new collection is greater than the median age for the original collection."
+      },
+      {
+        "id": "B",
+        "text": "The mean age for the new collection is greater than the mean age for the original collection, but the median age is the same for the original and new collections."
+      },
+      {
+        "id": "C",
+        "text": "The mean age for the new collection is less than the mean age for the original collection, and the median age for the new collection is less than the median age for the original collection."
+      },
+      {
+        "id": "D",
+        "text": "The median age for the new collection is greater than the median age for the original collection, but the mean age is the same for the original and new collections."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-024",
+    "source": "October 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Histograms Team A and Team B](/images/questions/mmm-024.png)\n\nThe histograms summarize the distributions of scores for team A and team B. Which statement best compares the standard deviations of scores for these teams?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The standard deviation of scores for team A is less than the standard deviation of scores for team B."
+      },
+      {
+        "id": "B",
+        "text": "The standard deviation of scores for team A is greater than the standard deviation of scores for team B."
+      },
+      {
+        "id": "C",
+        "text": "The standard deviation of scores for team A is equal to the standard deviation of scores for team B."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the standard deviations."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-025",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the distribution of heights, in centimeters, of $25$ objects:\n\n| Height ($\\text{cm}$) | Frequency |\n| :---: | :---: |\n| $0$ to $100$ | $8$ |\n| $101$ to $200$ | $6$ |\n| $201$ to $300$ | $5$ |\n| $301$ to $400$ | $4$ |\n| $401$ to $500$ | $2$ |\n\nWhich of the following could be the median height of these objects?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$355$"
+      },
+      {
+        "id": "B",
+        "text": "$255$"
+      },
+      {
+        "id": "C",
+        "text": "$155$"
+      },
+      {
+        "id": "D",
+        "text": "$55$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-026",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Data set A: $5, 8, 11, 11, 14, 20$\n\nData set B: $5, 8, 11, 11, 14, 20, 41$\n\nTwo data sets are shown. Which statement best compares the medians of the data sets?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The median of data set A is greater than the median of data set B."
+      },
+      {
+        "id": "B",
+        "text": "The median of data set A is less than the median of data set B."
+      },
+      {
+        "id": "C",
+        "text": "The medians of data sets A and B are equal."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the medians."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-027",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The frequency table summarizes a data set of the weights, rounded to the nearest pound, of $71$ *Ardeotis kori* birds:\n\n| Weight (pounds) | Frequency |\n| :---: | :---: |\n| $13$ | $12$ |\n| $14$ | $10$ |\n| $15$ | $3$ |\n| $16$ | $5$ |\n| $17$ | $7$ |\n| $18$ | $13$ |\n| $19$ | $12$ |\n| $20$ | $9$ |\n\nA weight of $32$ pounds is added to the original data set, creating a new data set of the weights, rounded to the nearest pound, of $72$ *Ardeotis kori* birds. Which statement best compares the mean and the median of the new data set to the mean and median of the original data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean of the new data set is greater than the mean of the original data set, and the median of the new data set is greater than the median of the original data set."
+      },
+      {
+        "id": "B",
+        "text": "The mean of the new data set is greater than the mean of the original data set, and the medians of the two data sets are equal."
+      },
+      {
+        "id": "C",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is less than the median of the original data set."
+      },
+      {
+        "id": "D",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is greater than the median of the original data set."
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-028",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Frequency Bar Graph](/images/questions/mmm-028.png)\n\nThe bar graph shows the frequency of each data value in a data set. What is the frequency of data value $2$ in this data set?",
+    "type": "free_response",
+    "correctAnswer": "6",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-029",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "An environmental scientist is investigating the volatility of $175$ organic compounds by finding the boiling point of each compound. The mean boiling point of all $175$ compounds is $167$ degrees Celsius. The scientist classifies each of these compounds as either semivolatile or volatile. Of the $175$ compounds, $50$ compounds were classified as semivolatile, and these $50$ compounds have a mean boiling point of $327$ degrees Celsius. The remaining $125$ compounds were classified as volatile. What is the mean boiling point, in degrees Celsius, of the $125$ compounds classified as volatile compounds?",
+    "type": "free_response",
+    "correctAnswer": "103",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-030",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Scientists collected acorns that each housed a colony of a particular species and then analyzed each colony's structure. For these colonies, the table summarizes the number of queen ants per colony:\n\n| Number of queen ants | Number of colonies |\n| :---: | :---: |\n| $1$ | $11$ |\n| $2$ | $9$ |\n| $3$ | $7$ |\n| $4$ | $6$ |\n| $5$ | $6$ |\n\nFor these colonies, what is the median number of queen ants per colony?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-031",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Each of the following frequency tables represents a data set. Which of the following frequency tables represents the data set with the smallest standard deviation?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Value / Frequency: 3 (0), 4 (10), 5 (55), 6 (10), 7 (0)"
+      },
+      {
+        "id": "B",
+        "text": "Value / Frequency: 3 (11), 4 (17), 5 (19), 6 (17), 7 (11)"
+      },
+      {
+        "id": "C",
+        "text": "Value / Frequency: 3 (15), 4 (15), 5 (15), 6 (15), 7 (15)"
+      },
+      {
+        "id": "D",
+        "text": "Value / Frequency: 3 (28), 4 (7), 5 (5), 6 (7), 7 (28)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-032",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Data set F consists of $55$ integers, where the value of each integer is between $150$ and $260$. Data set G consists of the same $55$ integers in F as well as the integer $10$. Which of the following must be less for data set G than for data set F?\n\nI. The mean\nII. The median",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "I and II"
+      },
+      {
+        "id": "D",
+        "text": "Neither I nor II"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-033",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Data set A: $2, 2, 2, 5, 5, 8, 11, 11, 14, 14, 14$\n\nData set B: $2, 5, 5, 8, 8, 8, 8, 8, 11, 11, 14$\n\nData set A and data set B each have $11$ values. Which of the following statements best compares the median of data set A and the median of data set B?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The median of data set A is greater than the median of data set B."
+      },
+      {
+        "id": "B",
+        "text": "The median of data set A is less than the median of data set B."
+      },
+      {
+        "id": "C",
+        "text": "The medians of data sets A and B are equal."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the medians."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-034",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the amount of time it took a participant in a study to complete each of $5$ tasks:\n\n| Task | Time (minutes) |\n| :---: | :---: |\n| A | $8$ |\n| B | $6$ |\n| C | $14$ |\n| D | $11$ |\n| E | $11$ |\n\nWhat was the mean time, in minutes, for this participant to complete a task?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$10$"
+      },
+      {
+        "id": "C",
+        "text": "$11$"
+      },
+      {
+        "id": "D",
+        "text": "$9.5$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-035",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the frequency of values in a data set:\n\n| Value | Frequency |\n| :---: | :---: |\n| $20$ | $6$ |\n| $26$ | $1$ |\n| $32$ | $6$ |\n| $38$ | $3$ |\n\nWhat is the minimum value of the data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$6$"
+      },
+      {
+        "id": "C",
+        "text": "$20$"
+      },
+      {
+        "id": "D",
+        "text": "$26$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-036",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The list gives the mass, in grams, of $5$ ruffed lemurs:\n\n$$3810, 3810, 3030, 3850, 3050$$\n\nWhat is the mean mass, in grams, of these $5$ ruffed lemurs?",
+    "type": "free_response",
+    "correctAnswer": "3510",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-037",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The frequency table summarizes the mass, in grams, of $35$ objects:\n\n| Mass (grams) | Frequency |\n| :---: | :---: |\n| $10$ | $12$ |\n| $20$ | $6$ |\n| $30$ | $8$ |\n| $40$ | $9$ |\n\nWhat is the mean mass, in grams, of these objects?",
+    "type": "free_response",
+    "correctAnswer": "24",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-038",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "$$28, 28, 29, 30, 32, 33, 37$$\n\nWhat is the mean of the data set shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$28$"
+      },
+      {
+        "id": "B",
+        "text": "$30$"
+      },
+      {
+        "id": "C",
+        "text": "$31$"
+      },
+      {
+        "id": "D",
+        "text": "$37$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-039",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Histograms Group A and Group B](/images/questions/mmm-039.png)\n\nThe weight of each object in two groups, A and B, was recorded. The histograms represent the distributions of weight, in grams, for the objects in groups A and B. The mean weight of the objects in group A is equal to $2.1$, and the mean weight of the objects in group B is equal to $11.1$. Which of the following statements about the standard deviations of weight for the objects in these two groups is true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The standard deviation of weight for the objects in group A is less than the standard deviation of weight for the objects in group B."
+      },
+      {
+        "id": "B",
+        "text": "The standard deviation of weight for the objects in group A is equal to the standard deviation of weight for the objects in group B."
+      },
+      {
+        "id": "C",
+        "text": "The standard deviation of weight for the objects in group A is greater than the standard deviation of weight for the objects in group B."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the standard deviations of weight for the objects in these two groups."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-040",
+    "source": "June 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "A survey of the daily commuting times, in minutes, of seven different Chicago-based employees at a certain company yielded a data set consisting of the values $31, 13, 44, 32, 53, 22,$ and $44$. A survey of the daily commuting times, in minutes, of seven different San Francisco-based employees at the same company yielded a data set consisting of the values $46, 31, 19, 33, 48, x,$ and $38$. If the means of the two data sets are equal, what is the value of $x$?",
+    "type": "free_response",
+    "correctAnswer": "24",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-041",
+    "source": "May 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Histograms Team A and Team B](/images/questions/mmm-041.png)\n\nThe histogram summarizes the distributions of scores for team A and team B. Which statement best compares the standard deviations of scores for these teams?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The standard deviation of scores for team A is less than the standard deviation of scores for team B."
+      },
+      {
+        "id": "B",
+        "text": "The standard deviation of scores for team A is greater than the standard deviation of scores for team B."
+      },
+      {
+        "id": "C",
+        "text": "The standard deviation of scores for team A is equal to the standard deviation of scores for team B."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the standard deviations."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-042",
+    "source": "June 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Ari examined a set of $86$ plants. The lightest plant had a mass of $2.8$ kilograms ($\\text{kg}$) and the heaviest plant had a mass of $6.3\\text{ kg}$. Chihiro examined the same set of $86$ plants and also an additional plant with a mass of $11.6\\text{ kg}$. Which of the following must be true about the set of plants that Ari examined and the set of plants that Chihiro examined?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The standard deviation of the masses, in kg, of the plants that Ari examined is greater than the standard deviation of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "B",
+        "text": "The range of the masses, in kg, of the plants that Ari examined is greater than the range of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "C",
+        "text": "The median of the masses, in kg, of the plants that Ari examined is less than the median of the masses, in kg, of the plants that Chihiro examined."
+      },
+      {
+        "id": "D",
+        "text": "The mean of the masses, in kg, of the plants that Ari examined is less than the mean of the masses, in kg, of the plants that Chihiro examined."
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-043",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the amount of time it took a participant in a study to complete each of $5$ tasks:\n\n| Task | Time (minutes) |\n| :---: | :---: |\n| A | $8$ |\n| B | $5$ |\n| C | $12$ |\n| D | $10$ |\n| E | $10$ |\n\nWhat was the mean time, in minutes, for this participant to complete a task?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$10$"
+      },
+      {
+        "id": "D",
+        "text": "$12$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-044",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "A list of $10$ data values is shown:\n\n$$10, 14, 22, 6, 24, 26, 14, 8, 8, 8$$\n\nWhat is the mean of these data?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$12$"
+      },
+      {
+        "id": "C",
+        "text": "$14$"
+      },
+      {
+        "id": "D",
+        "text": "$20$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-045",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Orbital period dot plot](/images/questions/mmm-045.png)\n\nA data set of the orbital periods, rounded to the nearest whole number of Earth days, for $13$ of Jupiter's moons is represented in the dot plot. An additional moon with an orbital period of $251$ days is added to the original data set to create a new data set of $14$ orbital periods. Which statement best compares the mean and median of the new data set to the mean and median of the original data set?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is equal to the median of the original data set."
+      },
+      {
+        "id": "B",
+        "text": "The mean of the new data set is equal to the mean of the original data set, and the median of the new data set is less than the median of the original data set."
+      },
+      {
+        "id": "C",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is less than the median of the original data set."
+      },
+      {
+        "id": "D",
+        "text": "The mean of the new data set is less than the mean of the original data set, and the median of the new data set is equal to the median of the original data set."
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-mmm-046",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "![Bar graph Trees planted](/images/questions/mmm-046.png)\n\nThe bar graph shows the number of trees planted for $4$ separate plots of land on a tree farm. What is the maximum number of trees on one of these plots of land?",
+    "type": "free_response",
+    "correctAnswer": "90",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-mmm-047",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The table shows the frequencies of the data values for four data sets:\n\n| Value | Data Set A | Data Set B | Data Set C | Data Set D |\n| :---: | :---: | :---: | :---: | :---: |\n| $40$ | $0$ | $0$ | $8$ | $8$ |\n| $43$ | $2$ | $3$ | $3$ | $4$ |\n| $46$ | $4$ | $3$ | $3$ | $2$ |\n| $49$ | $8$ | $8$ | $0$ | $0$ |\n\nWhich data set has the greatest mean?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Data Set A"
+      },
+      {
+        "id": "B",
+        "text": "Data Set B"
+      },
+      {
+        "id": "C",
+        "text": "Data Set C"
+      },
+      {
+        "id": "D",
+        "text": "Data Set D"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-048",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "Data set A and data set B each consist of $26$ values. The table shows the frequencies of the values for each data set:\n\n| Value | Data Set A frequency | Data Set B frequency |\n| :---: | :---: | :---: |\n| $40$ | $2$ | $8$ |\n| $43$ | $4$ | $7$ |\n| $46$ | $5$ | $5$ |\n| $49$ | $7$ | $4$ |\n| $52$ | $8$ | $2$ |\n\nWhich of the following statements best compares the means of the two data sets?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The mean of data set A is greater than the mean of data set B."
+      },
+      {
+        "id": "B",
+        "text": "The mean of data set A is less than the mean of data set B."
+      },
+      {
+        "id": "C",
+        "text": "The mean of data set A is equal to the mean of data set B."
+      },
+      {
+        "id": "D",
+        "text": "There is not enough information to compare the means of the data sets."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-mmm-049",
+    "source": "November US 2024",
+    "domain": "problem_solving",
+    "topic": "Mean, Median, Mode, Range",
+    "questionText": "The values in data sets X and Y are shown in the table:\n\n| Data set | Values |\n| :---: | :---: |\n| Data set X | $13, 13, 14, 14, 15, 16, 16, 17, 17$ |\n| Data set Y | $2, 2, 3, 3, 4, 5, 5, 6, 6$ |\n\nThe standard deviation of data set X is $q$, and the standard deviation of data set Y is $s$. Which of the following statements about the standard deviation of the data sets is true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$q < s$"
+      },
+      {
+        "id": "B",
+        "text": "$q > s$"
+      },
+      {
+        "id": "C",
+        "text": "$q = s$"
+      },
+      {
+        "id": "D",
+        "text": "The relationship between $q$ and $s$ cannot be determined."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-001",
+    "source": "June 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot x and y](/images/questions/scat-001.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate linear model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = -6 + 28x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 6 - 28x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 28 + 6x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 28 - 6x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-002",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-002.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit is also shown. What data point has an actual $y$-value that is $2$ less than the $y$-value predicted by the line of best fit for corresponding $x$-value?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$(2, 12)$"
+      },
+      {
+        "id": "B",
+        "text": "$(6, 14)$"
+      },
+      {
+        "id": "C",
+        "text": "$(10, 12)$"
+      },
+      {
+        "id": "D",
+        "text": "$(18, 4)$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-003",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Line graphs Team A and Team B](/images/questions/scat-003.png)\n\nThe line graphs show the number of games won by two football teams from 2004 to 2010. For how many of the years shown was the number of games won by Team A greater than the number of games won by Team B?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$6$"
+      },
+      {
+        "id": "D",
+        "text": "$7$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-004",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-004.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit is also shown. Which of the following best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 77 + 0.01x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 77 + 0.79x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 77 + 68.9x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 77 + 78.9x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-005",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-005.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit is also shown. Which of the following equations best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 3.5 + 1.8x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = -2.4 + 1.55x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 3.4 + 1.55x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 2.4 - 1.5x$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-006",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Parabolic scatterplot](/images/questions/scat-006.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = x^2 - 8$"
+      },
+      {
+        "id": "B",
+        "text": "$y = x^2 + 8$"
+      },
+      {
+        "id": "C",
+        "text": "$y = (x - 8)^2$"
+      },
+      {
+        "id": "D",
+        "text": "$y = (x + 8)^2$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-007",
+    "source": "May US 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-007.png)\n\nWhich of the following equations best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 3.3 + 1.6x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 3.3 - 1.6x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = -3.3 + 1.6x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -3.3 - 1.6x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-008",
+    "source": "October 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-008.png)\n\nWhich of the following is closest to the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-3.3$"
+      },
+      {
+        "id": "B",
+        "text": "$-1.1$"
+      },
+      {
+        "id": "C",
+        "text": "$1.1$"
+      },
+      {
+        "id": "D",
+        "text": "$3.3$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-009",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot x and y](/images/questions/scat-009.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate linear model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 0.8 + 8.7x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 0.8 - 8.7x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 8.7 + 0.8x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 8.7 - 0.8x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-010",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-010.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit is also shown. Which of the following equations best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = x - 19.9$"
+      },
+      {
+        "id": "B",
+        "text": "$y = -x - 19.9$"
+      },
+      {
+        "id": "C",
+        "text": "$y = x - 5.7$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -x + 5.7$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-011",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot x and y](/images/questions/scat-011.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate linear model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 0.8 + 8.7x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 0.8 - 8.7x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 8.7 + 0.8x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 8.7 - 0.8x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-012",
+    "source": "August 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Time vs Temperature plot](/images/questions/scat-012.png)\n\nDuring which of the following time periods did the greatest increase in recorded temperature take place?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "From $x = 6$ to $x = 7$"
+      },
+      {
+        "id": "B",
+        "text": "From $x = 5$ to $x = 6$"
+      },
+      {
+        "id": "C",
+        "text": "From $x = 2$ to $x = 3$"
+      },
+      {
+        "id": "D",
+        "text": "From $x = 1$ to $x = 2$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-013",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot dataset P](/images/questions/scat-013.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$, for the data set P. A line of best fit for the data is also shown. Data set Q is created by adding $540$ units to the value of $x$ for each data point from the data set P. Which of the following could be an equation of a line of best fit for the data set Q?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = -3 + \\frac{35}{1301}x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 9 + \\frac{1}{131}x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 18 + \\frac{1}{131}x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 26 + \\frac{35}{1301}x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-scat-014",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot 0 to 5000](/images/questions/scat-014.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = -582 + 1.2x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 582 - 1.2x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = -582(1.2)^x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 582(1.2)^x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-015",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-015.png)\n\nIn the given scatterplot, a line of best fit for the data is shown. Which of the following is closest to the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-7$"
+      },
+      {
+        "id": "B",
+        "text": "$-0.7$"
+      },
+      {
+        "id": "C",
+        "text": "$0.7$"
+      },
+      {
+        "id": "D",
+        "text": "$7$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-016",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Fur seal body length scatterplot](/images/questions/scat-016.png)\n\nThe scatterplot shows the body length, in centimeters ($\\text{cm}$), of a New Zealand fur seal from an age of $1$ to $6$ years old. A line of best fit is also shown. For a New Zealand fur seal at an age of $3$ years old, what is the body length in centimeters predicted by the line of best fit, to the nearest $10\\text{ cm}$?",
+    "type": "free_response",
+    "correctAnswer": "110",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-017",
+    "source": "November 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-017.png)\n\nWhich of the following best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 148.13 + 0.02x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 148.13 + 0.59x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 148.13 + 48.61x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 148.13 + 58.61x$"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-018",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-018.png)\n\nWhich of the following is closest to the slope of the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-11.19$"
+      },
+      {
+        "id": "B",
+        "text": "$-0.84$"
+      },
+      {
+        "id": "C",
+        "text": "$0.84$"
+      },
+      {
+        "id": "D",
+        "text": "$11.19$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-019",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-019.png)\n\nIn the given scatterplot, a line of best fit for the data is shown. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 1.1x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = -1.1x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 5.2$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -5.2$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-020",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Active projects graph](/images/questions/scat-020.png)\n\nThe graph models the number of active projects a company was working on $x$ months after the end of November 2011, where $0 \\le x \\le 6$. According to the model, what is the predicted number of active projects the company was working on at the end of November 2011?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$11$"
+      },
+      {
+        "id": "D",
+        "text": "$12$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-021",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot with line of best fit](/images/questions/scat-021.png)\n\nWhich of the following equations best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 0.8 + 1.7x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 0.8 - 1.7x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = -0.8 + 1.7x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -0.8 - 1.7x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-022",
+    "source": "March US 2025",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot dataset A](/images/questions/scat-022.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$, for data set A. A line of best fit for the data is also shown. Data set B is created by subtracting $9$ units from the value of $y$ for each data point from data set A. Which of the following is closest to the $y$-coordinate of the $y$-intercept of the line of best fit for data set B?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$45.57$"
+      },
+      {
+        "id": "B",
+        "text": "$53$"
+      },
+      {
+        "id": "C",
+        "text": "$59.62$"
+      },
+      {
+        "id": "D",
+        "text": "$62.75$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-scat-023",
+    "source": "March 2025",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot line of best fit](/images/questions/scat-023.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. A line of best fit is also shown. Which of the following equations best represents the line of best fit shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = 0.6 + 1.5x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 0.6 - 1.5x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = -0.6 + 1.5x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -0.6 - 1.5x$"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-024",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Fur seal body length scatterplot](/images/questions/scat-024.png)\n\nThe scatterplot shows $5$ measurements of the body length, in centimeters ($\\text{cm}$), of a New Zealand fur seal from an age of $1$ year to $6$ years old. A line of best fit is also shown. For a New Zealand fur seal at an age of $3$ years old, what is the body length predicted by the line of best fit, to the nearest $10\\text{ cm}$?",
+    "type": "free_response",
+    "correctAnswer": "100",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-025",
+    "source": "November 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![Scatterplot x and y](/images/questions/scat-025.png)\n\nThe scatterplot shows the relationship between two variables, $x$ and $y$. Which of the following equations is the most appropriate linear model for the data shown?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$y = -2x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = -x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 2x$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-scat-026",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![NSF Grants to Museums in Minnesota Line Graph](/images/questions/scat-026.png)\n\n**Questions 26 and 27 refer to the following information:**\n\nThe line graph shows the amount, in millions of dollars, that the National Science Foundation (NFS) granted to museums in Minnesota for the years 2000 through 2006.\n\nIn 2002, the NFS granted a total of approximately $39$ million dollars to US museums. Which of the following is closest to the percentage of this total that was granted to museums in Minnesota?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0.1\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$1.2\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$8.2\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$12.2\\%$"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-scat-027",
+    "source": "August US 2023",
+    "domain": "problem_solving",
+    "topic": "Scatterplots",
+    "questionText": "![NSF Grants to Museums in Minnesota Line Graph](/images/questions/scat-026.png)\n\n**Questions 26 and 27 refer to the following information:**\n\nThe line graph shows the amount, in millions of dollars, that the National Science Foundation (NFS) granted to museums in Minnesota for the years 2000 through 2006.\n\nWhat is the approximate average rate of change of the amount, in millions of dollars per year, that the NFS granted to museums in Minnesota from 2000 to 2006?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$-2.07$"
+      },
+      {
+        "id": "B",
+        "text": "$-0.48$"
+      },
+      {
+        "id": "C",
+        "text": "$0.41$"
+      },
+      {
+        "id": "D",
+        "text": "$0.82$"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-ro-001",
+    "source": "May 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A company conducted a study concerning the time spent on extracurricular activities by students in grades 6, 7, and 8 and their level of school spirit. A total of $90$ students were selected at random from all students in grades 6, 7, and 8 in a large school district in the US. The selected students were asked to report their level of school spirit as either low, medium, or high. The table summarizes the distribution of the selected students by grade.\n\n| Grade | Number of students |\n| :--- | :--- |\n| 6 | 30 |\n| 7 | 26 |\n| 8 | 34 |\n\nIf the results of the study suggest a relationship between the self-reported level of school spirit and the amount of time spent on extracurricular activities by students in grades 6, 7, and 8, which of the following aspects of the study will prevent the results from being generalized to all students in grades 6, 7, and 8 in the US?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The selected students are not all from the same school."
+      },
+      {
+        "id": "B",
+        "text": "The number of selected students is too small."
+      },
+      {
+        "id": "C",
+        "text": "The number of selected students from each grade is different."
+      },
+      {
+        "id": "D",
+        "text": "The students were not selected at random from all students in grades 6, 7, and 8 in the US."
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-ro-002",
+    "source": "March 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A machine fills bags with approximately $10$ ounces of cranberries. To test the accuracy of the filling process, $148$ bags of cranberries were selected at random and weighed. Based on the sample, it is estimated that the average weight of all bags of cranberries filled by the machine in an 8-hour period is $9.89$ ounces, with an associated margin of error of $0.14$ ounce. Which of the following is the best interpretation of this estimate?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Plausible values for the average weight of all bags of cranberries filled by the machine are between $9.75$ ounces and $10.03$ ounces."
+      },
+      {
+        "id": "B",
+        "text": "Plausible values for the average weight of all bags of cranberries filled by the machine are less than $9.75$ ounces or greater than $10.03$ ounces."
+      },
+      {
+        "id": "C",
+        "text": "The average weight of all bags of cranberries filled by the machine is greater than $9.99$ ounces."
+      },
+      {
+        "id": "D",
+        "text": "The average weight of all bags of cranberries filled by the machine is less than $9.99$ ounces."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-003",
+    "source": "December 2023",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A town manager selected $2$ random samples of residents in the town to estimate the percentage of all residents that planned to vote in favor of a new business in the downtown area. Based on the first sample, he estimated that $75\\%$ of the residents in town planned to vote in favor, with an associated margin of error of $8.3\\%$. Based on the second sample, he estimated that $83\\%$ of the residents in the town planned to vote in favor, with an associated margin of error of $6.7\\%$. Assuming the margins of error were calculated the same way, which of the following best explains why the first sample obtained a larger margin of error than the second sample?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The first sample contained fewer residents than the second sample."
+      },
+      {
+        "id": "B",
+        "text": "The first sample contained more residents than the second sample."
+      },
+      {
+        "id": "C",
+        "text": "The first sample contained a lower percentage of residents that planned to vote in favor of a new business in the downtown area."
+      },
+      {
+        "id": "D",
+        "text": "The first sample contained a higher percentage of residents that planned to vote in favor of a new business in the downtown area."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-004",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A district board in a certain state is proposing a change to the time school starts to all high schools in the district. A sample of $353$ high school students were selected from all high school students in the district. The selected students were asked if they approved of the proposed change, and $300$ students responded that they did not approve. Which of the following is the largest population that the results of the survey can be generalized?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "All high school students in the district"
+      },
+      {
+        "id": "B",
+        "text": "The $353$ students who were surveyed"
+      },
+      {
+        "id": "C",
+        "text": "The $300$ students that responded that they did not approve of the proposed change"
+      },
+      {
+        "id": "D",
+        "text": "All high school students in the state"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-005",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A company that produces only one type of item wants to estimate the percent of the items produced in a typical week that are defective. A random sample of $400$ of the items produced in a certain week were tested. Based on the sample, it is estimated that $8.5\\%$ of all items produced by the company in this week were defective, with an associated margin of error of $2.73\\%$. Based on the estimate and associated margin of error, which of the following is the most appropriate conclusion about all items produced by the company during this week?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$2.73\\%$ of all items are defective."
+      },
+      {
+        "id": "B",
+        "text": "It is plausible that between $5.77\\%$ and $11.23\\%$ of the items are defective."
+      },
+      {
+        "id": "C",
+        "text": "$8.5\\%$ of all items are defective."
+      },
+      {
+        "id": "D",
+        "text": "It is plausible that more than $11.23\\%$ of the items are defective."
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-006",
+    "source": "June 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "To estimate the proportion of a population that has a certain characteristic, a random sample was selected from the population. Based on the sample, it is estimated that the proportion of the population that has the characteristic is $0.2$, with an associated margin of error of $0.08$. Based on this estimate and margin of error, which of the following is the most appropriate conclusion about the proportion of the population that has the characteristic?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "It is plausible that the proportion is between $0.12$ and $0.28$."
+      },
+      {
+        "id": "B",
+        "text": "It is plausible that the proportion is less than $0.12$."
+      },
+      {
+        "id": "C",
+        "text": "The proportion is exactly $0.2$."
+      },
+      {
+        "id": "D",
+        "text": "It is plausible that the proportion is greater than $0.28$."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-007",
+    "source": "August US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "The manager of a gym selected a sample of $139$ members at random to estimate the percentage of the gym's members that would continue to pay for a membership if the price increased. From the survey, the manager estimates that $82\\%$ of the gym's members would continue to pay for membership if the price increased, with an associated margin of error of $6.39\\%$. If the survey is repeated with a random sample of $278$ members and the results are calculated in the same way, which of the following will be the most likely effect of using the larger random sample compared to the smaller random sample?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The margin of error will be lower."
+      },
+      {
+        "id": "B",
+        "text": "The margin of error will be higher."
+      },
+      {
+        "id": "C",
+        "text": "The estimate of the percentage of the gym's members that would continue to pay for a membership if the price increased will be lower."
+      },
+      {
+        "id": "D",
+        "text": "The estimate of the percentage of the gym's members that would continue to pay for a membership if the price increased will be higher."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-008",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A machine fills bags with approximately $29$ ounces of walnuts. To test the accuracy of the filling process, $169$ bags of walnuts were selected at random and weighed. Based on the sample, it is estimated that the average weight of all bags of walnuts filled by the machine in an 8-hour period is $28.88$ ounces, with an associated margin of error of $0.13$ ounce. Which of the following is the best interpretation of this estimate?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Plausible values for the average weight of all bags of walnuts filled by the machine are between $28.75$ ounces and $29.01$ ounces."
+      },
+      {
+        "id": "B",
+        "text": "Plausible values for the average weight of all bags of walnuts filled by the machine are less than $28.75$ ounces or greater than $29.01$ ounces."
+      },
+      {
+        "id": "C",
+        "text": "The average weight of all bags of walnuts filled by the machine is less than $28.99$ ounces."
+      },
+      {
+        "id": "D",
+        "text": "The average weight of all bags of walnuts filled by the machine is greater than $28.99$ ounces."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-009",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A researcher is designing a study to investigate the average number of hours a student at a high school spends reading per day. The researcher will report the average number of hours a student at the high school spends reading with an associated margin of error. The researcher is considering using a random sample of either $105$ or $210$ students from the high school. Which of the following could be the most likely effect of using the larger random sample compared to the smaller random sample?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The reported margin of error would be lower."
+      },
+      {
+        "id": "B",
+        "text": "The reported margin of error would be higher."
+      },
+      {
+        "id": "C",
+        "text": "The reported average number of hours would be lower."
+      },
+      {
+        "id": "D",
+        "text": "The reported average number of hours would be higher."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-010",
+    "source": "October US 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A survey was conducted in Franklin to estimate the number of adult residents who supported the addition of a parking garage in their town. Based on the survey, it is estimated that $77\\%$ of all adult residents of Franklin support the addition of a parking garage in their town, with an associated margin of error of $5\\%$. Which of the following is the most appropriate conclusion about all adult residents of Franklin?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Plausible values for the percent of all adult residents of Franklin who support the addition of a parking garage in their town are between $72\\%$ and $82\\%$."
+      },
+      {
+        "id": "B",
+        "text": "The addition of a parking garage in the town is supported by exactly $72\\%$ of all adult residents of Franklin."
+      },
+      {
+        "id": "C",
+        "text": "Plausible values for the percent of all adult residents of Franklin who support the addition of a parking garage in their town are either less than $72\\%$ or more than $82\\%$."
+      },
+      {
+        "id": "D",
+        "text": "The addition of a parking garage in the town is supported by more than $82\\%$ of all adult residents of Franklin."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-011",
+    "source": "December 2024",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A research manager selected $2$ random samples of ovens of a certain type to estimate the average amount of time this type of oven takes to preheat to $325$ degrees Fahrenheit ($325\\,^\\circ\\text{F}$). The research manager recorded the amount of time, in minutes, each oven takes to preheat to $325\\,^\\circ\\text{F}$. Based on the first sample, the research manager estimated that this type of oven takes an average of $15.2$ minutes to preheat to $325\\,^\\circ\\text{F}$, with an associated margin of error of $1$ minute. Based on the second sample, the research manager estimated that this type of oven takes an average of $15.4$ minutes to preheat to $325\\,^\\circ\\text{F}$, with an associated margin of error of $2.2$ minutes. Assuming the margins of error were calculated the same way, which of the following best explains why the first sample obtained a smaller margin of error than the second sample?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The first sample contained more ovens than the second sample."
+      },
+      {
+        "id": "B",
+        "text": "The first sample contained fewer ovens than the second sample."
+      },
+      {
+        "id": "C",
+        "text": "The first sample took more time on average to preheat to $325\\,^\\circ\\text{F}$ than the second sample."
+      },
+      {
+        "id": "D",
+        "text": "The first sample took less time on average to preheat to $325\\,^\\circ\\text{F}$ than the second sample."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-012",
+    "source": "June 2025",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A survey was conducted in Madison to estimate the percent of adult residents who support the addition of streetlights at every corner in their town. Based on the survey, it is estimated that $40\\%$ of all adult residents of Madison support the addition of streetlights at every corner in their town, with an associated margin of error of $6\\%$. Which of the following is the most appropriate conclusion about all adult residents of Madison?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "Plausible values for the percent of all adult residents of Madison who support the addition of streetlights at every corner in their town are between $34\\%$ and $46\\%$."
+      },
+      {
+        "id": "B",
+        "text": "The addition of streetlights at every corner in the town is supported by exactly $34\\%$ of all adult residents of Madison."
+      },
+      {
+        "id": "C",
+        "text": "Plausible values for the percent of all adult residents of Madison who support the addition of streetlights at every corner in their town are either less than $34\\%$ or more than $46\\%$."
+      },
+      {
+        "id": "D",
+        "text": "The addition of streetlights at every corner in the town is supported by more than $46\\%$ of all adult residents of Madison."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-ro-013",
+    "source": "June US 2025",
+    "domain": "problem_solving",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionText": "A group of $40$ employees selected at random from all the employees at a company were surveyed about the number of books they read last year. From the data collected, it was estimated that the mean number of books employees at the company read last year is $6.8$, with an associated margin of error of $1.1$. Which of the following is the most appropriate conclusion?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "It is plausible that the actual mean number of books employees at the company read last year is less than $5.7$."
+      },
+      {
+        "id": "B",
+        "text": "It is plausible that the actual mean number of books employees at the company read last year is between $5.7$ and $7.9$."
+      },
+      {
+        "id": "C",
+        "text": "It is plausible that every employee at the company read between $6.8$ and $10.1$ books last year."
+      },
+      {
+        "id": "D",
+        "text": "It is plausible that the actual mean number of books employees at the company read last year is greater than $7.9$."
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
   }
 ]

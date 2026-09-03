@@ -2,12 +2,18 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Sparkles, ArrowRight, ShieldCheck, PlayCircle, Star, CheckCircle, Calculator } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
+import { HeroMoonSpotlight } from './HeroMoonSpotlight';
 
 export const HeroSection: React.FC = () => {
   const { setCurrentView } = useApp();
 
   return (
     <section className="relative pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden bg-radial-glow">
+      {/* Interactive Hanging Moon Mascot with Dynamic Flashlight Cursor Tracking */}
+      <div className="absolute top-1 left-2 sm:left-8 z-20 pointer-events-none">
+        <HeroMoonSpotlight />
+      </div>
+
       {/* Glow Orbs background */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-500/10 dark:bg-emerald-500/15 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-orange-500/10 dark:bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
@@ -37,11 +43,11 @@ export const HeroSection: React.FC = () => {
         {/* Action Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
-            onClick={() => setCurrentView('exam')}
+            onClick={() => setCurrentView('dashboard')}
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-base shadow-[0_4px_14px_rgba(245,158,11,0.35)] dark:shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 group"
           >
             <PlayCircle className="w-5 h-5 fill-white stroke-orange-600 dark:fill-slate-950 dark:stroke-emerald-400 group-hover:scale-110 transition-transform" />
-            <span>Start Free Bluebook Exam</span>
+            <span>Start Practice</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
 

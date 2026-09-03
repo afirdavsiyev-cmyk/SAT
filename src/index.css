@@ -11,6 +11,8 @@
   --accent-ring: rgba(234, 88, 12, 0.25);
   --accent-badge-text: #9a3412;     /* orange-800 */
   --accent-badge-bg: #ffedd5;       /* orange-100 */
+  --beam-color: #f59e0b;
+  --beam-glow: rgba(245, 158, 11, 0.3);
 }
 
 .dark, html.dark {
@@ -22,6 +24,8 @@
   --accent-ring: rgba(16, 185, 129, 0.25);
   --accent-badge-text: #34d399;     /* emerald-400 */
   --accent-badge-bg: rgba(6, 78, 59, 0.4);
+  --beam-color: #10b981;
+  --beam-glow: rgba(16, 185, 129, 0.35);
 }
 
 @layer base {
@@ -371,9 +375,27 @@ html.light .bg-radial-glow {
   .animate-domain-float-alt,
   .animate-domain-dash,
   .animate-domain-dash-fast,
-  .animate-domain-pulse {
+  .animate-domain-pulse,
+  .animate-moon-swing {
     animation: none !important;
     transform: none !important;
   }
 }
+
+/* ─── Hero Moon Spotlight Pendulum Sway Animation ─────────────────── */
+@keyframes moonSwing {
+  0%, 100% {
+    transform: rotate(-3.5deg);
+  }
+  50% {
+    transform: rotate(3.5deg);
+  }
+}
+
+.animate-moon-swing {
+  transform-origin: 199px 0px;
+  animation: moonSwing 6s ease-in-out infinite;
+  will-change: transform;
+}
+
 

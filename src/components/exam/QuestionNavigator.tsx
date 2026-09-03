@@ -46,22 +46,34 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950/60 p-3 rounded-2xl border border-slate-200 dark:border-slate-800/80">
-          <div className="flex items-center space-x-1.5">
-            <div className="w-4 h-4 rounded-md bg-emerald-500 text-slate-950 font-bold text-[10px] flex items-center justify-center">1</div>
-            <span>Current</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <div className="w-4 h-4 rounded-md bg-emerald-50 dark:bg-slate-800 border border-emerald-500 text-emerald-700 dark:text-emerald-400 font-bold text-[10px] flex items-center justify-center">
-              <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950/60 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800/80 font-mono">
+          <div className="flex items-center space-x-3 flex-wrap gap-y-1">
+            <span className="text-slate-400 text-[11px] font-bold uppercase">Difficulty:</span>
+            <div className="flex items-center space-x-1.5">
+              <span className="w-3 h-3 rounded-md bg-[#D1FAE5] dark:bg-emerald-950/60 border border-[#A7F3D0] dark:border-emerald-500/40" />
+              <span className="text-[#047857] dark:text-emerald-400 text-[11px] font-bold">Easy</span>
             </div>
-            <span>Answered</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <div className="w-4 h-4 rounded-md bg-amber-50 dark:bg-yellow-500/20 border border-amber-300 dark:border-yellow-500 text-amber-600 dark:text-yellow-400 font-bold text-[10px] flex items-center justify-center">
-              <Bookmark className="w-3 h-3 fill-amber-500 dark:fill-yellow-400" />
+            <div className="flex items-center space-x-1.5">
+              <span className="w-3 h-3 rounded-md bg-[#FEF3C7] dark:bg-amber-950/60 border border-[#FDE68A] dark:border-amber-500/40" />
+              <span className="text-[#B45309] dark:text-amber-400 text-[11px] font-bold">Medium</span>
             </div>
-            <span>Marked for Review</span>
+            <div className="flex items-center space-x-1.5">
+              <span className="w-3 h-3 rounded-md bg-[#FFE4E6] dark:bg-rose-950/60 border border-[#FECDD3] dark:border-rose-500/40" />
+              <span className="text-[#E11D48] dark:text-rose-400 text-[11px] font-bold">Hard</span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-3 flex-wrap gap-y-1">
+            <div className="flex items-center space-x-1.5">
+              <span className="w-3.5 h-3.5 rounded-full bg-amber-400 border border-slate-900 flex items-center justify-center">
+                <Bookmark className="w-2 h-2 fill-slate-950 text-slate-950" />
+              </span>
+              <span>Review</span>
+            </div>
+            <div className="flex items-center space-x-1.5">
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[9px] font-bold border border-slate-900">✓</span>
+              <span>Answered</span>
+            </div>
           </div>
         </div>
 
@@ -72,26 +84,43 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
             const isAnswered = !!currentExamAnswers[q.id];
             const isMarked = markedForReview.includes(q.id);
 
+            // Base style derived from question difficulty
+            const difficultyClasses: Record<string, string> = {
+              easy: 'bg-[#D1FAE5] dark:bg-emerald-950/40 text-[#047857] dark:text-emerald-400 border-[#A7F3D0] dark:border-emerald-500/30',
+              medium: 'bg-[#FEF3C7] dark:bg-amber-950/40 text-[#B45309] dark:text-amber-400 border-[#FDE68A] dark:border-amber-500/30',
+              hard: 'bg-[#FFE4E6] dark:bg-rose-950/40 text-[#E11D48] dark:text-rose-400 border-[#FECDD3] dark:border-rose-500/30'
+            };
+            const diffKey = (q.difficulty?.toLowerCase() || 'medium');
+            const difficultyClass = difficultyClasses[diffKey] || difficultyClasses.medium;
+
             return (
               <button
-                key={q.id}
+                key={q.id || idx}
+                type="button"
                 onClick={() => {
                   onSelectQuestion(idx);
                   onClose();
                 }}
-                className={`relative h-11 rounded-2xl font-bold text-xs flex items-center justify-center transition-all duration-200 active:scale-95 ${
+                className={`relative h-11 rounded-2xl font-bold text-xs flex items-center justify-center transition-all duration-200 active:scale-95 border ${difficultyClass} ${
                   isCurrent
-                    ? 'bg-emerald-500 text-slate-950 shadow-sm ring-2 ring-emerald-400 scale-105 font-extrabold'
-                    : isAnswered
-                    ? 'bg-emerald-50 dark:bg-slate-950 border-2 border-emerald-500 text-emerald-800 dark:text-emerald-400'
-                    : 'bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-white'
+                    ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-950 scale-105 shadow-md z-10'
+                    : 'hover:opacity-90 hover:scale-[1.02]'
                 }`}
               >
-                <span>{q.number}</span>
+                <span>{q.number || idx + 1}</span>
 
                 {/* Bookmark indicator */}
                 {isMarked && (
-                  <Bookmark className="w-3.5 h-3.5 absolute top-1 right-1 fill-amber-500 text-amber-500 dark:fill-yellow-400 dark:text-yellow-400" />
+                  <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-slate-900 flex items-center justify-center shadow-md">
+                    <Bookmark className="w-2 h-2 fill-slate-950 text-slate-950" />
+                  </span>
+                )}
+
+                {/* Answered indicator */}
+                {isAnswered && (
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[8px] font-bold border-2 border-slate-900 shadow-sm">
+                    ✓
+                  </span>
                 )}
               </button>
             );

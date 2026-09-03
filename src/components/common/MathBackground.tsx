@@ -37,7 +37,7 @@ export const MathBackground: React.FC = () => {
       
       {/* Left Margin: Floating Parabola & Axes */}
       <svg 
-        className="absolute top-28 left-4 lg:left-12 w-64 h-64 text-orange-600/10 dark:text-emerald-400/10 animate-float" 
+        className="absolute top-[520px] left-4 lg:left-12 w-64 h-64 text-orange-600/10 dark:text-emerald-400/10 animate-float" 
         viewBox="0 0 200 200" 
         fill="none"
       >

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import katex from 'katex';
 
-interface MathRendererProps {
+export interface MathRendererProps {
   content?: string;
   text?: string;
   className?: string;
@@ -16,21 +16,21 @@ export const MathRenderer: React.FC<MathRendererProps> = ({ content, text, class
   const renderedElements = useMemo(() => {
     if (!actualContent) return null;
 
-    // 1. Preprocess escaped currency signs \$ -> placeholder token
+    // 1. Preprocess explicitly escaped currency signs \$ -> placeholder token
     let sanitized = actualContent.replace(/\\(\$)/g, LITERAL_DOLLAR_TOKEN);
 
-    // 2. Preprocess standalone unescaped currency amounts e.g. "$45", "$1,200", "$3.50"
-    // that are followed by spaces/punctuation without being actual LaTeX formulas
-    sanitized = sanitized.replace(/(^|[\s(])\$(\d+(?:[.,]\d+)*)(?=[\s.,;!?)]|$)/g, `$1${LITERAL_DOLLAR_TOKEN}$2`);
-
-    // 3. Normalize LaTeX display/inline brackets \[ ... \] and \( ... \) to $$ ... $$ and $ ... $
+    // 2. Normalize LaTeX display/inline brackets \[ ... \] and \( ... \) to $$ ... $$ and $ ... $
     sanitized = sanitized
       .replace(/\\\[([\s\S]*?)\\\]/g, '$$$$$1$$$$')
       .replace(/\\\(([\s\S]*?)\\\)/g, '$$$1$$');
 
-    // 4. Split by block math ($$...$$) first, then inline math ($...$)
-    const mathRegex = /(\$\$[\s\S]*?\$\$|\$[^\$\n]+?\$)/g;
-    const tokens = sanitized.split(mathRegex);
+    // 3. If an entire option or formula snippet has no $ delimiters, but contains raw LaTeX commands (e.g. \frac{w}{6}, \sqrt{x})
+    if (!sanitized.includes('$') && /\\[a-zA-Z]+/.test(sanitized)) {
+      sanitized = `$${sanitized}$`;
+    }
+
+    // 4. Regex handling both $$...$$ and $...$ safely without dropping symbols:
+    const tokens = sanitized.split(/(\$\$[\s\S]+?\$\$|\$[^\$]+?\$)/g);
 
     return tokens.map((token, index) => {
       if (!token) return null;
@@ -65,21 +65,13 @@ export const MathRenderer: React.FC<MathRendererProps> = ({ content, text, class
       if (token.startsWith('$') && token.endsWith('$') && token.length >= 2) {
         let formula = token.slice(1, -1).trim();
 
-        // If it's simply a currency placeholder (e.g. $___SAT_DOLLAR_CURRENCY___45$)
+        // If it was an escaped currency token
         if (formula.includes(LITERAL_DOLLAR_TOKEN)) {
           const textOnly = formula.replace(new RegExp(LITERAL_DOLLAR_TOKEN, 'g'), '$');
           return <span key={`currency-${index}`} className="font-medium text-inherit">{textOnly}</span>;
         }
 
-        // Safety check: If token contains multiple English words with spaces and no LaTeX math operators,
-        // it was likely prose caught between accidental dollar delimiters
-        const isSuspiciousProse =
-          /\s{2,}/.test(formula) ||
-          (formula.split(/\s+/).length > 3 && !/[\\_^{}=<>+\-*/]/.test(formula));
-
-        if (isSuspiciousProse) {
-          return renderProseSegment(formula, index);
-        }
+        formula = formula.replace(new RegExp(LITERAL_DOLLAR_TOKEN, 'g'), '\\$');
 
         try {
           const html = katex.renderToString(formula, {
@@ -106,7 +98,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({ content, text, class
       // ─── Regular Prose Segment ─────────────────────────────────────
       return renderProseSegment(token, index);
     });
-  }, [content]);
+  }, [actualContent]);
 
   if (inline) {
     return <span className={`inline-flex items-center flex-wrap gap-x-0.5 text-inherit ${className}`}>{renderedElements}</span>;
@@ -118,6 +110,10 @@ export const MathRenderer: React.FC<MathRendererProps> = ({ content, text, class
     </div>
   );
 };
+
+export const MathText = MathRenderer;
+export const KaTeXRenderer = MathRenderer;
+export default MathRenderer;
 
 /**
  * Helper to parse bold, inline code, and line breaks in non-math text segments,
@@ -133,10 +129,26 @@ function renderProseSegment(text: string, keyPrefix: number) {
   return (
     <React.Fragment key={`prose-${keyPrefix}`}>
       {lines.map((line, lineIdx) => {
-        // Parse bold **...** and inline code `...`
-        const parts = line.split(/(\*\*.*?\*\*|`.*?`)/g);
+        // Parse bold **...**, inline code `...`, and images ![alt](url)
+        const parts = line.split(/(\*\*.*?\*\*|`.*?`|!\[.*?\]\(.*?\))/g);
 
         const renderedLine = parts.map((part, partIdx) => {
+          if (part.startsWith('![') && part.includes('](') && part.endsWith(')')) {
+            const match = part.match(/^!\[(.*?)\]\((.*?)\)$/);
+            if (match) {
+              const alt = match[1];
+              const src = match[2];
+              return (
+                <span key={partIdx} className="block my-3 text-center">
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="inline-block max-w-full max-h-80 sm:max-h-96 rounded-2xl border border-white/10 shadow-lg bg-white p-2 object-contain"
+                  />
+                </span>
+              );
+            }
+          }
           if (part.startsWith('**') && part.endsWith('**')) {
             return (
               <strong key={partIdx} className="font-bold text-slate-900 dark:text-white">

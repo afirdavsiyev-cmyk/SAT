@@ -20,6 +20,7 @@ export interface QuestionItem {
   topic: string;
   difficulty: QuestionDifficulty;
   question: string; // LaTeX KaTeX formatted prompt
+  questionText?: string;
   type: QuestionType;
   options?: QuestionOptionItem[];
   correctAnswer: string;

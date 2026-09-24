@@ -8,7 +8,7 @@ interface QuestionCardProps {
   question: Question;
 }
 
-export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
+const QuestionCardComponent: React.FC<QuestionCardProps> = ({ question }) => {
   const { currentExamAnswers, setAnswer } = useApp();
   const [crossedOutOptions, setCrossedOutOptions] = useState<string[]>([]);
 
@@ -52,6 +52,19 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
         <div className="text-slate-900 dark:text-white text-lg leading-relaxed font-normal py-2 select-text">
           <MathRenderer content={question.prompt} />
         </div>
+
+        {/* Real Question Diagram / Image if present */}
+        {question.image && (
+          <div className="my-4 flex justify-center">
+            <div className="bg-white p-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm max-w-full overflow-hidden">
+              <img
+                src={question.image}
+                alt={`Question ${question.number} diagram`}
+                className="max-h-80 w-auto object-contain mx-auto rounded-lg"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Multiple Choice Options or Student-Produced Grid-in */}
         {question.type === 'multiple_choice' && question.options ? (
@@ -140,3 +153,6 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
     </div>
   );
 };
+
+export const QuestionCard = React.memo(QuestionCardComponent);
+export default QuestionCard;

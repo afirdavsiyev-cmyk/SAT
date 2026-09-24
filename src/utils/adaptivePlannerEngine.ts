@@ -239,11 +239,20 @@ export function generateDailyActionPlan(
   };
 }
 
+import { recordSpacedRepetitionAttempt } from './spacedRepetitionEngine';
+
 // ─── 7. Attempt Feedback Loop & Subtopic Mastery Recalculation ────────────
 export function recordQuestionAttemptInEngine(
   data: StoredAdaptivePlannerData,
   attempt: QuestionAttempt
 ): StoredAdaptivePlannerData {
+  // Synchronize spaced repetition engine for missed vs correct attempts
+  try {
+    recordSpacedRepetitionAttempt(attempt.questionId, attempt.correct);
+  } catch (e) {
+    console.error('Error syncing spaced repetition attempt', e);
+  }
+
   const updatedAttempts = [attempt, ...data.attempts].slice(0, 200); // retain last 200 attempts
 
   // Find corresponding skill by subtopicId or domain

@@ -25,6 +25,7 @@ export interface Question {
   type: 'multiple_choice' | 'student_produced';
   hint?: string;
   desmosEquation?: string;
+  image?: string;
 }
 
 export interface UserAnswers {
@@ -51,6 +52,21 @@ export interface ExamHistoryEntry {
   module1Correct: number;
   module2Correct: number;
   module2Type: 'easy' | 'hard';
+}
+
+export interface MockExamResult {
+  mode: 'full' | 'module1' | 'module2';
+  testId?: string;
+  date: string;
+  score: number;
+  totalQuestions: number;
+  correctCount: number;
+  module1Correct: number;
+  module1Total: number;
+  module2Correct: number;
+  module2Total: number;
+  answers: Record<string, string>;
+  markedForReview: string[];
 }
 
 export interface UserProgressState {

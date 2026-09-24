@@ -1444,6 +1444,36 @@
     "difficulty": "medium"
   },
   {
+    "id": "ps-prp-068",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "Arturo builds and sells two types of steel tables. The revenue Arturo generates from selling each square table is $2$ times his cost to build a square table, and the revenue Arturo generates from selling each hexagonal table is $2.5$ times his cost to build a hexagonal table. In one year, Arturo's total cost to build tables was $\\$25,740$, and he generated a total revenue of $\\$61,875$ from selling all the tables he built that year. For that year, how much greater is the revenue Arturo generated from selling hexagonal tables than the revenue he generated from selling square tables?",
+    "type": "free_response",
+    "correctAnswer": "42075",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-prp-069",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "A scientist is creating a sugar water solution for his lab. If there are currently $10$ liters of a $32\\%$ sugar solution in a bucket, how many liters of a $12\\%$ sugar solution need to be added to the bucket to create a $20\\%$ sugar solution?",
+    "type": "free_response",
+    "correctAnswer": "15",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prp-070",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "domain": "problem_solving",
+    "topic": "Percent; Ratio&Proportion",
+    "questionText": "The groups of students who are graduating with honors from a university have a variety of different majors. $30\\%$ are science majors, $15\\%$ are history majors, $25\\%$ are humanities majors, and the remaining $24$ students are all business majors. Of the students graduating with honors, how many more science majors are there than history majors?",
+    "type": "free_response",
+    "correctAnswer": "12",
+    "difficulty": "medium"
+  },
+  {
     "id": "ps-uc-001",
     "source": "March US 2023",
     "domain": "problem_solving",
@@ -4626,5 +4656,2549 @@
     ],
     "correctAnswer": "B",
     "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-001",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "What length, in centimeters, is equivalent to a length of $37$ meters? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.037"
+      },
+      {
+        "id": "B",
+        "text": "0.37"
+      },
+      {
+        "id": "C",
+        "text": "3,700"
+      },
+      {
+        "id": "D",
+        "text": "37,000"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-002",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "The weight limit of a certain elevator is $1,800$ pounds. What is the approximate weight limit of the elevator in kilograms? ($1\\text{ kilogram} = 2.2046\\text{ pounds}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "816"
+      },
+      {
+        "id": "B",
+        "text": "1494"
+      },
+      {
+        "id": "C",
+        "text": "2168"
+      },
+      {
+        "id": "D",
+        "text": "3968"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-003",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A whale swam a distance of $232,320$ yards. How far did the whale swim in miles? ($1\\text{ mile} = 1,760\\text{ yards}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "132"
+      },
+      {
+        "id": "B",
+        "text": "232"
+      },
+      {
+        "id": "C",
+        "text": "66"
+      },
+      {
+        "id": "D",
+        "text": "264"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-004",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A set of $4$ tires weighs $120$ pounds. What is the approximate weight of the set of $4$ tires in kilograms? ($1\\text{ kilogram} = 2.2046\\text{ pounds}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "22"
+      },
+      {
+        "id": "B",
+        "text": "54"
+      },
+      {
+        "id": "C",
+        "text": "122"
+      },
+      {
+        "id": "D",
+        "text": "265"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-005",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "If a $6$-foot giant sub sandwich is cut in half and each half is cut into quarters, how many inches long is each resulting piece of the sub? ($1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "36"
+      },
+      {
+        "id": "D",
+        "text": "72"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-006",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "How many cups, each with a capacity of $6$ fluid ounces, can be filled with lemonade from a cooler that holds $9$ gallons of lemonade? ($1\\text{ gallon} = 128\\text{ fluid ounces}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "192"
+      },
+      {
+        "id": "B",
+        "text": "128"
+      },
+      {
+        "id": "C",
+        "text": "64"
+      },
+      {
+        "id": "D",
+        "text": "256"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-007",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "The diameter of Pluto is $1,477$ miles. Which of the following best approximates the circumference of Pluto in kilometers? ($1\\text{ kilometer} \\approx 0.6214\\text{ miles}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2,380"
+      },
+      {
+        "id": "B",
+        "text": "5,766"
+      },
+      {
+        "id": "C",
+        "text": "7,467"
+      },
+      {
+        "id": "D",
+        "text": "14,935"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-008",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "James is walking at a speed of $5$ miles per hour through downtown Manhattan. If James walks for two hours, how many city blocks does he walk? ($1\\text{ city block} = \\frac{1}{20}\\text{ of a mile}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "10"
+      },
+      {
+        "id": "B",
+        "text": "50"
+      },
+      {
+        "id": "C",
+        "text": "100"
+      },
+      {
+        "id": "D",
+        "text": "200"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-009",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A category 3 hurricane rains $3$ inches per hour for $36$ hours. Which of the following is closest to the total feet of rain over the $36$ hours? ($1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "108"
+      },
+      {
+        "id": "D",
+        "text": "1296"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-unit-conv-010",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A bakery purchases flour in $50$-gallon bags. The flour is mixed with water to make loaves of bread. Each loaf of bread is made by mixing $3$ quarts of flour with $2$ quarts of water. What is the maximum number of whole loaves of bread that can be made from two $50$-gallon bags of flour? ($1\\text{ gallon} = 4\\text{ quarts}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "66"
+      },
+      {
+        "id": "B",
+        "text": "133"
+      },
+      {
+        "id": "C",
+        "text": "150"
+      },
+      {
+        "id": "D",
+        "text": "200"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-011",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A $25$-foot plank of wood and a $12$-foot plank of wood will be cut into $10$-inch pieces. How many complete $10$-inch pieces can be cut from the two planks? ($1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "10"
+      },
+      {
+        "id": "B",
+        "text": "30"
+      },
+      {
+        "id": "C",
+        "text": "40"
+      },
+      {
+        "id": "D",
+        "text": "44"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-012",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "During the first $24$ hours of a snowstorm, snow fell at a constant rate of $3$ inches per hour. Which of the following is closest to the total amount of snow that fell during the first $7$ hours of the storm in millimeters? ($5\\text{ inches} = 127\\text{ millimeters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.12"
+      },
+      {
+        "id": "B",
+        "text": "21"
+      },
+      {
+        "id": "C",
+        "text": "76"
+      },
+      {
+        "id": "D",
+        "text": "533"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-013",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A laboratory receives a compound in $4$-decagram vials. How many $1$-centigram doses are contained in one $4$-decagram vial? ($1\\text{ decagram} = 10\\text{ grams}$, $100\\text{ centigrams} = 1\\text{ gram}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.04"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "400"
+      },
+      {
+        "id": "D",
+        "text": "4,000"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-014",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "An Olympic bicyclist broke a record during a race in the French hills. He biked $13$ miles in $17$ minutes. What was his average speed, to the nearest integer, in miles per hour?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "46"
+      },
+      {
+        "id": "B",
+        "text": "23"
+      },
+      {
+        "id": "C",
+        "text": "92"
+      },
+      {
+        "id": "D",
+        "text": "69"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-015",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A racehorse runs at an average speed of $80$ kilometers per hour. Which of the following is closest to this speed in meters per second? ($1\\text{ kilometer} = 1,000\\text{ meters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "22"
+      },
+      {
+        "id": "B",
+        "text": "44"
+      },
+      {
+        "id": "C",
+        "text": "133"
+      },
+      {
+        "id": "D",
+        "text": "1,320"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-016",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "On a $14$-mile road there are $8$ rest stops placed at equal intervals, including one at each end of the road. What is the distance, in feet, between two consecutive stops? ($1\\text{ mile} = 5,280\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "10,560"
+      },
+      {
+        "id": "B",
+        "text": "11,240"
+      },
+      {
+        "id": "C",
+        "text": "5,230"
+      },
+      {
+        "id": "D",
+        "text": "5,260"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-017",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A pickup truck bed holds $8$ cubic meters of soil. How many cubic centimeters of soil does the pickup truck bed hold? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8,000"
+      },
+      {
+        "id": "B",
+        "text": "80,000"
+      },
+      {
+        "id": "C",
+        "text": "800,000"
+      },
+      {
+        "id": "D",
+        "text": "8,000,000"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-018",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A restoration company sells sand at a rate of $\\$50$ per cubic yard. Which of the following is closest to the price the company charges for $108$ cubic feet of sand? ($1\\text{ yard} = 3\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "$108"
+      },
+      {
+        "id": "B",
+        "text": "$200"
+      },
+      {
+        "id": "C",
+        "text": "$600"
+      },
+      {
+        "id": "D",
+        "text": "$1,800"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-019",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A certain state park has an area of $32.8$ square miles. What is the area, in square yards, of this state park? ($1\\text{ mile} = 1,760\\text{ yards}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.018"
+      },
+      {
+        "id": "B",
+        "text": "295.2"
+      },
+      {
+        "id": "C",
+        "text": "57,728"
+      },
+      {
+        "id": "D",
+        "text": "101,601,280"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-020",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "One gallon of paint will cover $180$ square feet of a surface. A room has a total wall area of $x$ square feet. Which equation represents the total amount of paint, $P$, in gallons, needed to paint the walls of the room three times?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "P = x/60"
+      },
+      {
+        "id": "B",
+        "text": "P = 540x"
+      },
+      {
+        "id": "C",
+        "text": "P = x/540"
+      },
+      {
+        "id": "D",
+        "text": "P = 180x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-unit-conv-021",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "The abyssopelagic zone extends from a depth of $4,000$ yards to $6,000$ yards in the ocean. If an object is sinking at a rate of $2$ miles per hour, to the nearest minute, how many minutes would it take the object to pass from the beginning to the end of the abyssopelagic zone? ($1\\text{ yard} = 3\\text{ feet}$, $1\\text{ mile} = 5,280\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "34"
+      },
+      {
+        "id": "B",
+        "text": "17"
+      },
+      {
+        "id": "C",
+        "text": "68"
+      },
+      {
+        "id": "D",
+        "text": "51"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-022",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "The speed of light in a vacuum is $3.00 \\times 10^8$ meters per second. Given that $1\\text{ kilometer} \\approx 0.62\\text{ miles}$ and $1,000\\text{ meters} = 1\\text{ kilometer}$, which of the following is closest to the speed of light in a vacuum, in miles per minute?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1.12 x 10^3"
+      },
+      {
+        "id": "B",
+        "text": "1.12 x 10^7"
+      },
+      {
+        "id": "C",
+        "text": "2.90 x 10^3"
+      },
+      {
+        "id": "D",
+        "text": "2.90 x 10^7"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-023",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A gardener is preparing a potting bed in the shape of a rectangular prism. The dimensions of the prism are $6$ feet by $12$ feet by $44$ inches. If it costs $\\$108$ per cubic yard to prepare the potting bed, how much does the gardener need to spend? ($1\\text{ yard} = 3\\text{ feet}$, $1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1056"
+      },
+      {
+        "id": "B",
+        "text": "1024"
+      },
+      {
+        "id": "C",
+        "text": "1032"
+      },
+      {
+        "id": "D",
+        "text": "1064"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-024",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A rocket's speed is increasing at an acceleration of $17.8$ meters per second squared. What is the rate in miles per minute squared? ($1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "39.83"
+      },
+      {
+        "id": "B",
+        "text": "39.91"
+      },
+      {
+        "id": "C",
+        "text": "41.23"
+      },
+      {
+        "id": "D",
+        "text": "41.56"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-025",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A racecar has tires with a radius of $1$ foot. The racecar completes one lap of a race in $53$ seconds, and the tires rotate at an average rate of $2,876$ revolutions per minute. To the closest hundredth of a mile, what is the length of the racetrack? ($1\\text{ mile} = 5,280\\text{ feet}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3.02"
+      },
+      {
+        "id": "B",
+        "text": "3.05"
+      },
+      {
+        "id": "C",
+        "text": "3.08"
+      },
+      {
+        "id": "D",
+        "text": "3.11"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-026",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "There are $640$ acres in $1$ square mile. The area of a nature preserve is increasing at a rate of $4$ acres per year. Which of the following is closest to the rate at which the area of the forest is increasing, in square kilometers per year? (Use $1\\text{ kilometer} = 0.62\\text{ mile}$)",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.0024"
+      },
+      {
+        "id": "B",
+        "text": "0.0040"
+      },
+      {
+        "id": "C",
+        "text": "0.0100"
+      },
+      {
+        "id": "D",
+        "text": "0.0163"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-unit-conv-027",
+    "source": "SAT Unit Conversions Prep",
+    "domain": "problem_solving",
+    "topic": "Unit Conversion & Rates",
+    "questionText": "A tank in the shape of a rectangular prism has a length of $64$ inches, a width of $53$ inches, and a height of $729$ inches. The equation $c = v \\cdot d$ calculates the cost of filling the tank, where $c$ is the total cost in dollars, $v$ is the volume in cubic yards, and $d$ is the cost per cubic yard. If $c = 1,007$, what is the value of $d$ in dollars? ($1\\text{ yard} = 36\\text{ inches}$)",
+    "type": "free_response",
+    "correctAnswer": "19",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-sct-001",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays a negative linear relationship between $x$ and $y$ for $x \\in \\{1, 2, 3, 4\\}$, with data points decreasing from $y \\approx 22$ at $x = 1$ to $y \\approx 4$ at $x = 4$. Which of the following equations is the most appropriate linear model for the data?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = -6 + 28x"
+      },
+      {
+        "id": "B",
+        "text": "y = 6 - 28x"
+      },
+      {
+        "id": "C",
+        "text": "y = 28 + 6x"
+      },
+      {
+        "id": "D",
+        "text": "y = 28 - 6x"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-002",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot comparing $x$ and $y$, a line of best fit predicts $y$-values for given $x$-values. Which data point has an actual $y$-value that is $2$ units less than the $y$-value predicted by the line of best fit for its corresponding $x$-value?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(2, 12)"
+      },
+      {
+        "id": "B",
+        "text": "(6, 14)"
+      },
+      {
+        "id": "C",
+        "text": "(10, 12)"
+      },
+      {
+        "id": "D",
+        "text": "(18, 4)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-003",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The data shows the number of games won by two football teams from 2004 to 2010. In 2004, 2006, 2008, and 2010, Team A won 6, 8, 4, and 7 games, while Team B won 5, 4, 6, and 3 games, respectively. For how many of these four years was the number of games won by Team A greater than the number of games won by Team B?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-004",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays the relationship between $x$ and $y$ for values of $x$ from $2$ to $10$. The line of best fit passes near $(0, 77)$ and $(10, 766)$. Which of the following best represents the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 77 + 0.01x"
+      },
+      {
+        "id": "B",
+        "text": "y = 77 + 0.79x"
+      },
+      {
+        "id": "C",
+        "text": "y = 77 + 68.9x"
+      },
+      {
+        "id": "D",
+        "text": "y = 77 + 78.9x"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-005",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The scatterplot shows a positive linear correlation between $x$ and $y$ with a line of best fit that has a $y$-intercept of approximately $3.4$ and passes near $(8, 15.8)$. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 3.5 + 1.8x"
+      },
+      {
+        "id": "B",
+        "text": "y = -2.4 + 1.55x"
+      },
+      {
+        "id": "C",
+        "text": "y = 3.4 + 1.55x"
+      },
+      {
+        "id": "D",
+        "text": "y = 2.4 - 1.5x"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-006",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays points forming a upward-opening parabolic curve symmetric across the $y$-axis with a minimum value at $(0, 8)$ and passing near $(3, 17)$ and $(-3, 17)$. Which of the following is the most appropriate model for the data?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = x^2 - 8"
+      },
+      {
+        "id": "B",
+        "text": "y = x^2 + 8"
+      },
+      {
+        "id": "C",
+        "text": "y = (x - 8)^2"
+      },
+      {
+        "id": "D",
+        "text": "y = (x + 8)^2"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-007",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A line of best fit for a set of data in the $xy$-plane has a positive slope of approximately $1.6$ and crosses the $y$-axis at $(0, 3.3)$. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 3.3 + 1.6x"
+      },
+      {
+        "id": "B",
+        "text": "y = 3.3 - 1.6"
+      },
+      {
+        "id": "C",
+        "text": "y = -3.3 + 1.6x"
+      },
+      {
+        "id": "D",
+        "text": "y = -3.3 - 1.6x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-008",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot, a line of best fit passes through the points $(0, 0)$ and $(10, 11)$. Which of the following is closest to the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-3.3"
+      },
+      {
+        "id": "B",
+        "text": "-1.1"
+      },
+      {
+        "id": "C",
+        "text": "1.1"
+      },
+      {
+        "id": "D",
+        "text": "3.3"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-009",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays data points where $y$ is approximately $0.8$ when $x = 0$, and $y$ increases by about $0.87$ units for every $1$ unit increase in $x$. Which of the following equations is the most appropriate linear model for the data?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 0.8 + 8.7x"
+      },
+      {
+        "id": "B",
+        "text": "y = 0.8 + 0.87x"
+      },
+      {
+        "id": "C",
+        "text": "y = 8.7 + 0.8x"
+      },
+      {
+        "id": "D",
+        "text": "y = 8.7 - 0.87x"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-010",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A line of best fit in a scatterplot has a negative slope and passes through $(-10, 16)$ and $(0, 4)$. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = -1.2x + 4"
+      },
+      {
+        "id": "B",
+        "text": "y = 1.2x + 4"
+      },
+      {
+        "id": "C",
+        "text": "y = -0.8x - 4"
+      },
+      {
+        "id": "D",
+        "text": "y = 0.8x - 4"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-011",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot comparing $x$ and $y$, the linear model $y = 0.8 + 0.87x$ is fitted to the data. What does the value $0.87$ represent in this context?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The predicted value of y when x = 0"
+      },
+      {
+        "id": "B",
+        "text": "The predicted increase in y for each 1-unit increase in x"
+      },
+      {
+        "id": "C",
+        "text": "The average value of all x-coordinates"
+      },
+      {
+        "id": "D",
+        "text": "The maximum value of y in the dataset"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-012",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The recorded temperature $T$ ($^\\circ\\text{F}$) over consecutive days $x$ since June 1 is recorded as follows:\n- Day $4$: $42^\\circ\\text{F}$\n- Day $5$: $48^\\circ\\text{F}$\n- Day $6$: $50^\\circ\\text{F}$\n- Day $7$: $74^\\circ\\text{F}$\nDuring which of the following time periods did the greatest increase in recorded temperature take place?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "From x = 4 to x = 5"
+      },
+      {
+        "id": "B",
+        "text": "From x = 5 to x = 6"
+      },
+      {
+        "id": "C",
+        "text": "From x = 6 to x = 7"
+      },
+      {
+        "id": "D",
+        "text": "The temperature increase was identical in all periods"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-013",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot shows data set $P$ with a line of best fit $y = mx + b$. Data set $Q$ is created by adding $5$ units to the $y$-value of each point in data set $P$. If a new line of best fit is computed for data set $Q$, how do its slope and $y$-intercept compare to those of data set $P$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The slope remains m, and the y-intercept increases by 5."
+      },
+      {
+        "id": "B",
+        "text": "The slope increases by 5, and the y-intercept remains b."
+      },
+      {
+        "id": "C",
+        "text": "Both the slope and the y-intercept increase by 5."
+      },
+      {
+        "id": "D",
+        "text": "Neither the slope nor the y-intercept changes."
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-sct-014",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays data with $x$ and $y$ coordinates in the thousands. The line of best fit begins at approximately $(0, 500)$ and rises to $(5000, 4500)$. Which of the following is the most appropriate slope for the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-0.8"
+      },
+      {
+        "id": "B",
+        "text": "0.8"
+      },
+      {
+        "id": "C",
+        "text": "8.0"
+      },
+      {
+        "id": "D",
+        "text": "80"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-015",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot, a line of best fit passes through $(1, 2.7)$ and $(10, 9.0)$. Which of the following is closest to the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-7"
+      },
+      {
+        "id": "B",
+        "text": "-0.7"
+      },
+      {
+        "id": "C",
+        "text": "0.7"
+      },
+      {
+        "id": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-016",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The scatterplot shows the body length, in centimeters (cm), of a New Zealand fur seal from age $1$ to $6$ years. The line of best fit is given by $L = 62 + 12.5a$, where $L$ is length in cm and $a$ is age in years. According to this model, what is the predicted body length of a $4$-year-old fur seal?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "100 cm"
+      },
+      {
+        "id": "B",
+        "text": "112 cm"
+      },
+      {
+        "id": "C",
+        "text": "124.5 cm"
+      },
+      {
+        "id": "D",
+        "text": "137 cm"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-017",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A line of best fit for a dataset with values up to $x = 10$ and $y = 800$ has a $y$-intercept of $148.13$ and passes near $(10, 634)$. Which of the following best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 148.13 + 0.02x"
+      },
+      {
+        "id": "B",
+        "text": "y = 148.13 + 0.59x"
+      },
+      {
+        "id": "C",
+        "text": "y = 148.13 + 48.61x"
+      },
+      {
+        "id": "D",
+        "text": "y = 148.13 + 58.61x"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-018",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A line of best fit in a scatterplot passes through $(0, 10.2)$ and $(8, 3.5)$. Which of the following is closest to the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-11.19"
+      },
+      {
+        "id": "B",
+        "text": "-0.84"
+      },
+      {
+        "id": "C",
+        "text": "0.84"
+      },
+      {
+        "id": "D",
+        "text": "11.19"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-019",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot, a line of best fit passes through the origin $(0, 0)$ and the point $(5, 5.5)$. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 1.1x"
+      },
+      {
+        "id": "B",
+        "text": "y = -1.1x"
+      },
+      {
+        "id": "C",
+        "text": "y = 0.9x"
+      },
+      {
+        "id": "D",
+        "text": "y = 5.5x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-020",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The graph models the number of active projects $P$ a company was working on $x$ months after the end of November 2011, modeled by $P = 4 + 1.5x$, where $0 \\le x \\le 6$. According to the model, what is the predicted number of active projects $4$ months after the end of November 2011?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "10"
+      },
+      {
+        "id": "C",
+        "text": "12"
+      },
+      {
+        "id": "D",
+        "text": "14"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-021",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A line of best fit shown on a scatterplot passes through $(0, 0.8)$ and $(8, 14.4)$. Which of the following equations best represents this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 0.8 + 1.7x"
+      },
+      {
+        "id": "B",
+        "text": "y = 0.8 - 1.7x"
+      },
+      {
+        "id": "C",
+        "text": "y = -0.8 + 1.7x"
+      },
+      {
+        "id": "D",
+        "text": "y = -0.8 - 1.7x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-022",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot shows data set $A$ with a line of best fit having equation $y = 1.2x + 14$. Data set $B$ is created by subtracting $9$ units from the $y$-value of each point in data set $A$. What is the $y$-intercept of the line of best fit for data set $B$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "14"
+      },
+      {
+        "id": "D",
+        "text": "23"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-sct-023",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays the relationship between $x$ and $y$. The line of best fit passes through $(1, 2.5)$ and $(9, 16.1)$. What is the slope of this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1.7"
+      },
+      {
+        "id": "B",
+        "text": "1.5"
+      },
+      {
+        "id": "C",
+        "text": "2.1"
+      },
+      {
+        "id": "D",
+        "text": "0.8"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-024",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A linear model predicts the weight $W$ (in kg) of an animal based on age $t$ (in months) as $W = 3.2t + 5.0$. For an animal that is $10$ months old, the actual measured weight was $39.0\\text{ kg}$. What is the residual (actual value minus predicted value) for this animal?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2.0"
+      },
+      {
+        "id": "B",
+        "text": "2.0"
+      },
+      {
+        "id": "C",
+        "text": "3.2"
+      },
+      {
+        "id": "D",
+        "text": "5.0"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-sct-025",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays data points where $y$ is directly proportional to $x$. At $x = 4$, $y = 8$; at $x = 6$, $y = 12$; at $x = 7$, $y = 14$. Which of the following equations is the most appropriate linear model for the data?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = -2x"
+      },
+      {
+        "id": "B",
+        "text": "y = -x"
+      },
+      {
+        "id": "C",
+        "text": "y = x"
+      },
+      {
+        "id": "D",
+        "text": "y = 2x"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-sct-026",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In 2002, the National Science Foundation granted a total of approximately $\\$39$ million to all US museums. The grant amount to museums in Minnesota in 2002 was $\\$3.2$ million. Which of the following is closest to the percentage of this total that was granted to museums in Minnesota?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.1%"
+      },
+      {
+        "id": "B",
+        "text": "1.2%"
+      },
+      {
+        "id": "C",
+        "text": "8.2%"
+      },
+      {
+        "id": "D",
+        "text": "12.2%"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-sct-027",
+    "source": "SAT Scatterplots Official Bank",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The amount granted to museums in Minnesota was $\\$3.9$ million in the year 2000 and $\\$1.0$ million in 2006. What was the approximate average rate of change of the grant amount, in millions of dollars per year, from 2000 to 2006?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2.07"
+      },
+      {
+        "id": "B",
+        "text": "-0.48"
+      },
+      {
+        "id": "C",
+        "text": "0.41"
+      },
+      {
+        "id": "D",
+        "text": "0.82"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-001",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The height and width of $5$ clay sculptures are plotted in a scatterplot along with a line of best fit. For how many of the $5$ sculptures was the actual height greater than the height predicted by the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-002",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "According to a linear model of best fit relating sculpture height $h$ and width $w$, given by $h = 1.5w$, a clay sculpture with a height of $9$ inches is predicted to have a width of how many inches?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-003",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a dataset of $5$ clay sculptures, one sculpture has a measured height of $5$ inches and width of $4$ inches. What is the width of this sculpture, in inches?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-004",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "According to the line of best fit $h = 1.5w$, what is the predicted height, in inches, of a sculpture that has a width of $2$ inches?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-005",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "For a clay sculpture with a width of $3$ inches, the height predicted by the line of best fit is $x$ inches less than the actual height of $5.7$ inches. If the predicted height is $4.5$ inches, what is the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.8"
+      },
+      {
+        "id": "B",
+        "text": "1.2"
+      },
+      {
+        "id": "C",
+        "text": "1.5"
+      },
+      {
+        "id": "D",
+        "text": "1.8"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-006",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "For a clay sculpture that had a height of $7$ inches, the actual width is $h = 6$ inches, and the width predicted by the line of best fit is $f = 4$ inches. What is the value of $f - h$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-1"
+      },
+      {
+        "id": "B",
+        "text": "-2"
+      },
+      {
+        "id": "C",
+        "text": "-3"
+      },
+      {
+        "id": "D",
+        "text": "-4"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-007",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In a scatterplot comparing steel used (tons) to price (in thousands of dollars) for $7$ new buildings, the actual prices in thousands are $45, 52, 68, 75, 82, 88, 95$. For the building with the median price, the line of best fit predicts a price of $\\$68$ thousand. Which of the following is closest to the difference between its actual price and predicted price in thousands of dollars?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "13"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-008",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "For the $7$ buildings plotted in the steel vs. price scatterplot, for how many data points was the actual price of the building strictly less than the price predicted by the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-009",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The line of best fit predicts that a building costing $\\$88,000$ requires $22$ tons of steel. If the actual building used $24$ tons of steel, it used how many more tons of steel than predicted by the model?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "9"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-010",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "In the dataset of buildings ranked by price, the prices are $\\$95k, \\$88k, \\$82k, \\$75k, \\$68k, \\$52k, \\$45k$. The $3\\text{rd}$ most expensive building is the one priced at $\\$82k$, which used $18$ tons of steel. How many tons of steel were used for this building?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "21"
+      },
+      {
+        "id": "D",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-011",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays data points with a line of best fit having a $y$-intercept of $(0, 4)$ and passing through $(4, 9)$. Which of the following equations best models this line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = (5/4)x + 4"
+      },
+      {
+        "id": "B",
+        "text": "y = x + 3"
+      },
+      {
+        "id": "C",
+        "text": "y = 2x"
+      },
+      {
+        "id": "D",
+        "text": "y = 3x + 4"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-012",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The number of brownies $B$ produced at a bakery $m$ minutes after opening is modeled by $B = 2m$. Based on this line of best fit, how many minutes after opening is the number of brownies produced expected to reach $60$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "20"
+      },
+      {
+        "id": "B",
+        "text": "30"
+      },
+      {
+        "id": "C",
+        "text": "38"
+      },
+      {
+        "id": "D",
+        "text": "88"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-013",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot records Paula's bike ride durations and distances for $10$ rides. For $4$ of the rides, the point lies below the line of best fit. What is the number of times that the line of best fit predicted a distance greater than the actual distance?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-014",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot relates age in months ($x$) to height in inches ($y$) of a Great Dane. At age $8$ months, the actual height is $28$ inches, while the line of best fit predicts $26$ inches. Given that $1\\text{ inch} \\approx 2.54\\text{ cm}$, which of the following is closest to the difference in centimeters between the actual height and the predicted height?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "22"
+      },
+      {
+        "id": "D",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-015",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A scatterplot displays data points passing through the origin $(0, 0)$ with a constant rate of change where each unit increase in $x$ corresponds to an increase of $2$ units in $y$. Which of the following is the equation for the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 10x - 8"
+      },
+      {
+        "id": "B",
+        "text": "y = (3/2)x - 6"
+      },
+      {
+        "id": "C",
+        "text": "y = 2x"
+      },
+      {
+        "id": "D",
+        "text": "y = (3/2)x"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ps-bfp-016",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The table shows the average number of people crossing the Tijuana border per day:\n- 2007: 13,400\n- 2008: 14,300\n- 2009: 15,500\n- 2010: 16,400\n- 2011: 17,500\nIf $x$ represents years after 2007, which of the following best models the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 13,400 + 1,000x"
+      },
+      {
+        "id": "B",
+        "text": "y = 13,400 + 800x"
+      },
+      {
+        "id": "C",
+        "text": "y = 13,400(1.1)^x"
+      },
+      {
+        "id": "D",
+        "text": "y = 13,400(1.1)^(x/2)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-bfp-017",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "The price $y$ (in thousands of dollars) of an airplane purchased in 2020 for $\\$750,000$ depreciates by $20\\%$ each year. Let $x$ equal the years since 2020. Which of the following is the equation for the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = 750 - 150x"
+      },
+      {
+        "id": "B",
+        "text": "y = 750 - 80x"
+      },
+      {
+        "id": "C",
+        "text": "y = 750(0.2)^x"
+      },
+      {
+        "id": "D",
+        "text": "y = 750(0.8)^x"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ps-bfp-018",
+    "source": "PrepPros Scatter Plots & Lines of Best Fit",
+    "domain": "problem_solving",
+    "topic": "Scatterplots & Data",
+    "questionText": "A vineyard tracks the number of pounds of grapes produced ($p$) relative to the age of the vine in years ($h$). The line of best fit has an initial production of $23$ pounds and increases by $78$ pounds each year. Which of the following is the equation of the line of best fit?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "p = 78 + h"
+      },
+      {
+        "id": "B",
+        "text": "p = 78 + 23h"
+      },
+      {
+        "id": "C",
+        "text": "p = 23 + 78h"
+      },
+      {
+        "id": "D",
+        "text": "p = 78h"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ps-prb24-001",
+    "question": "A certain book has $250$ pages, and $21$ of these pages have an illustration. If one of the book's pages is selected at random, what is the probability of selecting a page with an illustration? (Express your answer as a fraction or decimal.)",
+    "correctAnswer": "21/250",
+    "explanation": "Probability is defined as the number of favorable outcomes divided by the total number of possible outcomes: $P(\\text{illustration}) = \\frac{21}{250} = 0.084$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "free_response",
+    "questionText": "A certain book has $250$ pages, and $21$ of these pages have an illustration. If one of the book's pages is selected at random, what is the probability of selecting a page with an illustration? (Express your answer as a fraction or decimal.)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-prb24-002",
+    "question": "At a convention center, there are a total of $325$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.16$. How many visitors are located in room C?",
+    "options": [
+      "25",
+      "36",
+      "104",
+      "117"
+    ],
+    "correctAnswer": "117",
+    "explanation": "Since every visitor is in room A, B, or C, the sum of their probabilities must equal $1$: $P(C) = 1 - (0.48 + 0.16) = 1 - 0.64 = 0.36$. The number of visitors in room C is $0.36 \\times 325 = 117$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "At a convention center, there are a total of $325$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.16$. How many visitors are located in room C?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-003",
+    "question": "There are $20$ marbles in a bag: $8$ red marbles, $10$ green marbles, and $2$ blue marbles. If one of these marbles is selected at random, what is the probability of selecting a red marble?",
+    "options": [
+      "2/20",
+      "8/20",
+      "10/20",
+      "12/20"
+    ],
+    "correctAnswer": "8/20",
+    "explanation": "The total number of marbles is $20$, and $8$ of them are red. The probability of choosing a red marble is $\\frac{8}{20} = \\frac{2}{5}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "There are $20$ marbles in a bag: $8$ red marbles, $10$ green marbles, and $2$ blue marbles. If one of these marbles is selected at random, what is the probability of selecting a red marble?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-004",
+    "question": "A choir of $48$ singers has $12$ members who sing bass. If one singer from the choir is selected at random, what is the probability of selecting a singer who sings bass?",
+    "options": [
+      "1/48",
+      "12/48",
+      "36/48",
+      "48/48"
+    ],
+    "correctAnswer": "12/48",
+    "explanation": "The probability is the number of bass singers divided by total singers: $\\frac{12}{48} = \\frac{1}{4}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "A choir of $48$ singers has $12$ members who sing bass. If one singer from the choir is selected at random, what is the probability of selecting a singer who sings bass?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-005",
+    "question": "The table shows the distribution of people in a certain city by age group:\n- Less than 18 years old: $27\\%$\n- 18–40 years old: $24\\%$\n- 41–65 years old: $28\\%$\n- Greater than 65 years old: $21\\%$\n\nIf a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+    "options": [
+      "0.21",
+      "0.29",
+      "0.35",
+      "0.41"
+    ],
+    "correctAnswer": "0.29",
+    "explanation": "The condition restricts the population to people at least 18 years old: $24\\% + 28\\% + 21\\% = 73\\%$. The conditional probability of choosing someone greater than 65 is $\\frac{21\\%}{73\\%} = \\frac{21}{73} \\approx 0.2877$, which is closest to $0.29$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "The table shows the distribution of people in a certain city by age group:\n- Less than 18 years old: $27\\%$\n- 18–40 years old: $24\\%$\n- 41–65 years old: $28\\%$\n- Greater than 65 years old: $21\\%$\n\nIf a person in this city is selected at random, which of the following is closest to the probability of selecting a person who is greater than 65 years old, given that the person is at least 18 years old?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-006",
+    "question": "At a convention center, there are a total of $375$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.32$. How many visitors are located in room C?",
+    "options": [
+      "20",
+      "58",
+      "60",
+      "75"
+    ],
+    "correctAnswer": "75",
+    "explanation": "The probability of being in room C is $1 - (0.48 + 0.32) = 1 - 0.80 = 0.20$. The number of visitors located in room C is $0.20 \\times 375 = 75$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "At a convention center, there are a total of $375$ visitors. Each visitor is located in either room A, room B, or room C. If one of these visitors is selected at random, the probability of selecting a visitor who is located in room A is $0.48$, and the probability of selecting a visitor who is located in room B is $0.32$. How many visitors are located in room C?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-007",
+    "question": "A sleep study consisted of $59$ participants, of which $53$ participants each had an average of more than $120$ minutes of rapid eye movement (REM) sleep per night. If a participant from this study is selected at random, what is the probability of selecting a participant that had an average of more than $120$ minutes of REM sleep per night?",
+    "options": [
+      "53/100",
+      "59/100",
+      "53/59",
+      "59/53"
+    ],
+    "correctAnswer": "53/59",
+    "explanation": "There are $53$ participants meeting the criteria out of a total of $59$ participants in the study, so the probability is $\\frac{53}{59}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "A sleep study consisted of $59$ participants, of which $53$ participants each had an average of more than $120$ minutes of rapid eye movement (REM) sleep per night. If a participant from this study is selected at random, what is the probability of selecting a participant that had an average of more than $120$ minutes of REM sleep per night?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-008",
+    "question": "At a professional conference, there are $400$ attendees. Each attendee is attending a session in room A, room B, or room C. If an attendee is chosen at random, the probability that the attendee is in room A is $0.35$, and the probability that the attendee is in room B is $0.45$. How many attendees are in room C?",
+    "options": [
+      "40",
+      "60",
+      "80",
+      "100"
+    ],
+    "correctAnswer": "80",
+    "explanation": "The probability of being in room C is $1 - (0.35 + 0.45) = 1 - 0.80 = 0.20$. The number of attendees in room C is $0.20 \\times 400 = 80$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "At a professional conference, there are $400$ attendees. Each attendee is attending a session in room A, room B, or room C. If an attendee is chosen at random, the probability that the attendee is in room A is $0.35$, and the probability that the attendee is in room B is $0.45$. How many attendees are in room C?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-009",
+    "question": "The table summarizes the age groups of $180$ study participants divided into groups:\n- Group A: 0–9 years ($14$), 10–19 years ($19$), 20+ years ($27$), Total = $60$\n- Group B: 0–9 years ($27$), 10–19 years ($7$), 20+ years ($26$), Total = $60$\n- Group C: 0–9 years ($19$), 10–19 years ($34$), 20+ years ($7$), Total = $60$\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age? (Express your answer as a fraction.)",
+    "correctAnswer": "23/60",
+    "explanation": "The condition specifies participants who are at least 10 years old (combining 10–19 and 20+ age groups): Total at least 10 years $= 60 + 60 = 120$. Within Group A, participants at least 10 years old $= 19 + 27 = 46$. Thus, the conditional probability is $\\frac{46}{120} = \\frac{23}{60}$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "free_response",
+    "questionText": "The table summarizes the age groups of $180$ study participants divided into groups:\n- Group A: 0–9 years ($14$), 10–19 years ($19$), 20+ years ($27$), Total = $60$\n- Group B: 0–9 years ($27$), 10–19 years ($7$), 20+ years ($26$), Total = $60$\n- Group C: 0–9 years ($19$), 10–19 years ($34$), 20+ years ($7$), Total = $60$\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age? (Express your answer as a fraction.)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-prb24-010",
+    "question": "A bin contains a mixture of T-shirts for two sports teams. The distribution is:\n- Flames: Small ($6$), Medium ($24$), Large ($18$), Total = $48$\n- Panthers: Small ($9$), Medium ($33$), Large ($24$), Total = $66$\n\nOne T-shirt from the bin will be selected at random. What is the probability of selecting a T-shirt that is medium, given that the T-shirt is a Flames T-shirt? (Express your answer as a fraction or decimal.)",
+    "correctAnswer": "1/2",
+    "explanation": "Given that the selected shirt is a Flames shirt, the restricted sample space is the $48$ Flames shirts. The number of medium Flames shirts is $24$. Therefore, $P(\\text{Medium} \\mid \\text{Flames}) = \\frac{24}{48} = \\frac{1}{2} = 0.5$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "free_response",
+    "questionText": "A bin contains a mixture of T-shirts for two sports teams. The distribution is:\n- Flames: Small ($6$), Medium ($24$), Large ($18$), Total = $48$\n- Panthers: Small ($9$), Medium ($33$), Large ($24$), Total = $66$\n\nOne T-shirt from the bin will be selected at random. What is the probability of selecting a T-shirt that is medium, given that the T-shirt is a Flames T-shirt? (Express your answer as a fraction or decimal.)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-prb24-011",
+    "question": "The table summarizes the distribution of age and assigned group for $105$ participants in a study:\n- Group A: 0–9 years ($5$), 10–19 years ($19$), 20+ years ($11$), Total = $35$\n- Group B: 0–9 years ($4$), 10–19 years ($8$), 20+ years ($23$), Total = $35$\n- Group C: 0–9 years ($26$), 10–19 years ($8$), 20+ years ($1$), Total = $35$\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age?",
+    "options": [
+      "2/7",
+      "3/7",
+      "19/35",
+      "6/7"
+    ],
+    "correctAnswer": "3/7",
+    "explanation": "The condition specifies participants at least 10 years of age (the 10–19 and 20+ groups): Total $= 35 + 35 = 70$. The number of participants in Group A who are at least 10 years old is $19 + 11 = 30$. The conditional probability is $\\frac{30}{70} = \\frac{3}{7}$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "The table summarizes the distribution of age and assigned group for $105$ participants in a study:\n- Group A: 0–9 years ($5$), 10–19 years ($19$), 20+ years ($11$), Total = $35$\n- Group B: 0–9 years ($4$), 10–19 years ($8$), 20+ years ($23$), Total = $35$\n- Group C: 0–9 years ($26$), 10–19 years ($8$), 20+ years ($1$), Total = $35$\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from Group A, given that the participant is at least 10 years of age?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-012",
+    "question": "A table summarizes members of a local organization:\n- Less than 45 years old: North of Center St. ($13$), South of Center St. ($12$), Total = $25$\n- At least 45 years old: North of Center St. ($22$), South of Center St. ($88$), Total = $110$\nTotal members = $135$.\n\nIf a member of the organization is selected at random, what is the probability that the selected member is at least 45 years old?",
+    "options": [
+      "25/135",
+      "35/135",
+      "100/135",
+      "110/135"
+    ],
+    "correctAnswer": "110/135",
+    "explanation": "There are $110$ members who are at least 45 years old out of the total $135$ members in the organization. Thus, the probability is $\\frac{110}{135}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "A table summarizes members of a local organization:\n- Less than 45 years old: North of Center St. ($13$), South of Center St. ($12$), Total = $25$\n- At least 45 years old: North of Center St. ($22$), South of Center St. ($88$), Total = $110$\nTotal members = $135$.\n\nIf a member of the organization is selected at random, what is the probability that the selected member is at least 45 years old?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-prb24-013",
+    "question": "A researcher calculated the mitochondrial genome sizes $g$ (in kbp) and gene counts for $29$ species:\n- 36 or fewer genes: $g < 16$ ($3$), $16 \\le g < 18$ ($0$), $18 \\le g < 20$ ($0$), $g \\ge 20$ ($0$)\n- 37 genes: $g < 16$ ($1$), $16 \\le g < 18$ ($19$), $18 \\le g < 20$ ($0$), $g \\ge 20$ ($0$)\n- 38 or more genes: $g < 16$ ($2$), $16 \\le g < 18$ ($0$), $18 \\le g < 20$ ($4$), $g \\ge 20$ ($0$)\n\nOne of these species is selected at random. What is the probability of selecting a species with genome size at least 18 kbp, given that it has 37 or more genes? (Express your answer as a fraction.)",
+    "correctAnswer": "2/13",
+    "explanation": "Given that the species has 37 or more genes, the total count in this subset is $20 + 6 = 26$ species. Among these 26 species, those with genome size $\\ge 18$ kbp only appear in the 38+ gene row with $4$ species. The conditional probability is $\\frac{4}{26} = \\frac{2}{13}$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "free_response",
+    "questionText": "A researcher calculated the mitochondrial genome sizes $g$ (in kbp) and gene counts for $29$ species:\n- 36 or fewer genes: $g < 16$ ($3$), $16 \\le g < 18$ ($0$), $18 \\le g < 20$ ($0$), $g \\ge 20$ ($0$)\n- 37 genes: $g < 16$ ($1$), $16 \\le g < 18$ ($19$), $18 \\le g < 20$ ($0$), $g \\ge 20$ ($0$)\n- 38 or more genes: $g < 16$ ($2$), $16 \\le g < 18$ ($0$), $18 \\le g < 20$ ($4$), $g \\ge 20$ ($0$)\n\nOne of these species is selected at random. What is the probability of selecting a species with genome size at least 18 kbp, given that it has 37 or more genes? (Express your answer as a fraction.)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-prb24-014",
+    "question": "For $100$ neurons, cell body diameters are classified:\n- Sensory neuron: $<20\\,\\mu\\text{m}$ ($13$), $20\\text{ to }30\\,\\mu\\text{m}$ ($7$), $>30\\,\\mu\\text{m}$ ($3$), Total = $23$\n- Motor neuron: $<20\\,\\mu\\text{m}$ ($0$), $20\\text{ to }30\\,\\mu\\text{m}$ ($15$), $>30\\,\\mu\\text{m}$ ($18$), Total = $33$\n- Interneuron: $<20\\,\\mu\\text{m}$ ($10$), $20\\text{ to }30\\,\\mu\\text{m}$ ($34$), $>30\\,\\mu\\text{m}$ ($0$), Total = $44$\n\nOne of these neurons will be selected at random. What is the probability of selecting a neuron with cell body diameter at most $30\\,\\mu\\text{m}$, given that it is not classified as a motor neuron? (Express your answer as a fraction.)",
+    "correctAnswer": "64/67",
+    "explanation": "The condition specifies neurons that are NOT motor neurons: Total $= 23$ (sensory) $+ 44$ (interneuron) $= 67$. Among these 67 neurons, those with diameter $\\le 30\\,\\mu\\text{m}$ are $(13 + 7) + (10 + 34) = 20 + 44 = 64$. Therefore, the probability is $\\frac{64}{67}$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "free_response",
+    "questionText": "For $100$ neurons, cell body diameters are classified:\n- Sensory neuron: $<20\\,\\mu\\text{m}$ ($13$), $20\\text{ to }30\\,\\mu\\text{m}$ ($7$), $>30\\,\\mu\\text{m}$ ($3$), Total = $23$\n- Motor neuron: $<20\\,\\mu\\text{m}$ ($0$), $20\\text{ to }30\\,\\mu\\text{m}$ ($15$), $>30\\,\\mu\\text{m}$ ($18$), Total = $33$\n- Interneuron: $<20\\,\\mu\\text{m}$ ($10$), $20\\text{ to }30\\,\\mu\\text{m}$ ($34$), $>30\\,\\mu\\text{m}$ ($0$), Total = $44$\n\nOne of these neurons will be selected at random. What is the probability of selecting a neuron with cell body diameter at most $30\\,\\mu\\text{m}$, given that it is not classified as a motor neuron? (Express your answer as a fraction.)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-prb24-015",
+    "question": "The table shows the number of even and odd integers in list A and list B (no integer is in both lists):\n- List A: Even ($12$), Odd ($44$), Total = $56$\n- List B: Even ($40$), Odd ($4$), Total = $44$\nTotal: Even ($52$), Odd ($48$), Total = $100$\n\nWhat fraction of even integers represented in the table are in list A?",
+    "options": [
+      "12/52",
+      "12/56",
+      "52/100",
+      "52/56"
+    ],
+    "correctAnswer": "12/52",
+    "explanation": "The question restricts the condition to even integers represented in the table, of which there are $52$ in total. Of these $52$ even integers, $12$ are in list A. Therefore, the fraction is $\\frac{12}{52}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Probability",
+    "questionType": "multiple_choice",
+    "questionText": "The table shows the number of even and odd integers in list A and list B (no integer is in both lists):\n- List A: Even ($12$), Odd ($44$), Total = $56$\n- List B: Even ($40$), Odd ($4$), Total = $44$\nTotal: Even ($52$), Odd ($48$), Total = $100$\n\nWhat fraction of even integers represented in the table are in list A?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-001",
+    "question": "A scientist takes two samples of Earth's crust, each with a mass of $3,240$ grams. Sample A has a density of $3.0\\text{ g/cm}^3$, and sample B has a density of $2.7\\text{ g/cm}^3$. How much greater is the volume, in cubic centimeters, of sample B than sample A?",
+    "correctAnswer": "120",
+    "explanation": "Density is defined as $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}}$, so $\\text{Volume} = \\frac{\\text{Mass}}{\\text{Density}}$. For Sample A: $V_A = \\frac{3240}{3.0} = 1080\\text{ cm}^3$. For Sample B: $V_B = \\frac{3240}{2.7} = 1200\\text{ cm}^3$. The difference in volume is $1200 - 1080 = 120\\text{ cm}^3$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "A scientist takes two samples of Earth's crust, each with a mass of $3,240$ grams. Sample A has a density of $3.0\\text{ g/cm}^3$, and sample B has a density of $2.7\\text{ g/cm}^3$. How much greater is the volume, in cubic centimeters, of sample B than sample A?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-002",
+    "question": "The walls of a small apartment were covered using exactly $3$ gallons of paint. The paint was spread uniformly over a total area of $960$ square feet. What was the rate, in gallons per square foot, at which the paint was used?",
+    "options": [
+      "320",
+      "1/320",
+      "960",
+      "1/960"
+    ],
+    "correctAnswer": "1/320",
+    "explanation": "Rate in gallons per square foot is $\\frac{\\text{Total Gallons}}{\\text{Total Square Feet}} = \\frac{3}{960} = \\frac{1}{320}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "The walls of a small apartment were covered using exactly $3$ gallons of paint. The paint was spread uniformly over a total area of $960$ square feet. What was the rate, in gallons per square foot, at which the paint was used?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-003",
+    "question": "The area of a rectangular region is increasing at a rate of $20$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "options": [
+      "0.03",
+      "0.10",
+      "1.09",
+      "2.03"
+    ],
+    "correctAnswer": "0.03",
+    "explanation": "First, convert hours to minutes: $1\\text{ hour} = 60\\text{ minutes}$. Next, convert square feet to square meters: $1\\text{ m} = 3.28\\text{ ft} \\implies 1\\text{ m}^2 = (3.28)^2 = 10.7584\\text{ ft}^2$. Rate $= \\frac{20\\text{ ft}^2}{1\\text{ hr}} \\times \\frac{1\\text{ hr}}{60\\text{ min}} \\times \\frac{1\\text{ m}^2}{10.7584\\text{ ft}^2} = \\frac{20}{60 \\times 10.7584} \\approx 0.03098\\text{ m}^2/\\text{min}$, closest to $0.03$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "The area of a rectangular region is increasing at a rate of $20$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-004",
+    "question": "The speed of a white-throated needletail, a type of bird, in flight was measured to be $49$ miles per hour. What was the bird's measured speed, in kilometers per hour? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "options": [
+      "30.6",
+      "47.4",
+      "50.6",
+      "78.4"
+    ],
+    "correctAnswer": "78.4",
+    "explanation": "Multiply the speed by the conversion ratio: $49\\text{ miles/hr} \\times 1.6\\text{ km/mile} = 78.4\\text{ km/hr}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "The speed of a white-throated needletail, a type of bird, in flight was measured to be $49$ miles per hour. What was the bird's measured speed, in kilometers per hour? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-005",
+    "question": "An object traveled $30$ miles in $2$ hours. What was the average speed, in miles per hour, of the object?",
+    "correctAnswer": "15",
+    "explanation": "Average speed $= \\frac{\\text{Distance}}{\\text{Time}} = \\frac{30\\text{ miles}}{2\\text{ hours}} = 15\\text{ mph}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "An object traveled $30$ miles in $2$ hours. What was the average speed, in miles per hour, of the object?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-006",
+    "question": "An object's speed is increasing at a rate of $6.80$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "correctAnswer": "15.2",
+    "explanation": "Convert meters to miles and seconds squared to minutes squared: $1\\text{ min} = 60\\text{ s} \\implies 1\\text{ min}^2 = 3,600\\text{ s}^2$. Rate $= 6.80 \\times \\frac{1}{1609} \\times 3600 = \\frac{24480}{1609} \\approx 15.2144\\text{ mi/min}^2$, which rounds to $15.2$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "An object's speed is increasing at a rate of $6.80$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-007",
+    "question": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $198$ dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "correctAnswer": "33",
+    "explanation": "First, convert height to feet: $24\\text{ inches} = 2\\text{ feet}$. Base area $= 3 \\times 27 = 81\\text{ sq ft}$. Volume in cubic feet $= 81 \\times 2 = 162\\text{ ft}^3$. Since $1\\text{ yd} = 3\\text{ ft}$, $1\\text{ yd}^3 = 3^3 = 27\\text{ ft}^3$. Volume in cubic yards $= \\frac{162}{27} = 6\\text{ yd}^3$. Unit cost $= \\frac{\\$198}{6\\text{ yd}^3} = \\$33$ per cubic yard.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $198$ dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-008",
+    "question": "A certain town has an area of $3.99$ square miles. What is the area, in square yards, of this town? ($1\\text{ mile} = 1,760\\text{ yards}$)",
+    "options": [
+      "441",
+      "7,022",
+      "776,341",
+      "12,359,424"
+    ],
+    "correctAnswer": "12,359,424",
+    "explanation": "Area scales with the square of the linear dimension: $1\\text{ sq mile} = (1,760\\text{ yd})^2 = 3,097,600\\text{ yd}^2$. Total area $= 3.99 \\times 3,097,600 = 12,359,424\\text{ yd}^2$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "A certain town has an area of $3.99$ square miles. What is the area, in square yards, of this town? ($1\\text{ mile} = 1,760\\text{ yards}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-009",
+    "question": "The area of a rectangular region is increasing at a rate of $260$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "options": [
+      "0.40",
+      "1.32",
+      "14.21",
+      "24.17"
+    ],
+    "correctAnswer": "0.40",
+    "explanation": "Convert hours to minutes ($60\\text{ min/hr}$) and square feet to square meters ($1\\text{ m}^2 = (3.28)^2 = 10.7584\\text{ ft}^2$): Rate $= \\frac{260}{60 \\times 10.7584} = \\frac{260}{645.504} \\approx 0.4028$, closest to $0.40$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "The area of a rectangular region is increasing at a rate of $260$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-010",
+    "question": "A remotely operated vehicle (ROV) is used for underwater ocean research. When the ROV is at a depth of $41$ fathoms, what is the ROV's depth in feet? ($1\\text{ fathom} = 6\\text{ feet}$)",
+    "correctAnswer": "246",
+    "explanation": "Multiply the depth in fathoms by the number of feet per fathom: $41 \\times 6 = 246\\text{ feet}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "A remotely operated vehicle (ROV) is used for underwater ocean research. When the ROV is at a depth of $41$ fathoms, what is the ROV's depth in feet? ($1\\text{ fathom} = 6\\text{ feet}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-011",
+    "question": "An object's speed is increasing at a rate of $3.9$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "options": [
+      "0.1",
+      "8.7",
+      "104.6",
+      "412.6"
+    ],
+    "correctAnswer": "8.7",
+    "explanation": "Convert meters to miles ($1/1609$) and seconds squared to minutes squared ($3600\\text{ s}^2/\\text{min}^2$): Rate $= \\frac{3.9 \\times 3600}{1609} = \\frac{14040}{1609} \\approx 8.726$, which rounds to $8.7$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "An object's speed is increasing at a rate of $3.9$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-012",
+    "question": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $234$ dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "correctAnswer": "39",
+    "explanation": "Height $= 24\\text{ in} = 2\\text{ ft}$. Volume in cubic feet $= 3 \\times 27 \\times 2 = 162\\text{ ft}^3$. In cubic yards: $\\frac{162}{27} = 6\\text{ yd}^3$. Unit cost $= \\frac{\\$234}{6\\text{ yd}^3} = \\$39$ per cubic yard.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "A raised garden is in the shape of a right rectangular prism. Its base has a width of $3$ feet and a length of $27$ feet, and it will be filled $24$ inches high with topsoil. The total cost of the topsoil needed to fill the garden to this height is $234$ dollars. What is the unit cost, in dollars per cubic yard, for the topsoil? ($1\\text{ yard} = 3\\text{ feet}$; $1\\text{ foot} = 12\\text{ inches}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-013",
+    "question": "An object's speed is increasing at the rate of $12.1$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "options": [
+      "0.5",
+      "27.1",
+      "133",
+      "324.5"
+    ],
+    "correctAnswer": "27.1",
+    "explanation": "Multiply by $3600\\text{ s}^2/\\text{min}^2$ and divide by $1609\\text{ m/mi}$: Rate $= \\frac{12.1 \\times 3600}{1609} = \\frac{43560}{1609} \\approx 27.0727$, rounding to $27.1$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "An object's speed is increasing at the rate of $12.1$ meters per second squared. What is this rate, in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-014",
+    "question": "An object's speed is increasing at a rate of $5.70$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "correctAnswer": "12.8",
+    "explanation": "Convert meters to miles and seconds squared to minutes squared: $\\frac{5.70 \\times 3600}{1609} = \\frac{20520}{1609} \\approx 12.753$, which rounds to $12.8$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "An object's speed is increasing at a rate of $5.70$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-015",
+    "question": "How many centimeters are equivalent to $35$ meters? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "correctAnswer": "3500",
+    "explanation": "Multiply the length in meters by the conversion factor: $35\\text{ m} \\times 100\\text{ cm/m} = 3500\\text{ cm}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "How many centimeters are equivalent to $35$ meters? ($1\\text{ meter} = 100\\text{ centimeters}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-dim-016",
+    "question": "An object's speed is increasing at a rate of $1.1$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "options": [
+      "0",
+      "2.5",
+      "29.5",
+      "1462.7"
+    ],
+    "correctAnswer": "2.5",
+    "explanation": "Calculate: $\\frac{1.1 \\times 3600}{1609} = \\frac{3960}{1609} \\approx 2.461$, which rounds to $2.5$.",
+    "difficulty": "medium",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "An object's speed is increasing at a rate of $1.1$ meters per second squared. What is this rate in miles per minute squared, rounded to the nearest tenth? (Use $1\\text{ mile} = 1,609\\text{ meters}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-017",
+    "question": "The area of a rectangular region is increasing at a rate of $280$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "options": [
+      "0.43",
+      "1.42",
+      "15.31",
+      "26.03"
+    ],
+    "correctAnswer": "0.43",
+    "explanation": "Convert: Rate $= \\frac{280}{60 \\times (3.28)^2} = \\frac{280}{60 \\times 10.7584} = \\frac{280}{645.504} \\approx 0.4337$, closest to $0.43$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "The area of a rectangular region is increasing at a rate of $280$ square feet per hour. Which of the following is closest to this rate in square meters per minute? (Use $1\\text{ meter} = 3.28\\text{ feet}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-018",
+    "question": "An object moves at a speed of $50$ feet per second. What is this speed, in yards per second? ($3\\text{ feet} = 1\\text{ yard}$)",
+    "options": [
+      "50/9",
+      "6",
+      "50/3",
+      "50"
+    ],
+    "correctAnswer": "50/3",
+    "explanation": "Divide feet per second by $3\\text{ feet/yard}$: $50\\text{ ft/s} \\times \\frac{1\\text{ yd}}{3\\text{ ft}} = \\frac{50}{3}\\text{ yd/s}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "An object moves at a speed of $50$ feet per second. What is this speed, in yards per second? ($3\\text{ feet} = 1\\text{ yard}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-019",
+    "question": "A certain hybrid car uses $39$ gallons of gasoline to travel $1,950$ miles. At this rate, how many kilometers does the car travel using $39$ gallons of gasoline? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "options": [
+      "312",
+      "3,120",
+      "31,200",
+      "312,000"
+    ],
+    "correctAnswer": "3,120",
+    "explanation": "Convert distance in miles to kilometers: $1,950\\text{ miles} \\times 1.6\\text{ km/mile} = 3,120\\text{ km}$.",
+    "difficulty": "easy",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "multiple_choice",
+    "questionText": "A certain hybrid car uses $39$ gallons of gasoline to travel $1,950$ miles. At this rate, how many kilometers does the car travel using $39$ gallons of gasoline? (Use $1\\text{ mile} = 1.6\\text{ kilometers}$)",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-dim-020",
+    "question": "An area of $56.00$ square nautical miles is equivalent to $k$ square kilometers. To the nearest tenth, what is the value of $k$? ($1\\text{ nautical mile} = 1.852\\text{ kilometers}$)",
+    "correctAnswer": "192.1",
+    "explanation": "Square the linear conversion factor to get the area conversion factor: $1\\text{ nmi}^2 = (1.852\\text{ km})^2 = 3.429904\\text{ km}^2$. Then calculate $k = 56.00 \\times 3.429904 = 192.074624\\text{ km}^2$, which rounds to $192.1$.",
+    "difficulty": "hard",
+    "domain": "Problem-Solving",
+    "topic": "Unit Conversion",
+    "questionType": "free_response",
+    "questionText": "An area of $56.00$ square nautical miles is equivalent to $k$ square kilometers. To the nearest tenth, what is the value of $k$? ($1\\text{ nautical mile} = 1.852\\text{ kilometers}$)",
+    "type": "free_response"
   }
 ]

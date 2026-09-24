@@ -4,7 +4,7 @@ export const AdvancedMathBg: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center justify-center opacity-40 group-hover:opacity-75 transition-opacity">
       <svg
-        className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none"
+        className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none"
         viewBox="0 0 300 50"
         preserveAspectRatio="none"
         strokeWidth="1.6"
@@ -22,10 +22,10 @@ export const AdvancedMathBg: React.FC = () => {
             cx="150"
             cy="18"
             r="4.5"
-            className="fill-orange-500 dark:fill-emerald-400 animate-ping opacity-60"
+            className="fill-emerald-600 dark:fill-emerald-400 animate-ping opacity-60"
             style={{ transformOrigin: '150px 18px' }}
           />
-          <circle cx="150" cy="18" r="3.5" className="fill-orange-500 dark:fill-emerald-400" />
+          <circle cx="150" cy="18" r="3.5" className="fill-emerald-600 dark:fill-emerald-400" />
           <circle cx="95" cy="36" r="2.5" />
           <circle cx="205" cy="36" r="2.5" />
         </g>

@@ -16,29 +16,29 @@ export interface GeminiTaskConfig {
 export const TASK_CONFIGS: Record<GeminiTaskConfig['task'], GeminiTaskConfig> = {
   instant_hint: {
     task: 'instant_hint',
-    preferredModel: 'gemini-2.5-flash-lite',
-    fallbackModels: ['gemini-2.5-flash', 'gemini-3.6-flash', 'gemini-3.1-pro'],
+    preferredModel: 'gemini-3.6-flash',
+    fallbackModels: ['gemini-3.8-flash', 'gemini-3.1-pro', 'gemini-2.5-flash-lite'],
   },
   tutor_chat: {
     task: 'tutor_chat',
-    preferredModel: 'gemini-2.5-flash',
-    fallbackModels: ['gemini-2.5-flash-lite', 'gemini-3.6-flash', 'gemini-3.1-pro'],
+    preferredModel: 'gemini-3.6-flash',
+    fallbackModels: ['gemini-3.8-flash', 'gemini-3.1-pro', 'gemini-2.5-flash'],
   },
   solution_step: {
     task: 'solution_step',
-    preferredModel: 'gemini-3.1-pro',
-    fallbackModels: ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-2.5-flash-lite'],
+    preferredModel: 'gemini-3.6-flash',
+    fallbackModels: ['gemini-3.8-flash', 'gemini-3.1-pro', 'gemini-2.5-flash'],
   },
   plan_generation: {
     task: 'plan_generation',
-    preferredModel: 'gemini-3.8-flash',
-    fallbackModels: ['gemini-3.6-flash', 'gemini-3.1-pro', 'gemini-2.5-flash'],
+    preferredModel: 'gemini-3.6-flash',
+    fallbackModels: ['gemini-3.8-flash', 'gemini-3.1-pro', 'gemini-2.5-flash'],
   },
 };
 
 /**
- * Read API Key from Vite environment variables.
- * Fallback to default user-provided key if not yet set in environment.
+ * Read API Key from Vite environment variables (e.g. .env.local).
+ * Falls back to user-provided key in localStorage if set, otherwise returns an empty string.
  */
 export function getGeminiApiKey(): string {
   try {
@@ -47,16 +47,23 @@ export function getGeminiApiKey(): string {
   } catch {}
 
   const envKey = import.meta.env.VITE_GEMINI_API_KEY;
-  if (envKey && envKey.trim() !== '') {
+  if (typeof envKey === 'string' && envKey.trim() !== '') {
     return envKey.trim();
   }
-  return 'AQ.Ab8RN6ITbBzwshVbxBz2qvFIo_McHVc5W3unHMtzPXBcKPmKOA';
+
+  return '';
 }
 
 export function setGeminiApiKey(key: string): void {
   try {
-    localStorage.setItem('gemini_api_key', key.trim());
-    cachedClient = new GoogleGenerativeAI(key.trim());
+    const trimmed = key.trim();
+    if (trimmed) {
+      localStorage.setItem('gemini_api_key', trimmed);
+      cachedClient = new GoogleGenerativeAI(trimmed);
+    } else {
+      localStorage.removeItem('gemini_api_key');
+      cachedClient = null;
+    }
   } catch (e) {
     console.error('Error saving gemini api key', e);
   }
@@ -69,8 +76,17 @@ export function hasValidApiKey(): boolean {
 
 let cachedClient: GoogleGenerativeAI | null = null;
 
+export function resetGeminiClient(): void {
+  cachedClient = null;
+}
+
 export function getGeminiClient(): GoogleGenerativeAI {
   const key = getGeminiApiKey();
+  if (!key) {
+    throw new Error(
+      'Gemini API key is not configured. Please define VITE_GEMINI_API_KEY in your .env.local file or configure it in settings.'
+    );
+  }
   if (!cachedClient) {
     cachedClient = new GoogleGenerativeAI(key);
   }

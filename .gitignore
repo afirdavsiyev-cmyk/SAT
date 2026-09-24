@@ -7,10 +7,23 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Production build outputs
+dist/
 dist-ssr
+coverage
 *.local
+
+# Environment variables & local secrets
+.env
+.env.*
+!.env.example
+
+# Large binary data & scratch scripts
+*.traineddata
+scratch/
 
 # Editor directories and files
 .vscode/*

@@ -112,14 +112,14 @@ export const ScoreCalculatorView: React.FC = () => {
       tier = {
         title: 'Ivy League & Top 10 Benchmark',
         badge: '800-Level Elite',
-        color: 'text-orange-800 dark:text-emerald-300 border-orange-300 dark:border-emerald-500/40 bg-orange-50 dark:bg-emerald-950/60',
+        color: 'text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/60',
         description: 'Competitive for MIT, Harvard, Stanford, and Caltech. Excellent mastery of difficult circle theorems and quadratics.',
       };
     } else if (score >= 700) {
       tier = {
         title: 'Top 30 National Universities',
         badge: 'High Distinction',
-        color: 'text-amber-800 dark:text-teal-300 border-amber-300 dark:border-teal-500/40 bg-amber-50 dark:bg-teal-950/60',
+        color: 'text-teal-800 dark:text-teal-300 border-teal-300 dark:border-teal-500/40 bg-teal-50 dark:bg-teal-950/60',
         description: 'Strong candidate for NYU, UCLA, Michigan, and Georgia Tech. Refine 750+ tricky problem-solving drills.',
       };
     } else if (score >= 650) {
@@ -157,10 +157,10 @@ export const ScoreCalculatorView: React.FC = () => {
     <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300 select-none pb-12">
       
       {/* ─── Top Header Banner ────────────────────────────────────────── */}
-      <div className="rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-r from-orange-500/10 via-white to-amber-500/10 dark:from-slate-900/90 dark:via-slate-900 dark:to-emerald-950/80 border-2 border-orange-500/25 dark:border-emerald-500/35 shadow-sm hover:shadow-[0_4px_25px_rgba(234,88,12,0.12)] transition-all">
+      <div className="rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-r from-emerald-500/10 via-white to-teal-500/10 dark:from-slate-900/90 dark:via-slate-900 dark:to-emerald-950/80 border-2 border-emerald-500/25 dark:border-emerald-500/35 shadow-sm hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] transition-all">
         <div className="space-y-2 max-w-2xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-100 text-orange-800 border-orange-300 dark:bg-emerald-950/40 dark:text-emerald-400 text-xs font-bold border shadow-sm">
-            <Calculator className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 text-xs font-bold border shadow-sm">
+            <Calculator className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>AUTHENTIC 2026/2027 DIGITAL SAT SCORING ENGINE</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -174,9 +174,9 @@ export const ScoreCalculatorView: React.FC = () => {
         <div className="flex items-center space-x-2 flex-wrap gap-y-2">
           <button
             onClick={() => handleApplyPreset(18, 17, 'auto')}
-            className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-amber-900/15 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-white hover:bg-orange-50/50 transition-all shadow-sm flex items-center space-x-1.5"
+            className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50/50 transition-all shadow-sm flex items-center space-x-1.5"
           >
-            <RotateCcw className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+            <RotateCcw className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>Reset Default</span>
           </button>
         </div>
@@ -189,10 +189,10 @@ export const ScoreCalculatorView: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           
           {/* Module 1 Controller Card */}
-          <div className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0c1424] border-2 border-amber-900/15 dark:border-emerald-500/35 space-y-5 shadow-sm hover:shadow-[0_4px_20px_rgba(234,88,12,0.08)] transition-all">
+          <div className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0c1424] border-2 border-slate-200 dark:border-emerald-500/35 space-y-5 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] transition-all">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-2xl bg-orange-100 text-orange-800 border-orange-300 dark:bg-emerald-950/40 dark:text-emerald-400 border font-extrabold flex items-center justify-center text-sm font-mono shadow-sm">
+                <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 border font-extrabold flex items-center justify-center text-sm font-mono shadow-sm">
                   M1
                 </div>
                 <div>
@@ -204,12 +204,12 @@ export const ScoreCalculatorView: React.FC = () => {
               {/* Routing status pill */}
               <div className={`px-3 py-1 rounded-full text-xs font-bold font-mono flex items-center space-x-1.5 border shadow-sm ${
                 m1Correct >= 17
-                  ? 'bg-orange-100 text-orange-800 border-orange-300 dark:bg-emerald-950/40 dark:text-emerald-400'
+                  ? 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400'
                   : 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-700/60'
               }`}>
                 {m1Correct >= 17 ? (
                   <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     <span>Hard Module 2 Unlocked (17+ Goal)</span>
                   </>
                 ) : (
@@ -226,7 +226,7 @@ export const ScoreCalculatorView: React.FC = () => {
               <div className="flex items-center justify-between text-xs font-semibold">
                 <span className="text-slate-600 dark:text-slate-400">Correct Answers:</span>
                 <div className="flex items-center space-x-2">
-                  <span className="font-mono text-xl font-black text-orange-700 dark:text-emerald-400 bg-orange-100/70 dark:bg-emerald-950/80 px-3 py-0.5 rounded-xl border border-orange-300 dark:border-emerald-700/60">
+                  <span className="font-mono text-xl font-black text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/80 px-3 py-0.5 rounded-xl border border-emerald-300 dark:border-emerald-700/60">
                     {m1Correct} / 22
                   </span>
                   <span className="text-slate-400 dark:text-slate-500 font-mono text-xs">
@@ -241,13 +241,13 @@ export const ScoreCalculatorView: React.FC = () => {
                 max="22"
                 value={m1Correct}
                 onChange={(e) => setM1Correct(Number(e.target.value))}
-                className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-orange-600 dark:accent-emerald-400"
+                className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-400"
               />
 
               <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 dark:text-slate-500">
                 <span>0 (Min)</span>
                 <span className="text-amber-600 dark:text-amber-400 font-bold">16 (Easy Cap)</span>
-                <span className="text-orange-600 dark:text-emerald-400 font-bold">17 (Hard Threshold)</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">17 (Hard Threshold)</span>
                 <span>22 (Perfect)</span>
               </div>
             </div>
@@ -256,7 +256,7 @@ export const ScoreCalculatorView: React.FC = () => {
             <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/80">
               <div className="text-[11px] text-slate-500 dark:text-slate-400">
                 {m1Correct >= 17 ? (
-                  <span className="text-orange-700 dark:text-emerald-400 font-semibold">✓ Hitting ≥ 17 unlocks the 800 ceiling</span>
+                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold">✓ Hitting ≥ 17 unlocks the 800 ceiling</span>
                 ) : (
                   <span className="text-amber-700 dark:text-amber-400 font-semibold">⚠ Needs {17 - m1Correct} more correct to qualify for Hard route</span>
                 )}
@@ -282,14 +282,14 @@ export const ScoreCalculatorView: React.FC = () => {
           </div>
 
           {/* Module 2 Controller Card */}
-          <div className={`p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0c1424] border-2 space-y-5 shadow-sm hover:shadow-[0_4px_20px_rgba(234,88,12,0.08)] transition-all ${
+          <div className={`p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0c1424] border-2 space-y-5 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] transition-all ${
             isHardRoute
-              ? 'border-orange-500/35 dark:border-emerald-500/40'
+              ? 'border-emerald-500/35 dark:border-emerald-500/40'
               : 'border-amber-500/35 dark:border-amber-500/40'
           }`}>
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-2xl bg-orange-100 text-orange-800 border-orange-300 dark:bg-emerald-950/40 dark:text-emerald-400 border font-extrabold flex items-center justify-center text-sm font-mono shadow-sm">
+                <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 border font-extrabold flex items-center justify-center text-sm font-mono shadow-sm">
                   M2
                 </div>
                 <div>
@@ -329,7 +329,7 @@ export const ScoreCalculatorView: React.FC = () => {
               <div className="flex items-center justify-between text-xs font-semibold">
                 <span className="text-slate-600 dark:text-slate-400">Correct Answers in Module 2:</span>
                 <div className="flex items-center space-x-2">
-                  <span className="font-mono text-xl font-black text-orange-700 dark:text-emerald-400 bg-orange-100/70 dark:bg-emerald-950/80 px-3 py-0.5 rounded-xl border border-orange-300 dark:border-emerald-700/60">
+                  <span className="font-mono text-xl font-black text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/80 px-3 py-0.5 rounded-xl border border-emerald-300 dark:border-emerald-700/60">
                     {m2Correct} / 22
                   </span>
                   <span className="text-slate-400 dark:text-slate-500 font-mono text-xs">
@@ -344,7 +344,7 @@ export const ScoreCalculatorView: React.FC = () => {
                 max="22"
                 value={m2Correct}
                 onChange={(e) => setM2Correct(Number(e.target.value))}
-                className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-orange-600 dark:accent-emerald-400"
+                className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-400"
               />
 
               <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 dark:text-slate-500">
@@ -358,7 +358,7 @@ export const ScoreCalculatorView: React.FC = () => {
             <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800/80">
               <div className="text-[11px] text-slate-500 dark:text-slate-400">
                 {isHardRoute ? (
-                  <span>Each question in Hard M2 is worth approx. <strong className="text-orange-700 dark:text-emerald-400">+10 to +20 points</strong></span>
+                  <span>Each question in Hard M2 is worth approx. <strong className="text-emerald-700 dark:text-emerald-400">+10 to +20 points</strong></span>
                 ) : (
                   <span className="text-amber-700 dark:text-amber-400">Easy Module 2 questions are scaled with a lower maximum ceiling</span>
                 )}
@@ -384,7 +384,7 @@ export const ScoreCalculatorView: React.FC = () => {
           </div>
 
           {/* Quick Scenario Preset Chips */}
-          <div className="p-5 rounded-2xl bg-amber-50/30 dark:bg-slate-900/60 border border-amber-900/10 dark:border-slate-800 space-y-2.5">
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
             <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
               ⚡ Quick Simulation Presets
             </span>
@@ -400,7 +400,7 @@ export const ScoreCalculatorView: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => handleApplyPreset(p.m1, p.m2, 'auto')}
-                  className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-orange-50 dark:hover:bg-emerald-950/40 border border-amber-900/10 dark:border-slate-700 hover:border-orange-400 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-orange-800 dark:hover:text-emerald-300 transition-all active:scale-95 shadow-sm"
+                  className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-emerald-800 dark:hover:text-emerald-300 transition-all active:scale-95 shadow-sm"
                 >
                   {p.label}
                 </button>
@@ -414,14 +414,14 @@ export const ScoreCalculatorView: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Main Dial & Score Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1424] border-2 border-amber-900/15 dark:border-emerald-500/40 flex flex-col items-center text-center space-y-6 shadow-[0_4px_20px_rgba(245,158,11,0.06)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.12)] dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0c1424] border-2 border-slate-200 dark:border-emerald-500/40 flex flex-col items-center text-center space-y-6 shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all">
             
             <div className="w-full flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400">
               <span className="flex items-center space-x-1.5">
-                <Target className="w-4 h-4 text-orange-600 dark:text-emerald-400" />
+                <Target className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Estimated Scaled Score</span>
               </span>
-              <span className="font-mono text-orange-800 dark:text-emerald-400 bg-orange-100 dark:bg-emerald-950 px-2 py-0.5 rounded-md border border-orange-300 dark:border-emerald-800 font-bold">
+              <span className="font-mono text-emerald-800 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded-md border border-emerald-300 dark:border-emerald-800 font-bold">
                 {percentile} Percentile
               </span>
             </div>
@@ -436,7 +436,7 @@ export const ScoreCalculatorView: React.FC = () => {
                   r="42"
                   stroke="currentColor"
                   strokeWidth="8"
-                  className="text-amber-100 dark:text-slate-800"
+                  className="text-slate-200 dark:text-slate-800"
                   fill="transparent"
                 />
                 {/* Animated fill circle */}
@@ -448,7 +448,7 @@ export const ScoreCalculatorView: React.FC = () => {
                   strokeWidth="8"
                   strokeDasharray="264"
                   strokeDashoffset={264 - (264 * (estimatedScore - 200)) / 600}
-                  className="text-orange-500 dark:text-emerald-400 stroke-current transition-all duration-700 ease-out"
+                  className="text-emerald-500 dark:text-emerald-400 stroke-current transition-all duration-700 ease-out"
                   fill="transparent"
                   strokeLinecap="round"
                 />
@@ -466,9 +466,9 @@ export const ScoreCalculatorView: React.FC = () => {
             </div>
 
             {/* Score Range Pill */}
-            <div className="w-full p-3 rounded-2xl bg-orange-50/80 dark:bg-emerald-950/60 border border-orange-300 dark:border-emerald-700/60 flex items-center justify-between text-xs font-mono shadow-sm">
+            <div className="w-full p-3 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700/60 flex items-center justify-between text-xs font-mono shadow-sm">
               <span className="text-slate-600 dark:text-slate-400 font-medium">PREDICTED SCORE RANGE</span>
-              <span className="font-extrabold text-orange-950 dark:text-emerald-300 text-sm">
+              <span className="font-extrabold text-emerald-950 dark:text-emerald-300 text-sm">
                 {scoreRange}
               </span>
             </div>
@@ -492,7 +492,7 @@ export const ScoreCalculatorView: React.FC = () => {
             <div className="w-full grid grid-cols-2 gap-2 text-xs font-mono">
               <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left">
                 <span className="text-[10px] text-slate-500 dark:text-slate-400 block">TOTAL CORRECT</span>
-                <span className="text-base font-bold text-orange-600 dark:text-emerald-400">
+                <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">
                   {m1Correct + m2Correct} / 44
                 </span>
               </div>
@@ -507,23 +507,23 @@ export const ScoreCalculatorView: React.FC = () => {
           </div>
 
           {/* Key Strategic Insights Card */}
-          <div className="p-6 rounded-3xl bg-white dark:bg-[#0c1424] border border-amber-900/10 dark:border-slate-800 space-y-4 shadow-sm">
+          <div className="p-6 rounded-3xl bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center space-x-2">
-              <Zap className="w-4 h-4 text-orange-600 dark:text-emerald-400" />
+              <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Digital SAT Scoring Rules</span>
             </h4>
 
             <ul className="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
               <li className="flex items-start space-x-2">
-                <span className="text-orange-600 dark:text-emerald-400 font-bold">•</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
                 <span><strong>17 / 22 in Module 1 is critical:</strong> Routing to Hard M2 is required to achieve any score above 600.</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-orange-600 dark:text-emerald-400 font-bold">•</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
                 <span><strong>No penalty for guessing:</strong> Always input an answer for all 44 multiple-choice and grid-in questions.</span>
               </li>
               <li className="flex items-start space-x-2">
-                <span className="text-orange-600 dark:text-emerald-400 font-bold">•</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
                 <span><strong>Pretest Questions:</strong> Each module contains 2 unscored experimental questions that don't affect your scaled score.</span>
               </li>
             </ul>

@@ -48,13 +48,13 @@ const MISTAKE_REASONS: {
     id: 'wrong_formula',
     title: 'Formula Slip',
     description: 'Remembered or applied the wrong formula (e.g., vertex form or radians).',
-    icon: <Compass className="w-4 h-4 text-amber-600 dark:text-amber-400" />,
+    icon: <Compass className="w-4 h-4 text-teal-600 dark:text-teal-400" />,
   },
   {
     id: 'calculation_slip',
     title: 'Calculation Slip',
     description: 'Understood the approach, but made a sign or arithmetic error.',
-    icon: <Calculator className="w-4 h-4 text-orange-600 dark:text-orange-400" />,
+    icon: <Calculator className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />,
   },
   {
     id: 'misread_question',
@@ -142,15 +142,15 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="w-full max-w-lg bg-white dark:bg-slate-900 border border-amber-900/15 dark:border-emerald-500/30 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-250"
+        className="w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-emerald-500/30 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-250"
       >
         {/* Header */}
-        <div className="p-5 border-b border-amber-900/10 dark:border-slate-800 flex items-center justify-between bg-amber-50/40 dark:bg-slate-950/50">
+        <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/80 dark:bg-slate-950/50">
           <div className="flex items-center space-x-2.5">
             <div className={`p-2 rounded-xl border ${
               isCorrect
                 ? 'bg-emerald-50 border-emerald-300 text-emerald-700 dark:bg-emerald-950/50 dark:border-emerald-500/40 dark:text-emerald-400'
-                : 'bg-orange-50 border-orange-300 text-orange-700 dark:bg-rose-950/40 dark:border-rose-500/40 dark:text-rose-400'
+                : 'bg-rose-50 border-rose-300 text-rose-700 dark:bg-rose-950/40 dark:border-rose-500/40 dark:text-rose-400'
             }`}>
               {isCorrect ? <Sparkles className="w-4 h-4" /> : <ShieldAlert className="w-4 h-4" />}
             </div>
@@ -189,12 +189,12 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
           )}
 
           {isUnderconfidence && (
-            <div className="p-3.5 rounded-2xl bg-orange-50 dark:bg-emerald-950/40 border border-orange-200 dark:border-emerald-800/60 text-xs text-orange-950 dark:text-emerald-200 space-y-1 animate-in fade-in">
-              <div className="flex items-center space-x-1.5 font-bold text-orange-800 dark:text-emerald-300">
+            <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs text-emerald-950 dark:text-emerald-200 space-y-1 animate-in fade-in">
+              <div className="flex items-center space-x-1.5 font-bold text-emerald-800 dark:text-emerald-300">
                 <Sparkles className="w-4 h-4 flex-shrink-0" />
                 <span>Underconfidence Win ({preConfidence}/5)</span>
               </div>
-              <p className="text-[11px] leading-relaxed text-orange-700 dark:text-emerald-400">
+              <p className="text-[11px] leading-relaxed text-emerald-700 dark:text-emerald-400">
                 You got this correct despite low initial confidence! Your mathematical intuition is sharper than you think. Trust your first instinct!
               </p>
             </div>
@@ -206,7 +206,7 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
               <label className="text-xs font-bold text-slate-800 dark:text-slate-200">
                 How confident were you before checking?
               </label>
-              <span className="text-xs font-mono font-extrabold text-orange-600 dark:text-emerald-400">
+              <span className="text-xs font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
                 {preConfidence === 1 ? '1 • Pure Guess'
                   : preConfidence === 2 ? '2 • Low Confidence'
                   : preConfidence === 3 ? '3 • Moderate'
@@ -223,8 +223,8 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
                   onClick={() => setPreConfidence(lvl as 1 | 2 | 3 | 4 | 5)}
                   className={`py-2 px-1 rounded-xl border font-mono text-xs font-extrabold flex flex-col items-center justify-center transition-all ${
                     preConfidence === lvl
-                      ? 'bg-orange-600 text-white border-orange-600 shadow-md shadow-orange-500/25 dark:bg-emerald-500 dark:border-emerald-400 dark:text-slate-950'
-                      : 'bg-slate-50 dark:bg-slate-950 border-amber-900/10 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-orange-400 dark:hover:border-emerald-500/50'
+                      ? 'bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:border-emerald-400 dark:text-slate-950'
+                      : 'bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-emerald-400 dark:hover:border-emerald-500/50'
                   }`}
                 >
                   <Star className={`w-3.5 h-3.5 mb-1 ${preConfidence >= lvl ? 'fill-current' : 'opacity-40'}`} />
@@ -251,8 +251,8 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
                       onClick={() => setSelectedReason(r.id)}
                       className={`p-3 rounded-2xl border cursor-pointer transition-all flex items-start space-x-3 ${
                         isSelected
-                          ? 'bg-orange-50/80 border-orange-500 dark:bg-emerald-950/40 dark:border-emerald-500 shadow-sm'
-                          : 'bg-slate-50/70 dark:bg-slate-950/60 border-amber-900/10 dark:border-slate-800 hover:border-orange-400 dark:hover:border-emerald-500/50'
+                          ? 'bg-emerald-50/80 border-emerald-500 dark:bg-emerald-950/40 dark:border-emerald-500 shadow-sm'
+                          : 'bg-slate-50/70 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-500/50'
                       }`}
                     >
                       <div className="mt-0.5 p-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
@@ -262,12 +262,12 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
                           <span className={`text-xs font-bold ${
-                            isSelected ? 'text-orange-950 dark:text-emerald-200' : 'text-slate-800 dark:text-slate-200'
+                            isSelected ? 'text-emerald-950 dark:text-emerald-200' : 'text-slate-800 dark:text-slate-200'
                           }`}>
                             {r.title}
                           </span>
                           <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                            isSelected ? 'border-orange-600 bg-orange-600 dark:border-emerald-400 dark:bg-emerald-400' : 'border-slate-300 dark:border-slate-600'
+                            isSelected ? 'border-emerald-600 bg-emerald-600 dark:border-emerald-400 dark:bg-emerald-400' : 'border-slate-300 dark:border-slate-600'
                           }`}>
                             {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-slate-950" />}
                           </div>
@@ -288,7 +288,7 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
             <button
               type="submit"
               disabled={submitted}
-              className="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-extrabold text-xs shadow-md shadow-orange-500/25 dark:shadow-glow-emerald transition-all active:scale-95 flex items-center justify-center space-x-2"
+              className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-extrabold text-xs shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald transition-all active:scale-95 flex items-center justify-center space-x-2"
             >
               {submitted ? (
                 <>

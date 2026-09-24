@@ -5364,5 +5364,503 @@
     ],
     "correctAnswer": "C",
     "difficulty": "easy"
+  },
+  {
+    "id": "geo-lna-001",
+    "question": "In the figure, parallel lines $a$ and $b$ are intersected by transversal lines $c$, $d$, and $e$. Lines $c$ and $d$ intersect line $a$ at the same point forming angle $v^\\circ$ with the upper ray of line $a$, and line $e$ forms angle $w^\\circ$. At line $b$, line $c$ forms angle $y^\\circ$ and line $d$ forms angle $z^\\circ$. If $x = 49$, $y = 136$, and $v < z$, which statement about $x$ and $w$ must be true?",
+    "options": [
+      "x < w",
+      "x > w",
+      "x = w",
+      "x + w = 90"
+    ],
+    "correctAnswer": "x < w",
+    "explanation": "Because lines $a$ and $b$ are parallel, corresponding and alternate interior angles are equal. Since $y = 136^\\circ$, the supplementary angle is $180^\\circ - 136^\\circ = 44^\\circ$. Given $v < z$ and transversal slopes with $x = 49^\\circ$, the angle $w$ must be strictly greater than $x$, meaning $x < w$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, parallel lines $a$ and $b$ are intersected by transversal lines $c$, $d$, and $e$. Lines $c$ and $d$ intersect line $a$ at the same point forming angle $v^\\circ$ with the upper ray of line $a$, and line $e$ forms angle $w^\\circ$. At line $b$, line $c$ forms angle $y^\\circ$ and line $d$ forms angle $z^\\circ$. If $x = 49$, $y = 136$, and $v < z$, which statement about $x$ and $w$ must be true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-002",
+    "question": "In the figure, $RT = TU$, the measure of angle $VST$ is $23^\\circ$, and the measure of angle $RVS$ is $44^\\circ$. If points $R, V, U$ lie on a line segment, what is the value of $x$ (where $\\angle SVR = 44^\\circ$ and $x$ is the measure of $\\angle TUS$)?",
+    "options": [
+      "21",
+      "33",
+      "44",
+      "67"
+    ],
+    "correctAnswer": "21",
+    "explanation": "In $\\triangle RSV$, the exterior angle at $V$ is $44^\\circ$ and $\\angle VST = 23^\\circ$. Using the exterior angle theorem, the non-adjacent interior angle is $44^\\circ - 23^\\circ = 21^\\circ$. Since $RT = TU$, the base angles are equal, yielding $x = 21$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, $RT = TU$, the measure of angle $VST$ is $23^\\circ$, and the measure of angle $RVS$ is $44^\\circ$. If points $R, V, U$ lie on a line segment, what is the value of $x$ (where $\\angle SVR = 44^\\circ$ and $x$ is the measure of $\\angle TUS$)?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-003",
+    "question": "A regular polygon has exactly $73$ sides. If the measure of each of the $73$ interior angles of this polygon is $(180p)^\\circ$, what is the value of $p$?",
+    "correctAnswer": "71/73",
+    "explanation": "The sum of the interior angles of an $n$-sided polygon is given by $(n - 2) \\times 180^\\circ$. For $n = 73$, the sum is $(73 - 2) \\times 180^\\circ = 71 \\times 180^\\circ$. Since all $73$ angles are equal and each measures $(180p)^\\circ$, we have $73 \\times 180p = 71 \\times 180 \\implies 73p = 71 \\implies p = \\frac{71}{73}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "A regular polygon has exactly $73$ sides. If the measure of each of the $73$ interior angles of this polygon is $(180p)^\\circ$, what is the value of $p$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-004",
+    "question": "For two acute angles, $\\angle A$ and $\\angle B$, $\\cos A = \\sin B$. The measures, in degrees, of $\\angle A$ and $\\angle B$ are $x + 8$ and $4x + 2$, respectively. What is the value of $x$?",
+    "options": [
+      "37",
+      "34",
+      "16",
+      "2"
+    ],
+    "correctAnswer": "16",
+    "explanation": "By the cofunction identity, for acute angles $\\angle A$ and $\\angle B$, $\\cos A = \\sin B$ implies that the angles are complementary: $A + B = 90^\\circ$. Substituting the given expressions: $(x + 8) + (4x + 2) = 90 \\implies 5x + 10 = 90 \\implies 5x = 80 \\implies x = 16$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "For two acute angles, $\\angle A$ and $\\angle B$, $\\cos A = \\sin B$. The measures, in degrees, of $\\angle A$ and $\\angle B$ are $x + 8$ and $4x + 2$, respectively. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-005",
+    "question": "Quadrilaterals $PQRS$ and $WXYZ$ are similar, where $P, Q,$ and $R$ correspond to $W, X,$ and $Y$, respectively. The measure of $\\angle S$ is $105^\\circ$, $PS = 25$, and $WZ = 5$. What is the measure of $\\angle Z$?",
+    "options": [
+      "5^\\circ",
+      "21^\\circ",
+      "75^\\circ",
+      "105^\\circ"
+    ],
+    "correctAnswer": "105^\\circ",
+    "explanation": "In similar polygons, corresponding angles are congruent regardless of side lengths or scale factor. Since vertex $S$ corresponds to vertex $Z$, the measure of $\\angle Z$ is equal to the measure of $\\angle S$, which is $105^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "Quadrilaterals $PQRS$ and $WXYZ$ are similar, where $P, Q,$ and $R$ correspond to $W, X,$ and $Y$, respectively. The measure of $\\angle S$ is $105^\\circ$, $PS = 25$, and $WZ = 5$. What is the measure of $\\angle Z$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-006",
+    "question": "For two acute angles $\\angle Q$ and $\\angle R$, $\\cos Q = \\sin R$. The measures, in degrees, of $\\angle Q$ and $\\angle R$ are $x + 21$ and $4x + 9$, respectively. What is the value of $x$?",
+    "options": [
+      "4",
+      "12",
+      "30",
+      "69"
+    ],
+    "correctAnswer": "12",
+    "explanation": "Since $\\cos Q = \\sin R$ for acute angles, the angles are complementary: $Q + R = 90^\\circ$. Setting up the equation: $(x + 21) + (4x + 9) = 90 \\implies 5x + 30 = 90 \\implies 5x = 60 \\implies x = 12$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "For two acute angles $\\angle Q$ and $\\angle R$, $\\cos Q = \\sin R$. The measures, in degrees, of $\\angle Q$ and $\\angle R$ are $x + 21$ and $4x + 9$, respectively. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-007",
+    "question": "Two lines intersect at exactly one point, forming two acute angles and two obtuse angles. The measure of one of these angles is $(9x - 190)^\\circ$. Which of the following could NOT be the sum of the measures of any two of these angles?",
+    "options": [
+      "(-18x + 380)^\\circ",
+      "(-18x + 740)^\\circ",
+      "(18x - 380)^\\circ",
+      "180^\\circ"
+    ],
+    "correctAnswer": "(-18x + 380)^\\circ",
+    "explanation": "At the intersection of two lines, the four angles consist of two pairs of vertical angles: $\\alpha = 9x - 190$ and $\\beta = 180 - (9x - 190) = 370 - 9x$. The sum of two angles can be: 1) $\\alpha + \\beta = 180^\\circ$, 2) $2\\alpha = 2(9x - 190) = 18x - 380^\\circ$, or 3) $2\\beta = 2(370 - 9x) = -18x + 740^\\circ$. Therefore, $(-18x + 380)^\\circ$ cannot be the sum of any two angles.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "Two lines intersect at exactly one point, forming two acute angles and two obtuse angles. The measure of one of these angles is $(9x - 190)^\\circ$. Which of the following could NOT be the sum of the measures of any two of these angles?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-008",
+    "question": "The measure of angle $R$ is $\\frac{2\\pi}{3}$ radians. The measure of angle $T$ is $\\frac{13\\pi}{18}$ radians greater than the measure of angle $R$. What is the measure of angle $T$, in degrees?",
+    "options": [
+      "120",
+      "130",
+      "250",
+      "500"
+    ],
+    "correctAnswer": "250",
+    "explanation": "First convert radians to degrees: $\\text{Angle } R = \\frac{2(180^\\circ)}{3} = 120^\\circ$. The difference is $\\frac{13(180^\\circ)}{18} = 130^\\circ$. Thus, the measure of angle $T$ is $120^\\circ + 130^\\circ = 250^\\circ$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "The measure of angle $R$ is $\\frac{2\\pi}{3}$ radians. The measure of angle $T$ is $\\frac{13\\pi}{18}$ radians greater than the measure of angle $R$. What is the measure of angle $T$, in degrees?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-009",
+    "question": "Quadrilaterals $PQRS$ and $WXYZ$ are similar, where $P, Q,$ and $R$ correspond to $W, X,$ and $Y$, respectively. The measure of $\\angle S$ is $135^\\circ$, $PS = 45$, and $WZ = 9$. What is the measure of $\\angle Z$?",
+    "options": [
+      "5^\\circ",
+      "27^\\circ",
+      "45^\\circ",
+      "135^\\circ"
+    ],
+    "correctAnswer": "135^\\circ",
+    "explanation": "Corresponding angles of similar figures are congruent. Since $S$ corresponds to $Z$, the measure of $\\angle Z = \\angle S = 135^\\circ$. The side lengths $PS = 45$ and $WZ = 9$ indicate a linear scale factor of $5:1$, which affects perimeter and area but leaves angle measures unchanged.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "Quadrilaterals $PQRS$ and $WXYZ$ are similar, where $P, Q,$ and $R$ correspond to $W, X,$ and $Y$, respectively. The measure of $\\angle S$ is $135^\\circ$, $PS = 45$, and $WZ = 9$. What is the measure of $\\angle Z$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-010",
+    "question": "A polygon has exactly $83$ sides. If the measures of each of the $83$ interior angles of this polygon is $(180p)^\\circ$, what is the value of $p$?",
+    "correctAnswer": "81/83",
+    "explanation": "The sum of the interior angle measures of an $n$-sided polygon is $(n - 2) \\times 180^\\circ$. For $n = 83$, the sum is $(83 - 2) \\times 180^\\circ = 81 \\times 180^\\circ$. Since each interior angle measures $(180p)^\\circ$, the sum is $83 \\times 180p^\\circ$. Equating the two: $83 \\times 180p = 81 \\times 180 \\implies 83p = 81 \\implies p = \\frac{81}{83}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "A polygon has exactly $83$ sides. If the measures of each of the $83$ interior angles of this polygon is $(180p)^\\circ$, what is the value of $p$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-011",
+    "question": "In the figure, two lines intersect at a point forming vertical angles $w^\\circ$ and $z^\\circ$. If $w = 150$, what is the value of $z$?",
+    "options": [
+      "30",
+      "50",
+      "75",
+      "150"
+    ],
+    "correctAnswer": "150",
+    "explanation": "When two straight lines intersect, opposite angles formed across the vertex are vertical angles. Vertical angles are congruent, so $z = w = 150$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, two lines intersect at a point forming vertical angles $w^\\circ$ and $z^\\circ$. If $w = 150$, what is the value of $z$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-012",
+    "question": "In the figure shown, line $r$ is parallel to line $s$, and both lines are intersected by line $t$. An acute interior angle at line $r$ is $x^\\circ$, and the consecutive interior angle at line $s$ is $y^\\circ$. If $x = 2w + 24$, $y = 5w + 29$, and $7w = a$, where $a$ is a constant, what is the value of $a$?",
+    "correctAnswer": "127",
+    "explanation": "Consecutive interior angles between parallel lines sum to $180^\\circ$: $x + y = 180$. Substituting the expressions: $(2w + 24) + (5w + 29) = 180 \\implies 7w + 53 = 180 \\implies 7w = 127$. Since $7w = a$, $a = 127$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "In the figure shown, line $r$ is parallel to line $s$, and both lines are intersected by line $t$. An acute interior angle at line $r$ is $x^\\circ$, and the consecutive interior angle at line $s$ is $y^\\circ$. If $x = 2w + 24$, $y = 5w + 29$, and $7w = a$, where $a$ is a constant, what is the value of $a$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-013",
+    "question": "Quadrilateral $P'Q'R'S'$ is similar to quadrilateral $PQRS$ where $P, Q, R,$ and $S$ correspond to $P', Q', R',$ and $S'$, respectively. The measure of angle $P$ is $45^\\circ$, the measure of angle $Q$ is $70^\\circ$, and the measure of angle $R$ is $90^\\circ$. The length of each side of $P'Q'R'S'$ is $3$ times the length of each corresponding side of $PQRS$. What is the measure of angle $P'$?",
+    "options": [
+      "15^\\circ",
+      "45^\\circ",
+      "60^\\circ",
+      "135^\\circ"
+    ],
+    "correctAnswer": "45^\\circ",
+    "explanation": "Under a geometric similarity transformation (dilation), side lengths are scaled by a factor, but all corresponding angles remain congruent. Therefore, the measure of angle $P'$ is equal to the measure of angle $P$, which is $45^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "Quadrilateral $P'Q'R'S'$ is similar to quadrilateral $PQRS$ where $P, Q, R,$ and $S$ correspond to $P', Q', R',$ and $S'$, respectively. The measure of angle $P$ is $45^\\circ$, the measure of angle $Q$ is $70^\\circ$, and the measure of angle $R$ is $90^\\circ$. The length of each side of $P'Q'R'S'$ is $3$ times the length of each corresponding side of $PQRS$. What is the measure of angle $P'$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-014",
+    "question": "In the figure, line $n$ intersects parallel lines $r$ and $s$. At line $r$, an exterior obtuse angle measures $164^\\circ$. At line $s$, the interior angle $x^\\circ$ is consecutive with the interior angle at $r$. What is the value of $x$?",
+    "correctAnswer": "16",
+    "explanation": "The interior angle adjacent to $164^\\circ$ on the line is $180^\\circ - 164^\\circ = 16^\\circ$. Since line $r$ is parallel to line $s$, alternate interior angles are equal, which gives $x = 16$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "In the figure, line $n$ intersects parallel lines $r$ and $s$. At line $r$, an exterior obtuse angle measures $164^\\circ$. At line $s$, the interior angle $x^\\circ$ is consecutive with the interior angle at $r$. What is the value of $x$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-015",
+    "question": "In triangle $PQR$, side $\\overline{QR}$ is extended past $R$ to point $S$. The exterior angle $\\angle PRS$ measures $166^\\circ$. If $PQ = PR$, what is the measure of $\\angle QPR$?",
+    "options": [
+      "14^\\circ",
+      "19^\\circ",
+      "24^\\circ",
+      "152^\\circ"
+    ],
+    "correctAnswer": "152^\\circ",
+    "explanation": "The interior angle $\\angle PRQ$ and exterior angle $\\angle PRS$ form a linear pair: $\\angle PRQ = 180^\\circ - 166^\\circ = 14^\\circ$. Since $PQ = PR$, triangle $PQR$ is isosceles with $\\angle PQR = \\angle PRQ = 14^\\circ$. Therefore, the vertex angle is $\\angle QPR = 180^\\circ - (14^\\circ + 14^\\circ) = 152^\\circ$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In triangle $PQR$, side $\\overline{QR}$ is extended past $R$ to point $S$. The exterior angle $\\angle PRS$ measures $166^\\circ$. If $PQ = PR$, what is the measure of $\\angle QPR$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-016",
+    "question": "In the figure, line $n$ intersects parallel lines $r$ and $s$. At line $r$, an obtuse angle measures $138^\\circ$. At line $s$, angle $x^\\circ$ forms a consecutive interior angle with the interior angle corresponding to $138^\\circ$. What is the value of $x$?",
+    "correctAnswer": "42",
+    "explanation": "Since consecutive interior angles between parallel lines are supplementary, $x + 138^\\circ = 180^\\circ \\implies x = 180 - 138 = 42$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "In the figure, line $n$ intersects parallel lines $r$ and $s$. At line $r$, an obtuse angle measures $138^\\circ$. At line $s$, angle $x^\\circ$ forms a consecutive interior angle with the interior angle corresponding to $138^\\circ$. What is the value of $x$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-017",
+    "question": "The difference between the measure of angle $A$ and the measure of angle $B$ is $-\\frac{3}{4}\\pi$ radians. Which expression shows the difference between the measure of angle $A$ and the measure of angle $B$, in degrees?",
+    "options": [
+      "-\\frac{3}{4} \\cdot \\frac{180^\\circ}{\\pi}",
+      "-\\frac{3}{4}\\pi \\cdot \\frac{180^\\circ}{\\pi}",
+      "-\\frac{3}{4}\\pi \\cdot \\frac{\\pi}{180^\\circ}",
+      "-\\frac{3}{4}\\pi \\cdot \\frac{360^\\circ}{\\pi}"
+    ],
+    "correctAnswer": "-\\frac{3}{4}\\pi \\cdot \\frac{180^\\circ}{\\pi}",
+    "explanation": "To convert any angle measurement from radians to degrees, multiply the radian measure by the conversion factor $\\frac{180^\\circ}{\\pi}$. Therefore, $-\\frac{3}{4}\\pi$ radians converts to $-\\frac{3}{4}\\pi \\cdot \\frac{180^\\circ}{\\pi}$ degrees.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "The difference between the measure of angle $A$ and the measure of angle $B$ is $-\\frac{3}{4}\\pi$ radians. Which expression shows the difference between the measure of angle $A$ and the measure of angle $B$, in degrees?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-018",
+    "question": "In triangle $PQR$, the measure of angle $P$ is $(3x + 5)^\\circ$, the measure of angle $Q$ is $(2x + 9)^\\circ$, and the measure of angle $R$ is $(4y + 5)^\\circ$. If side $QR$ is extended through point $R$ to point $S$, and the measure of exterior angle $\\angle PRS$ is $(x + y)^\\circ$, what is the value of $x + y$?",
+    "correctAnswer": "39",
+    "explanation": "By the Exterior Angle Theorem, $\\angle PRS = \\angle P + \\angle Q \\implies x + y = (3x + 5) + (2x + 9) = 5x + 14 \\implies y = 4x + 14$. Also, interior $\\angle PRQ$ and exterior $\\angle PRS$ sum to $180^\\circ$: $(4y + 5) + (x + y) = 180 \\implies x + 5y = 175$. Substituting $y = 4x + 14$: $x + 5(4x + 14) = 175 \\implies 21x + 70 = 175 \\implies 21x = 105 \\implies x = 5$. Then $y = 4(5) + 14 = 34$. Thus $x + y = 5 + 34 = 39$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "In triangle $PQR$, the measure of angle $P$ is $(3x + 5)^\\circ$, the measure of angle $Q$ is $(2x + 9)^\\circ$, and the measure of angle $R$ is $(4y + 5)^\\circ$. If side $QR$ is extended through point $R$ to point $S$, and the measure of exterior angle $\\angle PRS$ is $(x + y)^\\circ$, what is the value of $x + y$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-019",
+    "question": "In the figure, parallel lines $r$ and $s$ are intersected by transversals $t, u,$ and $w$. If $d = 42$, $g = 143$, and $h > d$, which statement about $j$ and $p$ must be true?",
+    "options": [
+      "j = p",
+      "j + p = 90",
+      "j > p",
+      "j < p"
+    ],
+    "correctAnswer": "j < p",
+    "explanation": "Using the angle-chasing relationships across parallel lines $r \\parallel s$: since $g = 143^\\circ$, the acute adjacent angle is $37^\\circ$. With $h > d$ and $d = 42^\\circ$, line tilt geometry forces the transversal angle $j$ to be strictly less than $p$, so $j < p$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, parallel lines $r$ and $s$ are intersected by transversals $t, u,$ and $w$. If $d = 42$, $g = 143$, and $h > d$, which statement about $j$ and $p$ must be true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-020",
+    "question": "In the figure, line $p$ is parallel to line $q$, and line $t$ intersects both of them. At line $q$, an obtuse angle measures $142^\\circ$ and the adjacent angle on the straight line is $x^\\circ$. What is the value of $x + 142$?",
+    "options": [
+      "52",
+      "90",
+      "142",
+      "180"
+    ],
+    "correctAnswer": "180",
+    "explanation": "Angles $x^\\circ$ and $142^\\circ$ form a linear pair along the straight line $q$. Two angles forming a linear pair are supplementary, which means their sum is always $180^\\circ$. Hence, $x + 142 = 180$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, line $p$ is parallel to line $q$, and line $t$ intersects both of them. At line $q$, an obtuse angle measures $142^\\circ$ and the adjacent angle on the straight line is $x^\\circ$. What is the value of $x + 142$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-021",
+    "question": "In the figure shown, line $m$ is parallel to line $n$, and line $k$ intersects both lines. At line $n$, the exterior obtuse angle is $135^\\circ$. Which of the following statements is true?",
+    "options": [
+      "q = 135",
+      "r = 135",
+      "s = 135",
+      "t = 135"
+    ],
+    "correctAnswer": "t = 135",
+    "explanation": "Angle $t$ is directly opposite the $135^\\circ$ angle at the intersection of lines $k$ and $n$, making them vertical angles. Since vertical angles are equal, $t = 135$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure shown, line $m$ is parallel to line $n$, and line $k$ intersects both lines. At line $n$, the exterior obtuse angle is $135^\\circ$. Which of the following statements is true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-022",
+    "question": "In $\\triangle JKL$, the measures of both $\\angle J$ and $\\angle K$ are equal, and the measure of $\\angle L$ is $134^\\circ$. What is the measure of $\\angle J$?",
+    "options": [
+      "23^\\circ",
+      "46^\\circ",
+      "67^\\circ",
+      "90^\\circ"
+    ],
+    "correctAnswer": "23^\\circ",
+    "explanation": "The sum of interior angles in a triangle is $180^\\circ$: $\\angle J + \\angle K + \\angle L = 180^\\circ$. Since $\\angle J = \\angle K$, we have $2(\\angle J) + 134^\\circ = 180^\\circ \\implies 2(\\angle J) = 46^\\circ \\implies \\angle J = 23^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In $\\triangle JKL$, the measures of both $\\angle J$ and $\\angle K$ are equal, and the measure of $\\angle L$ is $134^\\circ$. What is the measure of $\\angle J$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-023",
+    "question": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. If $y = 2x + 9$ and the corresponding interior alternate angle is $61^\\circ$, what is the value of $x$?",
+    "options": [
+      "26",
+      "35",
+      "55",
+      "65"
+    ],
+    "correctAnswer": "26",
+    "explanation": "Since lines $q$ and $r$ are parallel, alternate interior angles are equal: $y = 61^\\circ$. Substituting into the equation: $2x + 9 = 61 \\implies 2x = 52 \\implies x = 26$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. If $y = 2x + 9$ and the corresponding interior alternate angle is $61^\\circ$, what is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-024",
+    "question": "In triangle $ABC$, the measure of angle $A$ is $47^\\circ$, the measure of angle $B$ is $90^\\circ$, and the measure of angle $C$ is $\\left(\\frac{k}{2}\\right)^\\circ$. What is the value of $k$?",
+    "options": [
+      "43",
+      "45",
+      "86",
+      "94"
+    ],
+    "correctAnswer": "86",
+    "explanation": "The acute angles of a right triangle sum to $90^\\circ$: $\\angle A + \\angle C = 90^\\circ \\implies 47 + \\frac{k}{2} = 90 \\implies \\frac{k}{2} = 43 \\implies k = 86$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In triangle $ABC$, the measure of angle $A$ is $47^\\circ$, the measure of angle $B$ is $90^\\circ$, and the measure of angle $C$ is $\\left(\\frac{k}{2}\\right)^\\circ$. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-025",
+    "question": "A line intersects two parallel lines, forming four acute angles and four obtuse angles. The measure of one of these eight angles is $(7x - 250)^\\circ$. The sum of the measures of four of the eight angles is $k$. Which of the following could NOT be equivalent to $k$, for all values of $x$?",
+    "options": [
+      "-14x + 1,540",
+      "14x - 320",
+      "-28x + 1,720",
+      "360"
+    ],
+    "correctAnswer": "-14x + 1,540",
+    "explanation": "Let the given angle be $\\alpha = 7x - 250$. The supplementary angle is $\\beta = 180 - (7x - 250) = 430 - 7x$. Selecting four angles yields five possible sums: $4\\alpha = 28x - 1000$; $3\\alpha + \\beta = 14x - 320$; $2\\alpha + 2\\beta = 360$; $\\alpha + 3\\beta = -14x + 1040$; and $4\\beta = -28x + 1720$. The expression $-14x + 1,540$ cannot be obtained.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "A line intersects two parallel lines, forming four acute angles and four obtuse angles. The measure of one of these eight angles is $(7x - 250)^\\circ$. The sum of the measures of four of the eight angles is $k$. Which of the following could NOT be equivalent to $k$, for all values of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-026",
+    "question": "A line intersects two parallel lines, forming four acute and four obtuse angles. The measure of one of the acute angles is $(7x - 619)^\\circ$. The sum of the measure of one of the acute and three of the obtuse angles is $(-14x + w)^\\circ$. What is the value of $w$?",
+    "correctAnswer": "1778",
+    "explanation": "The acute angle is $\\theta = 7x - 619$. The obtuse angle is $180 - \\theta = 180 - (7x - 619) = 799 - 7x$. The sum of one acute and three obtuse angles is $\\theta + 3(180 - \\theta) = 540 - 2\\theta = 540 - 2(7x - 619) = 540 - 14x + 1238 = -14x + 1778$. Therefore, $w = 1778$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "free_response",
+    "questionText": "A line intersects two parallel lines, forming four acute and four obtuse angles. The measure of one of the acute angles is $(7x - 619)^\\circ$. The sum of the measure of one of the acute and three of the obtuse angles is $(-14x + w)^\\circ$. What is the value of $w$?",
+    "type": "free_response"
+  },
+  {
+    "id": "geo-lna-027",
+    "question": "In the figure, two lines intersect at a point forming vertical angles $w^\\circ$ and $z^\\circ$. If $w = 128$, what is the value of $z$?",
+    "options": [
+      "28",
+      "52",
+      "64",
+      "128"
+    ],
+    "correctAnswer": "128",
+    "explanation": "Vertical angles formed by two intersecting lines are always congruent. Hence, $z = w = 128$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, two lines intersect at a point forming vertical angles $w^\\circ$ and $z^\\circ$. If $w = 128$, what is the value of $z$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-028",
+    "question": "In the figure shown, line $l$ intersects lines $j$ and $k$. An interior angle at line $j$ measures $35^\\circ$. Which additional piece of information is sufficient to prove that lines $j$ and $k$ are parallel?",
+    "options": [
+      "w = 35^\\circ",
+      "x = 145^\\circ",
+      "y = 35^\\circ",
+      "z = 145^\\circ"
+    ],
+    "correctAnswer": "w = 35^\\circ",
+    "explanation": "By the Alternate Interior Angles Converse Theorem, if two lines are cut by a transversal and the alternate interior angles are congruent, then the lines are parallel. Since angle $w$ and the $35^\\circ$ angle are alternate interior angles, $w = 35^\\circ$ proves lines $j$ and $k$ are parallel.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure shown, line $l$ intersects lines $j$ and $k$. An interior angle at line $j$ measures $35^\\circ$. Which additional piece of information is sufficient to prove that lines $j$ and $k$ are parallel?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-029",
+    "question": "In the figure shown, lines $l$ and $k$ are parallel and transversal line $t$ intersects both lines. Consecutive interior angles are $x^\\circ$ and $y^\\circ$. If $x > 154$, which of the following must be true?",
+    "options": [
+      "y < 26",
+      "y > 26",
+      "x + y < 180",
+      "x + y > 180"
+    ],
+    "correctAnswer": "y < 26",
+    "explanation": "Consecutive interior angles between parallel lines always sum to $180^\\circ$: $x + y = 180 \\implies y = 180 - x$. Since $x > 154$, subtracting $x$ from $180$ yields $y < 180 - 154 \\implies y < 26$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure shown, lines $l$ and $k$ are parallel and transversal line $t$ intersects both lines. Consecutive interior angles are $x^\\circ$ and $y^\\circ$. If $x > 154$, which of the following must be true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "geo-lna-030",
+    "question": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. The alternate interior angle at line $q$ measures $74^\\circ$, and at line $r$ the angle is $y^\\circ$. If $y = 2x + 8$, what is the value of $x$?",
+    "options": [
+      "33",
+      "41",
+      "49",
+      "59"
+    ],
+    "correctAnswer": "33",
+    "explanation": "Since line $q$ is parallel to line $r$, alternate interior angles are equal: $y = 74^\\circ$. Setting $2x + 8 = 74 \\implies 2x = 66 \\implies x = 33$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trig",
+    "topic": "Lines and Angles",
+    "questionType": "multiple_choice",
+    "questionText": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. The alternate interior angle at line $q$ measures $74^\\circ$, and at line $r$ the angle is $y^\\circ$. If $y = 2x + 8$, what is the value of $x$?",
+    "type": "multiple_choice"
   }
 ]

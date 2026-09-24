@@ -1,10 +1,51 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { AppView, UserProgress, UserProgressState, ExamHistoryEntry, StudyPlan, Question, MathDomain } from '../types';
+import { AppView, UserProgress, UserProgressState, ExamHistoryEntry, MockExamResult, StudyPlan, Question, MathDomain } from '../types';
 import { initialUserProgress, mockQuestions } from '../data/mockData';
+import {
+  OFFICIAL_PRACTICE_TEST_1_QUESTIONS,
+  getPracticeTest1Module1,
+  getPracticeTest1Module2,
+} from '../data/officialPracticeTest1';
+import {
+  OFFICIAL_PRACTICE_TEST_2_QUESTIONS,
+  getPracticeTest2Module1,
+  getPracticeTest2Module2,
+} from '../data/officialPracticeTest2';
+import {
+  OFFICIAL_PRACTICE_TEST_3_QUESTIONS,
+  getPracticeTest3Module1,
+  getPracticeTest3Module2,
+} from '../data/officialPracticeTest3';
+import {
+  OFFICIAL_PRACTICE_TEST_4_QUESTIONS,
+  getPracticeTest4Module1,
+  getPracticeTest4Module2,
+} from '../data/officialPracticeTest4';
+import {
+  OFFICIAL_PRACTICE_TEST_5_QUESTIONS,
+  getPracticeTest5Module1,
+  getPracticeTest5Module2,
+} from '../data/officialPracticeTest5';
+import {
+  OFFICIAL_PRACTICE_TEST_6_QUESTIONS,
+  getPracticeTest6Module1,
+  getPracticeTest6Module2,
+} from '../data/officialPracticeTest6';
+import {
+  OFFICIAL_PRACTICE_TEST_7_QUESTIONS,
+  getPracticeTest7Module1,
+  getPracticeTest7Module2,
+} from '../data/officialPracticeTest7';
+import {
+  OFFICIAL_PRACTICE_TEST_8_QUESTIONS,
+  getPracticeTest8Module1,
+  getPracticeTest8Module2,
+} from '../data/officialPracticeTest8';
 import { generatePrescriptiveStudyPlan } from '../utils/studyPlanGenerator';
 
 const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
+const MOCK_RESULTS_STORAGE_KEY = 'sat_mock_exam_results';
 
 const DEFAULT_USER_PROGRESS_STATE: UserProgressState = {
   planner: {
@@ -65,6 +106,15 @@ interface AppContextType {
   finishExam: () => void;
   resetExam: () => void;
   examFinished: boolean;
+  activeExamMode: 'full' | 'module1' | 'module2';
+  activeExamId: string;
+  setActiveExamId: (id: string) => void;
+  currentModule: 1 | 2;
+  setCurrentModule: (mod: 1 | 2) => void;
+  startExam: (mode?: 'full' | 'module1' | 'module2', customQuestions?: Question[], testId?: string) => void;
+  proceedToModule2: () => void;
+  mockExamResults: Record<string, MockExamResult>;
+  reviewExam: (mode?: 'full' | 'module1' | 'module2', testId?: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -192,9 +242,115 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     [userProgress]
   );
 
+  const [examQuestions, setExamQuestions] = useState<Question[]>(OFFICIAL_PRACTICE_TEST_1_QUESTIONS);
+  const [activeExamMode, setActiveExamMode] = useState<'full' | 'module1' | 'module2'>('full');
+  const [activeExamId, setActiveExamId] = useState<string>('pt1');
+  const [currentModule, setCurrentModule] = useState<1 | 2>(1);
   const [currentExamAnswers, setCurrentExamAnswers] = useState<Record<string, string>>({});
   const [markedForReview, setMarkedForReview] = useState<string[]>([]);
   const [examFinished, setExamFinished] = useState<boolean>(false);
+
+  // Persistent completed mock exam results
+  const [mockExamResults, setMockExamResults] = useState<Record<string, MockExamResult>>(() => {
+    try {
+      const saved = localStorage.getItem(MOCK_RESULTS_STORAGE_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to load mock exam results from localStorage', e);
+    }
+    return {};
+  });
+
+  const getTestQuestions = (testId: string = 'pt1', mode: 'full' | 'module1' | 'module2' = 'full'): Question[] => {
+    if (testId === 'pt2') {
+      if (mode === 'module1') return getPracticeTest2Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest2Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_2_QUESTIONS;
+    }
+    if (testId === 'pt3') {
+      if (mode === 'module1') return getPracticeTest3Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest3Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_3_QUESTIONS;
+    }
+    if (testId === 'pt4') {
+      if (mode === 'module1') return getPracticeTest4Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest4Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_4_QUESTIONS;
+    }
+    if (testId === 'pt5') {
+      if (mode === 'module1') return getPracticeTest5Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest5Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_5_QUESTIONS;
+    }
+    if (testId === 'pt6') {
+      if (mode === 'module1') return getPracticeTest6Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest6Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_6_QUESTIONS;
+    }
+    if (testId === 'pt7') {
+      if (mode === 'module1') return getPracticeTest7Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest7Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_7_QUESTIONS;
+    }
+    if (testId === 'pt8') {
+      if (mode === 'module1') return getPracticeTest8Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest8Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_8_QUESTIONS;
+    }
+    // Default pt1
+    if (mode === 'module1') return getPracticeTest1Module1().map((q, i) => ({ ...q, number: i + 1 }));
+    if (mode === 'module2') return getPracticeTest1Module2().map((q, i) => ({ ...q, number: i + 1 }));
+    return OFFICIAL_PRACTICE_TEST_1_QUESTIONS;
+  };
+
+  const reviewExam = (mode: 'full' | 'module1' | 'module2' = 'full', testId: string = 'pt1') => {
+    const key = `${testId}_${mode}`;
+    const result = mockExamResults[key] || mockExamResults[testId] || (testId === 'pt1' ? mockExamResults[mode] : undefined);
+    if (result) {
+      setActiveExamMode(mode);
+      setActiveExamId(testId);
+      if (mode === 'module2') {
+        setCurrentModule(2);
+      } else {
+        setCurrentModule(1);
+      }
+      const qs = getTestQuestions(testId, mode);
+      setExamQuestions(qs);
+      setCurrentExamAnswers(result.answers || {});
+      setMarkedForReview(result.markedForReview || []);
+      setExamFinished(true);
+      setCurrentView('review');
+    } else {
+      // If no stored result yet, start fresh
+      startExam(mode, undefined, testId);
+    }
+  };
+
+  const startExam = (
+    mode: 'full' | 'module1' | 'module2' = 'full',
+    customQuestions?: Question[],
+    testId: string = 'pt1'
+  ) => {
+    setCurrentExamAnswers({});
+    setMarkedForReview([]);
+    setExamFinished(false);
+    setActiveExamMode(mode);
+    setActiveExamId(testId);
+
+    if (mode === 'module2') {
+      setCurrentModule(2);
+    } else {
+      setCurrentModule(1);
+    }
+
+    const qs = customQuestions || getTestQuestions(testId, mode);
+    setExamQuestions(qs);
+    setCurrentView('exam');
+  };
+
+  const proceedToModule2 = () => {
+    setCurrentModule(2);
+  };
 
   const setAnswer = (questionId: string, answer: string) => {
     setCurrentExamAnswers((prev) => ({ ...prev, [questionId]: answer }));
@@ -277,45 +433,73 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const finishExam = () => {
     setExamFinished(true);
 
-    // Compute actual exam statistics
     let correctCount = 0;
     const answeredCount = Object.keys(currentExamAnswers).length;
-    const totalExamQuestions = mockQuestions.length;
+    const totalExamQuestions = examQuestions.length;
 
-    // Track domain performance
+    // Track domain and module performance
     const domainCounts: Record<string, { total: number; correct: number }> = {};
+    let module1Correct = 0;
+    let module2Correct = 0;
 
-    mockQuestions.forEach((q) => {
+    examQuestions.forEach((q, idx) => {
       if (!domainCounts[q.domain]) {
         domainCounts[q.domain] = { total: 0, correct: 0 };
       }
       domainCounts[q.domain].total += 1;
 
-      if (currentExamAnswers[q.id] === q.correctAnswer) {
+      const isCorrect = currentExamAnswers[q.id] === q.correctAnswer;
+      if (isCorrect) {
         correctCount += 1;
         domainCounts[q.domain].correct += 1;
+
+        if (activeExamMode === 'full') {
+          if (idx < 22) module1Correct += 1;
+          else module2Correct += 1;
+        } else if (activeExamMode === 'module1') {
+          module1Correct += 1;
+        } else {
+          module2Correct += 1;
+        }
       }
     });
 
-    // Score calculation (scaling to 800)
-    let scaledScore = 750;
+    // Authentic Digital SAT Math scoring (scaled to 800)
+    let scaledScore = 700;
     if (totalExamQuestions > 0) {
-      const pct = correctCount / totalExamQuestions;
-      if (pct === 1) scaledScore = 800;
-      else if (pct >= 0.9) scaledScore = 780;
-      else if (pct >= 0.8) scaledScore = 740;
-      else if (pct >= 0.7) scaledScore = 700;
-      else if (pct >= 0.6) scaledScore = 650;
-      else scaledScore = Math.max(480, Math.round((200 + pct * 600) / 10) * 10);
+      if (activeExamMode === 'full') {
+        // Digital SAT 44 Questions Conversion table
+        if (correctCount === 44) scaledScore = 800;
+        else if (correctCount >= 42) scaledScore = 790;
+        else if (correctCount >= 40) scaledScore = 770;
+        else if (correctCount >= 38) scaledScore = 740;
+        else if (correctCount >= 35) scaledScore = 710;
+        else if (correctCount >= 32) scaledScore = 680;
+        else if (correctCount >= 28) scaledScore = 640;
+        else if (correctCount >= 24) scaledScore = 590;
+        else if (correctCount >= 20) scaledScore = 540;
+        else if (correctCount >= 16) scaledScore = 490;
+        else scaledScore = Math.max(200, Math.round((200 + (correctCount / 44) * 600) / 10) * 10);
+      } else {
+        // 22 Question Module Scaling
+        const pct = correctCount / 22;
+        if (correctCount === 22) scaledScore = 800;
+        else if (correctCount >= 20) scaledScore = 770;
+        else if (correctCount >= 18) scaledScore = 730;
+        else if (correctCount >= 16) scaledScore = 690;
+        else if (correctCount >= 14) scaledScore = 650;
+        else if (correctCount >= 12) scaledScore = 600;
+        else scaledScore = Math.max(200, Math.round((200 + pct * 600) / 10) * 10);
+      }
     }
 
     const todayStr = new Date().toISOString().split('T')[0];
     const newEntry: ExamHistoryEntry = {
       date: todayStr,
       score: scaledScore,
-      module1Correct: Math.min(22, correctCount),
-      module2Correct: Math.max(0, correctCount - 1),
-      module2Type: correctCount >= 3 ? 'hard' : 'easy',
+      module1Correct: activeExamMode === 'full' ? module1Correct : (activeExamMode === 'module1' ? correctCount : 18),
+      module2Correct: activeExamMode === 'full' ? module2Correct : (activeExamMode === 'module2' ? correctCount : 17),
+      module2Type: (activeExamMode === 'module2' || module1Correct >= 15) ? 'hard' : 'easy',
     };
 
     setUserProgressState((prev) => {
@@ -344,12 +528,43 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           ...prev.stats,
           totalQuestionsSolved: prev.stats.totalQuestionsSolved + (answeredCount || totalExamQuestions),
           totalQuestionsCorrect: prev.stats.totalQuestionsCorrect + correctCount,
-          globalXP: prev.stats.globalXP + 450,
+          globalXP: prev.stats.globalXP + (activeExamMode === 'full' ? 500 : 250),
           completedExamsCount: prev.stats.completedExamsCount + 1,
           domainMastery: updatedMastery,
           examHistory: [...prev.stats.examHistory, newEntry],
         },
       };
+    });
+
+    // Save completed mock exam result for card badges and review/retake
+    const resultEntry: MockExamResult = {
+      mode: activeExamMode,
+      testId: activeExamId,
+      date: todayStr,
+      score: scaledScore,
+      totalQuestions: totalExamQuestions,
+      correctCount,
+      module1Correct: activeExamMode === 'full' ? module1Correct : (activeExamMode === 'module1' ? correctCount : 0),
+      module1Total: activeExamMode === 'full' ? 22 : (activeExamMode === 'module1' ? 22 : 0),
+      module2Correct: activeExamMode === 'full' ? module2Correct : (activeExamMode === 'module2' ? correctCount : 0),
+      module2Total: activeExamMode === 'full' ? 22 : (activeExamMode === 'module2' ? 22 : 0),
+      answers: { ...currentExamAnswers },
+      markedForReview: [...markedForReview],
+    };
+
+    setMockExamResults((prev) => {
+      const updated = {
+        ...prev,
+        [activeExamId]: resultEntry,
+        [`${activeExamId}_${activeExamMode}`]: resultEntry,
+        ...(activeExamId === 'pt1' ? { [activeExamMode]: resultEntry } : {}),
+      };
+      try {
+        localStorage.setItem(MOCK_RESULTS_STORAGE_KEY, JSON.stringify(updated));
+      } catch (e) {
+        console.error('Failed to save mock exam results to localStorage', e);
+      }
+      return updated;
     });
 
     setCurrentView('review');
@@ -359,6 +574,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrentExamAnswers({});
     setMarkedForReview([]);
     setExamFinished(false);
+    setCurrentModule(activeExamMode === 'module2' ? 2 : 1);
   };
 
   return (
@@ -374,7 +590,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setUserProgress,
         studyPlan,
         setStudyPlan,
-        questions: mockQuestions,
+        questions: examQuestions,
         currentExamAnswers,
         markedForReview,
         setAnswer,
@@ -382,6 +598,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         finishExam,
         resetExam,
         examFinished,
+        activeExamMode,
+        activeExamId,
+        setActiveExamId,
+        currentModule,
+        setCurrentModule,
+        startExam,
+        proceedToModule2,
+        mockExamResults,
+        reviewExam,
       }}
     >
       {children}

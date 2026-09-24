@@ -1,5 +1,6 @@
 import { QuestionItem, QuestionDomain, DomainDirectoryCategory } from '../../types/questionBank';
 import { SATQuestion } from '../../types/question';
+import { getStepByStepExplanation } from '../../utils/stepByStepExplanationEngine';
 import algebraQuestionsRaw from './algebra.json';
 import advancedMathQuestionsRaw from './advanced-math.json';
 import problemSolvingQuestionsRaw from './problem-solving.json';
@@ -21,7 +22,7 @@ export const ALGEBRA_QUESTIONS: QuestionItem[] = (algebraQuestionsRaw as unknown
   type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
   options: q.options,
   correctAnswer: q.correctAnswer,
-  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+  explanation: getStepByStepExplanation(q, 'Algebra'),
 }));
 
 export const ADVANCED_MATH_QUESTIONS: QuestionItem[] = (advancedMathQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
@@ -35,7 +36,7 @@ export const ADVANCED_MATH_QUESTIONS: QuestionItem[] = (advancedMathQuestionsRaw
   type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
   options: q.options,
   correctAnswer: q.correctAnswer,
-  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+  explanation: getStepByStepExplanation(q, 'Advanced Math'),
 }));
 
 export const PROBLEM_SOLVING_QUESTIONS: QuestionItem[] = (problemSolvingQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
@@ -49,7 +50,7 @@ export const PROBLEM_SOLVING_QUESTIONS: QuestionItem[] = (problemSolvingQuestion
   type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
   options: q.options,
   correctAnswer: q.correctAnswer,
-  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+  explanation: getStepByStepExplanation(q, 'Problem-Solving & Data Analysis'),
 }));
 
 export const GEOMETRY_TRIG_QUESTIONS: QuestionItem[] = (geometryTrigQuestionsRaw as unknown as SATQuestion[]).map((q) => ({
@@ -63,7 +64,7 @@ export const GEOMETRY_TRIG_QUESTIONS: QuestionItem[] = (geometryTrigQuestionsRaw
   type: q.type === 'free_response' ? 'student_produced' : 'multiple_choice',
   options: q.options,
   correctAnswer: q.correctAnswer,
-  explanation: q.explanation || `The correct answer is ${q.correctAnswer}.`,
+  explanation: getStepByStepExplanation(q, 'Geometry & Trigonometry'),
 }));
 
 export const ALL_QUESTIONS: QuestionItem[] = [

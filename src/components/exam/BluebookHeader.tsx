@@ -30,7 +30,7 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
   isAiTutorOpen,
   currentQuestionId
 }) => {
-  const { markedForReview, toggleMark, setCurrentView } = useApp();
+  const { markedForReview, toggleMark, setCurrentView, activeExamMode, currentModule } = useApp();
   const [showTimerDigits, setShowTimerDigits] = useState<boolean>(true);
   const [showDirections, setShowDirections] = useState<boolean>(false);
 
@@ -43,6 +43,20 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
     const secs = totalSeconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
+
+  const moduleTitle =
+    activeExamMode === 'full'
+      ? `Module ${currentModule} (Adaptive)`
+      : activeExamMode === 'module1'
+      ? 'Module 1 Diagnostic'
+      : 'Module 2 (Hard 750+ Track)';
+
+  const questionsRange =
+    activeExamMode === 'full'
+      ? currentModule === 1
+        ? '1–22'
+        : '23–44'
+      : '1–22';
 
   return (
     <header className="px-4 sm:px-6 py-2.5 flex items-center justify-between text-slate-800 dark:text-slate-100 select-none z-40 relative backdrop-blur-md bg-white/95 border-b border-slate-200 dark:bg-[#090d16]/95 dark:border-slate-800 transition-colors duration-200 shadow-sm dark:shadow-none">
@@ -64,7 +78,7 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
 
         <div className="flex flex-col">
           <span className="text-xs font-extrabold tracking-wide text-slate-900 dark:text-white uppercase">Section 2: Math</span>
-          <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold font-mono">Module 1 (Adaptive)</span>
+          <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold font-mono">{moduleTitle}</span>
         </div>
 
         {/* Directions */}
@@ -80,7 +94,7 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
           <div className="absolute top-14 left-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl p-4 text-xs max-w-sm shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-150">
             <p className="font-extrabold text-slate-900 dark:text-white mb-1.5 text-sm">Module Directions</p>
             <p className="leading-relaxed">
-              For questions 1–22, solve each problem and select the best option or type your student-produced response. You may use the built-in Desmos calculator or reference sheet at any time.
+              For questions {questionsRange}, solve each problem and select the best option or type your student-produced response. You may use the built-in Desmos calculator or reference sheet at any time.
             </p>
           </div>
         )}
@@ -123,12 +137,12 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
           onClick={onTogglePause}
           className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold transition-all shadow-sm ${
             isPaused
-              ? 'bg-amber-500 text-slate-950 border border-amber-400 font-extrabold shadow-sm'
+              ? 'bg-emerald-600 text-white border border-emerald-500 font-extrabold shadow-sm'
               : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 dark:bg-slate-800/80 dark:hover:bg-slate-700 dark:text-slate-200 dark:border-slate-700'
           }`}
         >
           {isPaused
-            ? <Play className="w-3.5 h-3.5 fill-slate-950 stroke-none" />
+            ? <Play className="w-3.5 h-3.5 fill-white stroke-none" />
             : <Pause className="w-3.5 h-3.5" />
           }
           <span className="hidden sm:inline">{isPaused ? 'Resume' : 'Pause'}</span>
@@ -176,6 +190,7 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
 
         {/* Ask ScoreUP AI */}
         <button
+          data-ai-tutor-toggle="true"
           onClick={onToggleAiTutor}
           className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${
             isAiTutorOpen
@@ -192,11 +207,11 @@ export const BluebookHeader: React.FC<BluebookHeaderProps> = ({
           onClick={() => toggleMark(currentQuestionId)}
           className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${
             isMarked
-              ? 'bg-amber-100 text-amber-900 border border-amber-300 dark:bg-yellow-500/20 dark:text-yellow-300 dark:border-yellow-500/50'
+              ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/40'
               : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 dark:bg-slate-800/80 dark:hover:bg-slate-700 dark:text-slate-200 dark:border-slate-700'
           }`}
         >
-          <Bookmark className={`w-3.5 h-3.5 ${isMarked ? 'fill-amber-500 text-amber-500 dark:fill-yellow-400 dark:text-yellow-400' : ''}`} />
+          <Bookmark className={`w-3.5 h-3.5 ${isMarked ? 'fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400' : ''}`} />
           <span className="hidden sm:inline">{isMarked ? 'Marked' : 'Mark'}</span>
         </button>
 

@@ -5,13 +5,13 @@ interface DomainInteractiveCanvasProps {
   domain: QuestionDomain | string;
 }
 
-export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = ({ domain }) => {
+const DomainInteractiveCanvasComponent: React.FC<DomainInteractiveCanvasProps> = ({ domain }) => {
   // ─── 1. Algebra ─────────────────────────────────────────────────────────────
   if (domain === 'Algebra') {
     return (
       <div className="w-full h-full flex items-center justify-center opacity-40 hover:opacity-75 transition-opacity">
         <svg
-          className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none"
+          className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none"
           viewBox="0 0 300 50"
           preserveAspectRatio="none"
           strokeWidth="1.6"
@@ -31,10 +31,10 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
             cx="150"
             cy="25"
             r="4"
-            className="fill-orange-500 dark:fill-emerald-400 animate-ping"
+            className="fill-emerald-600 dark:fill-emerald-400 animate-ping"
             style={{ transformOrigin: '150px 25px' }}
           />
-          <circle cx="150" cy="25" r="3.5" className="fill-orange-500 dark:fill-emerald-400" />
+          <circle cx="150" cy="25" r="3.5" className="fill-emerald-600 dark:fill-emerald-400" />
         </svg>
       </div>
     );
@@ -45,7 +45,7 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
     return (
       <div className="w-full h-full flex items-center justify-center opacity-40 hover:opacity-75 transition-opacity">
         <svg
-          className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none animate-[pulse_4s_ease-in-out_infinite]"
+          className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none animate-[pulse_4s_ease-in-out_infinite]"
           viewBox="0 0 300 50"
           preserveAspectRatio="xMidYMid meet"
           strokeWidth="1.6"
@@ -89,7 +89,7 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
     return (
       <div className="w-full h-full flex items-center justify-center opacity-40 hover:opacity-75 transition-opacity">
         <svg
-          className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none"
+          className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none"
           viewBox="0 0 300 50"
           preserveAspectRatio="none"
           strokeWidth="1.6"
@@ -107,10 +107,10 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
               cx="150"
               cy="18"
               r="4"
-              className="fill-orange-500 dark:fill-emerald-400 animate-ping opacity-60"
+              className="fill-emerald-600 dark:fill-emerald-400 animate-ping opacity-60"
               style={{ transformOrigin: '150px 18px' }}
             />
-            <circle cx="150" cy="18" r="3.5" className="fill-orange-500 dark:fill-emerald-400" />
+            <circle cx="150" cy="18" r="3.5" className="fill-emerald-600 dark:fill-emerald-400" />
             <circle cx="95" cy="36" r="2.5" />
             <circle cx="205" cy="36" r="2.5" />
           </g>
@@ -132,7 +132,7 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
     return (
       <div className="w-full h-full flex items-center justify-center opacity-40 hover:opacity-75 transition-opacity">
         <svg
-          className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none"
+          className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none"
           viewBox="0 0 300 50"
           preserveAspectRatio="none"
           strokeWidth="1.6"
@@ -150,14 +150,14 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
           </g>
 
           {/* Floating Scatter Points */}
-          <circle cx="45" cy="36" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '0s' }} />
-          <circle cx="75" cy="32" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float-alt" style={{ animationDelay: '1.2s' }} />
-          <circle cx="105" cy="24" r="3" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '2.5s' }} />
-          <circle cx="130" cy="16" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-pulse" style={{ transformOrigin: '130px 16px' }} />
-          <circle cx="170" cy="18" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '0.8s' }} />
-          <circle cx="195" cy="26" r="3" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float-alt" style={{ animationDelay: '1.8s' }} />
-          <circle cx="225" cy="33" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '3.1s' }} />
-          <circle cx="255" cy="38" r="2.5" className="fill-orange-500 dark:fill-emerald-400 animate-domain-pulse" style={{ transformOrigin: '255px 38px' }} />
+          <circle cx="45" cy="36" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '0s' }} />
+          <circle cx="75" cy="32" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float-alt" style={{ animationDelay: '1.2s' }} />
+          <circle cx="105" cy="24" r="3" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '2.5s' }} />
+          <circle cx="130" cy="16" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-pulse" style={{ transformOrigin: '130px 16px' }} />
+          <circle cx="170" cy="18" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '0.8s' }} />
+          <circle cx="195" cy="26" r="3" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float-alt" style={{ animationDelay: '1.8s' }} />
+          <circle cx="225" cy="33" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-float" style={{ animationDelay: '3.1s' }} />
+          <circle cx="255" cy="38" r="2.5" className="fill-emerald-600 dark:fill-emerald-400 animate-domain-pulse" style={{ transformOrigin: '255px 38px' }} />
 
           {/* Best-fit regression line */}
           <line
@@ -178,4 +178,5 @@ export const DomainInteractiveCanvas: React.FC<DomainInteractiveCanvasProps> = (
   return null;
 };
 
+export const DomainInteractiveCanvas = React.memo(DomainInteractiveCanvasComponent);
 export default DomainInteractiveCanvas;

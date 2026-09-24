@@ -34,6 +34,7 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
     let speeds: number[] = [];
 
     const initGrid = () => {
+      if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       columns = Math.floor(width / fontSize);
@@ -67,12 +68,18 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
       attributeFilter: ['class'],
     });
 
+    let isVisible = document.visibilityState === 'visible';
+    const handleVisibilityChange = () => {
+      isVisible = document.visibilityState === 'visible';
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     const draw = () => {
       // Trailing fade wipe layer
       ctx.globalAlpha = 1;
       ctx.fillStyle = isDark
         ? 'rgba(7, 11, 18, 0.12)'
-        : 'rgba(250, 247, 242, 0.22)';
+        : 'rgba(255, 255, 255, 0.22)';
       ctx.fillRect(0, 0, width, height);
 
       // Defined, crisp typography
@@ -105,10 +112,10 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
             ctx.globalAlpha = isCenterZone ? 0.35 : 0.65;
             ctx.fillStyle = isCenterZone ? '#10b981' : '#34d399';
           } else {
-            // Light Mode: Soft warm amber glyphs with 0.06 subtle opacity (#ea580c / #d97706)
+            // Light Mode: Soft emerald glyphs with 0.07 subtle opacity (#059669 / #10b981)
             ctx.shadowBlur = 0;
-            ctx.globalAlpha = 0.06;
-            ctx.fillStyle = isCenterZone ? '#d97706' : '#ea580c';
+            ctx.globalAlpha = 0.07;
+            ctx.fillStyle = isCenterZone ? '#059669' : '#10b981';
             ctx.fillText(char, x, y);
           }
         }
@@ -125,6 +132,8 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
     const animate = (currentTime: number) => {
       animationFrameId = requestAnimationFrame(animate);
 
+      if (!isVisible) return;
+
       const elapsed = currentTime - lastTime;
       if (elapsed > fpsInterval) {
         lastTime = currentTime - (elapsed % fpsInterval);
@@ -137,6 +146,7 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       observer.disconnect();
     };
   }, [fontSize, fps]);
@@ -148,3 +158,5 @@ export const MathMatrixRain: React.FC<MathMatrixRainProps> = ({
     />
   );
 };
+
+export default MathMatrixRain;

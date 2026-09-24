@@ -32,28 +32,13 @@ export default {
         'card-glow': '0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 1px 1px rgba(16, 185, 129, 0.15)',
       },
       animation: {
-        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
         'float': 'float 6s ease-in-out infinite',
-        'shine': 'shine 2s linear infinite',
-        'swing': 'swing 6s ease-in-out infinite',
       },
       keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(16, 185, 129, 0.4))' },
-          '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 25px rgba(16, 185, 129, 0.7))' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        shine: {
-          '0%': { backgroundPosition: '200% 0' },
-          '100%': { backgroundPosition: '-200% 0' },
-        },
-        swing: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-        }
       }
     },
   },

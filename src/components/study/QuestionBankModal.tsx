@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { QuestionItem } from '../../types/questionBank';
 import { MathRenderer } from '../common/MathRenderer';
+import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
 import {
   X,
   CheckCircle2,
@@ -172,19 +173,22 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
                 onClick={() => onToggleBookmark(question.id)}
                 className={`p-2 rounded-xl border transition-all ${
                   isBookmarked
-                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.3)]'
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.3)]'
                     : 'bg-white/[0.04] text-slate-400 border-white/[0.08] hover:text-white hover:bg-white/[0.08]'
                 }`}
                 title={isBookmarked ? 'Remove Bookmark' : 'Save Question'}
               >
-                <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-amber-400' : ''}`} />
+                <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-emerald-400' : ''}`} />
               </button>
             )}
 
             <div className="flex items-center space-x-1 border-l border-white/[0.08] pl-2">
               <button
                 type="button"
-                onClick={onPrevious}
+                onClick={() => {
+                  setShowExplanation(false);
+                  onPrevious?.();
+                }}
                 disabled={!hasPrevious}
                 className="p-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                 title="Previous Question"
@@ -194,7 +198,10 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
 
               <button
                 type="button"
-                onClick={onNext}
+                onClick={() => {
+                  setShowExplanation(false);
+                  onNext?.();
+                }}
                 disabled={!hasNext}
                 className="p-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                 title="Next Question"
@@ -349,30 +356,16 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
 
           {/* Step-by-Step Explanation Accordion / Card */}
           {showExplanation && (
-            <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-300">
-              <div className="flex items-center space-x-2 text-emerald-400">
-                <BookOpen className="w-4 h-4" />
-                <h3 className="font-extrabold text-sm uppercase tracking-wider text-white">
-                  Step-by-Step Solution & Explanation
-                </h3>
-              </div>
-
-              <div className="text-sm text-slate-200 leading-relaxed border-t border-slate-800 pt-3">
-                <MathRenderer content={question.explanation} />
-              </div>
-
-              {/* Desmos Tip Box (if present) */}
-              {question.desmosTip && (
-                <div className="p-4 rounded-xl bg-slate-950 border border-teal-800/40 text-xs text-teal-300 flex items-start space-x-3">
-                  <Calculator className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <span className="font-bold text-white uppercase tracking-wider text-[11px] block">
-                      Desmos Shortcut Tip:
-                    </span>
-                    <p className="text-slate-300 leading-relaxed">{question.desmosTip}</p>
-                  </div>
-                </div>
-              )}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-emerald-500/30 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-300">
+              <StepByStepExplanationView
+                explanation={question.explanation}
+                correctAnswer={question.correctAnswer}
+                options={question.options}
+                topic={question.topic}
+                difficulty={question.difficulty}
+                desmosTip={question.desmosTip}
+                hint={question.hint}
+              />
             </div>
           )}
 
@@ -383,16 +376,16 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowHint(true)}
-                  className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-amber-300 transition-colors font-semibold"
+                  className="inline-flex items-center space-x-1.5 text-xs text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors font-semibold"
                 >
-                  <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
+                  <Lightbulb className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   <span>Need a hint? Click here</span>
                 </button>
               ) : (
-                <div className="p-4 rounded-xl bg-amber-950/40 border border-amber-800/40 text-xs text-amber-200 flex items-start space-x-2.5">
-                  <Lightbulb className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 text-xs text-emerald-900 dark:text-emerald-200 flex items-start space-x-2.5">
+                  <Lightbulb className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold block text-amber-300 mb-0.5">Hint:</span>
+                    <span className="font-bold block text-emerald-800 dark:text-emerald-300 mb-0.5">Hint:</span>
                     <MathRenderer content={question.hint} inline />
                   </div>
                 </div>

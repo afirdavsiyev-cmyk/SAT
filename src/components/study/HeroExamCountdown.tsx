@@ -29,7 +29,7 @@ const resolveExamDate = (rawDate?: string | null): Date => {
   return new Date('2026-10-03T08:00:00');
 };
 
-export const HeroExamCountdown: React.FC<HeroExamCountdownProps> = ({ targetDate: propTargetDate, className = '' }) => {
+const HeroExamCountdownComponent: React.FC<HeroExamCountdownProps> = ({ targetDate: propTargetDate, className = '' }) => {
   const [activeTargetDate, setActiveTargetDate] = useState<string>(() => {
     if (propTargetDate) return propTargetDate;
     try {
@@ -98,44 +98,47 @@ export const HeroExamCountdown: React.FC<HeroExamCountdownProps> = ({ targetDate
   }, [activeTargetDate]);
 
   return (
-    <div className={`flex items-center gap-2 sm:gap-3 bg-amber-500/10 dark:bg-slate-950/70 p-3 sm:p-3.5 rounded-2xl border border-amber-500/30 dark:border-emerald-500/30 shadow-inner select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 bg-emerald-500/10 dark:bg-slate-950/70 p-3 sm:p-3.5 rounded-2xl border border-emerald-500/30 dark:border-emerald-500/30 shadow-inner select-none ${className}`}>
       {/* Days */}
-      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-amber-500/30 dark:border-emerald-500/20 shadow-sm">
-        <span className="font-mono text-2xl sm:text-3xl font-black text-amber-600 dark:text-emerald-400">
+      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
+        <span className="font-mono text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">
           {timeLeft.days}
         </span>
-        <span className="text-[10px] uppercase font-bold tracking-wider text-amber-900/70 dark:text-slate-400 mt-0.5">Days</span>
+        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-900/70 dark:text-slate-400 mt-0.5">Days</span>
       </div>
 
-      <span className="text-xl font-black text-amber-500/50 dark:text-emerald-500/40">:</span>
+      <span className="text-xl font-black text-emerald-500/50 dark:text-emerald-500/40">:</span>
 
       {/* Hours */}
-      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-amber-500/30 dark:border-emerald-500/20 shadow-sm">
+      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
         <span className="font-mono text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
           {String(timeLeft.hours).padStart(2, '0')}
         </span>
-        <span className="text-[10px] uppercase font-bold tracking-wider text-amber-900/70 dark:text-slate-400 mt-0.5">Hours</span>
+        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-900/70 dark:text-slate-400 mt-0.5">Hours</span>
       </div>
 
-      <span className="text-xl font-black text-amber-500/50 dark:text-emerald-500/40">:</span>
+      <span className="text-xl font-black text-emerald-500/50 dark:text-emerald-500/40">:</span>
 
       {/* Mins */}
-      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-amber-500/30 dark:border-emerald-500/20 shadow-sm">
+      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
         <span className="font-mono text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
           {String(timeLeft.mins).padStart(2, '0')}
         </span>
-        <span className="text-[10px] uppercase font-bold tracking-wider text-amber-900/70 dark:text-slate-400 mt-0.5">Mins</span>
+        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-900/70 dark:text-slate-400 mt-0.5">Mins</span>
       </div>
 
-      <span className="text-xl font-black text-amber-500/50 dark:text-emerald-500/40">:</span>
+      <span className="text-xl font-black text-emerald-500/50 dark:text-emerald-500/40">:</span>
 
       {/* Secs */}
-      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-amber-500/30 dark:border-emerald-500/20 shadow-sm">
-        <span className="font-mono text-2xl sm:text-3xl font-black text-amber-600 dark:text-emerald-400 w-8 sm:w-10 text-center">
+      <div className="flex flex-col items-center min-w-[54px] sm:min-w-[62px] px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/80 border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
+        <span className="font-mono text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 w-8 sm:w-10 text-center">
           {String(timeLeft.secs).padStart(2, '0')}
         </span>
-        <span className="text-[10px] uppercase font-bold tracking-wider text-amber-900/70 dark:text-slate-400 mt-0.5">Secs</span>
+        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-900/70 dark:text-slate-400 mt-0.5">Secs</span>
       </div>
     </div>
   );
 };
+
+export const HeroExamCountdown = React.memo(HeroExamCountdownComponent);
+export default HeroExamCountdown;

@@ -13,7 +13,9 @@ import { PracticeRoomGridModal, QuestionAttemptRecord } from './PracticeRoomGrid
 import { PracticeRoomDirectionsModal } from './PracticeRoomDirectionsModal';
 import { DesmosSplitPanel } from './DesmosSplitPanel';
 import { ExplanationSideDrawer } from './ExplanationSideDrawer';
+import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
 import { DiagnosticMistakeDrawer } from './DiagnosticMistakeDrawer';
+import { recordSpacedRepetitionAttempt } from '../../utils/spacedRepetitionEngine';
 import { ThemeToggle } from '../common/ThemeToggle';
 import {
   ArrowLeft,
@@ -157,61 +159,63 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
   const [isBugReportOpen, setIsBugReportOpen] = useState<boolean>(false);
   const moreMenuRef = useRef<HTMLDivElement>(null);
 
-  // Attempts map per question ID (initialized from persistent global progress)
+  // Attempts map per question ID (active session state with historical mistake awareness)
   const [attemptsMap, setAttemptsMap] = useState<Record<string, QuestionAttemptRecord>>(() => {
     const progress = getProgress();
     const bookmarks = new Set(getBookmarks());
     const initial: Record<string, QuestionAttemptRecord> = {};
 
-    Object.values(progress).forEach((att) => {
-      initial[att.questionId] = {
-        isAnswered: true,
-        isCorrect: att.isCorrect,
-        selectedAnswer: att.selectedAnswer,
-        attemptsCount: 1,
-        isMarkedForReview: bookmarks.has(att.questionId),
-        timeSpentSeconds: 30,
+    // Initialize all session questions
+    questions.forEach((q) => {
+      const prevAttempt = progress[q.id];
+      const wasMissed = !!(prevAttempt && !prevAttempt.isCorrect);
+      initial[q.id] = {
+        isAnswered: false, // Always give a fresh chance to solve in this session!
+        isCorrect: false,
+        selectedAnswer: '',
+        attemptsCount: prevAttempt ? 1 : 0,
+        wasPreviouslyMissed: wasMissed,
+        previousAnswer: prevAttempt?.selectedAnswer || '',
+        isMarkedForReview: bookmarks.has(q.id),
+        timeSpentSeconds: 0,
         eliminatedOptions: [],
       };
     });
 
-    bookmarks.forEach((qid) => {
-      if (!initial[qid]) {
-        initial[qid] = {
+    // Populate any other referenced questions from progress as un-answered in this session
+    Object.values(progress).forEach((att) => {
+      if (!initial[att.questionId]) {
+        initial[att.questionId] = {
           isAnswered: false,
           isCorrect: false,
           selectedAnswer: '',
-          attemptsCount: 0,
-          isMarkedForReview: true,
+          attemptsCount: 1,
+          wasPreviouslyMissed: !att.isCorrect,
+          previousAnswer: att.selectedAnswer,
+          isMarkedForReview: bookmarks.has(att.questionId),
           timeSpentSeconds: 0,
           eliminatedOptions: [],
         };
-      } else {
-        initial[qid].isMarkedForReview = true;
       }
     });
 
     return initial;
   });
 
-  // Sync state when global store updates
+  // Sync state when global store updates (without resetting active session answers)
   useEffect(() => {
     const handleProgressUpdate = () => {
       const progress = getProgress();
       setAttemptsMap((prev) => {
         const next = { ...prev };
         Object.values(progress).forEach((att) => {
-          next[att.questionId] = {
-            ...(next[att.questionId] || {
-              attemptsCount: 1,
-              timeSpentSeconds: 30,
-              eliminatedOptions: [],
-            }),
-            isAnswered: true,
-            isCorrect: att.isCorrect,
-            selectedAnswer: att.selectedAnswer,
-            isMarkedForReview: isBookmarked(att.questionId),
-          };
+          if (next[att.questionId]) {
+            next[att.questionId] = {
+              ...next[att.questionId],
+              wasPreviouslyMissed: !att.isCorrect || next[att.questionId].wasPreviouslyMissed,
+              previousAnswer: att.selectedAnswer || next[att.questionId].previousAnswer,
+            };
+          }
         });
         return next;
       });
@@ -234,6 +238,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
               isCorrect: false,
               selectedAnswer: '',
               attemptsCount: 0,
+              wasPreviouslyMissed: false,
               isMarkedForReview: true,
               timeSpentSeconds: 0,
               eliminatedOptions: [],
@@ -257,6 +262,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
   const currentRecord = currentQuestion ? attemptsMap[currentQuestion.id] : undefined;
   const isAnswered = !!currentRecord?.isAnswered;
   const isCorrect = currentRecord?.isCorrect;
+  const wasPreviouslyMissed = !!currentRecord?.wasPreviouslyMissed;
   const isMarked = currentRecord?.isMarkedForReview;
   const eliminatedOptions = currentRecord?.eliminatedOptions || [];
 
@@ -275,6 +281,13 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
     }
   }, [currentIndex, currentQuestion?.id, attemptsMap]);
 
+  // Automatically close explanation and diagnostic drawers when navigating to another question
+  // to prevent revealing the correct answer before solving and choosing
+  useEffect(() => {
+    setIsExplanationOpen(false);
+    setIsDiagnosticOpen(false);
+  }, [currentIndex, currentQuestion?.id]);
+
   // Restore saved highlights for active question on question change
   useEffect(() => {
     if (!currentQuestion || !questionAreaRef.current) return;
@@ -286,7 +299,15 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
       if (!questionAreaRef.current) return;
       savedSnippets.forEach((snippet) => {
         if (!snippet || snippet.trim().length < 2) return;
-        highlightSnippetInElement(questionAreaRef.current!, snippet.trim(), currentQuestion.id);
+        highlightSnippetInElement(questionAreaRef.current!, snippet.trim(), currentQuestion.id, (mark) => {
+          const r = mark.getBoundingClientRect();
+          setFloatingHighlightMenu({
+            x: r.left + r.width / 2,
+            y: r.top,
+            isExisting: true,
+            targetElement: mark,
+          });
+        });
       });
     }, 120);
 
@@ -377,7 +398,13 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         });
       });
 
-      range.surroundContents(mark);
+      try {
+        range.surroundContents(mark);
+      } catch {
+        const fragment = range.extractContents();
+        mark.appendChild(fragment);
+        range.insertNode(mark);
+      }
 
       // Save snippet to state & localStorage
       if (textToSave) {
@@ -428,6 +455,87 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
 
     setFloatingHighlightMenu(null);
   }, [floatingHighlightMenu, currentQuestion]);
+
+  // Remove all highlights on the active question from DOM, state, and localStorage
+  const clearAllHighlights = useCallback(() => {
+    // 1. Physically unwrap all <mark.sat-highlight> in the question card
+    if (questionAreaRef.current) {
+      const marks = questionAreaRef.current.querySelectorAll('mark.sat-highlight');
+      marks.forEach((mark) => {
+        const parent = mark.parentNode;
+        if (parent) {
+          while (mark.firstChild) {
+            parent.insertBefore(mark.firstChild, mark);
+          }
+          parent.removeChild(mark);
+          parent.normalize();
+        }
+      });
+    }
+
+    // 2. Dismiss any floating highlight menu
+    setFloatingHighlightMenu(null);
+
+    // 3. Clear highlights persistence for current question
+    if (currentQuestion) {
+      setHighlightsMap((prev) => {
+        if (!prev[currentQuestion.id] || prev[currentQuestion.id].length === 0) return prev;
+        const nextMap = { ...prev };
+        delete nextMap[currentQuestion.id];
+        try {
+          localStorage.setItem(STORAGE_HIGHLIGHTS_KEY, JSON.stringify(nextMap));
+        } catch {
+          // ignore
+        }
+        return nextMap;
+      });
+    }
+  }, [currentQuestion]);
+
+  // Cleanly navigate questions while ensuring all highlights are removed before going to the next question
+  const handleNextQuestion = useCallback(() => {
+    clearAllHighlights();
+    setIsExplanationOpen(false);
+    setIsDiagnosticOpen(false);
+    setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1));
+  }, [clearAllHighlights, questions.length]);
+
+  const handlePrevQuestion = useCallback(() => {
+    clearAllHighlights();
+    setIsExplanationOpen(false);
+    setIsDiagnosticOpen(false);
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  }, [clearAllHighlights]);
+
+  const handleSelectQuestion = useCallback((idx: number) => {
+    clearAllHighlights();
+    setIsExplanationOpen(false);
+    setIsDiagnosticOpen(false);
+    setCurrentIndex(idx);
+  }, [clearAllHighlights]);
+
+  const hasActiveHighlights = useMemo(() => {
+    if (!currentQuestion) return false;
+    return Boolean(highlightsMap[currentQuestion.id]?.length);
+  }, [currentQuestion, highlightsMap]);
+
+  // Dismiss floating highlight popup when clicking outside it
+  useEffect(() => {
+    if (!floatingHighlightMenu) return;
+    const handleOutsideMenuClick = (e: MouseEvent) => {
+      const menuEl = document.getElementById('sat-floating-highlight-menu');
+      if (menuEl && !menuEl.contains(e.target as Node)) {
+        setFloatingHighlightMenu(null);
+      }
+    };
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleOutsideMenuClick);
+    }, 50);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleOutsideMenuClick);
+    };
+  }, [floatingHighlightMenu]);
 
   // Mark for review toggle (persisted globally)
   const handleToggleMarkForReview = () => {
@@ -491,16 +599,26 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
       attemptedAt: Date.now(),
     });
 
+    // Synchronize spaced repetition engine
+    try {
+      recordSpacedRepetitionAttempt(currentQuestion.id, isAnswerCorrect);
+    } catch (e) {
+      console.error('Error recording spaced repetition attempt', e);
+    }
+
     setAttemptsMap((prev) => {
       const existing = prev[currentQuestion.id];
       const prevAttempts = existing?.attemptsCount || 0;
       return {
         ...prev,
         [currentQuestion.id]: {
+          ...existing,
           isAnswered: true,
           isCorrect: isAnswerCorrect,
           selectedAnswer: selectedOption,
           attemptsCount: prevAttempts + 1,
+          wasPreviouslyMissed: existing?.wasPreviouslyMissed,
+          previousAnswer: existing?.previousAnswer,
           isMarkedForReview: existing?.isMarkedForReview || false,
           timeSpentSeconds: (existing?.timeSpentSeconds || 0) + 15,
           eliminatedOptions: existing?.eliminatedOptions || [],
@@ -510,6 +628,10 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
 
     if (recordPracticeQuestion) {
       recordPracticeQuestion(currentQuestion.domain, isAnswerCorrect);
+    }
+
+    if (!isAnswerCorrect && !isMuteAiPopups) {
+      setIsDiagnosticOpen(true);
     }
   };
 
@@ -540,16 +662,26 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
       attemptedAt: Date.now(),
     });
 
+    // Synchronize spaced repetition engine
+    try {
+      recordSpacedRepetitionAttempt(currentQuestion.id, isAnswerCorrect);
+    } catch (e) {
+      console.error('Error recording spaced repetition attempt', e);
+    }
+
     setAttemptsMap((prev) => {
       const existing = prev[currentQuestion.id];
       const prevAttempts = existing?.attemptsCount || 0;
       return {
         ...prev,
         [currentQuestion.id]: {
+          ...existing,
           isAnswered: true,
           isCorrect: isAnswerCorrect,
           selectedAnswer: gridInInput.trim(),
           attemptsCount: prevAttempts + 1,
+          wasPreviouslyMissed: existing?.wasPreviouslyMissed,
+          previousAnswer: existing?.previousAnswer,
           isMarkedForReview: existing?.isMarkedForReview || false,
           timeSpentSeconds: (existing?.timeSpentSeconds || 0) + 20,
           eliminatedOptions: existing?.eliminatedOptions || [],
@@ -568,13 +700,23 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
     }
   };
 
-  // Reset / Remix current question
+  // Reset / Remix current question to solve again
   const handleRemixQuestion = () => {
     if (!currentQuestion) return;
+    clearAllHighlights();
     setAttemptsMap((prev) => {
-      const next = { ...prev };
-      delete next[currentQuestion.id];
-      return next;
+      const existing = prev[currentQuestion.id];
+      return {
+        ...prev,
+        [currentQuestion.id]: {
+          ...existing,
+          isAnswered: false,
+          isCorrect: false,
+          selectedAnswer: '',
+          wasPreviouslyMissed: existing?.wasPreviouslyMissed || !existing?.isCorrect,
+          previousAnswer: existing?.selectedAnswer || existing?.previousAnswer,
+        },
+      };
     });
     setSelectedOption('');
     setGridInInput('');
@@ -653,21 +795,21 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             handleSubmitGridInAnswer();
           }
         } else {
-          setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1));
+          handleNextQuestion();
         }
         return;
       }
 
       if (e.key === 'ArrowLeft') {
-        setCurrentIndex((prev) => Math.max(0, prev - 1));
+        handlePrevQuestion();
       } else if (e.key === 'ArrowRight') {
-        setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1));
+        handleNextQuestion();
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentQuestion, isAnswered, selectedOption, gridInInput, questions.length]);
+  }, [currentQuestion, isAnswered, selectedOption, gridInInput, handleNextQuestion, handlePrevQuestion]);
 
   // Adapter for AITutorDrawer
   const aiTutorQuestionAdapter: Question | undefined = useMemo(() => {
@@ -703,6 +845,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
   // Render question card content (reused in single view or split pane)
   const renderQuestionCard = () => (
     <div
+      key={currentQuestion.id}
       ref={questionAreaRef}
       onMouseUp={handleQuestionAreaMouseUp}
       className={`rounded-3xl p-5 sm:p-7 space-y-6 shadow-sm dark:shadow-2xl relative overflow-hidden transition-all duration-200 bg-white dark:bg-[#0c1424] border-2 border-emerald-500/25 dark:border-emerald-500/35 text-slate-900 dark:text-slate-100 ${
@@ -714,18 +857,35 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         {/* Left Badges */}
         <div className="flex items-center gap-2">
           {currentQuestion.source && (
-            <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold uppercase bg-amber-50 text-amber-900 border border-amber-200/80 dark:bg-emerald-950/70 dark:text-emerald-400 dark:border-emerald-500/30">
+            <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold uppercase bg-emerald-50 text-emerald-900 border border-emerald-200/80 dark:bg-emerald-950/70 dark:text-emerald-400 dark:border-emerald-500/30">
               {currentQuestion.source}
             </span>
           )}
           <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
             {currentQuestion.difficulty}
           </span>
+          {wasPreviouslyMissed && (
+            <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-700/60 flex items-center space-x-1 shadow-sm">
+              <RotateCcw className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+              <span>Previously Missed • Retry Chance</span>
+            </span>
+          )}
           {isHighlightMode && (
             <span className="px-2.5 py-0.5 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30 text-[11px] font-bold flex items-center space-x-1 animate-pulse">
               <Highlighter className="w-3 h-3" />
               <span>Highlighter Active</span>
             </span>
+          )}
+          {hasActiveHighlights && (
+            <button
+              type="button"
+              onClick={clearAllHighlights}
+              className="px-2.5 py-0.5 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 text-rose-700 hover:text-rose-900 dark:text-rose-300 dark:hover:text-rose-200 border border-rose-200 dark:border-rose-800/60 text-[11px] font-bold flex items-center space-x-1 transition-colors shadow-sm active:scale-95 cursor-pointer"
+              title="Remove highlights on this question before proceeding"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Clear Highlights</span>
+            </button>
           )}
           {showFirstTryStats && (
             <span className="px-2.5 py-0.5 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-[11px] font-mono font-semibold flex items-center space-x-1">
@@ -741,12 +901,12 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             onClick={handleToggleMarkForReview}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors border shadow-sm ${
               isMarked
-                ? 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/40'
+                ? 'bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/40'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 dark:bg-slate-800/60 dark:hover:bg-slate-800 dark:text-slate-400 dark:hover:text-slate-200 border-slate-200 dark:border-slate-700/60'
             }`}
             title={isMarked ? 'Remove review mark' : 'Mark this question for review'}
           >
-            <svg className={`w-3.5 h-3.5 fill-current ${isMarked ? 'text-amber-500' : 'text-slate-400'}`} viewBox="0 0 24 24">
+            <svg className={`w-3.5 h-3.5 fill-current ${isMarked ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`} viewBox="0 0 24 24">
               <path d="M5 3v18l7-5 7 5V3z" />
             </svg>
             <span>Mark for Review</span>
@@ -766,9 +926,36 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         </div>
       </div>
 
+      {/* Dynamic Feedback Banner for Previously Missed Questions (shown after user submits this retry) */}
+      {wasPreviouslyMissed && isAnswered && (
+        <div className={`p-3.5 rounded-2xl border flex items-center space-x-3 text-xs font-semibold animate-in fade-in slide-in-from-top-1 duration-200 ${
+          isCorrect
+            ? 'bg-emerald-50 border-emerald-300 text-emerald-950 dark:bg-emerald-950/50 dark:border-emerald-700/60 dark:text-emerald-200'
+            : 'bg-rose-50 border-rose-300 text-rose-950 dark:bg-rose-950/50 dark:border-rose-700/60 dark:text-rose-200'
+        }`}>
+          {isCorrect ? (
+            <>
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <div>
+                <span className="font-bold">Mistake Overcome! 🎉</span>
+                <span className="ml-1 opacity-90">You solved this problem correctly on your re-attempt.</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <ShieldAlert className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" />
+              <div>
+                <span className="font-bold">Still Tricky!</span>
+                <span className="ml-1 opacity-90">Review the step-by-step KaTeX breakdown below or try again.</span>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
       {/* Question Stem Text with KaTeX (large font text-base sm:text-lg) */}
       <div className="py-3 text-slate-900 dark:text-slate-100 text-base sm:text-lg leading-relaxed font-normal select-text">
-        <MathText text={currentQuestion.questionText || currentQuestion.question} />
+        <MathText key={currentQuestion.id} text={currentQuestion.questionText || currentQuestion.question} />
       </div>
 
       {/* ─── Answer Choices Area (Full-Width Cards) ─────────────────── */}
@@ -784,7 +971,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                 const isOptionCorrect = opt.id === currentQuestion.correctAnswer;
 
                 let cardClass =
-                  'bg-white hover:bg-amber-50/50 hover:border-amber-300 border border-slate-200/90 text-slate-800 shadow-sm dark:bg-slate-900/60 dark:hover:bg-slate-800/80 dark:border-slate-800 dark:hover:border-emerald-500/40 dark:text-slate-200';
+                  'bg-white hover:bg-emerald-50/60 hover:border-emerald-300 border border-slate-200/90 text-slate-800 shadow-sm dark:bg-slate-900/60 dark:hover:bg-slate-800/80 dark:border-slate-800 dark:hover:border-emerald-500/40 dark:text-slate-200';
                 let badgeClass =
                   'border border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300';
 
@@ -801,11 +988,11 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                       'border-2 border-rose-600 bg-rose-600 text-white font-extrabold dark:border-rose-500 dark:bg-rose-500 dark:text-white';
                   }
                 } else if (isSelected) {
-                  // Amber outline in light mode, emerald outline in dark mode
+                  // Emerald outline and selection styling
                   cardClass =
-                    'bg-amber-50/80 border-2 border-amber-500 text-amber-950 shadow-md ring-2 ring-amber-400/40 font-semibold dark:bg-emerald-500/15 dark:border-2 dark:border-emerald-500 dark:text-emerald-200 dark:ring-2 dark:ring-emerald-500/50 dark:shadow-[0_0_20px_rgba(16,185,129,0.2)]';
+                    'bg-emerald-50/90 border-2 border-emerald-600 text-emerald-950 shadow-md ring-2 ring-emerald-500/30 font-semibold dark:bg-emerald-500/15 dark:border-2 dark:border-emerald-500 dark:text-emerald-200 dark:ring-2 dark:ring-emerald-500/50 dark:shadow-[0_0_20px_rgba(16,185,129,0.2)]';
                   badgeClass =
-                    'border-2 border-amber-500 bg-amber-500 text-white font-extrabold dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950';
+                    'border-2 border-emerald-600 bg-emerald-600 text-white font-extrabold dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950';
                 }
 
                 if (isEliminated && !isAnswered) {
@@ -871,7 +1058,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                   type="button"
                   disabled={!selectedOption}
                   onClick={handleCheckAnswer}
-                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed transition-all active:scale-95 flex items-center justify-center space-x-2"
+                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed transition-all active:scale-95 flex items-center justify-center space-x-2"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Check Answer</span>
@@ -945,7 +1132,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsDiagnosticOpen(true)}
-                  className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 text-xs font-extrabold shadow-md shadow-orange-500/25 dark:shadow-glow-emerald transition-all active:scale-95 flex items-center space-x-1.5 flex-shrink-0"
+                  className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 text-xs font-extrabold shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald transition-all active:scale-95 flex items-center space-x-1.5 flex-shrink-0"
                 >
                   <ShieldAlert className="w-3.5 h-3.5" />
                   <span>Why Did You Miss It?</span>
@@ -957,7 +1144,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                 onClick={() => setIsExplanationOpen(!isExplanationOpen)}
                 className="px-4 py-2 rounded-xl bg-white dark:bg-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.15] border border-slate-200 dark:border-white/[0.12] text-xs font-bold text-slate-800 dark:text-white transition-all flex items-center space-x-1.5 flex-shrink-0 shadow-sm"
               >
-                <FileText className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+                <FileText className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>{isExplanationOpen ? 'Hide Explanation' : 'View Explanation'}</span>
               </button>
             </div>
@@ -966,51 +1153,18 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
 
         {/* Collapsible Step-by-Step KaTeX Breakdown Panel */}
         {isExplanationOpen && (
-          <div className="p-5 sm:p-6 rounded-2xl bg-amber-50/70 dark:bg-slate-900/90 border border-amber-200 dark:border-emerald-500/40 shadow-md animate-in fade-in slide-in-from-top-2 duration-200 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-amber-200/80 dark:border-slate-800">
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-emerald-400">
-                <Sparkles className="w-4 h-4 text-amber-600 dark:text-emerald-400" />
-                <span>Step-by-Step KaTeX Breakdown</span>
-              </div>
-              <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300 text-xs font-mono font-bold border border-emerald-300 dark:border-emerald-800">
-                Correct Answer: ({currentQuestion.correctAnswer})
-              </span>
-            </div>
-
-            <div className="text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-200 select-text">
-              <MathText text={currentQuestion.explanation} />
-            </div>
-
-            {currentQuestion.desmosTip && (
-              <div className="p-3.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-xs text-blue-900 dark:text-blue-200 flex items-start space-x-2.5">
-                <Calculator className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold block mb-0.5">Desmos Shortcut Tip:</span>
-                  <MathText text={currentQuestion.desmosTip} />
-                </div>
-              </div>
-            )}
-
-            {currentQuestion.hint && (
-              <div className="p-3.5 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/60 text-xs text-teal-900 dark:text-teal-200 flex items-start space-x-2.5">
-                <Lightbulb className="w-4 h-4 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold block mb-0.5">Official SAT Hint:</span>
-                  <MathText text={currentQuestion.hint} />
-                </div>
-              </div>
-            )}
-
-            <div className="flex justify-end pt-1">
-              <button
-                type="button"
-                onClick={() => setIsAiTutorOpen(true)}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold text-xs shadow-md flex items-center space-x-1.5 active:scale-95 transition-all"
-              >
-                <Bot className="w-3.5 h-3.5" />
-                <span>Ask ScoreUP AI Tutor for More Help</span>
-              </button>
-            </div>
+          <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-emerald-500/30 dark:border-emerald-500/30 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+            <StepByStepExplanationView
+              explanation={currentQuestion.explanation}
+              correctAnswer={currentQuestion.correctAnswer}
+              options={currentQuestion.options}
+              topic={currentQuestion.topic}
+              difficulty={currentQuestion.difficulty}
+              desmosTip={currentQuestion.desmosTip}
+              hint={currentQuestion.hint}
+              showAiShortcut
+              onAskAiTutor={() => setIsAiTutorOpen(true)}
+            />
           </div>
         )}
 
@@ -1027,8 +1181,8 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         
         {/* Left: Active Domain & Topic Pill */}
         <div className="flex items-center space-x-2.5">
-          <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-emerald-950/60 border border-amber-200/80 dark:border-emerald-800/60 text-xs font-mono font-bold text-amber-900 dark:text-emerald-300 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-amber-500 dark:bg-emerald-400 animate-pulse" />
+          <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/60 text-xs font-mono font-bold text-emerald-900 dark:text-emerald-300 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
             <span>{currentQuestion.domain} • {currentQuestion.topic || selectedTopicName}</span>
           </div>
 
@@ -1082,13 +1236,28 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             onClick={() => setIsSplitCalculatorOpen(!isSplitCalculatorOpen)}
             className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1.5 active:scale-95 shadow-sm ${
               isSplitCalculatorOpen
-                ? 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/50'
+                ? 'bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/50'
                 : 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-slate-900 dark:bg-white/[0.04] dark:hover:bg-white/[0.08] dark:border-white/[0.08] dark:text-slate-300 dark:hover:text-white'
             }`}
             title={isSplitCalculatorOpen ? 'Close calculator drawer' : 'Open embedded Desmos calculator drawer'}
           >
-            <Calculator className="w-4 h-4 text-amber-600 dark:text-emerald-400" />
+            <Calculator className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span className="hidden md:inline">Calculator</span>
+          </button>
+
+          {/* ScoreUP AI Tutor Drawer Toggle */}
+          <button
+            type="button"
+            onClick={() => setIsAiTutorOpen(!isAiTutorOpen)}
+            className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1.5 active:scale-95 shadow-sm ${
+              isAiTutorOpen
+                ? 'bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-400/50'
+                : 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-slate-900 dark:bg-white/[0.04] dark:hover:bg-white/[0.08] dark:border-white/[0.08] dark:text-slate-300 dark:hover:text-white'
+            }`}
+            title={isAiTutorOpen ? 'Close ScoreUP AI Tutor' : 'Open ScoreUP AI Tutor'}
+          >
+            <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400 animate-pulse" />
+            <span className="hidden md:inline">ScoreUP AI</span>
           </button>
 
           {/* More Menu Trigger & Dropdown */}
@@ -1098,7 +1267,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
               onClick={() => setIsMoreMenuOpen((prev) => !prev)}
               className={`flex flex-col items-center justify-center gap-0.5 px-2.5 py-1 rounded-xl text-xs font-semibold transition-all ${
                 isMoreMenuOpen
-                  ? 'bg-amber-100 text-amber-900 dark:bg-slate-800 dark:text-emerald-400'
+                  ? 'bg-emerald-100 text-emerald-900 dark:bg-slate-800 dark:text-emerald-400'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
               }`}
               title="More Options"
@@ -1218,7 +1387,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.1] text-xs font-bold text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white transition-all active:scale-95 flex items-center space-x-1.5 shadow-sm group"
             title="Exit to Study Hub"
           >
-            <ArrowLeft className="w-3.5 h-3.5 text-amber-600 dark:text-emerald-400 group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 group-hover:-translate-x-0.5 transition-transform" />
             <span className="hidden sm:inline">Exit to Study Hub</span>
             <span className="sm:hidden">Exit</span>
           </button>
@@ -1316,37 +1485,50 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
       {/* ─── FLOATING HIGHLIGHT QUICK ACTION POPUP ────────────────────── */}
       {floatingHighlightMenu && (
         <div
+          id="sat-floating-highlight-menu"
           style={{
             left: `${floatingHighlightMenu.x}px`,
             top: `${floatingHighlightMenu.y}px`,
           }}
-          className="fixed -translate-x-1/2 -translate-y-full mb-2 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700/90 backdrop-blur-2xl shadow-2xl rounded-2xl p-1.5 flex items-center space-x-1 z-50 animate-in fade-in zoom-in-95 duration-150 select-none"
+          className="fixed -translate-x-1/2 -translate-y-full mb-2 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700/90 backdrop-blur-sm shadow-2xl rounded-2xl p-1.5 flex items-center space-x-1 z-50 animate-in fade-in zoom-in-95 duration-150 select-none"
           onClick={(e) => e.stopPropagation()}
         >
           {!floatingHighlightMenu.isExisting ? (
             <button
               type="button"
               onClick={applyHighlight}
-              className="px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30 border border-amber-300 dark:border-amber-400/50 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center space-x-1.5 transition-all shadow-sm active:scale-95"
+              className="px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30 border border-amber-300 dark:border-amber-400/50 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center space-x-1.5 transition-all shadow-sm active:scale-95 cursor-pointer"
             >
               <Highlighter className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>Highlight</span>
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={removeHighlight}
-              className="px-3 py-1.5 rounded-xl bg-rose-100 hover:bg-rose-200 dark:bg-rose-500/20 dark:hover:bg-rose-500/30 border border-rose-300 dark:border-rose-500/40 text-rose-900 dark:text-rose-300 font-bold text-xs flex items-center space-x-1.5 transition-all shadow-sm active:scale-95"
-            >
-              <X className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
-              <span>Remove</span>
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={removeHighlight}
+                className="px-3 py-1.5 rounded-xl bg-rose-100 hover:bg-rose-200 dark:bg-rose-500/20 dark:hover:bg-rose-500/30 border border-rose-300 dark:border-rose-500/40 text-rose-900 dark:text-rose-300 font-bold text-xs flex items-center space-x-1.5 transition-all shadow-sm active:scale-95 cursor-pointer"
+                title="Remove this highlight"
+              >
+                <X className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
+                <span>Remove</span>
+              </button>
+              <button
+                type="button"
+                onClick={clearAllHighlights}
+                className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center space-x-1 transition-all shadow-sm active:scale-95 cursor-pointer"
+                title="Remove all highlights on this question"
+              >
+                <RotateCcw className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+                <span>Clear All</span>
+              </button>
+            </>
           )}
 
           <button
             type="button"
             onClick={() => setFloatingHighlightMenu(null)}
-            className="p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
             title="Dismiss"
           >
             <X className="w-3.5 h-3.5" />
@@ -1380,28 +1562,47 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
           </svg>
         </button>
 
-        {/* Center: "View Step-by-Step KaTeX Breakdown" collapsible solution button */}
-        <button
-          type="button"
-          onClick={() => setIsExplanationOpen(!isExplanationOpen)}
-          className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 ${
-            isExplanationOpen
-              ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white dark:from-teal-500 dark:to-emerald-600 dark:text-slate-950 shadow-md'
-              : 'bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] dark:text-slate-200 border border-slate-200 dark:border-white/[0.08]'
-          }`}
-        >
-          <FileText className="w-4 h-4 text-amber-600 dark:text-emerald-400" />
-          <span className="hidden sm:inline">View Step-by-Step KaTeX Breakdown</span>
-          <span className="sm:hidden">KaTeX Solution</span>
-          <ChevronUp className={`w-3.5 h-3.5 transition-transform ${isExplanationOpen ? 'rotate-180' : ''}`} />
-        </button>
+        {/* Center: "View Step-by-Step KaTeX Breakdown" collapsible solution button & ScoreUP AI Tutor */}
+        <div className="flex items-center space-x-2">
+          <button
+            type="button"
+            onClick={() => setIsExplanationOpen(!isExplanationOpen)}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 ${
+              isExplanationOpen
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white dark:from-teal-500 dark:to-emerald-600 dark:text-slate-950 shadow-md'
+                : 'bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] dark:text-slate-200 border border-slate-200 dark:border-white/[0.08]'
+            }`}
+          >
+            <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="hidden sm:inline">View Step-by-Step KaTeX Breakdown</span>
+            <span className="sm:hidden">KaTeX Solution</span>
+            <ChevronUp className={`w-3.5 h-3.5 transition-transform ${isExplanationOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* ScoreUP AI Tutor Toggle Button */}
+          <button
+            type="button"
+            data-ai-tutor-toggle="true"
+            onClick={() => setIsAiTutorOpen(!isAiTutorOpen)}
+            className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 ${
+              isAiTutorOpen
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950 shadow-md'
+                : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/50 dark:text-emerald-300 dark:border-emerald-800/60'
+            }`}
+            title="Ask ScoreUP AI Tutor for hints, steps, or strategies"
+          >
+            <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400 animate-pulse" />
+            <span className="hidden sm:inline">ScoreUP AI Tutor</span>
+            <span className="sm:hidden">AI Tutor</span>
+          </button>
+        </div>
 
         {/* Right: "Back", "Check Answer" / "Submit", "Next Question →" */}
         <div className="flex items-center space-x-2">
           {/* Back Button */}
           <button
             type="button"
-            onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
+            onClick={handlePrevQuestion}
             disabled={currentIndex === 0}
             className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.08] text-xs font-bold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm flex items-center space-x-1 active:scale-95"
             title="Previous Question (ArrowLeft)"
@@ -1410,13 +1611,26 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             <span className="hidden sm:inline">Back</span>
           </button>
 
+          {/* Try Again Button (shown after answer is submitted to allow re-solving) */}
+          {isAnswered && (
+            <button
+              type="button"
+              onClick={handleRemixQuestion}
+              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.08] text-xs font-bold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-all shadow-sm flex items-center space-x-1.5 active:scale-95"
+              title="Reset and try solving this question again"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+              <span className="hidden sm:inline">Try Again</span>
+            </button>
+          )}
+
           {/* Check Answer / Submit Button (shown before answer is submitted) */}
           {!isAnswered && (
             <button
               type="button"
-              onClick={handleCheckAnswer}
+              onClick={currentQuestion.type === 'multiple_choice' ? handleCheckAnswer : () => handleSubmitGridInAnswer()}
               disabled={currentQuestion.type === 'multiple_choice' ? !selectedOption : !gridInInput.trim()}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed transition-all active:scale-95 flex items-center space-x-1.5"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed transition-all active:scale-95 flex items-center space-x-1.5"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Check Answer</span>
@@ -1426,9 +1640,9 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
           {/* Next Question Button */}
           <button
             type="button"
-            onClick={() => setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1))}
+            onClick={handleNextQuestion}
             disabled={currentIndex === questions.length - 1}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md flex items-center space-x-1.5 active:scale-95"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md flex items-center space-x-1.5 active:scale-95"
             title="Next Question (ArrowRight)"
           >
             <span className="hidden sm:inline">Next Question</span>
@@ -1464,7 +1678,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         onClose={() => setIsGridModalOpen(false)}
         questions={questions}
         currentIndex={currentIndex}
-        onSelectIndex={(idx) => setCurrentIndex(idx)}
+        onSelectIndex={handleSelectQuestion}
         attemptsMap={attemptsMap}
       />
 
@@ -1643,12 +1857,33 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
         </div>
       )}
 
+      {/* Floating ScoreUP AI Tutor Launcher Button */}
+      {!isAiTutorOpen && (
+        <button
+          type="button"
+          data-ai-tutor-toggle="true"
+          onClick={() => setIsAiTutorOpen(true)}
+          className="fixed bottom-20 right-6 z-40 p-3.5 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white shadow-xl hover:shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer border border-emerald-400/30"
+          title="Open ScoreUP AI Tutor"
+        >
+          <Sparkles className="w-5 h-5 animate-pulse" />
+          <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold pr-0 group-hover:pr-1">
+            ScoreUP AI Tutor
+          </span>
+        </button>
+      )}
+
     </div>
   );
 };
 
 // Helper to highlight a matching text snippet in DOM tree on restoration
-function highlightSnippetInElement(root: HTMLElement, searchText: string, qId: string) {
+function highlightSnippetInElement(
+  root: HTMLElement,
+  searchText: string,
+  qId: string,
+  onMarkClick?: (mark: HTMLElement) => void
+) {
   const existingMarks = root.querySelectorAll('mark.sat-highlight');
   for (let i = 0; i < existingMarks.length; i++) {
     if (existingMarks[i].textContent?.includes(searchText)) {
@@ -1677,10 +1912,23 @@ function highlightSnippetInElement(root: HTMLElement, searchText: string, qId: s
       mark.className = 'sat-highlight bg-amber-400/35 text-inherit rounded px-0.5 border-b-2 border-amber-400/70 shadow-sm cursor-pointer hover:bg-amber-400/50 transition-colors';
       mark.setAttribute('data-question-id', qId);
 
+      if (onMarkClick) {
+        mark.addEventListener('click', (e) => {
+          e.stopPropagation();
+          onMarkClick(mark);
+        });
+      }
+
       try {
         range.surroundContents(mark);
       } catch {
-        // ignore crossing boundaries
+        try {
+          const fragment = range.extractContents();
+          mark.appendChild(fragment);
+          range.insertNode(mark);
+        } catch {
+          // ignore crossing boundaries
+        }
       }
     }
   });

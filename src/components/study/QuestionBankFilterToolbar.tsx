@@ -431,16 +431,16 @@ export const QuestionBankFilterToolbar: React.FC<QuestionBankFilterToolbarProps>
                     onClick={handleToggleBookmarked}
                     className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex items-center justify-between ${
                       filters.bookmarkedOnly
-                        ? 'bg-amber-50 dark:bg-amber-500/20 border-amber-300 dark:border-amber-500/60 text-amber-800 dark:text-amber-300'
+                        ? 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-300 dark:border-emerald-500/60 text-emerald-800 dark:text-emerald-300'
                         : 'bg-slate-50 dark:bg-white/[0.03] border-slate-200 dark:border-white/[0.06] text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     <span className="flex items-center space-x-1.5">
-                      <Bookmark className={`w-3.5 h-3.5 ${filters.bookmarkedOnly ? 'fill-amber-500 text-amber-500' : ''}`} />
+                      <Bookmark className={`w-3.5 h-3.5 ${filters.bookmarkedOnly ? 'fill-emerald-500 text-emerald-500' : ''}`} />
                       <span>Saved Items</span>
                     </span>
                     {bookmarkedTotalCount > 0 && (
-                      <span className="text-[10px] font-mono bg-amber-100 dark:bg-amber-500/30 px-1.5 rounded-full text-amber-800 dark:text-amber-200">
+                      <span className="text-[10px] font-mono bg-emerald-100 dark:bg-emerald-500/30 px-1.5 rounded-full text-emerald-800 dark:text-emerald-200">
                         {bookmarkedTotalCount}
                       </span>
                     )}
@@ -568,12 +568,12 @@ export const QuestionBankFilterToolbar: React.FC<QuestionBankFilterToolbarProps>
           )}
 
           {filters.bookmarkedOnly && (
-            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/70 border border-amber-200 dark:border-amber-800/50 text-amber-800 dark:text-amber-300">
+            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800/50 text-emerald-800 dark:text-emerald-300">
               <span>Saved Only</span>
               <button
                 type="button"
                 onClick={handleToggleBookmarked}
-                className="hover:text-slate-900 dark:hover:text-white text-amber-600 dark:text-amber-400"
+                className="hover:text-slate-900 dark:hover:text-white text-emerald-600 dark:text-emerald-400"
               >
                 <X className="w-3 h-3" />
               </button>

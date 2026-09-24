@@ -16,7 +16,7 @@ export const mockQuestions: Question[] = [
       { id: 'D', text: '$13$' }
     ],
     correctAnswer: 'B',
-    explanation: 'To find the minimum value of the quadratic function $f(x) = x^2 - 6x + 13$, rewrite it by completing the square:\n\n$$f(x) = (x^2 - 6x + 9) + 4 = (x - 3)^2 + 4$$\n\nSince $(x - 3)^2 \\ge 0$ for all real $x$, the minimum value of $f(x)$ occurs when $x = 3$, giving $f(3) = 4$.',
+    explanation: `**Step 1: Rewrite the quadratic by completing the square**\nTo find the minimum value of $f(x) = x^2 - 6x + 13$, write it in vertex form:\n$$f(x) = (x^2 - 6x + 9) + 4 = (x - 3)^2 + 4$$\n\n**Step 2: Determine the minimum value**\nSince $(x - 3)^2 \\ge 0$ for all real numbers $x$, the squared term reaches its minimum of $0$ when $x = 3$.\n\n**Step 3: Evaluate at the vertex**\nSubstituting $x = 3$ gives $f(3) = (0)^2 + 4 = 4$.\n\n**Conclusion:**\nThe minimum value of $f(x)$ is $4$, which corresponds to Choice (B).`,
     type: 'multiple_choice',
     hint: 'Rewrite $x^2 - 6x + 13$ in vertex form $(x - h)^2 + k$ or find the vertex $x = -b / (2a)$.',
     desmosEquation: 'y = x^2 - 6x + 13'
@@ -36,7 +36,7 @@ export const mockQuestions: Question[] = [
       { id: 'D', text: '$36$' }
     ],
     correctAnswer: 'B',
-    explanation: 'For a linear system to have infinitely many solutions, the two equations must represent the exact same line. Multiplying the first equation $4x - 9y = 12$ by $3$ gives:\n$$12x - 27y = 36$$\nComparing this with $kx - 27y = 36$, we find $k = 12$.',
+    explanation: `**Step 1: Understand conditions for infinitely many solutions**\nFor a linear system to have infinitely many solutions, the two equations must represent the exact same line, meaning corresponding coefficients and constant terms are strictly proportional.\n\n**Step 2: Compare equation coefficients**\nGiven the first equation $4x - 9y = 12$, multiply the entire equation by $3$:\n$$3(4x - 9y) = 3(12) \\implies 12x - 27y = 36$$\n\n**Step 3: Match with the second equation**\nComparing $12x - 27y = 36$ with $kx - 27y = 36$, we equate the coefficients of $x$:\n$$k = 12$$\n\n**Conclusion:**\nTherefore, $k = 12$, matching Choice (B).`,
     type: 'multiple_choice',
     hint: 'Infinitely many solutions means the coefficients of $x$, $y$, and the constant terms are proportional.',
     desmosEquation: '4x - 9y = 12'
@@ -56,7 +56,7 @@ export const mockQuestions: Question[] = [
       { id: 'D', text: '$(x + 2)^2 + (y - 5)^2 = 14$' }
     ],
     correctAnswer: 'A',
-    explanation: 'The standard equation of a circle with center $(h, k)$ and radius $r$ is:\n$$(x - h)^2 + (y - k)^2 = r^2$$\nSubstituting $(h, k) = (2, -5)$ and $r = 7$ yields:\n$$(x - 2)^2 + (y - (-5))^2 = 7^2 \\implies (x - 2)^2 + (y + 5)^2 = 49$$',
+    explanation: `**Step 1: Recall the standard equation of a circle**\nA circle with center $(h, k)$ and radius $r$ in the $xy$-plane has standard equation:\n$$(x - h)^2 + (y - k)^2 = r^2$$\n\n**Step 2: Substitute the given parameters**\nHere the center is $(h, k) = (2, -5)$ and radius is $r = 7$:\n$$(x - 2)^2 + (y - (-5))^2 = 7^2$$\n\n**Step 3: Simplify signs and exponents**\n$$(x - 2)^2 + (y + 5)^2 = 49$$\n\n**Conclusion:**\nThis matches Choice (A).`,
     type: 'multiple_choice',
     hint: 'Recall the formula $(x - h)^2 + (y - k)^2 = r^2$ and notice that $r^2 = 7^2 = 49$.'
   },
@@ -70,7 +70,7 @@ export const mockQuestions: Question[] = [
     prompt: 'In a right triangle $ABC$ with right angle at $C$, if $\\sin(A) = \\frac{5}{13}$, what is the value of $\\cos(B)$?',
     type: 'student_produced',
     correctAnswer: '5/13',
-    explanation: 'In any right triangle where angle $C = 90^\\circ$, angles $A$ and $B$ are complementary ($A + B = 90^\\circ$). By the cofunction identity:\n$$\\cos(B) = \\cos(90^\\circ - A) = \\sin(A)$$\nSince $\\sin(A) = \\frac{5}{13}$, it follows immediately that $\\cos(B) = \\frac{5}{13}$.',
+    explanation: `**Step 1: Identify complementary acute angles in a right triangle**\nIn right triangle $ABC$ with right angle at $C$, the acute angles $A$ and $B$ are complementary:\n$$A + B = 90^\\circ \\implies B = 90^\\circ - A$$\n\n**Step 2: Apply the cofunction identity**\nFor complementary angles, the sine of one angle equals the cosine of the other:\n$$\\cos(B) = \\cos(90^\\circ - A) = \\sin(A)$$\n\n**Step 3: Substitute the known value**\nSince $\\sin(A) = \\frac{5}{13}$, it follows immediately that:\n$$\\cos(B) = \\frac{5}{13}$$\n\n**Conclusion:**\nThe value of $\\cos(B)$ is $5/13$.`,
     hint: 'Remember the cofunction identity: $\\sin(A) = \\cos(90^\\circ - A) = \\cos(B)$.'
   },
   {
@@ -88,7 +88,7 @@ export const mockQuestions: Question[] = [
       { id: 'D', text: '$6$' }
     ],
     correctAnswer: 'B',
-    explanation: 'Factor out $3^x$ from the left side of the equation:\n$$3^{x+1} - 3^x = 3^x(3^1 - 1) = 2 \\cdot 3^x$$\nSet this equal to $162$:\n$$2 \\cdot 3^x = 162 \\implies 3^x = 81$$\nSince $81 = 3^4$, we obtain $x = 4$. Verifying: $3^{4+1} - 3^4 = 243 - 81 = 162$. Thus, the correct value of $x$ is $4$ (Choice B).',
+    explanation: `**Step 1: Factor out the common exponential term**\nIn the equation $3^{x+1} - 3^x = 162$, rewrite $3^{x+1}$ as $3^x \\cdot 3^1$:\n$$3^x(3^1 - 1) = 162 \\implies 2 \\cdot 3^x = 162$$\n\n**Step 2: Isolate the exponential base**\nDivide both sides by $2$:\n$$3^x = \\frac{162}{2} = 81$$\n\n**Step 3: Express $81$ as a power of $3$**\nSince $81 = 3^4$, equating exponents yields:\n$$x = 4$$\n\n**Conclusion:**\nThus, $x = 4$, which corresponds to Choice (B).`,
     type: 'multiple_choice',
     hint: 'Factor out $3^x$ to get $3^x(3 - 1) = 2 \\cdot 3^x = 162$.'
   }

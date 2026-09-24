@@ -11,16 +11,27 @@ interface QuestionNavigatorProps {
   onClose: () => void;
 }
 
-export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
+const QuestionNavigatorComponent: React.FC<QuestionNavigatorProps> = ({
   questions,
   currentIndex,
   onSelectQuestion,
   isOpen,
   onClose
 }) => {
-  const { currentExamAnswers, markedForReview } = useApp();
+  const { currentExamAnswers, markedForReview, activeExamMode, currentModule } = useApp();
 
   if (!isOpen) return null;
+
+  const isFullExam = activeExamMode === 'full' && questions.length === 44;
+  const startIndex = isFullExam ? (currentModule === 1 ? 0 : 22) : 0;
+  const endIndex = isFullExam ? (currentModule === 1 ? 22 : 44) : questions.length;
+  const displayedQuestions = isFullExam ? questions.slice(startIndex, endIndex) : questions;
+
+  const moduleSubtext = isFullExam
+    ? `Section 2: Math (Module ${currentModule})`
+    : activeExamMode === 'module2'
+    ? 'Section 2: Math (Hard Module 2)'
+    : 'Section 2: Math (Module 1 Diagnostic)';
 
   return (
     <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 select-none animate-in fade-in duration-150">
@@ -33,7 +44,7 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
             </div>
             <div>
               <h3 className="font-extrabold text-slate-900 dark:text-white text-base">Question Navigator</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">Section 2: Math (Module 1)</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">{moduleSubtext}</p>
             </div>
           </div>
 
@@ -79,8 +90,9 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
 
         {/* Grid of questions */}
         <div className="grid grid-cols-5 sm:grid-cols-8 gap-2.5 max-h-[320px] overflow-y-auto p-1">
-          {questions.map((q, idx) => {
-            const isCurrent = idx === currentIndex;
+          {displayedQuestions.map((q, idx) => {
+            const actualIndex = startIndex + idx;
+            const isCurrent = actualIndex === currentIndex;
             const isAnswered = !!currentExamAnswers[q.id];
             const isMarked = markedForReview.includes(q.id);
 
@@ -95,10 +107,10 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
 
             return (
               <button
-                key={q.id || idx}
+                key={q.id || actualIndex}
                 type="button"
                 onClick={() => {
-                  onSelectQuestion(idx);
+                  onSelectQuestion(actualIndex);
                   onClose();
                 }}
                 className={`relative h-11 rounded-2xl font-bold text-xs flex items-center justify-center transition-all duration-200 active:scale-95 border ${difficultyClass} ${
@@ -107,7 +119,7 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
                     : 'hover:opacity-90 hover:scale-[1.02]'
                 }`}
               >
-                <span>{q.number || idx + 1}</span>
+                <span>{q.number || actualIndex + 1}</span>
 
                 {/* Bookmark indicator */}
                 {isMarked && (
@@ -131,3 +143,6 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
     </div>
   );
 };
+
+export const QuestionNavigator = React.memo(QuestionNavigatorComponent);
+export default QuestionNavigator;

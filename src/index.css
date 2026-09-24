@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* Light Theme: Vivid SAT Amber/Orange Palette */
-  --accent-primary: #ea580c;        /* orange-600 */
-  --accent-primary-hover: #c2410c;  /* orange-700 */
-  --accent-surface: #fff7ed;        /* orange-50 */
-  --accent-border: #fdba74;         /* orange-300 */
-  --accent-ring: rgba(234, 88, 12, 0.25);
-  --accent-badge-text: #9a3412;     /* orange-800 */
-  --accent-badge-bg: #ffedd5;       /* orange-100 */
-  --beam-color: #f59e0b;
-  --beam-glow: rgba(245, 158, 11, 0.3);
+  /* Light Theme: Crisp Bright White & Vivid Emerald Green Palette */
+  --accent-primary: #059669;        /* emerald-600 */
+  --accent-primary-hover: #047857;  /* emerald-700 */
+  --accent-surface: #f0fdf4;        /* emerald-50 */
+  --accent-border: #a7f3d0;         /* emerald-200 */
+  --accent-ring: rgba(16, 185, 129, 0.25);
+  --accent-badge-text: #065f46;     /* emerald-800 */
+  --accent-badge-bg: #d1fae5;       /* emerald-100 */
+  --beam-color: #10b981;
+  --beam-glow: rgba(16, 185, 129, 0.3);
 }
 
 .dark, html.dark {
@@ -30,7 +30,7 @@
 
 @layer base {
   body {
-    @apply font-sans antialiased selection:bg-orange-500/25 selection:text-orange-900 dark:selection:bg-emerald-500/30 dark:selection:text-emerald-300 min-h-screen overflow-x-hidden transition-colors duration-200;
+    @apply font-sans antialiased selection:bg-emerald-500/25 selection:text-emerald-900 dark:selection:bg-emerald-500/30 dark:selection:text-emerald-300 min-h-screen overflow-x-hidden transition-colors duration-200;
   }
 }
 
@@ -43,7 +43,7 @@ html.dark {
 }
 
 html.light body {
-  background-color: #FAF8F5;
+  background-color: #ffffff;
   color: #0f172a;
 }
 
@@ -63,7 +63,7 @@ html.dark ::-webkit-scrollbar-track {
 }
 
 html.light ::-webkit-scrollbar-track {
-  background: #f5f0e8;
+  background: #f8fafc;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
@@ -72,12 +72,12 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  background: #d6cbbe;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+  background: #10b981;
 }
 
 /* ─── iOS Liquid Glassmorphism Token System ─────────────────────────────── */
@@ -85,8 +85,8 @@ html.light ::-webkit-scrollbar-thumb {
 /* Base glass pill — neutral frosted */
 .glass-pill {
   background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.13);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.18),
@@ -109,23 +109,23 @@ html.light ::-webkit-scrollbar-thumb {
 }
 
 html.light .glass-pill {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(217, 119, 6, 0.18);
-  color: #78350f;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px rgba(245, 158, 11, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  color: #065f46;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 2px 8px rgba(16, 185, 129, 0.08);
 }
 
 html.light .glass-pill:hover {
   background: #ffffff;
-  border-color: rgba(245, 158, 11, 0.45);
-  color: #451a03;
+  border-color: rgba(16, 185, 129, 0.55);
+  color: #064e3b;
 }
 
 /* Emerald accent glass — selected state / primary actions */
 .glass-pill-emerald {
   background: rgba(16, 185, 129, 0.18);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(52, 211, 153, 0.45);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.25),
@@ -142,8 +142,8 @@ html.light .glass-pill:hover {
 /* Teal accent glass */
 .glass-pill-teal {
   background: rgba(20, 184, 166, 0.16);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(45, 212, 191, 0.40);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.22),
@@ -160,8 +160,8 @@ html.light .glass-pill:hover {
 /* Choice card glass — A/B/C/D options */
 .glass-choice {
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -184,22 +184,22 @@ html.light .glass-pill:hover {
 }
 
 html.light .glass-choice {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(217, 119, 6, 0.15);
-  color: #1e293b;
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.04);
+  background: #ffffff;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #0f172a;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.06);
 }
 
 html.light .glass-choice:hover {
-  background: #ffffff;
-  border-color: rgba(245, 158, 11, 0.45);
+  background: #f0fdf4;
+  border-color: rgba(16, 185, 129, 0.6);
 }
 
 /* Choice card selected — glowing emerald frosted selection */
 .glass-choice-selected {
   background: rgba(16, 185, 129, 0.15);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(52, 211, 153, 0.55);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
@@ -216,9 +216,9 @@ html.light .glass-choice:hover {
 }
 
 html.light .glass-panel {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(217, 119, 6, 0.12);
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.06);
+  background: #ffffff;
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.06);
 }
 
 .glass-panel-emerald {
@@ -238,8 +238,8 @@ html.light .glass-panel {
 
 html.light .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16, 185, 129, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
 }
 
 .bg-radial-glow {
@@ -247,7 +247,7 @@ html.light .bg-grid-pattern {
 }
 
 html.light .bg-radial-glow {
-  background: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.09) 0%, rgba(251, 146, 60, 0.04) 45%, rgba(250, 248, 245, 0) 75%);
+  background: radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.12) 0%, rgba(45, 212, 191, 0.06) 45%, rgba(255, 255, 255, 0) 75%);
 }
 
 /* Micro-interaction helper classes */

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Sparkles, Send, Bot, Settings, Key, ExternalLink, Loader2, Zap } from 'lucide-react';
 import { Question } from '../../types';
 import { MathRenderer } from '../common/MathRenderer';
+import { ThemeToggle } from '../common/ThemeToggle';
 import {
   generateInstantHint,
   generateStepByStepSolution,
@@ -24,10 +25,10 @@ interface AITutorDrawerProps {
 }
 
 function formatModelName(model: string): string {
-  if (!model) return '2.5 Flash';
-  if (model.includes('3.1-pro')) return '3.1 Pro';
-  if (model.includes('3.8-flash')) return '3.8 Flash';
+  if (!model) return '3.6 Flash';
   if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (model.includes('3.8-flash')) return '3.8 Flash';
+  if (model.includes('3.1-pro')) return '3.1 Pro';
   if (model.includes('2.5-flash-lite')) return '2.5 Flash-Lite';
   if (model.includes('2.5-flash')) return '2.5 Flash';
   if (model.includes('2.0-flash')) return '2.0 Flash';
@@ -45,7 +46,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [activeModel, setActiveModel] = useState<string>('gemini-2.5-flash');
+  const [activeModel, setActiveModel] = useState<string>('gemini-3.6-flash');
 
   const isExamContext = !isGeneralMode && !!question;
 
@@ -69,6 +70,46 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
       ]);
     }
   }, [question, isOpen, isGeneralMode, isExamContext]);
+
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  // Close AI Tutor when clicking outside (place not related to the AI tutor) or pressing Escape
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      // If click originated inside the AI tutor drawer, do nothing
+      if (drawerRef.current && drawerRef.current.contains(target)) {
+        return;
+      }
+
+      // If clicked on an AI tutor toggle button that explicitly handles open/close, let the button handle it
+      if (target.closest('[data-ai-tutor-toggle="true"]')) {
+        return;
+      }
+
+      onClose();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -144,50 +185,64 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
   const questionChips = [
     { label: "💡 Explain step by step", prompt: "Explain this question step by step." },
     { label: "🎯 Best strategy", prompt: "What is the best time-saving strategy for this question?" },
-    { label: "📈 Desmos solution", prompt: "How do I solve this question using Desmos?" },
+    { label: "💻 Desmos solution", prompt: "How do I solve this question using Desmos?" },
     { label: "🔍 Hint only", prompt: "Give me a subtle hint without spoiling the final answer." }
   ];
 
   const generalChips = [
     { label: "💡 Quadratic Vertex Form", prompt: "Explain quadratic vertex form f(x) = a(x-h)^2 + k with examples." },
     { label: "🎯 Desmos Speed Tips", prompt: "What are the top 5 Desmos shortcuts for the Digital SAT Math?" },
-    { label: "📈 Circle Equations", prompt: "How do I convert a circle equation into standard form (x-h)^2 + (y-k)^2 = r^2?" },
+    { label: "💻 Circle Equations", prompt: "How do I convert a circle equation into standard form (x-h)^2 + (y-k)^2 = r^2?" },
     { label: "🏆 Boost to 800", prompt: "What is the best strategy to score 800 in SAT Math?" }
   ];
 
   const activeChips = isExamContext ? questionChips : generalChips;
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[460px] bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between select-none animate-in slide-in-from-right-4 duration-200">
+    <>
+      {/* Backdrop overlay for outside click detection (clicking place not related to AI tutor closes it) */}
+      <div
+        className="fixed inset-0 z-40 bg-black/20 dark:bg-black/40 backdrop-blur-[0.5px] transition-opacity animate-in fade-in duration-150 cursor-pointer"
+        onClick={onClose}
+        aria-label="Close AI Tutor"
+      />
+
+      <div
+        ref={drawerRef}
+        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-y-0 right-0 z-50 w-full sm:w-[460px] bg-white dark:bg-[#0c1017] border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between select-none animate-in slide-in-from-right-4 duration-200 transition-colors text-slate-900 dark:text-white"
+      >
       
       {/* Header */}
-      <div className="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex items-center justify-between flex-shrink-0">
+      <div className="bg-slate-50 dark:bg-[#080c14] px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between flex-shrink-0 transition-colors">
         <div className="flex items-center space-x-2.5">
-          <div className="w-8 h-8 rounded-xl bg-teal-950 border border-teal-800/50 flex items-center justify-center text-teal-400">
+          <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-950/60 dark:border-emerald-800/50 dark:text-emerald-400 flex items-center justify-center shadow-sm">
             <Sparkles className="w-4 h-4 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h3 className="font-extrabold text-white text-sm">ScoreUP AI Tutor</h3>
-              {/* Clean Model Indicator Badge */}
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-mono shadow-sm">
-                <span>⚡ Powered by Gemini</span>
-                <span className="font-extrabold">{formatModelName(activeModel)}</span>
+              <h3 className="font-extrabold text-slate-900 dark:text-white text-sm">ScoreUP AI Tutor</h3>
+              {/* Clean Model Indicator Badge matching screenshot */}
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-400 dark:border-emerald-500/40 font-mono shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping mr-0.5" />
+                <span>Powered by Gemini {formatModelName(activeModel)}</span>
               </span>
             </div>
-            <span className="text-[10px] text-slate-400 font-mono">
+            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
               {isExamContext ? `Question #${question?.number} Context` : 'Digital SAT Math Tutor'}
             </span>
           </div>
         </div>
 
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1.5">
+          <ThemeToggle size="sm" />
+
           <button
             onClick={() => setShowSettings(!showSettings)}
-            className={`p-2 rounded-xl border transition-colors ${
+            className={`p-1.5 rounded-lg border transition-colors ${
               showSettings
-                ? 'bg-teal-500 text-slate-950 border-teal-400'
-                : 'bg-slate-800 text-slate-400 hover:text-white border-slate-700'
+                ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-sm'
+                : 'bg-slate-100 text-slate-500 hover:text-slate-900 border-slate-200 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:text-white dark:border-slate-700/80'
             }`}
             title="Tiered Model Configuration"
           >
@@ -196,7 +251,8 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors border border-slate-200 dark:border-transparent"
+            title="Close"
           >
             <X className="w-4 h-4" />
           </button>
@@ -205,44 +261,44 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
 
       {/* Tiered Model Routing Info Overlay */}
       {showSettings && (
-        <div className="p-4 bg-slate-950 border-b border-slate-800 space-y-3 z-20 animate-in fade-in duration-200">
-          <div className="flex items-center space-x-2 text-xs font-bold text-white">
-            <Zap className="w-4 h-4 text-emerald-400" />
+        <div className="p-4 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 space-y-3 z-20 animate-in fade-in duration-200 transition-colors">
+          <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
+            <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>Active Tiered Gemini Routing Pipeline</span>
           </div>
-          <div className="text-[11px] text-slate-400 space-y-1.5 leading-relaxed font-mono">
-            <div className="flex justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-              <span className="text-slate-300">⚡ Tier 1 (Hints):</span>
-              <span className="text-emerald-400">gemini-2.5-flash-lite</span>
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed font-mono">
+            <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span className="text-slate-700 dark:text-slate-300">⚡ Tier 1 (Hints):</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">gemini-2.5-flash-lite</span>
             </div>
-            <div className="flex justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-              <span className="text-slate-300">💬 Tier 2 (Tutor Chat):</span>
-              <span className="text-teal-400">gemini-2.5-flash</span>
+            <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span className="text-slate-700 dark:text-slate-300">💬 Tier 2 (Tutor Chat):</span>
+              <span className="text-teal-600 dark:text-teal-400 font-bold">gemini-2.5-flash</span>
             </div>
-            <div className="flex justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-              <span className="text-slate-300">📐 Tier 3 (KaTeX Solutions):</span>
-              <span className="text-amber-400">gemini-3.1-pro</span>
+            <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span className="text-slate-700 dark:text-slate-300">📐 Tier 3 (KaTeX Solutions):</span>
+              <span className="text-emerald-700 dark:text-teal-300 font-bold">gemini-3.1-pro</span>
             </div>
-            <div className="flex justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-              <span className="text-slate-300">🗺️ Tier 5 (Roadmap Engine):</span>
-              <span className="text-orange-400">gemini-3.8-flash</span>
+            <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span className="text-slate-700 dark:text-slate-300">🗺️ Tier 5 (Roadmap Engine):</span>
+              <span className="text-emerald-600 dark:text-emerald-300 font-bold">gemini-3.8-flash</span>
             </div>
           </div>
         </div>
       )}
 
       {/* Messages Stream */}
-      <div className="flex-1 p-5 overflow-y-auto space-y-4">
+      <div className="flex-1 p-5 overflow-y-auto space-y-4 bg-white dark:bg-[#0c1017] transition-colors">
         {messages.map((msg, idx) => (
           <div
             key={idx}
             className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
           >
             <div
-              className={`max-w-[90%] p-4 rounded-2xl text-xs leading-relaxed ${
+              className={`max-w-[92%] p-4 rounded-2xl text-xs leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-medium rounded-tr-none shadow-md'
-                  : 'bg-slate-800/90 text-slate-100 border border-slate-700/80 rounded-tl-none shadow-md'
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-medium rounded-tr-none shadow-md'
+                  : 'bg-slate-100 text-slate-900 border border-slate-200/90 dark:bg-[#141b27] dark:text-slate-100 dark:border-slate-800 rounded-tl-none shadow-md'
               }`}
             >
               {msg.sender === 'ai' ? (
@@ -251,32 +307,32 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
                 <span>{msg.text}</span>
               )}
             </div>
-            {msg.sender === 'ai' && msg.modelUsed && (
-              <span className="text-[9px] font-mono text-slate-500 mt-1 px-1">
-                via {formatModelName(msg.modelUsed)}
+            {msg.sender === 'ai' && (
+              <span className="text-[9px] font-mono text-slate-400 dark:text-slate-500 mt-1 px-1">
+                via {formatModelName(msg.modelUsed || activeModel)}
               </span>
             )}
           </div>
         ))}
 
         {isLoading && (
-          <div className="flex items-center space-x-2 text-slate-400 text-xs p-3 bg-slate-800/40 rounded-xl border border-slate-800 w-fit">
-            <Loader2 className="w-3.5 h-3.5 animate-spin text-teal-400" />
+          <div className="flex items-center space-x-2 text-slate-500 dark:text-slate-400 text-xs p-3 bg-slate-100 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800 w-fit">
+            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600 dark:text-emerald-400" />
             <span>ScoreUP AI is reasoning with Gemini...</span>
           </div>
         )}
       </div>
 
       {/* Quick Action Chips & Input Area */}
-      <div className="p-4 bg-slate-950 border-t border-slate-800 space-y-3">
-        {/* Chips */}
+      <div className="p-4 bg-slate-50 dark:bg-[#080c14] border-t border-slate-200 dark:border-slate-800 space-y-3 transition-colors">
+        {/* Chips matching screenshot */}
         <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar pb-1">
           {activeChips.map((chip, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(chip.prompt)}
               disabled={isLoading}
-              className="flex-shrink-0 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 hover:border-teal-500/50 hover:bg-slate-800/80 text-[11px] font-medium text-slate-300 transition-all active:scale-95 disabled:opacity-50"
+              className="flex-shrink-0 px-3 py-1.5 rounded-full bg-white hover:bg-emerald-50 dark:bg-[#111723] dark:hover:bg-slate-800/80 border border-slate-200 hover:border-emerald-300 dark:border-slate-800 dark:hover:border-emerald-500/50 text-[11px] font-medium text-slate-700 hover:text-emerald-900 dark:text-slate-300 dark:hover:text-white transition-all active:scale-95 disabled:opacity-50 shadow-sm"
             >
               {chip.label}
             </button>
@@ -297,12 +353,13 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
             onChange={(e) => setInputText(e.target.value)}
             placeholder={isExamContext ? "Ask about formulas, steps, or shortcuts..." : "Ask any SAT Math question..."}
             disabled={isLoading}
-            className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-teal-500 transition-colors"
+            className="flex-1 bg-white dark:bg-[#111723] border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-emerald-500 transition-colors shadow-inner"
           />
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="p-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold transition-all disabled:opacity-40 disabled:hover:from-teal-500 disabled:hover:to-emerald-500 shadow-md active:scale-95"
+            className="p-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold transition-all disabled:opacity-40 shadow-md active:scale-95"
+            title="Send Message to ScoreUP AI Tutor"
           >
             <Send className="w-4 h-4" />
           </button>
@@ -310,5 +367,6 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
       </div>
 
     </div>
+    </>
   );
 };

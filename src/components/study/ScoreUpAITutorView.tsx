@@ -33,10 +33,10 @@ export interface ChatMessage {
 }
 
 function formatModelName(model: string): string {
-  if (!model) return '2.5 Flash';
-  if (model.includes('3.1-pro')) return '3.1 Pro';
-  if (model.includes('3.8-flash')) return '3.8 Flash';
+  if (!model) return '3.6 Flash';
   if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (model.includes('3.8-flash')) return '3.8 Flash';
+  if (model.includes('3.1-pro')) return '3.1 Pro';
   if (model.includes('2.5-flash-lite')) return '2.5 Flash-Lite';
   if (model.includes('2.5-flash')) return '2.5 Flash';
   if (model.includes('2.0-flash')) return '2.0 Flash';
@@ -51,7 +51,7 @@ export const ScoreUpAITutorView: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [hasApiKey, setHasApiKey] = useState(false);
-  const [activeModel, setActiveModel] = useState<string>('gemini-2.5-flash');
+  const [activeModel, setActiveModel] = useState<string>('gemini-3.6-flash');
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -134,12 +134,12 @@ export const ScoreUpAITutorView: React.FC = () => {
 
   const starterCards = [
     {
-      icon: <Zap className="w-5 h-5 text-amber-500 dark:text-amber-400" />,
+      icon: <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
       title: "Quiz me on high-yield Desmos shortcuts",
       prompt: "Give me a quick 3-question interactive quiz on the most important Desmos calculator shortcuts for the Digital SAT Math section."
     },
     {
-      icon: <Calculator className="w-5 h-5 text-orange-500 dark:text-emerald-400" />,
+      icon: <Calculator className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />,
       title: "Explain how to solve quadratic vertex form problems",
       prompt: "Explain how to convert a quadratic equation into vertex form f(x) = a(x - h)^2 + k and find the maximum or minimum coordinates step by step."
     },
@@ -159,15 +159,15 @@ export const ScoreUpAITutorView: React.FC = () => {
     <div className="h-full flex flex-col justify-between max-w-4xl mx-auto py-4 px-2 sm:px-6 relative select-none transition-colors">
       
       {/* Top Floating Control Bar */}
-      <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 dark:border-white/[0.06] flex-shrink-0">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-white/[0.06] flex-shrink-0">
         <div className="flex items-center space-x-2.5">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 shadow-[0_0_24px_rgba(249,115,22,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950 font-black">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-[0_0_24px_rgba(16,185,129,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950 font-black">
             <Bot className="w-4 h-4" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
               <h2 className="text-sm font-extrabold text-slate-900 dark:text-white">ScoreUP AI Tutor</h2>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-200 dark:bg-emerald-950/50 dark:text-emerald-400 dark:border-emerald-500/30 font-mono shadow-sm">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-400 dark:border-emerald-500/30 font-mono shadow-sm">
                 <span>⚡ Powered by Gemini</span>
                 <span className="font-extrabold">{formatModelName(activeModel)}</span>
               </span>
@@ -180,7 +180,7 @@ export const ScoreUpAITutorView: React.FC = () => {
           {messages.length > 0 && (
             <button
               onClick={() => setMessages([])}
-              className="px-3 py-1.5 rounded-xl bg-white dark:bg-white/[0.05] hover:bg-slate-100 dark:hover:bg-white/[0.1] border border-amber-900/15 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-sm"
+              className="px-3 py-1.5 rounded-xl bg-white dark:bg-white/[0.05] hover:bg-slate-100 dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-sm"
             >
               <RefreshCw className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
               <span className="hidden sm:inline">New Chat</span>
@@ -191,8 +191,8 @@ export const ScoreUpAITutorView: React.FC = () => {
             onClick={() => setShowSettings(!showSettings)}
             className={`p-2 rounded-xl border transition-all ${
               showSettings
-                ? 'bg-orange-600 text-white border-orange-500 shadow-sm dark:bg-emerald-500 dark:text-slate-950 dark:border-emerald-400'
-                : 'bg-white dark:bg-white/[0.05] hover:bg-slate-100 dark:hover:bg-white/[0.1] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border-amber-900/15 dark:border-white/[0.08] shadow-sm'
+                ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm dark:bg-emerald-500 dark:text-slate-950 dark:border-emerald-400'
+                : 'bg-white dark:bg-white/[0.05] hover:bg-slate-100 dark:hover:bg-white/[0.1] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-white/[0.08] shadow-sm'
             }`}
             title="Configure Gemini API Key"
           >
@@ -203,17 +203,17 @@ export const ScoreUpAITutorView: React.FC = () => {
 
       {/* Gemini Settings Modal Overlay */}
       {showSettings && (
-        <div className="my-3 p-4 bg-white/95 dark:bg-slate-900/95 border border-orange-300 dark:border-emerald-500/40 rounded-2xl space-y-3 backdrop-blur-xl animate-in fade-in duration-200 shadow-xl">
+        <div className="my-3 p-4 bg-white/95 dark:bg-slate-900/95 border border-emerald-300 dark:border-emerald-500/40 rounded-2xl space-y-3 backdrop-blur-xl animate-in fade-in duration-200 shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
-              <Key className="w-4 h-4 text-orange-600 dark:text-emerald-400" />
+              <Key className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Configure Google Gemini 2.5 Flash API Key</span>
             </div>
             <a
               href="https://aistudio.google.com/app/apikey"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] text-orange-600 dark:text-emerald-400 hover:underline flex items-center space-x-1 font-semibold"
+              className="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1 font-semibold"
             >
               <span>Get Free Key</span>
               <ExternalLink className="w-3 h-3" />
@@ -226,11 +226,11 @@ export const ScoreUpAITutorView: React.FC = () => {
               value={apiKeyInput}
               onChange={(e) => setApiKeyInput(e.target.value)}
               placeholder="Paste AIZASy... key here"
-              className="flex-1 bg-slate-50 dark:bg-slate-950 border border-amber-900/15 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-orange-500 dark:focus:border-emerald-500 font-mono shadow-inner"
+              className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-emerald-500 dark:focus:border-emerald-500 font-mono shadow-inner"
             />
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-colors shadow-md shadow-orange-500/25 dark:shadow-glow-emerald"
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-colors shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald"
             >
               Save Key
             </button>
@@ -248,15 +248,15 @@ export const ScoreUpAITutorView: React.FC = () => {
             {/* Center Animated Logo */}
             <div className="space-y-4 flex flex-col items-center">
               <div className="relative">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-orange-500 to-amber-600 shadow-[0_0_24px_rgba(249,115,22,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-[0_0_24px_rgba(16,185,129,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950">
                   <Bot className="w-10 h-10 stroke-[2.2]" />
                 </div>
-                <div className="absolute -inset-1.5 rounded-3xl border border-orange-400/30 dark:border-emerald-400/30 animate-pulse pointer-events-none" />
+                <div className="absolute -inset-1.5 rounded-3xl border border-emerald-400/30 dark:border-emerald-400/30 animate-pulse pointer-events-none" />
               </div>
 
               <div className="space-y-2 max-w-lg">
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                  Ask <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">ScoreUP AI</span> anything about SAT® Math
+                  Ask <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">ScoreUP AI</span> anything about SAT® Math
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Your dedicated Socratic coach for instant algebraic breakdowns, Desmos shortcuts, and 800-level exam strategies.
@@ -270,17 +270,17 @@ export const ScoreUpAITutorView: React.FC = () => {
                 <div
                   key={idx}
                   onClick={() => handleSendMessage(card.prompt)}
-                  className="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-amber-900/10 dark:border-emerald-500/40 hover:border-orange-400 hover:bg-orange-50/50 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/30 transition-all duration-200 cursor-pointer text-left flex items-center justify-between group active:scale-[0.98] shadow-sm hover:shadow-[0_4px_20px_rgba(234,88,12,0.08)]"
+                  className="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-50/50 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/30 transition-all duration-200 cursor-pointer text-left flex items-center justify-between group active:scale-[0.98] shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)]"
                 >
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 rounded-xl bg-orange-50/80 dark:bg-white/[0.04] border border-orange-200 dark:border-transparent group-hover:scale-110 transition-transform">
+                    <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-white/[0.04] border border-emerald-200 dark:border-transparent group-hover:scale-110 transition-transform">
                       {card.icon}
                     </div>
-                    <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-orange-700 dark:group-hover:text-emerald-300 transition-colors">
+                    <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
                       {card.title}
                     </span>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-orange-500 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" />
                 </div>
               ))}
             </div>
@@ -297,16 +297,16 @@ export const ScoreUpAITutorView: React.FC = () => {
                 <div
                   className={`max-w-[85%] sm:max-w-[78%] rounded-3xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-gradient-to-r from-orange-500 to-amber-600 text-white font-semibold shadow-md rounded-br-sm dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950'
-                      : 'bg-white dark:bg-slate-900/90 border border-amber-900/10 dark:border-emerald-500/40 text-slate-800 dark:text-slate-100 space-y-3 shadow-sm hover:shadow-md dark:shadow-xl backdrop-blur-xl rounded-bl-sm transition-all'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold shadow-md rounded-br-sm dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950'
+                      : 'bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-emerald-500/40 text-slate-800 dark:text-slate-100 space-y-3 shadow-sm hover:shadow-md dark:shadow-xl backdrop-blur-xl rounded-bl-sm transition-all'
                   }`}
                 >
                   {m.sender === 'ai' ? (
                     <div>
                       <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-white/[0.06]">
-                        <div className="flex items-center space-x-2 text-orange-700 dark:text-emerald-400 font-bold text-xs">
-                          <div className="w-5 h-5 rounded-lg bg-orange-50 dark:bg-emerald-950 border border-orange-200 dark:border-emerald-800/50 flex items-center justify-center">
-                            <Bot className="w-3 h-3 text-orange-600 dark:text-emerald-400" />
+                        <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs">
+                          <div className="w-5 h-5 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-center">
+                            <Bot className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                           </div>
                           <span>ScoreUP AI</span>
                         </div>
@@ -315,7 +315,7 @@ export const ScoreUpAITutorView: React.FC = () => {
                           className="p-1 rounded-md text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors"
                           title="Copy text"
                         >
-                          {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-orange-500 dark:text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                          {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
                         </button>
                       </div>
                       <div className="prose-slate dark:prose-invert">
@@ -332,8 +332,8 @@ export const ScoreUpAITutorView: React.FC = () => {
             {/* AI Loading Bubble */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white dark:bg-slate-900 border border-orange-300 dark:border-emerald-500/40 rounded-3xl p-4 flex items-center space-x-3 text-xs text-orange-700 dark:text-emerald-400 shadow-sm dark:shadow-xl">
-                  <Loader2 className="w-4 h-4 animate-spin text-orange-600 dark:text-emerald-400" />
+                <div className="bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-500/40 rounded-3xl p-4 flex items-center space-x-3 text-xs text-emerald-700 dark:text-emerald-400 shadow-sm dark:shadow-xl">
+                  <Loader2 className="w-4 h-4 animate-spin text-emerald-600 dark:text-emerald-400" />
                   <span>ScoreUP AI is computing mathematical breakdown...</span>
                 </div>
               </div>
@@ -351,13 +351,13 @@ export const ScoreUpAITutorView: React.FC = () => {
             e.preventDefault();
             handleSendMessage(inputText);
           }}
-          className="bg-white dark:bg-slate-900/90 backdrop-blur-2xl border border-amber-900/15 dark:border-emerald-500/40 rounded-2xl p-1.5 flex items-center space-x-2 shadow-sm hover:shadow-[0_4px_20px_rgba(234,88,12,0.08)] dark:shadow-2xl focus-within:border-orange-500 dark:focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-orange-500/25 dark:focus-within:ring-emerald-500/25 transition-all"
+          className="bg-white dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200 dark:border-emerald-500/40 rounded-2xl p-1.5 flex items-center space-x-2 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] dark:shadow-2xl focus-within:border-emerald-500 dark:focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/25 dark:focus-within:ring-emerald-500/25 transition-all"
         >
           {/* Quick Action Tools */}
           <button
             type="button"
             onClick={() => handleSendMessage("Show me a quick Desmos speed shortcut.")}
-            className="p-2 text-slate-500 dark:text-slate-400 hover:text-orange-600 dark:hover:text-emerald-400 hover:bg-orange-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors"
+            className="p-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors"
             title="Desmos Tips"
           >
             <Calculator className="w-4 h-4" />
@@ -365,7 +365,7 @@ export const ScoreUpAITutorView: React.FC = () => {
 
           <button
             type="button"
-            className="p-2 text-slate-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-teal-400 hover:bg-orange-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors hidden sm:block"
+            className="p-2 text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors hidden sm:block"
             title="Formula Query"
           >
             <Paperclip className="w-4 h-4" />
@@ -385,7 +385,7 @@ export const ScoreUpAITutorView: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading || !inputText.trim()}
-            className="p-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold disabled:opacity-40 transition-all active:scale-95 shadow-md shadow-orange-500/25 dark:bg-emerald-500 dark:text-slate-950 dark:hover:bg-emerald-400 dark:shadow-glow-emerald flex-shrink-0"
+            className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold disabled:opacity-40 transition-all active:scale-95 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:text-slate-950 dark:hover:bg-emerald-400 dark:shadow-glow-emerald flex-shrink-0"
           >
             <Send className="w-4 h-4" />
           </button>

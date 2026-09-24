@@ -132,9 +132,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           ✕
         </button>
 
-        {/* Header */}
         <div className="text-center mb-6 pt-2">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 dark:from-emerald-500 dark:to-teal-600 text-white font-black text-lg mb-2.5 shadow-lg shadow-orange-500/20 dark:shadow-emerald-500/20">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-black text-lg mb-2.5 shadow-lg shadow-emerald-500/20">
             S
           </div>
           <h2 className="text-2xl font-black tracking-tight text-white">
@@ -145,7 +144,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </p>
         </div>
 
-        {/* Mode Switcher Tabs */}
         <div className="grid grid-cols-2 gap-1 p-1 bg-slate-950 rounded-2xl mb-5 border border-slate-800">
           <button
             type="button"
@@ -171,7 +169,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </button>
         </div>
 
-        {/* Feedback Alerts */}
         {successMessage && (
           <div className="mb-4 p-3 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center space-x-2 animate-in fade-in">
             <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
@@ -185,7 +182,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </div>
         )}
 
-        {/* OAuth Buttons: Google & Telegram */}
         <div className="grid grid-cols-2 gap-3 mb-6">
           <button
             type="button"
@@ -194,7 +190,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white text-slate-900 font-bold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-md active:scale-95 disabled:opacity-60"
           >
             {loadingProvider === 'google' ? (
-              <Sparkles className="w-4 h-4 animate-spin text-orange-500" />
+              <Sparkles className="w-4 h-4 animate-spin text-emerald-500" />
             ) : (
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path
@@ -235,7 +231,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </button>
         </div>
 
-        {/* Divider */}
         <div className="relative flex items-center justify-center mb-6">
           <div className="border-t border-slate-800 w-full" />
           <span className="bg-slate-900 px-3 text-[10px] font-black uppercase tracking-wider text-slate-400 shrink-0">
@@ -244,7 +239,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <div className="border-t border-slate-800 w-full" />
         </div>
 
-        {/* Email & Password Form */}
         <form onSubmit={handleSubmit} className="space-y-3.5">
           {mode === 'signup' && (
             <div>
@@ -259,7 +253,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Alex Rivera"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400 focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
                 />
               </div>
             </div>
@@ -277,7 +271,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="student@scoreup.app"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
               />
             </div>
           </div>
@@ -291,7 +285,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <button
                   type="button"
                   onClick={() => alert('Password reset link has been dispatched to your email.')}
-                  className="text-xs font-semibold text-orange-400 hover:text-orange-300 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors"
+                  className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
                   Forgot password?
                 </button>
@@ -305,7 +299,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
               />
             </div>
           </div>
@@ -316,7 +310,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 rounded border-slate-700 text-orange-600 focus:ring-orange-500 dark:focus:ring-emerald-400 bg-slate-950"
+                className="w-4 h-4 rounded border-slate-700 text-emerald-600 focus:ring-emerald-500 bg-slate-950"
               />
               <span>Remember me for 30 days</span>
             </label>
@@ -325,7 +319,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <button
             type="submit"
             disabled={loadingProvider !== null}
-            className="w-full py-3 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-extrabold text-sm shadow-md transition-all active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-60"
+            className="w-full py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition-all active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-60"
           >
             {loadingProvider === 'email' ? (
               <Sparkles className="w-4 h-4 animate-spin" />

@@ -37,7 +37,7 @@ export const BOOKS_LIBRARY: BookItem[] = [
     description: 'Essential analytical terminology, precision problem wording, and test terminology handbook.',
     category: 'Strategy',
     fileUrl: '/books/Atlas-Getting the Words Right.pdf',
-    coverGradient: 'from-amber-500/20 to-orange-500/20',
+    coverGradient: 'from-emerald-500/20 to-teal-500/20',
     tag: 'Resource'
   }
 ];

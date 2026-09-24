@@ -4,7 +4,7 @@ export const GeometryTrigBg: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center justify-center opacity-40 group-hover:opacity-75 transition-opacity">
       <svg
-        className="w-full h-full stroke-orange-500 dark:stroke-emerald-400 fill-none"
+        className="w-full h-full stroke-emerald-600 dark:stroke-emerald-400 fill-none"
         viewBox="0 0 300 50"
         preserveAspectRatio="xMidYMid meet"
         strokeWidth="1.6"

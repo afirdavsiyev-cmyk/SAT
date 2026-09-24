@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useSlidingPill } from '../../hooks/useSlidingPill';
+import { HoverBorderGradient } from '../ui/hover-border-gradient';
 
 interface Tab {
   label: string;
@@ -60,27 +61,34 @@ export const SlidingTabGroup: React.FC<SlidingTabGroupProps> = ({
 
   const pillBg =
     variant === 'teal'
-      ? 'bg-orange-600 text-white shadow-md shadow-orange-500/25 dark:bg-teal-500 dark:border dark:border-teal-300/40 dark:shadow-[0_0_18px_rgba(45,212,191,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]'
-      : 'bg-orange-600 text-white border border-orange-400/40 shadow-md shadow-orange-500/25 dark:bg-emerald-500 dark:border-emerald-300/40 dark:shadow-[0_0_18px_rgba(16,185,129,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]';
+      ? 'bg-teal-600 text-white shadow-md shadow-teal-500/25 dark:bg-teal-500 dark:border dark:border-teal-300/40 dark:shadow-[0_0_18px_rgba(45,212,191,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]'
+      : 'bg-emerald-600 text-white border border-emerald-400/40 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:border-emerald-300/40 dark:shadow-[0_0_18px_rgba(16,185,129,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]';
 
   const px = size === 'sm' ? 'px-3.5 py-1.5 text-xs' : 'px-5 py-2 text-xs';
 
   return (
-    <div
-      ref={containerRef}
-      onMouseLeave={handleMouseLeaveContainer}
-      className={`relative flex items-center bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border border-amber-900/15 dark:border-slate-800 hover:border-orange-500/30 dark:hover:border-emerald-500/35 shadow-sm rounded-full p-1.5 transition-colors ${className}`}
+    <HoverBorderGradient
+      as="div"
+      containerClassName={`rounded-full shadow-sm ${className}`}
+      className="p-1 flex items-center bg-transparent"
+      innerMaskClassName="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md"
     >
+      <div
+        ref={containerRef}
+        onMouseLeave={handleMouseLeaveContainer}
+        className="relative flex items-center"
+      >
       {/* ─── Active Route Solid Pill ─── */}
       {pill && (
         <span
           aria-hidden="true"
           className={`absolute top-1.5 bottom-1.5 rounded-full pointer-events-none ${pillBg}`}
           style={{
-            left: pill.left,
+            left: 0,
             width: pill.width,
-            transition: 'left 380ms cubic-bezier(0.16,1,0.3,1), width 380ms cubic-bezier(0.16,1,0.3,1)',
-            willChange: 'left, width',
+            transform: `translate3d(${pill.left}px, 0, 0)`,
+            transition: 'transform 380ms cubic-bezier(0.16,1,0.3,1), width 380ms cubic-bezier(0.16,1,0.3,1)',
+            willChange: 'transform, width',
           }}
         />
       )}
@@ -89,16 +97,17 @@ export const SlidingTabGroup: React.FC<SlidingTabGroupProps> = ({
       {hoverPill && (
         <span
           aria-hidden="true"
-          className={`absolute top-1.5 bottom-1.5 rounded-full pointer-events-none bg-orange-100/60 dark:bg-white/15 backdrop-blur-md border border-orange-200/80 dark:border-white/20 shadow-[0_4px_16px_rgba(234,88,12,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] ${
+          className={`absolute top-1.5 bottom-1.5 rounded-full pointer-events-none bg-emerald-50/80 dark:bg-white/15 backdrop-blur-sm border border-emerald-200/80 dark:border-white/20 shadow-[0_4px_16px_rgba(16,185,129,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] ${
             hoveredIndex !== null && hoveredIndex !== activeIndex
               ? 'opacity-100 scale-100'
               : 'opacity-0 scale-95 pointer-events-none'
           }`}
           style={{
-            left: hoverPill.left,
+            left: 0,
             width: hoverPill.width,
-            transition: 'left 250ms cubic-bezier(0.16,1,0.3,1), width 250ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, transform 250ms cubic-bezier(0.16,1,0.3,1)',
-            willChange: 'left, width, opacity, transform',
+            transform: `translate3d(${hoverPill.left}px, 0, 0)`,
+            transition: 'transform 250ms cubic-bezier(0.16,1,0.3,1), width 250ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease',
+            willChange: 'transform, width, opacity',
           }}
         />
       )}
@@ -119,7 +128,7 @@ export const SlidingTabGroup: React.FC<SlidingTabGroupProps> = ({
             } ${
               isActive
                 ? 'text-white dark:text-slate-950 font-black'
-                : 'text-slate-700 hover:text-orange-600 dark:text-slate-300 dark:hover:text-emerald-400 font-semibold'
+                : 'text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 font-semibold'
             }`}
           >
             {tab.icon && (
@@ -128,8 +137,8 @@ export const SlidingTabGroup: React.FC<SlidingTabGroupProps> = ({
                   isActive
                     ? 'text-white dark:text-slate-950 opacity-100'
                     : isHovered
-                    ? 'text-orange-600 dark:text-emerald-400 opacity-100'
-                    : 'text-slate-600 group-hover:text-orange-600 dark:text-slate-400 dark:group-hover:text-white opacity-80'
+                    ? 'text-emerald-600 dark:text-emerald-400 opacity-100'
+                    : 'text-slate-600 group-hover:text-emerald-600 dark:text-slate-400 dark:group-hover:text-white opacity-80'
                 }`}
               >
                 {tab.icon}
@@ -139,6 +148,7 @@ export const SlidingTabGroup: React.FC<SlidingTabGroupProps> = ({
           </button>
         );
       })}
-    </div>
+      </div>
+    </HoverBorderGradient>
   );
 };

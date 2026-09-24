@@ -6,6 +6,7 @@ import { SAT_DOMAINS } from '../../data/questionTaxonomy';
 import { QuestionBankFilterToolbar, DropdownFiltersState } from './QuestionBankFilterToolbar';
 import { PracticeRoomView } from './PracticeRoomView';
 import { DomainInteractiveCanvas } from './DomainInteractiveCanvas';
+import { AITutorDrawer } from '../exam/AITutorDrawer';
 import { getProgress, recordAttempt, getBookmarks, toggleBookmark } from '../../services/userProgress';
 import {
   Search,
@@ -20,7 +21,12 @@ import {
   CheckSquare,
   Square,
   ChevronRight,
-  PlayCircle
+  ChevronDown,
+  PlayCircle,
+  Download,
+  BookOpen,
+  FileText,
+  Layers
 } from 'lucide-react';
 
 interface SolvedRecord {
@@ -57,6 +63,32 @@ export const QuestionBankView: React.FC = () => {
 
   // Selected subtopics for multi-select (stores topic names)
   const [selectedTopics, setSelectedTopics] = useState<Set<string>>(new Set());
+
+  // ScoreUP AI Tutor drawer toggle
+  const [isAiTutorOpen, setIsAiTutorOpen] = useState<boolean>(false);
+
+  // Minimized by default for the 4 main domains, with expand/collapse toggle
+  const [expandedDomainIds, setExpandedDomainIds] = useState<Set<string>>(new Set());
+
+  const toggleDomainExpanded = (domainId: string) => {
+    setExpandedDomainIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(domainId)) {
+        next.delete(domainId);
+      } else {
+        next.add(domainId);
+      }
+      return next;
+    });
+  };
+
+  const handleToggleExpandAll = () => {
+    if (expandedDomainIds.size === SAT_DOMAINS.length) {
+      setExpandedDomainIds(new Set());
+    } else {
+      setExpandedDomainIds(new Set(SAT_DOMAINS.map((d) => d.id)));
+    }
+  };
 
   // Active Practice Room session state (null = Curriculum Directory view, object = Full Bluebook Test Room)
   const [practiceSession, setPracticeSession] = useState<{
@@ -124,15 +156,15 @@ export const QuestionBankView: React.FC = () => {
   const getDomainIcon = (domain: QuestionDomain) => {
     switch (domain) {
       case 'Algebra':
-        return <Calculator className="w-5 h-5 text-orange-600 dark:text-emerald-400" />;
+        return <Calculator className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
       case 'Advanced Math':
-        return <Sparkles className="w-5 h-5 text-amber-600 dark:text-teal-400" />;
+        return <Sparkles className="w-5 h-5 text-teal-600 dark:text-teal-400" />;
       case 'Problem-Solving & Data Analysis':
         return <BarChart3 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />;
       case 'Geometry & Trigonometry':
         return <Compass className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
       default:
-        return <FolderKanban className="w-5 h-5 text-orange-600 dark:text-emerald-400" />;
+        return <FolderKanban className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
     }
   };
 
@@ -182,11 +214,25 @@ export const QuestionBankView: React.FC = () => {
     return true;
   };
 
+  // Pre-index questions by domain and topic once to avoid thousands of array iterations on every render
+  const questionsByDomainAndTopic = useMemo(() => {
+    const domainMap: Record<string, QuestionItem[]> = {};
+    const topicMap: Record<string, QuestionItem[]> = {};
+
+    SAT_DOMAINS.forEach((d) => {
+      const inDomain = ALL_QUESTIONS.filter((q) => isQuestionInDomain(q, d.id));
+      domainMap[d.id] = inDomain;
+      d.topics.forEach((t) => {
+        topicMap[`${d.id}:::${t}`] = inDomain.filter((q) => isQuestionInTopic(q, t));
+      });
+    });
+
+    return { domainMap, topicMap };
+  }, []);
+
   // Helper to get stats for a specific topic under active filters
   const getTopicStats = (domainId: string, topicName: string) => {
-    const allForTopic = ALL_QUESTIONS.filter(
-      (q) => isQuestionInDomain(q, domainId) && isQuestionInTopic(q, topicName)
-    );
+    const allForTopic = questionsByDomainAndTopic.topicMap[`${domainId}:::${topicName}`] || [];
 
     const matchingForTopic = allForTopic.filter(evaluateQuestionMatchesFilters);
     let solvedCount = 0;
@@ -379,10 +425,10 @@ export const QuestionBankView: React.FC = () => {
   return (
     <div className="space-y-6 animate-fadeIn pb-16">
       {/* ─── Hero Header & Statistics ─────────────────────────────────── */}
-      <div className="relative rounded-3xl overflow-hidden p-6 sm:p-8 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent dark:from-emerald-500/10 dark:via-teal-500/5 dark:to-transparent border border-amber-900/10 dark:border-emerald-500/40 shadow-sm backdrop-blur-xl transition-colors">
+      <div className="relative rounded-3xl overflow-hidden p-6 sm:p-8 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent dark:from-emerald-500/10 dark:via-teal-500/5 dark:to-transparent border border-emerald-900/10 dark:border-emerald-500/40 shadow-sm backdrop-blur-xl transition-colors">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <div className="flex items-center space-x-2 text-xs font-mono font-bold text-orange-600 dark:text-emerald-400 uppercase tracking-widest mb-1.5">
+            <div className="flex items-center space-x-2 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Digital SAT Math Question Bank</span>
             </div>
@@ -396,22 +442,22 @@ export const QuestionBankView: React.FC = () => {
 
           {/* Quick Metrics Badges */}
           <div className="flex items-center space-x-3 flex-wrap gap-y-2">
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-amber-900/10 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
               <span className="block text-xl font-extrabold font-mono text-slate-900 dark:text-white">
                 {ALL_QUESTIONS.length}
               </span>
               <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Real Questions</span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-amber-900/10 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
-              <span className="block text-xl font-extrabold font-mono text-orange-600 dark:text-emerald-400">
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
+              <span className="block text-xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400">
                 {totalSolvedOverall}
               </span>
               <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Solved</span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-amber-900/10 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
-              <span className="block text-xl font-extrabold font-mono text-amber-600 dark:text-teal-400">
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] shadow-sm text-center min-w-[100px]">
+              <span className="block text-xl font-extrabold font-mono text-teal-600 dark:text-teal-400">
                 {globalBankAccuracy}%
               </span>
               <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Accuracy</span>
@@ -422,15 +468,15 @@ export const QuestionBankView: React.FC = () => {
 
       {/* ─── OnePrep-Style Universal Dropdown Filter Toolbar ──────────── */}
       <QuestionBankFilterToolbar
-        filters={dropdownFilters}
-        onChange={setDropdownFilters}
-        totalMatchingCount={totalBankMatchingCount}
-        totalBankCount={ALL_QUESTIONS.length}
-        bookmarkedTotalCount={bookmarkedIds.size}
-      />
+            filters={dropdownFilters}
+            onChange={setDropdownFilters}
+            totalMatchingCount={totalBankMatchingCount}
+            totalBankCount={ALL_QUESTIONS.length}
+            bookmarkedTotalCount={bookmarkedIds.size}
+          />
 
       {/* ─── Search & Multi-Selection Action Toolbar ─────────────────── */}
-      <div className="rounded-3xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-white dark:bg-slate-900/65 border border-amber-900/10 dark:border-emerald-500/40 shadow-sm backdrop-blur-xl transition-colors">
+      <div className="rounded-3xl p-4 sm:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-white dark:bg-slate-900/65 border border-slate-200 dark:border-emerald-500/40 shadow-sm backdrop-blur-xl transition-colors">
         {/* Search within curriculum topics */}
         <div className="relative flex-1 max-w-md">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -439,7 +485,7 @@ export const QuestionBankView: React.FC = () => {
             value={treeSearchQuery}
             onChange={(e) => setTreeSearchQuery(e.target.value)}
             placeholder="Search all 21 topics (e.g. Expressions, Linear Equations)..."
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/90 border border-amber-900/15 dark:border-white/[0.08] text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-orange-500 dark:focus:border-emerald-500 transition-colors shadow-inner"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/90 border border-slate-200 dark:border-white/[0.08] text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors shadow-inner"
           />
           {treeSearchQuery && (
             <button
@@ -455,13 +501,13 @@ export const QuestionBankView: React.FC = () => {
         <div className="flex items-center space-x-2.5 flex-wrap gap-y-2">
           {selectedTopics.size > 0 ? (
             <>
-              <span className="text-xs font-mono font-bold text-orange-800 dark:text-emerald-400 bg-orange-100 dark:bg-emerald-950/80 px-3 py-1.5 rounded-xl border border-orange-200 dark:border-emerald-800/60">
+              <span className="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/80 px-3 py-1.5 rounded-xl border border-emerald-200 dark:border-emerald-800/60">
                 {selectedTopics.size} {selectedTopics.size === 1 ? 'Topic' : 'Topics'} Selected
               </span>
 
               <button
                 onClick={handleStartSelectedTopicsPractice}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md shadow-orange-500/25 dark:shadow-glow-emerald hover:scale-105 active:scale-95 transition-all flex items-center space-x-2"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-xs shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald hover:scale-105 active:scale-95 transition-all flex items-center space-x-2"
               >
                 <PlayCircle className="w-4 h-4" />
                 <span>Practice Selected Topics</span>
@@ -469,7 +515,7 @@ export const QuestionBankView: React.FC = () => {
 
               <button
                 onClick={handleClearSelection}
-                className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-amber-900/15 dark:border-white/[0.08] text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm"
+                className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm"
               >
                 Clear Selection
               </button>
@@ -478,20 +524,41 @@ export const QuestionBankView: React.FC = () => {
             <>
               <button
                 onClick={handleSelectAllTopics}
-                className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-amber-900/15 dark:border-white/[0.08] text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm"
+                className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm"
               >
                 Select All Topics
               </button>
 
               <button
-                onClick={handleBrowseMatchingQuestions}
-                className="px-4 py-2 rounded-xl bg-orange-50 text-orange-800 hover:bg-orange-100 border border-orange-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:hover:bg-emerald-500/25 dark:border-emerald-400/30 text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm"
+                onClick={handleToggleExpandAll}
+                className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm flex items-center gap-1.5"
+                title="Expand or collapse all domain topics"
               >
-                <Zap className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+                <span>{expandedDomainIds.size === SAT_DOMAINS.length ? 'Collapse All Domains' : 'Expand All Domains'}</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedDomainIds.size === SAT_DOMAINS.length ? 'rotate-180' : ''}`} />
+              </button>
+
+              <button
+                onClick={handleBrowseMatchingQuestions}
+                className="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:hover:bg-emerald-500/25 dark:border-emerald-400/30 text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm"
+              >
+                <Zap className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>Browse Matching Questions ({totalBankMatchingCount})</span>
               </button>
             </>
           )}
+
+          {/* Always-accessible ScoreUP AI Tutor Drawer Trigger */}
+          <button
+            type="button"
+            data-ai-tutor-toggle="true"
+            onClick={() => setIsAiTutorOpen(true)}
+            className="px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold transition-all flex items-center space-x-1.5 shadow-sm cursor-pointer"
+            title="Ask ScoreUP AI Tutor questions about formulas, concepts, or topics"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 animate-pulse" />
+            <span>ScoreUP AI Tutor</span>
+          </button>
         </div>
       </div>
 
@@ -499,7 +566,7 @@ export const QuestionBankView: React.FC = () => {
       <div className="space-y-6">
         {filteredDomains.map((domain) => {
           const qDomain = domainIdToQuestionDomain[domain.id] || 'Algebra';
-          const allDomainQuestions = ALL_QUESTIONS.filter((q) => isQuestionInDomain(q, domain.id));
+          const allDomainQuestions = questionsByDomainAndTopic.domainMap[domain.id] || [];
           const matchingDomainQuestions = allDomainQuestions.filter(evaluateQuestionMatchesFilters);
           const domainSolvedCount = matchingDomainQuestions.filter((q) => !!solvedMap[q.id]).length;
           const domainCorrectCount = matchingDomainQuestions.filter((q) => solvedMap[q.id]?.isCorrect).length;
@@ -507,27 +574,30 @@ export const QuestionBankView: React.FC = () => {
 
           const allDomainTopicsSelected = domain.topics.every((t) => selectedTopics.has(t));
           const someDomainTopicsSelected = domain.topics.some((t) => selectedTopics.has(t));
+          const isExpanded = treeSearchQuery.trim() !== '' || expandedDomainIds.has(domain.id);
 
           return (
             <div
               key={domain.id}
-              className="domain-card rounded-3xl overflow-hidden transition-all duration-300 bg-white dark:bg-slate-900/70 border border-amber-900/10 dark:border-emerald-500/40 hover:border-orange-400 dark:hover:border-emerald-500/60 shadow-sm hover:shadow-[0_4px_20px_rgba(234,88,12,0.08)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+              className="domain-card rounded-3xl overflow-hidden transition-all duration-300 bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-400 dark:hover:border-emerald-500/60 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]"
             >
               {/* Domain Header */}
-              <div className="relative flex items-center justify-between w-full p-4 sm:p-5 bg-slate-50/90 dark:bg-slate-950/60 border-b border-slate-200/90 dark:border-white/[0.06] overflow-hidden">
+              <div className={`relative flex items-center justify-between w-full p-4 sm:p-5 bg-slate-50/90 dark:bg-slate-950/60 overflow-hidden ${
+                isExpanded ? 'border-b border-slate-200/90 dark:border-white/[0.06]' : ''
+              }`}>
                 
                 {/* Left: Checkbox + Icon + Title + Topics Count */}
                 <div className="flex items-center gap-3.5 z-10 shrink-0">
                   <button
                     onClick={(e) => handleToggleDomainSelection(domain, e)}
-                    className="text-slate-400 hover:text-orange-600 dark:hover:text-emerald-500 transition-colors p-1 rounded-lg"
+                    className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors p-1 rounded-lg"
                     title={allDomainTopicsSelected ? 'Deselect all topics in domain' : 'Select all topics in domain'}
                   >
                     {allDomainTopicsSelected ? (
-                      <CheckSquare className="w-5 h-5 text-orange-600 dark:text-emerald-400" />
+                      <CheckSquare className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                     ) : someDomainTopicsSelected ? (
-                      <div className="w-5 h-5 rounded border border-orange-500 bg-orange-500/20 dark:border-emerald-500 dark:bg-emerald-500/20 flex items-center justify-center">
-                        <div className="w-2.5 h-2.5 bg-orange-500 dark:bg-emerald-500 rounded-sm" />
+                      <div className="w-5 h-5 rounded border border-emerald-500 bg-emerald-500/20 dark:border-emerald-500 dark:bg-emerald-500/20 flex items-center justify-center">
+                        <div className="w-2.5 h-2.5 bg-emerald-500 dark:bg-emerald-500 rounded-sm" />
                       </div>
                     ) : (
                       <Square className="w-5 h-5 text-slate-400 dark:text-slate-500" />
@@ -551,8 +621,8 @@ export const QuestionBankView: React.FC = () => {
                   <DomainInteractiveCanvas domain={qDomain} />
                 </div>
 
-                {/* Right: Solved Summary & Open Button */}
-                <div className="flex items-center gap-4 z-10 shrink-0">
+                {/* Right: Solved Summary & Action Buttons */}
+                <div className="flex items-center gap-3 z-10 shrink-0">
                   <div className="text-right hidden sm:block">
                     <span className="text-xs font-mono font-bold text-slate-700 dark:text-white">
                       {domainSolvedCount} / {matchingDomainQuestions.length} Solved
@@ -562,67 +632,104 @@ export const QuestionBankView: React.FC = () => {
                     </span>
                   </div>
 
+                  {/* Expand / Minimize Topics Button */}
+                  <button
+                    type="button"
+                    onClick={() => toggleDomainExpanded(domain.id)}
+                    className="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-500/15 dark:hover:bg-emerald-500/25 dark:text-emerald-300 dark:border-emerald-500/30 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+                    title={isExpanded ? 'Minimize topics' : 'Expand and see each topic in this section'}
+                  >
+                    <span>{isExpanded ? 'Hide Topics' : `View Topics (${domain.topics.length})`}</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                  </button>
+
                   <button
                     onClick={() => handleOpenDomainPool(domain)}
                     className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-200/90 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm active:scale-95"
                   >
                     <span>Open Domain Pool ({matchingDomainQuestions.length})</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-orange-600 dark:text-emerald-400" />
+                    <ArrowRight className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   </button>
                 </div>
 
               </div>
 
-              {/* Topics List */}
-              <div className="space-y-2 p-3 sm:p-4 bg-slate-50/50 dark:bg-slate-950/40">
-                {domain.topics.map((topicName) => {
-                  const isSelected = selectedTopics.has(topicName);
-                  const topicStats = getTopicStats(domain.id, topicName);
-                  const topicQuestions = ALL_QUESTIONS.filter(
-                    (q) => isQuestionInDomain(q, domain.id) && isQuestionInTopic(q, topicName)
-                  );
+              {/* Topics List - Minimized by default */}
+              {isExpanded && (
+                <div className="space-y-2 p-3 sm:p-4 bg-slate-50/50 dark:bg-slate-950/40 animate-in fade-in slide-in-from-top-1 duration-200">
+                  {domain.topics.map((topicName) => {
+                    const isSelected = selectedTopics.has(topicName);
+                    const topicStats = getTopicStats(domain.id, topicName);
+                    const topicQuestions = questionsByDomainAndTopic.topicMap[`${domain.id}:::${topicName}`] || [];
 
-                  return (
-                    <div
-                      key={topicName}
-                      onClick={() => handleStartTopicPractice(domain.id, topicName)}
-                      className="flex items-center justify-between p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/50 hover:bg-slate-200/70 dark:hover:bg-slate-800/60 border border-slate-200/90 dark:border-slate-800/80 transition-all cursor-pointer group"
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <button
-                          type="button"
-                          onClick={(e) => handleToggleTopicSelection(topicName, e)}
-                          className="text-slate-400 hover:text-orange-600 dark:hover:text-emerald-500 transition-colors p-0.5 rounded"
-                        >
-                          {isSelected ? (
-                            <CheckSquare className="w-4.5 h-4.5 text-orange-600 dark:text-emerald-400" />
-                          ) : (
-                            <Square className="w-4.5 h-4.5 text-slate-400 dark:text-slate-500" />
-                          )}
-                        </button>
-                        <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-orange-600 dark:group-hover:text-emerald-300 transition-colors truncate">
-                          {topicName}
-                        </span>
-                      </div>
+                    return (
+                      <div
+                        key={topicName}
+                        onClick={() => handleStartTopicPractice(domain.id, topicName)}
+                        className={`flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer group shadow-sm ${
+                          isSelected
+                            ? 'bg-emerald-50/90 border-emerald-400 dark:bg-emerald-950/40 dark:border-emerald-500/60'
+                            : 'bg-white hover:bg-emerald-50/40 border-slate-200/90 hover:border-emerald-300 dark:bg-slate-900/50 dark:hover:bg-slate-800/60 dark:border-slate-800/80'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <button
+                            type="button"
+                            onClick={(e) => handleToggleTopicSelection(topicName, e)}
+                            className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors p-0.5 rounded"
+                          >
+                            {isSelected ? (
+                              <CheckSquare className="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400" />
+                            ) : (
+                              <Square className="w-4.5 h-4.5 text-slate-400 dark:text-slate-500" />
+                            )}
+                          </button>
+                          <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors truncate">
+                            {topicName}
+                          </span>
+                        </div>
 
-                      <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 font-mono">
-                        <span>
-                          {topicStats.solvedCount} / {topicQuestions.length || 0}
-                        </span>
-                        <span className="text-sm font-bold text-slate-400 group-hover:text-orange-600 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-transform">
-                          ›
-                        </span>
+                        <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                          <span>
+                            {topicStats.solvedCount} / {topicQuestions.length || 0}
+                          </span>
+                          <span className="text-sm font-bold text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-transform">
+                            ›
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              )}
 
             </div>
           );
         })}
       </div>
 
+      {/* ─── ScoreUP AI Tutor Drawer (General / Curriculum Mode) ─────────── */}
+      <AITutorDrawer
+        isOpen={isAiTutorOpen}
+        onClose={() => setIsAiTutorOpen(false)}
+        isGeneralMode={true}
+      />
+
+      {/* Floating ScoreUP AI Tutor Launcher Button */}
+      {!isAiTutorOpen && (
+        <button
+          type="button"
+          data-ai-tutor-toggle="true"
+          onClick={() => setIsAiTutorOpen(true)}
+          className="fixed bottom-8 right-8 z-40 p-3.5 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white shadow-xl hover:shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer border border-emerald-400/30"
+          title="Open ScoreUP AI Tutor"
+        >
+          <Sparkles className="w-5 h-5 animate-pulse" />
+          <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold pr-0 group-hover:pr-1">
+            ScoreUP AI Tutor
+          </span>
+        </button>
+      )}
     </div>
   );
 };

@@ -9,6 +9,8 @@ export interface QuestionAttemptRecord {
   isMarkedForReview: boolean;
   timeSpentSeconds: number;
   eliminatedOptions: string[];
+  wasPreviouslyMissed?: boolean;
+  previousAnswer?: string;
 }
 
 interface PracticeRoomGridModalProps {
@@ -116,6 +118,9 @@ export const PracticeRoomGridModal: React.FC<PracticeRoomGridModalProps> = ({
         <span className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-amber-400" /> For Review
         </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-rose-500" /> Mistake Retry
+        </span>
       </div>
 
       {/* Compact Scrollable Question Matrix */}
@@ -133,7 +138,7 @@ export const PracticeRoomGridModal: React.FC<PracticeRoomGridModalProps> = ({
               easy: 'bg-[#D1FAE5] dark:bg-emerald-950/40 text-[#047857] dark:text-emerald-400 border-[#A7F3D0] dark:border-emerald-500/30 hover:bg-[#A7F3D0]/60 dark:hover:bg-emerald-900/50',
               medium: 'bg-[#FEF3C7] dark:bg-amber-950/40 text-[#B45309] dark:text-amber-400 border-[#FDE68A] dark:border-amber-500/30 hover:bg-[#FDE68A]/60 dark:hover:bg-amber-900/50',
               hard: 'bg-[#FFE4E6] dark:bg-rose-950/40 text-[#E11D48] dark:text-rose-400 border-[#FECDD3] dark:border-rose-500/30 hover:bg-[#FECDD3]/60 dark:hover:bg-rose-900/50',
-            }[(q.difficulty?.toLowerCase() || 'medium') as 'easy' | 'medium' | 'hard'] || 'bg-amber-950/40 text-amber-400 border-amber-500/30';
+            }[(q.difficulty?.toLowerCase() || 'medium') as 'easy' | 'medium' | 'hard'] || 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30';
 
             return (
               <button
@@ -148,13 +153,21 @@ export const PracticeRoomGridModal: React.FC<PracticeRoomGridModalProps> = ({
                     ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-white dark:ring-offset-slate-950 font-black scale-105 shadow-md z-10'
                     : 'active:scale-95'
                 }`}
-                title={`Question ${origIdx + 1} (${(q.difficulty || 'medium').toUpperCase()})`}
+                title={`Question ${origIdx + 1} (${(q.difficulty || 'medium').toUpperCase()})${record?.wasPreviouslyMissed ? ' - Previously Missed' : ''}`}
               >
                 <span>{origIdx + 1}</span>
 
                 {/* Bookmark Indicator */}
                 {isMarked && (
                   <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 border border-slate-950 shadow-sm" />
+                )}
+
+                {/* Mistake Retry Indicator */}
+                {record?.wasPreviouslyMissed && !isAnswered && (
+                  <span
+                    className="absolute -top-1 -left-1 w-2.5 h-2.5 rounded-full bg-rose-500 border border-slate-950 shadow-sm"
+                    title="Previously missed - retry chance"
+                  />
                 )}
 
                 {/* Answer Status Indicator */}

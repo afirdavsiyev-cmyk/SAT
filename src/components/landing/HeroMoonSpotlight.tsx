@@ -5,7 +5,7 @@ export interface MoonSpotlightProps {
   className?: string;
 }
 
-export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = '' }) => {
+const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = '' }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
@@ -13,55 +13,144 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
   const SHOULDER_X = 148;
   const SHOULDER_Y = 204;
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const armGroupRef = useRef<SVGGElement>(null);
   const shoulderSocketRef = useRef<SVGCircleElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
 
+  // Angle and position tracking refs for continuous buttery-smooth interpolation
+  const currentAngleRef = useRef(18); // Default rest angle pointing smoothly towards headline
+  const targetAngleRef = useRef(18);
+  const targetPosRef = useRef({ x: typeof window !== 'undefined' ? window.innerWidth * 0.55 : 600, y: 350 });
+  const currentGlowPosRef = useRef({ x: typeof window !== 'undefined' ? window.innerWidth * 0.55 : 600, y: 350 });
+
   useEffect(() => {
-    let rafId: number;
+    let animId: number | null = null;
+    let isLoopRunning = false;
+    let isVisible = !document.hidden;
+    let isIntersecting = true;
 
-    const onMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        // Direct zero-lag update of ambient cursor reveal glow
-        if (spotlightRef.current) {
-          spotlightRef.current.style.background = isDark
-            ? `radial-gradient(420px circle at ${e.clientX}px ${e.clientY}px, rgba(16,185,129,0.09), transparent 70%)`
-            : `radial-gradient(420px circle at ${e.clientX}px ${e.clientY}px, rgba(245,158,11,0.08), transparent 70%)`;
-        }
-
-        if (!armGroupRef.current) return;
-        const socketRect = shoulderSocketRef.current?.getBoundingClientRect();
-        const originX = socketRect ? socketRect.left + socketRect.width / 2 : 0;
-        const originY = socketRect ? socketRect.top + socketRect.height / 2 : 0;
-
-        const dx = e.clientX - originX;
-        const dy = e.clientY - originY;
-        const dist = Math.hypot(dx, dy);
-
-        // Deadzone threshold (65px) around the helmet
-        if (dist < 65) return;
-
-        let deg = (Math.atan2(dy, dx) * 180) / Math.PI;
-
-        // If cursor is to the left (behind character), keep aiming forward
-        if (dx < 0) {
-          deg = dy >= 0 ? 50 : -10;
-        }
-
-        // Clamp forward aiming angle between -15° and +60°
-        const clamped = Math.min(Math.max(deg, -15), 60);
-
-        if (armGroupRef.current) {
-          armGroupRef.current.style.transform = `rotate(${clamped}deg)`;
-        }
-      });
+    // Shortest angular path difference to prevent 360-degree flip-arounds
+    const shortestAngleDiff = (target: number, current: number) => {
+      let diff = (target - current) % 360;
+      while (diff < -180) diff += 360;
+      while (diff > 180) diff += 360;
+      return diff;
     };
 
+    const wakeUpLoop = () => {
+      if (!isLoopRunning && isVisible && isIntersecting) {
+        isLoopRunning = true;
+        animId = requestAnimationFrame(renderLoop);
+      }
+    };
+
+    const updateTargetFromCoord = (clientX: number, clientY: number) => {
+      targetPosRef.current = { x: clientX, y: clientY };
+
+      const socketRect = shoulderSocketRef.current?.getBoundingClientRect();
+      if (!socketRect) return;
+
+      const originX = socketRect.left + socketRect.width / 2;
+      const originY = socketRect.top + socketRect.height / 2;
+
+      const dx = clientX - originX;
+      const dy = clientY - originY;
+      const dist = Math.hypot(dx, dy);
+
+      // Deadzone threshold only inside the shoulder socket pivot (< 16px)
+      if (dist > 16) {
+        // Full unconstrained angular freedom: look up (-90°), forward (0°), down (90°), and back (180°)
+        targetAngleRef.current = (Math.atan2(dy, dx) * 180) / Math.PI;
+      }
+
+      wakeUpLoop();
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      updateTargetFromCoord(e.clientX, e.clientY);
+    };
+
+    // Physics render loop with smooth inertia damping and automatic idle sleep
+    const renderLoop = () => {
+      if (!isVisible || !isIntersecting) {
+        isLoopRunning = false;
+        return;
+      }
+
+      // 1. Smoothly interpolate arm angle
+      const angleDiff = shortestAngleDiff(targetAngleRef.current, currentAngleRef.current);
+      currentAngleRef.current += angleDiff * 0.085;
+
+      if (armGroupRef.current) {
+        armGroupRef.current.style.transform = `rotate(${currentAngleRef.current.toFixed(2)}deg)`;
+      }
+
+      // 2. Smoothly interpolate ambient spotlight glow
+      const glowDiffX = targetPosRef.current.x - currentGlowPosRef.current.x;
+      const glowDiffY = targetPosRef.current.y - currentGlowPosRef.current.y;
+      currentGlowPosRef.current.x += glowDiffX * 0.12;
+      currentGlowPosRef.current.y += glowDiffY * 0.12;
+
+      if (spotlightRef.current) {
+        spotlightRef.current.style.background = isDark
+          ? `radial-gradient(420px circle at ${currentGlowPosRef.current.x.toFixed(1)}px ${currentGlowPosRef.current.y.toFixed(1)}px, rgba(16,185,129,0.09), transparent 70%)`
+          : `radial-gradient(420px circle at ${currentGlowPosRef.current.x.toFixed(1)}px ${currentGlowPosRef.current.y.toFixed(1)}px, rgba(16,185,129,0.08), transparent 70%)`;
+      }
+
+      // Automatic idle detection: when rotation and glow have settled, sleep loop to save 100% CPU
+      const isSettled = Math.abs(angleDiff) < 0.04 && Math.abs(glowDiffX) < 0.3 && Math.abs(glowDiffY) < 0.3;
+      if (isSettled) {
+        isLoopRunning = false;
+        animId = null;
+        return;
+      }
+
+      animId = requestAnimationFrame(renderLoop);
+    };
+
+    // Pause when browser tab is hidden
+    const onVisibilityChange = () => {
+      isVisible = !document.hidden;
+      if (isVisible) {
+        wakeUpLoop();
+      } else if (animId) {
+        cancelAnimationFrame(animId);
+        isLoopRunning = false;
+      }
+    };
+
+    // Pause when Hero section is scrolled out of viewport
+    let observer: IntersectionObserver | null = null;
+    if (containerRef.current && typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          isIntersecting = entry.isIntersecting;
+          if (isIntersecting) {
+            wakeUpLoop();
+          } else if (animId) {
+            cancelAnimationFrame(animId);
+            isLoopRunning = false;
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(containerRef.current);
+    }
+
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    // Initial render tick
+    wakeUpLoop();
+
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
-      cancelAnimationFrame(rafId);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      if (observer) observer.disconnect();
+      if (animId) cancelAnimationFrame(animId);
+      isLoopRunning = false;
     };
   }, [isDark]);
 
@@ -74,13 +163,13 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
         style={{
           background: isDark
             ? 'radial-gradient(420px circle at 600px 400px, rgba(16,185,129,0.09), transparent 70%)'
-            : 'radial-gradient(420px circle at 600px 400px, rgba(245,158,11,0.08), transparent 70%)',
+            : 'radial-gradient(420px circle at 600px 400px, rgba(16,185,129,0.08), transparent 70%)',
         }}
         aria-hidden="true"
       />
 
       {/* ─── Hanging Chunky Moon & Chibi Astronaut Assembly ─────────────── */}
-      <div className={`relative select-none pointer-events-none w-52 h-52 sm:w-64 sm:h-64 ${className}`}>
+      <div ref={containerRef} className={`relative select-none pointer-events-none w-52 h-52 sm:w-64 sm:h-64 ${className}`}>
         <svg
           viewBox="0 0 360 360"
           className="w-full h-full overflow-visible pointer-events-none"
@@ -90,18 +179,18 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
           <defs>
             {/* Volumetric Beam Linear Gradient */}
             <linearGradient id="astroBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor={isDark ? 'rgba(16, 185, 129, 0.55)' : 'rgba(245, 158, 11, 0.5)'} />
-              <stop offset="35%" stopColor={isDark ? 'rgba(16, 185, 129, 0.22)' : 'rgba(245, 158, 11, 0.2)'} />
-              <stop offset="70%" stopColor={isDark ? 'rgba(16, 185, 129, 0.06)' : 'rgba(245, 158, 11, 0.05)'} />
-              <stop offset="100%" stopColor={isDark ? 'rgba(16, 185, 129, 0)' : 'rgba(245, 158, 11, 0)'} />
+              <stop offset="0%" stopColor="rgba(16, 185, 129, 0.55)" />
+              <stop offset="35%" stopColor="rgba(16, 185, 129, 0.22)" />
+              <stop offset="70%" stopColor="rgba(16, 185, 129, 0.06)" />
+              <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
             </linearGradient>
 
             {/* Core Intense Beam */}
             <linearGradient id="astroCoreBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-              <stop offset="25%" stopColor={isDark ? 'rgba(16, 185, 129, 0.55)' : 'rgba(245, 158, 11, 0.55)'} />
-              <stop offset="65%" stopColor={isDark ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.12)'} />
-              <stop offset="100%" stopColor={isDark ? 'rgba(16, 185, 129, 0)' : 'rgba(245, 158, 11, 0)'} />
+              <stop offset="25%" stopColor="rgba(16, 185, 129, 0.55)" />
+              <stop offset="65%" stopColor="rgba(16, 185, 129, 0.15)" />
+              <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
             </linearGradient>
 
             {/* Light Mode Buttery Yellow Moon Surface Gradient */}
@@ -138,12 +227,12 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
               strokeWidth="2.5"
               strokeLinecap="round"
             />
-            {/* Right Cable dropping from top navbar to right horn */}
+            {/* Right Cable dropping from top navbar to moon top crest (safely behind flashlight beam) */}
             <line
-              x1="290"
+              x1="184"
               y1="0"
-              x2="290"
-              y2="185"
+              x2="184"
+              y2="66"
               stroke="#1A1A1A"
               strokeWidth="2.5"
               strokeLinecap="round"
@@ -564,14 +653,14 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
 
               {/* Volumetric Light Cone directly from Lens Ring (0px gap) */}
               <polygon
-                points={`${SHOULDER_X + 48},${SHOULDER_Y - 9} ${SHOULDER_X + 48},${SHOULDER_Y + 13} 950,${SHOULDER_Y + 280} 950,${SHOULDER_Y - 280}`}
+                points={`${SHOULDER_X + 48},${SHOULDER_Y - 9} ${SHOULDER_X + 48},${SHOULDER_Y + 13} 950,${SHOULDER_Y + 175} 950,${SHOULDER_Y - 110}`}
                 fill="url(#astroBeamGrad)"
                 className="pointer-events-none"
               />
 
               {/* Focused Core Beam */}
               <polygon
-                points={`${SHOULDER_X + 48},${SHOULDER_Y - 3} ${SHOULDER_X + 48},${SHOULDER_Y + 7} 850,${SHOULDER_Y + 95} 850,${SHOULDER_Y - 95}`}
+                points={`${SHOULDER_X + 48},${SHOULDER_Y - 3} ${SHOULDER_X + 48},${SHOULDER_Y + 7} 850,${SHOULDER_Y + 65} 850,${SHOULDER_Y - 45}`}
                 fill="url(#astroCoreBeamGrad)"
                 className="pointer-events-none"
               />
@@ -584,4 +673,5 @@ export const HeroMoonSpotlight: React.FC<MoonSpotlightProps> = ({ className = ''
   );
 };
 
+export const HeroMoonSpotlight = React.memo(HeroMoonSpotlightComponent);
 export default HeroMoonSpotlight;

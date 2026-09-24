@@ -9654,5 +9654,1571 @@
     ],
     "correctAnswer": "B",
     "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-001",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The graph of the equation below in the $xy$-plane is a linear function. Which of the following equivalent forms of the equation includes the $x$-intercept as a constant?\n\n$$y = 2x + 6$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y - 2x = 6"
+      },
+      {
+        "id": "B",
+        "text": "(1/2)y - x = 3"
+      },
+      {
+        "id": "C",
+        "text": "y = 2(x + 3)"
+      },
+      {
+        "id": "D",
+        "text": "x = (1/2)y - 3"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-002",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The graph of the equation below in the $xy$-plane is a parabola. Which of the following equivalent forms of the equation includes the $x$-coordinate of the vertex as a constant?\n\n$$y = x^2 - 8x + 12$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = (x - 4)^2 - 4"
+      },
+      {
+        "id": "B",
+        "text": "y = (x - 6)(x - 2)"
+      },
+      {
+        "id": "C",
+        "text": "y = x(x - 8) + 12"
+      },
+      {
+        "id": "D",
+        "text": "y - 12 = x(x - 8)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-003",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The graph of the equation below in the $xy$-plane is a linear function. Which of the following equivalent forms of the equation includes the $y$-intercept as a constant?\n\n$$2x + 3y = 12$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x = -(3/2)y + 6"
+      },
+      {
+        "id": "B",
+        "text": "3y = -2x + 12"
+      },
+      {
+        "id": "C",
+        "text": "(2/3)x - 4 + y = 0"
+      },
+      {
+        "id": "D",
+        "text": "y = -(2/3)x + 4"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-004",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "If $f(x) = a(x - b)(x + c)$, where $a, b,$ and $c$ are positive constants, which of the following lists the $x$-intercepts of $f(x)$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-ab and ac"
+      },
+      {
+        "id": "B",
+        "text": "a, -b, and c"
+      },
+      {
+        "id": "C",
+        "text": "b and -c"
+      },
+      {
+        "id": "D",
+        "text": "-b and c"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-005",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The graph of the equation below in the $xy$-plane is a linear function. Which of the following is an equivalent form that includes the $x$-intercept as a constant?\n\n$$6x + 4y = 24$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = (3/2)x + 6"
+      },
+      {
+        "id": "B",
+        "text": "y = -(3/2)x + 6"
+      },
+      {
+        "id": "C",
+        "text": "x = -(2/3)y + 4"
+      },
+      {
+        "id": "D",
+        "text": "x = -(2/3)y + 6"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-006",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "If $y = 5x^2 - 16x + 3$ is graphed in the $xy$-plane, which of the following elements of the graph is displayed as a constant?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x-intercept"
+      },
+      {
+        "id": "B",
+        "text": "y-intercept"
+      },
+      {
+        "id": "C",
+        "text": "x-coordinate of the vertex"
+      },
+      {
+        "id": "D",
+        "text": "y-coordinate of the vertex"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-007",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The equation below represents a parabola in the $xy$-plane. Which of the following equations displays the $x$-intercepts of the parabola as constants or coefficients?\n\n$$y = x^2 - 13x + 36$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = (x - 4)(x - 9)"
+      },
+      {
+        "id": "B",
+        "text": "y = x(x - 13) + 36"
+      },
+      {
+        "id": "C",
+        "text": "y = x^2 - 13(x + 3) - 3"
+      },
+      {
+        "id": "D",
+        "text": "y - 36 = x^2 - 13x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-008",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The equation below is quadratic. Which of the following equivalent equations displays the minimum value of $y$ as a constant or coefficient?\n\n$$y + 12x = x^2 + 9$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = x^2 - 12x + 9"
+      },
+      {
+        "id": "B",
+        "text": "y = (x - 6)^2 - 27"
+      },
+      {
+        "id": "C",
+        "text": "y = x^2 - 2(6x - 4.5)"
+      },
+      {
+        "id": "D",
+        "text": "y = -x(x + 12) + 9"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-009",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The equation below represents a parabola in the $xy$-plane. Which of the following is an equivalent form that displays the $y$-intercept of the parabola as a constant or coefficient?\n\n$$y = -3(x + 2)(x + 3)$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y = -3x^2 - 15x - 18"
+      },
+      {
+        "id": "B",
+        "text": "y = -3x^2 - 5x - 6"
+      },
+      {
+        "id": "C",
+        "text": "y = -3x^2 + 15x + 18"
+      },
+      {
+        "id": "D",
+        "text": "y = -3x - 9x + 6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-010",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The equation below represents a parabola in the $xy$-plane. Which of the following equivalent forms of the equation displays the $x$-intercepts of the parabola as constants or coefficients?\n\n$$y = x^2 - 6x + 8$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "y - 8 = x^2 - 6x"
+      },
+      {
+        "id": "B",
+        "text": "y + 1 = (x - 3)^2"
+      },
+      {
+        "id": "C",
+        "text": "y = (x - 4)(x - 2)"
+      },
+      {
+        "id": "D",
+        "text": "y = x(x - 6) + 8"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-011",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Parabola $X$ in the $xy$-plane has the equation $y = x^2 - z$, where $z > 0$. Which of the following represents the $x$-intercepts of the parabola?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "z, -z"
+      },
+      {
+        "id": "B",
+        "text": "-z"
+      },
+      {
+        "id": "C",
+        "text": "z^2"
+      },
+      {
+        "id": "D",
+        "text": "\\sqrt{z}, -\\sqrt{z}"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "adv-fnc-latest-012",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The function $f$ is defined as $f(x) = a(1 + b)^x$, where $a$ and $b$ are positive constants and $x \\ge 0$. Which of the following best describes the constant $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "The maximum of the function."
+      },
+      {
+        "id": "B",
+        "text": "The x-intercept."
+      },
+      {
+        "id": "C",
+        "text": "The minimum of the function."
+      },
+      {
+        "id": "D",
+        "text": "The rate of increase of the function."
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-013",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The function $f$ is defined by the equation below. In which of the following equivalent forms of the equation does the maximum value of $f(x)$ appear as a constant or coefficient?\n\n$$f(x) = -3x^2 + 24x - 32$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "f(x) = -3x^2 + 18x + 6x - 36"
+      },
+      {
+        "id": "B",
+        "text": "f(x) = -3x(x - 6) + 6(x - 6)"
+      },
+      {
+        "id": "C",
+        "text": "f(x) = -3(x - 4)^2 + 16"
+      },
+      {
+        "id": "D",
+        "text": "f(x) = -3(x - 2)(x - 6)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-014",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Parabola $A$ in the $xy$-plane has the equation $x - y^2 + 8y + 5 = 2y + 13$. Which of the following is an equivalent form that shows the $y$-intercepts of the parabola as constants or coefficients?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x = y^2 - 6y + 8"
+      },
+      {
+        "id": "B",
+        "text": "x = y^2 - 6y + 18"
+      },
+      {
+        "id": "C",
+        "text": "x = (y - 4)(y - 2)"
+      },
+      {
+        "id": "D",
+        "text": "x = (y - 3)^2 - 1"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-015",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "If $f(x) - d = a(x - b)^2 + c$, where $a, b, c,$ and $d$ are constants, which of the following is equal to the $y$-coordinate of the vertex of the graph of $y = f(x)$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "b"
+      },
+      {
+        "id": "B",
+        "text": "c + d"
+      },
+      {
+        "id": "C",
+        "text": "-ab"
+      },
+      {
+        "id": "D",
+        "text": "c"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-016",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Parabola $Q$ in the coordinate plane has the equation $x - 3y^2 - 18y + 13 = 0$. Which equation displays the $x$-intercept of the parabola as a constant or coefficient?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x = 3(y - 3)^2 - 14"
+      },
+      {
+        "id": "B",
+        "text": "x = 3y^2 + 18y - 13"
+      },
+      {
+        "id": "C",
+        "text": "x + 14 = 3(y - 3)^2"
+      },
+      {
+        "id": "D",
+        "text": "y = \\sqrt{(x + 14)/3} + 3"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-017",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "If $(y - 3)^2 + 8 - 2x = 0$ is graphed in the $xy$-plane, which of the following elements of the graph is displayed as a constant in the equation?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x-intercept"
+      },
+      {
+        "id": "B",
+        "text": "y-intercept"
+      },
+      {
+        "id": "C",
+        "text": "x-coordinate of the vertex"
+      },
+      {
+        "id": "D",
+        "text": "y-coordinate of the vertex"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "adv-fnc-latest-018",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The functions $f$ and $g$ are defined by the given equations, where $x \\ge 0$. Which of the following equations displays, as a constant or coefficient, the minimum value of the function it defines, where $x \\ge 0$?\n\n$$\\begin{aligned} \\text{I. } f(x) &= 270(0.7)^x \\\\ \\text{II. } g(x) &= 270(1.7)^x \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "I and II"
+      },
+      {
+        "id": "D",
+        "text": "Neither I nor II"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-019",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Parabola $B$ in the $xy$-plane has the equation $y = x^2 - ax - bx + ab$. Which of the following is equivalent to the $x$-coordinate for the vertex of the parabola?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(a + b)/2"
+      },
+      {
+        "id": "B",
+        "text": "-(a + b)/2"
+      },
+      {
+        "id": "C",
+        "text": "ab"
+      },
+      {
+        "id": "D",
+        "text": "a/b"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-020",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Which of the following equivalent forms of the given function displays the $y$-coordinate of the $y$-intercept of its graph in the $xy$-plane as a constant or coefficient?\n\n$$f(x) = 9^{-(2-x)}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "f(x) = (1/81)(9)^x"
+      },
+      {
+        "id": "B",
+        "text": "f(x) = (1/9)^(2-x)"
+      },
+      {
+        "id": "C",
+        "text": "f(x) = 3^(-2(2-x))"
+      },
+      {
+        "id": "D",
+        "text": "f(x) = 9^(-2+x)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-021",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "For the exponential function $f$, the value of $f(1)$ is $a$, where $a$ is a constant. Which of the following equivalent forms of the function $f$ shows the value of $a$ as the coefficient?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "f(x) = 37(2)^(x-1)"
+      },
+      {
+        "id": "B",
+        "text": "f(x) = 70(2)^(x+1)"
+      },
+      {
+        "id": "C",
+        "text": "f(x) = 135(2)^(x-2)"
+      },
+      {
+        "id": "D",
+        "text": "f(x) = 235(2)^(x+2)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-022",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The functions $f$ and $g$ are defined by the given equations, where $x \\ge 0$. Which of the following equations displays, as a constant or coefficient, the maximum value of the function it defines, where $x \\ge 0$?\n\n$$\\begin{aligned} \\text{I. } f(x) &= 18(0.6)^{x-1} \\\\ \\text{II. } g(x) &= 18(0.6)(0.6)^{x+1} \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "I and II"
+      },
+      {
+        "id": "D",
+        "text": "Neither I nor II"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-023",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "Which of the following equivalent forms of the given function $f$ displays, as the coefficient, the $y$-coordinate of the $y$-intercept of the graph of $y = f(x)$ in the $xy$-plane?\n\n$$f(x) = 4^{-(2x-2)}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "f(x) = 16(1/16)^x"
+      },
+      {
+        "id": "B",
+        "text": "f(x) = (1/16)(1/4)^(2x)"
+      },
+      {
+        "id": "C",
+        "text": "f(x) = (1/64)(4)^(-2x)"
+      },
+      {
+        "id": "D",
+        "text": "f(x) = 4^(-2x+2)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-latest-024",
+    "source": "SAT Advanced Functions Latest Official",
+    "domain": "advanced_math",
+    "topic": "Nonlinear Functions",
+    "questionText": "The functions $f$ and $g$ are defined by the given equations, where $x \\ge 0$. Which of the following equations displays, as a constant or coefficient, the minimum value of the function it defines, where $x \\ge 0$?\n\n$$\\begin{aligned} \\text{I. } f(x) &= 103\\left(\\frac{1}{1.1}\\right)(1.1)^{x-1} \\\\ \\text{II. } g(x) &= 103(1.44)(1.2)^{x+2} \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "I and II"
+      },
+      {
+        "id": "D",
+        "text": "Neither I nor II"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "adv-fnc-gph-001",
+    "question": "The table displays several points on the graph of the function $f$ in the $xy$-plane:\n- $(0, 20)$\n- $(1, 21)$\n- $(3, 29)$\n\nWhich of the following could define $f(x)$?",
+    "options": [
+      "f(x) = 20x",
+      "f(x) = x + 20",
+      "f(x) = x - 20",
+      "f(x) = x^2 + 20"
+    ],
+    "correctAnswer": "f(x) = x^2 + 20",
+    "explanation": "Testing each point with $f(x) = x^2 + 20$: for $x = 0$, $f(0) = 0^2 + 20 = 20$; for $x = 1$, $f(1) = 1^2 + 20 = 21$; for $x = 3$, $f(3) = 3^2 + 20 = 29$. All points satisfy this quadratic function.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The table displays several points on the graph of the function $f$ in the $xy$-plane:\n- $(0, 20)$\n- $(1, 21)$\n- $(3, 29)$\n\nWhich of the following could define $f(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-002",
+    "question": "In the $xy$-plane, the polynomial curve $y = f(x)$ and the line $y = g(x)$ intersect at three distinct points. In this portion of the $xy$-plane, for how many values of $x$ does $f(x) = g(x)$?",
+    "options": [
+      "None",
+      "One",
+      "Two",
+      "Three"
+    ],
+    "correctAnswer": "Three",
+    "explanation": "The solutions to the equation $f(x) = g(x)$ correspond directly to the $x$-coordinates of the intersection points between the two graphs. Because the graphs intersect at three distinct locations, there are exactly three solutions.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "In the $xy$-plane, the polynomial curve $y = f(x)$ and the line $y = g(x)$ intersect at three distinct points. In this portion of the $xy$-plane, for how many values of $x$ does $f(x) = g(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-003",
+    "question": "The graph of the function $f$ consists of a V-shaped piecewise curve with vertex at $(0, -5)$ that passes through $(-4, -2)$ and $(3, -2)$. If $f(a) = f(3)$, which of the following could be the value of $a$?",
+    "options": [
+      "-4",
+      "-3",
+      "-2",
+      "1"
+    ],
+    "correctAnswer": "-4",
+    "explanation": "From the graph, at $x = 3$ the value of the function is $f(3) = -2$. The horizontal line $y = -2$ also intersects the curve at $x = -4$, where $f(-4) = -2$. Therefore, $a = -4$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The graph of the function $f$ consists of a V-shaped piecewise curve with vertex at $(0, -5)$ that passes through $(-4, -2)$ and $(3, -2)$. If $f(a) = f(3)$, which of the following could be the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-004",
+    "question": "The function $f$ is graphed in the $xy$-plane. The graph has multiple local peaks reaching a maximum height of $3$ and passes through the horizontal line $y = 3$ at four distinct points. For how many values of $x$ does $f(x) = 3$?",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correctAnswer": "Four",
+    "explanation": "The equation $f(x) = 3$ represents the points where the graph of $f(x)$ intersects the horizontal line $y = 3$. Since the line touches or intersects the curve at four points, there are four values of $x$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f$ is graphed in the $xy$-plane. The graph has multiple local peaks reaching a maximum height of $3$ and passes through the horizontal line $y = 3$ at four distinct points. For how many values of $x$ does $f(x) = 3$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-005",
+    "question": "For which of the following functions is it true that $f(-3) = f(3)$?",
+    "options": [
+      "f(x) = 2/x",
+      "f(x) = x^3/3",
+      "f(x) = 3x^2 + 1",
+      "f(x) = x + 2"
+    ],
+    "correctAnswer": "f(x) = 3x^2 + 1",
+    "explanation": "A function satisfies $f(-x) = f(x)$ if it is an even function. For $f(x) = 3x^2 + 1$: $f(-3) = 3(-3)^2 + 1 = 3(9) + 1 = 28$, and $f(3) = 3(3)^2 + 1 = 28$. Thus $f(-3) = f(3)$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "For which of the following functions is it true that $f(-3) = f(3)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-006",
+    "question": "The function $f$ is defined by $f(x) = 3x + 2$ and the function $g$ is defined by $g(x) = f(2x) - 1$. What is the value of $g(10)$?",
+    "options": [
+      "61",
+      "71",
+      "81",
+      "91"
+    ],
+    "correctAnswer": "61",
+    "explanation": "Evaluate $g(10) = f(2(10)) - 1 = f(20) - 1$. Now compute $f(20) = 3(20) + 2 = 62$. Therefore, $g(10) = 62 - 1 = 61$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f$ is defined by $f(x) = 3x + 2$ and the function $g$ is defined by $g(x) = f(2x) - 1$. What is the value of $g(10)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-007",
+    "question": "If $f(x) = \\frac{16 + x^2}{2x}$ for all $x \\ne 0$, what is the value of $f(-4)$?",
+    "options": [
+      "-8",
+      "-4",
+      "4",
+      "8"
+    ],
+    "correctAnswer": "-4",
+    "explanation": "Substitute $x = -4$: $f(-4) = \\frac{16 + (-4)^2}{2(-4)} = \\frac{16 + 16}{-8} = \\frac{32}{-8} = -4$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "If $f(x) = \\frac{16 + x^2}{2x}$ for all $x \\ne 0$, what is the value of $f(-4)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-008",
+    "question": "Several values of the function $f$ are given: $f(0) = -2$, $f(1) = 3$, and $f(2) = 18$. If $f(x) = ax^2 + b$ where $a$ and $b$ are constants, what is the value of $f(3)$?",
+    "options": [
+      "23",
+      "39",
+      "43",
+      "56"
+    ],
+    "correctAnswer": "43",
+    "explanation": "From $f(0) = -2$, we find $a(0)^2 + b = -2 \\implies b = -2$. Using $f(1) = 3$: $a(1)^2 - 2 = 3 \\implies a = 5$. Check with $f(2)$: $5(2^2) - 2 = 18$ (correct). Therefore, $f(3) = 5(3^2) - 2 = 5(9) - 2 = 43$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Several values of the function $f$ are given: $f(0) = -2$, $f(1) = 3$, and $f(2) = 18$. If $f(x) = ax^2 + b$ where $a$ and $b$ are constants, what is the value of $f(3)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-009",
+    "question": "If $f(x) = x^2$, for which of the following values of $c$ is $f(c) < c$?",
+    "options": [
+      "1/2",
+      "1",
+      "3/2",
+      "2"
+    ],
+    "correctAnswer": "1/2",
+    "explanation": "We require $c^2 < c \\implies c^2 - c < 0 \\implies c(c - 1) < 0$. This inequality is satisfied when $0 < c < 1$. Of the given choices, only $c = \\frac{1}{2}$ lies in this interval: $(1/2)^2 = 1/4 < 1/2$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "If $f(x) = x^2$, for which of the following values of $c$ is $f(c) < c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-010",
+    "question": "If the graph of the function $f$ has $x$-intercepts at $-3$ and $2$, and a $y$-intercept at $12$, which of the following could define $f$?",
+    "options": [
+      "f(x) = (x + 3)^2(x - 2)",
+      "f(x) = (x + 3)(x - 2)^2",
+      "f(x) = (x - 3)^2(x + 2)",
+      "f(x) = (x - 3)(x + 2)^2"
+    ],
+    "correctAnswer": "f(x) = (x + 3)(x - 2)^2",
+    "explanation": "An $x$-intercept at $-3$ requires factor $(x + 3)$, and an $x$-intercept at $2$ requires factor $(x - 2)$. Testing the $y$-intercept by evaluating $f(0)$: for $f(x) = (x + 3)(x - 2)^2$, $f(0) = (0 + 3)(0 - 2)^2 = 3(4) = 12$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "If the graph of the function $f$ has $x$-intercepts at $-3$ and $2$, and a $y$-intercept at $12$, which of the following could define $f$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-011",
+    "question": "The functions $f$ and $g$ are defined by $f(x) = x^2 + 1$ and $g(x) = x^2 - 1$. What is the value of $f(g(2))$?",
+    "options": [
+      "3",
+      "5",
+      "10",
+      "17"
+    ],
+    "correctAnswer": "10",
+    "explanation": "First compute the inner function: $g(2) = 2^2 - 1 = 4 - 1 = 3$. Then evaluate $f$ at that result: $f(3) = 3^2 + 1 = 9 + 1 = 10$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The functions $f$ and $g$ are defined by $f(x) = x^2 + 1$ and $g(x) = x^2 - 1$. What is the value of $f(g(2))$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-012",
+    "question": "The graph of function $f$ and line segment $AB$ are shown in the $xy$-plane, where $f$ is a curve that intersects the horizontal line $y = c$ at four distinct points between $x = -3$ and $x = 3$. For how many values of $x$ between $-3$ and $3$ does $f(x) = c$?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "4",
+    "explanation": "The values of $x$ satisfying $f(x) = c$ correspond to the $x$-coordinates where the curve intersects the horizontal line $y = c$. From the graph, there are four distinct intersection points between $x = -3$ and $x = 3$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The graph of function $f$ and line segment $AB$ are shown in the $xy$-plane, where $f$ is a curve that intersects the horizontal line $y = c$ at four distinct points between $x = -3$ and $x = 3$. For how many values of $x$ between $-3$ and $3$ does $f(x) = c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-013",
+    "question": "The table gives values of function $f$: $(-4, 3)$, $(-2, 5)$, $(0, 2)$, $(2, 16)$, $(3, 4)$, $(4, 8)$. If $g(x) = 2f(x)$, what is the value of $k$ if $g(k) = 8$?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8"
+    ],
+    "correctAnswer": "3",
+    "explanation": "We are given $g(k) = 8$. Since $g(k) = 2f(k)$, we have $2f(k) = 8 \\implies f(k) = 4$. Looking at the table, $f(x) = 4$ when $x = 3$. Therefore, $k = 3$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The table gives values of function $f$: $(-4, 3)$, $(-2, 5)$, $(0, 2)$, $(2, 16)$, $(3, 4)$, $(4, 8)$. If $g(x) = 2f(x)$, what is the value of $k$ if $g(k) = 8$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-014",
+    "question": "The function $f$ is defined by $f(x) = \\sqrt{x - 2}$ for all $x \\ge 2$. Which of the following is equal to $f(18) - f(11)$?",
+    "options": [
+      "f(3)",
+      "f(5)",
+      "f(6)",
+      "f(7)"
+    ],
+    "correctAnswer": "f(3)",
+    "explanation": "Calculate the values: $f(18) = \\sqrt{18 - 2} = \\sqrt{16} = 4$, and $f(11) = \\sqrt{11 - 2} = \\sqrt{9} = 3$. The difference is $f(18) - f(11) = 4 - 3 = 1$. Testing the options: $f(3) = \\sqrt{3 - 2} = \\sqrt{1} = 1$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f$ is defined by $f(x) = \\sqrt{x - 2}$ for all $x \\ge 2$. Which of the following is equal to $f(18) - f(11)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-015",
+    "question": "Which of the following points in the $xy$-plane is NOT on the graph of $y = \\frac{x + 1}{x - 1}$?",
+    "options": [
+      "(-2, 1/3)",
+      "(-1, 0)",
+      "(0, -1)",
+      "(1, 2)"
+    ],
+    "correctAnswer": "(1, 2)",
+    "explanation": "For $x = 1$, the denominator $x - 1 = 1 - 1 = 0$, making the function undefined. Hence, $x = 1$ is a vertical asymptote and no point with $x = 1$ lies on the graph.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Which of the following points in the $xy$-plane is NOT on the graph of $y = \\frac{x + 1}{x - 1}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-016",
+    "question": "Let the function $g$ be defined by $g(x) = \\sqrt{3x}$. If $g(a) = 6$, what is the value of $a$?",
+    "options": [
+      "3",
+      "6",
+      "9",
+      "12"
+    ],
+    "correctAnswer": "12",
+    "explanation": "Set up the equation: $\\sqrt{3a} = 6$. Squaring both sides gives $3a = 36 \\implies a = 12$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Let the function $g$ be defined by $g(x) = \\sqrt{3x}$. If $g(a) = 6$, what is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-017",
+    "question": "The functions $f$ and $g$ are defined by the table:\n- $x = -2: f = 3, g = 4$\n- $x = -1: f = 5, g = 2$\n- $x = 0: f = -2, g = -3$\n- $x = 1: f = 3, g = 5$\n- $x = 2: f = 6, g = 7$\n- $x = 3: f = 7, g = 1$\n\nWhat is the value of $f(g(-1))$?",
+    "options": [
+      "-2",
+      "3",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "6",
+    "explanation": "From the table, at $x = -1$, $g(-1) = 2$. Next evaluate $f$ at $2$: from the table, $f(2) = 6$. Thus, $f(g(-1)) = 6$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The functions $f$ and $g$ are defined by the table:\n- $x = -2: f = 3, g = 4$\n- $x = -1: f = 5, g = 2$\n- $x = 0: f = -2, g = -3$\n- $x = 1: f = 3, g = 5$\n- $x = 2: f = 6, g = 7$\n- $x = 3: f = 7, g = 1$\n\nWhat is the value of $f(g(-1))$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-018",
+    "question": "Using the table from the previous question where $f$ and $g$ are defined for $x \\in \\{-2, -1, 0, 1, 2, 3\\}$, if $g(c) = 5$, what is the value of $f(c)$?",
+    "options": [
+      "-2",
+      "3",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "3",
+    "explanation": "Look for where $g(x) = 5$: the table shows $g(1) = 5$, so $c = 1$. Now find $f(c) = f(1)$: the table shows $f(1) = 3$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Using the table from the previous question where $f$ and $g$ are defined for $x \\in \\{-2, -1, 0, 1, 2, 3\\}$, if $g(c) = 5$, what is the value of $f(c)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-019",
+    "question": "If $f(x) = -3x + 5$ and $\\frac{1}{2}f(a) = 10$, what is the value of $a$?",
+    "options": [
+      "-8",
+      "-5",
+      "5",
+      "8"
+    ],
+    "correctAnswer": "-5",
+    "explanation": "Multiply both sides by $2$: $f(a) = 20$. Substitute into the function definition: $-3a + 5 = 20 \\implies -3a = 15 \\implies a = -5$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "If $f(x) = -3x + 5$ and $\\frac{1}{2}f(a) = 10$, what is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-020",
+    "question": "Several values of function $f$ are given: $f(0) = -4$, $f(1) = -8$, $f(2) = 3$, $f(3) = 6$, $f(4) = 7$, $f(5) = 2$, $f(6) = 4$, $f(7) = 5$. If the function $g$ is defined by $g(x) = f(2x - 1)$, what is the value of $g(3)$?",
+    "options": [
+      "2",
+      "6",
+      "5",
+      "7"
+    ],
+    "correctAnswer": "2",
+    "explanation": "Evaluate the inner argument for $x = 3$: $2(3) - 1 = 5$. Then $g(3) = f(5)$. From the table, $f(5) = 2$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Several values of function $f$ are given: $f(0) = -4$, $f(1) = -8$, $f(2) = 3$, $f(3) = 6$, $f(4) = 7$, $f(5) = 2$, $f(6) = 4$, $f(7) = 5$. If the function $g$ is defined by $g(x) = f(2x - 1)$, what is the value of $g(3)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-021",
+    "question": "The functions $f$ and $g$ are defined by $f(x) = 4x - 3$ and $g(x) = 3x + 5$. Which of the following is equal to $f(8)$?",
+    "options": [
+      "g(1)",
+      "g(3)",
+      "g(5)",
+      "g(8)"
+    ],
+    "correctAnswer": "g(8)",
+    "explanation": "Calculate $f(8) = 4(8) - 3 = 32 - 3 = 29$. Now evaluate the options for $g$: $g(8) = 3(8) + 5 = 24 + 5 = 29$. Thus, $f(8) = g(8)$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The functions $f$ and $g$ are defined by $f(x) = 4x - 3$ and $g(x) = 3x + 5$. Which of the following is equal to $f(8)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-022",
+    "question": "The graph of the function $y = 9 - x^2$ is shown in the $xy$-plane with $y$-intercept $A$ and positive $x$-intercept $B$. What is the length of line segment $\\overline{AB}$?",
+    "options": [
+      "3\\sqrt{2}",
+      "3\\sqrt{10}",
+      "9",
+      "9\\sqrt{10}"
+    ],
+    "correctAnswer": "3\\sqrt{10}",
+    "explanation": "The $y$-intercept $A$ occurs at $x = 0 \\implies y = 9 - 0^2 = 9$, so $A = (0, 9)$. The positive $x$-intercept $B$ occurs where $9 - x^2 = 0 \\implies x = 3$, so $B = (3, 0)$. The distance is $AB = \\sqrt{(3 - 0)^2 + (0 - 9)^2} = \\sqrt{9 + 81} = \\sqrt{90} = 3\\sqrt{10}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The graph of the function $y = 9 - x^2$ is shown in the $xy$-plane with $y$-intercept $A$ and positive $x$-intercept $B$. What is the length of line segment $\\overline{AB}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-023",
+    "question": "The linear function $f$ passes through $(0, 2)$ and $(1, 0)$. If the function $g$ is defined by $g(x) = f(x) + 4$, what is the $x$-intercept of $g(x)$?",
+    "options": [
+      "-3",
+      "-1",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "3",
+    "explanation": "The slope of line $f$ is $m = \\frac{0 - 2}{1 - 0} = -2$, so $f(x) = -2x + 2$. Then $g(x) = f(x) + 4 = -2x + 6$. The $x$-intercept of $g(x)$ occurs when $g(x) = 0 \\implies -2x + 6 = 0 \\implies 2x = 6 \\implies x = 3$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The linear function $f$ passes through $(0, 2)$ and $(1, 0)$. If the function $g$ is defined by $g(x) = f(x) + 4$, what is the $x$-intercept of $g(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-024",
+    "question": "The function $f(x) = x^3 + 1$ is graphed in the $xy$-plane. If the function $g$ is defined by $g(x) = x + k$, where $k$ is a constant, and the equation $f(x) = g(x)$ has $3$ real solutions, which of the following could be the value of $k$?",
+    "options": [
+      "-1",
+      "0",
+      "1",
+      "2"
+    ],
+    "correctAnswer": "1",
+    "explanation": "Equating $f(x) = g(x)$ gives $x^3 + 1 = x + k \\implies x^3 - x + (1 - k) = 0$. For $k = 1$, the equation becomes $x^3 - x = 0 \\implies x(x^2 - 1) = 0 \\implies x(x - 1)(x + 1) = 0$, which has exactly three real solutions: $x = -1, 0, 1$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f(x) = x^3 + 1$ is graphed in the $xy$-plane. If the function $g$ is defined by $g(x) = x + k$, where $k$ is a constant, and the equation $f(x) = g(x)$ has $3$ real solutions, which of the following could be the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-fnc-gph-025",
+    "question": "In the $xy$-plane, the linear function $y = ax + 12$, where $a$ is a positive constant, passes through the point $(-a, a)$. If $a > 0$, what is the value of $a$?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "3",
+    "explanation": "Substitute the point $(-a, a)$ into the equation: $a = a(-a) + 12 \\implies a = -a^2 + 12 \\implies a^2 + a - 12 = 0$. Factoring the quadratic: $(a + 4)(a - 3) = 0$. Since $a > 0$, we have $a = 3$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions",
+    "questionType": "multiple_choice",
+    "questionText": "In the $xy$-plane, the linear function $y = ax + 12$, where $a$ is a positive constant, passes through the point $(-a, a)$. If $a > 0$, what is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-001",
+    "question": "The graph of $y = f(x) - 1$ is shown in the $xy$-plane. It has a horizontal asymptote at $y = 0$ and passes through the points $(0, 1)$, $(1, 2)$, and $(2, 4)$. Which equation could define function $f$?",
+    "options": [
+      "f(x) = 2x",
+      "f(x) = 2^x - 1",
+      "f(x) = 2^x + 1",
+      "f(x) = 2^x + 2"
+    ],
+    "correctAnswer": "f(x) = 2^x + 1",
+    "explanation": "The graphed curve has points $(0, 1)$, $(1, 2)$, $(2, 4)$, which corresponds to the standard exponential function $y = 2^x$. Since the equation representing the graph is $y = f(x) - 1$, setting $f(x) - 1 = 2^x$ gives $f(x) = 2^x + 1$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The graph of $y = f(x) - 1$ is shown in the $xy$-plane. It has a horizontal asymptote at $y = 0$ and passes through the points $(0, 1)$, $(1, 2)$, and $(2, 4)$. Which equation could define function $f$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-002",
+    "question": "An acceptable noise criterion rating for background noise in a laundry room is $50$. For this rating, the equation $y = 22(0.997)^{x - 60} + 47$ gives the estimated sound pressure level, $y$, in decibels, as a function of the octave band center frequency, $x$, in hertz, where $x \\ge 60$. Which of the following is the best interpretation of $47$ in this context?",
+    "options": [
+      "47 is 22 less than the estimated sound pressure level, in decibels, at an octave band center frequency of 60 hertz.",
+      "47 is 22 less than the estimated sound pressure level, in decibels, at an octave band center frequency of 0 hertz.",
+      "47 is the estimated sound pressure level, in decibels, at an octave band center frequency of 60 hertz.",
+      "47 is the estimated sound pressure level, in decibels, at an octave band center frequency of 0 hertz."
+    ],
+    "correctAnswer": "47 is 22 less than the estimated sound pressure level, in decibels, at an octave band center frequency of 60 hertz.",
+    "explanation": "Evaluate the model at $x = 60$: $y = 22(0.997)^{60 - 60} + 47 = 22(1) + 47 = 69\\text{ decibels}$. Since $47 = 69 - 22$, the value $47$ is $22$ less than the estimated sound pressure level at a center frequency of $60\\text{ hertz}$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "An acceptable noise criterion rating for background noise in a laundry room is $50$. For this rating, the equation $y = 22(0.997)^{x - 60} + 47$ gives the estimated sound pressure level, $y$, in decibels, as a function of the octave band center frequency, $x$, in hertz, where $x \\ge 60$. Which of the following is the best interpretation of $47$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-003",
+    "question": "By examining pollen in soil, scientists estimated that the number of Ulmus trees in an ancient population doubled every $664$ years. There were $n$ trees in the earliest known sample, where $n$ is a constant. Which expression gives the estimated number of Ulmus trees $x$ years after the earliest known sample?",
+    "options": [
+      "n(2)^{664x}",
+      "n(2)^{\\frac{664}{x}}",
+      "n(2)^{\\frac{x}{664}}",
+      "n(2)^{664 + x}"
+    ],
+    "correctAnswer": "n(2)^{\\frac{x}{664}}",
+    "explanation": "In an exponential doubling model $y = n(2)^{t/T}$, $T$ represents the doubling time. Here the doubling period is $664$ years, so the exponent must be $\\frac{x}{664}$, yielding $n(2)^{\\frac{x}{664}}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "By examining pollen in soil, scientists estimated that the number of Ulmus trees in an ancient population doubled every $664$ years. There were $n$ trees in the earliest known sample, where $n$ is a constant. Which expression gives the estimated number of Ulmus trees $x$ years after the earliest known sample?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-004",
+    "question": "If the function $f(x) = 5^x + 3$ is graphed in the $xy$-plane where $y = f(x)$, what is the $y$-intercept of the graph?",
+    "options": [
+      "(0, 3)",
+      "(0, 4)",
+      "(0, 5)",
+      "(0, 8)"
+    ],
+    "correctAnswer": "(0, 4)",
+    "explanation": "The $y$-intercept occurs where $x = 0$: $f(0) = 5^0 + 3 = 1 + 3 = 4$. Therefore, the $y$-intercept is $(0, 4)$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "If the function $f(x) = 5^x + 3$ is graphed in the $xy$-plane where $y = f(x)$, what is the $y$-intercept of the graph?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-005",
+    "question": "Which table could represent values of $x$ and their corresponding values of $f(x)$ for a decreasing exponential function $f$?",
+    "options": [
+      "x: 1, 2, 3, 4 with f(x): 1, 2, 3, 4",
+      "x: 1, 2, 3, 4 with f(x): 8, 4, 2, 1",
+      "x: 1, 2, 4, 8 with f(x): 1, 9, 17, 25",
+      "x: 1, 2, 4, 8 with f(x): 25, 17, 9, 1"
+    ],
+    "correctAnswer": "x: 1, 2, 3, 4 with f(x): 8, 4, 2, 1",
+    "explanation": "An exponential function changes by a constant multiplicative factor for equal increments in $x$. When $x$ increases by $1$ ($1, 2, 3, 4$), the values $8, 4, 2, 1$ decrease by a constant multiplier of $\\frac{1}{2}$, which characterizes exponential decay.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Which table could represent values of $x$ and their corresponding values of $f(x)$ for a decreasing exponential function $f$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-006",
+    "question": "A certain neighborhood had a population of $1,340$ in 2009. Each year for the next $5$ years, the population of the neighborhood increased by approximately $3\\%$ of the population the previous year. Which equation represents the population, $N$, of the neighborhood $t$ years after 2009, where $t \\le 5$?",
+    "options": [
+      "N = 0.03(1,340)^t",
+      "N = 1,340(0.03)^t",
+      "N = 1,340(1.03)^t",
+      "N = 1.03(1,340)^t"
+    ],
+    "correctAnswer": "N = 1,340(1.03)^t",
+    "explanation": "An annual increase of $3\\%$ corresponds to a growth factor of $1 + 0.03 = 1.03$. Starting with an initial population of $1,340$, the model is $N = 1,340(1.03)^t$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "A certain neighborhood had a population of $1,340$ in 2009. Each year for the next $5$ years, the population of the neighborhood increased by approximately $3\\%$ of the population the previous year. Which equation represents the population, $N$, of the neighborhood $t$ years after 2009, where $t \\le 5$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-007",
+    "question": "The function $f$ is defined by $f(x) = a^x - b$, where $a$ and $b$ are constants. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(0, -5)$ and $(1, 2)$. What is the value of $a$?",
+    "options": [
+      "8",
+      "7",
+      "6",
+      "5"
+    ],
+    "correctAnswer": "8",
+    "explanation": "Plug in $(0, -5)$: $f(0) = a^0 - b = -5 \\implies 1 - b = -5 \\implies b = 6$. Now plug in $(1, 2)$: $f(1) = a^1 - 6 = 2 \\implies a = 8$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f$ is defined by $f(x) = a^x - b$, where $a$ and $b$ are constants. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(0, -5)$ and $(1, 2)$. What is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-008",
+    "question": "The function $f(x) = 6.4(0.5)^{3x}$ models the mass, in grams, of a radioactive carbon-11 sample $x$ hours after it is initially measured. Which statement is the best interpretation of $f(2) = 0.1$?",
+    "options": [
+      "After 0.1 hour, the mass of carbon-11 in the sample is 2g.",
+      "After 2 hours, the mass of carbon-11 in the sample is 0.1g.",
+      "After 0.1 hour, the mass of carbon-11 in the sample has decreased by exactly 2g.",
+      "After 2 hours, the mass of carbon-11 in the sample has decreased by exactly 0.1g."
+    ],
+    "correctAnswer": "After 2 hours, the mass of carbon-11 in the sample is 0.1g.",
+    "explanation": "In the function $f(x)$, $x$ represents the time in hours and $f(x)$ represents the remaining mass in grams. Therefore, $f(2) = 0.1$ means that after $2$ hours, the remaining mass of carbon-11 is $0.1$ grams.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f(x) = 6.4(0.5)^{3x}$ models the mass, in grams, of a radioactive carbon-11 sample $x$ hours after it is initially measured. Which statement is the best interpretation of $f(2) = 0.1$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-009",
+    "question": "Which table shows $3$ values of $x$ and their corresponding values of $f(x)$ for an increasing exponential function $f$?",
+    "options": [
+      "x: 0, 1, 2 with f(x): 25, 15, 5",
+      "x: 0, 1, 2 with f(x): 5, 15, 25",
+      "x: 0, 1, 2 with f(x): 5, 15, 45",
+      "x: 0, 1, 2 with f(x): 45, 15, 5"
+    ],
+    "correctAnswer": "x: 0, 1, 2 with f(x): 5, 15, 45",
+    "explanation": "For an increasing exponential function, the values of $f(x)$ must grow by a constant multiplier greater than $1$. In the table with $f(0) = 5$, $f(1) = 15$, and $f(2) = 45$, each consecutive value is multiplied by $3$ ($5 \\times 3 = 15$, $15 \\times 3 = 45$), representing $f(x) = 5(3)^x$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "Which table shows $3$ values of $x$ and their corresponding values of $f(x)$ for an increasing exponential function $f$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-010",
+    "question": "According to a model, the population of Canada's Yukon Territory was $33$ thousand in 2008 and increased by $2\\%$ of the previous year's population for each of the next $4$ years. Which function represents this model, where $f(x)$ is the population, in thousands, predicted by the model $x$ years after 2008 and $0 \\le x \\le 4$?",
+    "options": [
+      "f(x) = 33(x)^{1.02}",
+      "f(x) = 33^{1.02x}",
+      "f(x) = 33(0.02)^x",
+      "f(x) = 33(1.02)^x"
+    ],
+    "correctAnswer": "f(x) = 33(1.02)^x",
+    "explanation": "An annual increase of $2\\%$ means multiplying each year by $1 + 0.02 = 1.02$. With initial population $33$ thousand, the population $x$ years later is given by $f(x) = 33(1.02)^x$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "According to a model, the population of Canada's Yukon Territory was $33$ thousand in 2008 and increased by $2\\%$ of the previous year's population for each of the next $4$ years. Which function represents this model, where $f(x)$ is the population, in thousands, predicted by the model $x$ years after 2008 and $0 \\le x \\le 4$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-011",
+    "question": "The function $f(x) = 7.3(0.98)^x$ models the annual soil erosion rate, in tons per acre per year, on US cropland $x$ years since 1982. According to the model, which is the best interpretation of $7.3(0.98)^{10}$ in this context?",
+    "options": [
+      "The number of acres of US cropland in 1982",
+      "The number of acres of US cropland in 1992",
+      "The annual soil erosion rate, in tons per acre per year, in 1982",
+      "The annual soil erosion rate, in tons per acre per year, in 1992"
+    ],
+    "correctAnswer": "The annual soil erosion rate, in tons per acre per year, in 1992",
+    "explanation": "Since $x$ is years after 1982, setting $x = 10$ corresponds to $1982 + 10 = 1992$. Evaluating $f(10) = 7.3(0.98)^{10}$ calculates the predicted annual soil erosion rate, in tons per acre per year, in 1992.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f(x) = 7.3(0.98)^x$ models the annual soil erosion rate, in tons per acre per year, on US cropland $x$ years since 1982. According to the model, which is the best interpretation of $7.3(0.98)^{10}$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-012",
+    "question": "The predicted number, $B(t)$, of a certain type of bacterial cell in a growth medium is given by $B(t) = 40(3)^t$, where $t$ is the time, in days, since the number of bacterial cells was first measured. Which of the following is the best interpretation of $B(5) = 9,720$ in this context?",
+    "options": [
+      "5 days after the number of bacterial cells was first measured, the predicted number of bacterial cells was 9,720",
+      "243 days after the number of bacterial cells was first measured, the predicted number of bacterial cells was 9,720",
+      "9,720 days after the number of bacterial cells was first measured, the predicted number of bacterial cells was 5",
+      "9,720 days after the number of bacterial cells was first measured, the predicted number of bacterial cells was 243"
+    ],
+    "correctAnswer": "5 days after the number of bacterial cells was first measured, the predicted number of bacterial cells was 9,720",
+    "explanation": "The variable $t = 5$ represents $5$ days since initial measurement, and $B(5) = 9,720$ represents the predicted count of bacterial cells at that time.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The predicted number, $B(t)$, of a certain type of bacterial cell in a growth medium is given by $B(t) = 40(3)^t$, where $t$ is the time, in days, since the number of bacterial cells was first measured. Which of the following is the best interpretation of $B(5) = 9,720$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-013",
+    "question": "A model estimates that the initial number of photons in a beam is $800$ when the beam reaches the surface of a material. The number of photons decreases by $50\\%$ for each $13$ millimeters the beam passes through. Which equation represents this model, where $I$ is the estimated number of photons when the beam reaches a point $x$ millimeters from the surface?",
+    "options": [
+      "I = 800(0.5)^{\\frac{x}{13}}",
+      "I = 800(0.5)^{13x}",
+      "I = 800(2)^{\\frac{x}{13}}",
+      "I = 800(13)^{\\frac{x}{2}}"
+    ],
+    "correctAnswer": "I = 800(0.5)^{\\frac{x}{13}}",
+    "explanation": "Decreasing by $50\\%$ means retaining $1 - 0.50 = 0.5$ of the intensity. This halving occurs once every $13\\text{ mm}$, so the number of half-value layers in $x\\text{ mm}$ is $\\frac{x}{13}$. The model is $I = 800(0.5)^{\\frac{x}{13}}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "A model estimates that the initial number of photons in a beam is $800$ when the beam reaches the surface of a material. The number of photons decreases by $50\\%$ for each $13$ millimeters the beam passes through. Which equation represents this model, where $I$ is the estimated number of photons when the beam reaches a point $x$ millimeters from the surface?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-014",
+    "question": "The function $f$ is defined by $f(x) = a^x + b$, where $a$ and $b$ are constants. In the $xy$-plane, the graph of $y = f(x)$ has an $x$-intercept at $(2, 0)$ and a $y$-intercept at $(0, -255)$. What is the value of $b$?",
+    "correctAnswer": "-256",
+    "explanation": "The $y$-intercept occurs at $x = 0$: $f(0) = a^0 + b = 1 + b = -255 \\implies b = -256$. We can confirm with the $x$-intercept: $f(2) = a^2 - 256 = 0 \\implies a^2 = 256 \\implies a = 16$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "free_response",
+    "questionText": "The function $f$ is defined by $f(x) = a^x + b$, where $a$ and $b$ are constants. In the $xy$-plane, the graph of $y = f(x)$ has an $x$-intercept at $(2, 0)$ and a $y$-intercept at $(0, -255)$. What is the value of $b$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-exp-mod-015",
+    "question": "The function $f(t) = 7,000(0.67)^t$ models the number of catalogs a company sent to customers at the end of each year, where $t$ represents the number of years since the end of 1995, and $0 \\le t \\le 5$. Which statement is the best interpretation of the $y$-intercept of the graph of $y = f(t)$?",
+    "options": [
+      "The minimum estimated number of catalogs the company sent to their customers during 5 years is 1,411",
+      "The minimum estimated number of catalogs the company sent to their customers during the 5 years was 7,000",
+      "The estimated number of catalogs the company sent to their customers at the end of 1995 was 1,411",
+      "The estimated number of catalogs the company sent to their customers at the end of 1995 was 7,000"
+    ],
+    "correctAnswer": "The estimated number of catalogs the company sent to their customers at the end of 1995 was 7,000",
+    "explanation": "The $y$-intercept occurs at $t = 0$, which corresponds to the end of 1995. At $t = 0$, $f(0) = 7,000(0.67)^0 = 7,000$, representing the estimated catalogs sent at the end of 1995.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f(t) = 7,000(0.67)^t$ models the number of catalogs a company sent to customers at the end of each year, where $t$ represents the number of years since the end of 1995, and $0 \\le t \\le 5$. Which statement is the best interpretation of the $y$-intercept of the graph of $y = f(t)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-016",
+    "question": "A savings account is opened with an initial deposit of $\\$6,000$. The amount of money in the account $t$ years after the initial deposit is given by $f(t) = 6,000(1.01)^{2t}$. Which of the following is the best interpretation of the statement \"$f(5) \\approx 6,627.73$\"?",
+    "options": [
+      "5 years after the initial deposit, the amount of money, in dollars, in the account is 6,627.73",
+      "Every 5 years, the amount of money, in dollars, in the account increases by 6,627.73",
+      "5 years after the initial deposit, the amount of money, in dollars, in the account has increased by 6,627.73",
+      "Every 5 years, the amount of money, in dollars, in the account decreases by 6,627.73"
+    ],
+    "correctAnswer": "5 years after the initial deposit, the amount of money, in dollars, in the account is 6,627.73",
+    "explanation": "In this model, $t = 5$ represents $5$ years after opening, and $f(5)$ gives the total balance in the account, which is $\\$6,627.73$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "A savings account is opened with an initial deposit of $\\$6,000$. The amount of money in the account $t$ years after the initial deposit is given by $f(t) = 6,000(1.01)^{2t}$. Which of the following is the best interpretation of the statement \"$f(5) \\approx 6,627.73$\"?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-017",
+    "question": "A neighborhood had a population of $1,130$ in 2006. Each year for the next $5$ years, the population increased by approximately $4\\%$ of the previous year's population. Which equation represents the population $N$ of the neighborhood $t$ years after 2006, where $t \\le 5$?",
+    "options": [
+      "N = 0.04(1,130)^t",
+      "N = 1,130(0.04)^t",
+      "N = 1,130(1.04)^t",
+      "N = 1.04(1,130)^t"
+    ],
+    "correctAnswer": "N = 1,130(1.04)^t",
+    "explanation": "An annual increase of $4\\%$ gives a growth multiplier of $1 + 0.04 = 1.04$. With an initial value of $1,130$, the model is $N = 1,130(1.04)^t$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "A neighborhood had a population of $1,130$ in 2006. Each year for the next $5$ years, the population increased by approximately $4\\%$ of the previous year's population. Which equation represents the population $N$ of the neighborhood $t$ years after 2006, where $t \\le 5$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-018",
+    "question": "The function $f(x) = 6,000(0.70)^x$ estimates an invasive insect population $x$ years after 2008, where $x \\le 8$. Which of the following is the best interpretation of $6,000$ in this context?",
+    "options": [
+      "The estimated percent decrease in the insect population for this species and area every 8 years after 2008",
+      "The estimated percent decrease in the insect population for this species and area each year after 2008",
+      "The estimated insect population for this species and area 8 years after 2008",
+      "The estimated initial insect population for this species and area in 2008"
+    ],
+    "correctAnswer": "The estimated initial insect population for this species and area in 2008",
+    "explanation": "In an exponential function of the form $f(x) = a(b)^x$, the coefficient $a$ is the value of the function when $x = 0$. Since $x = 0$ corresponds to the year 2008, $6,000$ is the estimated initial population in 2008.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f(x) = 6,000(0.70)^x$ estimates an invasive insect population $x$ years after 2008, where $x \\le 8$. Which of the following is the best interpretation of $6,000$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-019",
+    "question": "The function $f$ is defined by $f(x) = 42(0.24)^x$. For any positive integer $n$, the value of $f(n)$ is $p\\%$ less than the value of $f(n - 1)$. What is the value of $p$?",
+    "options": [
+      "76",
+      "58",
+      "42",
+      "24"
+    ],
+    "correctAnswer": "76",
+    "explanation": "The ratio between consecutive terms is $\\frac{f(n)}{f(n - 1)} = \\frac{42(0.24)^n}{42(0.24)^{n-1}} = 0.24$. Since the value retains $24\\%$ of the previous value, the percent decrease is $100\\% - 24\\% = 76\\%$. Hence, $p = 76$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $f$ is defined by $f(x) = 42(0.24)^x$. For any positive integer $n$, the value of $f(n)$ is $p\\%$ less than the value of $f(n - 1)$. What is the value of $p$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-020",
+    "question": "The population of pheasants counted per mile of road in a state was $6.97$ in 2005. Each year from 2005 to 2015, the population decreased by $3.5\\%$ of the previous year's count. Which expression best approximates the number of pheasants per mile of road in 2015?",
+    "options": [
+      "0.965(6.97)^{10}",
+      "1.035(6.97)^{10}",
+      "6.97(0.035)^{10}",
+      "6.97(0.965)^{10}"
+    ],
+    "correctAnswer": "6.97(0.965)^{10}",
+    "explanation": "A decrease of $3.5\\%$ corresponds to a decay factor of $1 - 0.035 = 0.965$. Over the $10$-year interval from 2005 to 2015, the population is modeled by $6.97(0.965)^{10}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The population of pheasants counted per mile of road in a state was $6.97$ in 2005. Each year from 2005 to 2015, the population decreased by $3.5\\%$ of the previous year's count. Which expression best approximates the number of pheasants per mile of road in 2015?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-021",
+    "question": "The graph of the equation $y = 2^x + k$ is shown in the $xy$-plane. The graph has a horizontal asymptote at $y = -7$ and passes through $(0, -6)$ and $(3, 1)$. What is the value of $k$?",
+    "options": [
+      "-7",
+      "-6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": "-7",
+    "explanation": "As $x \\to -\\infty$, $2^x \\to 0$, so $y \\to k$. Therefore, the horizontal asymptote of $y = 2^x + k$ is the line $y = k$. Since the asymptote is at $y = -7$, we have $k = -7$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The graph of the equation $y = 2^x + k$ is shown in the $xy$-plane. The graph has a horizontal asymptote at $y = -7$ and passes through $(0, -6)$ and $(3, 1)$. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-022",
+    "question": "What is the $y$-intercept of the graph of $y = -(7)^x - 22$ in the $xy$-plane?",
+    "options": [
+      "(0, -23)",
+      "(0, -29)",
+      "(0, -22)",
+      "(0, -21)"
+    ],
+    "correctAnswer": "(0, -23)",
+    "explanation": "Evaluate the equation at $x = 0$: $y = -(7)^0 - 22 = -(1) - 22 = -23$. Thus, the $y$-intercept is $(0, -23)$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "What is the $y$-intercept of the graph of $y = -(7)^x - 22$ in the $xy$-plane?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-023",
+    "question": "At the time of posting a video, a social media channel had $95$ subscribers. Each day for five days after the video was posted, the number of subscribers doubled from the previous day. Which equation gives the total number of subscribers, $n$, to the channel $d$ days after the video was posted?",
+    "options": [
+      "n = (95)^d",
+      "n = 95(2)^d",
+      "n = 95(1/2)^d",
+      "n = (95)^2 + d"
+    ],
+    "correctAnswer": "n = 95(2)^d",
+    "explanation": "Doubling each day means multiplying by $2$ each day. With an initial count of $95$, the number of subscribers after $d$ days is $n = 95(2)^d$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "At the time of posting a video, a social media channel had $95$ subscribers. Each day for five days after the video was posted, the number of subscribers doubled from the previous day. Which equation gives the total number of subscribers, $n$, to the channel $d$ days after the video was posted?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-024",
+    "question": "The function $q(x) = 44(4)^x$ is defined for all real numbers. Which of the following tables gives three values of $x$ and their corresponding values of $q(x)$?",
+    "options": [
+      "x: -1, 0, 1 with q(x): 176, 0, 176",
+      "x: -1, 0, 1 with q(x): 1/11, 4, 176",
+      "x: -1, 0, 1 with q(x): 1/11, 44, 176",
+      "x: -1, 0, 1 with q(x): 11, 44, 176"
+    ],
+    "correctAnswer": "x: -1, 0, 1 with q(x): 11, 44, 176",
+    "explanation": "Evaluate $q(x)$ at each input: $q(-1) = 44(4)^{-1} = \\frac{44}{4} = 11$; $q(0) = 44(4)^0 = 44(1) = 44$; $q(1) = 44(4)^1 = 176$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "The function $q(x) = 44(4)^x$ is defined for all real numbers. Which of the following tables gives three values of $x$ and their corresponding values of $q(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-exp-mod-025",
+    "question": "At the time of posting a video, a social media channel had $88$ subscribers. Each day after the video was posted, the number of subscribers doubled from the number on the previous day. Which equation gives the total number of subscribers, $n$, to the channel $d$ days after the video was posted?",
+    "options": [
+      "n = (88)^d",
+      "n = 88(2)^d",
+      "n = 88(1/2)^d",
+      "n = 88^2 + d"
+    ],
+    "correctAnswer": "n = 88(2)^d",
+    "explanation": "With initial value $88$ and a doubling factor of $2$ per day, the equation is $n = 88(2)^d$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "questionText": "At the time of posting a video, a social media channel had $88$ subscribers. Each day after the video was posted, the number of subscribers doubled from the number on the previous day. Which equation gives the total number of subscribers, $n$, to the channel $d$ days after the video was posted?",
+    "type": "multiple_choice"
   }
 ]

@@ -1,6 +1,7 @@
 import React from 'react';
 import { QuestionItem } from '../../types/questionBank';
 import { MathRenderer } from '../common/MathRenderer';
+import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
 import {
   X,
   FileText,
@@ -91,42 +92,16 @@ export const ExplanationSideDrawer: React.FC<ExplanationSideDrawerProps> = ({
           </div>
         )}
 
-        {/* Mathematical Resolution Breakdown */}
-        <div className="space-y-3">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 flex items-center space-x-1.5">
-            <Lightbulb className="w-3.5 h-3.5" />
-            <span>Mathematical Solution</span>
-          </h4>
-
-          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.07] text-sm text-slate-800 dark:text-slate-200 leading-relaxed space-y-3 shadow-inner">
-            <MathRenderer content={question.explanation} />
-          </div>
-        </div>
-
-        {/* Desmos Speed Shortcut (if present) */}
-        {question.desmosTip && (
-          <div className="p-4 rounded-2xl bg-teal-50 dark:bg-slate-950/80 border border-teal-200 dark:border-teal-800/40 space-y-2">
-            <div className="flex items-center space-x-2 text-teal-800 dark:text-teal-400 text-xs font-bold uppercase tracking-wider">
-              <Calculator className="w-4 h-4" />
-              <span>Desmos Shortcut Strategy</span>
-            </div>
-            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-              {question.desmosTip}
-            </p>
-          </div>
-        )}
-
-        {/* Question Hint (if present) */}
-        {question.hint && (
-          <div className="p-3.5 rounded-2xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-500/20 space-y-1">
-            <span className="text-[11px] font-bold text-amber-800 dark:text-amber-300 block">
-              Key Concept Hint:
-            </span>
-            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-              <MathRenderer content={question.hint} inline />
-            </p>
-          </div>
-        )}
+        {/* Mathematical Step-by-Step Resolution Breakdown */}
+        <StepByStepExplanationView
+          explanation={question.explanation}
+          correctAnswer={question.correctAnswer}
+          options={question.options}
+          topic={question.topic}
+          difficulty={question.difficulty}
+          desmosTip={question.desmosTip}
+          hint={question.hint}
+        />
 
       </div>
 
@@ -134,6 +109,7 @@ export const ExplanationSideDrawer: React.FC<ExplanationSideDrawerProps> = ({
       <div className="pt-6 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
         <button
           type="button"
+          data-ai-tutor-toggle="true"
           onClick={onAskAiTutor}
           className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-extrabold text-xs transition-all active:scale-95 flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(139,92,246,0.35)]"
         >

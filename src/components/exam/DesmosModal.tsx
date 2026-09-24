@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, memo } from 'react';
 import { X, Calculator, ChevronDown, RotateCcw } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 export type CalculatorMode = 'graphing' | 'scientific' | 'four-function';
 
@@ -15,6 +16,27 @@ export const DesmosModal: React.FC<DesmosModalProps> = memo(({ isOpen, onClose, 
   const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('graphing');
   const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
   const [useIframeFallback, setUseIframeFallback] = useState(false);
+
+  let currentAppDark = true;
+  try {
+    const themeContext = useTheme();
+    currentAppDark = themeContext?.theme === 'dark';
+  } catch {
+    currentAppDark = document.documentElement.classList.contains('dark');
+  }
+
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(currentAppDark);
+
+  useEffect(() => {
+    setIsDarkTheme(currentAppDark);
+    if (calculatorInstance.current?.updateSettings) {
+      try {
+        calculatorInstance.current.updateSettings({ invertedColors: currentAppDark });
+      } catch (e) {
+        // ignore
+      }
+    }
+  }, [currentAppDark]);
 
   const initCalculator = useCallback(() => {
     if (!containerRef.current) return;
@@ -45,12 +67,14 @@ export const DesmosModal: React.FC<DesmosModalProps> = memo(({ isOpen, onClose, 
             settingsMenu: true,
             zoomButtons: true,
             border: false,
+            invertedColors: isDarkTheme,
           });
         } else if (calculatorMode === 'scientific') {
           if (window.Desmos.ScientificCalculator) {
             setUseIframeFallback(false);
             instance = window.Desmos.ScientificCalculator(containerRef.current, {
               border: false,
+              invertedColors: isDarkTheme,
             });
           } else {
             setUseIframeFallback(true);
@@ -60,6 +84,7 @@ export const DesmosModal: React.FC<DesmosModalProps> = memo(({ isOpen, onClose, 
             setUseIframeFallback(false);
             instance = window.Desmos.FourFunctionCalculator(containerRef.current, {
               border: false,
+              invertedColors: isDarkTheme,
             });
           } else {
             setUseIframeFallback(true);
@@ -81,7 +106,7 @@ export const DesmosModal: React.FC<DesmosModalProps> = memo(({ isOpen, onClose, 
     } else {
       setUseIframeFallback(true);
     }
-  }, [calculatorMode]);
+  }, [calculatorMode, isDarkTheme]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -154,7 +179,7 @@ export const DesmosModal: React.FC<DesmosModalProps> = memo(({ isOpen, onClose, 
                   </button>
 
                   {isModeDropdownOpen && (
-                    <div className="absolute left-0 top-full mt-1.5 w-44 rounded-2xl p-1.5 bg-slate-900/95 border border-slate-700/80 backdrop-blur-2xl shadow-2xl z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150 space-y-0.5">
+                    <div className="absolute left-0 top-full mt-1.5 w-44 rounded-2xl p-1.5 bg-slate-900/95 border border-slate-700/80 backdrop-blur-sm shadow-2xl z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150 space-y-0.5">
                       {(['graphing', 'scientific', 'four-function'] as const).map((mode) => (
                         <button
                           key={mode}

@@ -125,12 +125,12 @@ export const QuestionBankCard: React.FC<QuestionBankCardProps> = ({
                 onClick={(e) => onToggleBookmark(question.id, e)}
                 className={`p-1.5 rounded-xl border transition-all ${
                   isBookmarked
-                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.3)]'
-                    : 'bg-white/[0.03] text-slate-400 border-white/[0.06] hover:text-white hover:bg-white/[0.08]'
+                    ? 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.3)]'
+                    : 'bg-slate-50 dark:bg-white/[0.03] text-slate-400 border-slate-200 dark:border-white/[0.06] hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08]'
                 }`}
                 title={isBookmarked ? 'Remove Bookmark' : 'Save Question'}
               >
-                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-amber-400' : ''}`} />
+                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400' : ''}`} />
               </button>
             )}
           </div>

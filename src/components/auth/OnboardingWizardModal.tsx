@@ -193,7 +193,7 @@ export const OnboardingWizardModal: React.FC = () => {
   const modalNode = (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
       {/* Modal Card */}
-      <div className="max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-slate-900 border border-amber-500/20 dark:border-emerald-500/20 shadow-2xl p-6 sm:p-8 relative">
+      <div className="max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-slate-900 border border-emerald-500/20 shadow-2xl p-6 sm:p-8 relative">
         
         {/* Header Bar: Step indicator, Badge & Close Button */}
         {step < 4 && (
@@ -202,7 +202,7 @@ export const OnboardingWizardModal: React.FC = () => {
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
                 Step {step} of 3
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-amber-100 dark:bg-emerald-950/60 text-amber-800 dark:text-emerald-400 border border-amber-300 dark:border-emerald-500/30">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-500/30">
                 {step === 1 ? 'Profile Calibration' : step === 2 ? 'Score Target' : 'Student Mindset'}
               </span>
             </div>
@@ -222,7 +222,7 @@ export const OnboardingWizardModal: React.FC = () => {
           <div className="mb-6 space-y-1.5">
             <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-orange-500 to-amber-500 dark:from-emerald-500 dark:to-teal-400 transition-all duration-300 rounded-full"
+                className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 rounded-full"
                 style={{ width: `${(step / 3) * 100}%` }}
               />
             </div>
@@ -252,7 +252,7 @@ export const OnboardingWizardModal: React.FC = () => {
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                   placeholder="e.g. Alex"
-                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -266,7 +266,7 @@ export const OnboardingWizardModal: React.FC = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="student@scoreup.app"
-                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -281,7 +281,7 @@ export const OnboardingWizardModal: React.FC = () => {
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     placeholder="••••••••"
-                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               )}
@@ -294,7 +294,7 @@ export const OnboardingWizardModal: React.FC = () => {
                   <select
                     value={formData.ageRange}
                     onChange={(e) => setFormData({ ...formData, ageRange: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     {AGE_RANGES.map((age) => (
                       <option key={age} value={age}>
@@ -311,7 +311,7 @@ export const OnboardingWizardModal: React.FC = () => {
                   <select
                     value={formData.country}
                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     {COUNTRIES.map((country) => (
                       <option key={country} value={country}>
@@ -351,7 +351,7 @@ export const OnboardingWizardModal: React.FC = () => {
                       onClick={() => setFormData({ ...formData, takenBefore: opt })}
                       className={`py-2.5 rounded-xl text-xs font-bold border transition-all ${
                         formData.takenBefore === opt
-                          ? 'border-orange-500 bg-orange-50 text-orange-700 dark:border-emerald-500 dark:bg-emerald-500/10 dark:text-emerald-400 shadow-sm'
+                          ? 'border-emerald-600 bg-emerald-50 text-emerald-800 dark:border-emerald-500 dark:bg-emerald-500/10 dark:text-emerald-400 shadow-sm'
                           : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300'
                       }`}
                     >
@@ -370,7 +370,7 @@ export const OnboardingWizardModal: React.FC = () => {
                   <select
                     value={formData.latestScore}
                     onChange={(e) => setFormData({ ...formData, latestScore: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     {PREVIOUS_SCORES.map((score) => (
                       <option key={score} value={score}>
@@ -394,7 +394,7 @@ export const OnboardingWizardModal: React.FC = () => {
                       onClick={() => setFormData({ ...formData, targetScore: score })}
                       className={`py-3 rounded-2xl text-sm font-extrabold border transition-all ${
                         formData.targetScore === score
-                          ? 'border-orange-500 bg-gradient-to-br from-orange-500/15 to-amber-500/10 text-orange-700 dark:border-emerald-500 dark:from-emerald-500/20 dark:to-teal-500/10 dark:text-emerald-400 shadow-sm ring-2 ring-orange-500/20 dark:ring-emerald-400/20'
+                          ? 'border-emerald-600 bg-emerald-50 text-emerald-800 dark:border-emerald-500 dark:from-emerald-500/20 dark:to-teal-500/10 dark:text-emerald-400 shadow-sm ring-2 ring-emerald-500/20 dark:ring-emerald-400/20'
                           : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300'
                       }`}
                     >
@@ -433,7 +433,7 @@ export const OnboardingWizardModal: React.FC = () => {
                       onClick={() => setFormData({ ...formData, mainReason: reason.label })}
                       className={`p-2.5 rounded-xl text-left text-xs font-semibold border transition-all flex items-center space-x-2 ${
                         formData.mainReason === reason.label
-                          ? 'border-orange-500 bg-orange-50/80 text-orange-800 dark:border-emerald-500 dark:bg-emerald-500/15 dark:text-emerald-300 ring-1 ring-orange-500'
+                          ? 'border-emerald-600 bg-emerald-50/90 text-emerald-900 dark:border-emerald-500 dark:bg-emerald-500/15 dark:text-emerald-300 ring-1 ring-emerald-500'
                           : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300'
                       }`}
                     >
@@ -452,7 +452,7 @@ export const OnboardingWizardModal: React.FC = () => {
                 <select
                   value={formData.meaning}
                   onChange={(e) => setFormData({ ...formData, meaning: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   {MEANING_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -475,7 +475,7 @@ export const OnboardingWizardModal: React.FC = () => {
                       onClick={() => setFormData({ ...formData, studentType: trait.label })}
                       className={`p-2 rounded-xl text-left text-xs font-medium border transition-all flex items-center space-x-2 ${
                         formData.studentType === trait.label
-                          ? 'border-orange-500 bg-orange-50/80 text-orange-800 dark:border-emerald-500 dark:bg-emerald-500/15 dark:text-emerald-300 ring-1 ring-orange-500'
+                          ? 'border-emerald-600 bg-emerald-50/90 text-emerald-900 dark:border-emerald-500 dark:bg-emerald-500/15 dark:text-emerald-300 ring-1 ring-emerald-500'
                           : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300'
                       }`}
                     >
@@ -494,7 +494,7 @@ export const OnboardingWizardModal: React.FC = () => {
                 <select
                   value={formData.biggestMotivation}
                   onChange={(e) => setFormData({ ...formData, biggestMotivation: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   {BIGGEST_MOTIVATIONS.map((m) => (
                     <option key={m} value={m}>
@@ -512,7 +512,7 @@ export const OnboardingWizardModal: React.FC = () => {
                 <select
                   value={formData.hearAbout}
                   onChange={(e) => setFormData({ ...formData, hearAbout: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-emerald-400"
+                  className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   {HEAR_ABOUT_OPTIONS.map((h) => (
                     <option key={h} value={h}>
@@ -534,18 +534,18 @@ export const OnboardingWizardModal: React.FC = () => {
               "We're not just preparing you for a test. We're helping you get closer to your goal."
             </h3>
 
-            <div className="p-5 rounded-2xl bg-amber-500/10 dark:bg-emerald-500/10 border border-amber-500/30 dark:border-emerald-500/30 text-left max-w-sm mx-auto space-y-2.5 shadow-sm">
+            <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-left max-w-sm mx-auto space-y-2.5 shadow-sm">
               <h4 className="text-base font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 flex items-center justify-between">
                 <span>{formData.firstName || 'Your'}'s Goal</span>
-                <Sparkles className="w-4 h-4 text-orange-500 dark:text-emerald-400" />
+                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               </h4>
-              <p className="text-sm font-semibold text-amber-600 dark:text-emerald-400 flex items-center gap-2">
+              <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
                 🎯 Target: <span className="text-slate-800 dark:text-slate-200 font-bold">{formData.targetScore}</span>
               </p>
-              <p className="text-sm font-semibold text-amber-600 dark:text-emerald-400 flex items-center gap-2">
+              <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
                 🎓 Dream: <span className="text-slate-800 dark:text-slate-200 font-bold">{formData.mainReason}</span>
               </p>
-              <p className="text-sm font-semibold text-amber-600 dark:text-emerald-400 flex items-center gap-2">
+              <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
                 🔥 Motivation: <span className="text-slate-800 dark:text-slate-200 font-bold">{formData.biggestMotivation}</span>
               </p>
             </div>
@@ -575,7 +575,7 @@ export const OnboardingWizardModal: React.FC = () => {
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 text-xs font-extrabold shadow-md transition-all active:scale-95 flex items-center space-x-2"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 text-xs font-extrabold shadow-md shadow-emerald-500/20 transition-all active:scale-95 flex items-center space-x-2"
             >
               <span>{step === 3 ? 'Complete Setup 🎯' : 'Continue'}</span>
               <ArrowRight className="w-4 h-4" />

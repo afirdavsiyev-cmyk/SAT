@@ -14074,5 +14074,4009 @@
     "type": "free_response",
     "correctAnswer": "-7",
     "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-001",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the system of equations below is $(x, y)$. What is the value of $x$?\n\n$$\\begin{aligned} x - 3y &= 3 \\\\ x + y &= 7 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-002",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the given system of equations is $(x, y)$. What is the value of $x - y$?\n\n$$\\begin{aligned} 6x &= 30 \\\\ 3x + 2y &= 8 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-3.5"
+      },
+      {
+        "id": "B",
+        "text": "1.5"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "8.5"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-003",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, what is the value of $x$?\n\n$$\\begin{aligned} x - y &= 3 \\\\ y &= 3 - 2x \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "0"
+      },
+      {
+        "id": "D",
+        "text": "-3"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-004",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of equations below, what is the value of $m$?\n\n$$\\begin{aligned} 3m + 5n &= 26 \\\\ m + n &= 34 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "18"
+      },
+      {
+        "id": "B",
+        "text": "36"
+      },
+      {
+        "id": "C",
+        "text": "72"
+      },
+      {
+        "id": "D",
+        "text": "144"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-005",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, what is the value of $x + z$?\n\n$$\\begin{aligned} 2x - 3z &= -6 \\\\ 3x + 2z &= 4 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "2"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-006",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the system of equations below is the point $(a, b)$. What is the value of $b$?\n\n$$\\begin{aligned} 0.25a - 2b &= -4 \\\\ a + b &= 2 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-007",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $(x, y)$ satisfies the system of equations below, what is the value of $x$?\n\n$$\\begin{aligned} 3x - 2y &= -1 \\\\ 10x + 4y &= 50 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-008",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "Max has $\\$150$ to spend on a picnic. He is going to buy cookies and brownies for the picnic. The price of a box of cookies is $\\$6$ and the price of a box of brownies is $\\$8$. Max will order a total of $20$ boxes of cookies and brownies. Which system of equations gives a true relationship between the boxes of brownies, $B$, and boxes of cookies, $C$, that Max will order?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "C + B = 20 and 6C + 8B = 150"
+      },
+      {
+        "id": "B",
+        "text": "C + B = 20 and 18C + 12B = 150"
+      },
+      {
+        "id": "C",
+        "text": "C + B = 300 and 6C + 8B = 150"
+      },
+      {
+        "id": "D",
+        "text": "6C + 8B = 20 and 18C + 12B = 150"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-009",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $(x, y)$ is the solution to the system of equations below, what is the value of $y - x$?\n\n$$\\begin{aligned} 2x - 3y &= -9 \\\\ 3x + 2y &= 19 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-010",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of equations below, what is the value of $x - y$?\n\n$$\\begin{aligned} 6x &= y + 8 \\\\ y &= 96 - 7x \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-32"
+      },
+      {
+        "id": "B",
+        "text": "32"
+      },
+      {
+        "id": "C",
+        "text": "104"
+      },
+      {
+        "id": "D",
+        "text": "736"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-011",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the given system of equations is $(p, q)$. What is the value of $q$?\n\n$$\\begin{aligned} 8x + y &= 48 \\\\ 3x + y &= 12 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-9.6"
+      },
+      {
+        "id": "B",
+        "text": "-10.8"
+      },
+      {
+        "id": "C",
+        "text": "-11.2"
+      },
+      {
+        "id": "D",
+        "text": "-11.4"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-012",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "Monique, a manager at a local bakery, is taking all of the $\\$10$ and $\\$20$ bills in the cash register to the bank at the end of her shift. She remembers that there were $19$ bills totaling $\\$260$. How many $\\$10$ bills were in the cash register at the end of her shift?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "11"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-013",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The system of equations below has a solution $(x, y)$. What is the value of $y$?\n\n$$\\begin{aligned} \\frac{1}{2}x &= 4y - 4 \\\\ -\\frac{3}{2}x + 5y &= -\\frac{11}{2} \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2.5"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "3.5"
+      },
+      {
+        "id": "D",
+        "text": "4.5"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-014",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The drama club is selling two types of tickets for the play: student tickets for $\\$7$ each and regular tickets for $\\$12$ each. If the drama club sold a total of $200$ tickets and the ticket sales were $\\$2,025$, how many student tickets were sold?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "75"
+      },
+      {
+        "id": "B",
+        "text": "50"
+      },
+      {
+        "id": "C",
+        "text": "100"
+      },
+      {
+        "id": "D",
+        "text": "90"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-015",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of equations below, what is the value of $a + b$?\n\n$$\\begin{aligned} 4a + 3b &= 22 \\\\ 3a + 2b &= 16 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "9"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-016",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "At Franky's Surf Shop, the price of a t-shirt is $\\$20$, and the price of a hat is $\\$17$. Javaun spent $\\$282$ on $15$ items and only bought t-shirts and hats. How many hats did he buy?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-017",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "Kiki's teacher wrote the following riddle: \"There are two integers I am thinking of. The difference between the two integers is $21$, and the sum of the larger integer and twice the smaller integer is $-15$. What is the value of the larger integer?\"",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-12"
+      },
+      {
+        "id": "B",
+        "text": "-9"
+      },
+      {
+        "id": "C",
+        "text": "9"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-018",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The system of equations below is graphed in the $xy$-plane. At which point do the graphs intersect?\n\n$$\\begin{aligned} -4x - 15y &= 78 \\\\ 3y + x &= -30 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(14, -14)"
+      },
+      {
+        "id": "B",
+        "text": "(-72, 14)"
+      },
+      {
+        "id": "C",
+        "text": "(7, -52)"
+      },
+      {
+        "id": "D",
+        "text": "(228, 66)"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-019",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The system of equations below is graphed in the $xy$-plane. Which of the following is the $x$-coordinate of an intersection point of the two equations?\n\n$$\\begin{aligned} y &= x^2 - 11x + 14 \\\\ 2y &= 4 - 6x \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-020",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "At the Pacific Beach boardwalk, there is a taco stand that sells carnitas tacos and fish tacos. Carnitas tacos have $50$ more calories than fish tacos. If $3$ carnitas tacos and $2$ fish tacos have a total of $650$ calories, how many calories does each fish taco have?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "100"
+      },
+      {
+        "id": "B",
+        "text": "75"
+      },
+      {
+        "id": "C",
+        "text": "125"
+      },
+      {
+        "id": "D",
+        "text": "150"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-021",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The system of equations below is graphed in the $xy$-plane. Which of the following is the $y$-coordinate of an intersection point of the graphs of the two equations?\n\n$$\\begin{aligned} x &= y^2 + 8y \\\\ x + 2y &= 24 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "-2"
+      },
+      {
+        "id": "D",
+        "text": "-12"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-022",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "A group of $150$ people went whitewater rafting. The group took $20$ total rafts. The rafts could carry either $6$ or $8$ people. How many $8$-person rafts did the group take?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "10"
+      },
+      {
+        "id": "D",
+        "text": "15"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-023",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The graphs of the equations in the given system of equations intersect at the point $(x, y)$ in the $xy$-plane. What is a possible value of $x$?\n\n$$\\begin{aligned} 14x + \\frac{1}{2}y &= -28 \\\\ 2x^2 &= y - 40 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-6"
+      },
+      {
+        "id": "B",
+        "text": "-8"
+      },
+      {
+        "id": "C",
+        "text": "-10"
+      },
+      {
+        "id": "D",
+        "text": "-12"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-024",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "Jimmy's Deli sells Reuben sandwiches for $\\$7.35$ and brisket sandwiches for $\\$8.10$. Yesterday, the deli made $\\$759.90$ from selling a total of $99$ Reuben and brisket sandwiches. How many Reuben sandwiches were sold yesterday?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "56"
+      },
+      {
+        "id": "B",
+        "text": "49"
+      },
+      {
+        "id": "C",
+        "text": "63"
+      },
+      {
+        "id": "D",
+        "text": "70"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-025",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the given system of equations is $(a, b)$. What is the value of $a$?\n\n$$\\begin{aligned} a + b &= 17 \\\\ 3(a - b) &= 33 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "14"
+      },
+      {
+        "id": "B",
+        "text": "16"
+      },
+      {
+        "id": "C",
+        "text": "18"
+      },
+      {
+        "id": "D",
+        "text": "21"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-soe-026",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The product of $2$ positive integers is $96$. The greater integer is $2$ less than triple the lesser integer. What is the greater integer?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "16"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "20"
+      },
+      {
+        "id": "D",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-027",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "Which of the following could be the $x$-coordinate of the solution to the system of equations below?\n\n$$\\begin{aligned} (x - 1)^2 + (y - 2)^2 &= 35 \\\\ x &= 2y + 2 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "\\sqrt{6}"
+      },
+      {
+        "id": "B",
+        "text": "\\sqrt{10}/2"
+      },
+      {
+        "id": "C",
+        "text": "2\\sqrt{6} + 2"
+      },
+      {
+        "id": "D",
+        "text": "\\sqrt{30} + 2"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-028",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The solution to the given system of equations is $(2, 3)$. What is the value of $a + b$?\n\n$$\\begin{aligned} 4ax &= by + 12 \\\\ 2ax - 5by &= 15 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "7/12"
+      },
+      {
+        "id": "B",
+        "text": "5/12"
+      },
+      {
+        "id": "C",
+        "text": "1/2"
+      },
+      {
+        "id": "D",
+        "text": "3/4"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-029",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The equations $c = x^2 - y$ and $(x - 3)^2 + (y + 1)^2 = 49$ intersect at the point $(3, y)$. If $y > 0$, what is the value of $c$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-1"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-030",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the given system of equations, $p$ and $q$ are constants. The lines of the two equations intersect at $(4, y)$. What is the value of $p$?\n\n$$\\begin{aligned} 4x - 5qy &= 36 \\\\ px + 10qy &= 54 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "23.5"
+      },
+      {
+        "id": "B",
+        "text": "24.5"
+      },
+      {
+        "id": "C",
+        "text": "24"
+      },
+      {
+        "id": "D",
+        "text": "25"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-031",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The linear function $f$ is defined by $f(x) = ax + b$, where $a$ and $b$ are constants. If $f(15) = 850$ and $f(28) = 1,305$, what is the value of $a + b$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "360"
+      },
+      {
+        "id": "B",
+        "text": "240"
+      },
+      {
+        "id": "C",
+        "text": "300"
+      },
+      {
+        "id": "D",
+        "text": "450"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-soe-032",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of equations below, $k$ and $m$ are constants. The system has a solution of $(6, y)$. What is the value of $k$?\n\n$$\\begin{aligned} 8kx + 8my &= -8 \\\\ 3xk + 6my &= -24 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-033",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The system of equations below intersects at the point $(-3, y)$. What is the value of $h$?\n\n$$\\begin{aligned} 20 + 2y &= 8x \\\\ y &= x^2 - 16hx - 43 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/4"
+      },
+      {
+        "id": "B",
+        "text": "1/2"
+      },
+      {
+        "id": "C",
+        "text": "1/3"
+      },
+      {
+        "id": "D",
+        "text": "1"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-034",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of linear equations below, $c$ is a nonzero constant. The graphs of the equations are two lines in the $xy$-plane that intersect at $(-7, a)$. What is the value of $a$?\n\n$$\\begin{aligned} 5y + 7x &= 3c \\\\ 4y + 9x &= c \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "20"
+      },
+      {
+        "id": "B",
+        "text": "10"
+      },
+      {
+        "id": "C",
+        "text": "30"
+      },
+      {
+        "id": "D",
+        "text": "40"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-035",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, what is the value of $2a - 2b$?\n\n$$\\begin{aligned} (a - b) + 12(c + d) &= 589 \\\\ (a - b) + 18(c + d) &= 1,251 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-1470"
+      },
+      {
+        "id": "B",
+        "text": "-1320"
+      },
+      {
+        "id": "C",
+        "text": "-1400"
+      },
+      {
+        "id": "D",
+        "text": "-1520"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-036",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "James took a trip from Maryland to Boston by car and train. When travelling by car, he averaged $40$ miles per hour. When traveling by train, he averaged $60$ miles per hour. The trip took him $7$ hours and was $400$ miles. How far did he travel by train, in miles?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "120"
+      },
+      {
+        "id": "B",
+        "text": "200"
+      },
+      {
+        "id": "C",
+        "text": "240"
+      },
+      {
+        "id": "D",
+        "text": "360"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-037",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, what is a possible value of $y$?\n\n$$\\begin{aligned} y &= x - 18 \\\\ y^2 + (x - 14)^2 - 12 &= 0 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2 + \\sqrt{2}"
+      },
+      {
+        "id": "B",
+        "text": "\\sqrt{2}"
+      },
+      {
+        "id": "C",
+        "text": "2 + \\sqrt{3}"
+      },
+      {
+        "id": "D",
+        "text": "-2 - \\sqrt{6}"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-038",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The quadratic function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants. If $f(9) = 251$, $f(3) = 71$, and $c = 35$, what is the value of $f(7)$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "175"
+      },
+      {
+        "id": "B",
+        "text": "150"
+      },
+      {
+        "id": "C",
+        "text": "200"
+      },
+      {
+        "id": "D",
+        "text": "225"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-039",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In the system of equations below, $a$ is a constant. What is the $y$-value of the solution to the system in terms of $a$?\n\n$$\\begin{aligned} 3x + 4y &= 6 \\\\ -5x + y &= a \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(30 + 3a)/23"
+      },
+      {
+        "id": "B",
+        "text": "-(30 + 3a)/23"
+      },
+      {
+        "id": "C",
+        "text": "(5 + 4a)/23"
+      },
+      {
+        "id": "D",
+        "text": "-(5 + 4a)/23"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-040",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In a chemistry classroom, when experiments are performed, students are seated at lab tables. If the teacher assigns $4$ students to each lab table, $2$ additional lab tables will be needed to seat all of the students. If the teacher assigns $8$ students to each lab table, there will be $2$ extra tables. How many students are in the science class?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "32"
+      },
+      {
+        "id": "B",
+        "text": "36"
+      },
+      {
+        "id": "C",
+        "text": "40"
+      },
+      {
+        "id": "D",
+        "text": "42"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-041",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "The difference of $2$ positive integers is $5$. The square of the greater number is $95$ more than the square of the lesser number. What is the value of the sum of the two integers?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "19"
+      },
+      {
+        "id": "B",
+        "text": "22"
+      },
+      {
+        "id": "C",
+        "text": "25"
+      },
+      {
+        "id": "D",
+        "text": "27"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-042",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "In a group of $750$ college students, some are premed students, and the rest are business students. There are $150$ more women than men and there are $300$ fewer business students than premed students. If there are $90$ female business students and a man is to be selected at random, what is the probability that the man is a premed student?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.55"
+      },
+      {
+        "id": "B",
+        "text": "0.45"
+      },
+      {
+        "id": "C",
+        "text": "0.35"
+      },
+      {
+        "id": "D",
+        "text": "0.65"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-soe-043",
+    "source": "SAT Systems of Equations 2024",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, the lines intersect at the point $(2, 4)$. If $b > 0$, what is the value of $b$?\n\n$$\\begin{aligned} \\frac{1}{2}ay - \\frac{1}{2}bx &= 7x \\\\ \\frac{1}{2}ay &= \\frac{1}{2}b^2y - 3bx + 5x \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqv-001",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is equivalent to $x^2 - 5x - 18$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 3)(x - 6) - 2x"
+      },
+      {
+        "id": "B",
+        "text": "(x + 3)(x - 6) + 5x"
+      },
+      {
+        "id": "C",
+        "text": "(x + 2)(x - 9) - 2x"
+      },
+      {
+        "id": "D",
+        "text": "(x + 2)(x - 9) + 5x"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqv-002",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following expressions is equivalent to $18x^2 + 6x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2x(18x + 3)"
+      },
+      {
+        "id": "B",
+        "text": "6x(3x + 6)"
+      },
+      {
+        "id": "C",
+        "text": "18x(x + 1)"
+      },
+      {
+        "id": "D",
+        "text": "3x(6x + 2)"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqv-003",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is equivalent to the expression below?\n\n$$2(3x + 1)(2x + 2)$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8x + 3"
+      },
+      {
+        "id": "B",
+        "text": "12x^2 + 4"
+      },
+      {
+        "id": "C",
+        "text": "6x^2 + 8x + 2"
+      },
+      {
+        "id": "D",
+        "text": "12x^2 + 16x + 4"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqv-004",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following expressions is an equivalent form of $(2x + 2)^2 + (2x + 2)$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2x^2 + 10x + 6"
+      },
+      {
+        "id": "B",
+        "text": "4x^2 + 16x + 10"
+      },
+      {
+        "id": "C",
+        "text": "(2x + 2)(2x + 3)"
+      },
+      {
+        "id": "D",
+        "text": "(4x + 8)(x + 1)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-005",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following expressions is an equivalent form of $x^2 + 10x + 20$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 4)(x + 6) - 4"
+      },
+      {
+        "id": "B",
+        "text": "(x + 4)(x + 6) + 4x"
+      },
+      {
+        "id": "C",
+        "text": "(x + 12)(x - 2) + 4"
+      },
+      {
+        "id": "D",
+        "text": "(x + 12)(x - 2) + 24"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-006",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following expressions is equivalent to $\\frac{2}{x + 7} + \\frac{1}{2}$ where $x \\ne -7$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 11)/(2x + 14)"
+      },
+      {
+        "id": "B",
+        "text": "(x + 7)/(2x + 14)"
+      },
+      {
+        "id": "C",
+        "text": "3/(x + 7)"
+      },
+      {
+        "id": "D",
+        "text": "1/(x + 9)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-007",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is equivalent to the expression below?\n\n$$x^2 + 8x + 11$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 4)^2 - 5"
+      },
+      {
+        "id": "B",
+        "text": "(x + 4)^2 + 3"
+      },
+      {
+        "id": "C",
+        "text": "(x + 4)^2 + 11"
+      },
+      {
+        "id": "D",
+        "text": "(x + 4)^2"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqv-008",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is equivalent to $(-3x + 4)^2 - 9x^2$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-16(x + 1)"
+      },
+      {
+        "id": "B",
+        "text": "4(-2x + 4)"
+      },
+      {
+        "id": "C",
+        "text": "-8(3x - 2)"
+      },
+      {
+        "id": "D",
+        "text": "8(x + 2)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-009",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following expressions is equivalent to $x + 2 + \\frac{1}{x + 1}$ where $x \\ne -1$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 3)/(x + 1)"
+      },
+      {
+        "id": "B",
+        "text": "(x^2 + 3x + 3)/(x + 1)"
+      },
+      {
+        "id": "C",
+        "text": "(x^2 + 2x)/(x + 1)"
+      },
+      {
+        "id": "D",
+        "text": "x + 3"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-010",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "For $a > 0$, which of the following is equivalent to $\\frac{6a^2 + 3a}{2a + 1}$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3a"
+      },
+      {
+        "id": "B",
+        "text": "3a - 3"
+      },
+      {
+        "id": "C",
+        "text": "3a - 3 + 1/(2a + 1)"
+      },
+      {
+        "id": "D",
+        "text": "3a - a/(2a + 1)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqv-011",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is equivalent to $16x^4 + 8x^3 - 24x^2 - 12x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(2x + 1)(2x^2 - 3)"
+      },
+      {
+        "id": "B",
+        "text": "x(4x + 2)(4x^2 - 6)"
+      },
+      {
+        "id": "C",
+        "text": "4x(2x + 1)(2x^2 - 3)"
+      },
+      {
+        "id": "D",
+        "text": "4x(2x + 3)(2x^2 + 1)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqv-012",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which expression is equivalent to $5x^5y^3 + 20x^4y^3$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "5x^4 y^3 (x + 4)"
+      },
+      {
+        "id": "B",
+        "text": "5x^4 y^3 (x^2 + 4)"
+      },
+      {
+        "id": "C",
+        "text": "5x^4 y^3 (4x^2)"
+      },
+      {
+        "id": "D",
+        "text": "5x^4 y^3 (4x)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-013",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which expression is equivalent to $\\frac{2x(x + 8) + 5(x + 8)}{2x + 16}$, where $x > 9$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(x + 8)/2"
+      },
+      {
+        "id": "B",
+        "text": "(2x^2 + 21x + 40)/(2x + 16)"
+      },
+      {
+        "id": "C",
+        "text": "(2x^2 + 21x + 40)/(x + 8)"
+      },
+      {
+        "id": "D",
+        "text": "(2x + 5)/2"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqv-014",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which expression is equivalent to $\\frac{3 - 4x}{81 - 256x^4}$, where $x > 1$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/(27 + 64x^3)"
+      },
+      {
+        "id": "B",
+        "text": "27 - 64x^3"
+      },
+      {
+        "id": "C",
+        "text": "1/((9 + 16x^2)(3 + 4x))"
+      },
+      {
+        "id": "D",
+        "text": "(9 + 16x^2)(3 - 4x)"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqv-015",
+    "source": "SAT Equivalent Questions Prep",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "For $x \\ne -4$, which of the following expressions is equivalent to $\\frac{x - 3}{x + 4} + \\frac{x(x + 4)}{x^2 + 4x}$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "(2x + 1)/(x + 4)"
+      },
+      {
+        "id": "B",
+        "text": "(x^2 - 2x + 3)/(x + 4)"
+      },
+      {
+        "id": "C",
+        "text": "(x^2 - 12)/(x + 4)"
+      },
+      {
+        "id": "D",
+        "text": "(2x - 3)/(x + 4)"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-001",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $42x - 225 = 18x + 309$, what is the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3.5"
+      },
+      {
+        "id": "B",
+        "text": "22.25"
+      },
+      {
+        "id": "C",
+        "text": "309"
+      },
+      {
+        "id": "D",
+        "text": "709.5"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-002",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "What is the solution to the equation $5x^2 + 20x = -20$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-2"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-003",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $22x + 549 = 6x + 717$, what is the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "10.5"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-004",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $20.2x + 15.65 = 19 - 5.6x$, what is the value of $x$ to the nearest hundredth?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-0.25"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "0.13"
+      },
+      {
+        "id": "D",
+        "text": "0.45"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-005",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "For the equation $x^2 + 12x = 15 - 2x$, what is the smallest value of $x$ that is a solution to the equation?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-15"
+      },
+      {
+        "id": "B",
+        "text": "-12"
+      },
+      {
+        "id": "C",
+        "text": "-18"
+      },
+      {
+        "id": "D",
+        "text": "-21"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-006",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following equations is equivalent to $2(x + 3)^2 - 4x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2x^2 + 2x + 9"
+      },
+      {
+        "id": "B",
+        "text": "2x^2 + 8x + 18"
+      },
+      {
+        "id": "C",
+        "text": "4x^2 - 4x + 18"
+      },
+      {
+        "id": "D",
+        "text": "4x^2 - 4x + 36"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-007",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "For the quadratic equation $x^2 + 4x - 396 = 0$, what is the sum of the solutions?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-40"
+      },
+      {
+        "id": "B",
+        "text": "-22"
+      },
+      {
+        "id": "C",
+        "text": "-4"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-008",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, the solution is at the point $(a, b)$. What is the value of $b$?\n\n$$\\begin{aligned} 80x - 47y &= 220 \\\\ 16x + 3y &= -80 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-10"
+      },
+      {
+        "id": "B",
+        "text": "-12"
+      },
+      {
+        "id": "C",
+        "text": "-15"
+      },
+      {
+        "id": "D",
+        "text": "-18"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-009",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "For the equation below, what is the value of $x$?\n\n$$\\frac{5x}{6} - \\frac{2}{3} = \\frac{x}{6} + 2$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-slv-010",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $5x + 8y = 67$ and $2x - y = 31$, what is the value of $x + y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "16"
+      },
+      {
+        "id": "B",
+        "text": "15.5"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "14"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-011",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If one of the zeros of the quadratic equation $ax^2 - 24x - 64 = 0$ is at $x = 8$, what is the value of $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-012",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "What is the sum of the solutions to the equation $\\frac{x^2}{4} - \\frac{x}{6} - \\frac{15}{6} = 0$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/2"
+      },
+      {
+        "id": "B",
+        "text": "1/4"
+      },
+      {
+        "id": "C",
+        "text": "1/3"
+      },
+      {
+        "id": "D",
+        "text": "2/3"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-013",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $x$ is a real solution to the equation $\\sqrt{x + 3} = x - 3$, what is the value of $\\sqrt{x + 10}$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-slv-014",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, the solution is at the point $(a, b)$. What is the value of $3a - b$?\n\n$$\\begin{aligned} 4x - y^2 &= 12 \\\\ 3x &= 9 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "18"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-slv-015",
+    "source": "PrepPros Solving Equations & Desmos Hacks",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "For the system of equations below, one intersection point is $(m, n - 13)$ where $m > 0$. What is the value of $n$?\n\n$$\\begin{aligned} y &= 0.25x^2 - 10x - 3 \\\\ 0.5x &= 17 - y \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "31"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "10"
+      },
+      {
+        "id": "D",
+        "text": "-3"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-001",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $ab > 0$, then which one of the following must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "a/b > 0"
+      },
+      {
+        "id": "B",
+        "text": "a - b > 0"
+      },
+      {
+        "id": "C",
+        "text": "a + b > 0"
+      },
+      {
+        "id": "D",
+        "text": "b - a > 0"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-inq-002",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $a = x + 2y$, $b = y + 2x$, and $3x + 7y > 7x + 3y$, then which of the following is true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "a > b"
+      },
+      {
+        "id": "B",
+        "text": "a = b"
+      },
+      {
+        "id": "C",
+        "text": "a < b"
+      },
+      {
+        "id": "D",
+        "text": "a + b = 0"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-003",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x + z > y + z$, then which of the following must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x - z > y - z"
+      },
+      {
+        "id": "B",
+        "text": "xz > yz"
+      },
+      {
+        "id": "C",
+        "text": "x/z > y/z"
+      },
+      {
+        "id": "D",
+        "text": "xz < yz"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-inq-004",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $a = 3 + b$, which of the following must be true?\n\n$$\\begin{aligned} \\text{I. } & a > b + 2.5 \\\\ \\text{II. } & a < b + 2.5 \\\\ \\text{III. } & a > b + 2 \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "III only"
+      },
+      {
+        "id": "D",
+        "text": "I and III only"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-inq-005",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $x + x = 4$, then which one of the following expressions results in an odd integer?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x^2 + 3x"
+      },
+      {
+        "id": "B",
+        "text": "x^2 + 3x + 2"
+      },
+      {
+        "id": "C",
+        "text": "x^2 + 4x"
+      },
+      {
+        "id": "D",
+        "text": "x^2 + 4x + 3"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-inq-006",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x < y < -1$, then which one of the following expressions is strictly positive?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-x^2"
+      },
+      {
+        "id": "B",
+        "text": "x^2 y"
+      },
+      {
+        "id": "C",
+        "text": "y - x^2"
+      },
+      {
+        "id": "D",
+        "text": "x^2 / y^2"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-007",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x + 3$ is positive, then which one of the following expressions must also be positive?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x - 3"
+      },
+      {
+        "id": "B",
+        "text": "(x - 3)(x - 4)"
+      },
+      {
+        "id": "C",
+        "text": "(x - 3)(x + 3)"
+      },
+      {
+        "id": "D",
+        "text": "(x + 3)(x + 6)"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-008",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $(x + 1)^2 - 2x > 2(x + 1) + 2$, which of the following values can $x$ NOT equal?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-5"
+      },
+      {
+        "id": "B",
+        "text": "-3"
+      },
+      {
+        "id": "C",
+        "text": "0"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-009",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x^5 + x^2 < 0$, then which one of the following inequalities must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x < -1"
+      },
+      {
+        "id": "B",
+        "text": "x < 0"
+      },
+      {
+        "id": "C",
+        "text": "x > 0"
+      },
+      {
+        "id": "D",
+        "text": "x > 1"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-010",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "In $\\triangle PQR$, side lengths are $PQ = x$, $QR = x + 3$, and $PR = y$. If $x = y + 3$, which relationship between the interior angle measures is true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "\\angle P < \\angle Q < \\angle R"
+      },
+      {
+        "id": "B",
+        "text": "\\angle Q < \\angle R < \\angle P"
+      },
+      {
+        "id": "C",
+        "text": "\\angle R < \\angle P < \\angle Q"
+      },
+      {
+        "id": "D",
+        "text": "\\angle P < \\angle R < \\angle Q"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-011",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $5 < x < 10$ and $y = x + 5$, what is the greatest possible integer value of $x + y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "20"
+      },
+      {
+        "id": "B",
+        "text": "23"
+      },
+      {
+        "id": "C",
+        "text": "24"
+      },
+      {
+        "id": "D",
+        "text": "25"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-012",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x > \\frac{3y}{5}$, which of the following inequalities must be true?\n\n$$\\begin{aligned} \\text{I. } & 6y + 5x < 10x + 3y \\\\ \\text{II. } & 2y + 5x > 4x + 3y \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "Both I and II"
+      },
+      {
+        "id": "D",
+        "text": "Neither I nor II"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-013",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $(x - y)^3 > (x - y)^2$, which of the following must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x^3 < y^2"
+      },
+      {
+        "id": "B",
+        "text": "x^3 > y^3"
+      },
+      {
+        "id": "C",
+        "text": "x < y"
+      },
+      {
+        "id": "D",
+        "text": "x + y = 0"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-014",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $2 < x < 3$, which of the following expressions is strictly positive?\n\n$$\\begin{aligned} \\text{I. } & (x - 2)(x - 3) \\\\ \\text{II. } & (2 - x)(x - 3) \\\\ \\text{III. } & (2 - x)(3 - x) \\end{aligned}$$",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "I only"
+      },
+      {
+        "id": "B",
+        "text": "II only"
+      },
+      {
+        "id": "C",
+        "text": "III only"
+      },
+      {
+        "id": "D",
+        "text": "I and III only"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-015",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x > y$ and $x < 0$, which of the following inequalities must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/x < 1/y"
+      },
+      {
+        "id": "B",
+        "text": "1/x > 1/y"
+      },
+      {
+        "id": "C",
+        "text": "x^2 < y^2"
+      },
+      {
+        "id": "D",
+        "text": "-x < -y"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-016",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $a^2 + 7a < 0$, which of the following could be the value of $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-3"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq-017",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "Three workers A, B, and C are hired for $4$ days. A's first day wage is $\\$4$ and increases by $\\$2$ each day. B's first day wage is $\\$3$ and increases by $\\$2$ each day. C's first day wage is $\\$1$, and on days 2, 3, and 4 his wage increases by the prime numbers $2, 3,$ and $5$ respectively. Which statement correctly orders their total earnings over the $4$ days?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "A > B > C"
+      },
+      {
+        "id": "B",
+        "text": "C > B > A"
+      },
+      {
+        "id": "C",
+        "text": "A > C > B"
+      },
+      {
+        "id": "D",
+        "text": "B > A > C"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-018",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $x^2 - y^2 = 16$ and $x + y > x - y$, which one of the following could $x - y$ equal?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-019",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If both inequalities $\\frac{1}{55} < x < \\frac{1}{22}$ and $\\frac{1}{33} < x < \\frac{1}{11}$ are true, which of the following numbers could $x$ equal?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/54"
+      },
+      {
+        "id": "B",
+        "text": "1/23"
+      },
+      {
+        "id": "C",
+        "text": "1/12"
+      },
+      {
+        "id": "D",
+        "text": "1/60"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-inq-020",
+    "source": "SAT Inequalities & Reasoning",
+    "domain": "algebra",
+    "topic": "Linear Inequalities",
+    "questionText": "If $0 < x \\le 1$, what is the maximum possible value of $(x - 1)^2 + x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-1"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "2"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqs-001",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $x = y$ and $x + y = 10$, then what is the value of $2x + y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "15"
+      },
+      {
+        "id": "C",
+        "text": "18"
+      },
+      {
+        "id": "D",
+        "text": "24"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-002",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $2x + 1 = 3x + 2$, then what is the value of $5x + 2$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-5"
+      },
+      {
+        "id": "B",
+        "text": "-3"
+      },
+      {
+        "id": "C",
+        "text": "-1"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-003",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $7x + 3y = 12$ and $3x + 7y = 8$, what is the value of $x - y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-004",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $4p = 6q$, then what is the value of $2p - 3q$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-005",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $x - y = p$ and $2x + 3y = q$, which one of the following must equal $p + q$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x + y"
+      },
+      {
+        "id": "B",
+        "text": "3x - 2y"
+      },
+      {
+        "id": "C",
+        "text": "2x - 3y"
+      },
+      {
+        "id": "D",
+        "text": "3x + 2y"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-006",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $l + t = 4$ and $l + 3t = 9$, then which one of the following equals $l + 2t$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "13/2"
+      },
+      {
+        "id": "B",
+        "text": "19/2"
+      },
+      {
+        "id": "C",
+        "text": "15/2"
+      },
+      {
+        "id": "D",
+        "text": "17/3"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-007",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $(x - y)(x + y) = 15$ and $x + y = 5$, what is the value of $\\frac{x}{y}$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-008",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $x - 4y = 1$ and $y = \\frac{x}{2} + 1$, what is the value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-5"
+      },
+      {
+        "id": "B",
+        "text": "-2"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-009",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $x^2 - 4x + 3 = 0$, what is the value of $(x - 2)^2$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-010",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $x = a + 2$ and $b = x + 1$, which of the following must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "a > b"
+      },
+      {
+        "id": "B",
+        "text": "a < b"
+      },
+      {
+        "id": "C",
+        "text": "a = b"
+      },
+      {
+        "id": "D",
+        "text": "a = b^2"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-011",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $p$ is the sum of $q$ and $r$, which of the following must equal $q - r$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "p - r"
+      },
+      {
+        "id": "B",
+        "text": "p + r"
+      },
+      {
+        "id": "C",
+        "text": "p - 2r"
+      },
+      {
+        "id": "D",
+        "text": "p + 2r"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-012",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "The sum of two positive numbers is $13$, and their product is $30$. What is the sum of the squares of the two numbers?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "139"
+      },
+      {
+        "id": "B",
+        "text": "109"
+      },
+      {
+        "id": "C",
+        "text": "229"
+      },
+      {
+        "id": "D",
+        "text": "69"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-013",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $p + q = 7$ and $pq = 12$, what is the value of $\\frac{1}{p^2} + \\frac{1}{q^2}$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/6"
+      },
+      {
+        "id": "B",
+        "text": "25/144"
+      },
+      {
+        "id": "C",
+        "text": "49/144"
+      },
+      {
+        "id": "D",
+        "text": "7/12"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqs-014",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $2x + 3y = 11$ and $3x + 2y = 9$, what is the value of $x + y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "11"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-015",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $2x = 2y + 1$, which of the following statements must be true?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "x > y"
+      },
+      {
+        "id": "B",
+        "text": "x < y"
+      },
+      {
+        "id": "C",
+        "text": "x = y"
+      },
+      {
+        "id": "D",
+        "text": "x = y + 1"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-016",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $3x + y = x + 2y$, what is the value of $2x - y$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-017",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Systems of Equations",
+    "questionText": "If $yz - zx = 3$ and $zx - xy = 4$, what is the value of $xy - yz$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "-7"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "7"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-018",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $(x + 5)\\left(\\frac{1}{x} + \\frac{1}{5}\\right) = 4$, which of the following is a possible value of $x$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/5"
+      },
+      {
+        "id": "B",
+        "text": "1/2"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-019",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $\\frac{a^2 - 9}{12a} = \\frac{a - 3}{a + 3}$, where $a \\ne 0$ and $a \\ne -3$, what is the value of $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqs-020",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If both expressions $x^2 - 3x + 2$ and $x^2 - 4x + 3$ equal $0$ for the same real value of $x$, what is the value of $(x - 3)^2$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-021",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $42.42 = k\\left(14 + \\frac{7}{50}\\right)$, what is the value of $k$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-022",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $|2x - 4| = 2$ and $(x - 3)^2 = 4$, what is the value of $x$ that satisfies both equations?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-eqs-023",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $(a + 2)(a - 3)(a + 4) = 0$ and $a > 0$, what is the value of $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-eqs-024",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $x + y = 7$ and $x^2 + y^2 = 25$, what is the value of $x^3 + y^3$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "25"
+      },
+      {
+        "id": "B",
+        "text": "35"
+      },
+      {
+        "id": "C",
+        "text": "65"
+      },
+      {
+        "id": "D",
+        "text": "91"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-eqs-025",
+    "source": "SAT Classic Equations Bank",
+    "domain": "algebra",
+    "topic": "Nonlinear Equations",
+    "questionText": "If $a, b,$ and $c$ are non-zero real numbers not equal to $1$, and $a^x = b$, $b^y = c$, and $c^z = a$, what is the value of $xyz$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "abc"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-001",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If the integer $x$ is divisible by both $3$ and $4$, then $x$ must be a multiple of which of the following?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "18"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-002",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "The last digit of the positive even integer $n$ equals the last digit of $n^2$. Which of the following could be $n$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "12"
+      },
+      {
+        "id": "B",
+        "text": "14"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "16"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-003",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following integers is divisible by both $2$ and $3$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1,005"
+      },
+      {
+        "id": "B",
+        "text": "1,296"
+      },
+      {
+        "id": "C",
+        "text": "1,351"
+      },
+      {
+        "id": "D",
+        "text": "1,406"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-004",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "How many numbers between $100$ and $300$, inclusive, are multiples of both $5$ and $6$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "7"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "20"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-005",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following equals the product of exactly two prime numbers?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "11 * 6"
+      },
+      {
+        "id": "B",
+        "text": "13 * 22"
+      },
+      {
+        "id": "C",
+        "text": "14 * 23"
+      },
+      {
+        "id": "D",
+        "text": "13 * 23"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-006",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following equals the product of the smallest prime number greater than $21$ and the largest prime number less than $16$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "13 * 16"
+      },
+      {
+        "id": "B",
+        "text": "13 * 29"
+      },
+      {
+        "id": "C",
+        "text": "13 * 23"
+      },
+      {
+        "id": "D",
+        "text": "15 * 23"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-007",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $m$ and $n$ are two distinct prime numbers, what is the least common multiple of $m$ and $n$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "mn"
+      },
+      {
+        "id": "B",
+        "text": "m + n"
+      },
+      {
+        "id": "C",
+        "text": "m/n"
+      },
+      {
+        "id": "D",
+        "text": "1"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-008",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Which of the following is the first integer greater than $200$ that is a multiple of both $6$ and $8$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "208"
+      },
+      {
+        "id": "B",
+        "text": "212"
+      },
+      {
+        "id": "C",
+        "text": "216"
+      },
+      {
+        "id": "D",
+        "text": "224"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-009",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "What is the maximum possible difference between two three-digit numbers, each of which uses each of the digits $1, 2,$ and $3$ exactly once?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "156"
+      },
+      {
+        "id": "B",
+        "text": "168"
+      },
+      {
+        "id": "C",
+        "text": "176"
+      },
+      {
+        "id": "D",
+        "text": "198"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-010",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "The two digits of a positive two-digit number differ by $4$, and the difference of their squares is $40$. Which of the following could be the number?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "26"
+      },
+      {
+        "id": "C",
+        "text": "59"
+      },
+      {
+        "id": "D",
+        "text": "73"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-011",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "When the integer $a$ is divided by $3$, the quotient is $b$ and the remainder is $2$. When $b$ is divided by $3$, the quotient is $2$ and the remainder is $1$. What is the value of $a$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "13"
+      },
+      {
+        "id": "B",
+        "text": "17"
+      },
+      {
+        "id": "C",
+        "text": "21"
+      },
+      {
+        "id": "D",
+        "text": "23"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-012",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $p$ and $q$ are positive integers and $\\frac{p}{q} = 1.15$, which of the following could be the value of $p$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "20"
+      },
+      {
+        "id": "D",
+        "text": "23"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-013",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If each of the three integers $a, b,$ and $c$ is divisible by $3$, then their product $abc$ must be divisible by which of the following?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "27"
+      },
+      {
+        "id": "C",
+        "text": "81"
+      },
+      {
+        "id": "D",
+        "text": "121"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-014",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "How many positive five-digit numbers can be formed using only the digits $0, 3,$ and $5$ (repetition allowed)?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "108"
+      },
+      {
+        "id": "B",
+        "text": "162"
+      },
+      {
+        "id": "C",
+        "text": "243"
+      },
+      {
+        "id": "D",
+        "text": "324"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-015",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "If $n$ is a positive integer, which of the following expressions must have a remainder of $3$ when divided by any of the numbers $4, 5,$ or $6$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "24n + 3"
+      },
+      {
+        "id": "B",
+        "text": "60n + 3"
+      },
+      {
+        "id": "C",
+        "text": "80n + 3"
+      },
+      {
+        "id": "D",
+        "text": "90n + 3"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-016",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "$a, b,$ and $c$ are consecutive integers in increasing order. If $p = \\frac{a}{5} - \\frac{b}{6}$ and $q = \\frac{b}{5} - \\frac{c}{6}$, what is the value of $q - p$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1/60"
+      },
+      {
+        "id": "B",
+        "text": "1/30"
+      },
+      {
+        "id": "C",
+        "text": "1/12"
+      },
+      {
+        "id": "D",
+        "text": "1/6"
+      }
+    ],
+    "correctAnswer": "B",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-017",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "A palindrome number reads the same forwards and backwards. What is the difference between the first palindrome integer greater than $233$ and $233$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "11"
+      },
+      {
+        "id": "C",
+        "text": "13"
+      },
+      {
+        "id": "D",
+        "text": "14"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-018",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "How many $3$-digit positive integers contain neither an even digit nor a zero?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "60"
+      },
+      {
+        "id": "B",
+        "text": "80"
+      },
+      {
+        "id": "C",
+        "text": "100"
+      },
+      {
+        "id": "D",
+        "text": "125"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-019",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "What is the minimum value of the sum of two positive integers whose product is $36$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "12"
+      },
+      {
+        "id": "B",
+        "text": "13"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "20"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg-num-020",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Linear Equations",
+    "questionText": "If $m$ and $n$ are two positive integers such that $5m + 7n = 46$, what is the value of $mn$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "21"
+      },
+      {
+        "id": "C",
+        "text": "24"
+      },
+      {
+        "id": "D",
+        "text": "35"
+      }
+    ],
+    "correctAnswer": "A",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-021",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "What is the sum of all even integers from $0$ through $20$, inclusive?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "90"
+      },
+      {
+        "id": "B",
+        "text": "100"
+      },
+      {
+        "id": "C",
+        "text": "110"
+      },
+      {
+        "id": "D",
+        "text": "140"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg-num-022",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "Five consecutive numbers $a < b < c < d < e$ form a set. Deleting one number from the set decreases the sum of the remaining numbers by $20\\%$. Which number was deleted?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "a"
+      },
+      {
+        "id": "B",
+        "text": "b"
+      },
+      {
+        "id": "C",
+        "text": "c"
+      },
+      {
+        "id": "D",
+        "text": "d"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-023",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "A set consists of the five consecutive integers $\\{1, 2, 3, 4, 5\\}$. What is the percentage decrease in the average of the numbers when the greatest number is removed?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "12.5%"
+      },
+      {
+        "id": "B",
+        "text": "15.0%"
+      },
+      {
+        "id": "C",
+        "text": "16.7%"
+      },
+      {
+        "id": "D",
+        "text": "20.0%"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-024",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "The positive integers $m$ and $n$ leave remainders of $2$ and $3$, respectively, when divided by $6$. If $m > n$, what is the remainder when $m - n$ is divided by $6$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "D",
+    "difficulty": "hard"
+  },
+  {
+    "id": "alg-num-025",
+    "source": "SAT Numbers Theory & Properties",
+    "domain": "algebra",
+    "topic": "Equivalent Expressions",
+    "questionText": "What is the remainder when $7^2 \\times 8^2$ is divided by $6$?",
+    "type": "multiple_choice",
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctAnswer": "C",
+    "difficulty": "medium"
   }
 ]

@@ -5,7 +5,10 @@ import {
   ChevronDown,
   Calculator,
   RotateCcw,
+  Sun,
+  Moon,
 } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 export type CalculatorMode = 'graphing' | 'scientific' | 'four-function';
 
@@ -38,12 +41,47 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
   const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
   const [useIframeFallback, setUseIframeFallback] = useState(false);
 
+  // Safe theme detection from App ThemeContext with fallback to HTML class
+  let currentAppDark = true;
+  try {
+    const themeContext = useTheme();
+    currentAppDark = themeContext?.theme === 'dark';
+  } catch {
+    currentAppDark = document.documentElement.classList.contains('dark');
+  }
+
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(currentAppDark);
+
+  // Sync with system or app theme changes
+  useEffect(() => {
+    setIsDarkTheme(currentAppDark);
+  }, [currentAppDark]);
+
+  // Keep callback reference stable so it never triggers calculator re-instantiation
+  const onResizeCalculatorRefRef = useRef(onResizeCalculatorRef);
+  useEffect(() => {
+    onResizeCalculatorRefRef.current = onResizeCalculatorRef;
+  }, [onResizeCalculatorRef]);
+
+  // Dynamically update Desmos settings (color inversion) without rebuilding the calculator
+  useEffect(() => {
+    if (calculatorInstance.current?.updateSettings) {
+      try {
+        calculatorInstance.current.updateSettings({ invertedColors: isDarkTheme });
+      } catch (err) {
+        console.warn('Error updating Desmos settings:', err);
+      }
+    }
+  }, [isDarkTheme]);
+
   // Initialize or re-instantiate calculator ONLY when mode changes or when first opened
   useEffect(() => {
     if (!isOpen) return;
 
+    let isMounted = true;
+
     const init = () => {
-      if (!containerRef.current) return;
+      if (!isMounted || !containerRef.current) return;
 
       // 1. Destroy existing calculator instance cleanly if mode changed
       if (calculatorInstance.current) {
@@ -74,12 +112,15 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
               settingsMenu: true,
               zoomButtons: true,
               border: false,
+              invertedColors: isDarkTheme,
+              fontSize: 13,
             });
           } else if (calculatorMode === 'scientific') {
             if (window.Desmos.ScientificCalculator) {
               setUseIframeFallback(false);
               instance = window.Desmos.ScientificCalculator(containerRef.current, {
                 border: false,
+                invertedColors: isDarkTheme,
               });
             } else {
               setUseIframeFallback(true);
@@ -89,28 +130,33 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
               setUseIframeFallback(false);
               instance = window.Desmos.FourFunctionCalculator(containerRef.current, {
                 border: false,
+                invertedColors: isDarkTheme,
               });
             } else {
               setUseIframeFallback(true);
             }
           }
 
-          if (instance) {
+          if (instance && isMounted) {
             calculatorInstance.current = instance;
 
-            if (onResizeCalculatorRef) {
-              onResizeCalculatorRef(() => {
+            // Connect external resize trigger
+            if (onResizeCalculatorRefRef.current) {
+              onResizeCalculatorRefRef.current(() => {
                 if (calculatorInstance.current?.resize) {
                   calculatorInstance.current.resize();
                 }
               });
             }
 
-            setTimeout(() => {
-              if (calculatorInstance.current?.resize) {
-                calculatorInstance.current.resize();
-              }
-            }, 100);
+            // Trigger multiple layout resize passes to guarantee perfect fit
+            [50, 150, 300, 600].forEach((delay) => {
+              setTimeout(() => {
+                if (isMounted && calculatorInstance.current?.resize) {
+                  calculatorInstance.current.resize();
+                }
+              }, delay);
+            });
           }
         } catch (err) {
           console.error('Error instantiating Desmos calculator mode:', calculatorMode, err);
@@ -121,22 +167,36 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
       }
     };
 
+    let timer: any = null;
     if (window.Desmos) {
-      init();
+      timer = setTimeout(init, 50);
     } else {
-      const script = document.createElement('script');
-      script.src = 'https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
-      script.async = true;
-      script.onload = () => {
-        init();
-      };
-      script.onerror = () => {
-        setUseIframeFallback(true);
-      };
-      document.body.appendChild(script);
+      const existingScript = document.querySelector('script[src*="desmos.com/api"]');
+      if (existingScript) {
+        existingScript.addEventListener('load', () => {
+          if (isMounted) timer = setTimeout(init, 50);
+        });
+        // Check if already defined in the meantime
+        if (window.Desmos) {
+          timer = setTimeout(init, 50);
+        }
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://www.desmos.com/api/v1.9.3/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
+        script.async = true;
+        script.onload = () => {
+          if (isMounted) timer = setTimeout(init, 50);
+        };
+        script.onerror = () => {
+          if (isMounted) setUseIframeFallback(true);
+        };
+        document.head.appendChild(script);
+      }
     }
 
     return () => {
+      isMounted = false;
+      if (timer) clearTimeout(timer);
       if (calculatorInstance.current) {
         try {
           calculatorInstance.current.destroy?.();
@@ -146,7 +206,7 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
         calculatorInstance.current = null;
       }
     };
-  }, [isOpen, calculatorMode, onResizeCalculatorRef]);
+  }, [isOpen, calculatorMode]);
 
   const handleClearExpressions = useCallback(() => {
     if (calculatorInstance.current?.setBlank) {
@@ -168,16 +228,16 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
   if (!isOpen) return null;
 
   return (
-    <div className="h-full flex flex-col bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800/90 overflow-hidden relative select-none">
+    <div className="h-full w-full flex flex-col bg-white dark:bg-[#0c101a] border-r border-slate-200 dark:border-slate-800 overflow-hidden relative select-auto">
       
       {/* ─── Header Bar Above Desmos ───────────────────────────────── */}
-      <div className="h-12 bg-white/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between flex-shrink-0 z-20">
+      <div className="h-12 bg-white/95 dark:bg-[#0e1320] border-b border-slate-200 dark:border-slate-800 px-3 sm:px-4 flex items-center justify-between flex-shrink-0 z-20 select-none">
         
         {/* Left: Title + Mode Dropdown */}
-        <div className="flex items-center space-x-2.5">
+        <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-1.5 text-slate-900 dark:text-white font-extrabold text-xs tracking-wide">
             <Calculator className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            <span>Calculator</span>
+            <span className="hidden sm:inline">Calculator</span>
           </div>
 
           <div className="relative">
@@ -191,7 +251,7 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
             </button>
 
             {isModeDropdownOpen && (
-              <div className="absolute left-0 top-full mt-1.5 w-44 rounded-2xl p-1.5 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700/80 backdrop-blur-2xl shadow-2xl z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150 space-y-0.5">
+              <div className="absolute left-0 top-full mt-1.5 w-44 rounded-2xl p-1.5 bg-white/95 dark:bg-[#141a29] border border-slate-200 dark:border-slate-700 backdrop-blur-sm shadow-2xl z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150 space-y-0.5">
                 {(['graphing', 'scientific', 'four-function'] as const).map((mode) => (
                   <button
                     key={mode}
@@ -212,13 +272,27 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
           </div>
         </div>
 
-        {/* Right Actions: Clear, Pop Out, Close */}
+        {/* Right Actions: Theme/Contrast, Clear, Pop Out, Close */}
         <div className="flex items-center space-x-1">
+          {/* Color / Contrast Mode Toggle (Dark vs Light) */}
+          <button
+            type="button"
+            onClick={() => setIsDarkTheme(!isDarkTheme)}
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] transition-colors"
+            title={isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme (Reverse Contrast)'}
+          >
+            {isDarkTheme ? (
+              <Sun className="w-3.5 h-3.5 text-emerald-400" />
+            ) : (
+              <Moon className="w-3.5 h-3.5 text-slate-600" />
+            )}
+          </button>
+
           {calculatorMode === 'graphing' && (
             <button
               type="button"
               onClick={handleClearExpressions}
-              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors"
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] transition-colors"
               title="Clear expressions"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -229,7 +303,7 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
             <button
               type="button"
               onClick={onPopOut}
-              className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-[11px] font-bold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center space-x-1 transition-colors shadow-sm"
+              className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-[11px] font-bold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center space-x-1 transition-colors shadow-sm"
               title="Pop out to floating window"
             >
               <ExternalLink className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
@@ -250,8 +324,16 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
       </div>
 
       {/* ─── Desmos Container Body ──────────────────────────────────── */}
-      <div className="flex-1 w-full h-[calc(100%-48px)] relative bg-white dark:bg-slate-950 overflow-hidden flex items-center justify-center">
-        {useIframeFallback ? (
+      <div className={`flex-1 w-full relative overflow-hidden ${isDarkTheme ? 'bg-[#111111]' : 'bg-white'}`}>
+        {/* Native Desmos Container - absolute inset-0 guarantees full width and height */}
+        <div
+          ref={containerRef}
+          className={`absolute inset-0 w-full h-full select-auto ${useIframeFallback ? 'hidden' : 'block'}`}
+          style={{ width: '100%', height: '100%' }}
+        />
+
+        {/* Fallback iframe if Desmos API script blocked or failed */}
+        {useIframeFallback && (
           <iframe
             src={
               calculatorMode === 'scientific'
@@ -261,15 +343,8 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
                 : 'https://www.desmos.com/calculator'
             }
             title={`Desmos ${modeDisplayLabel[calculatorMode]} Calculator`}
-            className="w-full h-full border-0 bg-white"
-          />
-        ) : (
-          <div
-            ref={containerRef}
-            className={`w-full h-full ${
-              calculatorMode !== 'graphing'
-                ? 'p-2 sm:p-4 flex items-center justify-center'
-                : 'absolute inset-0'
+            className={`w-full h-full border-0 ${
+              isDarkTheme ? 'filter invert-[0.88] hue-rotate-180 contrast-[1.05]' : 'bg-white'
             }`}
           />
         )}

@@ -5,6 +5,7 @@ import { Zap, Flame, Trophy, Compass, LayoutDashboard, User, LogOut, Settings, C
 import { SlidingTabGroup } from './SlidingTabGroup';
 import { ThemeToggle } from './ThemeToggle';
 import { ScoreUpLogo } from './ScoreUpLogo';
+import { HoverBorderGradient } from '../ui/hover-border-gradient';
 
 const NAV_ITEMS = [
   { label: 'Overview', icon: <Compass className="w-3.5 h-3.5" />, view: 'landing' as const },
@@ -33,17 +34,38 @@ export const Navbar: React.FC = () => {
   const safeActiveIndex = activeIndex === -1 ? 0 : activeIndex;
 
   const handleTabChange = (idx: number) => {
-    setCurrentView(NAV_ITEMS[idx].view);
+    const targetView = NAV_ITEMS[idx].view;
+    if (targetView === 'landing') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+    setCurrentView(targetView);
   };
 
   return (
     <header
-      className="sticky top-0 z-50 w-full backdrop-blur-2xl bg-white/90 dark:bg-slate-950/85 border-b border-amber-900/10 dark:border-white/[0.07] transition-colors duration-200 shadow-sm dark:shadow-none"
+      className="fixed top-0 left-0 w-full z-[9999] border-b border-slate-200/80 dark:border-white/[0.07] bg-white/95 dark:bg-[#070b12]/95 backdrop-blur-sm transition-colors duration-200 shadow-sm dark:shadow-none"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 9999,
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
 
         {/* ─── ScoreUp Brand Logo ────────────────────────────────────── */}
-        <ScoreUpLogo onClick={() => setCurrentView('landing')} />
+        <ScoreUpLogo
+          onClick={() => {
+            if (currentView === 'landing') {
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            } else {
+              setCurrentView('landing');
+            }
+          }}
+        />
 
         {/* ─── Sliding Tab Navigation ────────────────────────────────── */}
         <SlidingTabGroup
@@ -58,49 +80,60 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0">
 
           {/* Telegram */}
-          <a
+          <HoverBorderGradient
+            as="a"
             href="https://t.me/sat_ielts_dars"
             target="_blank"
             rel="noopener noreferrer"
             title="Join Telegram Channel"
-            className="hidden xl:flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all active:scale-[0.96] bg-sky-50 dark:bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-500/30 hover:bg-sky-100 dark:hover:bg-sky-500/20 shadow-sm"
+            containerClassName="hidden xl:inline-flex rounded-full"
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-sky-700 dark:text-sky-300"
+            innerMaskClassName="bg-sky-50 dark:bg-[#071426]"
+            highlight="radial-gradient(75% 181% at 50% 50%, #0284c7 0%, rgba(255, 255, 255, 0) 100%)"
           >
             <svg className="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-2.07 9.75c-.15.7-.57.87-1.16.54l-3.15-2.32-1.52 1.46c-.17.17-.31.31-.64.31l.23-3.21 5.85-5.28c.25-.23-.06-.35-.39-.13l-7.23 4.55-3.11-.97c-.68-.21-.69-.68.14-1l12.16-4.69c.56-.21 1.06.14.89.99z" />
             </svg>
             <span>Telegram</span>
-          </a>
+          </HoverBorderGradient>
 
           {/* YouTube */}
-          <a
+          <HoverBorderGradient
+            as="a"
             href="https://www.youtube.com/@ScoreUp_Academy_SAT"
             target="_blank"
             rel="noopener noreferrer"
             title="Free YouTube SAT Math Course"
-            className="hidden xl:flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all active:scale-[0.96] bg-rose-50 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-500/30 hover:bg-rose-100 dark:hover:bg-rose-500/20 shadow-sm"
+            containerClassName="hidden xl:inline-flex rounded-full"
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-rose-700 dark:text-rose-300"
+            innerMaskClassName="bg-rose-50 dark:bg-[#200a14]"
+            highlight="radial-gradient(75% 181% at 50% 50%, #f43f5e 0%, rgba(255, 255, 255, 0) 100%)"
           >
             <svg className="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
             <span className="hidden 2xl:inline">Free Course</span>
-          </a>
+          </HoverBorderGradient>
 
           {/* User Profile Pill or Log In Button */}
           {isAuthenticated ? (
             <div className="relative" ref={userMenuRef}>
-              <button
+              <HoverBorderGradient
+                as="button"
                 type="button"
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center space-x-2 pl-2 pr-3 py-1.5 rounded-full border border-slate-200/80 hover:border-orange-300 dark:border-slate-800 dark:hover:border-emerald-500/40 bg-white/80 dark:bg-slate-900/80 shadow-sm transition-all active:scale-95"
+                containerClassName="rounded-full"
+                className="flex items-center space-x-2 pl-2 pr-3 py-1.5 active:scale-95"
+                innerMaskClassName="bg-white/95 dark:bg-slate-900/95"
               >
                 {activeUser.avatar ? (
                   <img
                     src={activeUser.avatar}
                     alt={activeUser.firstName}
-                    className="w-6 h-6 rounded-full object-cover border border-orange-500/30 dark:border-emerald-500/30"
+                    className="w-6 h-6 rounded-full object-cover border border-emerald-500/30 dark:border-emerald-500/30"
                   />
                 ) : (
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 dark:from-emerald-500 dark:to-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs">
                     {activeUser.firstName.charAt(0).toUpperCase()}
                   </div>
                 )}
@@ -108,16 +141,16 @@ export const Navbar: React.FC = () => {
                   {activeUser.firstName}
                 </span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
+              </HoverBorderGradient>
 
               {/* Harmonized Dropdown Menu */}
               {userMenuOpen && (
-                <div className="absolute right-0 mt-2 w-64 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-amber-500/20 dark:border-emerald-500/20 shadow-2xl p-3 z-50 animate-in fade-in zoom-in-95">
+                <div className="absolute right-0 mt-2 w-64 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border border-emerald-500/20 dark:border-emerald-500/20 shadow-2xl p-3 z-50 animate-in fade-in zoom-in-95">
                   {/* User Quick Info */}
                   <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800">
                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{activeUser.firstName}</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{activeUser.email}</p>
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-amber-600 dark:text-emerald-400 bg-amber-50 dark:bg-emerald-950/40 px-2 py-1 rounded-lg">
+                    <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-1 rounded-lg">
                       <span>🎯 Target: {activeUser.targetScore}</span>
                       <span>🔥 {activeUser.streakDays} Days Active</span>
                     </div>
@@ -131,7 +164,7 @@ export const Navbar: React.FC = () => {
                         setUserMenuOpen(false);
                         openOnboardingModal();
                       }}
-                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-700 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
                     >
                       <span>👤</span> Edit Profile & Goals
                     </button>
@@ -142,7 +175,7 @@ export const Navbar: React.FC = () => {
                         setUserMenuOpen(false);
                         setCurrentView('onboarding');
                       }}
-                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-700 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
                     >
                       <span>🎯</span> Retake Diagnostic / Roadmap
                     </button>
@@ -153,7 +186,7 @@ export const Navbar: React.FC = () => {
                         setUserMenuOpen(false);
                         alert('Account & Study Settings');
                       }}
-                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
+                      className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-700 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
                     >
                       <span>⚙️</span> Account Settings
                     </button>
@@ -177,25 +210,28 @@ export const Navbar: React.FC = () => {
               )}
             </div>
           ) : (
-            <button
+            <HoverBorderGradient
+              as="button"
               type="button"
               onClick={() => openAuthModal('login')}
-              className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200
-                text-slate-700 hover:text-orange-600 bg-white/60 hover:bg-orange-50/80 border border-slate-200/80 hover:border-orange-300
-                dark:text-slate-200 dark:hover:text-emerald-400 dark:bg-slate-900/60 dark:hover:bg-emerald-950/40 dark:border-slate-800 dark:hover:border-emerald-500/30
-                shadow-sm active:scale-95"
+              containerClassName="rounded-xl"
+              className="px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300 active:scale-95"
+              innerMaskClassName="bg-emerald-50 dark:bg-slate-900/90"
             >
               Log In
-            </button>
+            </HoverBorderGradient>
           )}
 
           {/* Streak pill */}
-          <div
-            className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs bg-amber-100/90 dark:bg-orange-500/10 text-amber-900 dark:text-orange-300 border border-amber-300 dark:border-orange-500/30 shadow-sm font-bold"
+          <HoverBorderGradient
+            as="div"
+            containerClassName="hidden sm:inline-flex rounded-full"
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-emerald-900 dark:text-emerald-300"
+            innerMaskClassName="bg-emerald-50 dark:bg-emerald-950/60"
           >
-            <Flame className="w-4 h-4 text-amber-500 fill-amber-500 dark:text-orange-500 dark:fill-orange-500" />
+            <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600 dark:text-emerald-400 dark:fill-emerald-400" />
             <span className="font-extrabold">{activeUser.streakDays}d</span>
-          </div>
+          </HoverBorderGradient>
 
           {/* Global Light / Dark Theme Toggle Switcher */}
           <ThemeToggle />

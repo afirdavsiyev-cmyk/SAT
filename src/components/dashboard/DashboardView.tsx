@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { StudySidebar, StudySidebarTab } from '../study/StudySidebar';
 import { ThemeToggle } from '../common/ThemeToggle';
-import { HoverBorderGradient } from '../ui/hover-border-gradient';
 import {
   Zap,
   PlayCircle,
@@ -198,30 +197,23 @@ export const DashboardView: React.FC = () => {
         
         {/* Left: Sidebar Toggle + Title & Track Badge */}
         <div className="flex items-center space-x-3">
-          <HoverBorderGradient
-            as="button"
+          <button
+            type="button"
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            containerClassName="rounded-xl shadow-sm"
-            className="p-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white active:scale-95 flex items-center justify-center"
-            innerMaskClassName="bg-emerald-50/80 dark:bg-white/[0.05]"
+            className="p-2 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-100/90 dark:bg-white/[0.06] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-white/20 active:scale-95 flex items-center justify-center transition-colors shadow-sm"
             title={isSidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
           >
             {isSidebarCollapsed ? <PanelLeft className="w-4 h-4 text-emerald-700 dark:text-emerald-400" /> : <PanelLeftClose className="w-4 h-4 text-slate-600 dark:text-slate-300" />}
-          </HoverBorderGradient>
+          </button>
 
           <div className="flex items-center space-x-2.5">
             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/10 dark:from-emerald-500/25 dark:to-emerald-950/40 border border-emerald-500/30 dark:border-emerald-500/30 flex items-center justify-center flex-shrink-0">
               <span className="font-black text-sm text-emerald-700 dark:text-emerald-400">S</span>
             </div>
             <span className="font-extrabold text-slate-900 dark:text-white text-sm tracking-tight hidden sm:inline">SAT Study Hub</span>
-            <HoverBorderGradient
-              as="div"
-              containerClassName="rounded-full"
-              className="text-[10px] font-mono font-bold text-emerald-900 dark:text-emerald-400 px-2 py-0.5"
-              innerMaskClassName="bg-emerald-50 dark:bg-emerald-950/80"
-            >
+            <div className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold text-emerald-900 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800/40">
               Digital SAT
-            </HoverBorderGradient>
+            </div>
           </div>
         </div>
 
@@ -229,40 +221,28 @@ export const DashboardView: React.FC = () => {
         <div className="flex items-center space-x-2 sm:space-x-3">
           
           {/* Streak Indicator Pill */}
-          <HoverBorderGradient
-            as="div"
-            containerClassName="hidden sm:inline-flex rounded-full shadow-sm"
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-emerald-900 dark:text-emerald-300"
-            innerMaskClassName="bg-emerald-50 dark:bg-emerald-950/60"
-          >
+          <div className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/40 shadow-sm">
             <Flame className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400" />
             <span>{plannerData.streakDays}d Streak</span>
-          </HoverBorderGradient>
+          </div>
 
           {/* User Score Badge */}
-          <HoverBorderGradient
-            as="div"
-            containerClassName="hidden md:inline-flex rounded-full shadow-sm"
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-mono font-bold text-emerald-900 dark:text-emerald-400"
-            innerMaskClassName="bg-emerald-50 dark:bg-emerald-950/40"
-          >
+          <div className="hidden md:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold text-emerald-900 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 shadow-sm">
             <span>Score: {plannerData.currentEstimatedMath}/800</span>
-          </HoverBorderGradient>
+          </div>
 
           {/* Theme Toggle Button */}
           <ThemeToggle size="sm" />
 
           {/* Exit to Overview Button */}
-          <HoverBorderGradient
-            as="button"
+          <button
+            type="button"
             onClick={() => setCurrentView('landing')}
-            containerClassName="rounded-xl shadow-sm"
-            className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all active:scale-95"
-            innerMaskClassName="bg-white dark:bg-white/[0.06]"
+            className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-white/[0.06] hover:bg-slate-50 dark:hover:bg-white/10 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all active:scale-95 shadow-sm"
           >
             <ArrowLeft className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>Exit to Overview</span>
-          </HoverBorderGradient>
+          </button>
 
         </div>
       </header>
@@ -777,7 +757,13 @@ export const DashboardView: React.FC = () => {
                     const pt6Result = mockExamResults['pt6_full'] || mockExamResults['pt6'];
                     const pt7Result = mockExamResults['pt7_full'] || mockExamResults['pt7'];
                     const pt8Result = mockExamResults['pt8_full'] || mockExamResults['pt8'];
-                    const latestResult = pt8Result ? { id: 'pt8', name: 'Test 8', result: pt8Result }
+                    const pt9Result = mockExamResults['pt9_full'] || mockExamResults['pt9'];
+                    const pt10Result = mockExamResults['pt10_full'] || mockExamResults['pt10'];
+                    const pt11Result = mockExamResults['pt11_full'] || mockExamResults['pt11'];
+                    const latestResult = pt11Result ? { id: 'pt11', name: 'Test 11', result: pt11Result }
+                      : pt10Result ? { id: 'pt10', name: 'Test 10', result: pt10Result }
+                      : pt9Result ? { id: 'pt9', name: 'Test 9', result: pt9Result }
+                      : pt8Result ? { id: 'pt8', name: 'Test 8', result: pt8Result }
                       : pt7Result ? { id: 'pt7', name: 'Test 7', result: pt7Result }
                       : pt6Result ? { id: 'pt6', name: 'Test 6', result: pt6Result }
                       : pt5Result ? { id: 'pt5', name: 'Test 5', result: pt5Result }
@@ -841,6 +827,9 @@ export const DashboardView: React.FC = () => {
                 const pt6Res = mockExamResults['pt6_full'] || mockExamResults['pt6'];
                 const pt7Res = mockExamResults['pt7_full'] || mockExamResults['pt7'];
                 const pt8Res = mockExamResults['pt8_full'] || mockExamResults['pt8'];
+                const pt9Res = mockExamResults['pt9_full'] || mockExamResults['pt9'];
+                const pt10Res = mockExamResults['pt10_full'] || mockExamResults['pt10'];
+                const pt11Res = mockExamResults['pt11_full'] || mockExamResults['pt11'];
 
                 const tests = [
                   {
@@ -915,6 +904,33 @@ export const DashboardView: React.FC = () => {
                     description: 'Full 2-module official exam simulation with orbital periods dot plots, linear systems, and geometric congruence proofs.',
                     result: pt8Res,
                   },
+                  {
+                    id: 'pt9',
+                    title: 'Official Practice Test 9 (Full Exam)',
+                    source: 'Official Mock (BK-Practise-Test-6)',
+                    questions: 44,
+                    duration: '70 Min • 2 Modules',
+                    description: 'Full 2-module official exam simulation featuring circle equations, quadratic models, system of inequalities, and solid geometry.',
+                    result: pt9Res,
+                  },
+                  {
+                    id: 'pt10',
+                    title: 'Official Practice Test 10 (Full Exam)',
+                    source: 'Official Mock (Mock Turbo 1)',
+                    questions: 44,
+                    duration: '70 Min • 2 Modules',
+                    description: 'Full 2-module authentic December Math Mock Turbo 1 with absolute value systems, polynomial factorization, and right-triangle trigonometry.',
+                    result: pt10Res,
+                  },
+                  {
+                    id: 'pt11',
+                    title: 'Official Practice Test 11 (Full Exam)',
+                    source: 'Official Mock (SAT Turbo Prep Test 1)',
+                    questions: 44,
+                    duration: '70 Min • 2 Modules',
+                    description: 'Full 2-module authentic SAT Turbo Prep Test 1 with pyramid geometry, exponential growth models, and statistical margin of error analysis.',
+                    result: pt11Res,
+                  },
                 ];
 
                 return (
@@ -926,7 +942,7 @@ export const DashboardView: React.FC = () => {
                           Official Full-Length Practice Exams
                         </h3>
                         <span className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/60">
-                          8 Full Mocks Available
+                          11 Full Mocks Available
                         </span>
                       </div>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">

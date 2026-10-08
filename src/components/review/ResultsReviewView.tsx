@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Award, CheckCircle2, XCircle, RefreshCw, LayoutDashboard, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
 import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 
 export function calculateMathEstimate(correct: number, total: number): number {
   if (total === 0) return 200;
@@ -37,7 +38,7 @@ export const ResultsReviewView: React.FC = () => {
   let module2Correct = 0;
 
   questions.forEach((q, idx) => {
-    if (currentExamAnswers[q.id] === q.correctAnswer) {
+    if (isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q)) {
       correctCount++;
       if (idx < 22) module1Correct++;
       else module2Correct++;
@@ -60,7 +61,7 @@ export const ResultsReviewView: React.FC = () => {
       if (moduleFilter === 'm2' && idx < 22) return false;
     }
 
-    const isCorrect = currentExamAnswers[q.id] === q.correctAnswer;
+    const isCorrect = isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q);
     const isMarked = markedForReview.includes(q.id);
     if (filter === 'correct') return isCorrect;
     if (filter === 'incorrect') return !isCorrect;
@@ -168,9 +169,9 @@ export const ResultsReviewView: React.FC = () => {
                 {f === 'all'
                   ? filteredQuestions.length
                   : f === 'correct'
-                  ? questions.filter((q) => currentExamAnswers[q.id] === q.correctAnswer).length
+                  ? questions.filter((q) => isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q)).length
                   : f === 'incorrect'
-                  ? questions.filter((q) => currentExamAnswers[q.id] !== q.correctAnswer).length
+                  ? questions.filter((q) => !isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q)).length
                   : markedForReview.length}
                 )
               </button>
@@ -203,7 +204,7 @@ export const ResultsReviewView: React.FC = () => {
       <div className="space-y-4">
         {filteredQuestions.map((q) => {
           const userAns = currentExamAnswers[q.id];
-          const isCorrect = userAns === q.correctAnswer;
+          const isCorrect = isAnswerEquivalent(userAns, q.correctAnswer, q);
           const isExpanded = expandedSolutions.includes(q.id);
 
           return (
@@ -247,9 +248,24 @@ export const ResultsReviewView: React.FC = () => {
                   }`}>
                     <span className="opacity-75">Your Ans:</span>
                     <span className="font-extrabold">{userAns ? <MathRenderer content={userAns} inline /> : 'Omitted'}</span>
-                    <span className="opacity-50 ml-1">(Correct:</span>
-                    <span className="font-extrabold"><MathRenderer content={q.correctAnswer} inline /></span>
-                    <span className="opacity-50">)</span>
+                    {isCorrect ? (
+                      userAns && userAns.trim() !== q.correctAnswer.trim() ? (
+                        <>
+                          <span className="opacity-50 ml-1">(Equivalent to</span>
+                          <span className="font-extrabold"><MathRenderer content={q.correctAnswer} inline /></span>
+                          <span className="opacity-50">)</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 ml-1 font-extrabold">✓</span>
+                        </>
+                      ) : (
+                        <span className="text-emerald-600 dark:text-emerald-400 ml-1 font-extrabold">✓</span>
+                      )
+                    ) : (
+                      <>
+                        <span className="opacity-50 ml-1">(Correct:</span>
+                        <span className="font-extrabold"><MathRenderer content={q.correctAnswer} inline /></span>
+                        <span className="opacity-50">)</span>
+                      </>
+                    )}
                   </div>
                   {isExpanded ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
                 </div>

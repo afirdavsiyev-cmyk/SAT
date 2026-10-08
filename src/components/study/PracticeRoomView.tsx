@@ -16,6 +16,7 @@ import { ExplanationSideDrawer } from './ExplanationSideDrawer';
 import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
 import { DiagnosticMistakeDrawer } from './DiagnosticMistakeDrawer';
 import { recordSpacedRepetitionAttempt } from '../../utils/spacedRepetitionEngine';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 import { ThemeToggle } from '../common/ThemeToggle';
 import {
   ArrowLeft,
@@ -589,7 +590,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
   // Step 2: Explicitly Check Answer on button click
   const handleCheckAnswer = () => {
     if (!currentQuestion || !selectedOption || isAnswered) return;
-    const isAnswerCorrect = selectedOption.trim().toUpperCase() === currentQuestion.correctAnswer.trim().toUpperCase();
+    const isAnswerCorrect = isAnswerEquivalent(selectedOption, currentQuestion.correctAnswer, currentQuestion);
 
     // Persist attempt globally
     recordAttempt({
@@ -640,19 +641,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
     if (e) e.preventDefault();
     if (!currentQuestion || !gridInInput.trim() || isAnswered) return;
 
-    const userAns = gridInInput.trim().toLowerCase().replace(/\s+/g, '');
-    const correctAns = currentQuestion.correctAnswer.trim().toLowerCase().replace(/\s+/g, '');
-
-    let isAnswerCorrect = userAns === correctAns;
-
-    // Fraction equivalence check
-    if (!isAnswerCorrect && userAns.includes('/') && correctAns.includes('/')) {
-      const [uNum, uDen] = userAns.split('/').map(Number);
-      const [cNum, cDen] = correctAns.split('/').map(Number);
-      if (uDen && cDen && Math.abs(uNum / uDen - cNum / cDen) < 0.0001) {
-        isAnswerCorrect = true;
-      }
-    }
+    const isAnswerCorrect = isAnswerEquivalent(gridInInput, currentQuestion.correctAnswer, currentQuestion);
 
     // Persist attempt globally
     recordAttempt({
@@ -968,7 +957,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
               {currentQuestion.options.map((opt) => {
                 const isSelected = selectedOption === opt.id;
                 const isEliminated = eliminatedOptions.includes(opt.id);
-                const isOptionCorrect = opt.id === currentQuestion.correctAnswer;
+                const isOptionCorrect = isAnswerEquivalent(opt.id, currentQuestion.correctAnswer, currentQuestion);
 
                 let cardClass =
                   'bg-white hover:bg-emerald-50/60 hover:border-emerald-300 border border-slate-200/90 text-slate-800 shadow-sm dark:bg-slate-900/60 dark:hover:bg-slate-800/80 dark:border-slate-800 dark:hover:border-emerald-500/40 dark:text-slate-200';

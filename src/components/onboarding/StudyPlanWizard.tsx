@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 import {
   Calendar,
   Target,
@@ -208,29 +209,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
     diagnosticSampleQuestions.forEach((q, idx) => {
       const userAns = diagnosticAnswers[q.id] || diagnosticAnswers[idx];
       if (!userAns) return;
-      const cleanUser = userAns.trim().toLowerCase().replace(/\s+/g, '');
-      const cleanCorrect = q.correctAnswer.trim().toLowerCase().replace(/\s+/g, '');
-
-      let isCorrect = cleanUser === cleanCorrect;
-
-      // Fraction equivalence check (e.g. 3/4 vs 0.75)
-      if (!isCorrect && cleanUser.includes('/') && cleanCorrect.includes('/')) {
-        const [uNum, uDen] = cleanUser.split('/').map(Number);
-        const [cNum, cDen] = cleanCorrect.split('/').map(Number);
-        if (uDen && cDen && Math.abs(uNum / uDen - cNum / cDen) < 0.0001) {
-          isCorrect = true;
-        }
-      } else if (!isCorrect && (cleanUser.includes('/') || cleanCorrect.includes('/'))) {
-        try {
-          const uParts = cleanUser.split('/').map(Number);
-          const cParts = cleanCorrect.split('/').map(Number);
-          const uVal = cleanUser.includes('/') ? uParts[0] / uParts[1] : parseFloat(cleanUser);
-          const cVal = cleanCorrect.includes('/') ? cParts[0] / cParts[1] : parseFloat(cleanCorrect);
-          if (!isNaN(uVal) && !isNaN(cVal) && Math.abs(uVal - cVal) < 0.0001) {
-            isCorrect = true;
-          }
-        } catch {}
-      }
+      const isCorrect = isAnswerEquivalent(userAns, q.correctAnswer, q);
 
       if (isCorrect) {
         correctCount++;

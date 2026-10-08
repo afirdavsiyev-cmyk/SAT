@@ -1,5 +1,20 @@
 import React, { useMemo } from 'react';
 import katex from 'katex';
+import DOMPurify from 'dompurify';
+
+/**
+ * Renders a LaTeX expression with KaTeX and sanitizes the output with DOMPurify.
+ * Enforces trust: false to prevent untrusted commands or macro injections.
+ */
+const renderSanitizedKaTeX = (expression: string, displayMode: boolean): string => {
+  const rawHtml = katex.renderToString(expression, {
+    displayMode,
+    throwOnError: false,
+    output: 'html',
+    trust: false,
+  });
+  return DOMPurify.sanitize(rawHtml);
+};
 
 export interface KaTeXRendererProps {
   /** Text containing mixed prose and LaTeX math ($...$ or $$...$$) */
@@ -37,11 +52,7 @@ export const KaTeXRenderer: React.FC<KaTeXRendererProps> = ({
   // If a pure math string is provided directly via `math` prop
   if (math !== undefined) {
     try {
-      const html = katex.renderToString(math, {
-        displayMode: block,
-        throwOnError: false,
-        output: 'html',
-      });
+      const html = renderSanitizedKaTeX(math, block);
 
       if (block) {
         return (
@@ -106,11 +117,7 @@ export const KaTeXRenderer: React.FC<KaTeXRendererProps> = ({
         let formula = token.slice(2, -2).trim();
         formula = formula.replace(new RegExp(LITERAL_DOLLAR_TOKEN, 'g'), '\\$');
         try {
-          const html = katex.renderToString(formula, {
-            displayMode: true,
-            throwOnError: false,
-            output: 'html',
-          });
+          const html = renderSanitizedKaTeX(formula, true);
           return (
             <div
               key={`block-math-${index}`}
@@ -154,11 +161,7 @@ export const KaTeXRenderer: React.FC<KaTeXRendererProps> = ({
         }
 
         try {
-          const html = katex.renderToString(formula, {
-            displayMode: false,
-            throwOnError: false,
-            output: 'html',
-          });
+          const html = renderSanitizedKaTeX(formula, false);
           return (
             <span
               key={`inline-math-${index}`}

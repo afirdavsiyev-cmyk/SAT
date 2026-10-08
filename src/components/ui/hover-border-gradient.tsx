@@ -79,7 +79,7 @@ export const HoverBorderGradient = React.forwardRef<HTMLElement, HoverBorderGrad
           if (props.onMouseLeave) props.onMouseLeave(event);
         }}
         className={cn(
-          "relative inline-flex rounded-full border content-center bg-black/5 hover:bg-black/10 transition duration-500 dark:bg-white/10 dark:hover:bg-white/15 items-center flex-col flex-nowrap h-min justify-center overflow-visible p-px decoration-clone border-slate-200/80 dark:border-white/10",
+          "relative inline-flex rounded-full border content-center bg-black/5 hover:bg-black/10 transition duration-500 dark:bg-white/10 dark:hover:bg-white/15 items-center flex-col flex-nowrap h-min justify-center overflow-hidden p-px decoration-clone border-slate-200/80 dark:border-white/10",
           containerClassName
         )}
         {...elementProps}
@@ -102,13 +102,14 @@ export const HoverBorderGradient = React.forwardRef<HTMLElement, HoverBorderGrad
             width: "100%",
             height: "100%",
           }}
-          initial={{ background: movingMap[direction] }}
+          initial={{ opacity: 0 }}
           animate={{
+            opacity: hovered ? 1 : 0,
             background: hovered
               ? [movingMap[direction], highlight]
               : movingMap[direction],
           }}
-          transition={{ ease: "linear", duration: duration ?? 1 }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
         />
         <div
           className={cn(

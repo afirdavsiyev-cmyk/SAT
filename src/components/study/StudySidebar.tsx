@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
-import { HoverBorderGradient } from '../ui/hover-border-gradient';
 import {
   Home,
   Bot,
@@ -125,26 +124,19 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
           </div>
 
           {/* Collapse / Expand Toggle Button */}
-          <HoverBorderGradient
-            as="button"
+          <button
+            type="button"
             onClick={onToggleCollapse}
-            containerClassName={`rounded-xl ${isCollapsed ? 'hidden' : 'inline-flex'}`}
-            className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center"
-            innerMaskClassName="bg-slate-100/90 dark:bg-white/[0.08]"
+            className={`p-1.5 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-100/90 dark:bg-white/[0.08] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-white/20 transition-colors items-center justify-center ${isCollapsed ? 'hidden' : 'inline-flex'}`}
             title="Collapse Sidebar"
           >
             <PanelLeftClose className="w-4 h-4" />
-          </HoverBorderGradient>
+          </button>
         </div>
 
         {/* Focused Header Test Track Badge */}
         {!isCollapsed ? (
-          <HoverBorderGradient
-            as="div"
-            containerClassName="w-full rounded-2xl animate-in fade-in duration-200 shadow-sm"
-            className="w-full p-2.5 flex items-center justify-between"
-            innerMaskClassName="bg-emerald-100/80 dark:bg-emerald-950/40"
-          >
+          <div className="w-full rounded-2xl p-2.5 flex items-center justify-between bg-emerald-100/80 dark:bg-emerald-950/40 border border-emerald-300/80 dark:border-emerald-800/40 animate-in fade-in duration-200 shadow-sm">
             <div className="flex items-center space-x-2 truncate">
               <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse flex-shrink-0"></span>
               <span className="text-xs font-extrabold text-emerald-900 dark:text-emerald-300 tracking-wide truncate">Digital SAT</span>
@@ -152,17 +144,12 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
             <span className="text-[9px] font-mono font-bold text-emerald-800 dark:text-emerald-400 bg-emerald-200/80 dark:bg-emerald-900/60 px-1.5 py-0.5 rounded border border-emerald-300 dark:border-emerald-700/50 uppercase flex-shrink-0">
               Active
             </span>
-          </HoverBorderGradient>
+          </div>
         ) : (
           <div className="flex justify-center py-1">
-            <HoverBorderGradient
-              as="div"
-              containerClassName="rounded-xl shadow-sm"
-              className="text-[10px] font-mono font-extrabold text-emerald-800 dark:text-emerald-400 px-2 py-1"
-              innerMaskClassName="bg-emerald-100 dark:bg-emerald-950"
-            >
+            <div className="rounded-xl px-2 py-1 text-[10px] font-mono font-extrabold text-emerald-800 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950 border border-emerald-300/80 dark:border-emerald-800/40 shadow-sm">
               SAT
-            </HoverBorderGradient>
+            </div>
           </div>
         )}
 
@@ -361,14 +348,11 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
         )}
 
         {/* Profile Badge Card (Clickable to open popover) */}
-        <HoverBorderGradient
-          as="div"
+        <div
           onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-          containerClassName="w-full rounded-2xl cursor-pointer shadow-sm"
-          className={`w-full p-2 flex items-center ${
+          className={`w-full rounded-2xl cursor-pointer p-2 flex items-center border border-slate-200/80 dark:border-white/10 bg-slate-100/90 dark:bg-[#0c121e]/90 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all shadow-sm ${
             isCollapsed ? 'justify-center' : 'justify-between'
           }`}
-          innerMaskClassName="bg-slate-100/90 dark:bg-[#0c121e]/90"
           title={`${displayName} • ${streakDays}d Streak (Click to manage)`}
         >
           <div className="flex items-center space-x-2.5 min-w-0">
@@ -413,20 +397,18 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
               <Settings className="w-4 h-4" />
             </button>
           )}
-        </HoverBorderGradient>
+        </div>
 
         {/* Collapsed expand toggle button */}
         {isCollapsed && (
-          <HoverBorderGradient
-            as="button"
+          <button
+            type="button"
             onClick={onToggleCollapse}
-            containerClassName="w-full rounded-xl"
-            className="w-full py-2 text-slate-400 hover:text-slate-800 dark:hover:text-white flex items-center justify-center"
-            innerMaskClassName="bg-slate-200/80 dark:bg-white/[0.08]"
+            className="w-full py-2 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-200/80 dark:bg-white/[0.08] text-slate-400 hover:text-slate-800 dark:hover:text-white flex items-center justify-center transition-colors shadow-sm"
             title="Expand Sidebar"
           >
             <PanelLeft className="w-4 h-4" />
-          </HoverBorderGradient>
+          </button>
         )}
       </div>
 
@@ -461,25 +443,17 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   };
 
   return (
-    <HoverBorderGradient
-      as="button"
+    <button
+      type="button"
       onClick={onClick}
       title={isCollapsed ? label : undefined}
-      containerClassName={`w-full rounded-xl transition-all ${
-        isActive ? 'shadow-sm' : ''
-      }`}
-      className={`w-full text-xs font-semibold flex items-center transition-all duration-200 group active:scale-[0.97] ${
+      className={`w-full text-xs font-semibold flex items-center rounded-xl transition-all duration-200 group active:scale-[0.98] border ${
         isCollapsed ? 'justify-center p-2.5' : 'justify-between px-3 py-2'
       } ${
         isActive
-          ? 'text-emerald-900 dark:text-emerald-300 font-bold'
-          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+          ? 'bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-900 dark:text-emerald-300 font-bold border-emerald-500/30 dark:border-emerald-500/30 shadow-xs'
+          : 'bg-transparent hover:bg-slate-100/80 dark:hover:bg-white/[0.06] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 border-transparent hover:border-slate-200/60 dark:hover:border-white/5'
       }`}
-      innerMaskClassName={
-        isActive
-          ? 'bg-emerald-100/80 dark:bg-emerald-950/60'
-          : 'bg-white/70 dark:bg-[#0c121e]/70 group-hover:bg-emerald-50/50 dark:group-hover:bg-[#111a2c]'
-      }
     >
       <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-2.5 truncate'}`}>
         <span className={`${isActive ? 'text-emerald-600 dark:text-emerald-400 scale-105' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200'} transition-transform duration-200 flex-shrink-0`}>
@@ -497,6 +471,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       {isCollapsed && badge && (
         <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"></span>
       )}
-    </HoverBorderGradient>
+    </button>
   );
 };

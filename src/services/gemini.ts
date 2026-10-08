@@ -1,14 +1,7 @@
 import { Question } from '../types';
+import { getGeminiApiKey, setGeminiApiKey } from '../lib/gemini';
 
-export const getGeminiApiKey = (): string => {
-  const envKey = import.meta.env.VITE_GEMINI_API_KEY;
-  const localKey = localStorage.getItem('gemini_api_key');
-  return envKey || localKey || '';
-};
-
-export const setGeminiApiKey = (key: string): void => {
-  localStorage.setItem('gemini_api_key', key.trim());
-};
+export { getGeminiApiKey, setGeminiApiKey };
 
 export interface ChatMessage {
   sender: 'ai' | 'user';

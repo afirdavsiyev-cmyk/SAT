@@ -4,23 +4,23 @@ import { Sparkles, ArrowRight, ShieldCheck, PlayCircle, Star, CheckCircle, Calcu
 import { MathRenderer } from '../common/MathRenderer';
 import { HeroMoonSpotlight } from './HeroMoonSpotlight';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
-import { Boxes } from '../ui/background-boxes';
+import { BackgroundLines } from '@/components/ui/background-lines';
 
 export const HeroSection: React.FC = () => {
   const { setCurrentView } = useApp();
 
   return (
     <section className="relative pt-20 pb-24 md:pt-28 md:pb-32 overflow-x-clip bg-transparent">
-      {/* Bright Theme Aceternity Background Boxes (Image 2 style integrated for bright theme) */}
-      <div className="dark:hidden absolute inset-0 w-full h-full overflow-hidden pointer-events-auto z-0 select-none">
+      {/* Bright Theme Aceternity Background Lines (Active ONLY in bright theme, fully integrated with brand colors) */}
+      <div className="dark:hidden absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0 select-none">
+        <BackgroundLines className="w-full h-full bg-transparent" />
+        {/* Soft edge blend into white page background */}
         <div 
-          className="absolute inset-0 w-full h-full bg-white z-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full pointer-events-none z-10"
           style={{
-            maskImage: 'radial-gradient(ellipse at 50% 36%, transparent 10%, white 72%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at 50% 36%, transparent 10%, white 72%)',
+            background: 'radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(255, 255, 255, 0.65) 85%, #FFFFFF 100%)',
           }}
         />
-        <Boxes />
       </div>
 
       {/* Interactive Hanging Moon Mascot with Dynamic Flashlight Cursor Tracking */}

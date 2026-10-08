@@ -41,7 +41,23 @@ import {
   getPracticeTest8Module1,
   getPracticeTest8Module2,
 } from '../data/officialPracticeTest8';
+import {
+  OFFICIAL_PRACTICE_TEST_9_QUESTIONS,
+  getPracticeTest9Module1,
+  getPracticeTest9Module2,
+} from '../data/officialPracticeTest9';
+import {
+  OFFICIAL_PRACTICE_TEST_10_QUESTIONS,
+  getPracticeTest10Module1,
+  getPracticeTest10Module2,
+} from '../data/officialPracticeTest10';
+import {
+  OFFICIAL_PRACTICE_TEST_11_QUESTIONS,
+  getPracticeTest11Module1,
+  getPracticeTest11Module2,
+} from '../data/officialPracticeTest11';
 import { generatePrescriptiveStudyPlan } from '../utils/studyPlanGenerator';
+import { isAnswerEquivalent } from '../utils/answerVerification';
 
 const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
@@ -297,6 +313,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (mode === 'module2') return getPracticeTest8Module2().map((q, i) => ({ ...q, number: i + 1 }));
       return OFFICIAL_PRACTICE_TEST_8_QUESTIONS;
     }
+    if (testId === 'pt9') {
+      if (mode === 'module1') return getPracticeTest9Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest9Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_9_QUESTIONS;
+    }
+    if (testId === 'pt10') {
+      if (mode === 'module1') return getPracticeTest10Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest10Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_10_QUESTIONS;
+    }
+    if (testId === 'pt11') {
+      if (mode === 'module1') return getPracticeTest11Module1().map((q, i) => ({ ...q, number: i + 1 }));
+      if (mode === 'module2') return getPracticeTest11Module2().map((q, i) => ({ ...q, number: i + 1 }));
+      return OFFICIAL_PRACTICE_TEST_11_QUESTIONS;
+    }
     // Default pt1
     if (mode === 'module1') return getPracticeTest1Module1().map((q, i) => ({ ...q, number: i + 1 }));
     if (mode === 'module2') return getPracticeTest1Module2().map((q, i) => ({ ...q, number: i + 1 }));
@@ -448,7 +479,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       domainCounts[q.domain].total += 1;
 
-      const isCorrect = currentExamAnswers[q.id] === q.correctAnswer;
+      const isCorrect = isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q);
       if (isCorrect) {
         correctCount += 1;
         domainCounts[q.domain].correct += 1;

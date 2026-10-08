@@ -9,6 +9,7 @@ import { ExplanationSideDrawer } from './ExplanationSideDrawer';
 import { AITutorDrawer } from '../exam/AITutorDrawer';
 import { PracticeRoomGridModal, QuestionAttemptRecord } from './PracticeRoomGridModal';
 import { recordAttempt } from '../../services/userProgress';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 import { useApp } from '../../context/AppContext';
 import { ThemeToggle } from '../common/ThemeToggle';
 import {
@@ -273,17 +274,7 @@ export const QuestionRushSessionView: React.FC<QuestionRushSessionViewProps> = (
     const answerToCheck = chosenAnswer || (currentQuestion.type === 'multiple_choice' ? selectedOption : gridInInput.trim());
     if (!answerToCheck) return;
 
-    const userAns = answerToCheck.trim().toLowerCase().replace(/\s+/g, '');
-    const correctAns = currentQuestion.correctAnswer.trim().toLowerCase().replace(/\s+/g, '');
-
-    let correct = userAns === correctAns;
-    if (!correct && userAns.includes('/') && correctAns.includes('/')) {
-      const [uNum, uDen] = userAns.split('/').map(Number);
-      const [cNum, cDen] = correctAns.split('/').map(Number);
-      if (uDen && cDen && Math.abs(uNum / uDen - cNum / cDen) < 0.0001) {
-        correct = true;
-      }
-    }
+    const correct = isAnswerEquivalent(answerToCheck, currentQuestion.correctAnswer, currentQuestion);
 
     setIsCorrect(correct);
     setIsAnswered(true);
@@ -696,7 +687,7 @@ export const QuestionRushSessionView: React.FC<QuestionRushSessionViewProps> = (
               <div className="space-y-3">
                 {currentQuestion.options.map((opt) => {
                   const isSelected = selectedOption === opt.id;
-                  const isCorrectOpt = opt.id === currentQuestion.correctAnswer;
+                  const isCorrectOpt = isAnswerEquivalent(opt.id, currentQuestion.correctAnswer, currentQuestion);
                   const isStriked = strikethroughOptions.has(opt.id);
 
                   let optionBoxClasses = 'border-slate-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/20 text-slate-900 dark:border-slate-800 dark:bg-[#121622]/60 dark:hover:border-slate-700 dark:text-slate-200 shadow-sm';

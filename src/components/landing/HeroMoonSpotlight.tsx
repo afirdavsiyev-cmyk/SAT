@@ -17,6 +17,7 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
   const armGroupRef = useRef<SVGGElement>(null);
   const shoulderSocketRef = useRef<SVGCircleElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
+  const containerRectRef = useRef<{ left: number; top: number; width: number; height: number } | null>(null);
 
   // Angle and position tracking refs for continuous buttery-smooth interpolation
   const currentAngleRef = useRef(18); // Default rest angle pointing smoothly towards headline
@@ -30,11 +31,24 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
     let isVisible = !document.hidden;
     let isIntersecting = true;
 
-    // Shortest angular path difference to prevent 360-degree flip-arounds
+    // Cache container rect on resize/scroll to avoid layout thrashing (getBoundingClientRect) on mousemove
+    const updateContainerRect = () => {
+      if (containerRef.current) {
+        const r = containerRef.current.getBoundingClientRect();
+        containerRectRef.current = {
+          left: r.left,
+          top: r.top,
+          width: r.width,
+          height: r.height,
+        };
+      }
+    };
+
+    // Shortest angular path difference (O(1), immune to infinite loops at backward 180° boundary)
     const shortestAngleDiff = (target: number, current: number) => {
       let diff = (target - current) % 360;
-      while (diff < -180) diff += 360;
-      while (diff > 180) diff += 360;
+      if (diff < -180) diff += 360;
+      else if (diff > 180) diff -= 360;
       return diff;
     };
 
@@ -48,19 +62,24 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
     const updateTargetFromCoord = (clientX: number, clientY: number) => {
       targetPosRef.current = { x: clientX, y: clientY };
 
-      const socketRect = shoulderSocketRef.current?.getBoundingClientRect();
-      if (!socketRect) return;
+      let rect = containerRectRef.current;
+      if (!rect) {
+        updateContainerRect();
+        rect = containerRectRef.current;
+      }
+      if (!rect) return;
 
-      const originX = socketRect.left + socketRect.width / 2;
-      const originY = socketRect.top + socketRect.height / 2;
+      // Calculate shoulder joint coordinates from container rect and fixed SVG proportions
+      const originX = rect.left + (SHOULDER_X / 360) * rect.width;
+      const originY = rect.top + (SHOULDER_Y / 360) * rect.height;
 
       const dx = clientX - originX;
       const dy = clientY - originY;
       const dist = Math.hypot(dx, dy);
 
-      // Deadzone threshold only inside the shoulder socket pivot (< 16px)
-      if (dist > 16) {
-        // Full unconstrained angular freedom: look up (-90°), forward (0°), down (90°), and back (180°)
+      // Deadzone only when cursor is right at the shoulder pivot (< 10px)
+      if (dist > 10) {
+        // Full 360-degree rotation: flashlight spins to follow cursor everywhere, including behind the cosmonaut
         targetAngleRef.current = (Math.atan2(dy, dx) * 180) / Math.PI;
       }
 
@@ -69,6 +88,12 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
 
     const onMouseMove = (e: MouseEvent) => {
       updateTargetFromCoord(e.clientX, e.clientY);
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        updateTargetFromCoord(e.touches[0].clientX, e.touches[0].clientY);
+      }
     };
 
     // Physics render loop with smooth inertia damping and automatic idle sleep
@@ -82,24 +107,28 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
       const angleDiff = shortestAngleDiff(targetAngleRef.current, currentAngleRef.current);
       currentAngleRef.current += angleDiff * 0.085;
 
+      // Keep angle bounded within [-360, 360] to prevent overflow, without any singularity at ±180°
+      if (currentAngleRef.current > 360) currentAngleRef.current -= 360;
+      else if (currentAngleRef.current < -360) currentAngleRef.current += 360;
+
       if (armGroupRef.current) {
-        armGroupRef.current.style.transform = `rotate(${currentAngleRef.current.toFixed(2)}deg)`;
+        const deg = currentAngleRef.current.toFixed(2);
+        armGroupRef.current.style.transform = `rotate(${deg}deg)`;
+        armGroupRef.current.setAttribute('transform', `rotate(${deg}, ${SHOULDER_X}, ${SHOULDER_Y})`);
       }
 
-      // 2. Smoothly interpolate ambient spotlight glow
+      // 2. Smoothly interpolate ambient spotlight glow on GPU
       const glowDiffX = targetPosRef.current.x - currentGlowPosRef.current.x;
       const glowDiffY = targetPosRef.current.y - currentGlowPosRef.current.y;
       currentGlowPosRef.current.x += glowDiffX * 0.12;
       currentGlowPosRef.current.y += glowDiffY * 0.12;
 
       if (spotlightRef.current) {
-        spotlightRef.current.style.background = isDark
-          ? `radial-gradient(420px circle at ${currentGlowPosRef.current.x.toFixed(1)}px ${currentGlowPosRef.current.y.toFixed(1)}px, rgba(16,185,129,0.09), transparent 70%)`
-          : `radial-gradient(420px circle at ${currentGlowPosRef.current.x.toFixed(1)}px ${currentGlowPosRef.current.y.toFixed(1)}px, rgba(16,185,129,0.08), transparent 70%)`;
+        spotlightRef.current.style.transform = `translate3d(${currentGlowPosRef.current.x.toFixed(1)}px, ${currentGlowPosRef.current.y.toFixed(1)}px, 0)`;
       }
 
       // Automatic idle detection: when rotation and glow have settled, sleep loop to save 100% CPU
-      const isSettled = Math.abs(angleDiff) < 0.04 && Math.abs(glowDiffX) < 0.3 && Math.abs(glowDiffY) < 0.3;
+      const isSettled = Math.abs(angleDiff) < 0.03 && Math.abs(glowDiffX) < 0.25 && Math.abs(glowDiffY) < 0.25;
       if (isSettled) {
         isLoopRunning = false;
         animId = null;
@@ -113,6 +142,7 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
     const onVisibilityChange = () => {
       isVisible = !document.hidden;
       if (isVisible) {
+        updateContainerRect();
         wakeUpLoop();
       } else if (animId) {
         cancelAnimationFrame(animId);
@@ -128,6 +158,7 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
           const entry = entries[0];
           isIntersecting = entry.isIntersecting;
           if (isIntersecting) {
+            updateContainerRect();
             wakeUpLoop();
           } else if (animId) {
             cancelAnimationFrame(animId);
@@ -139,7 +170,14 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
       observer.observe(containerRef.current);
     }
 
+    // Cache initial container bounds
+    updateContainerRect();
+
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchstart', onTouchMove, { passive: true });
+    window.addEventListener('resize', updateContainerRect, { passive: true });
+    window.addEventListener('scroll', updateContainerRect, { passive: true });
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     // Initial render tick
@@ -147,6 +185,10 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchstart', onTouchMove);
+      window.removeEventListener('resize', updateContainerRect);
+      window.removeEventListener('scroll', updateContainerRect);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       if (observer) observer.disconnect();
       if (animId) cancelAnimationFrame(animId);
@@ -156,14 +198,15 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
 
   return (
     <>
-      {/* ─── Cursor Spotlight Ambient Reveal Effect ─────────────────────── */}
+      {/* ─── Cursor Spotlight Ambient Reveal Effect (GPU-accelerated) ───── */}
       <div
         ref={spotlightRef}
-        className="fixed inset-0 pointer-events-none z-10"
+        className="fixed top-0 left-0 w-[550px] h-[550px] -ml-[275px] -mt-[275px] rounded-full pointer-events-none z-10 will-change-transform"
         style={{
           background: isDark
-            ? 'radial-gradient(420px circle at 600px 400px, rgba(16,185,129,0.09), transparent 70%)'
-            : 'radial-gradient(420px circle at 600px 400px, rgba(16,185,129,0.08), transparent 70%)',
+            ? 'radial-gradient(circle, rgba(16,185,129,0.09) 0%, rgba(16,185,129,0.03) 45%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 45%, transparent 70%)',
+          transform: `translate3d(${currentGlowPosRef.current.x}px, ${currentGlowPosRef.current.y}px, 0)`,
         }}
         aria-hidden="true"
       />
@@ -179,18 +222,18 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
           <defs>
             {/* Volumetric Beam Linear Gradient */}
             <linearGradient id="astroBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(16, 185, 129, 0.55)" />
-              <stop offset="35%" stopColor="rgba(16, 185, 129, 0.22)" />
-              <stop offset="70%" stopColor="rgba(16, 185, 129, 0.06)" />
-              <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
+              <stop offset="0%" stopColor="#10B981" stopOpacity={isDark ? "0.55" : "0.35"} />
+              <stop offset="35%" stopColor="#10B981" stopOpacity={isDark ? "0.22" : "0.15"} />
+              <stop offset="70%" stopColor="#10B981" stopOpacity={isDark ? "0.06" : "0.04"} />
+              <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
             </linearGradient>
 
             {/* Core Intense Beam */}
             <linearGradient id="astroCoreBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-              <stop offset="25%" stopColor="rgba(16, 185, 129, 0.55)" />
-              <stop offset="65%" stopColor="rgba(16, 185, 129, 0.15)" />
-              <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
+              <stop offset="0%" stopColor={isDark ? "#D1FAE5" : "#10B981"} stopOpacity={isDark ? "0.85" : "0.6"} />
+              <stop offset="25%" stopColor="#10B981" stopOpacity={isDark ? "0.4" : "0.25"} />
+              <stop offset="65%" stopColor="#10B981" stopOpacity={isDark ? "0.12" : "0.08"} />
+              <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
             </linearGradient>
 
             {/* Light Mode Buttery Yellow Moon Surface Gradient */}
@@ -552,9 +595,12 @@ const HeroMoonSpotlightComponent: React.FC<MoonSpotlightProps> = ({ className = 
             {/* ── 5. Dynamic Flashlight Interactive Arm (Viewer's Left) ─────── */}
             <g
               ref={armGroupRef}
+              transform={`rotate(18, ${SHOULDER_X}, ${SHOULDER_Y})`}
               style={{
                 transformOrigin: `${SHOULDER_X}px ${SHOULDER_Y}px`,
+                transformBox: 'view-box',
                 transform: 'rotate(18deg)',
+                willChange: 'transform',
               }}
             >
               {/* Padded white astronaut arm sleeve connecting to glove */}

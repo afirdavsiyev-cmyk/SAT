@@ -24,7 +24,7 @@ import {
   sendSocraticChatMessage,
   ChatMessageItem
 } from '../../services/geminiService';
-import { getGeminiApiKey, setGeminiApiKey } from '../../lib/gemini';
+import { getGeminiApiKey, setGeminiApiKey, hasValidApiKey } from '../../lib/gemini';
 
 export interface ChatMessage {
   sender: 'ai' | 'user';
@@ -33,14 +33,14 @@ export interface ChatMessage {
 }
 
 function formatModelName(model: string): string {
-  if (!model) return '3.6 Flash';
-  if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (!model) return 'ScoreUP AI';
+  if (model.includes('ScoreUP-AI') || model.includes('Local') || model.includes('offline')) return 'ScoreUP AI';
   if (model.includes('3.8-flash')) return '3.8 Flash';
-  if (model.includes('3.1-pro')) return '3.1 Pro';
+  if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (model.includes('3.5-flash-lite')) return '3.5 Flash-Lite';
+  if (model.includes('flash-latest')) return 'Flash';
   if (model.includes('2.5-flash-lite')) return '2.5 Flash-Lite';
   if (model.includes('2.5-flash')) return '2.5 Flash';
-  if (model.includes('2.0-flash')) return '2.0 Flash';
-  if (model.includes('1.5-flash')) return '1.5 Flash';
   return model.replace('gemini-', '');
 }
 
@@ -58,7 +58,7 @@ export const ScoreUpAITutorView: React.FC = () => {
 
   useEffect(() => {
     const currentKey = getGeminiApiKey();
-    setHasApiKey(!!currentKey);
+    setHasApiKey(hasValidApiKey());
     setApiKeyInput(currentKey);
   }, []);
 
@@ -69,9 +69,11 @@ export const ScoreUpAITutorView: React.FC = () => {
   const handleSaveApiKey = (e: React.FormEvent) => {
     e.preventDefault();
     if (apiKeyInput.trim()) {
-      localStorage.setItem('gemini_api_key', apiKeyInput.trim());
+      setGeminiApiKey(apiKeyInput.trim());
+    } else {
+      setGeminiApiKey('');
     }
-    setHasApiKey(!!apiKeyInput.trim());
+    setHasApiKey(hasValidApiKey());
     setShowSettings(false);
   };
 
@@ -94,20 +96,7 @@ export const ScoreUpAITutorView: React.FC = () => {
         return;
       }
 
-      // Tier 3: Step-by-Step KaTeX Math Breakdown
-      if (lower.includes('step by step') || lower.includes('solve this') || lower.includes('vertex form')) {
-        const res = await generateStepByStepSolution({
-          prompt: textToSend,
-          domain: 'Advanced Math',
-          difficulty: 'Hard',
-          correctAnswer: 'Detailed Explanation'
-        });
-        setActiveModel(res.usedModel);
-        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
-        return;
-      }
-
-      // Tier 2: Socratic Chat
+      // Tier 2: Real-time Socratic Chat & Explanations
       const historyItems: ChatMessageItem[] = messages.map((m) => ({
         role: m.sender === 'user' ? 'user' : 'model',
         text: m.text,
@@ -207,7 +196,7 @@ export const ScoreUpAITutorView: React.FC = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
               <Key className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Configure Google Gemini 2.5 Flash API Key</span>
+              <span>Configure Google Gemini API Key</span>
             </div>
             <a
               href="https://aistudio.google.com/app/apikey"
@@ -225,7 +214,7 @@ export const ScoreUpAITutorView: React.FC = () => {
               type="password"
               value={apiKeyInput}
               onChange={(e) => setApiKeyInput(e.target.value)}
-              placeholder="Paste AIZASy... key here"
+              placeholder="Paste Gemini API key (AIzaSy... or AQ...)"
               className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-emerald-500 dark:focus:border-emerald-500 font-mono shadow-inner"
             />
             <button

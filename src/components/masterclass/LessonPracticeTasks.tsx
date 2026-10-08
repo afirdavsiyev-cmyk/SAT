@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LessonExercise } from '../../data/videoLessonsData';
 import { KaTeXRenderer } from '../common/KaTeXRenderer';
 import { CheckCircle2, XCircle, HelpCircle, Sparkles, RotateCcw, Lightbulb } from 'lucide-react';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 
 interface LessonPracticeTasksProps {
   exercises: LessonExercise[];
@@ -41,7 +42,10 @@ export const LessonPracticeTasks: React.FC<LessonPracticeTasksProps> = ({ exerci
   };
 
   const completedCount = Object.keys(submittedTasks).filter(
-    id => submittedTasks[id] && selectedAnswers[id] === exercises.find(e => e.id === id)?.correctAnswer
+    id => {
+      const ex = exercises.find(e => e.id === id);
+      return submittedTasks[id] && !!ex && isAnswerEquivalent(selectedAnswers[id], ex.correctAnswer, ex as any);
+    }
   ).length;
 
   if (!exercises || exercises.length === 0) {
@@ -80,7 +84,7 @@ export const LessonPracticeTasks: React.FC<LessonPracticeTasksProps> = ({ exerci
         {exercises.map((task, index) => {
           const selected = selectedAnswers[task.id];
           const isSubmitted = submittedTasks[task.id];
-          const isCorrect = isSubmitted && selected === task.correctAnswer;
+          const isCorrect = isSubmitted && isAnswerEquivalent(selected, task.correctAnswer, task as any);
           const isWrong = isSubmitted && !isCorrect;
 
           return (
@@ -140,7 +144,7 @@ export const LessonPracticeTasks: React.FC<LessonPracticeTasksProps> = ({ exerci
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 {task.options.map(opt => {
                   const isThisSelected = selected === opt.label;
-                  const isThisCorrect = task.correctAnswer === opt.label;
+                  const isThisCorrect = isAnswerEquivalent(opt.label, task.correctAnswer, task as any);
 
                   let optStyles = 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:border-emerald-400 dark:hover:border-emerald-500';
 

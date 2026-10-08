@@ -7200,5 +7200,906 @@
     "questionType": "free_response",
     "questionText": "An area of $56.00$ square nautical miles is equivalent to $k$ square kilometers. To the nearest tenth, what is the value of $k$? ($1\\text{ nautical mile} = 1.852\\text{ kilometers}$)",
     "type": "free_response"
+  },
+  {
+    "id": "ps-stat-001",
+    "question": "A marine biologist is studying a habitat that contains fish called shoal bass. A box plot summarizes the lengths, in centimeters (cm), of a sample of $65$ shoal bass from that habitat: the minimum is $32$, the first quartile is $35$, the median is $37$, the third quartile is $42$, and the maximum is $45$. What is the range, in cm, of the lengths of the shoal bass in the sample?",
+    "options": [
+      "8",
+      "13",
+      "28",
+      "37"
+    ],
+    "correctAnswer": "13",
+    "explanation": "The range of a data set is the difference between the maximum value and the minimum value.\n\nFrom the box plot:\n- $\\text{Maximum} = 45\\text{ cm}$\n- $\\text{Minimum} = 32\\text{ cm}$\n\n$$\\text{Range} = 45 - 32 = 13\\text{ cm}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A marine biologist is studying a habitat that contains fish called shoal bass. A box plot summarizes the lengths, in centimeters (cm), of a sample of $65$ shoal bass from that habitat: the minimum is $32$, the first quartile is $35$, the median is $37$, the third quartile is $42$, and the maximum is $45$. What is the range, in cm, of the lengths of the shoal bass in the sample?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-002",
+    "question": "For which of the following sets of $9$ data points is the median strictly less than the mean?",
+    "options": [
+      "Values: three 1s, two 2s, one 3, one 4, two 5s",
+      "Values: one 1, two 2s, three 3s, two 4s, one 5",
+      "Values: two 1s, two 2s, one 3, two 4s, two 5s",
+      "Values: four 1s, one 2, one 3, one 4, two 5s"
+    ],
+    "correctAnswer": "Values: three 1s, two 2s, one 3, one 4, two 5s",
+    "explanation": "Let us calculate the mean and median for the data set with three $1$s, two $2$s, one $3$, one $4$, two $5$s:\n\n1. In order, the 9 values are: $1, 1, 1, 2, 2, 3, 4, 5, 5$.\n2. The median is the 5th value: $\\text{Median} = 2$.\n3. The sum is $1+1+1+2+2+3+4+5+5 = 24$.\n4. The mean is $\\frac{24}{9} \\approx 2.67$.\n\nSince $\\text{Median} = 2 < 2.67 = \\text{Mean}$, the median is strictly less than the mean.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "For which of the following sets of $9$ data points is the median strictly less than the mean?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-003",
+    "question": "Paulina has $28$ books in her collection. A frequency table summarizes the number of pages in each book: $46$ pages ($1$ book), $47$ pages ($2$ books), $48$ pages ($4$ books), $49$ pages ($5$ books), $50$ pages ($5$ books), $51$ pages ($2$ books), $52$ pages ($5$ books), and $53$ pages ($4$ books). If she buys a new book that has $62$ pages, how will this impact the mean and median numbers of pages of the books in her collection?",
+    "options": [
+      "The mean and median will both increase.",
+      "The mean and median will both decrease.",
+      "The mean will increase, and the median will remain the same.",
+      "The mean will decrease, and the median will remain the same."
+    ],
+    "correctAnswer": "The mean will increase, and the median will remain the same.",
+    "explanation": "1. **Mean:** The initial mean is approximately $50.07$ pages. Adding a new book with $62$ pages, which is strictly greater than the mean, pulls the sum up by more than the average, so the **mean will increase**.\n\n2. **Median:** For the original $28$ books, the median is the average of the 14th and 15th values. Counting cumulatively:\n- $46$: 1\n- $47$: $1 + 2 = 3$\n- $48$: $3 + 4 = 7$\n- $49$: $7 + 5 = 12$\n- $50$: $12 + 5 = 17$\nBoth the 14th and 15th values are $50$, so the original median is $50$.\nFor $29$ books (with the 29th value $62$ placed at the very end), the median is the 15th value, which is still $50$.\n\nThus, the mean increases and the median remains the same.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Paulina has $28$ books in her collection. A frequency table summarizes the number of pages in each book: $46$ pages ($1$ book), $47$ pages ($2$ books), $48$ pages ($4$ books), $49$ pages ($5$ books), $50$ pages ($5$ books), $51$ pages ($2$ books), $52$ pages ($5$ books), and $53$ pages ($4$ books). If she buys a new book that has $62$ pages, how will this impact the mean and median numbers of pages of the books in her collection?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-004",
+    "question": "There are $10$ rare coins in a collection. If the value of each of the $10$ coins increases by $\\$2$, which of the following will be true?",
+    "options": [
+      "The new mean of the values will be $2 more than the previous mean, but the standard deviation will remain the same.",
+      "The mean of the values will remain the same, but the new standard deviation will be $2 more than the previous standard deviation.",
+      "Both the new mean and standard deviation of the values will be $2 more than the previous mean and standard deviation.",
+      "Neither the mean nor the standard deviation of the values will change."
+    ],
+    "correctAnswer": "The new mean of the values will be $2 more than the previous mean, but the standard deviation will remain the same.",
+    "explanation": "When a constant $c$ is added to every data value in a data set:\n- Every measure of center (mean, median) shifts by $+c$. Thus, the new mean increases by $\\$2$.\n- Measures of spread (standard deviation, range, IQR) depend solely on the differences between data points. Since $(x_i + 2) - (\\bar{x} + 2) = x_i - \\bar{x}$, the distance between each point and the mean is unchanged. Therefore, the **standard deviation remains unchanged**.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "There are $10$ rare coins in a collection. If the value of each of the $10$ coins increases by $\\$2$, which of the following will be true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-005",
+    "question": "A data set consists of $50$ positive values, and the mean of the data is $m$. A new data set is made by increasing each value in the original data set by $8$. Which of the following represents the mean of the new data set in terms of $m$?",
+    "options": [
+      "m + 8",
+      "m + 50",
+      "8m",
+      "8m + 50"
+    ],
+    "correctAnswer": "m + 8",
+    "explanation": "If every value $x_i$ in a data set of size $n$ is increased by a constant $c = 8$, the new sum of the values is:\n$$\\sum_{i=1}^{50} (x_i + 8) = \\left(\\sum_{i=1}^{50} x_i\\right) + 50(8) = 50m + 400$$\nDividing by the number of values ($50$):\n$$\\text{New Mean} = \\frac{50m + 400}{50} = m + 8$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A data set consists of $50$ positive values, and the mean of the data is $m$. A new data set is made by increasing each value in the original data set by $8$. Which of the following represents the mean of the new data set in terms of $m$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-006",
+    "question": "A data set of $100$ values is summarized by a histogram. The intervals and frequencies are: more than $10$ and at most $20$ ($5$ values); more than $20$ and at most $30$ ($5$ values); more than $30$ and at most $40$ ($10$ values); more than $40$ and at most $50$ ($25$ values); more than $50$ and at most $60$ ($20$ values); more than $60$ and at most $70$ ($15$ values); more than $70$ and at most $80$ ($15$ values); more than $80$ and at most $90$ ($5$ values). Which range of values contains the median value of the data set?",
+    "options": [
+      "More than 30 and at most 40",
+      "More than 40 and at most 50",
+      "More than 50 and at most 60",
+      "More than 60 and at most 70"
+    ],
+    "correctAnswer": "More than 50 and at most 60",
+    "explanation": "For $n = 100$ values, the median is the average of the 50th and 51st values when sorted in ascending order.\n\nLet us compute cumulative frequencies:\n- $(10, 20]$: $5$ values (values 1–5)\n- $(20, 30]$: $5 + 5 = 10$ values (values 6–10)\n- $(30, 40]$: $10 + 10 = 20$ values (values 11–20)\n- $(40, 50]$: $20 + 25 = 45$ values (values 21–45)\n- $(50, 60]$: $45 + 20 = 65$ values (values 46–65)\n\nBoth the 50th and 51st values fall in the interval **more than 50 and at most 60**.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A data set of $100$ values is summarized by a histogram. The intervals and frequencies are: more than $10$ and at most $20$ ($5$ values); more than $20$ and at most $30$ ($5$ values); more than $30$ and at most $40$ ($10$ values); more than $40$ and at most $50$ ($25$ values); more than $50$ and at most $60$ ($20$ values); more than $60$ and at most $70$ ($15$ values); more than $70$ and at most $80$ ($15$ values); more than $80$ and at most $90$ ($5$ values). Which range of values contains the median value of the data set?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-007",
+    "question": "A journal article reported the results of a study in which the mean time spent exercising per month was estimated as $10.7\\text{ hours}$, with an associated margin of error of $0.4\\text{ hours}$. A second study of the same population was conducted and included a larger random sample than the random sample from the first study. Based on the change in sample size, which of the following is the most likely impact on the results?",
+    "options": [
+      "The mean decreases.",
+      "The mean increases.",
+      "The margin of error decreases.",
+      "The margin of error increases."
+    ],
+    "correctAnswer": "The margin of error decreases.",
+    "explanation": "The margin of error for a sample mean is inversely proportional to the square root of the sample size: $\\text{Margin of Error} \\propto \\frac{1}{\\sqrt{n}}$.\n\nWhen the sample size $n$ increases, the standard error decreases, which directly causes the **margin of error to decrease**. The true population mean is unaffected by sample size.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Data collection and conclusions",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A journal article reported the results of a study in which the mean time spent exercising per month was estimated as $10.7\\text{ hours}$, with an associated margin of error of $0.4\\text{ hours}$. A second study of the same population was conducted and included a larger random sample than the random sample from the first study. Based on the change in sample size, which of the following is the most likely impact on the results?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-008",
+    "question": "A box plot shows the maximum ground temperature, in degrees Celsius ($^\\circ\\text{C}$), each day for $40$ solar days on Mars: minimum is $5^\\circ\\text{C}$, first quartile $Q_1 = 9^\\circ\\text{C}$, median is $12^\\circ\\text{C}$, third quartile $Q_3 = 15^\\circ\\text{C}$, and maximum is $17.5^\\circ\\text{C}$. Which of the following could be the number of solar days for which the maximum ground temperature on Mars was at least $9^\\circ\\text{C}$?",
+    "options": [
+      "10",
+      "20",
+      "25",
+      "30"
+    ],
+    "correctAnswer": "30",
+    "explanation": "The first quartile $Q_1$ is $9^\\circ\\text{C}$. By definition of quartiles in a box plot, approximately $25\\%$ of the data lies below $Q_1$, and approximately $75\\%$ of the data lies at or above $Q_1$.\n\nFor $40$ days:\n$$75\\% \\times 40 = 0.75 \\times 40 = 30\\text{ days}$$\n\nTherefore, approximately $30$ days had a maximum ground temperature of at least $9^\\circ\\text{C}$.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A box plot shows the maximum ground temperature, in degrees Celsius ($^\\circ\\text{C}$), each day for $40$ solar days on Mars: minimum is $5^\\circ\\text{C}$, first quartile $Q_1 = 9^\\circ\\text{C}$, median is $12^\\circ\\text{C}$, third quartile $Q_3 = 15^\\circ\\text{C}$, and maximum is $17.5^\\circ\\text{C}$. Which of the following could be the number of solar days for which the maximum ground temperature on Mars was at least $9^\\circ\\text{C}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-009",
+    "question": "Data set A consists of $20$ different values that have a minimum of $22$, a maximum of $86$, a mean of $54$, and a standard deviation of $15$. The values $22$ and $86$ are removed from the set to create data set B, which consists of $18$ different values. Which of the following statements is true?",
+    "options": [
+      "The mean of data set B is greater than 54.",
+      "The mean of data set B is less than 54.",
+      "The standard deviation of data set B is greater than 15.",
+      "The standard deviation of data set B is less than 15."
+    ],
+    "correctAnswer": "The standard deviation of data set B is less than 15.",
+    "explanation": "1. Notice the average of the two removed values is $\\frac{22 + 86}{2} = \\frac{108}{2} = 54$, which exactly matches the original mean of $54$. Because their mean equals the overall mean, removing them leaves the mean of data set B unchanged at $54$.\n\n2. The values $22$ and $86$ were the extreme minimum and maximum of the original set, lying $\\pm 32$ units away from the mean (more than $2$ standard deviations away). Removing the two most dispersed extreme outliers reduces the overall spread/variability of the data. Consequently, the **standard deviation of data set B is less than 15**.",
+    "difficulty": "hard",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data set A consists of $20$ different values that have a minimum of $22$, a maximum of $86$, a mean of $54$, and a standard deviation of $15$. The values $22$ and $86$ are removed from the set to create data set B, which consists of $18$ different values. Which of the following statements is true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-010",
+    "question": "Three data sets A, B, and C each have $15$ values represented by symmetric triangular dot plots: Data set A is centered at $4$ (median $a$); Data set B is centered at $6$ (median $b$); Data set C is centered at $5$ (median $c$). What is the relationship between $a$, $b$, and $c$?",
+    "options": [
+      "a > b > c",
+      "b > c > a",
+      "c > b > a",
+      "a = b = c"
+    ],
+    "correctAnswer": "b > c > a",
+    "explanation": "For symmetric unimodal distributions shown on a dot plot, the median coincides with the center of symmetry:\n- For data set A: $a = 4$\n- For data set B: $b = 6$\n- For data set C: $c = 5$\n\nComparing these values:\n$$b (6) > c (5) > a (4)$$\nThus, $b > c > a$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Three data sets A, B, and C each have $15$ values represented by symmetric triangular dot plots: Data set A is centered at $4$ (median $a$); Data set B is centered at $6$ (median $b$); Data set C is centered at $5$ (median $c$). What is the relationship between $a$, $b$, and $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-011",
+    "question": "Data set A and Data set B each have values between $1$ and $9$. Data set A has a symmetric cluster of points centered around $3$ with an outlier at $9$. Data set B has an identical symmetric cluster centered around $3$ without the outlier. Which statement best compares the means of the two data sets?",
+    "options": [
+      "The mean of data set A is greater than the mean of data set B.",
+      "The mean of data set A is equal to the mean of data set B.",
+      "The mean of data set A is less than the mean of data set B.",
+      "There is not enough information to compare the means."
+    ],
+    "correctAnswer": "The mean of data set A is greater than the mean of data set B.",
+    "explanation": "Data set A includes an additional high value (outlier at $9$) that is significantly greater than the center of the distribution ($3$). Since the mean is sensitive to extreme values, adding a value greater than the mean pulls the mean upward. Therefore, the mean of data set A is strictly greater than the mean of data set B.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data set A and Data set B each have values between $1$ and $9$. Data set A has a symmetric cluster of points centered around $3$ with an outlier at $9$. Data set B has an identical symmetric cluster centered around $3$ without the outlier. Which statement best compares the means of the two data sets?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-012",
+    "question": "A dot plot shows the number of eggs in each of $13$ wood duck nests: $7$ eggs ($1$ nest), $9$ eggs ($2$ nests), $10$ eggs ($4$ nests), $11$ eggs ($3$ nests), $12$ eggs ($2$ nests), and $13$ eggs ($1$ nest). How many of these nests had exactly $11$ eggs?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "3",
+    "explanation": "Looking at the dot plot above the value $11$, there are exactly $3$ dots stacked vertically. Each dot represents one wood duck nest, so exactly $3$ nests had $11$ eggs.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A dot plot shows the number of eggs in each of $13$ wood duck nests: $7$ eggs ($1$ nest), $9$ eggs ($2$ nests), $10$ eggs ($4$ nests), $11$ eggs ($3$ nests), $12$ eggs ($2$ nests), and $13$ eggs ($1$ nest). How many of these nests had exactly $11$ eggs?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-013",
+    "question": "A dot plot shows the number of days it rained in a certain week for $14$ cities: $0$ days ($2$ cities), $1$ day ($3$ cities), $2$ days ($4$ cities), $3$ days ($3$ cities), $4$ days ($1$ city), and $6$ days ($1$ city). What are the five-number summary values (Minimum, $Q_1$, Median, $Q_3$, Maximum) for this data set?",
+    "options": [
+      "Min = 0, Q1 = 1, Median = 2, Q3 = 3, Max = 6",
+      "Min = 0, Q1 = 2, Median = 2, Q3 = 4, Max = 6",
+      "Min = 0, Q1 = 1, Median = 3, Q3 = 4, Max = 6",
+      "Min = 1, Q1 = 2, Median = 2.5, Q3 = 3, Max = 6"
+    ],
+    "correctAnswer": "Min = 0, Q1 = 1, Median = 2, Q3 = 3, Max = 6",
+    "explanation": "The sorted $14$ values are:\n$$0, 0, 1, 1, 1, 2, 2, \\mid 2, 2, 3, 3, 3, 4, 6$$\n\n1. **Minimum** $= 0$\n2. **Maximum** $= 6$\n3. **Median:** Average of the 7th and 8th values: $\\frac{2 + 2}{2} = 2$.\n4. **First Quartile ($Q_1$):** Median of the lower 7 values ($0, 0, 1, 1, 1, 2, 2$) is the 4th value: $Q_1 = 1$.\n5. **Third Quartile ($Q_3$):** Median of the upper 7 values ($2, 2, 3, 3, 3, 4, 6$) is the 4th value: $Q_3 = 3$.\n\nThus, the five-number summary is Min $= 0$, $Q_1 = 1$, Median $= 2$, $Q_3 = 3$, Max $= 6$.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A dot plot shows the number of days it rained in a certain week for $14$ cities: $0$ days ($2$ cities), $1$ day ($3$ cities), $2$ days ($4$ cities), $3$ days ($3$ cities), $4$ days ($1$ city), and $6$ days ($1$ city). What are the five-number summary values (Minimum, $Q_1$, Median, $Q_3$, Maximum) for this data set?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-014",
+    "question": "Two histograms show the distribution of data set A and data set B, respectively. Data set B is the result of removing the outlier located in the interval $60\\text{ to }70$ from data set A. Which of the following statements about the means of data set A and data set B is true?",
+    "options": [
+      "The means of data set A and B are the same.",
+      "The mean of data set A is greater than the mean of data set B.",
+      "The mean of data set A is less than the mean of data set B.",
+      "No comparison about the means of the data sets can be made."
+    ],
+    "correctAnswer": "The mean of data set A is greater than the mean of data set B.",
+    "explanation": "The removed value in data set A is an outlier on the far right ($60\\text{ to }70$), which is substantially larger than the center of the distribution (around $20$). Removing a high outlier lowers the sum significantly relative to the count, which decreases the mean. Therefore, the mean of the original data set A is greater than the mean of data set B.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Two histograms show the distribution of data set A and data set B, respectively. Data set B is the result of removing the outlier located in the interval $60\\text{ to }70$ from data set A. Which of the following statements about the means of data set A and data set B is true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-015",
+    "question": "Two dot plots show $13$ data values each for Group I and Group II. Both distributions are symmetric and centered at $8$. In Group I, the values are spread widely from $4$ to $12$ (with frequencies: 4:1, 5:1, 6:1, 7:2, 8:3, 9:2, 10:1, 11:1, 12:1). In Group II, most values are clustered tightly at the center (6:1, 7:3, 8:5, 9:3, 10:1). Which of the following statements best compares the means and standard deviations of the values for each group?",
+    "options": [
+      "The mean of Group I is greater than the mean of Group II, and the standard deviation of Group I is greater.",
+      "The mean of Group II is greater than the mean of Group I, and the standard deviation of Group II is greater.",
+      "The means of Group I and Group II are the same, and the standard deviations are the same.",
+      "The means of Group I and Group II are the same, and the standard deviation of Group I is greater than the standard deviation of Group II."
+    ],
+    "correctAnswer": "The means of Group I and Group II are the same, and the standard deviation of Group I is greater than the standard deviation of Group II.",
+    "explanation": "1. **Mean:** Both distributions are perfectly symmetric about $x = 8$, so $\\text{Mean}_I = \\text{Mean}_{II} = 8$.\n2. **Standard Deviation:** Standard deviation measures how spread out the values are from the mean. Group I has points extending further out to $4$ and $12$, whereas Group II is concentrated around $8$. Thus, the standard deviation of Group I is strictly greater than that of Group II.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Two dot plots show $13$ data values each for Group I and Group II. Both distributions are symmetric and centered at $8$. In Group I, the values are spread widely from $4$ to $12$ (with frequencies: 4:1, 5:1, 6:1, 7:2, 8:3, 9:2, 10:1, 11:1, 12:1). In Group II, most values are clustered tightly at the center (6:1, 7:3, 8:5, 9:3, 10:1). Which of the following statements best compares the means and standard deviations of the values for each group?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-016",
+    "question": "A sample of $200$ bags of flour was selected at random from a production line, and the weights of the bags were analyzed. The mean weight was found to be $79.82\\text{ ounces (oz)}$. The margin of error associated with the estimate is $0.24\\text{ oz}$. Based on the estimate and margin of error, which of the following is the most plausible conclusion about the mean weight of all bags of flour produced on the line?",
+    "options": [
+      "It is less than 79.82 oz.",
+      "It is greater than 79.82 oz.",
+      "It is less than 79.58 oz or greater than 80.06 oz.",
+      "It is between 79.58 oz and 80.06 oz."
+    ],
+    "correctAnswer": "It is between 79.58 oz and 80.06 oz.",
+    "explanation": "The confidence interval for the population mean is calculated as:\n$$\\text{Estimate} \\pm \\text{Margin of Error} = 79.82 \\pm 0.24$$\n\n- Lower bound: $79.82 - 0.24 = 79.58\\text{ oz}$\n- Upper bound: $79.82 + 0.24 = 80.06\\text{ oz}$\n\nTherefore, it is plausible that the true population mean weight is between $79.58\\text{ oz}$ and $80.06\\text{ oz}$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Data collection and conclusions",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A sample of $200$ bags of flour was selected at random from a production line, and the weights of the bags were analyzed. The mean weight was found to be $79.82\\text{ ounces (oz)}$. The margin of error associated with the estimate is $0.24\\text{ oz}$. Based on the estimate and margin of error, which of the following is the most plausible conclusion about the mean weight of all bags of flour produced on the line?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-017",
+    "question": "Dot plot A and dot plot B show two data sets. Data set A has values clustered heavily at $1$, $2$, and $3$ with fewer values at higher numbers. Data set B is shifted with values clustered at $4$, $5$, and $6$. Which statement best compares the means of the two data sets?",
+    "options": [
+      "The mean of data set A is greater than the mean of data set B.",
+      "The mean of data set A is equal to the mean of data set B.",
+      "The mean of data set A is less than the mean of data set B.",
+      "There is not enough information to compare the means."
+    ],
+    "correctAnswer": "The mean of data set A is less than the mean of data set B.",
+    "explanation": "Because data set B has values that are systematically located higher on the horizontal axis than the corresponding values in data set A, the balance point (mean) of data set B must be greater than that of data set A. Consequently, the mean of data set A is less than the mean of data set B.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Dot plot A and dot plot B show two data sets. Data set A has values clustered heavily at $1$, $2$, and $3$ with fewer values at higher numbers. Data set B is shifted with values clustered at $4$, $5$, and $6$. Which statement best compares the means of the two data sets?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-018",
+    "question": "A histogram summarizes the distribution of corn production, in bushels per acre, over a $21$-acre farm. The intervals and frequencies are: at least $140$ but less than $150$ ($4$ acres); at least $150$ but less than $160$ ($6$ acres); at least $160$ but less than $170$ ($8$ acres); at least $170$ but less than $180$ ($3$ acres). The median production, in bushels per acre, of these $21$ acres is included in which interval?",
+    "options": [
+      "At least 140 but less than 150",
+      "At least 150 but less than 160",
+      "At least 160 but less than 170",
+      "At least 170 but less than 180"
+    ],
+    "correctAnswer": "At least 160 but less than 170",
+    "explanation": "For $n = 21$ acres, the median is the $\\frac{21 + 1}{2} = 11$th value when ordered in ascending order.\n\nLet us compute cumulative frequencies:\n- Interval $[140, 150)$: $4$ acres (acres 1 to 4)\n- Interval $[150, 160)$: $4 + 6 = 10$ acres (acres 5 to 10)\n- Interval $[160, 170)$: $10 + 8 = 18$ acres (acres 11 to 18)\n\nThe 11th value falls squarely in the interval **at least 160 but less than 170**.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A histogram summarizes the distribution of corn production, in bushels per acre, over a $21$-acre farm. The intervals and frequencies are: at least $140$ but less than $150$ ($4$ acres); at least $150$ but less than $160$ ($6$ acres); at least $160$ but less than $170$ ($8$ acres); at least $170$ but less than $180$ ($3$ acres). The median production, in bushels per acre, of these $21$ acres is included in which interval?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-019",
+    "question": "Data set A consists of five values on a dot plot: $10, 20, 30, 40, 50$ (one dot each). Data set B consists of five values: $30$ (one dot), $35$ (two dots), $40$ (two dots). Which of the given data sets has a greater standard deviation?",
+    "options": [
+      "Data set A",
+      "Data set B",
+      "The standard deviations of data set A and data set B are equal.",
+      "There is not enough information to determine which data set has a greater standard deviation."
+    ],
+    "correctAnswer": "Data set A",
+    "explanation": "Standard deviation measures the average dispersion or distance of data points from the mean.\n- In Data set A, the points are spread out across a wide range of $50 - 10 = 40$, with values as far as $20$ units away from the mean of $30$.\n- In Data set B, all values are tightly clustered within the narrow interval $[30, 40]$ (range of $10$).\n\nBecause the values in Data set A are substantially more dispersed from their mean, **Data set A has a greater standard deviation**.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data set A consists of five values on a dot plot: $10, 20, 30, 40, 50$ (one dot each). Data set B consists of five values: $30$ (one dot), $35$ (two dots), $40$ (two dots). Which of the given data sets has a greater standard deviation?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-020",
+    "question": "Data Set X and Data Set Z are shown on dot plots. Data Set X has dots at: $5$ (three dots), $6$ (four dots), $7$ (four dots), $8$ (three dots). Data Set Z has dots at: $5$ (four dots), $6$ (three dots), $7$ (two dots), $8$ (one dot). Which of the following is (are) true?\nI. The median of the values in data set X is greater than the median of the values in data set Z.\nII. The mean of the values in data set X equals the mean of the values in data set Z.",
+    "options": [
+      "Neither I nor II",
+      "I only",
+      "II only",
+      "Both I and II"
+    ],
+    "correctAnswer": "I only",
+    "explanation": "1. **Data Set X:** Contains $3 + 4 + 4 + 3 = 14$ values. It is completely symmetric about $6.5$. Thus, $\\text{Median}_X = 6.5$ and $\\text{Mean}_X = 6.5$.\n\n2. **Data Set Z:** Contains $4 + 3 + 2 + 1 = 10$ values. Sorted: $5, 5, 5, 5, 6, 6, 6, 7, 7, 8$. The median is the average of 5th and 6th values: $\\frac{6 + 6}{2} = 6$. The sum is $4(5) + 3(6) + 2(7) + 8 = 20 + 18 + 14 + 8 = 60$, so $\\text{Mean}_Z = \\frac{60}{10} = 6.0$.\n\nComparing:\n- Statement I: $\\text{Median}_X (6.5) > \\text{Median}_Z (6.0)$ is **True**.\n- Statement II: $\\text{Mean}_X (6.5) = \\text{Mean}_Z (6.0)$ is **False**.\n\nTherefore, statement I only is true.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data Set X and Data Set Z are shown on dot plots. Data Set X has dots at: $5$ (three dots), $6$ (four dots), $7$ (four dots), $8$ (three dots). Data Set Z has dots at: $5$ (four dots), $6$ (three dots), $7$ (two dots), $8$ (one dot). Which of the following is (are) true?\nI. The median of the values in data set X is greater than the median of the values in data set Z.\nII. The mean of the values in data set X equals the mean of the values in data set Z.",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-021",
+    "question": "Data set X and data set Y are represented by dot plots with values from $1$ to $7$. Both data sets have their main peak of values at $3$, but data set X has an additional point at $7$ while data set Y has no points above $4$. Which of the following is (are) true?\nI. The median of data set X is greater than the median of data set Y.\nII. The mean of data set X is greater than the mean of data set Y.",
+    "options": [
+      "I only",
+      "II only",
+      "I and II",
+      "Neither I nor II"
+    ],
+    "correctAnswer": "II only",
+    "explanation": "1. The presence of the high value at $7$ in data set X adds a positive quantity that pulls the average upward, making the **mean of X strictly greater than the mean of Y** (Statement II is true).\n2. The middle (median) value of both sets remains at $3$, so the median of X is not strictly greater than the median of Y (Statement I is false).\n\nHence, II only is correct.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data set X and data set Y are represented by dot plots with values from $1$ to $7$. Both data sets have their main peak of values at $3$, but data set X has an additional point at $7$ while data set Y has no points above $4$. Which of the following is (are) true?\nI. The median of data set X is greater than the median of data set Y.\nII. The mean of data set X is greater than the mean of data set Y.",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-022",
+    "question": "The dot plots represent the distributions of two data sets: Data Set A has values centered around $6$ with a wider spread from $4$ to $9$. Data Set B has values centered around $4$ with a narrow spread from $3$ to $5$. How do the mean and standard deviation of data set A compare with the mean and standard deviation of data set B?",
+    "options": [
+      "The mean of data set A is greater than that of data set B, and the standard deviation of data set A is less than that of data set B.",
+      "The mean of data set A is greater than that of data set B, and the standard deviation of data set A is greater than that of data set B.",
+      "The mean of data set A is less than that of data set B, and the standard deviation of data set A is less than that of data set B.",
+      "The mean of data set A is less than that of data set B, and the standard deviation of data set A is greater than that of data set B."
+    ],
+    "correctAnswer": "The mean of data set A is greater than that of data set B, and the standard deviation of data set A is greater than that of data set B.",
+    "explanation": "1. **Mean:** Data set A is centered around $6$, whereas Data set B is centered around $4$. Therefore, $\\text{Mean}_A > \\text{Mean}_B$.\n2. **Standard Deviation:** Data set A spans from $4$ to $9$ (range of $5$), whereas Data set B spans from $3$ to $5$ (range of $2$). The greater spread in Data set A indicates a higher standard deviation.\n\nThus, both the mean and standard deviation of data set A are greater than those of data set B.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "The dot plots represent the distributions of two data sets: Data Set A has values centered around $6$ with a wider spread from $4$ to $9$. Data Set B has values centered around $4$ with a narrow spread from $3$ to $5$. How do the mean and standard deviation of data set A compare with the mean and standard deviation of data set B?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-023",
+    "question": "Data Set A has identical stacks of $3$ dots at each integer from $20$ to $25$ (a uniform distribution). Data Set B has a bell-shaped distribution centered at $22.5$ over the same range from $20$ to $25$. Which of the following statements best compares the means and standard deviations of the two data sets?",
+    "options": [
+      "The means are equal, and the standard deviation of data set A is greater than that of data set B.",
+      "The means are equal, and the standard deviation of data set A is less than that of data set B.",
+      "The mean of data set A is greater than that of data set B, and the standard deviations are equal.",
+      "The mean of data set A is less than that of data set B, and the standard deviations are equal."
+    ],
+    "correctAnswer": "The means are equal, and the standard deviation of data set A is greater than that of data set B.",
+    "explanation": "1. Both distributions are symmetric over the interval $[20, 25]$, meaning their centers of symmetry are identical: $\\text{Mean}_A = \\text{Mean}_B = 22.5$.\n2. In a uniform distribution (Data Set A), more data points are located toward the outer edges ($20, 21, 24, 25$) compared to a mound-shaped distribution (Data Set B) which clusters heavily at the center. Consequently, the average squared distance from the mean is larger for Data Set A, making its **standard deviation greater**.",
+    "difficulty": "hard",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data Set A has identical stacks of $3$ dots at each integer from $20$ to $25$ (a uniform distribution). Data Set B has a bell-shaped distribution centered at $22.5$ over the same range from $20$ to $25$. Which of the following statements best compares the means and standard deviations of the two data sets?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-024",
+    "question": "The list shows the number of points a basketball team scored in each of $10$ games: $52, 58, 12, 62, 62, 70, 66, 68, 53, 67$. If the outlier ($12$) is removed from this data set, how will the mean and median change?",
+    "options": [
+      "Both the mean and the median will increase.",
+      "Both the mean and the median will decrease.",
+      "The mean will increase and the median will not change.",
+      "The mean will decrease and the median will not change."
+    ],
+    "correctAnswer": "The mean will increase and the median will not change.",
+    "explanation": "Let us sort the original 10 scores:\n$$12, 52, 53, 58, 62, 62, 66, 67, 68, 70$$\n\n1. **Mean:** The initial sum is $570$, so $\\text{Mean} = \\frac{570}{10} = 57$. Removing the outlier $12$ (which is far below $57$) gives a new sum of $570 - 12 = 558$ across $9$ games: $\\text{New Mean} = \\frac{558}{9} = 62$. Thus, the **mean increases**.\n2. **Median:** Originally, the median is the average of the 5th and 6th scores: $\\frac{62 + 62}{2} = 62$.\nWith $12$ removed, the $9$ values are $52, 53, 58, 62, 62, 66, 67, 68, 70$. The median is the 5th value, which is still $62$!\nWait! Let's check: 5th value is $62$. So the median did not change!\nTherefore: **The mean will increase and the median will not change**.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "questionText": "The list shows the number of points a basketball team scored in each of $10$ games: $52, 58, 12, 62, 62, 70, 66, 68, 53, 67$. If the outlier ($12$) is removed from this data set, how will the mean and median change?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-025",
+    "question": "Three data sets A, B, and C each contain $15$ values. Set A has a peak at $5$, Set B has a peak at $7$, and Set C has a peak at $6$. If all three distributions are symmetric and unimodal, and their medians are $a, b,$ and $c$ respectively, what is the relationship between $a, b,$ and $c$?",
+    "options": [
+      "a > b > c",
+      "b > c > a",
+      "c > b > a",
+      "a = b = c"
+    ],
+    "correctAnswer": "b > c > a",
+    "explanation": "For symmetric unimodal distributions, the median equals the peak value (mode):\n- $a = 5$\n- $b = 7$\n- $c = 6$\n\nOrdering from greatest to least: $b (7) > c (6) > a (5)$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Three data sets A, B, and C each contain $15$ values. Set A has a peak at $5$, Set B has a peak at $7$, and Set C has a peak at $6$. If all three distributions are symmetric and unimodal, and their medians are $a, b,$ and $c$ respectively, what is the relationship between $a, b,$ and $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-026",
+    "question": "Data set X consists of: $7, 7, 8, 8, 9, 10, 10, 11, 11$. Data set Y consists of: $1, 1, 2, 2, 3, 4, 4, 5, 5$. The standard deviation of data set X is $q$, and the standard deviation of data set Y is $s$. Which of the following statements about the standard deviations is true?",
+    "options": [
+      "q > s",
+      "q = s",
+      "q < s",
+      "The relationship between q and s cannot be determined."
+    ],
+    "correctAnswer": "q = s",
+    "explanation": "Notice that each element of Data set Y is obtained by subtracting exactly $6$ from the corresponding element of Data set X:\n$$Y = X - 6$$\n\nSubtracting or adding a constant to every value shifts the mean by that constant but does not change the deviations from the mean: $(y_i - \\bar{y}) = ((x_i - 6) - (\\bar{x} - 6)) = (x_i - \\bar{x})$.\n\nTherefore, the spread of the data is unchanged, meaning the **standard deviations are equal**: $q = s$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "Data set X consists of: $7, 7, 8, 8, 9, 10, 10, 11, 11$. Data set Y consists of: $1, 1, 2, 2, 3, 4, 4, 5, 5$. The standard deviation of data set X is $q$, and the standard deviation of data set Y is $s$. Which of the following statements about the standard deviations is true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-027",
+    "question": "A dot plot shows the reported mass, in kilograms (kg), of $20$ ostriches. The values and frequencies are: $90\\text{ kg}$ ($2$ ostriches), $95\\text{ kg}$ ($1$ ostrich), $100\\text{ kg}$ ($3$ ostriches), $105\\text{ kg}$ ($2$ ostriches), $110\\text{ kg}$ ($6$ ostriches), $115\\text{ kg}$ ($3$ ostriches), $120\\text{ kg}$ ($2$ ostriches), $130\\text{ kg}$ ($1$ ostrich). How many of the ostriches have a reported mass of $110\\text{ kg}$?",
+    "correctAnswer": "6",
+    "explanation": "Looking at the dot plot above the mass of $110\\text{ kg}$, there are exactly $6$ dots stacked vertically. Therefore, $6$ ostriches have a reported mass of $110\\text{ kg}$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "free_response",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A dot plot shows the reported mass, in kilograms (kg), of $20$ ostriches. The values and frequencies are: $90\\text{ kg}$ ($2$ ostriches), $95\\text{ kg}$ ($1$ ostrich), $100\\text{ kg}$ ($3$ ostriches), $105\\text{ kg}$ ($2$ ostriches), $110\\text{ kg}$ ($6$ ostriches), $115\\text{ kg}$ ($3$ ostriches), $120\\text{ kg}$ ($2$ ostriches), $130\\text{ kg}$ ($1$ ostrich). How many of the ostriches have a reported mass of $110\\text{ kg}$?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-stat-028",
+    "question": "A dot plot shows the weights, in pounds, of all $12$ dogs in a dog park: weights are $10, 20, 25, 30, 35, 40, 45, 50, 60, 75, 100, 130$. When one dog leaves the park, the mean weight of the remaining dogs becomes strictly less than the mean weight of the initial $12$ dogs. What is one possible weight, in pounds, of the dog that left the park?",
+    "correctAnswer": "130",
+    "explanation": "1. The mean weight of the 12 dogs is:\n$$\\text{Mean} = \\frac{10 + 20 + 25 + 30 + 35 + 40 + 45 + 50 + 60 + 75 + 100 + 130}{12} = \\frac{620}{12} \\approx 51.67\\text{ pounds}$$\n\n2. For the mean of the remaining 11 dogs to decrease (become less than the initial mean), the dog that leaves must weigh **strictly more than the initial mean** ($> 51.67\\text{ pounds}$).\n\nFrom the dot plot, dogs with weights above $51.67$ are $60$, $75$, $100$, and $130$ pounds. Any of these values (e.g. $130$) is a valid answer.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "free_response",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A dot plot shows the weights, in pounds, of all $12$ dogs in a dog park: weights are $10, 20, 25, 30, 35, 40, 45, 50, 60, 75, 100, 130$. When one dog leaves the park, the mean weight of the remaining dogs becomes strictly less than the mean weight of the initial $12$ dogs. What is one possible weight, in pounds, of the dog that left the park?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-stat-029",
+    "question": "A dot plot shows the distribution of capacity for a set of capacitors, set A, which a researcher used for a certain experiment: values range from $2\\ \\mu\\text{F}$ to $14\\ \\mu\\text{F}$ with a mean of $8\\ \\mu\\text{F}$ and a range of $12\\ \\mu\\text{F}$. For another experiment, the researcher used set B, which has the same number of capacitors as set A, but the capacity of each capacitor of set B is $17\\text{ microfarads (}\\mu\\text{F)}$ greater than the capacity of each respective capacitor in set A. Which of the following is true about the capacities of the capacitors in set B?",
+    "options": [
+      "The mean capacity is 8 \\mu\\text{F}, and the range of capacities is 12 \\mu\\text{F}.",
+      "The mean capacity is 8 \\mu\\text{F}, and the range of capacities is 29 \\mu\\text{F}.",
+      "The mean capacity is 25 \\mu\\text{F}, and the range of capacities is 12 \\mu\\text{F}.",
+      "The mean capacity is 25 \\mu\\text{F}, and the range of capacities is 29 \\mu\\text{F}."
+    ],
+    "correctAnswer": "The mean capacity is 25 \\mu\\text{F}, and the range of capacities is 12 \\mu\\text{F}.",
+    "explanation": "When a constant $c = 17\\ \\mu\\text{F}$ is added to every data point:\n1. **Mean:** Shifts by $+c$: $\\text{New Mean} = 8 + 17 = 25\\ \\mu\\text{F}$.\n2. **Range:** The difference between maximum and minimum remains identical:\n$$\\text{New Range} = (\\text{Max} + 17) - (\\text{Min} + 17) = \\text{Max} - \\text{Min} = 12\\ \\mu\\text{F}$$\n\nThus, the mean capacity is $25\\ \\mu\\text{F}$ and the range is $12\\ \\mu\\text{F}$.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "A dot plot shows the distribution of capacity for a set of capacitors, set A, which a researcher used for a certain experiment: values range from $2\\ \\mu\\text{F}$ to $14\\ \\mu\\text{F}$ with a mean of $8\\ \\mu\\text{F}$ and a range of $12\\ \\mu\\text{F}$. For another experiment, the researcher used set B, which has the same number of capacitors as set A, but the capacity of each capacitor of set B is $17\\text{ microfarads (}\\mu\\text{F)}$ greater than the capacity of each respective capacitor in set A. Which of the following is true about the capacities of the capacitors in set B?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-stat-030",
+    "question": "The maximum temperature on April 1, in degrees Fahrenheit ($^\\circ\\text{F}$), was recorded each year at a certain weather station for $11$ years. A histogram summarizes the recorded data: $[40, 45)$ has $1$ year, $[45, 50)$ has $2$ years, $[50, 55)$ has $3$ years, $[55, 60)$ has $3$ years, $[60, 65)$ has $1$ year, and $[75, 80)$ has $1$ year (recorded at $78.2^\\circ\\text{F}$). The temperature of $78.2^\\circ\\text{F}$ is removed from this data set to create a new data set of $10$ temperatures. Which of the following statements must be true?\nI. The mean of the new data set is less than the mean of the original data set.\nII. The median of the new data set is less than the median of the original data set.",
+    "options": [
+      "I only",
+      "II only",
+      "I and II",
+      "Neither I nor II"
+    ],
+    "correctAnswer": "I only",
+    "explanation": "1. **Mean:** The temperature $78.2^\\circ\\text{F}$ is the highest value in the data set and an obvious outlier far above the center ($50-55^\\circ\\text{F}$). Removing the maximum value strictly lowers the overall average, so Statement I is **true**.\n\n2. **Median:** For the original $11$ values, the median is the 6th value. Counting from the bottom:\n- $[40, 45)$: $1$\n- $[45, 50)$: $2$ (total 3)\n- $[50, 55)$: $3$ (total 6)\nThe 6th value is in the $[50, 55)$ bin. For $10$ values, the median is the average of the 5th and 6th values, which are both in the $[50, 55)$ bin. The median does not necessarily decrease (and typically stays in the exact same range).\n\nTherefore, Statement I only must be true.",
+    "difficulty": "hard",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "One-variable Data: Distributions and Measures of Center and Spread",
+    "questionType": "multiple_choice",
+    "source": "SAT Important Statistics Bank",
+    "questionText": "The maximum temperature on April 1, in degrees Fahrenheit ($^\\circ\\text{F}$), was recorded each year at a certain weather station for $11$ years. A histogram summarizes the recorded data: $[40, 45)$ has $1$ year, $[45, 50)$ has $2$ years, $[50, 55)$ has $3$ years, $[55, 60)$ has $3$ years, $[60, 65)$ has $1$ year, and $[75, 80)$ has $1$ year (recorded at $78.2^\\circ\\text{F}$). The temperature of $78.2^\\circ\\text{F}$ is removed from this data set to create a new data set of $10$ temperatures. Which of the following statements must be true?\nI. The mean of the new data set is less than the mean of the original data set.\nII. The median of the new data set is less than the median of the original data set.",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-001",
+    "question": "The ratio of green tiles to blue tiles in a piece of artwork is $5$ to $2$. If there are $16$ blue tiles in the piece of artwork, how many green tiles are there?",
+    "correctAnswer": "40",
+    "explanation": "Set up the proportion:\n$$\\frac{\\text{Green}}{\\text{Blue}} = \\frac{5}{2} = \\frac{g}{16}$$\n\nCross-multiplying:\n$$2g = 5 \\times 16 = 80 \\implies g = 40$$\n\nThere are $40$ green tiles in the artwork.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The ratio of green tiles to blue tiles in a piece of artwork is $5$ to $2$. If there are $16$ blue tiles in the piece of artwork, how many green tiles are there?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-002",
+    "question": "The positive quantity $r$ is increased by $20\\%$, and then the resulting quantity is decreased by $25\\%$. Which expression represents the result of these two successive percentage changes?",
+    "options": [
+      "0.90r",
+      "0.95r",
+      "1.05r",
+      "15.0r"
+    ],
+    "correctAnswer": "0.90r",
+    "explanation": "1. Increasing $r$ by $20\\%$ multiplies it by $(1 + 0.20) = 1.20$:\n$$\\text{After increase} = 1.20r$$\n2. Decreasing this result by $25\\%$ multiplies it by $(1 - 0.25) = 0.75$:\n$$\\text{Final result} = 0.75(1.20r) = 0.90r$$\n\nThus, the result is represented by $0.90r$.",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The positive quantity $r$ is increased by $20\\%$, and then the resulting quantity is decreased by $25\\%$. Which expression represents the result of these two successive percentage changes?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-003",
+    "question": "Julia purchased $600\\text{ feet}$ of fencing. She used $70\\%$ of this fencing to surround a vegetable garden. How many feet of fencing did Julia use to surround the vegetable garden?",
+    "options": [
+      "14",
+      "35",
+      "420",
+      "530"
+    ],
+    "correctAnswer": "420",
+    "explanation": "Calculate $70\\%$ of $600\\text{ feet}$:\n$$\\text{Fencing used} = 0.70 \\times 600 = 420\\text{ feet}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "Julia purchased $600\\text{ feet}$ of fencing. She used $70\\%$ of this fencing to surround a vegetable garden. How many feet of fencing did Julia use to surround the vegetable garden?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-004",
+    "question": "The ratio $36$ to $m$ is equivalent to the ratio $2$ to $12$. What is the value of $m$?",
+    "correctAnswer": "216",
+    "explanation": "Set up the proportion:\n$$\\frac{36}{m} = \\frac{2}{12} = \\frac{1}{6}$$\n\nCross-multiply:\n$$m = 36 \\times 6 = 216$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The ratio $36$ to $m$ is equivalent to the ratio $2$ to $12$. What is the value of $m$?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-005",
+    "question": "A clothing store buys shirts at a wholesale price of $\\$5.00$ each and resells them each at a retail price that is $270\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $70\\%$ of the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "correctAnswer": "9.45",
+    "explanation": "1. The retail price is $270\\%$ of the wholesale price:\n$$\\text{Retail Price} = 5.00 \\times 2.70 = \\$13.50$$\n2. The discounted price is $70\\%$ of the retail price:\n$$\\text{Discounted Price} = 13.50 \\times 0.70 = \\$9.45$$",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "A clothing store buys shirts at a wholesale price of $\\$5.00$ each and resells them each at a retail price that is $270\\%$ of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is $70\\%$ of the retail price. What is the discounted price of each remaining shirt, in dollars?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-006",
+    "question": "A real estate company offers a series of three webinars. $1,250$ people attended the first webinar. $68\\%$ of the people who attended the first webinar attended the second webinar, and $32\\%$ of the people who attended the first and second webinars attended the third webinar. How many people attended all three webinars?",
+    "correctAnswer": "272",
+    "explanation": "1. Attendees who went to the second webinar:\n$$1,250 \\times 0.68 = 850\\text{ people}$$\n2. Attendees who also went to the third webinar (attending all three):\n$$850 \\times 0.32 = 272\\text{ people}$$",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "A real estate company offers a series of three webinars. $1,250$ people attended the first webinar. $68\\%$ of the people who attended the first webinar attended the second webinar, and $32\\%$ of the people who attended the first and second webinars attended the third webinar. How many people attended all three webinars?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-007",
+    "question": "The speeds of particles A, B, and C are $a\\text{ m/s}, b\\text{ m/s},$ and $c\\text{ m/s}$, respectively. The speed of particle A is $7,900\\%$ of the speed of particle C, and the speed of particle C is $0.008\\%$ of the speed of particle B. Which expression represents the value of $a + b$ in terms of $c$?",
+    "options": [
+      "12,579c",
+      "8,025c",
+      "7,908c",
+      "2,040c"
+    ],
+    "correctAnswer": "12,579c",
+    "explanation": "1. Express $a$ in terms of $c$:\n$$a = 79.00c = 79c$$\n2. Express $b$ in terms of $c$:\n$$c = 0.00008b \\implies b = \\frac{c}{0.00008} = 12,500c$$\n3. Combine $a + b$:\n$$a + b = 79c + 12,500c = 12,579c$$",
+    "difficulty": "hard",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The speeds of particles A, B, and C are $a\\text{ m/s}, b\\text{ m/s},$ and $c\\text{ m/s}$, respectively. The speed of particle A is $7,900\\%$ of the speed of particle C, and the speed of particle C is $0.008\\%$ of the speed of particle B. Which expression represents the value of $a + b$ in terms of $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-008",
+    "question": "For a certain rectangular region, the ratio of its length to its width is $10 : 4$. If the width of the rectangular region increases by $7\\text{ units}$, how must the length change to maintain this ratio?",
+    "options": [
+      "It must decrease by 7 units.",
+      "It must increase by 7 units.",
+      "It must increase by 17.5 units.",
+      "It must decrease by 17.5 units."
+    ],
+    "correctAnswer": "It must increase by 17.5 units.",
+    "explanation": "The ratio of length to width is $\\frac{L}{W} = \\frac{10}{4} = 2.5$.\nTo keep the ratio constant, any change in width $\\Delta W$ requires a proportional change in length $\\Delta L$:\n$$\\Delta L = 2.5 \\times \\Delta W = 2.5 \\times 7 = 17.5\\text{ units}$$\n\nThus, the length must increase by $17.5\\text{ units}$.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "For a certain rectangular region, the ratio of its length to its width is $10 : 4$. If the width of the rectangular region increases by $7\\text{ units}$, how must the length change to maintain this ratio?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-009",
+    "question": "The positive number $a$ is $2,800\\%$ of the number $c$, and $c$ is $20\\%$ of the number $b$. What is the value of $a - b$ in terms of $c$?",
+    "options": [
+      "23c",
+      "140c",
+      "560c",
+      "2,240c"
+    ],
+    "correctAnswer": "23c",
+    "explanation": "1. $a = 28c$ (since $2,800\\% = 28$).\n2. $c = 0.20b \\implies b = \\frac{c}{0.20} = 5c$.\n3. Therefore:\n$$a - b = 28c - 5c = 23c$$",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The positive number $a$ is $2,800\\%$ of the number $c$, and $c$ is $20\\%$ of the number $b$. What is the value of $a - b$ in terms of $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-010",
+    "question": "After $20\\%$ of the original number of objects in a group were removed from the group, $180$ objects remained in the group. How many objects were removed from the group?",
+    "options": [
+      "36",
+      "45",
+      "225",
+      "900"
+    ],
+    "correctAnswer": "45",
+    "explanation": "1. If $20\\%$ of the objects were removed, the remaining $180$ objects represent $80\\%$ of the original number $N$:\n$$0.80N = 180 \\implies N = \\frac{180}{0.80} = 225\\text{ objects}$$\n2. The number of removed objects is:\n$$\\text{Removed} = 225 - 180 = 45\\text{ objects}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "After $20\\%$ of the original number of objects in a group were removed from the group, $180$ objects remained in the group. How many objects were removed from the group?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-011",
+    "question": "When a collection of books is sorted, $52\\%$ are nonfiction and the remaining books are fiction. Of the fiction books, $75\\%$ are westerns and the remaining fiction books are romance. If there are $933$ romance books in this collection, what is the total number of books in the collection?",
+    "correctAnswer": "7775",
+    "explanation": "1. Percentage of fiction books $= 100\\% - 52\\% = 48\\% = 0.48$.\n2. Percentage of fiction books that are romance $= 100\\% - 75\\% = 25\\% = 0.25$.\n3. Fraction of total books that are romance:\n$$0.48 \\times 0.25 = 0.12 = 12\\%$$\n4. Let $T$ be the total number of books:\n$$0.12T = 933 \\implies T = \\frac{933}{0.12} = 7,775\\text{ books}$$",
+    "difficulty": "hard",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "When a collection of books is sorted, $52\\%$ are nonfiction and the remaining books are fiction. Of the fiction books, $75\\%$ are westerns and the remaining fiction books are romance. If there are $933$ romance books in this collection, what is the total number of books in the collection?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-012",
+    "question": "For each of two rectangles, the ratio of the rectangle's length to its width is $10$ to $5$. The width of rectangle X is $16.5$ times the width of rectangle Y. How does the length of rectangle X compare to the length of rectangle Y?",
+    "options": [
+      "The length of rectangle X is 0.5 times the length of rectangle Y.",
+      "The length of rectangle X is 2 times the length of rectangle Y.",
+      "The length of rectangle X is 16.5 times the length of rectangle Y.",
+      "The length of rectangle X is 33 times the length of rectangle Y."
+    ],
+    "correctAnswer": "The length of rectangle X is 16.5 times the length of rectangle Y.",
+    "explanation": "For both rectangles, $\\frac{L_X}{W_X} = 2$ and $\\frac{L_Y}{W_Y} = 2$, so $L_X = 2W_X$ and $L_Y = 2W_Y$.\nGiven that $W_X = 16.5 W_Y$:\n$$L_X = 2(16.5 W_Y) = 16.5 (2W_Y) = 16.5 L_Y$$\n\nThus, the length of rectangle X is $16.5$ times the length of rectangle Y.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "For each of two rectangles, the ratio of the rectangle's length to its width is $10$ to $5$. The width of rectangle X is $16.5$ times the width of rectangle Y. How does the length of rectangle X compare to the length of rectangle Y?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-013",
+    "question": "There is a proportional relationship between $p$ and $t$. If $p = 2,340$ when $t = 3,120$, what is the value of $p$ when $t = 2,496$?",
+    "options": [
+      "1,716",
+      "1,872",
+      "3,276",
+      "3,328"
+    ],
+    "correctAnswer": "1,872",
+    "explanation": "The constant of proportionality is:\n$$k = \\frac{p}{t} = \\frac{2,340}{3,120} = \\frac{3}{4} = 0.75$$\n\nWhen $t = 2,496$:\n$$p = 0.75 \\times 2,496 = 1,872$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Ratios, rates, proportional relationships, and units",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "There is a proportional relationship between $p$ and $t$. If $p = 2,340$ when $t = 3,120$, what is the value of $p$ when $t = 2,496$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-014",
+    "question": "For the positive quantities $h, j,$ and $k$, $94\\%$ of $h$ is equivalent to $47\\%$ of $j$, and $j$ is equivalent to $30\\%$ of $k$. What percentage of $k$ is $h$?",
+    "correctAnswer": "15",
+    "explanation": "1. $0.94h = 0.47j \\implies h = \\frac{0.47}{0.94}j = 0.5j$.\n2. Given $j = 0.30k$, substitute into the equation for $h$:\n$$h = 0.5(0.30k) = 0.15k$$\n3. Since $0.15 = 15\\%$, $h$ is $15\\%$ of $k$.",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "free_response",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "For the positive quantities $h, j,$ and $k$, $94\\%$ of $h$ is equivalent to $47\\%$ of $j$, and $j$ is equivalent to $30\\%$ of $k$. What percentage of $k$ is $h$?",
+    "type": "free_response"
+  },
+  {
+    "id": "ps-mrf-015",
+    "question": "A company studied a random sample of $20$ lawns in a small town. The company found that $4$ of these lawns contain fertilizer. If there are $260$ lawns in the town, which of the following is the best estimate of the total number of lawns that contain fertilizer?",
+    "options": [
+      "3",
+      "5",
+      "13",
+      "52"
+    ],
+    "correctAnswer": "52",
+    "explanation": "The proportion of lawns containing fertilizer in the random sample is:\n$$\\frac{4}{20} = 0.20 = 20\\%$$\n\nApplying this proportion to the entire population of $260$ lawns:\n$$\\text{Estimate} = 0.20 \\times 260 = 52\\text{ lawns}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Data collection and conclusions",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "A company studied a random sample of $20$ lawns in a small town. The company found that $4$ of these lawns contain fertilizer. If there are $260$ lawns in the town, which of the following is the best estimate of the total number of lawns that contain fertilizer?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-016",
+    "question": "Levi and Marissa each have stamp collections. The number of stamps in Levi's collection is $200\\%$ of the number of stamps in Marissa's collection. If there are $460$ stamps in Marissa's collection, how many stamps are in Levi's collection?",
+    "options": [
+      "230",
+      "460",
+      "920",
+      "1,380"
+    ],
+    "correctAnswer": "920",
+    "explanation": "Levi's collection has $200\\%$ of Marissa's collection:\n$$\\text{Levi} = 2.00 \\times 460 = 920\\text{ stamps}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "Levi and Marissa each have stamp collections. The number of stamps in Levi's collection is $200\\%$ of the number of stamps in Marissa's collection. If there are $460$ stamps in Marissa's collection, how many stamps are in Levi's collection?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-017",
+    "question": "A furniture company is selling all tables with a $20\\%$ discount off their original price. What is the discount amount, in dollars, on a table with an original price of $\\$130$?",
+    "options": [
+      "$110",
+      "$90",
+      "$52",
+      "$26"
+    ],
+    "correctAnswer": "$26",
+    "explanation": "The discount amount is $20\\%$ of the original $\\$130$ price:\n$$\\text{Discount} = 0.20 \\times 130 = \\$26$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "A furniture company is selling all tables with a $20\\%$ discount off their original price. What is the discount amount, in dollars, on a table with an original price of $\\$130$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-018",
+    "question": "In a collection of items, $10\\%$ are red, $25\\%$ are green, $35\\%$ are blue, and $30\\%$ are yellow. If there are $40$ green items, how many blue items are in the collection?",
+    "options": [
+      "14",
+      "16",
+      "48",
+      "56"
+    ],
+    "correctAnswer": "56",
+    "explanation": "1. Let $N$ be the total number of items. Since $25\\%$ are green:\n$$0.25N = 40 \\implies N = \\frac{40}{0.25} = 160\\text{ items}$$\n2. The number of blue items is $35\\%$ of $160$:\n$$\\text{Blue items} = 0.35 \\times 160 = 56\\text{ items}$$",
+    "difficulty": "medium",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "In a collection of items, $10\\%$ are red, $25\\%$ are green, $35\\%$ are blue, and $30\\%$ are yellow. If there are $40$ green items, how many blue items are in the collection?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-019",
+    "question": "In a random sample of $276$ residents in a certain building, $9$ residents reported that they take the train to work. If there are a total of $1,380$ residents in this building, which of the following is the best estimate of the number of building residents who take the train to work?",
+    "options": [
+      "9",
+      "45",
+      "276",
+      "1,095"
+    ],
+    "correctAnswer": "45",
+    "explanation": "The proportion taking the train to work is $\\frac{9}{276}$.\nMultiplying by the total population of $1,380$:\n$$\\text{Estimate} = \\frac{9}{276} \\times 1,380 = 9 \\times 5 = 45\\text{ residents}$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Data collection and conclusions",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "In a random sample of $276$ residents in a certain building, $9$ residents reported that they take the train to work. If there are a total of $1,380$ residents in this building, which of the following is the best estimate of the number of building residents who take the train to work?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "ps-mrf-020",
+    "question": "The result of increasing the positive quantity $x$ by $600\\%$ is $126$. What is the value of $x$?",
+    "options": [
+      "18",
+      "21",
+      "474",
+      "756"
+    ],
+    "correctAnswer": "18",
+    "explanation": "Increasing $x$ by $600\\%$ adds $6.00x$ to $x$:\n$$x + 6x = 7x$$\n\nSetting equal to $126$:\n$$7x = 126 \\implies x = \\frac{126}{7} = 18$$",
+    "difficulty": "easy",
+    "domain": "Problem Solving & Data Analysis",
+    "topic": "Percentages",
+    "questionType": "multiple_choice",
+    "source": "PS Ratio Proportion Marafon Task 1",
+    "questionText": "The result of increasing the positive quantity $x$ by $600\\%$ is $126$. What is the value of $x$?",
+    "type": "multiple_choice"
   }
 ]

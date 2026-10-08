@@ -7,6 +7,8 @@ import {
   RotateCcw,
   Sun,
   Moon,
+  Loader2,
+  RefreshCw,
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -40,6 +42,8 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
   const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('graphing');
   const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
   const [useIframeFallback, setUseIframeFallback] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [reloadKey, setReloadKey] = useState(0);
 
   // Safe theme detection from App ThemeContext with fallback to HTML class
   let currentAppDark = true;
@@ -74,13 +78,14 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
     }
   }, [isDarkTheme]);
 
-  // Initialize or re-instantiate calculator ONLY when mode changes or when first opened
+  // Initialize or re-instantiate calculator with resilient polling & iframe fallback
   useEffect(() => {
     if (!isOpen) return;
 
     let isMounted = true;
+    setIsLoading(true);
 
-    const init = () => {
+    const initCalculator = () => {
       if (!isMounted || !containerRef.current) return;
 
       // 1. Destroy existing calculator instance cleanly if mode changed
@@ -99,104 +104,129 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
       }
 
       // 3. Re-instantiate selected calculator mode
-      if (window.Desmos) {
-        try {
-          let instance: any = null;
-
-          if (calculatorMode === 'graphing' && window.Desmos.GraphingCalculator) {
-            setUseIframeFallback(false);
-            instance = window.Desmos.GraphingCalculator(containerRef.current, {
-              keypad: true,
-              graphpaper: true,
-              expressions: true,
-              settingsMenu: true,
-              zoomButtons: true,
-              border: false,
-              invertedColors: isDarkTheme,
-              fontSize: 13,
-            });
-          } else if (calculatorMode === 'scientific') {
-            if (window.Desmos.ScientificCalculator) {
-              setUseIframeFallback(false);
-              instance = window.Desmos.ScientificCalculator(containerRef.current, {
-                border: false,
-                invertedColors: isDarkTheme,
-              });
-            } else {
-              setUseIframeFallback(true);
-            }
-          } else if (calculatorMode === 'four-function') {
-            if (window.Desmos.FourFunctionCalculator) {
-              setUseIframeFallback(false);
-              instance = window.Desmos.FourFunctionCalculator(containerRef.current, {
-                border: false,
-                invertedColors: isDarkTheme,
-              });
-            } else {
-              setUseIframeFallback(true);
-            }
-          }
-
-          if (instance && isMounted) {
-            calculatorInstance.current = instance;
-
-            // Connect external resize trigger
-            if (onResizeCalculatorRefRef.current) {
-              onResizeCalculatorRefRef.current(() => {
-                if (calculatorInstance.current?.resize) {
-                  calculatorInstance.current.resize();
-                }
-              });
-            }
-
-            // Trigger multiple layout resize passes to guarantee perfect fit
-            [50, 150, 300, 600].forEach((delay) => {
-              setTimeout(() => {
-                if (isMounted && calculatorInstance.current?.resize) {
-                  calculatorInstance.current.resize();
-                }
-              }, delay);
-            });
-          }
-        } catch (err) {
-          console.error('Error instantiating Desmos calculator mode:', calculatorMode, err);
+      try {
+        if (!window.Desmos) {
           setUseIframeFallback(true);
+          setIsLoading(false);
+          return;
         }
-      } else {
-        setUseIframeFallback(true);
+
+        let instance: any = null;
+
+        if (calculatorMode === 'graphing' && window.Desmos.GraphingCalculator) {
+          setUseIframeFallback(false);
+          instance = window.Desmos.GraphingCalculator(containerRef.current, {
+            keypad: true,
+            graphpaper: true,
+            expressions: true,
+            settingsMenu: true,
+            zoomButtons: true,
+            border: false,
+            invertedColors: isDarkTheme,
+            fontSize: 13,
+          });
+        } else if (calculatorMode === 'scientific' && window.Desmos.ScientificCalculator) {
+          setUseIframeFallback(false);
+          instance = window.Desmos.ScientificCalculator(containerRef.current, {
+            border: false,
+            invertedColors: isDarkTheme,
+          });
+        } else if (calculatorMode === 'four-function' && window.Desmos.FourFunctionCalculator) {
+          setUseIframeFallback(false);
+          instance = window.Desmos.FourFunctionCalculator(containerRef.current, {
+            border: false,
+            invertedColors: isDarkTheme,
+          });
+        } else if (window.Desmos.GraphingCalculator) {
+          // If requested mode is unavailable, fallback to standard graphing
+          setUseIframeFallback(false);
+          instance = window.Desmos.GraphingCalculator(containerRef.current, {
+            border: false,
+            invertedColors: isDarkTheme,
+            fontSize: 13,
+          });
+        } else {
+          setUseIframeFallback(true);
+          setIsLoading(false);
+          return;
+        }
+
+        if (instance && isMounted) {
+          calculatorInstance.current = instance;
+          setIsLoading(false);
+
+          // Connect external resize trigger
+          if (onResizeCalculatorRefRef.current) {
+            onResizeCalculatorRefRef.current(() => {
+              if (calculatorInstance.current?.resize) {
+                calculatorInstance.current.resize();
+              }
+            });
+          }
+
+          // Trigger multiple layout resize passes to guarantee perfect fit
+          [50, 150, 300, 600, 1000].forEach((delay) => {
+            setTimeout(() => {
+              if (isMounted && calculatorInstance.current?.resize) {
+                calculatorInstance.current.resize();
+              }
+            }, delay);
+          });
+        }
+      } catch (err) {
+        console.error('Error instantiating Desmos calculator mode:', calculatorMode, err);
+        if (isMounted) {
+          setUseIframeFallback(true);
+          setIsLoading(false);
+        }
       }
     };
 
-    let timer: any = null;
-    if (window.Desmos) {
-      timer = setTimeout(init, 50);
+    let pollInterval: any = null;
+
+    if (window.Desmos?.GraphingCalculator) {
+      // Desmos is already in memory
+      setTimeout(initCalculator, 20);
     } else {
-      const existingScript = document.querySelector('script[src*="desmos.com/api"]');
-      if (existingScript) {
-        existingScript.addEventListener('load', () => {
-          if (isMounted) timer = setTimeout(init, 50);
-        });
-        // Check if already defined in the meantime
-        if (window.Desmos) {
-          timer = setTimeout(init, 50);
-        }
-      } else {
-        const script = document.createElement('script');
-        script.src = 'https://www.desmos.com/api/v1.9.3/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
+      // Ensure Desmos script is in DOM
+      let script = document.querySelector('script[src*="desmos.com/api"]') as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement('script');
+        script.src = 'https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
         script.async = true;
-        script.onload = () => {
-          if (isMounted) timer = setTimeout(init, 50);
-        };
-        script.onerror = () => {
-          if (isMounted) setUseIframeFallback(true);
-        };
         document.head.appendChild(script);
       }
+
+      // Poll until window.Desmos.GraphingCalculator is available (up to 3.5s)
+      const startTime = Date.now();
+      pollInterval = setInterval(() => {
+        if (!isMounted) {
+          clearInterval(pollInterval);
+          return;
+        }
+        if (window.Desmos?.GraphingCalculator) {
+          clearInterval(pollInterval);
+          initCalculator();
+        } else if (Date.now() - startTime > 3500) {
+          clearInterval(pollInterval);
+          console.warn('Desmos API script timed out; rendering embedded iframe fallback');
+          setUseIframeFallback(true);
+          setIsLoading(false);
+        }
+      }, 50);
     }
+
+    const handleWindowResize = () => {
+      if (calculatorInstance.current?.resize) {
+        calculatorInstance.current.resize();
+      }
+    };
+    window.addEventListener('resize', handleWindowResize);
 
     return () => {
       isMounted = false;
-      if (timer) clearTimeout(timer);
+      if (pollInterval) clearInterval(pollInterval);
+      window.removeEventListener('resize', handleWindowResize);
       if (calculatorInstance.current) {
         try {
           calculatorInstance.current.destroy?.();
@@ -206,7 +236,7 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
         calculatorInstance.current = null;
       }
     };
-  }, [isOpen, calculatorMode]);
+  }, [isOpen, calculatorMode, reloadKey]);
 
   const handleClearExpressions = useCallback(() => {
     if (calculatorInstance.current?.setBlank) {
@@ -272,8 +302,18 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
           </div>
         </div>
 
-        {/* Right Actions: Theme/Contrast, Clear, Pop Out, Close */}
+        {/* Right Actions: Theme/Contrast, Reload, Clear, Pop Out, Close */}
         <div className="flex items-center space-x-1">
+          {/* Reload / Re-sync button */}
+          <button
+            type="button"
+            onClick={() => setReloadKey((k) => k + 1)}
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] transition-colors"
+            title="Reload Calculator"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+          </button>
+
           {/* Color / Contrast Mode Toggle (Dark vs Light) */}
           <button
             type="button"
@@ -325,22 +365,32 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
 
       {/* ─── Desmos Container Body ──────────────────────────────────── */}
       <div className={`flex-1 w-full relative overflow-hidden ${isDarkTheme ? 'bg-[#111111]' : 'bg-white'}`}>
-        {/* Native Desmos Container - absolute inset-0 guarantees full width and height */}
+        {/* Loading Spinner Indicator */}
+        {isLoading && !useIframeFallback && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-50/90 dark:bg-[#0c101a]/90 backdrop-blur-xs select-none">
+            <Loader2 className="w-7 h-7 text-emerald-500 animate-spin mb-2" />
+            <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">
+              Initializing Desmos {modeDisplayLabel[calculatorMode]} Calculator...
+            </span>
+          </div>
+        )}
+
+        {/* Native Desmos Container */}
         <div
           ref={containerRef}
           className={`absolute inset-0 w-full h-full select-auto ${useIframeFallback ? 'hidden' : 'block'}`}
           style={{ width: '100%', height: '100%' }}
         />
 
-        {/* Fallback iframe if Desmos API script blocked or failed */}
+        {/* Fallback iframe with ?embed parameter */}
         {useIframeFallback && (
           <iframe
             src={
               calculatorMode === 'scientific'
-                ? 'https://www.desmos.com/scientific'
+                ? 'https://www.desmos.com/scientific?embed'
                 : calculatorMode === 'four-function'
-                ? 'https://www.desmos.com/fourfunction'
-                : 'https://www.desmos.com/calculator'
+                ? 'https://www.desmos.com/fourfunction?embed'
+                : 'https://www.desmos.com/calculator?embed'
             }
             title={`Desmos ${modeDisplayLabel[calculatorMode]} Calculator`}
             className={`w-full h-full border-0 ${

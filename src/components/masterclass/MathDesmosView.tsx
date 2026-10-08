@@ -463,14 +463,17 @@ export const MathDesmosView: React.FC = () => {
           </div>
 
           {/* ─── THEATER VIDEO STAGE (FLANKED WITH GEOMETRIC WINGS) ─── */}
-          <div className="relative w-full py-4 md:py-6 px-3 md:px-6 bg-slate-950 text-white border-b border-slate-800 overflow-hidden shadow-inner">
+          <div className="relative w-full py-4 md:py-6 px-3 md:px-6 bg-gradient-to-b from-slate-100/90 via-slate-50 to-slate-100/80 dark:from-slate-950 dark:via-[#070b14] dark:to-slate-950 text-slate-900 dark:text-white border-b border-slate-200/90 dark:border-slate-800/80 overflow-hidden shadow-inner transition-colors">
             {/* Ambient Background Math Grid */}
             <div 
-              className="absolute inset-0 opacity-[0.08] pointer-events-none"
+              className="absolute inset-0 opacity-[0.06] dark:opacity-[0.08] pointer-events-none"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%2310b981' stroke-width='0.75'/%3E%3C/svg%3E")`
               }}
             />
+
+            {/* Soft Ambient Radiant Center Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-emerald-500/10 dark:bg-emerald-500/12 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-4 lg:gap-6">
               {/* Left Geometric Wing */}
@@ -478,7 +481,7 @@ export const MathDesmosView: React.FC = () => {
 
               {/* Centered Flexible 16:9 Video Container */}
               <div className="w-full flex-1 min-w-0 max-w-4xl flex flex-col items-center justify-center shrink-0">
-                <div className="relative w-full aspect-video min-h-[260px] sm:min-h-[340px] md:min-h-[400px] lg:min-h-[440px] max-h-[500px] rounded-2xl md:rounded-3xl overflow-hidden bg-black border border-slate-700 shadow-2xl shadow-emerald-500/10 flex items-center justify-center">
+                <div className="relative w-full aspect-video min-h-[260px] sm:min-h-[340px] md:min-h-[400px] lg:min-h-[440px] max-h-[500px] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-900 dark:bg-black border border-slate-300 dark:border-slate-700 shadow-2xl shadow-slate-300/50 dark:shadow-emerald-500/10 flex items-center justify-center">
                   <video
                     ref={videoRef}
                     src={activeLesson.videoUrl}

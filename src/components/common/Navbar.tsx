@@ -5,7 +5,6 @@ import { Zap, Flame, Trophy, Compass, LayoutDashboard, User, LogOut, Settings, C
 import { SlidingTabGroup } from './SlidingTabGroup';
 import { ThemeToggle } from './ThemeToggle';
 import { ScoreUpLogo } from './ScoreUpLogo';
-import { HoverBorderGradient } from '../ui/hover-border-gradient';
 
 const NAV_ITEMS = [
   { label: 'Overview', icon: <Compass className="w-3.5 h-3.5" />, view: 'landing' as const },
@@ -80,51 +79,40 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0">
 
           {/* Telegram */}
-          <HoverBorderGradient
-            as="a"
+          <a
             href="https://t.me/sat_ielts_dars"
             target="_blank"
             rel="noopener noreferrer"
             title="Join Telegram Channel"
-            containerClassName="hidden xl:inline-flex rounded-full"
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-sky-700 dark:text-sky-300"
-            innerMaskClassName="bg-sky-50 dark:bg-[#071426]"
-            highlight="radial-gradient(75% 181% at 50% 50%, #0284c7 0%, rgba(255, 255, 255, 0) 100%)"
+            className="hidden xl:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/40 border border-sky-200/80 dark:border-sky-800/40 hover:bg-sky-100 dark:hover:bg-sky-900/50 transition-colors shadow-sm"
           >
             <svg className="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-2.07 9.75c-.15.7-.57.87-1.16.54l-3.15-2.32-1.52 1.46c-.17.17-.31.31-.64.31l.23-3.21 5.85-5.28c.25-.23-.06-.35-.39-.13l-7.23 4.55-3.11-.97c-.68-.21-.69-.68.14-1l12.16-4.69c.56-.21 1.06.14.89.99z" />
             </svg>
             <span>Telegram</span>
-          </HoverBorderGradient>
+          </a>
 
           {/* YouTube */}
-          <HoverBorderGradient
-            as="a"
+          <a
             href="https://www.youtube.com/@ScoreUp_Academy_SAT"
             target="_blank"
             rel="noopener noreferrer"
             title="Free YouTube SAT Math Course"
-            containerClassName="hidden xl:inline-flex rounded-full"
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-rose-700 dark:text-rose-300"
-            innerMaskClassName="bg-rose-50 dark:bg-[#200a14]"
-            highlight="radial-gradient(75% 181% at 50% 50%, #f43f5e 0%, rgba(255, 255, 255, 0) 100%)"
+            className="hidden xl:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 transition-colors shadow-sm"
           >
             <svg className="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
             <span className="hidden 2xl:inline">Free Course</span>
-          </HoverBorderGradient>
+          </a>
 
           {/* User Profile Pill or Log In Button */}
           {isAuthenticated ? (
             <div className="relative" ref={userMenuRef}>
-              <HoverBorderGradient
-                as="button"
+              <button
                 type="button"
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                containerClassName="rounded-full"
-                className="flex items-center space-x-2 pl-2 pr-3 py-1.5 active:scale-95"
-                innerMaskClassName="bg-white/95 dark:bg-slate-900/95"
+                className="flex items-center space-x-2 pl-2 pr-3 py-1.5 rounded-full border border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 hover:border-emerald-500/40 transition-colors active:scale-95 shadow-sm"
               >
                 {activeUser.avatar ? (
                   <img
@@ -141,7 +129,7 @@ export const Navbar: React.FC = () => {
                   {activeUser.firstName}
                 </span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
-              </HoverBorderGradient>
+              </button>
 
               {/* Harmonized Dropdown Menu */}
               {userMenuOpen && (
@@ -210,28 +198,22 @@ export const Navbar: React.FC = () => {
               )}
             </div>
           ) : (
-            <HoverBorderGradient
-              as="button"
+            <button
               type="button"
               onClick={() => openAuthModal('login')}
-              containerClassName="rounded-xl"
-              className="px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300 active:scale-95"
-              innerMaskClassName="bg-emerald-50 dark:bg-slate-900/90"
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-slate-900/90 border border-emerald-200/80 dark:border-emerald-500/30 hover:bg-emerald-100/80 dark:hover:bg-slate-800 transition-colors active:scale-95 shadow-sm"
             >
               Log In
-            </HoverBorderGradient>
+            </button>
           )}
 
           {/* Streak pill */}
-          <HoverBorderGradient
-            as="div"
-            containerClassName="hidden sm:inline-flex rounded-full"
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-emerald-900 dark:text-emerald-300"
-            innerMaskClassName="bg-emerald-50 dark:bg-emerald-950/60"
+          <div
+            className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50 dark:bg-emerald-950/60 text-xs font-bold text-emerald-900 dark:text-emerald-300 shadow-sm"
           >
             <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600 dark:text-emerald-400 dark:fill-emerald-400" />
             <span className="font-extrabold">{activeUser.streakDays}d</span>
-          </HoverBorderGradient>
+          </div>
 
           {/* Global Light / Dark Theme Toggle Switcher */}
           <ThemeToggle />

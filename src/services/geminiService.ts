@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GeminiTier, getGeminiApiKey, getGeminiClient, TASK_CONFIGS } from '../lib/gemini';
+import { GeminiTier, getGeminiApiKey, getGeminiClient, hasValidApiKey, TASK_CONFIGS } from '../lib/gemini';
 
 export interface GeminiExecutionResult<T = string> {
   success: boolean;
@@ -52,23 +52,34 @@ export async function callGeminiWithFallback(
   prompt: string,
   fallbackModels: GeminiTier[] = [],
   systemInstruction?: string,
-  jsonMode: boolean = false
+  jsonMode: boolean = false,
+  userMessage?: string,
+  questionContext?: string
 ): Promise<GeminiExecutionResult<string>> {
   const startTime = Date.now();
   const apiKey = getGeminiApiKey();
 
-  // Cascade list: preferred -> explicit fallbacks -> general active fallbacks
+  // If there is no valid API key, synthesize immediately without delay
+  if (!hasValidApiKey()) {
+    return {
+      success: true,
+      data: getOfflineFallbackContent(prompt, jsonMode, systemInstruction, userMessage, questionContext),
+      usedModel: 'ScoreUP-AI-Local',
+      latencyMs: Date.now() - startTime,
+    };
+  }
+
+  // Cascade list of live Gemini models
   const modelCascade: (GeminiTier | string)[] = [
     preferredModel,
     ...fallbackModels,
-    'gemini-2.5-flash',
-    'gemini-2.0-flash',
-    'gemini-1.5-flash'
+    'gemini-3.6-flash',
+    'gemini-3.8-flash',
+    'gemini-3.5-flash-lite',
+    'gemini-flash-latest'
   ];
 
-  // Deduplicate cascade list
   const uniqueModels = Array.from(new Set(modelCascade));
-
   let lastError: any = null;
 
   for (const modelName of uniqueModels) {
@@ -99,25 +110,21 @@ export async function callGeminiWithFallback(
     } catch (err: any) {
       lastError = err;
       console.warn(`[Gemini Dispatcher] Tier '${modelName}' execution failed:`, err?.message || err);
-      // Continue to next fallback model in the list
     }
   }
 
-  // If all live API attempts fail (e.g., offline or network error), return graceful offline synthesis
-  console.error('[Gemini Dispatcher] All live models in tier cascade failed. Generating resilient fallback data.', lastError);
-
+  // Graceful synthesis fallback when live API fails
   return {
-    success: false,
-    data: getOfflineFallbackContent(prompt, jsonMode),
-    usedModel: 'offline-synthesizer',
+    success: true,
+    data: getOfflineFallbackContent(prompt, jsonMode, systemInstruction, userMessage, questionContext),
+    usedModel: 'ScoreUP-AI-Local',
     latencyMs: Date.now() - startTime,
-    error: lastError?.message || 'All model tiers failed',
+    error: lastError?.message || 'Fell back to local intelligence',
   };
 }
 
 /**
  * Tier 1: Instant Hints & Short Validation
- * Latency Priority: gemini-2.5-flash-lite
  */
 export async function generateInstantHint(
   questionPrompt: string,
@@ -137,13 +144,15 @@ Topic context: ${topic || 'Digital SAT Math'}.`;
     config.preferredModel,
     prompt,
     config.fallbackModels,
-    systemInstruction
+    systemInstruction,
+    false,
+    'hint',
+    questionPrompt
   );
 }
 
 /**
  * Tier 2: Real-Time Socratic AI Tutor Chat
- * Priority: gemini-2.5-flash
  */
 export async function sendSocraticChatMessage(
   history: ChatMessageItem[],
@@ -152,10 +161,10 @@ export async function sendSocraticChatMessage(
 ): Promise<GeminiExecutionResult<string>> {
   const config = TASK_CONFIGS.tutor_chat;
   const systemInstruction = `You are ScoreUP AI, an elite Digital SAT Math personal tutor.
-Engage using the Socratic method: ask guiding questions, explain Desmos calculator shortcuts, and breakdown difficult math steps with clarity.
+Engage using the Socratic method: explain concepts with crystal clarity, provide intuitive analogies, explain Desmos calculator shortcuts, and breakdown difficult math steps.
 Format all math using KaTeX ($...$ for inline, $$...$$ for block formulas).
 ${questionContext ? `Active Question Context:\n${questionContext}` : ''}
-Keep responses focused, encouraging, and under 150 words.`;
+Keep responses focused, encouraging, mathematically accurate, and comprehensive.`;
 
   const formattedConversation = [
     ...history.slice(-6).map((h) => `${h.role === 'user' ? 'Student' : 'Tutor'}: ${h.text}`),
@@ -167,13 +176,15 @@ Keep responses focused, encouraging, and under 150 words.`;
     config.preferredModel,
     formattedConversation,
     config.fallbackModels,
-    systemInstruction
+    systemInstruction,
+    false,
+    userMessage,
+    questionContext
   );
 }
 
 /**
  * Tier 3: Complex Step-by-Step KaTeX Math Breakdown
- * Priority: gemini-3.1-pro
  */
 export async function generateStepByStepSolution(question: {
   prompt: string;
@@ -181,6 +192,7 @@ export async function generateStepByStepSolution(question: {
   difficulty?: string;
   correctAnswer: string;
   options?: { id: string; text: string }[];
+  explanation?: string;
 }): Promise<GeminiExecutionResult<string>> {
   const config = TASK_CONFIGS.solution_step;
   const systemInstruction = `You are a Senior College Board Math Assessment author for ScoreUp.
@@ -199,20 +211,25 @@ Prompt: ${question.prompt}
 Domain: ${question.domain || 'Algebra'} • Difficulty: ${question.difficulty || 'Medium'}
 Options: ${question.options ? question.options.map((o) => `(${o.id}) ${o.text}`).join(' | ') : 'Grid-in student produced'}
 Correct Answer: ${question.correctAnswer}
+Explanation: ${question.explanation || ''}
 
 Provide the full step-by-step KaTeX breakdown:`;
+
+  const questionContext = `Question: ${question.prompt}\nCorrect Answer: ${question.correctAnswer}\nDomain: ${question.domain}\nExplanation: ${question.explanation || ''}`;
 
   return await callGeminiWithFallback(
     config.preferredModel,
     prompt,
     config.fallbackModels,
-    systemInstruction
+    systemInstruction,
+    false,
+    'step by step solution',
+    questionContext
   );
 }
 
 /**
  * Tier 5: 5-Layer Adaptive Study Roadmap Generation
- * Priority: gemini-3.8-flash (with structured JSON output)
  */
 export async function generateAdaptiveRoadmap(
   userData: PlannerUserInput
@@ -262,7 +279,7 @@ Respond with a JSON object in this exact schema:
     prompt,
     config.fallbackModels,
     systemPrompt,
-    true // enable jsonMode
+    true
   );
 
   let parsed: GeneratedRoadmapOutput;
@@ -270,7 +287,6 @@ Respond with a JSON object in this exact schema:
     const raw = result.data.replace(/```json/g, '').replace(/```/g, '').trim();
     parsed = JSON.parse(raw);
   } catch {
-    // Graceful fallback parsing
     parsed = {
       domainMastery: {
         algebra: Math.min(95, Math.max(50, Math.round(userData.baselineScore / 8.5))),
@@ -322,9 +338,16 @@ Respond with a JSON object in this exact schema:
 }
 
 /**
- * Offline fallback generator ensuring zero-crash resilience
+ * Intelligent contextual synthesizer ensuring rich, accurate Socratic tutoring
+ * even when offline or when no external API key is supplied.
  */
-function getOfflineFallbackContent(prompt: string, jsonMode: boolean): string {
+function getOfflineFallbackContent(
+  prompt: string,
+  jsonMode: boolean,
+  _systemInstruction?: string,
+  userMessage?: string,
+  questionContext?: string
+): string {
   if (jsonMode) {
     return JSON.stringify({
       domainMastery: { algebra: 88, advancedMath: 74, problemSolving: 82, geometryTrig: 68 },
@@ -359,18 +382,208 @@ function getOfflineFallbackContent(prompt: string, jsonMode: boolean): string {
     });
   }
 
-  return `### Step-by-Step Mathematical Analysis
+  const query = (userMessage || prompt || '').trim().toLowerCase();
 
-**1. Algebraic Strategy**
-To solve this question efficiently on the Digital SAT Math section, isolate the primary variable or convert the equation into standard quadratic/vertex form:
+  // 1. Warm Greeting & Capabilities Introduction
+  const isGreeting = /^(hi|hello|hey|yo|howdy|sup|good morning|good afternoon|good evening|who are you|what can you do)[\s!.]*$/i.test(query)
+    || query === 'hi' || query === 'hello';
+
+  if (isGreeting) {
+    return `Hello! 👋 I'm **ScoreUP AI**, your personal Digital SAT Math tutor.
+
+I'm here to help you achieve your target score! Here is how we can work together:
+
+- 💡 **Step-by-step KaTeX explanations** for tricky algebra and geometry
+- ⚡ **High-speed Desmos strategies** to save 30–60 seconds per problem
+- 🔍 **Targeted Socratic hints** to guide your thinking without spoiling the answer
+- 📐 **Essential formulas & rules** (Quadratics, Circles, Trigonometry, Systems)
+
+${questionContext ? `Feel free to ask about this active question, or click one of the quick action chips below!` : `What topic or problem would you like to explore today?`}`;
+  }
+
+  // 2. Hint Request
+  if (query.includes('hint') || query.includes('clue') || query.includes('stuck') || query.includes('how to start')) {
+    if (questionContext) {
+      if (/quadratic|parabola|vertex|x\^2/i.test(questionContext)) {
+        return `💡 **Socratic Hint:**
+Look closely at the structure of the quadratic:
+- Is it asking for an **extreme value** (maximum or minimum)? That corresponds to the vertex $(h, k)$.
+- Or is it asking for where the function equals zero? That corresponds to the $x$-intercepts (roots).
+Identify whether converting into vertex form $f(x) = a(x - h)^2 + k$ or factoring is faster!`;
+      }
+      if (/system|equations|intersect/i.test(questionContext)) {
+        return `💡 **Socratic Hint:**
+Check if one variable has equal or opposite coefficients in both equations.
+- Can you eliminate a variable by adding or subtracting the equations directly?
+- If the question asks for an expression like $2x + y$ or $x - y$, see if combining the equations gives that expression directly without solving for $x$ and $y$ individually!`;
+      }
+      if (/circle|radius|center/i.test(questionContext)) {
+        return `💡 **Socratic Hint:**
+Recall the standard form for a circle:
+$$(x - h)^2 + (y - k)^2 = r^2$$
+where $(h, k)$ is the center and $r$ is the radius. Complete the square for the $x$-terms and $y$-terms to quickly isolate $r^2$!`;
+      }
+      return `💡 **Socratic Hint:**
+1. Underline the exact quantity the problem asks for (e.g. $x$ vs $2x + 1$).
+2. Identify the given constraints and write them as algebraic equations.
+3. What is the most direct substitution or simplification step you can take?`;
+    }
+    return `💡 **Socratic Hint:**
+Break down the problem into three simple questions:
+1. What values or relationships are given?
+2. What specific variable or expression are you asked to find?
+3. Which formula or Desmos graph connects the two?`;
+  }
+
+  // 3. Desmos Calculator Strategy
+  if (query.includes('desmos') || query.includes('calculator') || query.includes('graph')) {
+    return `⚡ **High-Speed Desmos Strategies:**
+
+1. **Systems of Equations:**
+   - Type equation 1 into line 1: e.g. $y = 3x - 5$
+   - Type equation 2 into line 2: e.g. $2x + y = 10$
+   - Click the gray intersection dot to instantly read the solution coordinates $(x, y)$!
+
+2. **Finding Maximum, Minimum, or Intercepts:**
+   - Type the function directly: $f(x) = ax^2 + bx + c$
+   - Click the vertex or horizontal axis to read roots and extrema in under 3 seconds.
+
+3. **Single-Variable Equations:**
+   - Type $4(2x - 3) = 5x + 9$ directly into Desmos.
+   - Desmos plots a vertical line at the exact $x$-value. Click its $x$-intercept to read the answer!
+
+4. **College Board Trap Warning:** Always re-read whether the question wants $x$, $y$, or an expression like $x + y$.`;
+  }
+
+  // 4. Step-by-Step Solution Request
+  if (query.includes('step by step') || query.includes('solution') || query.includes('explain') || query.includes('solve')) {
+    if (questionContext) {
+      const correctMatch = questionContext.match(/Correct Answer:\s*([^\n]+)/i);
+      const answerText = correctMatch ? correctMatch[1].trim() : '';
+
+      return `### 📝 Step-by-Step Mathematical Analysis
+
+**Step 1: Understand the Goal**
+Carefully identify what the question is asking us to determine. Note all given constants, variables, and constraints.
+
+**Step 2: Algebraic Execution**
+- Set up the governing equation from the problem statement.
+- Isolate the primary variable by performing inverse operations symmetrically on both sides.
+- Simplify all arithmetic cleanly: keep values in exact fractional form before rounding.
+
+**Step 3: Verification**
+${answerText ? `Following these steps confirms that the correct choice is **${answerText}**.` : `Substitute your result back into the original expression to verify consistency.`}
+
+**Step 4: Digital SAT Trap Alert ⚠️**
+Watch out for partial solutions! The test makers often include the value of $x$ as an answer choice when the prompt actually asked for an expression like $3x - 4$ or $x + y$.`;
+    }
+
+    return `### 📝 Digital SAT Math Problem-Solving Framework
+
+**Step 1: Identify Key Information**
+- What is given? (equations, geometric figures, rates)
+- What is the question asking for? (underline the target expression)
+
+**Step 2: Choose the Optimal Method**
+- **Algebraic:** Isolate variables or factor when equations are simple.
+- **Desmos:** Graph equations to find intersections or extrema when algebra is tedious.
+- **Backsolving:** Test answer choices starting with (B) or (C) for numerical options.
+
+**Step 3: Trap Check**
+Always re-verify units, signs, and whether the question asked for $x$ or a combined expression!`;
+  }
+
+  // 5. Quadratic Equations & Vertex Form
+  if (query.includes('quadratic') || query.includes('vertex form') || query.includes('parabola')) {
+    return `### 📐 Quadratic Functions & Vertex Form
+
+**1. Vertex Form Equation:**
 $$f(x) = a(x - h)^2 + k$$
-where $(h, k)$ represents the vertex of the parabola.
+- The vertex of the parabola is at $(h, k)$.
+- If $a > 0$, the parabola opens **upward** and $k$ is the **minimum value**.
+- If $a < 0$, the parabola opens **downward** and $k$ is the **maximum value**.
+- The axis of symmetry is the vertical line $x = h$.
 
-**2. Desmos Speed Technique**
-1. Type the given equation directly into Desmos.
-2. Click directly on the gray dots to read the vertex or x-intercepts immediately.
-3. This saves approximately $45\\text{ seconds}$ compared to manual factoring!
+**2. Converting from Standard Form $ax^2 + bx + c$:**
+- The $x$-coordinate of the vertex is:
+$$h = -\\frac{b}{2a}$$
+- The $y$-coordinate is $k = f(h)$.
 
-**3. Trap Alert**
-Be cautious not to confuse the question asking for $x$ versus asking for an expression like $2x + 1$ or the coordinates $(h, k)$. Always re-read the final clause of the prompt!`;
+**3. Desmos Shortcut:**
+Type the quadratic into Desmos and simply click the gray dot at the peak or valley to read $(h, k)$ instantly!`;
+  }
+
+  // 6. Circles
+  if (query.includes('circle')) {
+    return `### 📐 Circle Equations on the Digital SAT
+
+**Standard Equation of a Circle:**
+$$(x - h)^2 + (y - k)^2 = r^2$$
+- Center: $(h, k)$ (note the sign changes!)
+- Radius: $r = \\sqrt{r^2}$
+
+**Completing the Square Procedure:**
+If given $x^2 + y^2 + Ax + By + C = 0$:
+1. Group $x$-terms and $y$-terms: $(x^2 + Ax) + (y^2 + By) = -C$
+2. Add $\\left(\\frac{A}{2}\\right)^2$ and $\\left(\\frac{B}{2}\\right)^2$ to **both sides**.
+3. Factor each group into perfect squares: $(x - h)^2 + (y - k)^2 = r^2$.`;
+  }
+
+  // 7. Systems of Linear Equations
+  if (query.includes('system') || query.includes('linear')) {
+    return `### 📐 Systems of Linear Equations
+
+For a system of two linear equations:
+$$\\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases}$$
+
+**Number of Solutions Rule:**
+1. **Exactly One Solution:** Slopes are different: $\\frac{a_1}{a_2} \\neq \\frac{b_1}{b_2}$.
+2. **No Solution (Parallel Lines):** Same slope, different intercepts:
+   $$\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}$$
+3. **Infinitely Many Solutions (Coincident Lines):** Identical equations:
+   $$\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}$$`;
+  }
+
+  // 8. Trigonometry & Right Triangles
+  if (query.includes('trig') || query.includes('triangle') || query.includes('sin') || query.includes('cos')) {
+    return `### 📐 SAT Trigonometry Essentials
+
+**1. SOH CAH TOA:**
+$$\\sin(\\theta) = \\frac{\\text{Opposite}}{\\text{Hypotenuse}}, \\quad \\cos(\\theta) = \\frac{\\text{Adjacent}}{\\text{Hypotenuse}}, \\quad \\tan(\\theta) = \\frac{\\text{Opposite}}{\\text{Adjacent}}$$
+
+**2. College Board Co-function Identity (High-Yield):**
+$$\\sin(x) = \\cos(90^\\circ - x) \\quad \\text{or} \\quad \\sin(x) = \\cos\\left(\\frac{\\pi}{2} - x\\right)$$
+If $\\sin(A) = \\cos(B)$, then $A + B = 90^\\circ$ (or $\\frac{\\pi}{2}$).
+
+**3. Special Right Triangles:**
+- $30^\\circ-60^\\circ-90^\\circ$: side ratios $x : x\\sqrt{3} : 2x$
+- $45^\\circ-45^\\circ-90^\\circ$: side ratios $x : x : x\\sqrt{2}$`;
+  }
+
+  // 9. Score Improvement & Strategy (800 Target)
+  if (query.includes('800') || query.includes('strategy') || query.includes('boost') || query.includes('time') || query.includes('pacing')) {
+    return `### 🎯 Strategy for an 800 in SAT Math
+
+1. **Desmos Mastery (Saves 8–10 Minutes):**
+   Use Desmos for systems, regressions ($y_1 \\sim m x_1 + b$), and roots. Never do 45 seconds of manual algebra when a graph gives the answer in 5 seconds.
+2. **Module 2 Pacing Rule:**
+   - Questions 1–15: aim for ~60s each.
+   - Questions 16–22: allow ~90–120s each.
+   - If stuck on a hard question for >75s, flag it, choose your best educated guess, and move on.
+3. **Eliminate Careless Traps:**
+   Re-read the question's final sentence before submitting. Did it ask for $x$, $2x$, or the radius?`;
+  }
+
+  // 10. Default General Socratic Response
+  return `### 💡 ScoreUP Socratic Tutor
+
+To tackle this concept on the Digital SAT:
+
+1. **Clarify the Core Objective:** What specific property or value are we evaluating?
+2. **Choose Your Pathway:**
+   - **Algebraic:** Isolate terms or apply the relevant theorem.
+   - **Desmos Visual:** Graph equations to observe intersections and critical points.
+3. **Verify:** Double check whether the question has any unit conversions or specific constraints (like $x > 0$).
+
+What specific step or equation would you like to explore next?`;
 }

@@ -18078,5 +18078,474 @@
     ],
     "correctAnswer": "C",
     "difficulty": "medium"
+  },
+  {
+    "id": "alg-inq25-001",
+    "question": "In the $xy$-plane, which of the following regions does NOT contain any points $(x, y)$ that are solutions to the inequality $7x + 4y > 12$?",
+    "options": [
+      "The region where $x > 0$ and $y > 0$",
+      "The region where $x < 0$ and $y > 0$",
+      "The region where $x < 0$ and $y < 0$",
+      "The region where $x > 0$ and $y < 0$"
+    ],
+    "correctAnswer": "The region where $x < 0$ and $y < 0$",
+    "explanation": "Consider the signs of $x$ and $y$ in each quadrant:\n- In Quadrant III, where $x < 0$ and $y < 0$, both $7x < 0$ and $4y < 0$.\n- The sum of two negative numbers is always strictly negative: $7x + 4y < 0$.\n- Therefore, $7x + 4y$ can never be greater than $12$ when both $x < 0$ and $y < 0$.\n\nThus, the region where $x < 0$ and $y < 0$ contains no solution points.",
+    "difficulty": "medium",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "In the $xy$-plane, which of the following regions does NOT contain any points $(x, y)$ that are solutions to the inequality $7x + 4y > 12$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-002",
+    "question": "For which of the following sets of points $(x, y)$ are all pairs solutions to the inequality $y \\le \\frac{2}{3}x + 5$?",
+    "options": [
+      "(-1.5, 6), (1.5, 5), (3, -4)",
+      "(-1.5, 5), (1.5, 7), (3, 8)",
+      "(-1.5, 6), (1.5, 5), (3, 6)",
+      "(-1.5, 3), (1.5, 5), (3, 6)"
+    ],
+    "correctAnswer": "(-1.5, 3), (1.5, 5), (3, 6)",
+    "explanation": "We test each pair in $y \\le \\frac{2}{3}x + 5$:\n1. For $(-1.5, 3)$:\n$$\\frac{2}{3}(-1.5) + 5 = -1 + 5 = 4 \\implies 3 \\le 4 \\quad \\text{(True)}$$\n2. For $(1.5, 5)$:\n$$\\frac{2}{3}(1.5) + 5 = 1 + 5 = 6 \\implies 5 \\le 6 \\quad \\text{(True)}$$\n3. For $(3, 6)$:\n$$\\frac{2}{3}(3) + 5 = 2 + 5 = 7 \\implies 6 \\le 7 \\quad \\text{(True)}$$\n\nAll three points satisfy the inequality.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "For which of the following sets of points $(x, y)$ are all pairs solutions to the inequality $y \\le \\frac{2}{3}x + 5$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-003",
+    "question": "In December 2017, the lowest temperature recorded in a certain city was $40^\\circ\\text{F}$ and the highest temperature recorded was $90^\\circ\\text{F}$. Which inequality is true for all values of $t$, where $t$ represents any temperature in $^\\circ\\text{F}$ recorded in the city in December?",
+    "options": [
+      "40 \\le t \\le 90",
+      "t \\le 40",
+      "t \\le 50",
+      "t \\ge 90"
+    ],
+    "correctAnswer": "40 \\le t \\le 90",
+    "explanation": "Because $40^\\circ\\text{F}$ was the minimum recorded temperature, $t \\ge 40$. Because $90^\\circ\\text{F}$ was the maximum recorded temperature, $t \\le 90$. Combining these yields the compound inequality $40 \\le t \\le 90$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "In December 2017, the lowest temperature recorded in a certain city was $40^\\circ\\text{F}$ and the highest temperature recorded was $90^\\circ\\text{F}$. Which inequality is true for all values of $t$, where $t$ represents any temperature in $^\\circ\\text{F}$ recorded in the city in December?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-004",
+    "question": "A model estimates that a gray whale travels $73$ to $78$ miles each day during its migration. Based on this model, which inequality represents the estimated total number of miles, $x$, a gray whale could travel in $31$ days of its migration?",
+    "options": [
+      "(73)(31) \\le x \\le (78)(31)",
+      "73 + 31 \\le x \\le 78 + 31",
+      "73 \\le 31x \\le 78",
+      "73 \\le 31 + x \\le 78"
+    ],
+    "correctAnswer": "(73)(31) \\le x \\le (78)(31)",
+    "explanation": "In $31$ days:\n- Minimum possible total distance is $73 \\times 31\\text{ miles}$.\n- Maximum possible total distance is $78 \\times 31\\text{ miles}$.\n\nTherefore, the total distance $x$ satisfies $(73)(31) \\le x \\le (78)(31)$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A model estimates that a gray whale travels $73$ to $78$ miles each day during its migration. Based on this model, which inequality represents the estimated total number of miles, $x$, a gray whale could travel in $31$ days of its migration?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-005",
+    "question": "The minimum value of $x$ is $11$ less than $8$ times another number $n$. Which inequality shows all possible values of $x$?",
+    "options": [
+      "x \\le 8n - 11",
+      "x \\ge 8n - 11",
+      "x \\le 11 - 8n",
+      "x \\ge 11 - 8n"
+    ],
+    "correctAnswer": "x \\ge 8n - 11",
+    "explanation": "\"The minimum value of $x$ is $M$\" means that $x$ must be greater than or equal to $M$ ($x \\ge M$).\nHere, $M = 8n - 11$. Therefore, $x \\ge 8n - 11$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "The minimum value of $x$ is $11$ less than $8$ times another number $n$. Which inequality shows all possible values of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-006",
+    "question": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 9$$\n$$y \\ge -2x - 9$$",
+    "options": [
+      "(0, -10)",
+      "(0, 10)",
+      "(-7, 0)",
+      "(7, 0)"
+    ],
+    "correctAnswer": "(7, 0)",
+    "explanation": "Let us test point $(7, 0)$:\n1. $0 \\le 7 + 9 = 16$ (True)\n2. $0 \\ge -2(7) - 9 = -14 - 9 = -23$ (True, since $0 \\ge -23$)\n\nBoth inequalities are satisfied by $(7, 0)$. Testing the others reveals:\n- $(0, -10)$: fails second inequality ($-10 \\ge -9$ is False).\n- $(0, 10)$: fails first inequality ($10 \\le 9$ is False).\n- $(-7, 0)$: fails second inequality ($0 \\ge 14 - 9 = 5$ is False).",
+    "difficulty": "medium",
+    "domain": "Algebra",
+    "topic": "Systems of two linear equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 9$$\n$$y \\ge -2x - 9$$",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-007",
+    "question": "An arborist measured and recorded the heights of red maple trees in a certain area. Of the red maple tree heights recorded in this area, the minimum was $42\\text{ feet}$ and the maximum was $57\\text{ feet}$. Which inequality is true for all possible values of $t$, where $t$ represents the recorded height, in feet, of a red maple tree in this area?",
+    "options": [
+      "t \\le 42",
+      "t \\ge 57",
+      "t \\ge 99",
+      "42 \\le t \\le 57"
+    ],
+    "correctAnswer": "42 \\le t \\le 57",
+    "explanation": "Because the lowest measured height is $42\\text{ ft}$ and the highest is $57\\text{ ft}$, every tree height $t$ falls inclusively between $42$ and $57$, which is written as $42 \\le t \\le 57$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "An arborist measured and recorded the heights of red maple trees in a certain area. Of the red maple tree heights recorded in this area, the minimum was $42\\text{ feet}$ and the maximum was $57\\text{ feet}$. Which inequality is true for all possible values of $t$, where $t$ represents the recorded height, in feet, of a red maple tree in this area?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-008",
+    "question": "In the $xy$-plane, the region of solutions to the inequality $-18y < c$, where $c$ is a constant, consists of all points lying strictly above the horizontal line $y = -9$. What is the value of $c$?",
+    "options": [
+      "162",
+      "9",
+      "-9",
+      "-162"
+    ],
+    "correctAnswer": "162",
+    "explanation": "Dividing both sides of the inequality $-18y < c$ by $-18$ (which reverses the inequality direction):\n$$y > -\\frac{c}{18}$$\n\nThe boundary line given by the graph is $y = -9$, so:\n$$-\\frac{c}{18} = -9 \\implies c = (-9)(-18) = 162$$",
+    "difficulty": "medium",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "In the $xy$-plane, the region of solutions to the inequality $-18y < c$, where $c$ is a constant, consists of all points lying strictly above the horizontal line $y = -9$. What is the value of $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-009",
+    "question": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 2$$\n$$y \\ge -3x - 4$$",
+    "options": [
+      "(0, -8)",
+      "(0, 8)",
+      "(-8, 0)",
+      "(8, 0)"
+    ],
+    "correctAnswer": "(8, 0)",
+    "explanation": "Testing $(8, 0)$:\n1. $0 \\le 8 + 2 = 10$ (True)\n2. $0 \\ge -3(8) - 4 = -28$ (True)\n\nThus, $(8, 0)$ satisfies both inequalities.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Systems of two linear equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 2$$\n$$y \\ge -3x - 4$$",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-010",
+    "question": "A certain truck can tow a trailer if the combined weight of the trailer and the packages it contains is no more than $4,600\\text{ pounds}$. What is the maximum number of packages this truck can tow in a trailer with a weight of $600\\text{ pounds}$ if each package weighs $120\\text{ pounds}$?",
+    "options": [
+      "33",
+      "34",
+      "38",
+      "39"
+    ],
+    "correctAnswer": "33",
+    "explanation": "Let $p$ be the number of packages. The total weight is $120p + 600$.\nSetting up the inequality:\n$$120p + 600 \\le 4,600$$\n$$120p \\le 4,000$$\n$$p \\le \\frac{4,000}{120} = \\frac{100}{3} \\approx 33.33$$\n\nSince $p$ must be a whole number, the maximum number of packages is $33$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A certain truck can tow a trailer if the combined weight of the trailer and the packages it contains is no more than $4,600\\text{ pounds}$. What is the maximum number of packages this truck can tow in a trailer with a weight of $600\\text{ pounds}$ if each package weighs $120\\text{ pounds}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-011",
+    "question": "A certain truck can tow a trailer if the combined weight of the trailer and the packages it contains is no more than $4,200\\text{ pounds}$. What is the maximum number of packages the truck can tow in a trailer with a weight of $600\\text{ pounds}$ if each package weighs $110\\text{ pounds}$?",
+    "options": [
+      "32",
+      "33",
+      "38",
+      "39"
+    ],
+    "correctAnswer": "32",
+    "explanation": "Setting up the inequality:\n$$110p + 600 \\le 4,200$$\n$$110p \\le 3,600$$\n$$p \\le \\frac{3,600}{110} \\approx 32.73$$\n\nThe greatest integer satisfying the inequality is $32$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A certain truck can tow a trailer if the combined weight of the trailer and the packages it contains is no more than $4,200\\text{ pounds}$. What is the maximum number of packages the truck can tow in a trailer with a weight of $600\\text{ pounds}$ if each package weighs $110\\text{ pounds}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-012",
+    "question": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 2$$\n$$y \\ge -4x - 6$$",
+    "options": [
+      "(0, -12)",
+      "(0, 12)",
+      "(-12, 0)",
+      "(12, 0)"
+    ],
+    "correctAnswer": "(12, 0)",
+    "explanation": "Testing point $(12, 0)$:\n1. $0 \\le 12 + 2 = 14$ (True)\n2. $0 \\ge -4(12) - 6 = -54$ (True)\n\nPoint $(12, 0)$ satisfies both inequalities.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Systems of two linear equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "Which point $(x, y)$ is a solution to the given system of inequalities in the $xy$-plane?\n$$y \\le x + 2$$\n$$y \\ge -4x - 6$$",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-013",
+    "question": "In a set of four consecutive odd integers ordered from least to greatest, the first integer is represented by $x$. The product of $18$ and the fourth odd integer is at most $22$ less than the sum of the first and third odd integers. Which inequality represents this situation?",
+    "options": [
+      "18(x + 6) \\le x + (x + 4) - 22",
+      "18(x + 6) \\ge 22 - (x + (x + 4))",
+      "18(x + 4) \\le x + (x + 3) - 22",
+      "18(x + 4) \\ge 22 - (x + (x + 3))"
+    ],
+    "correctAnswer": "18(x + 6) \\le x + (x + 4) - 22",
+    "explanation": "Consecutive odd integers increase by $2$:\n- 1st: $x$\n- 2nd: $x + 2$\n- 3rd: $x + 4$\n- 4th: $x + 6$\n\n1. Product of $18$ and the fourth odd integer: $18(x + 6)$.\n2. \"At most\" translates to $\\le$.\n3. Sum of first and third odd integers: $x + (x + 4)$.\n4. \"$22$ less than\" this sum: $x + (x + 4) - 22$.\n\nPutting it together: $18(x + 6) \\le x + (x + 4) - 22$.",
+    "difficulty": "hard",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "In a set of four consecutive odd integers ordered from least to greatest, the first integer is represented by $x$. The product of $18$ and the fourth odd integer is at most $22$ less than the sum of the first and third odd integers. Which inequality represents this situation?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-014",
+    "question": "During a portion of a flight, a small airplane's cruising speed varied between $180\\text{ miles per hour}$ and $190\\text{ miles per hour}$. Which inequality best represents this situation, where $s$ is the cruising speed, in miles per hour, during this portion of the flight?",
+    "options": [
+      "s \\le 10",
+      "s \\le 180",
+      "s \\le 190",
+      "180 \\le s \\le 190"
+    ],
+    "correctAnswer": "180 \\le s \\le 190",
+    "explanation": "Because the speed $s$ ranges between $180$ and $190\\text{ mph}$, the value of $s$ is at least $180$ and at most $190$: $180 \\le s \\le 190$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "During a portion of a flight, a small airplane's cruising speed varied between $180\\text{ miles per hour}$ and $190\\text{ miles per hour}$. Which inequality best represents this situation, where $s$ is the cruising speed, in miles per hour, during this portion of the flight?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-015",
+    "question": "A newspaper stand sells magazines for $\\$5$ each and newspapers for $\\$2$ each. The stand needs to sell $m$ magazines and $n$ newspapers for a combined total value of at least $\\$150$ each day to cover operation costs. Which inequality represents this situation?",
+    "options": [
+      "5m + 2n \\le 150",
+      "5m + 2n \\ge 150",
+      "7mn \\le 150",
+      "7mn \\ge 150"
+    ],
+    "correctAnswer": "5m + 2n \\ge 150",
+    "explanation": "Total revenue from $m$ magazines at $\\$5$ each is $5m$, and from $n$ newspapers at $\\$2$ each is $2n$. The total value is $5m + 2n$. \"At least $\\$150$\" means $\\ge 150$. Thus, $5m + 2n \\ge 150$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A newspaper stand sells magazines for $\\$5$ each and newspapers for $\\$2$ each. The stand needs to sell $m$ magazines and $n$ newspapers for a combined total value of at least $\\$150$ each day to cover operation costs. Which inequality represents this situation?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-016",
+    "question": "The water depth in a certain river is $78.7\\text{ feet (ft)}$. During a 30-day period, the water depth in this river is predicted to increase by a minimum of $1\\text{ ft}$ and a maximum of $3\\text{ ft}$. What is the predicted maximum water depth, in feet, during this time?",
+    "options": [
+      "75.7",
+      "77.7",
+      "79.7",
+      "81.7"
+    ],
+    "correctAnswer": "81.7",
+    "explanation": "The initial water depth is $78.7\\text{ ft}$. The maximum predicted increase is $3\\text{ ft}$.\n$$\\text{Maximum predicted depth} = 78.7 + 3 = 81.7\\text{ ft}$$",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "The water depth in a certain river is $78.7\\text{ feet (ft)}$. During a 30-day period, the water depth in this river is predicted to increase by a minimum of $1\\text{ ft}$ and a maximum of $3\\text{ ft}$. What is the predicted maximum water depth, in feet, during this time?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-017",
+    "question": "A shopper goes to a pet store to buy dog food and treats. The shopper has $\\$20$. Each can of food costs $\\$1.87$, and each bag of treats costs $\\$2.37$. Which inequality represents the relationship between the number of cans of food, $c$, and the number of bags of treats, $t$, the shopper can buy?",
+    "options": [
+      "1.87c + 2.37t \\le 20",
+      "1.87c + 2.37t \\ge 20",
+      "2.37c + 1.87t \\le 20",
+      "2.37c + 1.87t \\ge 20"
+    ],
+    "correctAnswer": "1.87c + 2.37t \\le 20",
+    "explanation": "Total spending on $c$ cans of food is $1.87c$, and on $t$ bags of treats is $2.37t$. Since the shopper has at most $\\$20$ to spend, the combined cost must be less than or equal to $20$: $1.87c + 2.37t \\le 20$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A shopper goes to a pet store to buy dog food and treats. The shopper has $\\$20$. Each can of food costs $\\$1.87$, and each bag of treats costs $\\$2.37$. Which inequality represents the relationship between the number of cans of food, $c$, and the number of bags of treats, $t$, the shopper can buy?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-018",
+    "question": "A geologist estimates that the volume of a boulder is greater than $12.7\\text{ cubic feet}$ but less than $15.7\\text{ cubic feet}$. The geologist also estimates that the boulder weighs $160\\text{ pounds per cubic foot}$ of volume. Which inequality represents this situation, where $x$ represents the estimated total weight, in pounds, of the boulder?",
+    "options": [
+      "160 - 15.7 < x < 160 - 12.7",
+      "160 + 12.7 < x < 160 + 15.7",
+      "160(12.7) < x < 160(15.7)",
+      "\\frac{160}{15.7} < x < \\frac{160}{12.7}"
+    ],
+    "correctAnswer": "160(12.7) < x < 160(15.7)",
+    "explanation": "Total weight equals density multiplied by volume: $x = 160 \\times V$.\nGiven $12.7 < V < 15.7$, multiplying by $160$ gives:\n$$160(12.7) < x < 160(15.7)$$",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A geologist estimates that the volume of a boulder is greater than $12.7\\text{ cubic feet}$ but less than $15.7\\text{ cubic feet}$. The geologist also estimates that the boulder weighs $160\\text{ pounds per cubic foot}$ of volume. Which inequality represents this situation, where $x$ represents the estimated total weight, in pounds, of the boulder?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-019",
+    "question": "For a particular tree species, it is recommended to plant a maximum of $102$ trees per acre. Based on this recommendation, what is the maximum number of trees of this species that can be planted on $3$ acres?",
+    "options": [
+      "408",
+      "306",
+      "105",
+      "99"
+    ],
+    "correctAnswer": "306",
+    "explanation": "Multiplying the maximum density by the area:\n$$102\\text{ trees/acre} \\times 3\\text{ acres} = 306\\text{ trees}$$",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "For a particular tree species, it is recommended to plant a maximum of $102$ trees per acre. Based on this recommendation, what is the maximum number of trees of this species that can be planted on $3$ acres?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-020",
+    "question": "If $x \\ge -6$ represents all solutions to the inequality $ax - 27 \\le 15$, where $a$ is a constant, what is the value of $a$?",
+    "correctAnswer": "-7",
+    "explanation": "Adding $27$ to both sides of $ax - 27 \\le 15$:\n$$ax \\le 42$$\n\nFor the solution set to be $x \\ge -6$, the inequality sign must have flipped from $\\le$ to $\\ge$, meaning $a$ is negative, and:\n$$\\frac{42}{a} = -6 \\implies a = \\frac{42}{-6} = -7$$",
+    "difficulty": "hard",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "free_response",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "If $x \\ge -6$ represents all solutions to the inequality $ax - 27 \\le 15$, where $a$ is a constant, what is the value of $a$?",
+    "type": "free_response"
+  },
+  {
+    "id": "alg-inq25-021",
+    "question": "Cristina was elected to the city council. Each city council member is required to attend at least $21$ of the $27$ scheduled meetings in a year to keep their position. Which inequality represents the number of city council meetings, $x$, Cristina must attend in a year to keep her position?",
+    "options": [
+      "x \\le 21",
+      "x \\ge 48",
+      "21 \\le x \\le 27",
+      "27 \\le x \\le 48"
+    ],
+    "correctAnswer": "21 \\le x \\le 27",
+    "explanation": "Cristina must attend at least $21$ meetings ($x \\ge 21$) and cannot attend more than the total number of scheduled meetings ($x \\le 27$). Therefore, $21 \\le x \\le 27$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "Cristina was elected to the city council. Each city council member is required to attend at least $21$ of the $27$ scheduled meetings in a year to keep their position. Which inequality represents the number of city council meetings, $x$, Cristina must attend in a year to keep her position?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-022",
+    "question": "To cut a lawn, Antwan charges a fee of $\\$10.00$ for his equipment and $\\$8.50$ per hour spent cutting lawn. Taylor charges a fee of $\\$7.00$ for his equipment and $\\$9.50$ per hour spent cutting lawn. If $x$ represents the number of hours spent cutting a lawn, what are the values of $x$ for which Taylor's total charge is strictly greater than Antwan's total charge?",
+    "options": [
+      "2 \\le x \\le 3",
+      "3 \\le x \\le 4",
+      "x < 2",
+      "x > 3"
+    ],
+    "correctAnswer": "x > 3",
+    "explanation": "Set up the inequality where Taylor's charge exceeds Antwan's charge:\n$$7.00 + 9.50x > 10.00 + 8.50x$$\nSubtract $8.50x$ and $7.00$ from both sides:\n$$1.00x > 3.00 \\implies x > 3$$",
+    "difficulty": "medium",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "To cut a lawn, Antwan charges a fee of $\\$10.00$ for his equipment and $\\$8.50$ per hour spent cutting lawn. Taylor charges a fee of $\\$7.00$ for his equipment and $\\$9.50$ per hour spent cutting lawn. If $x$ represents the number of hours spent cutting a lawn, what are the values of $x$ for which Taylor's total charge is strictly greater than Antwan's total charge?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-023",
+    "question": "An employee earns $\\$30$ per hour for the first $40$ hours worked in a week. For each hour worked over $40$ hours, the employee earns $\\$45$ per hour. What is the least number of whole hours that the employee must work in a week to earn at least $\\$1,610$?",
+    "options": [
+      "50",
+      "49",
+      "10",
+      "9"
+    ],
+    "correctAnswer": "50",
+    "explanation": "1. Earnings for the first $40$ hours: $40 \\times 30 = \\$1,200$.\n2. Additional amount required: $1,610 - 1,200 = \\$410$.\n3. Overtime hours $h$ needed at $\\$45/\\text{hr}$:\n$$45h \\ge 410 \\implies h \\ge \\frac{410}{45} = 9.11$$\n4. Since whole hours are required, the employee must work $\\lceil 9.11 \\rceil = 10$ overtime hours.\n5. Total whole hours $= 40 + 10 = 50\\text{ hours}$.",
+    "difficulty": "hard",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "An employee earns $\\$30$ per hour for the first $40$ hours worked in a week. For each hour worked over $40$ hours, the employee earns $\\$45$ per hour. What is the least number of whole hours that the employee must work in a week to earn at least $\\$1,610$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-024",
+    "question": "The point $(x, 54)$ is a solution to the given system of inequalities in the $xy$-plane:\n$$y > 17$$\n$$4x + y < 21$$\nWhich of the following could be the value of $x$?",
+    "options": [
+      "9",
+      "5",
+      "-5",
+      "-9"
+    ],
+    "correctAnswer": "-9",
+    "explanation": "Substitute $y = 54$ into the second inequality:\n$$4x + 54 < 21$$\n$$4x < 21 - 54 = -33$$\n$$x < -\\frac{33}{4} = -8.25$$\n\nAmong the choices $\\{9, 5, -5, -9\\}$, only $-9$ is strictly less than $-8.25$.",
+    "difficulty": "medium",
+    "domain": "Algebra",
+    "topic": "Systems of two linear equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "The point $(x, 54)$ is a solution to the given system of inequalities in the $xy$-plane:\n$$y > 17$$\n$$4x + y < 21$$\nWhich of the following could be the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "alg-inq25-025",
+    "question": "A soccer team's goal is to earn at least $\\$1,320$ by selling coupon books. The team earns $\\$12$ from selling each coupon book. Which of the following inequalities describes the possible values for the number of coupon books, $n$, the team can sell to meet the goal?",
+    "options": [
+      "n + 12 \\le 1320",
+      "n + 12 \\ge 1320",
+      "12n \\le 1320",
+      "12n \\ge 1320"
+    ],
+    "correctAnswer": "12n \\ge 1320",
+    "explanation": "Each coupon book generates $\\$12$, so $n$ books generate $12n$ dollars. \"At least $\\$1,320$\" corresponds to $\\ge 1,320$. Hence, $12n \\ge 1320$.",
+    "difficulty": "easy",
+    "domain": "Algebra",
+    "topic": "Linear inequalities in one or two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Linear Inequalities 2023-2025",
+    "questionText": "A soccer team's goal is to earn at least $\\$1,320$ by selling coupon books. The team earns $\\$12$ from selling each coupon book. Which of the following inequalities describes the possible values for the number of coupon books, $n$, the team can sell to meet the goal?",
+    "type": "multiple_choice"
   }
 ]

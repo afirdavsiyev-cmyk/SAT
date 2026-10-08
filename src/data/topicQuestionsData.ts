@@ -365,5 +365,28 @@ export const TOPIC_QUESTION_SETS: TopicQuestionSetItem[] = [
     "isChallenge750": false,
     "sizeMB": 5.3,
     "description": "Topic-based problem set for Geometry & Trigonometry • Triangles. Includes complete worksheet with figures, problems, and step-by-step solutions."
+  },
+  {
+    "id": "topic-33",
+    "title": "SAT Math Advanced Questions",
+    "filename": "SAT Math Advanced Questions.pdf",
+    "fileUrl": "/topic-questions/SAT%20Math%20Advanced%20Questions.pdf",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "isChallenge750": true,
+    "sizeMB": 1.7,
+    "description": "Topic-based problem set for Advanced Math • Functions, Polynomials & Modeling. Includes high-difficulty Bluebook official items with complete solutions."
+  },
+  {
+    "id": "topic-34",
+    "title": "SAT Turbo Prep Advanced Test 3",
+    "filename": "SAT Turbo Prep Advanced Test 3.pdf",
+    "fileUrl": "/topic-questions/SAT%20Turbo%20Prep%20Advanced%20Test%203.pdf",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "isChallenge750": true,
+    "sizeMB": 0.3,
+    "description": "Comprehensive SAT Math advanced challenge problem set covering quadratic models, rational expressions, circle geometry, exponential functions, and advanced algebra."
   }
 ];
+

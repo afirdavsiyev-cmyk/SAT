@@ -249,6 +249,7 @@ export const OFFICIAL_PRACTICE_TEST_1_QUESTIONS: Question[] = [
     type: 'student_produced',
     prompt: 'In the $xy$-plane, line $k$ has the equation $5x - 2y = 16$. What is the slope of line $k$?',
     correctAnswer: '2.5',
+    acceptableAnswers: ['5/2', '2.5'],
     explanation: `**Step 1: Convert to slope-intercept form $y = mx + b$**\n$$5x - 2y = 16 \\implies -2y = -5x + 16$$\n\n**Step 2: Divide by $-2$**\n$$y = \\frac{-5}{-2}x + \\frac{16}{-2} = \\frac{5}{2}x - 8$$\n\n**Conclusion:**\nThe slope $m$ is $\\frac{5}{2}$ (or $2.5$). Both $5/2$ and $2.5$ are acceptable student-produced responses.`,
     desmosEquation: '5x - 2y = 16',
     hint: 'Solve for $y$ in terms of $x$ to get $y = \\frac{5}{2}x - 8$.',

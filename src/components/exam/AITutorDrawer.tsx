@@ -25,14 +25,14 @@ interface AITutorDrawerProps {
 }
 
 function formatModelName(model: string): string {
-  if (!model) return '3.6 Flash';
-  if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (!model) return 'ScoreUP AI';
+  if (model.includes('ScoreUP-AI') || model.includes('Local') || model.includes('offline')) return 'ScoreUP AI';
   if (model.includes('3.8-flash')) return '3.8 Flash';
-  if (model.includes('3.1-pro')) return '3.1 Pro';
+  if (model.includes('3.6-flash')) return '3.6 Flash';
+  if (model.includes('3.5-flash-lite')) return '3.5 Flash-Lite';
+  if (model.includes('flash-latest')) return 'Flash';
   if (model.includes('2.5-flash-lite')) return '2.5 Flash-Lite';
   if (model.includes('2.5-flash')) return '2.5 Flash';
-  if (model.includes('2.0-flash')) return '2.0 Flash';
-  if (model.includes('1.5-flash')) return '1.5 Flash';
   return model.replace('gemini-', '');
 }
 
@@ -57,7 +57,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
         {
           sender: 'ai',
           text: `Hello! I'm **ScoreUP AI**, your Digital SAT Math personal tutor.\n\nI'm ready to assist with **Question #${question.number}** (${question.domain}, ${question.difficulty}). Select a quick action chip below or ask me any question!`,
-          modelUsed: 'gemini-2.5-flash'
+          modelUsed: 'gemini-3.6-flash'
         }
       ]);
     } else {
@@ -65,7 +65,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
         {
           sender: 'ai',
           text: `Hello! I'm **ScoreUP AI**, your 24/7 Digital SAT Math tutor.\n\nHow can I help you master Digital SAT Math today? Ask me about any formula, Desmos shortcut, or topic!`,
-          modelUsed: 'gemini-2.5-flash'
+          modelUsed: 'gemini-3.6-flash'
         }
       ]);
     }
@@ -146,7 +146,8 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
           domain: question?.domain,
           difficulty: question?.difficulty,
           correctAnswer: question?.correctAnswer || 'C',
-          options: question?.options
+          options: question?.options,
+          explanation: question?.explanation
         });
         setActiveModel(solutionResult.usedModel);
         setMessages((prev) => [
@@ -269,15 +270,15 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
           <div className="text-[11px] text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed font-mono">
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
               <span className="text-slate-700 dark:text-slate-300">⚡ Tier 1 (Hints):</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-bold">gemini-2.5-flash-lite</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">gemini-3.5-flash-lite</span>
             </div>
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
               <span className="text-slate-700 dark:text-slate-300">💬 Tier 2 (Tutor Chat):</span>
-              <span className="text-teal-600 dark:text-teal-400 font-bold">gemini-2.5-flash</span>
+              <span className="text-teal-600 dark:text-teal-400 font-bold">gemini-3.6-flash</span>
             </div>
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
               <span className="text-slate-700 dark:text-slate-300">📐 Tier 3 (KaTeX Solutions):</span>
-              <span className="text-emerald-700 dark:text-teal-300 font-bold">gemini-3.1-pro</span>
+              <span className="text-emerald-700 dark:text-teal-300 font-bold">gemini-3.6-flash</span>
             </div>
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
               <span className="text-slate-700 dark:text-slate-300">🗺️ Tier 5 (Roadmap Engine):</span>

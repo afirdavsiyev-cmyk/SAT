@@ -11220,5 +11220,1614 @@
     "questionType": "multiple_choice",
     "questionText": "At the time of posting a video, a social media channel had $88$ subscribers. Each day after the video was posted, the number of subscribers doubled from the number on the previous day. Which equation gives the total number of subscribers, $n$, to the channel $d$ days after the video was posted?",
     "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-001",
+    "question": "A research manager selected $2$ random samples of ovens of a certain type to estimate the average amount of time this type of oven takes to preheat to $325^\\circ\\text{F}$. Based on the first sample, the research manager estimated an average of $15.2\\text{ minutes}$ with a margin of error of $1\\text{ minute}$. Based on the second sample, the manager estimated an average of $15.4\\text{ minutes}$ with a margin of error of $2.2\\text{ minutes}$. Assuming the margins of error were calculated the same way, which of the following best explains why the first sample obtained a smaller margin of error than the second sample?",
+    "options": [
+      "The first sample contained more ovens than the second sample.",
+      "The first sample contained fewer ovens than the second sample.",
+      "The first sample took more time on average to preheat to 325°F than the second sample.",
+      "The first sample took less time on average to preheat to 325°F than the second sample."
+    ],
+    "correctAnswer": "The first sample contained more ovens than the second sample.",
+    "explanation": "The margin of error for a sample mean is inversely proportional to the square root of the sample size: $\\text{MOE} \\propto \\frac{1}{\\sqrt{n}}$. A larger sample size provides greater precision and consequently produces a smaller margin of error. Therefore, the first sample must have contained more ovens.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A research manager selected $2$ random samples of ovens of a certain type to estimate the average amount of time this type of oven takes to preheat to $325^\\circ\\text{F}$. Based on the first sample, the research manager estimated an average of $15.2\\text{ minutes}$ with a margin of error of $1\\text{ minute}$. Based on the second sample, the manager estimated an average of $15.4\\text{ minutes}$ with a margin of error of $2.2\\text{ minutes}$. Assuming the margins of error were calculated the same way, which of the following best explains why the first sample obtained a smaller margin of error than the second sample?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-002",
+    "question": "The equation $N(m) = 65(Q)^{\\frac{m}{120}}$ gives the predicted population $N(m)$, in thousands, of a certain bacteria colony $m$ minutes after the initial measurement, where $Q$ is a constant greater than $1$. The predicted population increases by $p\\%$ every $120$ seconds. What is the value of $p$ in terms of $Q$?",
+    "options": [
+      "100(Q^{\\frac{1}{60}} - 1)",
+      "100(Q^{\\frac{1}{60}} + 1)",
+      "100(Q^2 - 1)",
+      "100(Q^2 + 1)"
+    ],
+    "correctAnswer": "100(Q^{\\frac{1}{60}} - 1)",
+    "explanation": "1. Convert $120\\text{ seconds}$ to minutes: $120\\text{ s} = 2\\text{ minutes}$.\n2. Over a 2-minute interval, the population multiplies by $Q^{\\frac{2}{120}} = Q^{\\frac{1}{60}}$.\n3. The percentage increase $p\\%$ represents $(\\text{multiplier} - 1) \\times 100\\% = 100(Q^{\\frac{1}{60}} - 1)$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "The equation $N(m) = 65(Q)^{\\frac{m}{120}}$ gives the predicted population $N(m)$, in thousands, of a certain bacteria colony $m$ minutes after the initial measurement, where $Q$ is a constant greater than $1$. The predicted population increases by $p\\%$ every $120$ seconds. What is the value of $p$ in terms of $Q$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-003",
+    "question": "Ari examined a set of $86$ plants. The lightest plant had a mass of $2.8\\text{ kg}$ and the heaviest plant had a mass of $6.2\\text{ kg}$. Chihiro examined the same set of $86$ plants and also an additional plant with a mass of $11.7\\text{ kg}$. Which of the following must be true about the set of plants that Ari examined and the set of plants that Chihiro examined?",
+    "options": [
+      "The standard deviation of the masses, in kg, of the plants that Ari examined is greater than the standard deviation of the masses, in kg, of the plants that Chihiro examined.",
+      "The range of the masses, in kg, of the plants that Ari examined is greater than the range of the masses, in kg, of the plants that Chihiro examined.",
+      "The median of the masses, in kg, of the plants that Ari examined is less than the median of the masses, in kg, of the plants that Chihiro examined.",
+      "The mean of the masses, in kg, of the plants that Ari examined is less than the mean of the masses, in kg, of the plants that Chihiro examined."
+    ],
+    "correctAnswer": "The mean of the masses, in kg, of the plants that Ari examined is less than the mean of the masses, in kg, of the plants that Chihiro examined.",
+    "explanation": "The additional plant has a mass of $11.7\\text{ kg}$, which is strictly greater than the maximum of Ari's set ($6.2\\text{ kg}$) and therefore strictly greater than the mean of Ari's set. Adding a value greater than the existing mean always pulls the new mean higher: $\\text{Mean}_{\\text{Ari}} < \\text{Mean}_{\\text{Chihiro}}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Mean, Median, Mode, Range",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "Ari examined a set of $86$ plants. The lightest plant had a mass of $2.8\\text{ kg}$ and the heaviest plant had a mass of $6.2\\text{ kg}$. Chihiro examined the same set of $86$ plants and also an additional plant with a mass of $11.7\\text{ kg}$. Which of the following must be true about the set of plants that Ari examined and the set of plants that Chihiro examined?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-004",
+    "question": "An investment account offers a special rate for the first $4$ months, followed by a lower rate. Akeyla opened the account with an initial balance of $$700.00$ with no subsequent deposits or withdrawals. Four months after opening, the balance had increased by $0.6\\%$ of the initial deposit. Six months after opening, the balance increased by an additional $0.1\\%$ of the balance at month $4$. Every $2$ months thereafter, the balance increased by an additional $0.1\\%$ of the balance $2$ months before. Which equation represents the account balance $B(x)$, in dollars, $x$ months after opening, where $x \\ge 4$?",
+    "options": [
+      "B(x) = 704.20(1.001)^{\\frac{x - 4}{2}}",
+      "B(x) = 700.00(1.001)^{\\frac{x - 4}{2}}",
+      "B(x) = 704.20(1.001)^{2(x - 4)}",
+      "B(x) = 700.00(1.001)^{2(x - 4)}"
+    ],
+    "correctAnswer": "B(x) = 704.20(1.001)^{\\frac{x - 4}{2}}",
+    "explanation": "1. At $x = 4$ months, the balance is $700(1 + 0.006) = 700(1.006) = 704.20$.\n2. For $x \\ge 4$, interest of $0.1\\%$ (growth factor $1.001$) is applied once every $2$ months. The elapsed number of 2-month compounding periods after month 4 is $\\frac{x - 4}{2}$.\n3. The balance function is therefore $B(x) = 704.20(1.001)^{\\frac{x - 4}{2}}$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "An investment account offers a special rate for the first $4$ months, followed by a lower rate. Akeyla opened the account with an initial balance of $$700.00$ with no subsequent deposits or withdrawals. Four months after opening, the balance had increased by $0.6\\%$ of the initial deposit. Six months after opening, the balance increased by an additional $0.1\\%$ of the balance at month $4$. Every $2$ months thereafter, the balance increased by an additional $0.1\\%$ of the balance $2$ months before. Which equation represents the account balance $B(x)$, in dollars, $x$ months after opening, where $x \\ge 4$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-005",
+    "question": "In a behavioral study, a group of chipmunks and prairie dogs will be selected from their habitats. Some animals will be assigned to a treatment group and some to a control group. Which of the following is necessary for this study to attempt to establish a cause-and-effect relationship between two variables?",
+    "options": [
+      "The number of chipmunks in the treatment group equals the number of prairie dogs in the treatment group.",
+      "The chipmunks and prairie dogs are randomly assigned to the treatment and control groups.",
+      "The chipmunks and prairie dogs are randomly selected from their respective habitats.",
+      "The average age of animals in the treatment group equals the average age in the control group."
+    ],
+    "correctAnswer": "The chipmunks and prairie dogs are randomly assigned to the treatment and control groups.",
+    "explanation": "In experimental statistics, random selection allows generalizing findings to a population, but **random assignment** to treatment and control conditions is strictly required to establish cause-and-effect (causality) by controlling for confounding variables.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Research organizing(Margin of Error; Outliers)",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "In a behavioral study, a group of chipmunks and prairie dogs will be selected from their habitats. Some animals will be assigned to a treatment group and some to a control group. Which of the following is necessary for this study to attempt to establish a cause-and-effect relationship between two variables?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-006",
+    "question": "A spherical firework shell has a volume of $542.68\\text{ cubic inches}$. To the nearest whole number, what is the volume of this firework shell in cubic centimeters? ($1\\text{ inch} = 2.54\\text{ centimeters}$)",
+    "correctAnswer": "8893",
+    "explanation": "1. The volumetric conversion factor is $(2.54\\text{ cm})^3 = 16.387064\\text{ cm}^3/\\text{in}^3$.\n2. Volume in $\\text{cm}^3 = 542.68 \\times 16.387064 = 8,892.927...\\approx 8,893\\text{ cm}^3$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponents&Radicals",
+    "questionType": "free_response",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A spherical firework shell has a volume of $542.68\\text{ cubic inches}$. To the nearest whole number, what is the volume of this firework shell in cubic centimeters? ($1\\text{ inch} = 2.54\\text{ centimeters}$)",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mth-007",
+    "question": "$$34z^{18} + bz^9 + 30$$\nIn the given expression, $b$ is a positive integer. If $qz^9 + r$ is a factor of the expression, where $q$ and $r$ are positive integers, what is the greatest possible value of $b$?",
+    "correctAnswer": "1021",
+    "explanation": "Let $u = z^9$, transforming the expression to quadratic form: $34u^2 + bu + 30$.\nIf $(qu + r)$ is a factor, then the polynomial factors as $(qu + r)(su + t)$, where $qs = 34$ and $rt = 30$ with positive integer constants $q, r, s, t$.\nExpanding: $b = qt + rs$.\nTo maximize $b$, pair the largest factor of $34$ with the largest factor of $30$: let $q = 34, s = 1$ and $t = 30, r = 1$. Then $b = (34)(30) + (1)(1) = 1,020 + 1 = 1,021$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "free_response",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "$$34z^{18} + bz^9 + 30$$\nIn the given expression, $b$ is a positive integer. If $qz^9 + r$ is a factor of the expression, where $q$ and $r$ are positive integers, what is the greatest possible value of $b$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mth-008",
+    "question": "A right rectangular prism has a base area of $16t\\text{ cm}^2$. The length of the base of the rectangular prism is $\\frac{8}{3}\\text{ cm}$, and the height of the rectangular prism is $9\\text{ cm}$. Which expression represents the total surface area, in $\\text{cm}^2$, of the right rectangular prism?",
+    "options": [
+      "32t + 96",
+      "140t + 48",
+      "800t + 48",
+      "144t"
+    ],
+    "correctAnswer": "140t + 48",
+    "explanation": "1. Base length $l = \\frac{8}{3}$. Since $\\text{Base Area} = l \\times w = 16t$, the width is $w = \\frac{16t}{8/3} = 16t \\times \\frac{3}{8} = 6t$.\n2. Surface area of rectangular prism: $SA = 2(lw) + 2lh + 2wh = 2(16t) + 2(\\frac{8}{3})(9) + 2(6t)(9) = 32t + 48 + 108t = 140t + 48\\text{ cm}^2$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A right rectangular prism has a base area of $16t\\text{ cm}^2$. The length of the base of the rectangular prism is $\\frac{8}{3}\\text{ cm}$, and the height of the rectangular prism is $9\\text{ cm}$. Which expression represents the total surface area, in $\\text{cm}^2$, of the right rectangular prism?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-009",
+    "question": "A bank account was opened with an initial deposit. Over the next several months, regular deposits were made and no withdrawals occurred. The graph of $y = f(x)$ models the balance in dollars $x$ months since opening. The graph passes through the vertical axis at $(0, 10)$ and rises steadily. What was the amount, in dollars, of the initial deposit?",
+    "correctAnswer": "10",
+    "explanation": "The initial deposit corresponds to the account balance at time $x = 0$ months (the $y$-intercept of the graph). From the graph, $f(0) = 10$, so the initial deposit was $$10$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "free_response",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A bank account was opened with an initial deposit. Over the next several months, regular deposits were made and no withdrawals occurred. The graph of $y = f(x)$ models the balance in dollars $x$ months since opening. The graph passes through the vertical axis at $(0, 10)$ and rises steadily. What was the amount, in dollars, of the initial deposit?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mth-010",
+    "question": "The graph models the number of online newsletter subscribers at the end of every six-month period, where $x$ is the number of six-month periods since the end of January 1995 and $0 \\le x \\le 4$. Which statement is the best interpretation of the point $(1, 500)$ in this context?",
+    "options": [
+      "The estimated number of online newsletter subscribers at the end of the first six-month period was 500.",
+      "The estimated number of online newsletter subscribers increased every six months by 500 subscribers.",
+      "The estimated number of online newsletter subscribers at the end of January 1995 was 500.",
+      "The estimated number of online newsletter subscribers at the end of January was 1."
+    ],
+    "correctAnswer": "The estimated number of online newsletter subscribers at the end of the first six-month period was 500.",
+    "explanation": "In the coordinate pair $(x, y) = (1, 500)$, the independent variable $x = 1$ denotes the first six-month period, and the dependent variable $y = 500$ denotes the estimated number of subscribers at that point.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "The graph models the number of online newsletter subscribers at the end of every six-month period, where $x$ is the number of six-month periods since the end of January 1995 and $0 \\le x \\le 4$. Which statement is the best interpretation of the point $(1, 500)$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-011",
+    "question": "A right square pyramid has a height of $9\\text{ cm}$. The length of one edge of the pyramid's square base is $\\frac{7}{3}$ times the height of the pyramid. What is the volume, in $\\text{cm}^3$, of the pyramid?",
+    "correctAnswer": "1323",
+    "explanation": "1. Base edge length $s = \\frac{7}{3}(9) = 21\\text{ cm}$.\n2. Base area $B = s^2 = 21^2 = 441\\text{ cm}^2$.\n3. Pyramid volume $V = \\frac{1}{3} B h = \\frac{1}{3}(441)(9) = 441 \\times 3 = 1,323\\text{ cm}^3$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "free_response",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A right square pyramid has a height of $9\\text{ cm}$. The length of one edge of the pyramid's square base is $\\frac{7}{3}$ times the height of the pyramid. What is the volume, in $\\text{cm}^3$, of the pyramid?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mth-012",
+    "question": "In 2018, approximately $20,000$ kilowatts of solar power capacity was newly installed. In 2019, newly installed capacity increased by $13\\%$ from 2018. If newly installed capacity continues to increase each year by $13\\%$ of the previous year's capacity, which type of function best describes this growth over time?",
+    "options": [
+      "Decreasing exponential",
+      "Increasing exponential",
+      "Decreasing linear",
+      "Increasing linear"
+    ],
+    "correctAnswer": "Increasing exponential",
+    "explanation": "A quantity that grows by a constant percentage over equal time intervals multiplies by a constant factor ($1 + 0.13 = 1.13$) each period, which is the defining characteristic of an increasing exponential function.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "In 2018, approximately $20,000$ kilowatts of solar power capacity was newly installed. In 2019, newly installed capacity increased by $13\\%$ from 2018. If newly installed capacity continues to increase each year by $13\\%$ of the previous year's capacity, which type of function best describes this growth over time?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-013",
+    "question": "An object is launched vertically from ground level. According to a quadratic model, $1.3\\text{ seconds}$ after launch, it reaches its maximum height of $27.04\\text{ feet}$ above ground level. Which equation represents this model, where $f(t)$ is the height in feet $t$ seconds after launch?",
+    "options": [
+      "f(t) = -16(t - 1.3)^2 + 27.04",
+      "f(t) = 16(t - 1.3)^2 + 27.04",
+      "f(t) = -16(t + 1.3)^2 + 27.04",
+      "f(t) = 16(t + 1.3)^2 + 27.04"
+    ],
+    "correctAnswer": "f(t) = -16(t - 1.3)^2 + 27.04",
+    "explanation": "The vertex form of a parabola with vertex $(h, k) = (1.3, 27.04)$ is $f(t) = a(t - 1.3)^2 + 27.04$. Because the vertex represents a maximum height, the parabola opens downward ($a < 0$). At ground level launch ($t = 0$), $f(0) = a(-1.3)^2 + 27.04 = 0 \\implies 1.69a = -27.04 \\implies a = -16$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "An object is launched vertically from ground level. According to a quadratic model, $1.3\\text{ seconds}$ after launch, it reaches its maximum height of $27.04\\text{ feet}$ above ground level. Which equation represents this model, where $f(t)$ is the height in feet $t$ seconds after launch?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-014",
+    "question": "A scatterplot displays the relationship between the weight in pounds of pregnant beavers on April 30 and the number of offspring produced. The data includes the point $(40, 5)$. How many offspring did the $40\\text{-pound}$ beaver produce?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": "5",
+    "explanation": "Reading the coordinate point directly from the scatterplot at weight $x = 40\\text{ pounds}$, the corresponding number of offspring on the vertical axis is $y = 5$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A scatterplot displays the relationship between the weight in pounds of pregnant beavers on April 30 and the number of offspring produced. The data includes the point $(40, 5)$. How many offspring did the $40\\text{-pound}$ beaver produce?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-015",
+    "question": "A space probe uses a square-shaped solar sail. The side length of the solar sail is $8.75w\\text{ meters}$, where $w$ is the width, in meters, of the probe. Which equation gives the area $A$, in square meters, of the solar sail?",
+    "options": [
+      "A = (w + 8.75)(w + 8.75)",
+      "A = (4)(8.75w)",
+      "A = (8.75w)(8.75w)",
+      "A = (\\frac{8.75}{w})(\\frac{8.75}{w})"
+    ],
+    "correctAnswer": "A = (8.75w)(8.75w)",
+    "explanation": "The area of any square with side length $s$ is $A = s \\times s = s^2$. Substituting $s = 8.75w$ gives $A = (8.75w)(8.75w)$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A space probe uses a square-shaped solar sail. The side length of the solar sail is $8.75w\\text{ meters}$, where $w$ is the width, in meters, of the probe. Which equation gives the area $A$, in square meters, of the solar sail?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-016",
+    "question": "Triangle $QPR$ is similar to triangle $STR$. The lengths represented by $ST$, $QP$, $PR$, and $TR$ in the figure are $11$, $18$, $24$, and $30$, respectively. What is the length of side $\\overline{SR}$?",
+    "options": [
+      "\\frac{330}{18}",
+      "\\frac{330}{24}",
+      "\\frac{198}{24}",
+      "\\frac{198}{30}"
+    ],
+    "correctAnswer": "\\frac{330}{18}",
+    "explanation": "In similar triangles $\\triangle QPR \\sim \\triangle STR$, corresponding side ratios are equal: $\\frac{SR}{TR} = \\frac{ST}{QP} \\implies \\frac{SR}{30} = \\frac{11}{18} \\implies SR = \\frac{30 \\times 11}{18} = \\frac{330}{18}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "Triangle $QPR$ is similar to triangle $STR$. The lengths represented by $ST$, $QP$, $PR$, and $TR$ in the figure are $11$, $18$, $24$, and $30$, respectively. What is the length of side $\\overline{SR}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-017",
+    "question": "A moving truck rental company charges $$195$ for the first hour of renting a truck and $$75$ for each additional hour, plus the cost of gas used $w$. Which equation represents the total cost $y$, in dollars, of renting a truck for $x$ hours, where $x \\ge 1$?",
+    "options": [
+      "y = 195 + 75(x - 1) + w",
+      "y = 195 + 75x + w",
+      "y = 195 + 75 + w",
+      "y = 75(x - 1) + w"
+    ],
+    "correctAnswer": "y = 195 + 75(x - 1) + w",
+    "explanation": "The base rental for hour 1 is $$195$. The remaining hours after the first hour are $(x - 1)$, charged at $$75$ each. Adding the gas expense $w$ yields $y = 195 + 75(x - 1) + w$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "A moving truck rental company charges $$195$ for the first hour of renting a truck and $$75$ for each additional hour, plus the cost of gas used $w$. Which equation represents the total cost $y$, in dollars, of renting a truck for $x$ hours, where $x \\ge 1$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-018",
+    "question": "$$f(x) = (x - a)(x - b)$$\nThe function $f$ is defined by the given equation, where $a$ and $b$ are integer constants with $a < b$. If $f(15) > 0$, $f(18) < 0$, and $f(21) > 0$, which of the following could be the value of $a + b$?",
+    "options": [
+      "18",
+      "20",
+      "33",
+      "35"
+    ],
+    "correctAnswer": "35",
+    "explanation": "The parabola opens upward with roots at $a$ and $b$. The function is negative only strictly between the roots: $f(x) < 0 \\implies a < x < b$. Since $f(18) < 0$, $a < 18 < b$.\nBecause $f(15) > 0$, $15 < a < 18$, so the integer $a$ must be $16$ or $17$.\nBecause $f(21) > 0$, $18 < b < 21$, so the integer $b$ must be $19$ or $20$.\nTesting integer pairs: if $a = 16$ and $b = 19$, then $a + b = 35$, which is option D.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "$$f(x) = (x - a)(x - b)$$\nThe function $f$ is defined by the given equation, where $a$ and $b$ are integer constants with $a < b$. If $f(15) > 0$, $f(18) < 0$, and $f(21) > 0$, which of the following could be the value of $a + b$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-019",
+    "question": "$$g(x) = \\frac{1}{11}(5(2)^x + 4)$$\nThe function $g$ is defined by the given equation. For all values of $x$, the value of $g(x)$ is greater than $k$, where $k$ is a constant. What is the greatest possible value of $k$?",
+    "options": [
+      "0",
+      "\\frac{1}{11}",
+      "\\frac{4}{11}",
+      "4"
+    ],
+    "correctAnswer": "\\frac{4}{11}",
+    "explanation": "Since $2^x > 0$ for all real numbers $x$, the term $5(2)^x$ is strictly positive. Therefore, $5(2)^x + 4 > 4$ for all $x$. Multiplying by $\\frac{1}{11}$: $g(x) > \\frac{4}{11}$. As $x \\to -\\infty$, $5(2)^x \\to 0$, so $g(x) \\to \\frac{4}{11}$ as an infimum. The greatest lower bound constant $k$ is $\\frac{4}{11}$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "$$g(x) = \\frac{1}{11}(5(2)^x + 4)$$\nThe function $g$ is defined by the given equation. For all values of $x$, the value of $g(x)$ is greater than $k$, where $k$ is a constant. What is the greatest possible value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mth-020",
+    "question": "The equation $y = 900ax^2$, where $a$ is a constant, gives the estimated breaking strength $y$, in pounds, of a rope with a circumference of $x\\text{ inches}$. If a rope with circumference $2.75\\text{ inches}$ has an estimated breaking strength of $9,528.75\\text{ pounds}$, what is the estimated breaking strength, in pounds, of a rope of this type with a circumference of $5.50\\text{ inches}$?",
+    "correctAnswer": "38115",
+    "explanation": "The breaking strength $y$ is directly proportional to $x^2$. The new circumference $5.50\\text{ inches}$ is exactly twice $2.75\\text{ inches}$ ($5.50 = 2 \\times 2.75$). When $x$ doubles, $x^2$ increases by a factor of $2^2 = 4$. Therefore, the breaking strength is $9,528.75 \\times 4 = 38,115\\text{ pounds}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "free_response",
+    "source": "SAT Math Advanced Questions",
+    "questionText": "The equation $y = 900ax^2$, where $a$ is a constant, gives the estimated breaking strength $y$, in pounds, of a rope with a circumference of $x\\text{ inches}$. If a rope with circumference $2.75\\text{ inches}$ has an estimated breaking strength of $9,528.75\\text{ pounds}$, what is the estimated breaking strength, in pounds, of a rope of this type with a circumference of $5.50\\text{ inches}$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mck-001",
+    "question": "$$\\frac{x^2}{25} = 36$$\nWhat is a positive solution to the given equation?",
+    "options": [
+      "6",
+      "30",
+      "450",
+      "900"
+    ],
+    "correctAnswer": "30",
+    "explanation": "Multiply both sides by $25$: $x^2 = 25 \\times 36 = 900$. Taking the positive square root: $x = \\sqrt{900} = 30$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "$$\\frac{x^2}{25} = 36$$\nWhat is a positive solution to the given equation?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-002",
+    "question": "What percentage of $300$ is $75$?",
+    "options": [
+      "25%",
+      "50%",
+      "75%",
+      "225%"
+    ],
+    "correctAnswer": "25%",
+    "explanation": "Percentage $= \\frac{75}{300} \\times 100\\% = \\frac{1}{4} \\times 100\\% = 25\\%$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "What percentage of $300$ is $75$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-003",
+    "question": "$3$ more than $8$ times a number $x$ is equal to $83$. Which equation represents this situation?",
+    "options": [
+      "(3)(8)x = 83",
+      "8x = 83 + 3",
+      "3x + 8 = 83",
+      "8x + 3 = 83"
+    ],
+    "correctAnswer": "8x + 3 = 83",
+    "explanation": "Eight times the number $x$ is $8x$. Three more than that quantity is $8x + 3$. Setting this equal to $83$ yields $8x + 3 = 83$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "$3$ more than $8$ times a number $x$ is equal to $83$. Which equation represents this situation?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-004",
+    "question": "A group of students voted on five after-school activities. The bar graph shows the number of student votes for each activity: Activity 1 (30), Activity 2 (32), Activity 3 (39), Activity 4 (43), Activity 5 (48). How many students chose activity 3?",
+    "options": [
+      "25",
+      "39",
+      "48",
+      "50"
+    ],
+    "correctAnswer": "39",
+    "explanation": "Reading the vertical axis for Activity 3 shows the bar height is at $39$ students.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "A group of students voted on five after-school activities. The bar graph shows the number of student votes for each activity: Activity 1 (30), Activity 2 (32), Activity 3 (39), Activity 4 (43), Activity 5 (48). How many students chose activity 3?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-005",
+    "question": "Hana deposited a fixed amount into her bank account each month. The function $f(t) = 100 + 25t$ gives the amount, in dollars, in Hana's bank account after $t$ monthly deposits. What is the best interpretation of $25$ in this context?",
+    "options": [
+      "With each monthly deposit, the amount in Hana's bank account increased by $25.",
+      "Before Hana made any monthly deposits, the amount in her bank account was $25.",
+      "After 1 monthly deposit, the amount in Hana's bank account was $25.",
+      "Hana made a total of 25 monthly deposits."
+    ],
+    "correctAnswer": "With each monthly deposit, the amount in Hana's bank account increased by $25.",
+    "explanation": "In the linear function $f(t) = 100 + 25t$, the coefficient $25$ represents the constant rate of change (slope) per unit of $t$, meaning each monthly deposit adds $$25$ to the balance.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "Hana deposited a fixed amount into her bank account each month. The function $f(t) = 100 + 25t$ gives the amount, in dollars, in Hana's bank account after $t$ monthly deposits. What is the best interpretation of $25$ in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-006",
+    "question": "A customer spent $$27$ to purchase oranges at $$3$ per pound. How many pounds of oranges did the customer purchase?",
+    "correctAnswer": "9",
+    "explanation": "Number of pounds $= \\frac{\\text{Total Spent}}{\\text{Price per Pound}} = \\frac{27}{3} = 9\\text{ pounds}$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "free_response",
+    "source": "Mock Functions Practice",
+    "questionText": "A customer spent $$27$ to purchase oranges at $$3$ per pound. How many pounds of oranges did the customer purchase?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mck-007",
+    "question": "For the linear function $f$, the table shows three values of $x$ and their corresponding values of $f(x)$: $(0, 29)$, $(1, 32)$, and $(2, 35)$. Which equation defines $f(x)$?",
+    "options": [
+      "f(x) = 3x + 29",
+      "f(x) = 29x + 32",
+      "f(x) = 35x + 29",
+      "f(x) = 32x + 35"
+    ],
+    "correctAnswer": "f(x) = 3x + 29",
+    "explanation": "The slope is $m = \\frac{32 - 29}{1 - 0} = 3$. The $y$-intercept is at $(0, 29)$, giving $b = 29$. Therefore, $f(x) = 3x + 29$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "For the linear function $f$, the table shows three values of $x$ and their corresponding values of $f(x)$: $(0, 29)$, $(1, 32)$, and $(2, 35)$. Which equation defines $f(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-008",
+    "question": "Nasir bought $9$ storage bins that were each the same price. He used a coupon for $$63$ off the entire purchase. The total cost after using the coupon was $$27$. What was the original price, in dollars, for $1$ storage bin?",
+    "correctAnswer": "10",
+    "explanation": "Let $p$ be the original price per bin: $9p - 63 = 27 \\implies 9p = 90 \\implies p = 10\\text{ dollars}$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "free_response",
+    "source": "Mock Functions Practice",
+    "questionText": "Nasir bought $9$ storage bins that were each the same price. He used a coupon for $$63$ off the entire purchase. The total cost after using the coupon was $$27$. What was the original price, in dollars, for $1$ storage bin?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mck-009",
+    "question": "Right triangles $PQR$ and $STU$ are similar, where $P$ corresponds to $S$, and $\\angle R$ and $\\angle U$ are right angles. If the measure of angle $Q$ is $18^\\circ$, what is the measure of angle $S$?",
+    "options": [
+      "18^\\circ",
+      "72^\\circ",
+      "82^\\circ",
+      "162^\\circ"
+    ],
+    "correctAnswer": "72^\\circ",
+    "explanation": "In right triangle $PQR$, the acute angles sum to $90^\\circ$: $\\angle P = 90^\\circ - 18^\\circ = 72^\\circ$. Because the triangles are similar, corresponding angles are congruent: $\\angle S = \\angle P = 72^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "Right triangles $PQR$ and $STU$ are similar, where $P$ corresponds to $S$, and $\\angle R$ and $\\angle U$ are right angles. If the measure of angle $Q$ is $18^\\circ$, what is the measure of angle $S$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-010",
+    "question": "In the $xy$-plane, a linear graph passes through the intercepts $(0, -8)$ and $(-8, 0)$. What is an equation of the line?",
+    "options": [
+      "y = -2x - 8",
+      "y = x - 8",
+      "y = -x - 8",
+      "y = 2x - 8"
+    ],
+    "correctAnswer": "y = -x - 8",
+    "explanation": "The slope is $m = \\frac{0 - (-8)}{-8 - 0} = \\frac{8}{-8} = -1$. With $y$-intercept $(0, -8)$, the equation is $y = -x - 8$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "In the $xy$-plane, a linear graph passes through the intercepts $(0, -8)$ and $(-8, 0)$. What is an equation of the line?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-011",
+    "question": "If $\\frac{x}{8} = 5$, what is the value of $\\frac{8}{x}$?",
+    "correctAnswer": "1/5",
+    "explanation": "Taking the reciprocal of both sides: $\\frac{8}{x} = \\frac{1}{5}$ (or $0.2$).",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "free_response",
+    "source": "Mock Functions Practice",
+    "questionText": "If $\\frac{x}{8} = 5$, what is the value of $\\frac{8}{x}$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mck-012",
+    "question": "$$24x + y = 48$$\n$$6x + y = 72$$\nThe solution to the given system of equations is $(x, y)$. What is the value of $y$?",
+    "correctAnswer": "80",
+    "explanation": "Subtract the second equation from the first: $(24x - 6x) + (y - y) = 48 - 72 \\implies 18x = -24 \\implies x = -\\frac{4}{3}$.\nSubstitute into the second equation: $6(-\\frac{4}{3}) + y = 72 \\implies -8 + y = 72 \\implies y = 80$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "free_response",
+    "source": "Mock Functions Practice",
+    "questionText": "$$24x + y = 48$$\n$$6x + y = 72$$\nThe solution to the given system of equations is $(x, y)$. What is the value of $y$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-mck-013",
+    "question": "Line $t$ in the $xy$-plane has a slope of $-\\frac{1}{3}$ and passes through the point $(9, 10)$. Which equation defines line $t$?",
+    "options": [
+      "y = 13x - \\frac{1}{3}",
+      "y = 9x + 10",
+      "y = -\\frac{x}{3} + 10",
+      "y = -\\frac{x}{3} + 13"
+    ],
+    "correctAnswer": "y = -\\frac{x}{3} + 13",
+    "explanation": "Using point-slope form: $y - 10 = -\\frac{1}{3}(x - 9) \\implies y - 10 = -\\frac{1}{3}x + 3 \\implies y = -\\frac{x}{3} + 13$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "Line $t$ in the $xy$-plane has a slope of $-\\frac{1}{3}$ and passes through the point $(9, 10)$. Which equation defines line $t$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-014",
+    "question": "The function $f(x) = 206(1.034)^x$ models the value, in dollars, of a certain bank account at the end of each year from 1957 through 1972, where $x$ is the number of years after 1957. Which of the following is the best interpretation of '$f(5)$ is approximately equal to $243$' in this context?",
+    "options": [
+      "The value of the bank account is estimated to be approximately 5 dollars greater in 1962 than in 1957.",
+      "The value of the bank account is estimated to be approximately 243 dollars in 1962.",
+      "The value, in dollars, of the bank account is estimated to be approximately 5 times greater in 1962 than in 1957.",
+      "The value of the bank account is estimated to increase by approximately 243 dollars every 5 years between 1957 and 1972."
+    ],
+    "correctAnswer": "The value of the bank account is estimated to be approximately 243 dollars in 1962.",
+    "explanation": "Here $x = 5$ corresponds to $5$ years after 1957, which is the year $1962$. The function value $f(5) \\approx 243$ indicates the account balance is estimated to be $$243$ in 1962.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "The function $f(x) = 206(1.034)^x$ models the value, in dollars, of a certain bank account at the end of each year from 1957 through 1972, where $x$ is the number of years after 1957. Which of the following is the best interpretation of '$f(5)$ is approximately equal to $243$' in this context?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-015",
+    "question": "For a certain rectangular region, the ratio of its length to its width is $35$ to $10$. If the width of the rectangular region increases by $7\\text{ units}$, how must the length change to maintain this ratio?",
+    "options": [
+      "It must decrease by 24.5 units.",
+      "It must increase by 24.5 units.",
+      "It must decrease by 7 units.",
+      "It must increase by 7 units."
+    ],
+    "correctAnswer": "It must increase by 24.5 units.",
+    "explanation": "The ratio is $\\frac{L}{W} = \\frac{35}{10} = 3.5$, meaning $L = 3.5W$. For any change $\\Delta W$, the required change in length is $\\Delta L = 3.5 \\times \\Delta W = 3.5(7) = 24.5\\text{ units}$ increase.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "For a certain rectangular region, the ratio of its length to its width is $35$ to $10$. If the width of the rectangular region increases by $7\\text{ units}$, how must the length change to maintain this ratio?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-016",
+    "question": "Square P has a side length of $x\\text{ inches}$. Square Q has a perimeter that is $176\\text{ inches}$ greater than the perimeter of square P. The function $f$ gives the area of square Q, in square inches. Which of the following defines $f$?",
+    "options": [
+      "f(x) = (x + 44)^2",
+      "f(x) = (x + 176)^2",
+      "f(x) = (176x + 44)^2",
+      "f(x) = (176x + 176)^2"
+    ],
+    "correctAnswer": "f(x) = (x + 44)^2",
+    "explanation": "1. The perimeter of Square P is $4x$.\n2. The perimeter of Square Q is $4x + 176$.\n3. The side length of Square Q is $\\frac{4x + 176}{4} = x + 44$.\n4. The area of Square Q is $f(x) = (x + 44)^2$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "Square P has a side length of $x\\text{ inches}$. Square Q has a perimeter that is $176\\text{ inches}$ greater than the perimeter of square P. The function $f$ gives the area of square Q, in square inches. Which of the following defines $f$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-017",
+    "question": "$$\\frac{14x}{7y} = 2\\sqrt{w + 19}$$\nThe given equation relates the distinct positive real numbers $w, x,$ and $y$. Which equation correctly expresses $w$ in terms of $x$ and $y$?",
+    "options": [
+      "w = \\sqrt{\\frac{x}{y}} - 19",
+      "w = \\sqrt{\\frac{28x}{14y}} - 19",
+      "w = (\\frac{x}{y})^2 - 19",
+      "w = (\\frac{28x}{14y})^2 - 19"
+    ],
+    "correctAnswer": "w = (\\frac{x}{y})^2 - 19",
+    "explanation": "Simplify the left side: $\\frac{14x}{7y} = \\frac{2x}{y}$. Then $\\frac{2x}{y} = 2\\sqrt{w + 19} \\implies \\frac{x}{y} = \\sqrt{w + 19}$. Squaring both sides: $(\\frac{x}{y})^2 = w + 19 \\implies w = (\\frac{x}{y})^2 - 19$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponents&Radicals",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "$$\\frac{14x}{7y} = 2\\sqrt{w + 19}$$\nThe given equation relates the distinct positive real numbers $w, x,$ and $y$. Which equation correctly expresses $w$ in terms of $x$ and $y$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-018",
+    "question": "The expression $4x^2 + bx - 45$, where $b$ is a constant, can be rewritten as $(hx + k)(x + j)$, where $h, k,$ and $j$ are integer constants. Which of the following must be an integer?",
+    "options": [
+      "\\frac{b}{h}",
+      "\\frac{b}{k}",
+      "\\frac{45}{h}",
+      "\\frac{45}{k}"
+    ],
+    "correctAnswer": "\\frac{45}{k}",
+    "explanation": "Expanding the factored expression: $(hx + k)(x + j) = hx^2 + (hj + k)x + kj$.\nMatching the constant terms: $kj = -45$.\nSince $j$ is an integer, $-45 = k \\cdot j$ implies $k$ is a factor of $-45$, so $\\frac{-45}{k}$ (and therefore $\\frac{45}{k}$) must be an integer.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "The expression $4x^2 + bx - 45$, where $b$ is a constant, can be rewritten as $(hx + k)(x + j)$, where $h, k,$ and $j$ are integer constants. Which of the following must be an integer?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-019",
+    "question": "$$y = 2x^2 - 21x + 64$$\n$$y = 3x + a$$\nIn the given system of equations, $a$ is a constant. The graphs of the equations intersect at exactly one point, $(x, y)$, in the $xy$-plane. What is the value of $x$?",
+    "options": [
+      "-8",
+      "-6",
+      "6",
+      "8"
+    ],
+    "correctAnswer": "6",
+    "explanation": "Set the equations equal: $2x^2 - 21x + 64 = 3x + a \\implies 2x^2 - 24x + (64 - a) = 0$.\nFor a single intersection point, the quadratic must have a double root (discriminant $= 0$). In any quadratic $Ax^2 + Bx + C = 0$ with a double root, that root is located at $x = -\\frac{B}{2A} = -\\frac{-24}{2(2)} = \\frac{24}{4} = 6$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "Mock Functions Practice",
+    "questionText": "$$y = 2x^2 - 21x + 64$$\n$$y = 3x + a$$\nIn the given system of equations, $a$ is a constant. The graphs of the equations intersect at exactly one point, $(x, y)$, in the $xy$-plane. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-mck-020",
+    "question": "Function $f$ is defined by $f(x) = -a^x + b$, where $a$ and $b$ are constants. In the $xy$-plane, the graph of $y = f(x) - 15$ has a $y$-intercept at $(0, -\\frac{99}{7})$. The product of $a$ and $b$ is $\\frac{65}{7}$. What is the value of $a$?",
+    "correctAnswer": "5",
+    "explanation": "1. The $y$-intercept of $y = f(x) - 15$ occurs at $x = 0$:\n$$y = f(0) - 15 = (-a^0 + b) - 15 = (-1 + b) - 15 = b - 16$$\n2. Setting $b - 16 = -\\frac{99}{7} \\implies b = 16 - \\frac{99}{7} = \\frac{112 - 99}{7} = \\frac{13}{7}$.\n3. We are given $a \\cdot b = \\frac{65}{7} \\implies a \\times \\frac{13}{7} = \\frac{65}{7} \\implies a = \\frac{65}{13} = 5$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Exponential Functions",
+    "questionType": "free_response",
+    "source": "Mock Functions Practice",
+    "questionText": "Function $f$ is defined by $f(x) = -a^x + b$, where $a$ and $b$ are constants. In the $xy$-plane, the graph of $y = f(x) - 15$ has a $y$-intercept at $(0, -\\frac{99}{7})$. The product of $a$ and $b$ is $\\frac{65}{7}$. What is the value of $a$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-new-001",
+    "question": "Which of the following expressions cannot be equal to $0$ for any real value of $x$?",
+    "options": [
+      "x^2 - 2",
+      "x^2 + 1",
+      "1 - x^2",
+      "2 - x^2"
+    ],
+    "correctAnswer": "x^2 + 1",
+    "explanation": "For any real number $x$, $x^2 \\ge 0$, which implies $x^2 + 1 \\ge 1 > 0$. Therefore, $x^2 + 1$ can never equal $0$. The other expressions equal zero when $x = \\pm\\sqrt{2}$ or $x = \\pm 1$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "Which of the following expressions cannot be equal to $0$ for any real value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-002",
+    "question": "$$f(x) = mx + b$$\nIn the linear function above, $m$ and $b$ are constants. If $\\frac{f(5) - f(2)}{3} = 2$, what is the value of $m$?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "2",
+    "explanation": "The expression $\\frac{f(5) - f(2)}{5 - 2} = \\frac{f(5) - f(2)}{3}$ represents the slope of the linear function $f(x)$. Since the slope of $f(x) = mx + b$ is $m$, we have $m = 2$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "$$f(x) = mx + b$$\nIn the linear function above, $m$ and $b$ are constants. If $\\frac{f(5) - f(2)}{3} = 2$, what is the value of $m$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-003",
+    "question": "The line passing through the points $(a, 3)$ and $(b, -2)$ is parallel to the graph of $y = \\frac{1}{2}x - 10$. What is the value of $a - b$?",
+    "options": [
+      "5",
+      "7",
+      "8",
+      "10"
+    ],
+    "correctAnswer": "10",
+    "explanation": "Parallel lines have equal slopes: $m = \\frac{1}{2}$. The slope between $(a, 3)$ and $(b, -2)$ is $\\frac{3 - (-2)}{a - b} = \\frac{5}{a - b} = \\frac{1}{2} \\implies a - b = 10$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "The line passing through the points $(a, 3)$ and $(b, -2)$ is parallel to the graph of $y = \\frac{1}{2}x - 10$. What is the value of $a - b$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-004",
+    "question": "$$y = mx - \\frac{2}{5}$$\n$$2x + 3y = 4$$\nIn the system of equations, $m$ is a constant. If the system has no solution, what is the value of $m$?",
+    "options": [
+      "-\\frac{2}{3}",
+      "-\\frac{3}{2}",
+      "\\frac{2}{3}",
+      "\\frac{3}{2}"
+    ],
+    "correctAnswer": "-\\frac{2}{3}",
+    "explanation": "A linear system has no solution when the lines are parallel (equal slopes, distinct $y$-intercepts). Writing the second equation in slope-intercept form: $3y = -2x + 4 \\implies y = -\\frac{2}{3}x + \\frac{4}{3}$. For the lines to be parallel, $m = -\\frac{2}{3}$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "$$y = mx - \\frac{2}{5}$$\n$$2x + 3y = 4$$\nIn the system of equations, $m$ is a constant. If the system has no solution, what is the value of $m$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-005",
+    "question": "If $f(x) = (x - 1)^2 - (x - 1) - 1$, which of the following expressions is equal to $f(1 - x)$?",
+    "options": [
+      "f(1 - x) = (x + 1)^2 - (x + 1) - 1",
+      "f(1 - x) = (1 - x)^2 - (1 - x) - 1",
+      "f(1 - x) = x^2 - x - 1",
+      "f(1 - x) = x^2 + x - 1"
+    ],
+    "correctAnswer": "f(1 - x) = x^2 + x - 1",
+    "explanation": "Substitute $(1 - x)$ for $x$ in the definition of $f(x)$:\n$f(1 - x) = [(1 - x) - 1]^2 - [(1 - x) - 1] - 1 = (-x)^2 - (-x) - 1 = x^2 + x - 1$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "If $f(x) = (x - 1)^2 - (x - 1) - 1$, which of the following expressions is equal to $f(1 - x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-006",
+    "question": "The graph of the function $f(x) = -x^2 + 16$ is shown in the $xy$-plane with $x$-intercepts at $A$ and $C$ and vertex at $B$. What is the area of triangle $ABC$?",
+    "options": [
+      "16",
+      "32",
+      "64",
+      "128"
+    ],
+    "correctAnswer": "64",
+    "explanation": "1. The $x$-intercepts occur where $-x^2 + 16 = 0 \\implies x^2 = 16 \\implies x = \\pm 4$. The base $AC = 4 - (-4) = 8$.\n2. The vertex occurs at $x = 0$, giving height $h = f(0) = 16$.\n3. Area of $\\triangle ABC = \\frac{1}{2} b h = \\frac{1}{2}(8)(16) = 64$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "The graph of the function $f(x) = -x^2 + 16$ is shown in the $xy$-plane with $x$-intercepts at $A$ and $C$ and vertex at $B$. What is the area of triangle $ABC$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-007",
+    "question": "If $\\frac{a - 2b}{b} = \\frac{2}{3}$, which of the following is equal to $\\frac{a}{b}$?",
+    "options": [
+      "\\frac{2}{3}",
+      "\\frac{4}{3}",
+      "\\frac{5}{3}",
+      "\\frac{8}{3}"
+    ],
+    "correctAnswer": "\\frac{8}{3}",
+    "explanation": "Split the fraction: $\\frac{a}{b} - \\frac{2b}{b} = \\frac{a}{b} - 2 = \\frac{2}{3} \\implies \\frac{a}{b} = 2 + \\frac{2}{3} = \\frac{8}{3}$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "If $\\frac{a - 2b}{b} = \\frac{2}{3}$, which of the following is equal to $\\frac{a}{b}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-008",
+    "question": "$$y = m\\sqrt{x}$$\n$$y = mx - k$$\nIn the system of equations, $m$ and $k$ are constants. If $(4, 16)$ is a solution to the system of equations, what is the value of $k$?",
+    "options": [
+      "4",
+      "8",
+      "12",
+      "16"
+    ],
+    "correctAnswer": "16",
+    "explanation": "Substitute $(4, 16)$ into the first equation: $16 = m\\sqrt{4} = 2m \\implies m = 8$.\nSubstitute $m = 8$ and $(4, 16)$ into the second equation: $16 = (8)(4) - k = 32 - k \\implies k = 32 - 16 = 16$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Exponents&Radicals",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "$$y = m\\sqrt{x}$$\n$$y = mx - k$$\nIn the system of equations, $m$ and $k$ are constants. If $(4, 16)$ is a solution to the system of equations, what is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-009",
+    "question": "The graph of $f(x) = (x - 10)^2$ and rectangle $MATH$ are shown in the $xy$-plane. The base of the rectangle lies on the $x$-axis from $M$ to $H$, and vertices $A$ and $T$ lie on the parabola with $MA = 25$. What is the length of $\\overline{AT}$?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "correctAnswer": "10",
+    "explanation": "Since $MA = 25$, the $y$-value of vertices $A$ and $T$ on the parabola is $25$.\nSolve $(x - 10)^2 = 25 \\implies x - 10 = \\pm 5 \\implies x = 5$ or $x = 15$.\nThe length of the horizontal segment $\\overline{AT}$ is $15 - 5 = 10$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "The graph of $f(x) = (x - 10)^2$ and rectangle $MATH$ are shown in the $xy$-plane. The base of the rectangle lies on the $x$-axis from $M$ to $H$, and vertices $A$ and $T$ lie on the parabola with $MA = 25$. What is the length of $\\overline{AT}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-010",
+    "question": "Which of the following linear equations has no solution?",
+    "options": [
+      "10x - 5x = 3",
+      "7x = 9x - 2x + 10",
+      "10x - 6 = 8x + 2x - 6",
+      "10x - 6 = 5x + 4x - 1"
+    ],
+    "correctAnswer": "7x = 9x - 2x + 10",
+    "explanation": "In option B, simplifying the right side gives $7x = 7x + 10$. Subtracting $7x$ from both sides results in $0 = 10$, a false statement with no values of $x$ satisfying the equation.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "Which of the following linear equations has no solution?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-011",
+    "question": "$$f(x) = k(x + 4)(x - 10)$$\nIn the quadratic function $f$ above, $k$ is a constant. The graph of the function in the $xy$-plane is a parabola with vertex $(a, b)$. If $b = -7$, which of the following is equal to $k$?",
+    "options": [
+      "\\frac{1}{49}",
+      "\\frac{1}{7}",
+      "7",
+      "49"
+    ],
+    "correctAnswer": "\\frac{1}{7}",
+    "explanation": "The roots of the parabola are $x = -4$ and $x = 10$. The line of symmetry and $x$-coordinate of the vertex is the midpoint: $a = \\frac{-4 + 10}{2} = 3$.\nThe $y$-coordinate of the vertex is $b = f(3) = k(3 + 4)(3 - 10) = k(7)(-7) = -49k$.\nGiven $b = -7$: $-49k = -7 \\implies k = \\frac{-7}{-49} = \\frac{1}{7}$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "$$f(x) = k(x + 4)(x - 10)$$\nIn the quadratic function $f$ above, $k$ is a constant. The graph of the function in the $xy$-plane is a parabola with vertex $(a, b)$. If $b = -7$, which of the following is equal to $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-012",
+    "question": "In the figure, line $l$ and line $m$ are parallel and intersected by transversals forming a triangle with interior angles and exterior angle $b$. Which of the following relationships must be true?",
+    "options": [
+      "a + b + c = 180",
+      "d + e = b",
+      "b + e = c",
+      "a + b = 180"
+    ],
+    "correctAnswer": "d + e = b",
+    "explanation": "By the Exterior Angle Theorem, the measure of an exterior angle of a triangle is equal to the sum of the measures of its two remote interior angles. In this configuration, $b$ is exterior to the triangle with remote interior angles $d$ and $e$, so $d + e = b$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "In the figure, line $l$ and line $m$ are parallel and intersected by transversals forming a triangle with interior angles and exterior angle $b$. Which of the following relationships must be true?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-013",
+    "question": "$$\\frac{5x^2 + kx + 1}{x - 1} = ax + 1 + \\frac{2}{x - 1}$$\nThe equation above is true for all values of $x$ except $1$, where $k$ and $a$ are constants. What is the value of $k$?",
+    "options": [
+      "-4",
+      "-2",
+      "2",
+      "4"
+    ],
+    "correctAnswer": "-4",
+    "explanation": "Multiply both sides by $(x - 1)$:\n$$5x^2 + kx + 1 = (ax + 1)(x - 1) + 2$$\nExpanding the right side: $ax^2 - ax + x - 1 + 2 = ax^2 + (1 - a)x + 1$.\nMatching coefficients of $x^2$: $a = 5$.\nMatching coefficients of $x$: $k = 1 - a = 1 - 5 = -4$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Polynomials",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "$$\\frac{5x^2 + kx + 1}{x - 1} = ax + 1 + \\frac{2}{x - 1}$$\nThe equation above is true for all values of $x$ except $1$, where $k$ and $a$ are constants. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-014",
+    "question": "What are the solutions to $4(x - 2)^2 - 1 = 5$?",
+    "options": [
+      "x = 2 \\pm \\frac{\\sqrt{6}}{4}",
+      "x = 2 \\pm \\frac{\\sqrt{6}}{2}",
+      "x = \\sqrt{2} \\pm \\frac{\\sqrt{6}}{2}",
+      "x = 2 \\pm \\sqrt{6}"
+    ],
+    "correctAnswer": "x = 2 \\pm \\frac{\\sqrt{6}}{2}",
+    "explanation": "Add $1$ to both sides: $4(x - 2)^2 = 6 \\implies (x - 2)^2 = \\frac{6}{4}$.\nTaking square roots: $x - 2 = \\pm \\sqrt{\\frac{6}{4}} = \\pm \\frac{\\sqrt{6}}{2}$.\nAdding $2$: $x = 2 \\pm \\frac{\\sqrt{6}}{2}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Quadratics",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "What are the solutions to $4(x - 2)^2 - 1 = 5$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-new-015",
+    "question": "A school survey recorded responses on a proposal: $60$ juniors voted For, the total number of students who voted For was $130$, and there are $300$ total students in the school. If $40\\%$ of juniors voted Against, how many seniors are in the school?",
+    "options": [
+      "100",
+      "120",
+      "170",
+      "200"
+    ],
+    "correctAnswer": "200",
+    "explanation": "1. If $40\\%$ of juniors voted Against, then $100\\% - 40\\% = 60\\%$ of juniors voted For.\n2. We know $60$ juniors voted For: $0.60 \\times \\text{Total Juniors} = 60 \\implies \\text{Total Juniors} = 100$.\n3. Since the school has $300$ total students (juniors and seniors): $\\text{Total Seniors} = 300 - 100 = 200$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Functions&Function Notation",
+    "questionType": "multiple_choice",
+    "source": "SAT New Functions Test",
+    "questionText": "A school survey recorded responses on a proposal: $60$ juniors voted For, the total number of students who voted For was $130$, and there are $300$ total students in the school. If $40\\%$ of juniors voted Against, how many seniors are in the school?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-001",
+    "question": "In the given equation, $k$ is a constant:\n$$\\frac{x + 1}{5x^2} = \\frac{k}{x}$$\nThe solution to the given equation is $\\frac{1}{174}$. What is the value of $k$?",
+    "correctAnswer": "35",
+    "explanation": "For $x \\neq 0$, multiply both sides of the equation by $x$:\n$$\\frac{x + 1}{5x} = k$$\n\nSubstitute $x = \\frac{1}{174}$ into the left side:\n$$x + 1 = \\frac{1}{174} + 1 = \\frac{175}{174}$$\n$$5x = 5\\left(\\frac{1}{174}\\right) = \\frac{5}{174}$$\n\nNow divide:\n$$k = \\frac{\\frac{175}{174}}{\\frac{5}{174}} = \\frac{175}{5} = 35$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "In the given equation, $k$ is a constant:\n$$\\frac{x + 1}{5x^2} = \\frac{k}{x}$$\nThe solution to the given equation is $\\frac{1}{174}$. What is the value of $k$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-002",
+    "question": "The expression $-16(5x - 3)^2 + 4(5x - 4)^2$ can be rewritten in the form $\\frac{a}{6}x^2 + \\frac{b}{6}x + \\frac{c}{6}$, where $a, b,$ and $c$ are constants. What is the value of $a + b + c$?",
+    "options": [
+      "-360",
+      "-180",
+      "-60",
+      "-10"
+    ],
+    "correctAnswer": "-360",
+    "explanation": "Notice that setting $x = 1$ in the polynomial expression yields:\n$$\\frac{a}{6}(1)^2 + \\frac{b}{6}(1) + \\frac{c}{6} = \\frac{a + b + c}{6}$$\n\nNow evaluate the original expression at $x = 1$:\n$$-16(5(1) - 3)^2 + 4(5(1) - 4)^2 = -16(2)^2 + 4(1)^2 = -16(4) + 4(1) = -64 + 4 = -60$$\n\nEquating the two expressions:\n$$\\frac{a + b + c}{6} = -60 \\implies a + b + c = -60 \\times 6 = -360$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Equivalent expressions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The expression $-16(5x - 3)^2 + 4(5x - 4)^2$ can be rewritten in the form $\\frac{a}{6}x^2 + \\frac{b}{6}x + \\frac{c}{6}$, where $a, b,$ and $c$ are constants. What is the value of $a + b + c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-003",
+    "question": "The function $f$ is defined by $f(x) = 14x^2 - 35x + 7$. For what value of $x$ does $f(x)$ reach its minimum?",
+    "options": [
+      "1.25",
+      "1.75",
+      "7",
+      "35"
+    ],
+    "correctAnswer": "1.25",
+    "explanation": "The graph of $f(x) = ax^2 + bx + c$ is an upward-opening parabola (since $a = 14 > 0$). Its minimum occurs at the vertex:\n$$x = -\\frac{b}{2a} = -\\frac{-35}{2(14)} = \\frac{35}{28} = \\frac{5}{4} = 1.25$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is defined by $f(x) = 14x^2 - 35x + 7$. For what value of $x$ does $f(x)$ reach its minimum?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-004",
+    "question": "The function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants and $1 < a < 4$. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(11, 0)$ and $(-5, 0)$. If $a$ is an integer, which of the following could be the value of $a + b$?",
+    "options": [
+      "-15",
+      "-5",
+      "5",
+      "15"
+    ],
+    "correctAnswer": "-15",
+    "explanation": "Because $(11, 0)$ and $(-5, 0)$ are $x$-intercepts, $f(x)$ factors as:\n$$f(x) = a(x - 11)(x + 5) = a(x^2 - 6x - 55) = ax^2 - 6ax - 55a$$\n\nThus, $b = -6a$. The sum is:\n$$a + b = a + (-6a) = -5a$$\n\nGiven that $a$ is an integer and $1 < a < 4$, the possible values for $a$ are $2$ and $3$:\n- If $a = 2$: $a + b = -5(2) = -10$\n- If $a = 3$: $a + b = -5(3) = -15$\n\nAmong the choices, $-15$ is the valid value.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants and $1 < a < 4$. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(11, 0)$ and $(-5, 0)$. If $a$ is an integer, which of the following could be the value of $a + b$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-005",
+    "question": "The function $f$ is a quadratic function. In the $xy$-plane, the graph of $y = f(x)$ has a vertex at $(1, 9)$ and passes through the points $(2, 33)$ and $(-1, 105)$. What is the value of $f(-2) - f(0)$?",
+    "options": [
+      "81",
+      "129",
+      "192",
+      "225"
+    ],
+    "correctAnswer": "192",
+    "explanation": "1. In vertex form, $f(x) = a(x - 1)^2 + 9$.\n2. Using point $(2, 33)$:\n$$f(2) = a(2 - 1)^2 + 9 = a + 9 = 33 \\implies a = 24$$\nVerify with point $(-1, 105)$:\n$$f(-1) = 24(-1 - 1)^2 + 9 = 24(4) + 9 = 105 \\quad \\text{(Matches!)}$$\n\n3. Calculate $f(0)$ and $f(-2)$:\n$$f(0) = 24(0 - 1)^2 + 9 = 24(1) + 9 = 33$$\n$$f(-2) = 24(-2 - 1)^2 + 9 = 24(9) + 9 = 216 + 9 = 225$$\n\n4. Difference:\n$$f(-2) - f(0) = 225 - 33 = 192$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is a quadratic function. In the $xy$-plane, the graph of $y = f(x)$ has a vertex at $(1, 9)$ and passes through the points $(2, 33)$ and $(-1, 105)$. What is the value of $f(-2) - f(0)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-006",
+    "question": "Which of the following expressions is (are) a factor of $4x^2 + 31x - 45$?\nI. $x - 9$\nII. $4x - 5$",
+    "options": [
+      "I only",
+      "II only",
+      "I and II",
+      "Neither I nor II"
+    ],
+    "correctAnswer": "II only",
+    "explanation": "Factor $4x^2 + 31x - 45$ by finding factors of $4 \\times (-45) = -180$ that sum to $31$:\n$$36 \\times (-5) = -180 \\quad \\text{and} \\quad 36 + (-5) = 31$$\n\nRewrite the middle term:\n$$4x^2 + 36x - 5x - 45 = 4x(x + 9) - 5(x + 9) = (4x - 5)(x + 9)$$\n\n- Expression I is $x - 9$, which is not a factor (the factor is $x + 9$).\n- Expression II is $4x - 5$, which is indeed a factor.\n\nTherefore, II only is correct.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Equivalent expressions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "Which of the following expressions is (are) a factor of $4x^2 + 31x - 45$?\nI. $x - 9$\nII. $4x - 5$",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-007",
+    "question": "The functions $f$ and $g$ are defined by $f(x) = x + 4$ and $g(x) = 3x^2 - rx + 48$, where $r$ is a constant. If $f(x) \\cdot g(x) = 3x^3 + 192$, what is the value of $r$?",
+    "correctAnswer": "12",
+    "explanation": "Expand the product $f(x) \\cdot g(x)$:\n$$(x + 4)(3x^2 - rx + 48) = 3x^3 - rx^2 + 48x + 12x^2 - 4rx + 192$$\n$$= 3x^3 + (12 - r)x^2 + (48 - 4r)x + 192$$\n\nFor this polynomial to equal $3x^3 + 192$ for all $x$, the coefficients of $x^2$ and $x$ must be $0$:\n$$12 - r = 0 \\implies r = 12$$\nCheck: $48 - 4(12) = 48 - 48 = 0$. Both conditions are satisfied when $r = 12$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Equivalent expressions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The functions $f$ and $g$ are defined by $f(x) = x + 4$ and $g(x) = 3x^2 - rx + 48$, where $r$ is a constant. If $f(x) \\cdot g(x) = 3x^3 + 192$, what is the value of $r$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-008",
+    "question": "In the given system of equations, $a$ is a constant:\n$$y = 2x^2 - 19x + 40$$\n$$y = x + a$$\nThe graph of the equations in the $xy$-plane intersect at exactly one point $(x, y)$. What is the value of $x$?",
+    "options": [
+      "-10",
+      "-5",
+      "5",
+      "10"
+    ],
+    "correctAnswer": "5",
+    "explanation": "Set the two equations equal to find intersection points:\n$$2x^2 - 19x + 40 = x + a$$\n$$2x^2 - 20x + (40 - a) = 0$$\n\nFor a quadratic equation to have exactly one intersection point (tangency), the discriminant must be zero, meaning the quadratic is a perfect square. The $x$-coordinate of the single solution is simply the vertex of this quadratic:\n$$x = -\\frac{b}{2A} = -\\frac{-20}{2(2)} = \\frac{20}{4} = 5$$",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "In the given system of equations, $a$ is a constant:\n$$y = 2x^2 - 19x + 40$$\n$$y = x + a$$\nThe graph of the equations in the $xy$-plane intersect at exactly one point $(x, y)$. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-009",
+    "question": "The solutions to the equation $x^2 + 5x = 47$ can be written in the form $\\frac{m + \\sqrt{q}}{2}$ and $\\frac{m - \\sqrt{q}}{2}$, where $m$ and $q$ are integers. What is the value of $m + q$?",
+    "correctAnswer": "208",
+    "explanation": "Rewrite the equation in standard quadratic form:\n$$x^2 + 5x - 47 = 0$$\n\nApply the quadratic formula with $a = 1, b = 5, c = -47$:\n$$x = \\frac{-5 \\pm \\sqrt{5^2 - 4(1)(-47)}}{2(1)} = \\frac{-5 \\pm \\sqrt{25 + 188}}{2} = \\frac{-5 \\pm \\sqrt{213}}{2}$$\n\nComparing with $\\frac{m \\pm \\sqrt{q}}{2}$:\n- $m = -5$\n- $q = 213$\n\nThus:\n$$m + q = -5 + 213 = 208$$",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The solutions to the equation $x^2 + 5x = 47$ can be written in the form $\\frac{m + \\sqrt{q}}{2}$ and $\\frac{m - \\sqrt{q}}{2}$, where $m$ and $q$ are integers. What is the value of $m + q$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-009b",
+    "question": "The function $r$ is defined by $r(t) = 55t - 2t^2$. The function $s$ is defined by $s(t) = r(t) + 1$. Which expression represents the maximum value of $s(t)$?",
+    "options": [
+      "1 + (\\frac{55}{2})^2",
+      "1 + 2(\\frac{55}{4})^2",
+      "1 - 2(\\frac{55}{4})^2",
+      "1 - (\\frac{55}{2})^2"
+    ],
+    "correctAnswer": "1 + 2(\\frac{55}{4})^2",
+    "explanation": "We complete the square on $s(t) = -2t^2 + 55t + 1$:\n$$s(t) = -2\\left(t^2 - \\frac{55}{2}t\\right) + 1$$\n\nTake half of $\\frac{55}{2}$, which is $\\frac{55}{4}$, and square it:\n$$s(t) = -2\\left(t - \\frac{55}{4}\\right)^2 + 2\\left(\\frac{55}{4}\\right)^2 + 1$$\n$$s(t) = 1 + 2\\left(\\frac{55}{4}\\right)^2 - 2\\left(t - \\frac{55}{4}\\right)^2$$\n\nSince $-2\\left(t - \\frac{55}{4}\\right)^2 \\le 0$, the maximum value is $1 + 2\\left(\\frac{55}{4}\\right)^2$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $r$ is defined by $r(t) = 55t - 2t^2$. The function $s$ is defined by $s(t) = r(t) + 1$. Which expression represents the maximum value of $s(t)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-010",
+    "question": "In the equation $3w^2 + 11w - c = 0$, $c$ is a constant. A solution to the equation is $\\frac{-11 + \\sqrt{433}}{6}$. What is the value of $c$?",
+    "correctAnswer": "26",
+    "explanation": "By the quadratic formula for $3w^2 + 11w - c = 0$:\n$$w = \\frac{-11 \\pm \\sqrt{11^2 - 4(3)(-c)}}{2(3)} = \\frac{-11 \\pm \\sqrt{121 + 12c}}{6}$$\n\nEquating the radicand to $433$:\n$$121 + 12c = 433$$\n$$12c = 433 - 121 = 312$$\n$$c = \\frac{312}{12} = 26$$",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "In the equation $3w^2 + 11w - c = 0$, $c$ is a constant. A solution to the equation is $\\frac{-11 + \\sqrt{433}}{6}$. What is the value of $c$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-011",
+    "question": "One solution to the equation $x^2 - 2x - 18 = 0$ can be written as $1 + \\sqrt{k}$, where $k$ is a constant. What is the value of $k$?",
+    "options": [
+      "17",
+      "19",
+      "38",
+      "76"
+    ],
+    "correctAnswer": "19",
+    "explanation": "Solve $x^2 - 2x - 18 = 0$ by completing the square:\n$$x^2 - 2x = 18$$\n$$(x - 1)^2 = 18 + 1 = 19$$\n$$x = 1 \\pm \\sqrt{19}$$\n\nComparing with $1 + \\sqrt{k}$, we have $k = 19$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "One solution to the equation $x^2 - 2x - 18 = 0$ can be written as $1 + \\sqrt{k}$, where $k$ is a constant. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-012",
+    "question": "The function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(10, 0)$ and $(-5, 0)$. If $a$ is an integer greater than $1$, which of the following could be the value of $a + b$?",
+    "options": [
+      "-8",
+      "-4",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "-8",
+    "explanation": "Since $x = 10$ and $x = -5$ are zeros:\n$$f(x) = a(x - 10)(x + 5) = a(x^2 - 5x - 50) = ax^2 - 5ax - 50a$$\n\nThus, $b = -5a$. The sum $a + b$ is:\n$$a + b = a + (-5a) = -4a$$\n\nGiven that $a$ is an integer greater than $1$ ($a \\ge 2$):\n- If $a = 2$, $a + b = -4(2) = -8$.\n\nAmong the given options, $-8$ is the only possible value.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is defined by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants. The graph of $y = f(x)$ in the $xy$-plane passes through the points $(10, 0)$ and $(-5, 0)$. If $a$ is an integer greater than $1$, which of the following could be the value of $a + b$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-013",
+    "question": "A quadratic function models the height, in feet, of an object above the ground in terms of time, $t$, in seconds after launch. The object was launched from a height of $0\\text{ feet}$ and reached its maximum height of $1,600\\text{ feet}$ $10\\text{ seconds}$ after launch. Based on the model, what was the height, in feet, of the object $7\\text{ seconds}$ after launch?",
+    "correctAnswer": "1456",
+    "explanation": "1. The vertex of the parabolic trajectory is $(10, 1,600)$, so in vertex form:\n$$h(t) = a(t - 10)^2 + 1,600$$\n\n2. The object was launched from ground level at $t = 0$ ($h(0) = 0$):\n$$a(0 - 10)^2 + 1,600 = 0 \\implies 100a = -1,600 \\implies a = -16$$\n\n3. Thus, the model is $h(t) = -16(t - 10)^2 + 1,600$.\nAt $t = 7\\text{ seconds}$:\n$$h(7) = -16(7 - 10)^2 + 1,600 = -16(-3)^2 + 1,600 = -16(9) + 1,600 = -144 + 1,600 = 1,456\\text{ feet}$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "A quadratic function models the height, in feet, of an object above the ground in terms of time, $t$, in seconds after launch. The object was launched from a height of $0\\text{ feet}$ and reached its maximum height of $1,600\\text{ feet}$ $10\\text{ seconds}$ after launch. Based on the model, what was the height, in feet, of the object $7\\text{ seconds}$ after launch?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-014",
+    "question": "Function $f$ is a quadratic function where $f(-20) = 0$ and $f(-4) = 0$. The graph of $y = f(x)$ in the $xy$-plane has a vertex at $(r, -64)$. What is the value of $r$?",
+    "correctAnswer": "-12",
+    "explanation": "The axis of symmetry of any quadratic function passes through the midpoint of its $x$-intercepts:\n$$r = \\frac{-20 + (-4)}{2} = \\frac{-24}{2} = -12$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "Function $f$ is a quadratic function where $f(-20) = 0$ and $f(-4) = 0$. The graph of $y = f(x)$ in the $xy$-plane has a vertex at $(r, -64)$. What is the value of $r$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-015",
+    "question": "The function $f$ is defined by $f(x) = 5x^2 + 60x + 181$. The function $g$ is defined by $g(x) = f(x + 8)$. What is the minimum value of $g(x)$?",
+    "options": [
+      "-14",
+      "-6",
+      "1",
+      "9"
+    ],
+    "correctAnswer": "1",
+    "explanation": "The transformation $g(x) = f(x + 8)$ is a horizontal shift of the graph of $f(x)$ by $8$ units to the left. Horizontal shifts do not change the $y$-values (outputs) of the function, so the minimum value of $g(x)$ is identical to the minimum value of $f(x)$.\n\nFor $f(x) = 5x^2 + 60x + 181$, the vertex occurs at:\n$$x = -\\frac{60}{2(5)} = -6$$\n\nEvaluate $f(-6)$:\n$$f(-6) = 5(-6)^2 + 60(-6) + 181 = 5(36) - 360 + 181 = 180 - 360 + 181 = 1$$\n\nThus, the minimum value of $g(x)$ is $1$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is defined by $f(x) = 5x^2 + 60x + 181$. The function $g$ is defined by $g(x) = f(x + 8)$. What is the minimum value of $g(x)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-016",
+    "question": "In the $xy$-plane, a parabola has a vertex at $(7, 12)$ and intersects the $x$-axis at two distinct points. If the equation of the parabola is written in standard form $y = ax^2 + bx + c$, where $a, b,$ and $c$ are constants, which of the following could be the value of $a + b + c$?",
+    "options": [
+      "10",
+      "14",
+      "18",
+      "36"
+    ],
+    "correctAnswer": "10",
+    "explanation": "1. In vertex form, $y = a(x - 7)^2 + 12$.\n2. For the parabola to intersect the $x$-axis at two points when its vertex is at $y = 12 > 0$, it must open downward, which requires $a < 0$.\n3. Evaluating $y$ at $x = 1$ gives $a(1)^2 + b(1) + c = a + b + c$:\n$$a + b + c = a(1 - 7)^2 + 12 = a(-6)^2 + 12 = 36a + 12$$\n4. Since $a < 0$, we have $36a < 0$, which implies $36a + 12 < 12$.\n\nAmong the given choices $\\{10, 14, 18, 36\\}$, only $10$ is strictly less than $12$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "In the $xy$-plane, a parabola has a vertex at $(7, 12)$ and intersects the $x$-axis at two distinct points. If the equation of the parabola is written in standard form $y = ax^2 + bx + c$, where $a, b,$ and $c$ are constants, which of the following could be the value of $a + b + c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-017",
+    "question": "In the $xy$-plane, a parabola has a vertex at $(5, 1)$ and intersects the $x$-axis at two points. If the equation of the parabola is written in the form $y = -ax^2 + bx + c$, where $a > 0$ and $a, b, c$ are constants, which of the following could be a value of $c$?",
+    "options": [
+      "-5",
+      "2",
+      "3",
+      "9"
+    ],
+    "correctAnswer": "-5",
+    "explanation": "In vertex form, since the vertex is $(5, 1)$ and the leading coefficient is $-a$:\n$$y = -a(x - 5)^2 + 1$$\n\nThe constant $c$ is the $y$-intercept (value at $x = 0$):\n$$c = -a(0 - 5)^2 + 1 = -25a + 1$$\n\nSince $a > 0$, $-25a < 0$, which means $c < 1$.\nAmong the given options $\\{-5, 2, 3, 9\\}$, only $-5$ is strictly less than $1$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "In the $xy$-plane, a parabola has a vertex at $(5, 1)$ and intersects the $x$-axis at two points. If the equation of the parabola is written in the form $y = -ax^2 + bx + c$, where $a > 0$ and $a, b, c$ are constants, which of the following could be a value of $c$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-qd25-018",
+    "question": "The function $f$ is defined by $f(x) = (x + a)(x + b)$, where $a$ and $b$ are integer constants. If $f(-21) > 0$, $f(-15) > 0$, and $f(-18) < 0$, what is one possible value of $a + b$?",
+    "correctAnswer": "36",
+    "explanation": "The quadratic $f(x) = (x + a)(x + b)$ opens upward and is negative between its roots $-a$ and $-b$. Thus, the root interval contains $-18$, while $-21$ and $-15$ lie outside the root interval (where $f(x) > 0$).\n\nBy symmetry, the vertex (midpoint of roots) is close to $-18$. The midpoint of roots is $-\\frac{a + b}{2}$.\nIf the midpoint is approximately $-18$:\n$$-\\frac{a + b}{2} = -18 \\implies a + b = 36$$\nFor example, if roots are $-19$ and $-17$ ($a = 19, b = 17$), then $f(x) = (x + 19)(x + 17)$:\n- $f(-21) = (-2)(-4) = 8 > 0$\n- $f(-18) = (1)(-1) = -1 < 0$\n- $f(-15) = (4)(2) = 8 > 0$\n\nHere $a + b = 19 + 17 = 36$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The function $f$ is defined by $f(x) = (x + a)(x + b)$, where $a$ and $b$ are integer constants. If $f(-21) > 0$, $f(-15) > 0$, and $f(-18) < 0$, what is one possible value of $a + b$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-019",
+    "question": "For the given parabola $y = ax^2 + bx + c$, where $a, b, c$ are constants, the $x$-intercepts are at $(14, 0)$ and $(k, 0)$. If $f(27) = f(11)$, what is the value of $k$?",
+    "correctAnswer": "24",
+    "explanation": "For any parabola, symmetric inputs produce equal outputs. Since $f(27) = f(11)$, the line of symmetry is the midpoint between $x = 27$ and $x = 11$:\n$$x_{\\text{vertex}} = \\frac{27 + 11}{2} = \\frac{38}{2} = 19$$\n\nThe line of symmetry is also the midpoint between the two $x$-intercepts $14$ and $k$:\n$$\\frac{14 + k}{2} = 19 \\implies 14 + k = 38 \\implies k = 38 - 14 = 24$$",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "For the given parabola $y = ax^2 + bx + c$, where $a, b, c$ are constants, the $x$-intercepts are at $(14, 0)$ and $(k, 0)$. If $f(27) = f(11)$, what is the value of $k$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-qd25-020",
+    "question": "The graph of the quadratic function $y = f(x)$ in the $xy$-plane intersects the $x$-axis when $x = 74$ and $x = k$, where $k$ is a constant. The maximum value of $y = f(x)$ occurs at the point $(17, m)$, where $m$ is a constant. What is the value of $k$?",
+    "correctAnswer": "-40",
+    "explanation": "The vertex of a parabola lies on its axis of symmetry, which is the exact midpoint between its $x$-intercepts:\n$$\\frac{74 + k}{2} = 17$$\n\nMultiplying by $2$:\n$$74 + k = 34 \\implies k = 34 - 74 = -40$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "free_response",
+    "source": "Official SAT Quadratics 2025",
+    "questionText": "The graph of the quadratic function $y = f(x)$ in the $xy$-plane intersects the $x$-axis when $x = 74$ and $x = k$, where $k$ is a constant. The maximum value of $y = f(x)$ occurs at the point $(17, m)$, where $m$ is a constant. What is the value of $k$?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-trb3-001",
+    "question": "There are two ranches, Ranch A and Ranch B. The ratio of male horses to female horses is $1 : 15$ for the combined total number of horses on both ranches. The ratio of female horses on Ranch A to Ranch B is $7 : 17$. There are $168$ total horses on Ranch A and $344$ total horses on Ranch B. How many more male horses are there on Ranch A than on Ranch B?",
+    "options": [
+      "48",
+      "36",
+      "24",
+      "60"
+    ],
+    "correctAnswer": "24",
+    "explanation": "1. Total horses across both ranches: $168 + 344 = 512$.\n2. Ratio of total male to female is $1 : 15$, so male horses $= \\frac{1}{16}(512) = 32$ and female horses $= 512 - 32 = 480$.\n3. Female horses on Ranch A and B are in the ratio $7 : 17$:\n- Total parts $= 7 + 17 = 24$.\n- Each part $= \\frac{480}{24} = 20$.\n- Female horses on Ranch A $= 7 \\times 20 = 140$.\n- Female horses on Ranch B $= 17 \\times 20 = 340$.\n4. Male horses on each ranch:\n- Male on Ranch A $= 168 - 140 = 28$.\n- Male on Ranch B $= 344 - 340 = 4$.\n5. Difference: $28 - 4 = 24$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "There are two ranches, Ranch A and Ranch B. The ratio of male horses to female horses is $1 : 15$ for the combined total number of horses on both ranches. The ratio of female horses on Ranch A to Ranch B is $7 : 17$. There are $168$ total horses on Ranch A and $344$ total horses on Ranch B. How many more male horses are there on Ranch A than on Ranch B?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-002",
+    "question": "A certain bacterial colony currently has $5,000$ spores. If the number of spores in this colony quadruples every $33\\text{ hours}$, which of the following functions $p$ gives the number of spores in the colony $W\\text{ days}$ from now?",
+    "options": [
+      "p(W) = 5,000(4)^{\\frac{24W}{33}}",
+      "p(W) = 5,000(4)^{\\frac{33W}{24}}",
+      "p(W) = 5,000(4)^{33W}",
+      "p(W) = 5,000(4)^{\\frac{W}{33}}"
+    ],
+    "correctAnswer": "p(W) = 5,000(4)^{\\frac{24W}{33}}",
+    "explanation": "In $W$ days, the number of hours elapsed is $24W\\text{ hours}$. Since the population quadruples (base $4$) every $33\\text{ hours}$, the exponent represents the number of $33$-hour cycles elapsed:\n$$\\text{Cycles} = \\frac{24W}{33}$$\n\nThus, $p(W) = 5,000(4)^{\\frac{24W}{33}}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "A certain bacterial colony currently has $5,000$ spores. If the number of spores in this colony quadruples every $33\\text{ hours}$, which of the following functions $p$ gives the number of spores in the colony $W\\text{ days}$ from now?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-003",
+    "question": "The proposal for a development project was included on a city's election ballots. A local TV station reported that $6$ times as many people voted in favor of the proposal as voted against it. If $1,770$ more people voted in favor of the proposal than voted against it, how many people voted against the proposal?",
+    "options": [
+      "354",
+      "384",
+      "324",
+      "364"
+    ],
+    "correctAnswer": "354",
+    "explanation": "Let $A$ be the number of people who voted against the proposal. The number of people who voted in favor is $F = 6A$.\nGiven that $F - A = 1,770$:\n$$6A - A = 1,770$$\n$$5A = 1,770$$\n$$A = \\frac{1,770}{5} = 354$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "The proposal for a development project was included on a city's election ballots. A local TV station reported that $6$ times as many people voted in favor of the proposal as voted against it. If $1,770$ more people voted in favor of the proposal than voted against it, how many people voted against the proposal?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-004",
+    "question": "The table gives the volume and surface areas of two similar solids, where $k$ is a constant:\n- Solid A: Volume $= 4,374\\text{ cubic inches}$, Surface Area $= 1,782\\text{ square inches}$\n- Solid B: Volume $= 1,500,282\\text{ cubic inches}$, Surface Area $= k\\text{ square inches}$\nWhat is the value of $k$?",
+    "options": [
+      "5,346",
+      "12,474",
+      "87,318",
+      "611,226"
+    ],
+    "correctAnswer": "87,318",
+    "explanation": "1. The ratio of volumes is $\\frac{V_B}{V_A} = \\frac{1,500,282}{4,374} = 343$.\n2. For similar figures with linear scale factor $c$, the volume ratio is $c^3$. Since $7^3 = 343$, the linear scale factor is $c = 7$.\n3. Surface areas scale by $c^2 = 7^2 = 49$.\n4. Therefore:\n$$k = 1,782 \\times 49 = 87,318\\text{ square inches}$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "The table gives the volume and surface areas of two similar solids, where $k$ is a constant:\n- Solid A: Volume $= 4,374\\text{ cubic inches}$, Surface Area $= 1,782\\text{ square inches}$\n- Solid B: Volume $= 1,500,282\\text{ cubic inches}$, Surface Area $= k\\text{ square inches}$\nWhat is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-005",
+    "question": "An equilateral triangle has a perimeter of $1,200\\text{ meters}$. If the height of the triangle is equal to $a\\sqrt{3}\\text{ meters}$, what is the value of $a$?",
+    "options": [
+      "200",
+      "400",
+      "100",
+      "250"
+    ],
+    "correctAnswer": "200",
+    "explanation": "1. The side length of the equilateral triangle is $s = \\frac{1,200}{3} = 400\\text{ meters}$.\n2. The height of an equilateral triangle with side $s$ is:\n$$h = \\frac{s\\sqrt{3}}{2} = \\frac{400\\sqrt{3}}{2} = 200\\sqrt{3}$$\n3. Since the height is $a\\sqrt{3}$, we find $a = 200$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "An equilateral triangle has a perimeter of $1,200\\text{ meters}$. If the height of the triangle is equal to $a\\sqrt{3}\\text{ meters}$, what is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-006",
+    "question": "Which system of linear equations has no solution?",
+    "options": [
+      "-3x + 7y = -9 \\text{ and } 3x - 7y = 9",
+      "3x - 7y = 5 \\text{ and } 2x + 8y = 6",
+      "4x - 9y = 7 \\text{ and } -12x + 27y = -21",
+      "-3x + 8y = 20 \\text{ and } 6x - 16y = 40"
+    ],
+    "correctAnswer": "-3x + 8y = 20 \\text{ and } 6x - 16y = 40",
+    "explanation": "Two linear equations have no solution when their graphs are parallel (same slope) and have different intercepts.\nIn choice D:\n- Multiplying $-3x + 8y = 20$ by $-2$ yields $6x - 16y = -40$.\n- The second equation is $6x - 16y = 40$.\n- Since $6x - 16y$ cannot simultaneously equal both $-40$ and $40$, this system has no solution.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "Which system of linear equations has no solution?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-007",
+    "question": "Function $f$ is a quadratic function. The graph of $y = f(x)$ in the $xy$-plane has a vertex at $(-7, 14)$, passes through $(-4, -31)$, and has a $y$-intercept at $(0, a)$. The graph of $3f(x)$ has a $y$-intercept at $(0, b)$. What is the positive difference between $a$ and $b$?",
+    "options": [
+      "462",
+      "465",
+      "472",
+      "476"
+    ],
+    "correctAnswer": "462",
+    "explanation": "1. In vertex form, $f(x) = k(x + 7)^2 + 14$.\n2. Using point $(-4, -31)$:\n$$f(-4) = k(-4 + 7)^2 + 14 = 9k + 14 = -31 \\implies 9k = -45 \\implies k = -5$$\n3. The $y$-intercept of $f(x)$ is $a = f(0)$:\n$$a = -5(0 + 7)^2 + 14 = -5(49) + 14 = -245 + 14 = -231$$\n4. The $y$-intercept of $3f(x)$ is $b = 3f(0) = 3(-231) = -693$.\n5. The positive difference is $|b - a| = |-693 - (-231)| = 462$.",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "Function $f$ is a quadratic function. The graph of $y = f(x)$ in the $xy$-plane has a vertex at $(-7, 14)$, passes through $(-4, -31)$, and has a $y$-intercept at $(0, a)$. The graph of $3f(x)$ has a $y$-intercept at $(0, b)$. What is the positive difference between $a$ and $b$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-008",
+    "question": "In the given equation, $k$ is a positive constant:\n$$\\frac{3}{5}(5x + 11)(x + \\sqrt{5k + 10})(x - \\sqrt{5k + 10}) = 0$$\nThe product of the solutions to the equation is $154$. What is the value of $k$?",
+    "options": [
+      "12",
+      "15",
+      "18",
+      "21"
+    ],
+    "correctAnswer": "12",
+    "explanation": "Setting each factor to zero, the three solutions are:\n$$x_1 = -\\frac{11}{5}, \\quad x_2 = -\\sqrt{5k + 10}, \\quad x_3 = \\sqrt{5k + 10}$$\n\nThe product of the solutions is:\n$$x_1 \\cdot x_2 \\cdot x_3 = \\left(-\\frac{11}{5}\\right)( -(\\sqrt{5k + 10})^2 ) = \\frac{11}{5}(5k + 10) = 11(k + 2)$$\n\nEquating to $154$:\n$$11(k + 2) = 154 \\implies k + 2 = 14 \\implies k = 12$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "In the given equation, $k$ is a positive constant:\n$$\\frac{3}{5}(5x + 11)(x + \\sqrt{5k + 10})(x - \\sqrt{5k + 10}) = 0$$\nThe product of the solutions to the equation is $154$. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-009",
+    "question": "A handyman charges a flat rate of $\\$218$ for the first $3\\text{ hours}$ of work and $\\$68$ for each additional hour of work. Which equation gives the total amount $y$, in dollars, that the handyman charges for $x\\text{ hours}$ of work, where $x > 3$?",
+    "options": [
+      "y = 68x + 218",
+      "y = 218x + 68",
+      "y = 68x + 14",
+      "y = 68x + 422"
+    ],
+    "correctAnswer": "y = 68x + 14",
+    "explanation": "For $x > 3$ hours, the first $3$ hours cost $\\$218$, and the remaining $(x - 3)$ hours cost $\\$68$ each:\n$$y = 218 + 68(x - 3)$$\n$$y = 218 + 68x - 204$$\n$$y = 68x + 14$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "A handyman charges a flat rate of $\\$218$ for the first $3\\text{ hours}$ of work and $\\$68$ for each additional hour of work. Which equation gives the total amount $y$, in dollars, that the handyman charges for $x\\text{ hours}$ of work, where $x > 3$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-010",
+    "question": "A circle is inscribed inside square $ABCD$. Segment $AC$ is the diagonal of the square, and its length is $30\\text{ cm}$. What is the radius, in centimeters, of the circle?",
+    "options": [
+      "15\\sqrt{2}",
+      "15",
+      "\\frac{15\\sqrt{2}}{2}",
+      "30"
+    ],
+    "correctAnswer": "\\frac{15\\sqrt{2}}{2}",
+    "explanation": "1. For a square with side $s$, the diagonal length is $s\\sqrt{2} = 30 \\implies s = \\frac{30}{\\sqrt{2}} = 15\\sqrt{2}\\text{ cm}$.\n2. The circle is inscribed in the square, so its diameter equals the side length of the square: $2r = s = 15\\sqrt{2}$.\n3. Dividing by $2$, the radius is $r = \\frac{15\\sqrt{2}}{2}\\text{ cm}$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "A circle is inscribed inside square $ABCD$. Segment $AC$ is the diagonal of the square, and its length is $30\\text{ cm}$. What is the radius, in centimeters, of the circle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-011",
+    "question": "Function $g(x)$ is a quadratic function. In the $xy$-plane, the graph of $y = g(x)$ passes through the points $(12, 540)$ and $(16, 908)$. If $g(0) = 12$, what is the value of $g(24)$?",
+    "options": [
+      "1932",
+      "1936",
+      "1938",
+      "1940"
+    ],
+    "correctAnswer": "1932",
+    "explanation": "1. Since $g(0) = 12$, the quadratic has standard form $g(x) = ax^2 + bx + 12$.\n2. Using $(12, 540)$:\n$$144a + 12b + 12 = 540 \\implies 144a + 12b = 528 \\implies 12a + b = 44$$\n3. Using $(16, 908)$:\n$$256a + 16b + 12 = 908 \\implies 256a + 16b = 896 \\implies 16a + b = 56$$\n4. Subtract the equations: $4a = 12 \\implies a = 3$. Then $b = 44 - 12(3) = 8$.\n5. Thus, $g(x) = 3x^2 + 8x + 12$.\n6. Evaluate at $x = 24$:\n$$g(24) = 3(24^2) + 8(24) + 12 = 3(576) + 192 + 12 = 1,728 + 204 = 1,932$$",
+    "difficulty": "hard",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "Function $g(x)$ is a quadratic function. In the $xy$-plane, the graph of $y = g(x)$ passes through the points $(12, 540)$ and $(16, 908)$. If $g(0) = 12$, what is the value of $g(24)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-012",
+    "question": "The function $f$ is defined by $f(x) = 78(0.39)^x$. For any positive integer $k$, the value of $f(k)$ is $p\\%$ less than the value of $f(k - 1)$. What is the value of $p$?",
+    "options": [
+      "78",
+      "61",
+      "39",
+      "22"
+    ],
+    "correctAnswer": "61",
+    "explanation": "Compare $f(k)$ with $f(k - 1)$:\n$$\\frac{f(k)}{f(k - 1)} = \\frac{78(0.39)^k}{78(0.39)^{k - 1}} = 0.39$$\n\nA multiplier of $0.39$ corresponds to a percent decrease of:\n$$1 - 0.39 = 0.61 = 61\\%$$\n\nThus, $p = 61$.",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "The function $f$ is defined by $f(x) = 78(0.39)^x$. For any positive integer $k$, the value of $f(k)$ is $p\\%$ less than the value of $f(k - 1)$. What is the value of $p$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-013",
+    "question": "For which value of $a$ does the quadratic equation $(7x - 8)^2 + 9 = a$ have exactly one real solution?",
+    "correctAnswer": "9",
+    "explanation": "Rewrite the equation:\n$$(7x - 8)^2 = a - 9$$\n\n- If $a - 9 > 0$, there are two distinct real solutions.\n- If $a - 9 < 0$, there are no real solutions.\n- If $a - 9 = 0$, then $(7x - 8)^2 = 0$, which gives exactly one real solution: $x = \\frac{8}{7}$.\n\nTherefore, $a = 9$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear equations in one variable and systems of equations in two variables",
+    "questionType": "free_response",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "For which value of $a$ does the quadratic equation $(7x - 8)^2 + 9 = a$ have exactly one real solution?",
+    "type": "free_response"
+  },
+  {
+    "id": "adv-trb3-014",
+    "question": "Circle A has the equation $(x - 18)^2 + y^2 = 27$. Circle B has the equation $(x - 18)^2 + (y - k)^2 = 50$. If Circle B passes through the center of Circle A, which of the following is a possible value of $k$?",
+    "options": [
+      "3\\sqrt{3}",
+      "5\\sqrt{2}",
+      "5\\sqrt{2} - 3\\sqrt{3}",
+      "5\\sqrt{2} + 3\\sqrt{3}"
+    ],
+    "correctAnswer": "5\\sqrt{2}",
+    "explanation": "1. The center of Circle A is $(18, 0)$.\n2. Circle B passes through this point, so substitute $(18, 0)$ into the equation for Circle B:\n$$(18 - 18)^2 + (0 - k)^2 = 50$$\n$$0 + k^2 = 50 \\implies k = \\pm \\sqrt{50} = \\pm 5\\sqrt{2}$$\n\nAmong the choices, $5\\sqrt{2}$ is a possible value of $k$.",
+    "difficulty": "medium",
+    "domain": "Advanced Math",
+    "topic": "Nonlinear functions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "Circle A has the equation $(x - 18)^2 + y^2 = 27$. Circle B has the equation $(x - 18)^2 + (y - k)^2 = 50$. If Circle B passes through the center of Circle A, which of the following is a possible value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "adv-trb3-015",
+    "question": "If $x^2 = c + k$ and $y^2 = c + m$, which of the following is equal to $(x^2 - y^2)^2$?",
+    "options": [
+      "k^2 - 2cm + m^2",
+      "k^2 - 2km + m^2",
+      "4c^2 - 4ckm + m^2",
+      "4c^2 - 2ckm + k^2m^2"
+    ],
+    "correctAnswer": "k^2 - 2km + m^2",
+    "explanation": "Compute the difference $x^2 - y^2$:\n$$x^2 - y^2 = (c + k) - (c + m) = k - m$$\n\nSquaring both sides:\n$$(x^2 - y^2)^2 = (k - m)^2 = k^2 - 2km + m^2$$",
+    "difficulty": "easy",
+    "domain": "Advanced Math",
+    "topic": "Equivalent expressions",
+    "questionType": "multiple_choice",
+    "source": "SAT Turbo Prep Advanced Test 3",
+    "questionText": "If $x^2 = c + k$ and $y^2 = c + m$, which of the following is equal to $(x^2 - y^2)^2$?",
+    "type": "multiple_choice"
   }
 ]

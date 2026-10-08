@@ -5862,5 +5862,883 @@
     "questionType": "multiple_choice",
     "questionText": "In the figure, line $q$ is parallel to line $r$, and both lines are intersected by line $s$. The alternate interior angle at line $q$ measures $74^\\circ$, and at line $r$ the angle is $y^\\circ$. If $y = 2x + 8$, what is the value of $x$?",
     "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-001",
+    "question": "A right circular cylinder has a height of $6\\text{ inches}$. The radius of the base of the cylinder is $5\\text{ inches}$. What is the volume, in cubic inches, of the cylinder?",
+    "options": [
+      "10\\pi",
+      "30\\pi",
+      "50\\pi",
+      "150\\pi"
+    ],
+    "correctAnswer": "150\\pi",
+    "explanation": "The formula for the volume of a right circular cylinder is $V = \\pi r^2 h$. Substituting $r = 5$ and $h = 6$: $V = \\pi (5^2)(6) = \\pi (25)(6) = 150\\pi\\text{ cubic inches}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right circular cylinder has a height of $6\\text{ inches}$. The radius of the base of the cylinder is $5\\text{ inches}$. What is the volume, in cubic inches, of the cylinder?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-002",
+    "question": "A hemisphere and a cone have circular bases of equal circumference and have been connected at their bases. The diameter of the base of the hemisphere is $6\\text{ cm}$ and the total height of the composite figure is $9\\text{ cm}$. What is the total volume, in $\\text{cm}^3$, of the cone and hemisphere?",
+    "options": [
+      "18\\pi",
+      "36\\pi",
+      "45\\pi",
+      "162\\pi"
+    ],
+    "correctAnswer": "36\\pi",
+    "explanation": "The radius of the shared circular base is $r = \\frac{6}{2} = 3\\text{ cm}$. The height of the hemisphere equals its radius, $3\\text{ cm}$. Thus, the height of the cone is $h_{\\text{cone}} = 9 - 3 = 6\\text{ cm}$.\n\n1. Volume of hemisphere: $V_{\\text{hemi}} = \\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi (3^3) = 18\\pi$.\n2. Volume of cone: $V_{\\text{cone}} = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (3^2)(6) = 18\\pi$.\n\nTotal volume $= 18\\pi + 18\\pi = 36\\pi\\text{ cm}^3$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A hemisphere and a cone have circular bases of equal circumference and have been connected at their bases. The diameter of the base of the hemisphere is $6\\text{ cm}$ and the total height of the composite figure is $9\\text{ cm}$. What is the total volume, in $\\text{cm}^3$, of the cone and hemisphere?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-003",
+    "question": "A right circular cylinder has a height of $4\\text{ meters (m)}$ and a base with a radius of $18\\text{ m}$. What is the volume, in $\\text{m}^3$, of the cylinder?",
+    "options": [
+      "4\\pi",
+      "22\\pi",
+      "288\\pi",
+      "1296\\pi"
+    ],
+    "correctAnswer": "1296\\pi",
+    "explanation": "Using the cylinder volume formula $V = \\pi r^2 h$: $V = \\pi (18^2)(4) = \\pi (324)(4) = 1,296\\pi\\text{ m}^3$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right circular cylinder has a height of $4\\text{ meters (m)}$ and a base with a radius of $18\\text{ m}$. What is the volume, in $\\text{m}^3$, of the cylinder?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-004",
+    "question": "The volume of a right rectangular prism with a square base is $2,448\\text{ cm}^3$. If the area of the square base is $144\\text{ cm}^2$, what is the area, in $\\text{cm}^2$, of one of the four lateral faces of the prism?",
+    "options": [
+      "17",
+      "204",
+      "540",
+      "816"
+    ],
+    "correctAnswer": "204",
+    "explanation": "For a prism with square base, the side length of the base is $s = \\sqrt{144} = 12\\text{ cm}$. The height of the prism is $h = \\frac{\\text{Volume}}{\\text{Base Area}} = \\frac{2448}{144} = 17\\text{ cm}$. The area of one lateral rectangular face is $s \\times h = 12 \\times 17 = 204\\text{ cm}^2$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "The volume of a right rectangular prism with a square base is $2,448\\text{ cm}^3$. If the area of the square base is $144\\text{ cm}^2$, what is the area, in $\\text{cm}^2$, of one of the four lateral faces of the prism?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-005",
+    "question": "The volume of a right rectangular prism with a square base is $1,792\\text{ cm}^3$. If the area of the square base is $64\\text{ cm}^2$, what is the area, in $\\text{cm}^2$, of one of the four lateral faces of the prism?",
+    "options": [
+      "28",
+      "224",
+      "416",
+      "896"
+    ],
+    "correctAnswer": "224",
+    "explanation": "The side length of the square base is $s = \\sqrt{64} = 8\\text{ cm}$. The height of the prism is $h = \\frac{1792}{64} = 28\\text{ cm}$. The area of one lateral face is $s \\times h = 8 \\times 28 = 224\\text{ cm}^2$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "The volume of a right rectangular prism with a square base is $1,792\\text{ cm}^3$. If the area of the square base is $64\\text{ cm}^2$, what is the area, in $\\text{cm}^2$, of one of the four lateral faces of the prism?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-006",
+    "question": "A hemisphere is half of a sphere. If a hemisphere has a radius of $50\\text{ inches}$, which of the following is closest to the volume, in cubic inches, of this hemisphere?",
+    "options": [
+      "5,200",
+      "20,900",
+      "196,300",
+      "261,800"
+    ],
+    "correctAnswer": "261,800",
+    "explanation": "The volume of a hemisphere is $V = \\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi (50^3) = \\frac{2}{3}\\pi (125,000) = \\frac{250,000\\pi}{3} \\approx 261,799.39\\text{ cubic inches}$, which is closest to $261,800$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A hemisphere is half of a sphere. If a hemisphere has a radius of $50\\text{ inches}$, which of the following is closest to the volume, in cubic inches, of this hemisphere?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-007",
+    "question": "Two rectangles, A and B, are similar. Rectangle A has area $2,450\\text{ in}^2$ and perimeter $490\\text{ in}$. Rectangle B has area $9,800\\text{ in}^2$ and perimeter $n\\text{ in}$. What is the value of $n$?",
+    "options": [
+      "980",
+      "1,960",
+      "3,920",
+      "4,900"
+    ],
+    "correctAnswer": "980",
+    "explanation": "When two geometric figures are similar with linear scale factor $k$, their areas scale by $k^2$. Here, $k^2 = \\frac{9800}{2450} = 4 \\implies k = 2$. Therefore, the perimeter of Rectangle B is $n = 490 \\times 2 = 980\\text{ inches}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Two rectangles, A and B, are similar. Rectangle A has area $2,450\\text{ in}^2$ and perimeter $490\\text{ in}$. Rectangle B has area $9,800\\text{ in}^2$ and perimeter $n\\text{ in}$. What is the value of $n$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-008",
+    "question": "Samples of wood are cut in the shape of a cube with edge length $2.00\\text{ cm}$. If one cube has a mass of $2.72\\text{ grams}$, what is the density of this cube, in grams per cubic centimeter?",
+    "correctAnswer": "0.34",
+    "explanation": "The volume of the cube is $V = s^3 = (2.00)^3 = 8.00\\text{ cm}^3$. Density is defined as $\\text{Density} = \\frac{\\text{Mass}}{\\text{Volume}} = \\frac{2.72}{8.00} = 0.34\\text{ g/cm}^3$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "free_response",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Samples of wood are cut in the shape of a cube with edge length $2.00\\text{ cm}$. If one cube has a mass of $2.72\\text{ grams}$, what is the density of this cube, in grams per cubic centimeter?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-sol-009",
+    "question": "The length of the diagonal of a square is $\\frac{148\\sqrt{2}}{2}$ units. What is the area, in square units, of the square?",
+    "options": [
+      "74",
+      "296",
+      "5,476",
+      "10,952"
+    ],
+    "correctAnswer": "5,476",
+    "explanation": "The diagonal is $d = \\frac{148\\sqrt{2}}{2} = 74\\sqrt{2}$. For any square with side length $s$, $d = s\\sqrt{2}$, so $s = 74$. The area of the square is $A = s^2 = 74^2 = 5,476\\text{ square units}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "The length of the diagonal of a square is $\\frac{148\\sqrt{2}}{2}$ units. What is the area, in square units, of the square?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-010",
+    "question": "The floor of a school has an area of $2,025\\text{ m}^2$. An architect creates a scale model of the floor where each side length is $\\frac{1}{15}$ times the corresponding side of the actual floor. What is the area, in square meters, of the scale model?",
+    "options": [
+      "9",
+      "15",
+      "135",
+      "225"
+    ],
+    "correctAnswer": "9",
+    "explanation": "The linear scale factor is $k = \\frac{1}{15}$. Areas scale by $k^2 = (\\frac{1}{15})^2 = \\frac{1}{225}$. The area of the model is $2025 \\times \\frac{1}{225} = 9\\text{ m}^2$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "The floor of a school has an area of $2,025\\text{ m}^2$. An architect creates a scale model of the floor where each side length is $\\frac{1}{15}$ times the corresponding side of the actual floor. What is the area, in square meters, of the scale model?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-011",
+    "question": "Two right circular cylinders, A and B, are similar solids. Cylinder A has volume $112\\pi\\text{ cubic units}$ and radius $4\\text{ units}$. Cylinder B has volume $3,024\\pi\\text{ cubic units}$. The total surface area of cylinder A is $k\\pi$ and that of cylinder B is $n\\pi$. What is the value of $n - k$?",
+    "correctAnswer": "704",
+    "explanation": "1. The volume scale factor is $\\frac{V_B}{V_A} = \\frac{3024\\pi}{112\\pi} = 27 = c^3$, so the linear scale factor is $c = 3$.\n2. For cylinder A: $V_A = \\pi r^2 h = \\pi (4^2) h = 16\\pi h = 112\\pi \\implies h = 7$.\n3. Surface area of cylinder A: $SA_A = 2\\pi r^2 + 2\\pi r h = 2\\pi(16) + 2\\pi(4)(7) = 32\\pi + 56\\pi = 88\\pi$. Thus $k = 88$.\n4. Because cylinder B is similar with linear ratio $c = 3$, its surface area scales by $c^2 = 3^2 = 9$. Thus $n = 9 \\times 88 = 792$.\n5. Finally, $n - k = 792 - 88 = 704$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "free_response",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Two right circular cylinders, A and B, are similar solids. Cylinder A has volume $112\\pi\\text{ cubic units}$ and radius $4\\text{ units}$. Cylinder B has volume $3,024\\pi\\text{ cubic units}$. The total surface area of cylinder A is $k\\pi$ and that of cylinder B is $n\\pi$. What is the value of $n - k$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-sol-012",
+    "question": "Each side of square A has a length of $11\\text{ inches}$. Each side of square A is multiplied by a scale factor of $3$ to create square B. What is the length, in inches, of each side of square B?",
+    "options": [
+      "8",
+      "11",
+      "14",
+      "33"
+    ],
+    "correctAnswer": "33",
+    "explanation": "Multiplying each side of square A by $3$: $11 \\times 3 = 33\\text{ inches}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Each side of square A has a length of $11\\text{ inches}$. Each side of square A is multiplied by a scale factor of $3$ to create square B. What is the length, in inches, of each side of square B?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-013",
+    "question": "A sphere has a radius of $\\frac{13}{5}\\text{ feet}$. What is the volume, in cubic feet, of the sphere?",
+    "options": [
+      "\\frac{8,788\\pi}{375}",
+      "\\frac{28\\pi}{5}",
+      "\\frac{52\\pi}{15}",
+      "\\frac{5\\pi}{13}"
+    ],
+    "correctAnswer": "\\frac{8,788\\pi}{375}",
+    "explanation": "The volume of a sphere is $V = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi (\\frac{13}{5})^3 = \\frac{4}{3}\\pi \\frac{2197}{125} = \\frac{8,788\\pi}{375}\\text{ cubic feet}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A sphere has a radius of $\\frac{13}{5}\\text{ feet}$. What is the volume, in cubic feet, of the sphere?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-014",
+    "question": "A cube has an edge length of $82\\text{ inches}$. A solid sphere with a radius of $41\\text{ inches}$ is placed inside the cube so that it touches the center of each face. To the nearest cubic inch, what is the volume of the space inside the cube that is not occupied by the sphere?",
+    "options": [
+      "262,672",
+      "288,532",
+      "334,846",
+      "546,087"
+    ],
+    "correctAnswer": "262,672",
+    "explanation": "1. Volume of the cube: $V_{\\text{cube}} = s^3 = 82^3 = 551,368\\text{ in}^3$.\n2. Volume of the sphere: $V_{\\text{sphere}} = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi (41^3) = \\frac{4}{3}\\pi (68,921) \\approx 288,696.06\\text{ in}^3$.\n3. Remaining unoccupied volume: $551,368 - 288,696.06 \\approx 262,671.94$, which rounds to $262,672\\text{ in}^3$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A cube has an edge length of $82\\text{ inches}$. A solid sphere with a radius of $41\\text{ inches}$ is placed inside the cube so that it touches the center of each face. To the nearest cubic inch, what is the volume of the space inside the cube that is not occupied by the sphere?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-015",
+    "question": "Rectangles $ABCD$ and $EFGH$ are similar. The length of each side of $EFGH$ is $6$ times the length of the corresponding side of $ABCD$. If the area of $ABCD$ is $96\\text{ square units}$, what is the area, in square units, of $EFGH$?",
+    "options": [
+      "16",
+      "36",
+      "576",
+      "3,456"
+    ],
+    "correctAnswer": "3,456",
+    "explanation": "Because the linear scale factor is $6$, the area scales by $6^2 = 36$. Area of $EFGH = 96 \\times 36 = 3,456\\text{ square units}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Rectangles $ABCD$ and $EFGH$ are similar. The length of each side of $EFGH$ is $6$ times the length of the corresponding side of $ABCD$. If the area of $ABCD$ is $96\\text{ square units}$, what is the area, in square units, of $EFGH$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-016",
+    "question": "A circle is inscribed in a square such that the circumference of the circle touches the midpoint of each side of the square. The length of the diagonal of the square is $176\\text{ units}$. What is the area, in square units, of the circle?",
+    "options": [
+      "3,872\\pi",
+      "7,744\\pi",
+      "15,488\\pi",
+      "30,976\\pi"
+    ],
+    "correctAnswer": "3,872\\pi",
+    "explanation": "Let $s$ be the side length of the square. The diagonal is $s\\sqrt{2} = 176 \\implies s = \\frac{176}{\\sqrt{2}} = 88\\sqrt{2}$. The diameter of the inscribed circle equals the square side $s$, so the radius is $r = \\frac{s}{2} = 44\\sqrt{2}$. The area of the circle is $A = \\pi r^2 = \\pi (44\\sqrt{2})^2 = \\pi (1936 \\times 2) = 3,872\\pi\\text{ square units}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A circle is inscribed in a square such that the circumference of the circle touches the midpoint of each side of the square. The length of the diagonal of the square is $176\\text{ units}$. What is the area, in square units, of the circle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-017",
+    "question": "Rectangle $ABCD$ is similar to rectangle $EFGH$. The area of $ABCD$ is $648\\text{ square inches}$, and the area of $EFGH$ is $72\\text{ square inches}$. If the longest side of $ABCD$ is $36\\text{ inches}$, what is the length, in inches, of the longest side of $EFGH$?",
+    "options": [
+      "4",
+      "9",
+      "12",
+      "36"
+    ],
+    "correctAnswer": "12",
+    "explanation": "The ratio of the areas is $\\frac{\\text{Area}(EFGH)}{\\text{Area}(ABCD)} = \\frac{72}{648} = \\frac{1}{9} = k^2$, so the linear scale factor is $k = \\frac{1}{3}$. The length of the longest side of $EFGH$ is $36 \\times \\frac{1}{3} = 12\\text{ inches}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "Rectangle $ABCD$ is similar to rectangle $EFGH$. The area of $ABCD$ is $648\\text{ square inches}$, and the area of $EFGH$ is $72\\text{ square inches}$. If the longest side of $ABCD$ is $36\\text{ inches}$, what is the length, in inches, of the longest side of $EFGH$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-018",
+    "question": "A cube has a volume of $79,507\\text{ cubic units}$. What is the total surface area, in square units, of the cube?",
+    "correctAnswer": "11094",
+    "explanation": "1. The edge length of the cube is $s = \\sqrt[3]{79507} = 43\\text{ units}$.\n2. The total surface area of a cube with $6$ identical square faces is $SA = 6s^2 = 6(43^2) = 6(1849) = 11,094\\text{ square units}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "free_response",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A cube has a volume of $79,507\\text{ cubic units}$. What is the total surface area, in square units, of the cube?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-sol-019",
+    "question": "A cylinder has a diameter of $14\\text{ inches}$ and a height of $8\\text{ inches}$. What is the volume, in cubic inches, of the cylinder?",
+    "options": [
+      "49\\pi",
+      "112\\pi",
+      "392\\pi",
+      "1,568\\pi"
+    ],
+    "correctAnswer": "392\\pi",
+    "explanation": "The radius of the cylinder is $r = \\frac{14}{2} = 7\\text{ inches}$. The volume is $V = \\pi r^2 h = \\pi (7^2)(8) = \\pi (49)(8) = 392\\pi\\text{ cubic inches}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A cylinder has a diameter of $14\\text{ inches}$ and a height of $8\\text{ inches}$. What is the volume, in cubic inches, of the cylinder?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-020",
+    "question": "A right circular cylinder has a radius of $12\\text{ cm}$ and a volume of $2,448\\pi\\text{ cm}^3$. What is the height, in centimeters, of the cylinder?",
+    "correctAnswer": "17",
+    "explanation": "Using $V = \\pi r^2 h$: $2,448\\pi = \\pi (12^2) h = 144\\pi h \\implies h = \\frac{2448\\pi}{144\\pi} = 17\\text{ cm}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "free_response",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right circular cylinder has a radius of $12\\text{ cm}$ and a volume of $2,448\\pi\\text{ cm}^3$. What is the height, in centimeters, of the cylinder?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-sol-021",
+    "question": "A right square pyramid has a total surface area of $36,864\\text{ square inches}$, and the combined surface area of its four lateral triangular faces is $20,480\\text{ square inches}$. What is the height, in inches, of this pyramid?",
+    "options": [
+      "48",
+      "64",
+      "80",
+      "128"
+    ],
+    "correctAnswer": "48",
+    "explanation": "1. The area of the square base is $36,864 - 20,480 = 16,384\\text{ in}^2$. The edge of the square base is $s = \\sqrt{16384} = 128\\text{ in}$.\n2. The area of one lateral face is $\\frac{20480}{4} = 5,120\\text{ in}^2$. With base $s = 128$ and slant height $l$: $\\frac{1}{2}(128)l = 64l = 5120 \\implies l = 80\\text{ in}$.\n3. The vertical height $h$, the apothem of the base $\\frac{s}{2} = 64$, and the slant height $l = 80$ form a right triangle: $h^2 + 64^2 = 80^2 \\implies h^2 + 4096 = 6400 \\implies h^2 = 2304 \\implies h = 48\\text{ in}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right square pyramid has a total surface area of $36,864\\text{ square inches}$, and the combined surface area of its four lateral triangular faces is $20,480\\text{ square inches}$. What is the height, in inches, of this pyramid?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-022",
+    "question": "A right circular cylinder has a radius $r$ and height $h$. A second right circular cylinder has a volume that is $576$ times as large as the first cylinder. Which of the following could represent the radius $R$ and height $H$ of the second cylinder?",
+    "options": [
+      "R = 9r \\text{ and } H = 8h",
+      "R = 9r \\text{ and } H = 64h",
+      "R = 8r \\text{ and } H = 9h",
+      "R = 64r \\text{ and } H = 9h"
+    ],
+    "correctAnswer": "R = 8r \\text{ and } H = 9h",
+    "explanation": "The ratio of the volumes is $\\frac{V_2}{V_1} = \\frac{\\pi R^2 H}{\\pi r^2 h} = (\\frac{R}{r})^2(\\frac{H}{h}) = 576$. Testing $R = 8r$ and $H = 9h$: $(8)^2(9) = 64 \\times 9 = 576$. This produces exactly the desired 576-fold volume increase.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right circular cylinder has a radius $r$ and height $h$. A second right circular cylinder has a volume that is $576$ times as large as the first cylinder. Which of the following could represent the radius $R$ and height $H$ of the second cylinder?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-023",
+    "question": "A right circular cone has a volume of $2,700\\pi\\text{ cm}^3$ and a base area of $225\\pi\\text{ cm}^2$. What is the slant height, in centimeters, of this cone?",
+    "options": [
+      "12",
+      "15",
+      "36",
+      "39"
+    ],
+    "correctAnswer": "39",
+    "explanation": "1. Base area $\\pi r^2 = 225\\pi \\implies r = 15\\text{ cm}$.\n2. Cone volume $V = \\frac{1}{3} (\\text{base area}) h = \\frac{1}{3}(225\\pi)h = 75\\pi h = 2700\\pi \\implies h = 36\\text{ cm}$.\n3. The slant height $l = \\sqrt{r^2 + h^2} = \\sqrt{15^2 + 36^2} = \\sqrt{225 + 1296} = \\sqrt{1521} = 39\\text{ cm}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A right circular cone has a volume of $2,700\\pi\\text{ cm}^3$ and a base area of $225\\pi\\text{ cm}^2$. What is the slant height, in centimeters, of this cone?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-024",
+    "question": "A composite geometric figure consists of a rectangle and a semicircle. The length of $WX$ is $20\\text{ units}$ and the length of $WZ$ is $5\\text{ units}$. The diameter of the semicircle is $WX$. Which of the following expressions represents the total area, in square units, of the figure?",
+    "options": [
+      "20 \\times 5 + 10\\pi",
+      "20 \\times 5 + 10\\pi r",
+      "20 \\times 5 + 50\\pi",
+      "20 \\times 5 + 100\\pi"
+    ],
+    "correctAnswer": "20 \\times 5 + 50\\pi",
+    "explanation": "The rectangle has dimensions $20$ by $5$, giving an area of $20 \\times 5 = 100$. The semicircle has diameter $20$, meaning its radius is $r = 10$. The area of the semicircle is $\\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (10^2) = 50\\pi$. The combined area is $20 \\times 5 + 50\\pi$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "A composite geometric figure consists of a rectangle and a semicircle. The length of $WX$ is $20\\text{ units}$ and the length of $WZ$ is $5\\text{ units}$. The diameter of the semicircle is $WX$. Which of the following expressions represents the total area, in square units, of the figure?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-sol-025",
+    "question": "The length of each side of square $M$ is $9$ times the side length of square $N$. The area of square $N$ is $25\\text{ cm}^2$. What is the area, in square centimeters, of square $M$?",
+    "options": [
+      "2,025",
+      "810",
+      "405",
+      "225"
+    ],
+    "correctAnswer": "2,025",
+    "explanation": "Because side lengths are scaled by a factor of $9$, areas are scaled by $9^2 = 81$. The area of square $M$ is $25 \\times 81 = 2,025\\text{ cm}^2$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Areas&Volumes",
+    "questionType": "multiple_choice",
+    "source": "SAT Solids (Area and Volume)",
+    "questionText": "The length of each side of square $M$ is $9$ times the side length of square $N$. The area of square $N$ is $25\\text{ cm}^2$. What is the area, in square centimeters, of square $M$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-001",
+    "question": "Triangles $ABC$ and $DEF$ are congruent, where $A$ corresponds to $D$, and $B$ and $E$ are right angles. The measure of angle $A$ is $62^\\circ$. What is the measure, in degrees, of angle $F$?",
+    "options": [
+      "28^\\circ",
+      "62^\\circ",
+      "90^\\circ",
+      "118^\\circ"
+    ],
+    "correctAnswer": "28^\\circ",
+    "explanation": "In right triangle $ABC$, the acute angles are complementary: $\\angle A + \\angle C = 90^\\circ \\implies 62^\\circ + \\angle C = 90^\\circ \\implies \\angle C = 28^\\circ$. Because $\\triangle ABC \\cong \\triangle DEF$, corresponding angles are congruent, so $\\angle F = \\angle C = 28^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "Triangles $ABC$ and $DEF$ are congruent, where $A$ corresponds to $D$, and $B$ and $E$ are right angles. The measure of angle $A$ is $62^\\circ$. What is the measure, in degrees, of angle $F$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-002",
+    "question": "Triangle $ABC$ is similar to triangle $DEF$, where angle $A$ corresponds to angle $D$ and angles $C$ and $F$ are right angles. The length $AB$ is $2.4$ times the length of $DE$. If $\\tan A = \\frac{21}{20}$, what is the value of $\\sin D$?",
+    "correctAnswer": "21/29",
+    "explanation": "Because $\\triangle ABC \\sim \\triangle DEF$, corresponding angles have identical trigonometric ratios: $\\angle D = \\angle A$, so $\\tan D = \\tan A = \\frac{21}{20}$.\n\nIn a right triangle where the opposite leg is $21$ and the adjacent leg is $20$, the hypotenuse is $\\sqrt{21^2 + 20^2} = \\sqrt{441 + 400} = \\sqrt{841} = 29$. Therefore, $\\sin D = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{21}{29}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "Triangle $ABC$ is similar to triangle $DEF$, where angle $A$ corresponds to angle $D$ and angles $C$ and $F$ are right angles. The length $AB$ is $2.4$ times the length of $DE$. If $\\tan A = \\frac{21}{20}$, what is the value of $\\sin D$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-003",
+    "question": "In triangle $RST$, the measure of angle $R$ is $10^\\circ$ and the measure of angle $T$ is $50^\\circ$. Point $L$ lies on $\\overline{RS}$, point $K$ lies on $\\overline{ST}$, and $\\overline{LK}$ is parallel to $\\overline{RT}$. What is the measure, in degrees, of angle $SKL$? (Disregard the degree symbol when entering your answer.)",
+    "correctAnswer": "50",
+    "explanation": "Because line segment $\\overline{LK}$ is parallel to side $\\overline{RT}$, $\\angle SKL$ and $\\angle T$ are corresponding angles along the transversal $\\overline{ST}$. Therefore, $\\angle SKL = \\angle T = 50^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In triangle $RST$, the measure of angle $R$ is $10^\\circ$ and the measure of angle $T$ is $50^\\circ$. Point $L$ lies on $\\overline{RS}$, point $K$ lies on $\\overline{ST}$, and $\\overline{LK}$ is parallel to $\\overline{RT}$. What is the measure, in degrees, of angle $SKL$? (Disregard the degree symbol when entering your answer.)",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-004",
+    "question": "In triangle $ABC$, line segments $AC$ and $DE$ are parallel, with $D$ on $AB$ and $E$ on $BC$. The measure of angle $ACB$ is $58^\\circ$, and $AB = 1.5 DB$. What is the measure, in degrees, of angle $DEB$?",
+    "correctAnswer": "58",
+    "explanation": "Because $\\overline{AC} \\parallel \\overline{DE}$, $\\angle DEB$ and $\\angle ACB$ are corresponding angles cut by transversal $\\overline{BC}$. Therefore, $\\angle DEB = \\angle ACB = 58^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In triangle $ABC$, line segments $AC$ and $DE$ are parallel, with $D$ on $AB$ and $E$ on $BC$. The measure of angle $ACB$ is $58^\\circ$, and $AB = 1.5 DB$. What is the measure, in degrees, of angle $DEB$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-005",
+    "question": "The area of a triangle is equal to $x^2\\text{ square inches}$. The base of the triangle is $5 + 2x\\text{ inches}$, and the height of the triangle is $x - 2\\text{ inches}$. What is the value of $x$?",
+    "options": [
+      "2.5",
+      "2.7",
+      "5",
+      "10"
+    ],
+    "correctAnswer": "10",
+    "explanation": "Area of a triangle is $\\frac{1}{2} b h = \\frac{1}{2}(2x + 5)(x - 2) = x^2$. Multiplying both sides by $2$: $(2x + 5)(x - 2) = 2x^2 \\implies 2x^2 + x - 10 = 2x^2 \\implies x - 10 = 0 \\implies x = 10$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The area of a triangle is equal to $x^2\\text{ square inches}$. The base of the triangle is $5 + 2x\\text{ inches}$, and the height of the triangle is $x - 2\\text{ inches}$. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-006",
+    "question": "A triangle has a base length of $82\\text{ cm}$ and a height of $164\\text{ cm}$. What is the area, in square centimeters, of the triangle?",
+    "options": [
+      "246",
+      "3,362",
+      "6,724",
+      "13,448"
+    ],
+    "correctAnswer": "6,724",
+    "explanation": "Area $= \\frac{1}{2} b h = \\frac{1}{2}(82)(164) = 41 \\times 164 = 6,724\\text{ cm}^2$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "A triangle has a base length of $82\\text{ cm}$ and a height of $164\\text{ cm}$. What is the area, in square centimeters, of the triangle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-007",
+    "question": "In triangle $RST$, the measure of angle $R$ is $11^\\circ$ and the measure of angle $T$ is $77^\\circ$. Point $L$ lies on $\\overline{RS}$, point $K$ lies on $\\overline{ST}$, and $\\overline{LK}$ is parallel to $\\overline{RT}$. What is the measure, in degrees, of angle $SKL$?",
+    "correctAnswer": "77",
+    "explanation": "Because $\\overline{LK} \\parallel \\overline{RT}$, $\\angle SKL$ and $\\angle T$ are corresponding angles formed with transversal $\\overline{ST}$. Hence $\\angle SKL = \\angle T = 77^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In triangle $RST$, the measure of angle $R$ is $11^\\circ$ and the measure of angle $T$ is $77^\\circ$. Point $L$ lies on $\\overline{RS}$, point $K$ lies on $\\overline{ST}$, and $\\overline{LK}$ is parallel to $\\overline{RT}$. What is the measure, in degrees, of angle $SKL$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-008",
+    "question": "The area of a triangle is equal to $x^2\\text{ cm}^2$. The length of the base of the triangle is $2x + 16\\text{ cm}$, and the height of the triangle is $x - 6\\text{ cm}$. What is the value of $x$?",
+    "correctAnswer": "24",
+    "explanation": "Area $= \\frac{1}{2}(2x + 16)(x - 6) = (x + 8)(x - 6) = x^2$. Expanding: $x^2 + 2x - 48 = x^2 \\implies 2x - 48 = 0 \\implies 2x = 48 \\implies x = 24$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The area of a triangle is equal to $x^2\\text{ cm}^2$. The length of the base of the triangle is $2x + 16\\text{ cm}$, and the height of the triangle is $x - 6\\text{ cm}$. What is the value of $x$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-009",
+    "question": "Triangles $ABC$ and $DEF$ are congruent, where $A$ corresponds to $D$, and $B$ and $E$ are right angles. The measure of angle $A$ is $27^\\circ$. What is the measure, in degrees, of angle $F$?",
+    "correctAnswer": "63",
+    "explanation": "In right triangle $ABC$, acute angles are complementary: $\\angle C = 90^\\circ - 27^\\circ = 63^\\circ$. Congruence implies $\\angle F = \\angle C = 63^\\circ$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "Triangles $ABC$ and $DEF$ are congruent, where $A$ corresponds to $D$, and $B$ and $E$ are right angles. The measure of angle $A$ is $27^\\circ$. What is the measure, in degrees, of angle $F$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-010",
+    "question": "The area of triangle $ABC$ is $30\\text{ cm}^2$, and the length of base $AC$ is $10\\text{ cm}$. What is the height $h$, in centimeters, of this triangle with respect to base $AC$?",
+    "options": [
+      "3",
+      "6",
+      "10",
+      "12"
+    ],
+    "correctAnswer": "6",
+    "explanation": "Area $= \\frac{1}{2} b h \\implies 30 = \\frac{1}{2}(10) h = 5h \\implies h = 6\\text{ cm}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The area of triangle $ABC$ is $30\\text{ cm}^2$, and the length of base $AC$ is $10\\text{ cm}$. What is the height $h$, in centimeters, of this triangle with respect to base $AC$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-011",
+    "question": "In right triangle $RST$, the sum of the measures of acute angles $R$ and $S$ is $90^\\circ$. If $\\sin(R) = \\frac{4\\sqrt{2}}{9}$, what is the value of $\\cos(S)$?",
+    "options": [
+      "\\frac{4\\sqrt{2}}{9}",
+      "\\frac{4\\sqrt{2}}{7}",
+      "\\frac{7\\sqrt{2}}{8}",
+      "\\frac{9\\sqrt{2}}{8}"
+    ],
+    "correctAnswer": "\\frac{4\\sqrt{2}}{9}",
+    "explanation": "By the complementary angle trigonometric identity, if $R + S = 90^\\circ$, then $\\cos(S) = \\sin(90^\\circ - S) = \\sin(R) = \\frac{4\\sqrt{2}}{9}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In right triangle $RST$, the sum of the measures of acute angles $R$ and $S$ is $90^\\circ$. If $\\sin(R) = \\frac{4\\sqrt{2}}{9}$, what is the value of $\\cos(S)$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-012",
+    "question": "In $\\triangle ABC$, $\\angle B$ is a right angle and the length of $\\overline{BC}$ is $248\\text{ mm}$. If $\\cos A = \\frac{3}{5}$, what is the length, in millimeters, of $\\overline{AB}$?",
+    "options": [
+      "62",
+      "186",
+      "248",
+      "310"
+    ],
+    "correctAnswer": "186",
+    "explanation": "In right triangle $ABC$ with right angle at $B$: $\\cos A = \\frac{AB}{AC} = \\frac{3}{5}$. By Pythagorean theorem, $\\sin A = \\frac{BC}{AC} = \\frac{4}{5}$.\n\nGiven $BC = 248$: $\\frac{4}{5} AC = 248 \\implies AC = 248 \\times \\frac{5}{4} = 310\\text{ mm}$.\nThen $AB = \\frac{3}{5} AC = \\frac{3}{5}(310) = 186\\text{ mm}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In $\\triangle ABC$, $\\angle B$ is a right angle and the length of $\\overline{BC}$ is $248\\text{ mm}$. If $\\cos A = \\frac{3}{5}$, what is the length, in millimeters, of $\\overline{AB}$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-013",
+    "question": "Triangles $ABC$ and $DEF$ are similar. Each side length of triangle $ABC$ is $2$ times the corresponding side length of triangle $DEF$. If the area of triangle $ABC$ is $300\\text{ cm}^2$, what is the area, in square centimeters, of triangle $DEF$?",
+    "correctAnswer": "75",
+    "explanation": "Because linear dimensions are in a ratio of $2:1$, areas are in a ratio of $2^2:1 = 4:1$. The area of $\\triangle DEF$ is $\\frac{300}{4} = 75\\text{ cm}^2$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "Triangles $ABC$ and $DEF$ are similar. Each side length of triangle $ABC$ is $2$ times the corresponding side length of triangle $DEF$. If the area of triangle $ABC$ is $300\\text{ cm}^2$, what is the area, in square centimeters, of triangle $DEF$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-014",
+    "question": "In triangle $ABC$, the measure of angle $A$ is $48^\\circ$, the measure of angle $B$ is $90^\\circ$, and the measure of angle $C$ is $(\\frac{k}{2})^\\circ$. What is the value of $k$?",
+    "options": [
+      "42",
+      "45",
+      "84",
+      "96"
+    ],
+    "correctAnswer": "84",
+    "explanation": "In right triangle $ABC$, $\\angle A + \\angle C = 90^\\circ \\implies 48^\\circ + \\angle C = 90^\\circ \\implies \\angle C = 42^\\circ$. Since $\\angle C = \\frac{k}{2}$, we have $\\frac{k}{2} = 42 \\implies k = 84$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In triangle $ABC$, the measure of angle $A$ is $48^\\circ$, the measure of angle $B$ is $90^\\circ$, and the measure of angle $C$ is $(\\frac{k}{2})^\\circ$. What is the value of $k$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-015",
+    "question": "The perimeter of an isosceles right triangle is $38 + 38\\sqrt{2}\\text{ inches}$. What is the length, in inches, of the hypotenuse of this triangle?",
+    "options": [
+      "19",
+      "19\\sqrt{2}",
+      "38",
+      "38\\sqrt{2}"
+    ],
+    "correctAnswer": "38",
+    "explanation": "Let $h$ be the hypotenuse. In an isosceles right (45-45-90) triangle, each leg has length $\\frac{h}{\\sqrt{2}} = \\frac{h\\sqrt{2}}{2}$.\n\nThe perimeter is $2(\\frac{h\\sqrt{2}}{2}) + h = h\\sqrt{2} + h = h(1 + \\sqrt{2})$.\nEquating to the given perimeter: $h(1 + \\sqrt{2}) = 38(1 + \\sqrt{2}) \\implies h = 38\\text{ inches}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The perimeter of an isosceles right triangle is $38 + 38\\sqrt{2}\\text{ inches}$. What is the length, in inches, of the hypotenuse of this triangle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-016",
+    "question": "In a right triangle with a $30^\\circ$ angle, the leg adjacent to the $30^\\circ$ angle has a length of $66$, and the opposite leg has a length of $x$. What is the value of $x$?",
+    "options": [
+      "22",
+      "22\\sqrt{3}",
+      "66\\sqrt{3}",
+      "132"
+    ],
+    "correctAnswer": "22\\sqrt{3}",
+    "explanation": "Using the tangent ratio: $\\tan(30^\\circ) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{x}{66}$. Since $\\tan(30^\\circ) = \\frac{\\sqrt{3}}{3}$, $x = 66 \\times \\frac{\\sqrt{3}}{3} = 22\\sqrt{3}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In a right triangle with a $30^\\circ$ angle, the leg adjacent to the $30^\\circ$ angle has a length of $66$, and the opposite leg has a length of $x$. What is the value of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-017",
+    "question": "The area of a triangle is equal to $x^2\\text{ cm}^2$. The length of the base of the triangle is $2x + 12.5\\text{ cm}$, and the height of the triangle is $x - 5\\text{ cm}$. What is the value of $x$?",
+    "correctAnswer": "25",
+    "explanation": "Area formula: $\\frac{1}{2}(2x + 12.5)(x - 5) = (x + 6.25)(x - 5) = x^2$.\nExpanding: $x^2 + 1.25x - 31.25 = x^2 \\implies 1.25x = 31.25 \\implies x = \\frac{31.25}{1.25} = 25$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "free_response",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The area of a triangle is equal to $x^2\\text{ cm}^2$. The length of the base of the triangle is $2x + 12.5\\text{ cm}$, and the height of the triangle is $x - 5\\text{ cm}$. What is the value of $x$?",
+    "type": "free_response"
+  },
+  {
+    "id": "gt-tri-out-018",
+    "question": "If the perimeter of an equilateral triangle with a height of $46\\text{ units}$ is $a\\sqrt{3}\\text{ units}$, what is the value of $a$?",
+    "options": [
+      "46",
+      "92",
+      "\\frac{2116}{3}",
+      "\\frac{4232}{3}"
+    ],
+    "correctAnswer": "92",
+    "explanation": "In an equilateral triangle with side length $s$, the height is $h = \\frac{s\\sqrt{3}}{2} = 46 \\implies s = \\frac{92}{\\sqrt{3}} = \\frac{92\\sqrt{3}}{3}$.\nThe perimeter is $3s = 3 \\times \\frac{92\\sqrt{3}}{3} = 92\\sqrt{3}$.\nSince the perimeter is given as $a\\sqrt{3}$, $a = 92$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "If the perimeter of an equilateral triangle with a height of $46\\text{ units}$ is $a\\sqrt{3}\\text{ units}$, what is the value of $a$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-019",
+    "question": "A triangle has side lengths of $8$ and $13$. If $x$ represents the length of the third side of the triangle, which inequality represents all possible values of $x$?",
+    "options": [
+      "x < 21",
+      "x > 21",
+      "5 < x < 21",
+      "x < 5 \\text{ or } x > 21"
+    ],
+    "correctAnswer": "5 < x < 21",
+    "explanation": "By the Triangle Inequality Theorem, the length of the third side must be strictly greater than the difference of the other two sides and strictly less than their sum: $13 - 8 < x < 13 + 8 \\implies 5 < x < 21$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "A triangle has side lengths of $8$ and $13$. If $x$ represents the length of the third side of the triangle, which inequality represents all possible values of $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-020",
+    "question": "The perimeter of an isosceles right triangle is $18 + 18\\sqrt{2}\\text{ inches}$. What is the length, in inches, of the hypotenuse of this triangle?",
+    "options": [
+      "9",
+      "9\\sqrt{2}",
+      "18",
+      "18\\sqrt{2}"
+    ],
+    "correctAnswer": "18",
+    "explanation": "In an isosceles right triangle with hypotenuse $h$, each leg is $\\frac{h\\sqrt{2}}{2}$. The perimeter is $h + 2(\\frac{h\\sqrt{2}}{2}) = h + h\\sqrt{2} = h(1 + \\sqrt{2})$. Given perimeter is $18 + 18\\sqrt{2} = 18(1 + \\sqrt{2})$, so $h = 18\\text{ inches}$.",
+    "difficulty": "hard",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The perimeter of an isosceles right triangle is $18 + 18\\sqrt{2}\\text{ inches}$. What is the length, in inches, of the hypotenuse of this triangle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-021",
+    "question": "In a right triangle with two equal legs of length $37$, what is the length of the hypotenuse $x$?",
+    "options": [
+      "\\sqrt{2}",
+      "\\sqrt{74}",
+      "\\sqrt{37}",
+      "37\\sqrt{2}"
+    ],
+    "correctAnswer": "37\\sqrt{2}",
+    "explanation": "In a 45-45-90 right triangle where the legs are $37$, the hypotenuse is $s\\sqrt{2} = 37\\sqrt{2}$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In a right triangle with two equal legs of length $37$, what is the length of the hypotenuse $x$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-022",
+    "question": "In triangle $ABC$, angle $B$ is a right angle. The length of side $AB$ is $10\\sqrt{39}$ and the length of side $BC$ is $24\\sqrt{39}$. What is the length of side $AC$?",
+    "options": [
+      "14\\sqrt{39}",
+      "26\\sqrt{39}",
+      "34\\sqrt{39}",
+      "\\sqrt{24 \\cdot 39}"
+    ],
+    "correctAnswer": "26\\sqrt{39}",
+    "explanation": "Factor out $\\sqrt{39}$: the legs are in ratio $10 : 24$, which simplifies to $5 : 12$. A $5-12-13$ right triangle scaled by $2\\sqrt{39}$ yields hypotenuse $13 \\times 2\\sqrt{39} = 26\\sqrt{39}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In triangle $ABC$, angle $B$ is a right angle. The length of side $AB$ is $10\\sqrt{39}$ and the length of side $BC$ is $24\\sqrt{39}$. What is the length of side $AC$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-023",
+    "question": "Similar triangles $TUV$ and $XYZ$ have perimeters of $44$ and $352$, respectively, where side $TU$ corresponds to $XY$. If the length of $TU$ is $16$, what is the length of $XY$?",
+    "options": [
+      "2",
+      "16",
+      "60",
+      "128"
+    ],
+    "correctAnswer": "128",
+    "explanation": "The linear scale factor is $\\frac{\\text{Perimeter}(XYZ)}{\\text{Perimeter}(TUV)} = \\frac{352}{44} = 8$. Therefore, $XY = 16 \\times 8 = 128$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "Similar triangles $TUV$ and $XYZ$ have perimeters of $44$ and $352$, respectively, where side $TU$ corresponds to $XY$. If the length of $TU$ is $16$, what is the length of $XY$?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-024",
+    "question": "The area of a triangle is $270\\text{ cm}^2$. The length of the base of the triangle is $12\\text{ cm}$ greater than the height of the triangle. What is the height, in centimeters, of the triangle?",
+    "options": [
+      "15",
+      "18",
+      "30",
+      "36"
+    ],
+    "correctAnswer": "18",
+    "explanation": "Let $h$ be the height; the base is $b = h + 12$. Area $= \\frac{1}{2}(h + 12)h = 270 \\implies h^2 + 12h = 540 \\implies h^2 + 12h - 540 = 0$. Factoring: $(h + 30)(h - 18) = 0$. Since $h > 0$, $h = 18\\text{ cm}$.",
+    "difficulty": "medium",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "The area of a triangle is $270\\text{ cm}^2$. The length of the base of the triangle is $12\\text{ cm}$ greater than the height of the triangle. What is the height, in centimeters, of the triangle?",
+    "type": "multiple_choice"
+  },
+  {
+    "id": "gt-tri-out-025",
+    "question": "In a right triangle with one acute angle measuring $24^\\circ$ and the second acute angle measuring $a^\\circ$, what is the value of $a$?",
+    "options": [
+      "24",
+      "66",
+      "90",
+      "156"
+    ],
+    "correctAnswer": "66",
+    "explanation": "The two acute angles in any right triangle are complementary: $a + 24 = 90 \\implies a = 90 - 24 = 66$.",
+    "difficulty": "easy",
+    "domain": "Geometry & Trigonometry",
+    "topic": "Triangles",
+    "questionType": "multiple_choice",
+    "source": "Triangles & Trigonometry Vault",
+    "questionText": "In a right triangle with one acute angle measuring $24^\\circ$ and the second acute angle measuring $a^\\circ$, what is the value of $a$?",
+    "type": "multiple_choice"
   }
 ]

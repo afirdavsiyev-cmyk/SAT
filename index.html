@@ -5,6 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2310b981'/><path d='M60 38 C56 24 38 22 28 32 C17 42 22 58 40 62 C58 66 65 78 55 88 C44 98 25 94 22 80' stroke='white' stroke-width='10' stroke-linecap='round' fill='none'/><path d='M36 60 L74 26 M74 26 H56 M74 26 V44' stroke='white' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ScoreUp | #1 Digital SAT Math Platform</title>
+    <!-- Standard Content Security Policy (CSP) with Desmos Worker & Eval Support -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.desmos.com https://*.desmos.com https://cdn.jsdelivr.net; worker-src 'self' blob:; child-src 'self' blob: https://www.desmos.com https://*.desmos.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; img-src 'self' data: blob: https://images.unsplash.com https://*.telegram.org https:; connect-src 'self' https://generativelanguage.googleapis.com https://*.desmos.com https://*.telegram.org https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'self' https://www.desmos.com https://*.desmos.com https://oauth.telegram.org https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' blob: data:; object-src 'none'; base-uri 'self';"
+    />
     <!-- Reset scroll position to top on page load/refresh/update -->
     <script>
       if ('scrollRestoration' in history) {
@@ -18,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- KaTeX CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jkelscmgLhHJVRhv51eO8nrgxoVzkosGeB3CRvf01wUGiL8yup3Np6L1" crossorigin="anonymous">
-    <!-- Official Desmos Calculator API v1.9.3 -->
-    <script src="https://www.desmos.com/api/v1.9.3/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <!-- Official Desmos Calculator API v1.9 -->
+    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
   </head>
   <body class="bg-slate-950 text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-emerald-500/30 selection:text-emerald-300 min-h-screen">
     <div id="root"></div>

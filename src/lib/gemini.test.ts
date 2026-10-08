@@ -62,4 +62,10 @@ describe('src/lib/gemini.ts - API Key Configuration', () => {
     expect(client1).toBeDefined();
     expect(client1).toBe(client2); // Same cached instance
   });
+
+  it('recognizes valid Google AI Studio keys with AQ. prefix', () => {
+    vi.stubEnv('VITE_GEMINI_API_KEY', 'AQ.Ab8RN6IcdcL0jcULHnfk4L1NdghzL0DSGs8fFP_q2SPpgrgh6A');
+    expect(getGeminiApiKey()).toBe('AQ.Ab8RN6IcdcL0jcULHnfk4L1NdghzL0DSGs8fFP_q2SPpgrgh6A');
+    expect(hasValidApiKey()).toBe(true);
+  });
 });

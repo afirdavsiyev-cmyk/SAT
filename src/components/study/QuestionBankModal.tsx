@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { QuestionItem } from '../../types/questionBank';
 import { MathRenderer } from '../common/MathRenderer';
 import { StepByStepExplanationView } from '../common/StepByStepExplanationView';
+import { isAnswerEquivalent } from '../../utils/answerVerification';
 import {
   X,
   CheckCircle2,
@@ -84,7 +85,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
   const handleCheckAnswer = () => {
     if (question.type === 'multiple_choice') {
       if (!selectedOption) return;
-      const correct = selectedOption.trim().toUpperCase() === question.correctAnswer.trim().toUpperCase();
+      const correct = isAnswerEquivalent(selectedOption, question.correctAnswer, question);
       setIsCorrect(correct);
       setIsSubmitted(true);
       setShowExplanation(true);
@@ -93,20 +94,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
       }
     } else {
       if (!studentInput.trim()) return;
-      // Normalize comparison for fractions, decimals, or simple numbers
-      const userAns = studentInput.trim().toLowerCase().replace(/\s+/g, '');
-      const correctAns = question.correctAnswer.trim().toLowerCase().replace(/\s+/g, '');
-      
-      let correct = userAns === correctAns;
-
-      // Handle equivalent fractions / decimals (e.g. 5/13 or 0.3846)
-      if (!correct && userAns.includes('/') && correctAns.includes('/')) {
-        const [uNum, uDen] = userAns.split('/').map(Number);
-        const [cNum, cDen] = correctAns.split('/').map(Number);
-        if (uDen && cDen && Math.abs(uNum / uDen - cNum / cDen) < 0.0001) {
-          correct = true;
-        }
-      }
+      const correct = isAnswerEquivalent(studentInput, question.correctAnswer, question);
 
       setIsCorrect(correct);
       setIsSubmitted(true);
@@ -243,7 +231,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {question.options.map((opt) => {
                   const isSelected = selectedOption === opt.id;
-                  const isAnswerCorrect = opt.id === question.correctAnswer;
+                  const isAnswerCorrect = isAnswerEquivalent(opt.id, question.correctAnswer, question);
                   
                   let optionClass = 'bg-white/[0.04] border-white/[0.08] text-slate-200 hover:bg-white/[0.08] hover:border-white/[0.18]';
                   let badgeClass = 'bg-white/[0.08] text-slate-300';

@@ -21,6 +21,7 @@ export interface Question {
   prompt: string; // supports LaTeX formatted with $...$ or $$...$$
   options?: QuestionOption[];
   correctAnswer: string;
+  acceptableAnswers?: string[];
   explanation: string;
   type: 'multiple_choice' | 'student_produced';
   hint?: string;

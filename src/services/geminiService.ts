@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GeminiTier, getGeminiApiKey, getGeminiClient, hasValidApiKey, TASK_CONFIGS } from '../lib/gemini';
-import { getTutorReplyDetailed } from './aiTutor';
+import { getTutorReplyDetailed, hasGroqApiKey } from './aiTutor';
 
 export interface GeminiExecutionResult<T = string> {
   success: boolean;
@@ -47,6 +47,8 @@ export interface ChatMessageItem {
 
 /**
  * Universal Gemini Dispatcher with automatic fallback cascade across model tiers.
+ * Prioritizes Groq as the primary provider when available, followed by Gemini tiers,
+ * before safely falling back to offline templates.
  */
 export async function callGeminiWithFallback(
   preferredModel: GeminiTier,
@@ -59,7 +61,28 @@ export async function callGeminiWithFallback(
 ): Promise<GeminiExecutionResult<string>> {
   const startTime = Date.now();
 
-  // Try live Gemini models if an API key is configured
+  // 1. Primary Provider: Live AI via Groq (Qwen 3.8 / GPT-OSS / Llama 3.3)
+  if (hasGroqApiKey()) {
+    try {
+      const groqMessages = [
+        ...(systemInstruction ? [{ role: 'system' as const, content: systemInstruction }] : []),
+        { role: 'user' as const, content: prompt }
+      ];
+      const groqResult = await getTutorReplyDetailed(groqMessages);
+      if (groqResult && groqResult.content) {
+        return {
+          success: true,
+          data: groqResult.content,
+          usedModel: groqResult.modelUsed,
+          latencyMs: Date.now() - startTime,
+        };
+      }
+    } catch (groqErr: any) {
+      console.warn('[AI Tutor Dispatcher] Groq primary provider failed, trying secondary fallback:', groqErr?.message || groqErr);
+    }
+  }
+
+  // 2. Secondary Provider: Live Gemini models if an API key is configured
   if (hasValidApiKey()) {
     const modelCascade: (GeminiTier | string)[] = [
       preferredModel,
@@ -103,26 +126,7 @@ export async function callGeminiWithFallback(
     }
   }
 
-  // Live AI Fallback via Groq (Qwen 3.8 / Llama 3.3 / GPT-OSS)
-  try {
-    const groqMessages = [
-      ...(systemInstruction ? [{ role: 'system' as const, content: systemInstruction }] : []),
-      { role: 'user' as const, content: prompt }
-    ];
-    const groqResult = await getTutorReplyDetailed(groqMessages);
-    if (groqResult && groqResult.content) {
-      return {
-        success: true,
-        data: groqResult.content,
-        usedModel: groqResult.modelUsed,
-        latencyMs: Date.now() - startTime,
-      };
-    }
-  } catch (groqErr: any) {
-    console.warn('[AI Tutor Dispatcher] Groq live fallback unavailable:', groqErr?.message || groqErr);
-  }
-
-  // Graceful synthesis offline fallback when all live APIs fail
+  // 3. Graceful offline template fallback when all live providers fail
   return {
     success: true,
     data: getOfflineFallbackContent(prompt, jsonMode, systemInstruction, userMessage, questionContext),

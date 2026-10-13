@@ -208,7 +208,7 @@ export const ScoreUpAITutorView: React.FC = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
               <Key className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Configure Google Gemini API Key</span>
+              <span>AI Engine Configuration</span>
             </div>
             <a
               href="https://aistudio.google.com/app/apikey"
@@ -216,10 +216,14 @@ export const ScoreUpAITutorView: React.FC = () => {
               rel="noopener noreferrer"
               className="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1 font-semibold"
             >
-              <span>Get Free Key</span>
+              <span>Get Free Gemini Key</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
+
+          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            Groq high-speed AI (Qwen 3.8 / GPT-OSS / Llama 3.3) is active as your primary live tutor. You can optionally add a Google Gemini key as a secondary fallback.
+          </p>
 
           <form onSubmit={handleSaveApiKey} className="flex gap-2">
             <input

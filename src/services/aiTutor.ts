@@ -8,6 +8,11 @@ export interface TutorReplyResult {
   modelUsed: string;
 }
 
+export function hasGroqApiKey(): boolean {
+  const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+  return Boolean(apiKey && apiKey.trim().length > 0);
+}
+
 const CANDIDATE_MODELS = [
   "qwen/qwen3.8-27b",
   "openai/gpt-oss-120b",

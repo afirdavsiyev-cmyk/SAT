@@ -103,10 +103,10 @@ export function useStudyPlannerData(): StudyPlannerDataResult {
     const skills = plannerData?.skills || [];
     if (skills.length === 0) {
       return {
-        algebra: legacyState?.stats?.domainMastery?.algebra ?? 88,
-        advancedMath: legacyState?.stats?.domainMastery?.advancedMath ?? 74,
-        problemSolving: legacyState?.stats?.domainMastery?.problemSolving ?? 82,
-        geometryTrig: legacyState?.stats?.domainMastery?.geometryTrig ?? 68,
+        algebra: legacyState?.stats?.domainMastery?.algebra ?? 0,
+        advancedMath: legacyState?.stats?.domainMastery?.advancedMath ?? 0,
+        problemSolving: legacyState?.stats?.domainMastery?.problemSolving ?? 0,
+        geometryTrig: legacyState?.stats?.domainMastery?.geometryTrig ?? 0,
       };
     }
 
@@ -201,19 +201,12 @@ export function useStudyPlannerData(): StudyPlannerDataResult {
   const attemptsCount = plannerData?.attempts?.length || 0;
   const attemptsCorrect = plannerData?.attempts?.filter((a) => a.correct).length || 0;
 
-  const totalSolved = Math.max(
-    legacyState?.stats?.totalQuestionsSolved || 142,
-    attemptsCount
-  );
+  const totalSolved = legacyState?.stats?.totalQuestionsSolved ?? attemptsCount ?? 0;
+  const totalCorrect = legacyState?.stats?.totalQuestionsCorrect ?? attemptsCorrect ?? 0;
 
-  const totalCorrect = Math.max(
-    legacyState?.stats?.totalQuestionsCorrect || 125,
-    attemptsCorrect
-  );
-
-  const globalXP = legacyState?.stats?.globalXP || 1450;
-  const testsCompleted = legacyState?.stats?.completedExamsCount || 2;
-  const streakDays = legacyState?.stats?.streakDays ?? getAttendanceData().streakDays;
+  const globalXP = legacyState?.stats?.globalXP ?? 0;
+  const testsCompleted = legacyState?.stats?.completedExamsCount ?? 0;
+  const streakDays = legacyState?.stats?.streakDays ?? getAttendanceData().streakDays ?? 1;
 
   return {
     currentEstimatedMath,

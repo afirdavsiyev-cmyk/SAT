@@ -12,7 +12,10 @@ const TABS = [
   { label: 'Daily Quests', icon: <Zap className="w-3.5 h-3.5" /> },
 ];
 
-const CLAIMED_QUESTS_KEY = 'scoreup_claimed_quests';
+const getUserQuestStorageKey = (userKey?: string): string => {
+  if (!userKey) return 'scoreup_claimed_quests';
+  return `scoreup_claimed_quests_${userKey.toLowerCase().trim()}`;
+};
 
 export const LeaderboardView: React.FC = () => {
   const { userProgress, setUserProgress, setUserProgressState, setCurrentView, startExam } = useApp();
@@ -20,23 +23,37 @@ export const LeaderboardView: React.FC = () => {
   const plannerData = useStudyPlannerData();
   const [tabIndex, setTabIndex] = useState<number>(0);
   const [timeframe, setTimeframe] = useState<'weekly' | 'monthly' | 'all_time'>('weekly');
+  
+  const userKey = activeUser.email || activeUser.firstName || 'guest';
+  const questStorageKey = useMemo(() => getUserQuestStorageKey(userKey), [userKey]);
+
   const [claimedQuests, setClaimedQuests] = useState<string[]>(() => {
     try {
-      const saved = localStorage.getItem(CLAIMED_QUESTS_KEY);
-      return saved ? JSON.parse(saved) : ['quest-attendance'];
+      const saved = localStorage.getItem(getUserQuestStorageKey(userKey));
+      return saved ? JSON.parse(saved) : [];
     } catch {
-      return ['quest-attendance'];
+      return [];
     }
   });
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(questStorageKey);
+      setClaimedQuests(saved ? JSON.parse(saved) : []);
+    } catch {
+      setClaimedQuests([]);
+    }
+  }, [questStorageKey]);
+
   const [celebratingQuestId, setCelebratingQuestId] = useState<string | null>(null);
 
   // 1. Real Synchronized User Statistics
-  const realXP = plannerData.globalXP || userProgress.xp || 8676;
-  const realScore = activeUser.currentEstimatedMath || userProgress.estimatedScore || 650;
-  const realStreak = activeUser.streakDays || userProgress.streakDays || 12;
+  const realXP = plannerData.globalXP ?? userProgress.xp ?? 0;
+  const realScore = activeUser.currentEstimatedMath || userProgress.estimatedScore || activeUser.baselineScore || 650;
+  const realStreak = activeUser.streakDays ?? userProgress.streakDays ?? 1;
   const studentName = `${activeUser.firstName || 'Student'}`;
-  const totalSolved = plannerData.totalSolved || userProgress.totalQuestionsSolved || 672;
-  const testsCompleted = plannerData.testsCompleted || userProgress.completedTests || 17;
+  const totalSolved = plannerData.totalSolved ?? userProgress.totalQuestionsSolved ?? 0;
+  const testsCompleted = plannerData.testsCompleted ?? userProgress.completedTests ?? 0;
 
   // 2. Real Dynamic Competitors with Realistic SAT Scholar Benchmarks
   const competitors: LeaderboardUser[] = useMemo(() => {
@@ -54,25 +71,28 @@ export const LeaderboardView: React.FC = () => {
 
   // 3. Current User Leaderboard Entry with Real Values
   const currentUserEntry: LeaderboardUser = useMemo(() => {
-    let badgeTitle = '750+ Scholar';
-    if (realScore >= 780) badgeTitle = '800 Perfectionist';
-    else if (realScore >= 750) badgeTitle = '750+ Scholar';
-    else if (realScore >= 700) badgeTitle = '700+ Contender';
-    else if (realScore >= 650) badgeTitle = 'Level 13 Scholar';
-    else badgeTitle = 'Determined Scholar';
+    let badgeTitle = 'Level 1 Scholar';
+    if (testsCompleted > 0 && realScore >= 780) badgeTitle = '800 Perfectionist';
+    else if (testsCompleted > 0 && realScore >= 750) badgeTitle = '750+ Scholar';
+    else if (testsCompleted > 0 && realScore >= 700) badgeTitle = '700+ Contender';
+    else if (realXP >= 5000) badgeTitle = 'Level 13 Scholar';
+    else if (realXP >= 2500) badgeTitle = 'Level 8 Scholar';
+    else if (realXP >= 1000) badgeTitle = 'Level 3 Scholar';
+    else if (realXP >= 100) badgeTitle = 'Rising Scholar';
+    else badgeTitle = 'Level 1 Scholar';
 
     return {
       id: 'current_user',
       rank: 1, // dynamically computed
       name: `${studentName} (You)`,
       avatar: activeUser.avatar || '🚀',
-      score: realScore,
+      score: testsCompleted > 0 ? realScore : (activeUser.baselineScore || 650),
       xp: realXP,
       streak: realStreak,
       badge: badgeTitle,
       isCurrentUser: true,
     };
-  }, [studentName, realScore, realXP, realStreak, activeUser.avatar]);
+  }, [studentName, realScore, realXP, realStreak, activeUser.avatar, activeUser.baselineScore, testsCompleted]);
 
   // 4. Sort and Compute Exact Ranks
   const sortedLeaderboard = useMemo(() => {
@@ -116,18 +136,18 @@ export const LeaderboardView: React.FC = () => {
         title: '750+ Math Club',
         description: 'Achieve an estimated math score of 750 or higher in practice exams.',
         icon: '🏆',
-        unlocked: realScore >= 750,
-        progress: Math.min(100, Math.round((realScore / 750) * 100)),
-        metric: `${realScore} / 750 Points`,
+        unlocked: testsCompleted > 0 && realScore >= 750,
+        progress: testsCompleted > 0 ? Math.min(100, Math.round((realScore / 750) * 100)) : 0,
+        metric: testsCompleted > 0 ? `${realScore} / 750 Points` : '0 / 750 Points',
       },
       {
         id: 'a4',
         title: 'Algebra Titan',
         description: 'Master 90%+ of Digital SAT Algebra subtopics.',
         icon: '⚡',
-        unlocked: plannerData.domainMastery.algebra >= 90,
-        progress: Math.min(100, plannerData.domainMastery.algebra),
-        metric: `${plannerData.domainMastery.algebra}% / 90% Mastery`,
+        unlocked: (plannerData.domainMastery?.algebra ?? 0) >= 90 && totalSolved >= 20,
+        progress: Math.min(100, plannerData.domainMastery?.algebra ?? 0),
+        metric: `${plannerData.domainMastery?.algebra ?? 0}% / 90% Mastery`,
       },
       {
         id: 'a5',
@@ -152,31 +172,32 @@ export const LeaderboardView: React.FC = () => {
         title: 'Night Owl Scholar',
         description: 'Completed a late-night study drill after 9 PM.',
         icon: '🦉',
-        unlocked: true,
-        progress: 100,
-        metric: 'Completed ✓',
+        unlocked: false,
+        progress: 0,
+        metric: '0 / 1 Late Drill',
       },
       {
         id: 'a8',
         title: '800 Perfect Score Quest',
         description: 'Reach a peak score of 780+ on the Official Adaptive Engine.',
         icon: '👑',
-        unlocked: realScore >= 780,
-        progress: Math.min(100, Math.round((realScore / 780) * 100)),
-        metric: `${realScore} / 780 Target`,
+        unlocked: testsCompleted > 0 && realScore >= 780,
+        progress: testsCompleted > 0 ? Math.min(100, Math.round((realScore / 780) * 100)) : 0,
+        metric: testsCompleted > 0 ? `${realScore} / 780 Target` : '0 / 780 Target',
       },
     ];
-  }, [totalSolved, realStreak, realScore, testsCompleted, plannerData.domainMastery.algebra]);
+  }, [totalSolved, realStreak, realScore, testsCompleted, plannerData.domainMastery?.algebra]);
 
   // 6. Interactive Daily Quests with Real XP Claims
   const quests = useMemo(() => {
+    const isTutorUsed = Boolean(localStorage.getItem('scoreup_tutor_used'));
     return [
       {
         id: 'quest-attendance',
         title: 'Daily Attendance Check-In',
         subtitle: 'Log in and maintain your study streak',
         rewardXP: 50,
-        completed: true,
+        completed: realStreak >= 1,
         progressText: '1 / 1 Done',
       },
       {
@@ -184,27 +205,27 @@ export const LeaderboardView: React.FC = () => {
         title: 'Solve 10 Math Questions with Desmos',
         subtitle: 'Master regression and system intersection shortcuts',
         rewardXP: 150,
-        completed: true,
-        progressText: '10 / 10 Done',
+        completed: totalSolved >= 10,
+        progressText: `${Math.min(10, totalSolved)} / 10 Done`,
       },
       {
         id: 'quest-exam',
         title: 'Complete 1 Bluebook Timed Practice Module',
         subtitle: 'Test your pacing under authentic 35-minute exam conditions',
         rewardXP: 300,
-        completed: testsCompleted > 0,
-        progressText: testsCompleted > 0 ? '1 / 1 Done' : '0 / 1 Done',
+        completed: testsCompleted >= 1,
+        progressText: testsCompleted >= 1 ? '1 / 1 Done' : '0 / 1 Done',
       },
       {
         id: 'quest-tutor',
         title: 'Engage with ScoreUP AI Socratic Tutor',
         subtitle: 'Ask for step-by-step guidance on any tricky question',
         rewardXP: 100,
-        completed: true,
-        progressText: '1 / 1 Done',
+        completed: isTutorUsed,
+        progressText: isTutorUsed ? '1 / 1 Done' : '0 / 1 Done',
       },
     ];
-  }, [testsCompleted]);
+  }, [realStreak, totalSolved, testsCompleted]);
 
   const handleClaimQuest = (questId: string, rewardXP: number) => {
     if (claimedQuests.includes(questId)) return;
@@ -212,12 +233,12 @@ export const LeaderboardView: React.FC = () => {
     const newClaimed = [...claimedQuests, questId];
     setClaimedQuests(newClaimed);
     try {
-      localStorage.setItem(CLAIMED_QUESTS_KEY, JSON.stringify(newClaimed));
+      localStorage.setItem(questStorageKey, JSON.stringify(newClaimed));
     } catch {}
 
     // Add real XP to state
     setUserProgressState((prev) => {
-      const nextXP = (prev.stats?.globalXP || realXP) + rewardXP;
+      const nextXP = (prev.stats?.globalXP ?? realXP) + rewardXP;
       return {
         ...prev,
         stats: {

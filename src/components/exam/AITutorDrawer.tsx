@@ -120,6 +120,10 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
   const handleSendMessage = async (textToSend: string) => {
     if (!textToSend.trim() || isLoading) return;
 
+    try {
+      localStorage.setItem('scoreup_tutor_used', 'true');
+    } catch {}
+
     const userMsg: ChatMessage = { sender: 'user', text: textToSend };
     setMessages((prev) => [...prev, userMsg]);
     setInputText('');

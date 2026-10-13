@@ -42,13 +42,18 @@ export const TASK_CONFIGS: Record<GeminiTaskConfig['task'], GeminiTaskConfig> = 
 export function getGeminiApiKey(): string {
   try {
     const local = localStorage.getItem('gemini_api_key');
-    if (local && local.trim() && local !== 'AQ.Ab8RN6ITbBzwshVbxBz2qvFIo_McHVc5W3unHMtzPXBcKPmKOA') {
+    if (local && local.trim() && !local.startsWith('AQ.Ab8RN6') && !local.toLowerCase().includes('placeholder')) {
       return local.trim();
     }
   } catch {}
 
   const envKey = import.meta.env.VITE_GEMINI_API_KEY;
-  if (typeof envKey === 'string' && envKey.trim() !== '' && envKey !== 'AQ.Ab8RN6ITbBzwshVbxBz2qvFIo_McHVc5W3unHMtzPXBcKPmKOA') {
+  if (
+    typeof envKey === 'string' &&
+    envKey.trim() !== '' &&
+    !envKey.startsWith('AQ.Ab8RN6') &&
+    !envKey.toLowerCase().includes('placeholder')
+  ) {
     return envKey.trim();
   }
 
@@ -58,7 +63,7 @@ export function getGeminiApiKey(): string {
 export function setGeminiApiKey(key: string): void {
   try {
     const trimmed = key.trim();
-    if (trimmed) {
+    if (trimmed && !trimmed.startsWith('AQ.Ab8RN6') && !trimmed.toLowerCase().includes('placeholder')) {
       localStorage.setItem('gemini_api_key', trimmed);
       cachedClient = new GoogleGenerativeAI(trimmed);
     } else {
@@ -72,15 +77,15 @@ export function setGeminiApiKey(key: string): void {
 
 /**
  * Check if the active key appears to be a valid Google AI Studio key format.
- * AI Studio keys typically begin with "AIzaSy" or "AQ." and are >20 characters.
+ * AI Studio keys typically begin with "AIzaSy" and are >20 characters.
  */
 export function hasValidApiKey(): boolean {
   const key = getGeminiApiKey();
   return Boolean(
     key &&
     key.length > 20 &&
-    !key.toLowerCase().includes('placeholder') &&
-    key !== 'AQ.Ab8RN6ITbBzwshVbxBz2qvFIo_McHVc5W3unHMtzPXBcKPmKOA'
+    !key.startsWith('AQ.Ab8RN6') &&
+    !key.toLowerCase().includes('placeholder')
   );
 }
 

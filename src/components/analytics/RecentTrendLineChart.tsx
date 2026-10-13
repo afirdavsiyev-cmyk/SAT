@@ -27,7 +27,7 @@ interface DayTrendData {
 
 export const RecentTrendLineChart: React.FC<RecentTrendLineChartProps> = ({
   currentAccuracy = 84,
-  streakDays = 5,
+  streakDays = 1,
 }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';

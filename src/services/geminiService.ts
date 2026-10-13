@@ -61,8 +61,12 @@ export async function callGeminiWithFallback(
 ): Promise<GeminiExecutionResult<string>> {
   const startTime = Date.now();
 
+  let groqAttempted = false;
+  let groqRateLimited = false;
+
   // 1. Primary Provider: Live AI via Groq (Qwen 3.8 / GPT-OSS / Llama 3.3)
   if (hasGroqApiKey()) {
+    groqAttempted = true;
     try {
       const groqMessages = [
         ...(systemInstruction ? [{ role: 'system' as const, content: systemInstruction }] : []),
@@ -78,12 +82,21 @@ export async function callGeminiWithFallback(
         };
       }
     } catch (groqErr: any) {
-      console.warn('[AI Tutor Dispatcher] Groq primary provider failed, trying secondary fallback:', groqErr?.message || groqErr);
+      const errMsg = groqErr?.message || '';
+      console.warn('[AI Tutor Dispatcher] Groq primary provider failed:', errMsg);
+      if (/429|rate limit|rate_limit|quota|tpm|rpm/i.test(errMsg)) {
+        groqRateLimited = true;
+      }
     }
   }
 
-  // 2. Secondary Provider: Live Gemini models if an API key is configured
-  if (hasValidApiKey()) {
+  // 2. Secondary Provider: Live Gemini models ONLY if:
+  // - Groq was attempted and failed with an error OTHER THAN rate-limiting
+  // - AND a valid Gemini API key is configured
+  // (Do NOT attempt to contact Gemini if Groq was rate-limited or if no valid Gemini key is configured)
+  const canAttemptGemini = groqAttempted && !groqRateLimited && hasValidApiKey();
+
+  if (canAttemptGemini) {
     const modelCascade: (GeminiTier | string)[] = [
       preferredModel,
       ...fallbackModels,

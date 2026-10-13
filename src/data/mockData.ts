@@ -105,18 +105,18 @@ export const mockLeaderboardUsers: LeaderboardUser[] = [
 ];
 
 export const initialUserProgress: UserProgress = {
-  estimatedScore: 750,
-  mathScore: 750,
-  streakDays: 12,
-  xp: 9850,
-  totalQuestionsSolved: 485,
-  accuracyRate: 91.4,
-  completedTests: 6,
+  estimatedScore: 650,
+  mathScore: 650,
+  streakDays: 1,
+  xp: 0,
+  totalQuestionsSolved: 0,
+  accuracyRate: 0,
+  completedTests: 0,
   skillBreakdown: [
-    { domain: 'Algebra', mastery: 94 },
-    { domain: 'Advanced Math', mastery: 86 },
-    { domain: 'Problem-Solving & Data Analysis', mastery: 90 },
-    { domain: 'Geometry & Trigonometry', mastery: 82 }
+    { domain: 'Algebra', mastery: 0 },
+    { domain: 'Advanced Math', mastery: 0 },
+    { domain: 'Problem-Solving & Data Analysis', mastery: 0 },
+    { domain: 'Geometry & Trigonometry', mastery: 0 }
   ]
 };
 

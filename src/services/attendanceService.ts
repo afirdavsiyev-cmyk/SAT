@@ -28,22 +28,55 @@ const getYesterdayDateString = (): string => {
   return `${year}-${month}-${day}`;
 };
 
+const getAttendanceStorageKey = (): string => {
+  try {
+    const authRaw = localStorage.getItem('scoreup_auth_user');
+    if (authRaw) {
+      const u = JSON.parse(authRaw);
+      if (u.email) return `scoreup_attendance_${u.email.toLowerCase().trim()}`;
+    }
+    const activeRaw = localStorage.getItem('scoreup_active_user');
+    if (activeRaw) {
+      const a = JSON.parse(activeRaw);
+      if (a.email && a.email !== 'student@scoreup.app') {
+        return `scoreup_attendance_${a.email.toLowerCase().trim()}`;
+      }
+      if (a.firstName && a.firstName !== 'Student') {
+        return `scoreup_attendance_${a.firstName.toLowerCase().trim()}`;
+      }
+    }
+  } catch {}
+  return 'scoreup_attendance_data';
+};
+
+export const resetAttendanceForNewUser = (): AttendanceData => {
+  const today = getTodayDateString();
+  const freshData: AttendanceData = {
+    streakDays: 1,
+    attendedDates: [today],
+    lastAttendedDate: today,
+    todayCheckedIn: true,
+  };
+  saveAttendanceData(freshData);
+  return freshData;
+};
+
 export const getAttendanceData = (): AttendanceData => {
   const today = getTodayDateString();
   const yesterday = getYesterdayDateString();
+  const storageKey = getAttendanceStorageKey();
 
   try {
-    const raw = localStorage.getItem(ATTENDANCE_STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey);
     if (raw) {
       const parsed = JSON.parse(raw);
-      const attendedDates: string[] = Array.isArray(parsed.attendedDates) ? parsed.attendedDates : [];
+      const attendedDates: string[] = Array.isArray(parsed.attendedDates) ? parsed.attendedDates : [today];
       const todayCheckedIn = attendedDates.includes(today);
-      let streakDays = typeof parsed.streakDays === 'number' ? parsed.streakDays : 12;
+      let streakDays = typeof parsed.streakDays === 'number' ? parsed.streakDays : 1;
 
       // If last attended was before yesterday and not today, streak resets
       if (parsed.lastAttendedDate && parsed.lastAttendedDate !== today && parsed.lastAttendedDate !== yesterday) {
-        // preserve existing display streak or minimum 1
-        if (streakDays < 1) streakDays = 1;
+        streakDays = 1;
       }
 
       return {
@@ -57,20 +90,10 @@ export const getAttendanceData = (): AttendanceData => {
     console.error('Failed to parse attendance data', err);
   }
 
-  // Initial default state with consecutive attendance
-  const pastDates: string[] = [];
-  for (let i = 11; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const yr = d.getFullYear();
-    const mo = String(d.getMonth() + 1).padStart(2, '0');
-    const dy = String(d.getDate()).padStart(2, '0');
-    pastDates.push(`${yr}-${mo}-${dy}`);
-  }
-
+  // Initial default state for a new user: 1st day attendance
   const initialData: AttendanceData = {
-    streakDays: 12,
-    attendedDates: pastDates,
+    streakDays: 1,
+    attendedDates: [today],
     lastAttendedDate: today,
     todayCheckedIn: true,
   };
@@ -80,8 +103,9 @@ export const getAttendanceData = (): AttendanceData => {
 };
 
 export const saveAttendanceData = (data: AttendanceData): void => {
+  const storageKey = getAttendanceStorageKey();
   try {
-    localStorage.setItem(ATTENDANCE_STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(storageKey, JSON.stringify(data));
     // Also synchronize active_user and sat_user_progress_state
     try {
       const activeRaw = localStorage.getItem('scoreup_active_user');

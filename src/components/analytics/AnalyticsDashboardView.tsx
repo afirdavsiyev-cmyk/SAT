@@ -208,7 +208,7 @@ export const AnalyticsDashboardView: React.FC<AnalyticsDashboardViewProps> = ({
         <section id="section-trends">
           <RecentTrendLineChart
             currentAccuracy={userProgress.accuracyRate || 85}
-            streakDays={plannerData.streakDays || 5}
+            streakDays={plannerData.streakDays ?? 1}
           />
         </section>
       )}

@@ -6,7 +6,8 @@ const PROFILE_KEY = 'scoreup_user_profile';
 const REGISTERED_USERS_KEY = 'scoreup_registered_users';
 const ACTIVE_USER_KEY = 'scoreup_active_user';
 
-import { getAttendanceData } from '../services/attendanceService';
+import { getAttendanceData, resetAttendanceForNewUser } from '../services/attendanceService';
+import { clearProgress } from '../services/userProgress';
 
 export const buildActiveUserProfile = (
   authUser?: Partial<AuthUser> | null,
@@ -38,8 +39,8 @@ export const buildActiveUserProfile = (
 
   const email = onboarding?.email || authUser?.email || existingActive?.email || 'student@scoreup.app';
   const avatar = authUser?.photoUrl || existingActive?.avatar;
-  const streakDays = existingActive?.streakDays || attendance.streakDays || 12;
-  const currentEstimatedMath = existingActive?.currentEstimatedMath || baseline || 680;
+  const streakDays = existingActive?.streakDays ?? attendance.streakDays ?? 1;
+  const currentEstimatedMath = existingActive?.currentEstimatedMath || baseline || 650;
   const mainReason = onboarding?.mainReason || existingActive?.mainReason || 'Get into my dream university';
   const biggestMotivation = onboarding?.biggestMotivation || existingActive?.biggestMotivation || 'My future';
   const targetExamDate = existingActive?.targetExamDate || 'May 3, 2026';
@@ -253,8 +254,38 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       saveUserSession(newProfile);
       saveRegisteredUser(newProfile);
 
-      const synched = buildActiveUserProfile(newProfile, newProfile.onboardingProfile, activeUser);
+      // Clean fresh start for new account: reset attendance, attempts, and quests
+      resetAttendanceForNewUser();
+      clearProgress();
+      const userKey = (newProfile.email || newProfile.name).toLowerCase().trim();
+      try {
+        localStorage.removeItem(`scoreup_claimed_quests_${userKey}`);
+        localStorage.removeItem('scoreup_claimed_quests');
+        localStorage.removeItem('scoreup_tutor_used');
+        localStorage.setItem(`sat_user_progress_${userKey}`, JSON.stringify({
+          planner: {
+            targetExamDate: 'October 2026',
+            targetScore: 800,
+            baselineScore: 650,
+            dailyGoalMinutes: 45,
+            weakDomains: ['Advanced Math', 'Geometry & Trigonometry'],
+            currentDay: 1,
+          },
+          stats: {
+            streakDays: 1,
+            totalQuestionsSolved: 0,
+            totalQuestionsCorrect: 0,
+            globalXP: 0,
+            completedExamsCount: 0,
+            domainMastery: { algebra: 0, advancedMath: 0, problemSolving: 0, geometryTrig: 0 },
+            examHistory: [],
+          },
+        }));
+      } catch {}
+
+      const synched = buildActiveUserProfile(newProfile, newProfile.onboardingProfile, null);
       synched.onboardingCompleted = false;
+      synched.streakDays = 1;
       setActiveUser(synched);
       try {
         localStorage.setItem(ACTIVE_USER_KEY, JSON.stringify(synched));

@@ -64,43 +64,49 @@ const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
 const MOCK_RESULTS_STORAGE_KEY = 'sat_mock_exam_results';
 
+const getProgressStorageKey = (): string => {
+  try {
+    const authRaw = localStorage.getItem('scoreup_auth_user');
+    if (authRaw) {
+      const u = JSON.parse(authRaw);
+      if (u.email) return `sat_user_progress_${u.email.toLowerCase().trim()}`;
+    }
+    const activeRaw = localStorage.getItem('scoreup_active_user');
+    if (activeRaw) {
+      const a = JSON.parse(activeRaw);
+      if (a.email && a.email !== 'student@scoreup.app') {
+        return `sat_user_progress_${a.email.toLowerCase().trim()}`;
+      }
+      if (a.firstName && a.firstName !== 'Student') {
+        return `sat_user_progress_${a.firstName.toLowerCase().trim()}`;
+      }
+    }
+  } catch {}
+  return STORAGE_KEY;
+};
+
 const DEFAULT_USER_PROGRESS_STATE: UserProgressState = {
   planner: {
     targetExamDate: 'October 2026',
     targetScore: 800,
-    baselineScore: 720,
+    baselineScore: 650,
     dailyGoalMinutes: 45,
     weakDomains: ['Advanced Math', 'Geometry & Trigonometry'],
     currentDay: 1,
   },
   stats: {
-    streakDays: 12,
-    totalQuestionsSolved: 142,
-    totalQuestionsCorrect: 125,
-    globalXP: 1450,
-    completedExamsCount: 2,
+    streakDays: 1,
+    totalQuestionsSolved: 0,
+    totalQuestionsCorrect: 0,
+    globalXP: 0,
+    completedExamsCount: 0,
     domainMastery: {
-      algebra: 88,
-      advancedMath: 74,
-      problemSolving: 82,
-      geometryTrig: 68,
+      algebra: 0,
+      advancedMath: 0,
+      problemSolving: 0,
+      geometryTrig: 0,
     },
-    examHistory: [
-      {
-        date: '2026-08-28',
-        score: 720,
-        module1Correct: 18,
-        module2Correct: 17,
-        module2Type: 'hard',
-      },
-      {
-        date: '2026-09-01',
-        score: 740,
-        module1Correct: 19,
-        module2Correct: 18,
-        module2Type: 'hard',
-      }
-    ],
+    examHistory: [],
   },
 };
 
@@ -140,9 +146,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [currentView, setCurrentView] = useState<AppView>('landing');
 
   // Unified persistent UserProgressState
-  const [userProgressState, setUserProgressState] = useState<UserProgressState>(() => {
+  const loadUserProgressState = (): UserProgressState => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const userKey = getProgressStorageKey();
+      const saved = localStorage.getItem(userKey);
       const targetDateFromStorage = localStorage.getItem('study_planner_target_date');
       if (saved) {
         const parsed = JSON.parse(saved);
@@ -164,11 +171,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.error('Failed to load user progress state from localStorage', e);
     }
     return DEFAULT_USER_PROGRESS_STATE;
-  });
+  };
+
+  const [userProgressState, setUserProgressState] = useState<UserProgressState>(loadUserProgressState);
 
   // Sync userProgressState and study_planner_target_date to localStorage
   useEffect(() => {
     try {
+      const userKey = getProgressStorageKey();
+      localStorage.setItem(userKey, JSON.stringify(userProgressState));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgressState));
       if (userProgressState.planner?.targetExamDate) {
         localStorage.setItem('study_planner_target_date', userProgressState.planner.targetExamDate);
@@ -177,6 +188,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.error('Failed to save user progress state to localStorage', e);
     }
   }, [userProgressState]);
+
+  // Reload when user switches account
+  useEffect(() => {
+    const handleUserChange = () => {
+      setUserProgressState(loadUserProgressState());
+    };
+    window.addEventListener('scoreup_user_updated', handleUserChange);
+    window.addEventListener('scoreup_auth_changed', handleUserChange);
+    return () => {
+      window.removeEventListener('scoreup_user_updated', handleUserChange);
+      window.removeEventListener('scoreup_auth_changed', handleUserChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleAttendanceUpdate = (e: any) => {

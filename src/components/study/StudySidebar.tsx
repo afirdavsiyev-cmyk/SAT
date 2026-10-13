@@ -73,7 +73,7 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
   const displayName = activeUser.firstName || 'Student';
   const userEmail = activeUser.email || 'student@scoreup.app';
   const targetScore = activeUser.targetScore || '800';
-  const streakDays = activeUser.streakDays || 4;
+  const streakDays = activeUser.streakDays ?? 1;
 
   const handleOpenEditProfile = () => {
     setIsProfileMenuOpen(false);

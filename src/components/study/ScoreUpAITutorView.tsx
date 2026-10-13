@@ -24,7 +24,7 @@ import {
   sendSocraticChatMessage,
   ChatMessageItem
 } from '../../services/geminiService';
-import { getTutorReplyDetailed, TutorMessage } from '../../services/aiTutor';
+import { getTutorReply, getTutorReplyDetailed, hasGroqApiKey, TutorMessage } from '../../services/aiTutor';
 import { getGeminiApiKey, setGeminiApiKey, hasValidApiKey } from '../../lib/gemini';
 
 export interface ChatMessage {
@@ -84,42 +84,87 @@ export const ScoreUpAITutorView: React.FC = () => {
   const handleSendMessage = async (textToSend: string) => {
     if (!textToSend.trim() || isLoading) return;
 
+    try {
+      localStorage.setItem('scoreup_tutor_used', 'true');
+    } catch {}
+
     const userMsg: ChatMessage = { sender: 'user', text: textToSend };
     setMessages((prev) => [...prev, userMsg]);
     setInputText('');
     setIsLoading(true);
 
-    try {
-      // 1. Primary: Real-time Socratic AI Chat with multi-turn conversation memory via Groq
-      const chatPayload: TutorMessage[] = [
+    // 1. Guard: If VITE_GROQ_API_KEY is undefined at runtime, display a clean message
+    // without attempting to fetch from generativelanguage.googleapis.com and dumping 401 errors
+    if (!hasGroqApiKey()) {
+      setMessages((prev) => [
+        ...prev,
         {
-          role: 'system',
-          content: 'You are ScoreUP AI, an elite, encouraging Digital SAT Math & Reading/Writing personal tutor. Guide students step-by-step using clear, intuitive explanations and analogies. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide high-yield Desmos calculator tips when helpful. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
-        },
-        ...messages.map((m) => ({
-          role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
-          content: m.text
-        })),
-        { role: 'user', content: textToSend }
-      ];
+          sender: 'ai',
+          text: '⚠️ **Groq API Key Not Configured**: `VITE_GROQ_API_KEY` is not defined in your runtime environment. Please configure `VITE_GROQ_API_KEY` in your GitHub repository secrets or environment variables to enable live AI responses.',
+          modelUsed: 'offline'
+        }
+      ]);
+      setIsLoading(false);
+      return;
+    }
 
+    // 2. FIRST and DEFAULT AI provider: Groq (via getTutorReplyDetailed from src/services/aiTutor.ts)
+    const chatPayload: TutorMessage[] = [
+      {
+        role: 'system',
+        content: 'You are ScoreUP AI, an elite, encouraging Digital SAT Math & Reading/Writing personal tutor. Guide students step-by-step using clear, intuitive explanations and analogies. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide high-yield Desmos calculator tips when helpful. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
+      },
+      ...messages.map((m) => ({
+        role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+        content: m.text
+      })),
+      { role: 'user', content: textToSend }
+    ];
+
+    try {
       const res = await getTutorReplyDetailed(chatPayload);
       setActiveModel(res.modelUsed);
       setMessages((prev) => [...prev, { sender: 'ai', text: res.content, modelUsed: res.modelUsed }]);
     } catch (err: any) {
-      console.warn("Groq AI tutor encountered an error, attempting geminiService fallback:", err);
-      try {
-        const historyItems: ChatMessageItem[] = messages.map((m) => ({
-          role: m.sender === 'user' ? 'user' : 'model',
-          text: m.text,
-        }));
-        const res = await sendSocraticChatMessage(historyItems, textToSend);
-        setActiveModel(res.usedModel);
-        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
-      } catch {
+      const errMsg = err?.message || '';
+      console.warn("Groq AI tutor encountered an error:", errMsg);
+      const isRateLimit = /429|rate limit|rate_limit|quota|tpm|rpm/i.test(errMsg);
+
+      // Do NOT attempt to contact Google Generative AI / Gemini unless Groq fails with an error other than rate-limiting
+      if (!isRateLimit && hasValidApiKey()) {
+        try {
+          console.info("Groq failed with non-rate-limit error; attempting secondary Gemini fallback...");
+          const historyItems: ChatMessageItem[] = messages.map((m) => ({
+            role: m.sender === 'user' ? 'user' : 'model',
+            text: m.text,
+          }));
+          const res = await sendSocraticChatMessage(historyItems, textToSend);
+          setActiveModel(res.usedModel);
+          setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
+          return;
+        } catch (geminiErr: any) {
+          console.warn("Secondary Gemini fallback error:", geminiErr?.message || geminiErr);
+        }
+      }
+
+      // Display appropriate friendly error in chat box without dumping 401 errors
+      if (isRateLimit) {
         setMessages((prev) => [
           ...prev,
-          { sender: 'ai', text: 'Sorry, I encountered an issue connecting to the AI tutor. Please check your connection and try again.', modelUsed: 'offline' }
+          {
+            sender: 'ai',
+            text: '⏳ **Rate Limit Reached**: The Groq AI service is currently receiving high demand. Please wait a moment and try asking again.',
+            modelUsed: 'offline'
+          }
+        ]);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: 'ai',
+            text: `⚠️ **AI Service Notice**: ${errMsg || 'Could not connect to the AI model'}. Please check your connection or try again.`,
+            modelUsed: 'offline'
+          }
         ]);
       }
     } finally {
@@ -398,7 +443,7 @@ export const ScoreUpAITutorView: React.FC = () => {
 
         {/* Disclaimer Text */}
         <p className="text-[10px] text-center text-slate-500 dark:text-slate-500 font-mono">
-          ScoreUP AI is powered by Gemini 2.5/Flash. Check critical exam calculations.
+          ScoreUP AI is powered by Groq Socratic Engine. Check critical exam calculations.
         </p>
       </div>
 

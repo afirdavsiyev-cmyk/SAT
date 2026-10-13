@@ -9,6 +9,7 @@ import {
   sendSocraticChatMessage,
   ChatMessageItem
 } from '../../services/geminiService';
+import { getTutorReplyDetailed, TutorMessage } from '../../services/aiTutor';
 import { getGeminiApiKey } from '../../lib/gemini';
 
 export interface ChatMessage {
@@ -27,6 +28,9 @@ interface AITutorDrawerProps {
 function formatModelName(model: string): string {
   if (!model) return 'ScoreUP AI';
   if (model.includes('ScoreUP-AI') || model.includes('Local') || model.includes('offline')) return 'ScoreUP AI';
+  if (model.includes('qwen')) return 'Qwen 3.8';
+  if (model.includes('llama')) return 'Llama 3.3';
+  if (model.includes('gpt-oss')) return 'GPT-OSS';
   if (model.includes('3.8-flash')) return '3.8 Flash';
   if (model.includes('3.6-flash')) return '3.6 Flash';
   if (model.includes('3.5-flash-lite')) return '3.5 Flash-Lite';

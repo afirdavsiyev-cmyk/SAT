@@ -24,6 +24,7 @@ import {
   sendSocraticChatMessage,
   ChatMessageItem
 } from '../../services/geminiService';
+import { getTutorReplyDetailed, TutorMessage } from '../../services/aiTutor';
 import { getGeminiApiKey, setGeminiApiKey, hasValidApiKey } from '../../lib/gemini';
 
 export interface ChatMessage {
@@ -35,6 +36,9 @@ export interface ChatMessage {
 function formatModelName(model: string): string {
   if (!model) return 'ScoreUP AI';
   if (model.includes('ScoreUP-AI') || model.includes('Local') || model.includes('offline')) return 'ScoreUP AI';
+  if (model.includes('qwen')) return 'Qwen 3.8 (Groq)';
+  if (model.includes('llama')) return 'Llama 3.3 (Groq)';
+  if (model.includes('gpt-oss')) return 'GPT-OSS (Groq)';
   if (model.includes('3.8-flash')) return '3.8 Flash';
   if (model.includes('3.6-flash')) return '3.6 Flash';
   if (model.includes('3.5-flash-lite')) return '3.5 Flash-Lite';
@@ -51,7 +55,7 @@ export const ScoreUpAITutorView: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [hasApiKey, setHasApiKey] = useState(false);
-  const [activeModel, setActiveModel] = useState<string>('gemini-3.6-flash');
+  const [activeModel, setActiveModel] = useState<string>('qwen/qwen3.8-27b');
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -86,30 +90,38 @@ export const ScoreUpAITutorView: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const lower = textToSend.toLowerCase();
+      // 1. Primary: Real-time Socratic AI Chat with multi-turn conversation memory via Groq
+      const chatPayload: TutorMessage[] = [
+        {
+          role: 'system',
+          content: 'You are ScoreUP AI, an elite, encouraging Digital SAT Math & Reading/Writing personal tutor. Guide students step-by-step using clear, intuitive explanations and analogies. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide high-yield Desmos calculator tips when helpful. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
+        },
+        ...messages.map((m) => ({
+          role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+          content: m.text
+        })),
+        { role: 'user', content: textToSend }
+      ];
 
-      // Tier 1: Instant Hint
-      if (lower.startsWith('hint') || lower.includes('quick hint')) {
-        const res = await generateInstantHint(textToSend, '', 'SAT Math');
+      const res = await getTutorReplyDetailed(chatPayload);
+      setActiveModel(res.modelUsed);
+      setMessages((prev) => [...prev, { sender: 'ai', text: res.content, modelUsed: res.modelUsed }]);
+    } catch (err: any) {
+      console.warn("Groq AI tutor encountered an error, attempting geminiService fallback:", err);
+      try {
+        const historyItems: ChatMessageItem[] = messages.map((m) => ({
+          role: m.sender === 'user' ? 'user' : 'model',
+          text: m.text,
+        }));
+        const res = await sendSocraticChatMessage(historyItems, textToSend);
         setActiveModel(res.usedModel);
         setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
-        return;
+      } catch {
+        setMessages((prev) => [
+          ...prev,
+          { sender: 'ai', text: 'Sorry, I encountered an issue connecting to the AI tutor. Please check your connection and try again.', modelUsed: 'offline' }
+        ]);
       }
-
-      // Tier 2: Real-time Socratic Chat & Explanations
-      const historyItems: ChatMessageItem[] = messages.map((m) => ({
-        role: m.sender === 'user' ? 'user' : 'model',
-        text: m.text,
-      }));
-
-      const res = await sendSocraticChatMessage(historyItems, textToSend);
-      setActiveModel(res.usedModel);
-      setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        { sender: 'ai', text: 'Sorry, I encountered an error. Please try again.', modelUsed: 'offline' }
-      ]);
     } finally {
       setIsLoading(false);
     }
@@ -157,7 +169,7 @@ export const ScoreUpAITutorView: React.FC = () => {
             <div className="flex items-center space-x-2">
               <h2 className="text-sm font-extrabold text-slate-900 dark:text-white">ScoreUP AI Tutor</h2>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-400 dark:border-emerald-500/30 font-mono shadow-sm">
-                <span>⚡ Powered by Gemini</span>
+                <span>⚡ Live AI Tutor</span>
                 <span className="font-extrabold">{formatModelName(activeModel)}</span>
               </span>
             </div>

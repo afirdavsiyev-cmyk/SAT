@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GeminiTier, getGeminiApiKey, getGeminiClient, hasValidApiKey, TASK_CONFIGS } from '../lib/gemini';
+import { getTutorReplyDetailed } from './aiTutor';
 
 export interface GeminiExecutionResult<T = string> {
   success: boolean;
@@ -57,69 +58,76 @@ export async function callGeminiWithFallback(
   questionContext?: string
 ): Promise<GeminiExecutionResult<string>> {
   const startTime = Date.now();
-  const apiKey = getGeminiApiKey();
 
-  // If there is no valid API key, synthesize immediately without delay
-  if (!hasValidApiKey()) {
-    return {
-      success: true,
-      data: getOfflineFallbackContent(prompt, jsonMode, systemInstruction, userMessage, questionContext),
-      usedModel: 'ScoreUP-AI-Local',
-      latencyMs: Date.now() - startTime,
-    };
-  }
+  // Try live Gemini models if an API key is configured
+  if (hasValidApiKey()) {
+    const modelCascade: (GeminiTier | string)[] = [
+      preferredModel,
+      ...fallbackModels,
+      'gemini-3.6-flash',
+      'gemini-3.8-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-flash-latest'
+    ];
 
-  // Cascade list of live Gemini models
-  const modelCascade: (GeminiTier | string)[] = [
-    preferredModel,
-    ...fallbackModels,
-    'gemini-3.6-flash',
-    'gemini-3.8-flash',
-    'gemini-3.5-flash-lite',
-    'gemini-flash-latest'
-  ];
+    const uniqueModels = Array.from(new Set(modelCascade));
 
-  const uniqueModels = Array.from(new Set(modelCascade));
-  let lastError: any = null;
+    for (const modelName of uniqueModels) {
+      try {
+        const client = getGeminiClient();
+        const model = client.getGenerativeModel({
+          model: modelName,
+          systemInstruction: systemInstruction ? { role: 'system', parts: [{ text: systemInstruction }] } : undefined,
+          generationConfig: {
+            temperature: jsonMode ? 0.2 : 0.7,
+            maxOutputTokens: 1500,
+            responseMimeType: jsonMode ? 'application/json' : undefined,
+          }
+        });
 
-  for (const modelName of uniqueModels) {
-    try {
-      const client = getGeminiClient();
-      const model = client.getGenerativeModel({
-        model: modelName,
-        systemInstruction: systemInstruction ? { role: 'system', parts: [{ text: systemInstruction }] } : undefined,
-        generationConfig: {
-          temperature: jsonMode ? 0.2 : 0.7,
-          maxOutputTokens: 1500,
-          responseMimeType: jsonMode ? 'application/json' : undefined,
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+
+        if (text && text.trim().length > 0) {
+          return {
+            success: true,
+            data: text.trim(),
+            usedModel: modelName,
+            latencyMs: Date.now() - startTime,
+          };
         }
-      });
-
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      const text = response.text();
-
-      if (text && text.trim().length > 0) {
-        return {
-          success: true,
-          data: text.trim(),
-          usedModel: modelName,
-          latencyMs: Date.now() - startTime,
-        };
+      } catch (err: any) {
+        console.warn(`[Gemini Dispatcher] Tier '${modelName}' execution failed:`, err?.message || err);
       }
-    } catch (err: any) {
-      lastError = err;
-      console.warn(`[Gemini Dispatcher] Tier '${modelName}' execution failed:`, err?.message || err);
     }
   }
 
-  // Graceful synthesis fallback when live API fails
+  // Live AI Fallback via Groq (Qwen 3.8 / Llama 3.3 / GPT-OSS)
+  try {
+    const groqMessages = [
+      ...(systemInstruction ? [{ role: 'system' as const, content: systemInstruction }] : []),
+      { role: 'user' as const, content: prompt }
+    ];
+    const groqResult = await getTutorReplyDetailed(groqMessages);
+    if (groqResult && groqResult.content) {
+      return {
+        success: true,
+        data: groqResult.content,
+        usedModel: groqResult.modelUsed,
+        latencyMs: Date.now() - startTime,
+      };
+    }
+  } catch (groqErr: any) {
+    console.warn('[AI Tutor Dispatcher] Groq live fallback unavailable:', groqErr?.message || groqErr);
+  }
+
+  // Graceful synthesis offline fallback when all live APIs fail
   return {
     success: true,
     data: getOfflineFallbackContent(prompt, jsonMode, systemInstruction, userMessage, questionContext),
     usedModel: 'ScoreUP-AI-Local',
     latencyMs: Date.now() - startTime,
-    error: lastError?.message || 'Fell back to local intelligence',
   };
 }
 

@@ -140,12 +140,42 @@ export const DashboardView: React.FC = () => {
   const scholarLevel = Math.floor(plannerData.globalXP / 700) + 1;
 
   const handleLaunchDrill = (drill: TodayDrillItem) => {
-    if (drill.type === 'concept_deepdive') {
-      setActiveTab('masterclass_math');
-    } else if (drill.type === 'mixed_timed') {
-      setActiveTab('question_bank');
+    let questionsToPractice: QuestionItem[] = [];
+
+    if (drill.type === 'concept_deepdive' || drill.title.toLowerCase().includes('desmos')) {
+      questionsToPractice = ALL_QUESTIONS.filter(
+        (q) => q.topic?.toLowerCase().includes('expression') || q.domain === 'Algebra' || q.domain === 'Advanced Math'
+      ).slice(0, drill.questionCount || 10);
+    } else if (drill.type === 'mixed_timed' || drill.title.toLowerCase().includes('timed')) {
+      questionsToPractice = [...ALL_QUESTIONS].sort(() => 0.5 - Math.random()).slice(0, drill.questionCount || 8);
     } else {
-      setActiveTab('planner');
+      const match = ALL_QUESTIONS.filter(
+        (q) => q.domain === drill.domain || (q.topic && q.topic.toLowerCase().includes('linear')) || (q.topic && q.topic.toLowerCase().includes(drill.subtopicName.toLowerCase()))
+      );
+      questionsToPractice = match.length >= 5 ? match.slice(0, drill.questionCount || 12) : ALL_QUESTIONS.filter((q) => q.domain === 'Algebra').slice(0, drill.questionCount || 12);
+    }
+
+    if (questionsToPractice.length > 0) {
+      setPracticeSession({
+        questions: questionsToPractice,
+        topicName: `${drill.title} (${questionsToPractice.length} Qs)`,
+        initialIndex: 0,
+      });
+    } else {
+      setActiveTab('question_bank');
+    }
+  };
+
+  const handlePracticeDomain = (domainName: string) => {
+    const domainQuestions = ALL_QUESTIONS.filter((q) => q.domain === domainName);
+    if (domainQuestions.length > 0) {
+      setPracticeSession({
+        questions: domainQuestions.slice(0, 15),
+        topicName: `${domainName} Focused Mastery Drill (15 Qs)`,
+        initialIndex: 0,
+      });
+    } else {
+      setActiveTab('question_bank');
     }
   };
 
@@ -346,16 +376,19 @@ export const DashboardView: React.FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 
                 {/* Readiness Dial Card (Col 4) */}
-                <div className="lg:col-span-4 bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/60 rounded-3xl p-6 flex flex-col justify-between items-center text-center shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
+                <div 
+                  onClick={() => setActiveTab('score_calculator')}
+                  className="cursor-pointer group lg:col-span-4 bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/70 dark:hover:border-emerald-500/70 rounded-3xl p-6 flex flex-col justify-between items-center text-center shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.14)] dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all"
+                >
                   <div className="w-full flex justify-between items-center text-xs font-bold text-slate-500 dark:text-slate-400 mb-4">
-                    <span>Math Readiness Score</span>
+                    <span className="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Math Readiness Score</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">
                       {plannerData.testsCompleted > 0 ? 'Exam Scaled' : 'Adaptive Calibrated'}
                     </span>
                   </div>
 
                   {/* Dial Visual */}
-                  <div className="relative w-44 h-44 flex items-center justify-center my-2">
+                  <div className="relative w-44 h-44 flex items-center justify-center my-2 group-hover:scale-105 transition-transform">
                     <svg className="w-full h-full transform -rotate-90" viewBox="0 0 180 180">
                       <circle
                         cx="90"
@@ -386,9 +419,12 @@ export const DashboardView: React.FC = () => {
                   </div>
 
                   <div className="w-full mt-4 text-xs font-mono">
-                    <div className="p-3 rounded-xl bg-emerald-50/70 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between items-center shadow-inner">
+                    <div className="p-3 rounded-xl bg-emerald-50/70 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between items-center shadow-inner group-hover:border-emerald-400/60 transition-colors">
                       <span className="text-slate-500 dark:text-slate-400 text-[10px]">DIGITAL SAT MATH ESTIMATE</span>
                       <span className="font-bold text-emerald-700 dark:text-emerald-400 text-base">{displayedScore} / {activeUser.targetScore || 800}</span>
+                    </div>
+                    <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Click to calculate score & target →
                     </div>
                   </div>
                 </div>
@@ -396,36 +432,54 @@ export const DashboardView: React.FC = () => {
                 {/* Quick Stats & XP Progress (Col 8) */}
                 <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                   
-                  <div className="bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/60 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
+                  <div 
+                    onClick={() => setActiveTab('question_bank')}
+                    className="cursor-pointer group bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/70 dark:hover:border-emerald-500/70 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.14)] dark:hover:shadow-[0_0_18px_rgba(16,185,129,0.2)] transition-all"
+                  >
                     <div className="flex justify-between items-center text-slate-500 dark:text-slate-400">
-                      <span className="text-xs font-bold">Total Solved</span>
-                      <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-xs font-bold group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Total Solved</span>
+                      <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform" />
                     </div>
                     <div className="mt-4">
                       <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">{plannerData.totalSolved}</div>
-                      <div className="text-xs text-emerald-700 dark:text-emerald-400 mt-1 font-semibold">{accuracyText}</div>
+                      <div className="text-xs text-emerald-700 dark:text-emerald-400 mt-1 font-semibold flex items-center justify-between">
+                        <span>{accuracyText}</span>
+                        <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-bold">Open Bank →</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/60 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
+                  <div 
+                    onClick={() => setCurrentView('leaderboard')}
+                    className="cursor-pointer group bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/70 dark:hover:border-emerald-500/70 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.14)] dark:hover:shadow-[0_0_18px_rgba(16,185,129,0.2)] transition-all"
+                  >
                     <div className="flex justify-between items-center text-slate-500 dark:text-slate-400">
-                      <span className="text-xs font-bold">Global XP</span>
-                      <Award className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                      <span className="text-xs font-bold group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">Global XP</span>
+                      <Award className="w-5 h-5 text-yellow-600 dark:text-yellow-400 group-hover:scale-110 transition-transform" />
                     </div>
                     <div className="mt-4">
                       <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">{plannerData.globalXP}</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Level {scholarLevel} Math Scholar</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-between">
+                        <span>Level {scholarLevel} Math Scholar</span>
+                        <span className="text-[10px] text-yellow-600 dark:text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity font-bold">Leaderboard →</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/40 dark:hover:border-emerald-500/60 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all">
+                  <div 
+                    onClick={() => setActiveTab('tests')}
+                    className="cursor-pointer group bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500/70 dark:hover:border-emerald-500/70 rounded-3xl p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(16,185,129,0.06)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.14)] dark:hover:shadow-[0_0_18px_rgba(16,185,129,0.2)] transition-all"
+                  >
                     <div className="flex justify-between items-center text-slate-500 dark:text-slate-400">
-                      <span className="text-xs font-bold">Tests Completed</span>
-                      <Trophy className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                      <span className="text-xs font-bold group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Tests Completed</span>
+                      <Trophy className="w-5 h-5 text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform" />
                     </div>
                     <div className="mt-4">
                       <div className="text-3xl font-extrabold text-slate-900 dark:text-white font-mono">{plannerData.testsCompleted} Exams</div>
-                      <div className="text-xs text-teal-700 dark:text-teal-400 mt-1 font-semibold">Official Adaptive Engine</div>
+                      <div className="text-xs text-teal-700 dark:text-teal-400 mt-1 font-semibold flex items-center justify-between">
+                        <span>Official Adaptive Engine</span>
+                        <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-bold">Open Tests Hub →</span>
+                      </div>
                     </div>
                   </div>
 
@@ -467,7 +521,7 @@ export const DashboardView: React.FC = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white">4 Official Digital SAT Math Domains</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">Real-time mastery levels calculated from your adaptive subtopic skill matrix.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Click any domain to launch an adaptive 15-question focused mastery drill.</p>
                   </div>
                   <span className="text-xs font-mono text-emerald-900 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-950 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800/40">
                     Digital SAT Standard
@@ -488,9 +542,16 @@ export const DashboardView: React.FC = () => {
                     };
 
                     return (
-                      <div key={idx} className="space-y-2">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-800 dark:text-slate-200">{skill.domain}</span>
+                      <div 
+                        key={idx} 
+                        onClick={() => handlePracticeDomain(skill.domain)}
+                        className="space-y-2 p-3.5 rounded-2xl border border-transparent hover:border-emerald-300 dark:hover:border-emerald-500/40 hover:bg-emerald-50/40 dark:hover:bg-slate-900/60 cursor-pointer transition-all group"
+                      >
+                        <div className="flex justify-between items-center text-xs font-semibold">
+                          <span className="text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                            {skill.domain}
+                            <span className="text-[10px] text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity font-mono font-bold">Start 15-Q Drill →</span>
+                          </span>
                           <span className="text-emerald-700 dark:text-emerald-400 font-mono font-bold">{skill.mastery}% Mastery</span>
                         </div>
                         <div className="w-full bg-emerald-100/60 dark:bg-slate-950 h-2.5 rounded-full border border-slate-200 dark:border-slate-800 overflow-hidden">

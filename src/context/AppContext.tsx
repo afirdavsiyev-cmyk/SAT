@@ -58,6 +58,7 @@ import {
 } from '../data/officialPracticeTest11';
 import { generatePrescriptiveStudyPlan } from '../utils/studyPlanGenerator';
 import { isAnswerEquivalent } from '../utils/answerVerification';
+import { getAttendanceData } from '../services/attendanceService';
 
 const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
@@ -73,7 +74,7 @@ const DEFAULT_USER_PROGRESS_STATE: UserProgressState = {
     currentDay: 1,
   },
   stats: {
-    streakDays: 4,
+    streakDays: 12,
     totalQuestionsSolved: 142,
     totalQuestionsCorrect: 125,
     globalXP: 1450,
@@ -176,6 +177,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.error('Failed to save user progress state to localStorage', e);
     }
   }, [userProgressState]);
+
+  useEffect(() => {
+    const handleAttendanceUpdate = (e: any) => {
+      if (e.detail?.streakDays) {
+        setUserProgressState((prev) => ({
+          ...prev,
+          stats: {
+            ...prev.stats,
+            streakDays: e.detail.streakDays,
+          },
+        }));
+      }
+    };
+    window.addEventListener('scoreup_attendance_updated', handleAttendanceUpdate);
+    return () => window.removeEventListener('scoreup_attendance_updated', handleAttendanceUpdate);
+  }, []);
 
   // Persistent StudyPlan
   const [studyPlan, setStudyPlanState] = useState<StudyPlan | null>(() => {

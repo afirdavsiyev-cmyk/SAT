@@ -6,11 +6,14 @@ const PROFILE_KEY = 'scoreup_user_profile';
 const REGISTERED_USERS_KEY = 'scoreup_registered_users';
 const ACTIVE_USER_KEY = 'scoreup_active_user';
 
+import { getAttendanceData } from '../services/attendanceService';
+
 export const buildActiveUserProfile = (
   authUser?: Partial<AuthUser> | null,
   onboarding?: Partial<UserOnboardingProfile> | null,
   existingActive?: Partial<ActiveUserProfile> | null
 ): ActiveUserProfile => {
+  const attendance = getAttendanceData();
   // Parse target score
   const targetScore: string | number =
     onboarding?.targetScore || existingActive?.targetScore || '780+';
@@ -35,7 +38,7 @@ export const buildActiveUserProfile = (
 
   const email = onboarding?.email || authUser?.email || existingActive?.email || 'student@scoreup.app';
   const avatar = authUser?.photoUrl || existingActive?.avatar;
-  const streakDays = existingActive?.streakDays || 4;
+  const streakDays = existingActive?.streakDays || attendance.streakDays || 12;
   const currentEstimatedMath = existingActive?.currentEstimatedMath || baseline || 680;
   const mainReason = onboarding?.mainReason || existingActive?.mainReason || 'Get into my dream university';
   const biggestMotivation = onboarding?.biggestMotivation || existingActive?.biggestMotivation || 'My future';
@@ -138,6 +141,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalMode, setAuthModalMode] = useState<'login' | 'signup'>('login');
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleAttendanceUpdate = (e: any) => {
+      if (e.detail?.streakDays) {
+        setActiveUser((prev) => ({
+          ...prev,
+          streakDays: e.detail.streakDays,
+        }));
+      }
+    };
+    window.addEventListener('scoreup_attendance_updated', handleAttendanceUpdate);
+    return () => window.removeEventListener('scoreup_attendance_updated', handleAttendanceUpdate);
+  }, []);
 
   const openAuthModal = (mode: 'login' | 'signup' = 'login') => {
     setAuthModalMode(mode);

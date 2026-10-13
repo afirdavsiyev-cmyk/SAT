@@ -6,6 +6,7 @@ import {
   ADAPTIVE_STORAGE_KEY
 } from '../utils/adaptivePlannerEngine';
 import { StoredAdaptivePlannerData, SATDomain, SubtopicSkill } from '../types/planner';
+import { getAttendanceData } from '../services/attendanceService';
 
 export interface TodayDrillItem {
   id: string;
@@ -87,10 +88,12 @@ export function useStudyPlannerData(): StudyPlannerDataResult {
     };
 
     window.addEventListener('study_planner_updated', handlePlannerUpdate);
+    window.addEventListener('scoreup_attendance_updated', handlePlannerUpdate);
     window.addEventListener('storage', handleStorage);
 
     return () => {
       window.removeEventListener('study_planner_updated', handlePlannerUpdate);
+      window.removeEventListener('scoreup_attendance_updated', handlePlannerUpdate);
       window.removeEventListener('storage', handleStorage);
     };
   }, [reloadData]);
@@ -210,7 +213,7 @@ export function useStudyPlannerData(): StudyPlannerDataResult {
 
   const globalXP = legacyState?.stats?.globalXP || 1450;
   const testsCompleted = legacyState?.stats?.completedExamsCount || 2;
-  const streakDays = legacyState?.stats?.streakDays || 4;
+  const streakDays = legacyState?.stats?.streakDays ?? getAttendanceData().streakDays;
 
   return {
     currentEstimatedMath,

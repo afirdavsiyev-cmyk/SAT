@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useStudyPlannerData } from '../../hooks/useStudyPlannerData';
 import { SlidingTabGroup } from '../common/SlidingTabGroup';
 import { LeaderboardUser } from '../../types';
+import { getAttendanceData } from '../../services/attendanceService';
 
 const TABS = [
   { label: 'Global Leaderboard', icon: <Trophy className="w-3.5 h-3.5" /> },
@@ -18,7 +19,7 @@ const getUserQuestStorageKey = (userKey?: string): string => {
 };
 
 export const LeaderboardView: React.FC = () => {
-  const { userProgress, setUserProgress, setUserProgressState, setCurrentView, startExam } = useApp();
+  const { userProgress, userProgressState, setUserProgress, setUserProgressState, setCurrentView, startExam } = useApp();
   const { activeUser } = useAuth();
   const plannerData = useStudyPlannerData();
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -47,13 +48,39 @@ export const LeaderboardView: React.FC = () => {
 
   const [celebratingQuestId, setCelebratingQuestId] = useState<string | null>(null);
 
-  // 1. Real Synchronized User Statistics
-  const realXP = plannerData.globalXP ?? userProgress.xp ?? 0;
+  // Auto-reconcile: If user has claimed quests whose reward XP was not credited to globalXP, credit it!
+  useEffect(() => {
+    const questRewards: Record<string, number> = {
+      'quest-attendance': 50,
+      'quest-desmos': 150,
+      'quest-exam': 300,
+      'quest-tutor': 100,
+    };
+
+    const claimedXP = claimedQuests.reduce((sum, qId) => sum + (questRewards[qId] || 0), 0);
+    const currentGlobalXP = userProgressState.stats?.globalXP ?? 0;
+    const questionsXP = (userProgressState.stats?.totalQuestionsCorrect || 0) * 10;
+    const expectedMinimumXP = claimedXP + questionsXP;
+
+    if (claimedXP > 0 && currentGlobalXP < expectedMinimumXP) {
+      setUserProgressState((prev) => ({
+        ...prev,
+        stats: {
+          ...prev.stats,
+          globalXP: Math.max(expectedMinimumXP, (prev.stats?.globalXP ?? 0) + claimedXP),
+        },
+      }));
+    }
+  }, [claimedQuests, userProgressState.stats?.globalXP, userProgressState.stats?.totalQuestionsCorrect, setUserProgressState]);
+
+  // 1. Real Synchronized User Statistics - prioritize live userProgressState
+  const realXP = userProgressState.stats?.globalXP ?? userProgress.xp ?? plannerData.globalXP ?? 0;
   const realScore = activeUser.currentEstimatedMath || userProgress.estimatedScore || activeUser.baselineScore || 650;
-  const realStreak = activeUser.streakDays ?? userProgress.streakDays ?? 1;
+  const attendance = getAttendanceData();
+  const realStreak = Math.max(activeUser.streakDays || 0, userProgress.streakDays || 0, attendance.streakDays || 0, 1);
   const studentName = `${activeUser.firstName || 'Student'}`;
-  const totalSolved = plannerData.totalSolved ?? userProgress.totalQuestionsSolved ?? 0;
-  const testsCompleted = plannerData.testsCompleted ?? userProgress.completedTests ?? 0;
+  const totalSolved = userProgressState.stats?.totalQuestionsSolved ?? plannerData.totalSolved ?? userProgress.totalQuestionsSolved ?? 0;
+  const testsCompleted = userProgressState.stats?.completedExamsCount ?? plannerData.testsCompleted ?? userProgress.completedTests ?? 0;
 
   // 2. Real Dynamic Competitors with Realistic SAT Scholar Benchmarks
   const competitors: LeaderboardUser[] = useMemo(() => {
@@ -195,10 +222,10 @@ export const LeaderboardView: React.FC = () => {
       {
         id: 'quest-attendance',
         title: 'Daily Attendance Check-In',
-        subtitle: 'Log in and maintain your study streak',
+        subtitle: 'Solve at least 1 question to verify attendance and maintain your streak',
         rewardXP: 50,
-        completed: realStreak >= 1,
-        progressText: '1 / 1 Done',
+        completed: attendance.todayCheckedIn,
+        progressText: attendance.todayCheckedIn ? '1 / 1 Done' : '0 / 1 Done',
       },
       {
         id: 'quest-desmos',
@@ -225,7 +252,7 @@ export const LeaderboardView: React.FC = () => {
         progressText: isTutorUsed ? '1 / 1 Done' : '0 / 1 Done',
       },
     ];
-  }, [realStreak, totalSolved, testsCompleted]);
+  }, [attendance.todayCheckedIn, totalSolved, testsCompleted]);
 
   const handleClaimQuest = (questId: string, rewardXP: number) => {
     if (claimedQuests.includes(questId)) return;
@@ -238,12 +265,12 @@ export const LeaderboardView: React.FC = () => {
 
     // Add real XP to state
     setUserProgressState((prev) => {
-      const nextXP = (prev.stats?.globalXP ?? realXP) + rewardXP;
+      const currentXP = prev.stats?.globalXP ?? userProgress.xp ?? 0;
       return {
         ...prev,
         stats: {
           ...prev.stats,
-          globalXP: nextXP,
+          globalXP: currentXP + rewardXP,
         },
       };
     });

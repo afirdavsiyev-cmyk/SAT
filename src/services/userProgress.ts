@@ -1,3 +1,5 @@
+import { recordDailyAttendance } from './attendanceService';
+
 export interface QuestionAttempt {
   questionId: string;
   selectedAnswer: string;
@@ -24,6 +26,12 @@ export const recordAttempt = (attempt: QuestionAttempt) => {
     localStorage.setItem(SOLVED_STORAGE_KEY, JSON.stringify(current));
   } catch (e) {
     console.error('Failed to save attempt to localStorage', e);
+  }
+  // Answering at least one question verifies today's daily attendance!
+  try {
+    recordDailyAttendance();
+  } catch (e) {
+    console.error('Failed to record daily attendance', e);
   }
   window.dispatchEvent(new Event('scoreup_progress_updated'));
 };

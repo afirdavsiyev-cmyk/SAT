@@ -285,7 +285,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
               <span className="text-teal-600 dark:text-teal-400 font-bold">gemini-3.6-flash</span>
             </div>
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <span className="text-slate-700 dark:text-slate-300">📐 Tier 3 (KaTeX Solutions):</span>
+              <span className="text-slate-700 dark:text-slate-300">📐 Tier 3 (Full Solutions):</span>
               <span className="text-emerald-700 dark:text-teal-300 font-bold">gemini-3.6-flash</span>
             </div>
             <div className="flex justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">

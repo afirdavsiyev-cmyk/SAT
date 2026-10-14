@@ -64,14 +64,14 @@ export const AnalyticsDashboardView: React.FC<AnalyticsDashboardViewProps> = ({
               <BarChart3 className="w-4 h-4" />
             </span>
             <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-widest">
-              Digital SAT Math Intelligence
+              Performance Analytics
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-1">
-            Performance Analytics & Diagnostic Hub
+            Performance & Diagnostics Hub
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
-            Real-time scoring band projections, domain mastery drill-downs, pacing scatter matrices, and mistake cause diagnostics.
+            Score projections, domain mastery, pacing trends, and error diagnostics.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export const AnalyticsDashboardView: React.FC<AnalyticsDashboardViewProps> = ({
           
           <div className="px-3 py-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800/60 text-xs font-mono font-bold flex items-center space-x-1.5 shadow-sm">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Digital SAT Adaptive v2.4</span>
+            <span>Adaptive Math Engine</span>
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ export const AnalyticsDashboardView: React.FC<AnalyticsDashboardViewProps> = ({
         <section id="section-trends">
           <RecentTrendLineChart
             currentAccuracy={userProgress.accuracyRate || 85}
-            streakDays={plannerData.streakDays ?? 1}
+            streakDays={Math.max(activeUser.streakDays || 0, plannerData.streakDays ?? 1)}
           />
         </section>
       )}

@@ -40,7 +40,7 @@ export const YouTubeBanner: React.FC = () => {
                   translateZ="40"
                   className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed"
                 >
-                  Watch step-by-step video solutions, Desmos calculator speed tricks, full test walkthroughs, and hard SAT Math concept breakdowns—100% free on YouTube!
+                  Watch step-by-step video solutions, Desmos calculator shortcuts, full test walkthroughs, and difficult math concept breakdowns free on YouTube.
                 </CardItem>
 
                 <CardItem
@@ -49,7 +49,7 @@ export const YouTubeBanner: React.FC = () => {
                 >
                   <div className="flex items-center space-x-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span>Desmos Calculator Speed Hacks</span>
+                    <span>Desmos Calculator Shortcuts</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />

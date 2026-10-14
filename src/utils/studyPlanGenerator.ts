@@ -150,7 +150,7 @@ export function generatePrescriptiveStudyPlan(params: PlanGeneratorParams): Stud
       dayLabel: 'Day 6',
       title: 'Review Saved & Mistake Pattern Diagnostic',
       domain: 'Review & Error Diagnostic',
-      skillFocus: 'Deep dive into all missed linear & algebraic questions from Days 1–5',
+      skillFocus: 'Review all missed linear and algebraic questions from Days 1 to 5',
       questionCount: Math.round(totalQuestions * 0.8),
       easyCount: 2,
       mediumCount: Math.round(totalQuestions * 0.5),

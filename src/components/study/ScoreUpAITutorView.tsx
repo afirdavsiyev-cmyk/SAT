@@ -112,7 +112,7 @@ export const ScoreUpAITutorView: React.FC = () => {
     const chatPayload: TutorMessage[] = [
       {
         role: 'system',
-        content: 'You are ScoreUP AI, an elite, encouraging Digital SAT Math & Reading/Writing personal tutor. Guide students step-by-step using clear, intuitive explanations and analogies. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide high-yield Desmos calculator tips when helpful. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
+        content: 'You are ScoreUP AI, an encouraging Digital SAT Math tutor. Guide students step-by-step using clear, intuitive explanations. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide helpful Desmos calculator tips when appropriate. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
       },
       ...messages.map((m) => ({
         role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
@@ -309,7 +309,7 @@ export const ScoreUpAITutorView: React.FC = () => {
                   Ask <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">ScoreUP AI</span> anything about SAT® Math
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Your dedicated Socratic coach for instant algebraic breakdowns, Desmos shortcuts, and 800-level exam strategies.
+                  Ask for step-by-step algebra explanations, Desmos calculator shortcuts, and test-taking strategies.
                 </p>
               </div>
             </div>

@@ -138,6 +138,12 @@ export const DashboardView: React.FC = () => {
     : '0% Accuracy';
 
   const scholarLevel = Math.floor(plannerData.globalXP / 700) + 1;
+  const streakDays = Math.max(
+    activeUser.streakDays || 0,
+    userProgressState.stats.streakDays || 0,
+    plannerData.streakDays || 0,
+    1
+  );
 
   const handleLaunchDrill = (drill: TodayDrillItem) => {
     let questionsToPractice: QuestionItem[] = [];
@@ -253,7 +259,7 @@ export const DashboardView: React.FC = () => {
           {/* Streak Indicator Pill */}
           <div className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/40 shadow-sm">
             <Flame className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400" />
-            <span>{plannerData.streakDays}d Streak</span>
+            <span>{streakDays}d Streak</span>
           </div>
 
           {/* User Score Badge */}
@@ -308,7 +314,7 @@ export const DashboardView: React.FC = () => {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 dark:bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 dark:bg-emerald-500"></span>
                         </span>
-                        <span>{userProgressState.stats.streakDays}-Day Study Streak Active</span>
+                        <span>{streakDays}-Day Study Streak Active</span>
                       </div>
 
                       <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-teal-100/90 text-teal-900 border-teal-300 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-500/30 text-xs font-bold border">
@@ -698,7 +704,7 @@ export const DashboardView: React.FC = () => {
                     <span>750+ Domain Mastery Drills</span>
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    High-yield, 100% interactive question bank drills for each domain. Instant KaTeX step-by-step explanations and score tracking.
+                    Interactive question bank drills for each domain, with step-by-step explanations and score tracking.
                   </p>
                 </div>
 
@@ -899,7 +905,7 @@ export const DashboardView: React.FC = () => {
                     source: 'College Board Practice Test 1',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation featuring authentic 35-minute module pacing, Desmos calculator, and 200–800 scoring.',
+                    description: 'Two 35-minute modules with 200–800 scoring, covering core algebra, linear models, and quadratic equations.',
                     result: pt1Res,
                   },
                   {
@@ -908,7 +914,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (BK-5)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation from official practice set with exponential functions, geometry solids, and algebra models.',
+                    description: 'Covers exponential functions, geometric solids, and algebraic modeling under standard exam timing.',
                     result: pt2Res,
                   },
                   {
@@ -917,7 +923,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (BK-6)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation from official practice set with similar triangles, quadratic dive models, and unit rates.',
+                    description: 'Features similar triangles, quadratic motion problems, and unit rate conversions.',
                     result: pt3Res,
                   },
                   {
@@ -926,7 +932,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (BK-7)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation with scatterplots, cubic polynomials, dot plots, circle tangents, and rational expressions.',
+                    description: 'Includes scatterplots, cubic polynomials, dot plots, circle tangents, and rational expressions.',
                     result: pt4Res,
                   },
                   {
@@ -935,7 +941,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (Test 4 Math)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation with parabola equations, linear systems, inequality graphs, and circle geometry.',
+                    description: 'Focuses on parabola equations, linear systems, inequality graphs, and circle geometry.',
                     result: pt5Res,
                   },
                   {
@@ -944,7 +950,7 @@ export const DashboardView: React.FC = () => {
                     source: 'College Board Practice Test 4',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation featuring authentic tablet depreciation models, projectile motion graphs, and scatterplots.',
+                    description: 'Covers tablet depreciation models, projectile motion graphs, and scatterplots.',
                     result: pt6Res,
                   },
                   {
@@ -953,7 +959,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (Mock 1)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation with right triangle trigonometry, capacitor dot plots, and polynomial systems.',
+                    description: 'Includes right-triangle trigonometry, capacitor dot plots, and polynomial systems.',
                     result: pt7Res,
                   },
                   {
@@ -962,7 +968,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (Turbo Test)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation with orbital periods dot plots, linear systems, and geometric congruence proofs.',
+                    description: 'Covers orbital period data, linear systems, and geometric congruence proofs.',
                     result: pt8Res,
                   },
                   {
@@ -971,7 +977,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (BK-Practise-Test-6)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module official exam simulation featuring circle equations, quadratic models, system of inequalities, and solid geometry.',
+                    description: 'Includes circle equations, quadratic models, systems of inequalities, and solid geometry.',
                     result: pt9Res,
                   },
                   {
@@ -980,7 +986,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (Mock Turbo 1)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module authentic December Math Mock Turbo 1 with absolute value systems, polynomial factorization, and right-triangle trigonometry.',
+                    description: 'Covers absolute value systems, polynomial factorization, and right-triangle trigonometry.',
                     result: pt10Res,
                   },
                   {
@@ -989,7 +995,7 @@ export const DashboardView: React.FC = () => {
                     source: 'Official Mock (SAT Turbo Prep Test 1)',
                     questions: 44,
                     duration: '70 Min • 2 Modules',
-                    description: 'Full 2-module authentic SAT Turbo Prep Test 1 with pyramid geometry, exponential growth models, and statistical margin of error analysis.',
+                    description: 'Covers pyramid geometry, exponential growth models, and statistical margin of error analysis.',
                     result: pt11Res,
                   },
                 ];

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Play,
@@ -172,7 +172,7 @@ export const MathDesmosView: React.FC = () => {
                 SAT Math Masterclass
               </h1>
               <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                26 high-impact video lessons covering every concept from MathBook 2.0—from foundational algebra formulas and linear systems to advanced quadratics, statistics, and geometry.
+                26 video lessons covering core SAT Math concepts, from linear systems and algebra formulas to quadratics, statistics, and coordinate geometry.
               </p>
             </div>
 

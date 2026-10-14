@@ -531,7 +531,7 @@ export const OnboardingWizardModal: React.FC = () => {
             <span className="text-5xl animate-bounce inline-block">🎯</span>
             
             <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white max-w-md mx-auto leading-tight">
-              "We're not just preparing you for a test. We're helping you get closer to your goal."
+              "Every practice session moves you closer to your target score."
             </h3>
 
             <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-left max-w-sm mx-auto space-y-2.5 shadow-sm">
@@ -551,7 +551,7 @@ export const OnboardingWizardModal: React.FC = () => {
             </div>
 
             <p className="text-xs uppercase tracking-widest font-black text-slate-400 animate-pulse">
-              Your journey starts today. Launching your Study Hub...
+              Setting up your study plan...
             </p>
           </div>
         )}

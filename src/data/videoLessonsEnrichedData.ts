@@ -160,7 +160,7 @@ export const ENRICHED_LESSON_DATA: Record<string, EnrichedLessonContent> = {
   },
 
   'lesson-2': {
-    detailedDescription: 'Deep dive into algebraic expressions, factoring identities, distributive properties, and spotting equivalent polynomials. Learn how the Digital SAT disguises simple terms and how to check equivalence in Desmos in under 15 seconds.',
+    detailedDescription: 'Covers algebraic expressions, factoring identities, distributive properties, and equivalent polynomials. Learn how the Digital SAT tests these expressions and how to verify equivalence quickly in Desmos.',
     theory: {
       overview: 'Algebraic manipulation questions test your mastery of polynomial expansion, common factor extraction, difference of squares, and perfect square trinomials. When expressions look intimidating, factoring or testing test values ($x = 2$ or $x = 3$) instantly cuts through algebraic complexity.',
       formulas: [

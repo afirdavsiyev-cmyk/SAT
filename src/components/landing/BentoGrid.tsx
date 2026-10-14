@@ -29,16 +29,16 @@ export const BentoGrid: React.FC = () => {
           }}
         >
           <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100 border border-emerald-200 dark:text-emerald-400 dark:bg-emerald-950/40 dark:border-emerald-800/50 px-3 py-1 rounded-full inline-block mb-3">
-            Architected For The 2026 Digital SAT
+            Built for the 2026 Digital SAT
           </h2>
           <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Everything you need to score <br />
+            Everything you need for an <br />
             <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-500 bg-clip-text text-transparent">
-              1500+ on Test Day
+              800 in SAT Math
             </span>
           </h3>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
-            Click and interact with our core features built specifically to mirror the official Digital SAT Bluebook environment.
+            Practice with the same tools, calculator, and question formats you'll see on test day.
           </p>
         </div>
 
@@ -74,14 +74,14 @@ export const BentoGrid: React.FC = () => {
                   translateZ="60"
                   className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover/card:text-emerald-600 dark:group-hover/card:text-emerald-300 transition-colors"
                 >
-                  1. Official Desmos-Integrated Exam Room
+                  Desmos-integrated practice room
                 </CardItem>
                 <CardItem
                   as="p"
                   translateZ="40"
                   className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
                 >
-                  Direct integration with Desmos API v1.9. Master time-saving graphing tricks for quadratic systems, regression lines, and circle equations directly inside the Bluebook interface.
+                  Use the built-in Desmos graphing calculator to plot quadratic systems, find regression lines, and solve circle equations during practice tests.
                 </CardItem>
               </div>
 
@@ -146,14 +146,14 @@ export const BentoGrid: React.FC = () => {
                   translateZ="60"
                   className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover/card:text-teal-600 dark:group-hover/card:text-teal-300 transition-colors"
                 >
-                  2. ScoreUP AI Step-by-Step Tutor
+                  Step-by-step AI tutor
                 </CardItem>
                 <CardItem
                   as="p"
                   translateZ="40"
                   className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
                 >
-                  Stuck on a problem? Ask ScoreUP AI for instant targeted hints, Socratic questions, or step-by-step KaTeX math breakdowns.
+                  Ask ScoreUp AI for targeted hints, guiding questions, and clear step-by-step math explanations.
                 </CardItem>
               </div>
 
@@ -227,14 +227,14 @@ export const BentoGrid: React.FC = () => {
                   translateZ="60"
                   className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover/card:text-emerald-600 dark:group-hover/card:text-emerald-300 transition-colors"
                 >
-                  3. Adaptive Study Planner
+                  Adaptive study planner
                 </CardItem>
                 <CardItem
                   as="p"
                   translateZ="40"
                   className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
                 >
-                  Set your target score & test date. Our diagnostic engine automatically creates a weekly roadmap tailored to your specific weak points.
+                  Set your target score and test date to get a weekly study plan focused on your weakest topics.
                 </CardItem>
               </div>
 
@@ -287,14 +287,14 @@ export const BentoGrid: React.FC = () => {
                   translateZ="60"
                   className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover/card:text-emerald-600 dark:group-hover/card:text-emerald-300 transition-colors"
                 >
-                  4. Real-Time Leaderboards & Daily Streaks
+                  Leaderboards and daily streaks
                 </CardItem>
                 <CardItem
                   as="p"
                   translateZ="40"
                   className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
                 >
-                  Stay motivated by earning XP, unlocking badges like "Desmos Wizard", and competing with thousands of peers globally.
+                  Earn XP, collect skill badges, and see where you rank among students preparing worldwide.
                 </CardItem>
               </div>
 

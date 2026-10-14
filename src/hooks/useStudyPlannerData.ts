@@ -206,7 +206,12 @@ export function useStudyPlannerData(): StudyPlannerDataResult {
 
   const globalXP = legacyState?.stats?.globalXP ?? 0;
   const testsCompleted = legacyState?.stats?.completedExamsCount ?? 0;
-  const streakDays = legacyState?.stats?.streakDays ?? getAttendanceData().streakDays ?? 1;
+  const attendance = getAttendanceData();
+  const streakDays = Math.max(
+    attendance.streakDays || 0,
+    legacyState?.stats?.streakDays || 0,
+    1
+  );
 
   return {
     currentEstimatedMath,

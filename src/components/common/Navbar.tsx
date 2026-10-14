@@ -5,7 +5,7 @@ import { Zap, Flame, Trophy, Compass, LayoutDashboard, User, LogOut, Settings, C
 import { SlidingTabGroup } from './SlidingTabGroup';
 import { ThemeToggle } from './ThemeToggle';
 import { ScoreUpLogo } from './ScoreUpLogo';
-import { recordDailyAttendance, getAttendanceData } from '../../services/attendanceService';
+import { recordDailyAttendance, getAttendanceData, getWeekAttendanceData, WeekDayAttendance } from '../../services/attendanceService';
 
 const NAV_ITEMS = [
   { label: 'Overview', icon: <Compass className="w-3.5 h-3.5" />, view: 'landing' as const },
@@ -19,16 +19,35 @@ export const Navbar: React.FC = () => {
   const { activeUser, isAuthenticated, logout, openAuthModal, openOnboardingModal } = useAuth();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [isAttendanceModalOpen, setIsAttendanceModalOpen] = useState(false);
+  const [attendanceData, setAttendanceData] = useState(() => getAttendanceData());
+  const [weekAttendance, setWeekAttendance] = useState<WeekDayAttendance[]>(() => getWeekAttendanceData());
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const attendanceMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    recordDailyAttendance();
+    // Only fetch current attendance status on mount - DO NOT automatically record attendance!
+    setAttendanceData(getAttendanceData());
+    setWeekAttendance(getWeekAttendanceData());
+
+    const handleUpdate = () => {
+      setAttendanceData(getAttendanceData());
+      setWeekAttendance(getWeekAttendanceData());
+    };
+    window.addEventListener('scoreup_attendance_updated', handleUpdate);
+    window.addEventListener('scoreup_progress_updated', handleUpdate);
+    return () => {
+      window.removeEventListener('scoreup_attendance_updated', handleUpdate);
+      window.removeEventListener('scoreup_progress_updated', handleUpdate);
+    };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
         setUserMenuOpen(false);
+      }
+      if (attendanceMenuRef.current && !attendanceMenuRef.current.contains(e.target as Node)) {
+        setIsAttendanceModalOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -146,7 +165,7 @@ export const Navbar: React.FC = () => {
                     <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{activeUser.email}</p>
                     <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-1 rounded-lg">
                       <span>🎯 Target: {activeUser.targetScore}</span>
-                      <span>🔥 {activeUser.streakDays} Days Active</span>
+                      <span>🔥 {Math.max(activeUser.streakDays || 0, attendanceData.streakDays || 0, 1)} Days Active</span>
                     </div>
                   </div>
 
@@ -213,16 +232,207 @@ export const Navbar: React.FC = () => {
             </button>
           )}
 
-          {/* Streak pill with Attendance Modal trigger */}
-          <button
-            type="button"
-            onClick={() => setIsAttendanceModalOpen(true)}
-            className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50 dark:bg-emerald-950/60 text-xs font-bold text-emerald-900 dark:text-emerald-300 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            title="Click to view your Daily Attendance & Study Streak"
-          >
-            <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600 dark:text-emerald-400 dark:fill-emerald-400" />
-            <span className="font-extrabold">{activeUser.streakDays}d</span>
-          </button>
+          {/* Streak pill with Attendance Popover (No dark background overlay) */}
+          <div className="relative" ref={attendanceMenuRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setUserMenuOpen(false);
+                setAttendanceData(getAttendanceData());
+                setWeekAttendance(getWeekAttendanceData());
+                setIsAttendanceModalOpen((prev) => !prev);
+              }}
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50 dark:bg-emerald-950/60 text-xs font-bold text-emerald-900 dark:text-emerald-300 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              title="Click to view your Daily Attendance & Study Streak"
+            >
+              <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600 dark:text-emerald-400 dark:fill-emerald-400" />
+              <span className="font-extrabold">{attendanceData.streakDays}d</span>
+            </button>
+
+            {/* Attendance Popover Card - Pure dropdown, background stays 100% bright and clear */}
+            {isAttendanceModalOpen && (
+              <>
+                {/* Transparent backdrop for outside clicks (zero darkening) */}
+                <div
+                  className="fixed inset-0 z-40 bg-transparent"
+                  onClick={() => setIsAttendanceModalOpen(false)}
+                />
+
+                {/* Floating Card */}
+                <div className="absolute right-0 top-full mt-2 w-[340px] sm:w-[380px] z-50 rounded-3xl bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-white/10 shadow-2xl p-5 sm:p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+                  <button
+                    onClick={() => setIsAttendanceModalOpen(false)}
+                    className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  <div className="text-center space-y-2">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center mx-auto text-white shadow-lg shadow-emerald-500/30">
+                      <Flame className="w-7 h-7 fill-white" />
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                      {attendanceData.todayCheckedIn
+                        ? `${attendanceData.streakDays}-Day Attendance Streak!`
+                        : attendanceData.streakDays > 0
+                        ? `${attendanceData.streakDays}-Day Streak Active`
+                        : 'Start Your Attendance Streak!'}
+                    </h2>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                      {attendanceData.todayCheckedIn
+                        ? "You've verified today's attendance. Keep practicing daily to maintain your streak and earn bonus Global XP."
+                        : 'Solve at least 1 question today to verify your attendance and claim +50 XP bonus.'}
+                    </p>
+                  </div>
+
+                  {/* Attendance Status Banner */}
+                  {attendanceData.todayCheckedIn ? (
+                    <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 flex items-center space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold text-emerald-950 dark:text-emerald-200">
+                          Today's Attendance Verified
+                        </div>
+                        <div className="text-[11px] text-emerald-700 dark:text-emerald-400">
+                          Daily Attendance bonus active (+50 XP)
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-3.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/30 flex items-center justify-between gap-2.5">
+                      <div className="flex items-center space-x-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 flex-shrink-0">
+                          <Zap className="w-4 h-4 fill-current" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold text-amber-950 dark:text-amber-200">
+                            Attendance Pending Today
+                          </div>
+                          <div className="text-[11px] text-amber-700 dark:text-amber-400">
+                            Solve 1 question to tick (+50 XP)
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsAttendanceModalOpen(false);
+                          setCurrentView('dashboard');
+                        }}
+                        className="px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] whitespace-nowrap shadow-xs transition-colors cursor-pointer"
+                      >
+                        Solve Now
+                      </button>
+                    </div>
+                  )}
+
+                  {/* 7-Day Week Calendar View */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                        This Week's Attendance
+                      </div>
+                      <div className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                        {weekAttendance.filter((d) => d.isAttended).length}/7 days active
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+                      {weekAttendance.map((day) => {
+                        const isToday = day.isToday;
+                        const isAttended = day.isAttended;
+                        const isPast = day.isPast;
+
+                        return (
+                          <div
+                            key={day.dateStr}
+                            className="flex flex-col items-center space-y-1"
+                            title={`${day.fullName} (${day.dateStr}) — ${
+                              isToday
+                                ? isAttended
+                                  ? "Today: Attendance Verified"
+                                  : "Today: Solve 1 question to verify"
+                                : isAttended
+                                ? "Attended"
+                                : isPast
+                                ? "Missed"
+                                : "Upcoming"
+                            }`}
+                          >
+                            <span
+                              className={`text-[10px] font-mono font-bold transition-colors ${
+                                isToday
+                                  ? isAttended
+                                    ? 'text-emerald-600 dark:text-emerald-400 font-extrabold'
+                                    : 'text-amber-600 dark:text-amber-400 font-extrabold'
+                                  : 'text-slate-400 dark:text-slate-500'
+                              }`}
+                            >
+                              {day.label}
+                            </span>
+                            <div
+                              className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs transition-all duration-200 select-none ${
+                                isToday && isAttended
+                                  ? 'bg-emerald-500 text-white font-black shadow-md shadow-emerald-500/30 ring-2 ring-emerald-400 ring-offset-2 ring-offset-white dark:ring-offset-[#0c1424] scale-105'
+                                  : isToday && !isAttended
+                                  ? 'bg-amber-50 dark:bg-amber-950/30 border-2 border-dashed border-amber-400 text-amber-600 dark:text-amber-400 font-bold'
+                                  : isAttended
+                                  ? 'bg-emerald-500 text-white font-black shadow-sm shadow-emerald-500/20'
+                                  : isPast
+                                  ? 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-600 border border-slate-200/60 dark:border-white/5 font-medium'
+                                  : 'bg-slate-50/50 dark:bg-white/[0.02] border border-dashed border-slate-200 dark:border-white/10 text-slate-400 dark:text-slate-600 font-mono text-[11px]'
+                              }`}
+                            >
+                              {isAttended ? (
+                                '✓'
+                              ) : isToday ? (
+                                <span className="text-[10px] font-bold">0/1</span>
+                              ) : isPast ? (
+                                '–'
+                              ) : (
+                                <span className="text-[10px] opacity-70">{day.dayNumber}</span>
+                              )}
+                            </div>
+                            <span
+                              className={`text-[9px] font-mono leading-none ${
+                                isToday
+                                  ? isAttended
+                                    ? 'font-bold text-emerald-600 dark:text-emerald-400'
+                                    : 'font-bold text-amber-600 dark:text-amber-400'
+                                  : 'text-slate-400 dark:text-slate-500 opacity-80'
+                              }`}
+                            >
+                              {isToday ? 'Today' : day.dayNumber}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex gap-2.5 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsAttendanceModalOpen(false);
+                        setCurrentView('leaderboard');
+                      }}
+                      className="flex-1 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs shadow-md transition-all text-center cursor-pointer"
+                    >
+                      View Global Ranks
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsAttendanceModalOpen(false)}
+                      className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
 
           {/* Global Light / Dark Theme Toggle Switcher */}
           <ThemeToggle />
@@ -230,83 +440,6 @@ export const Navbar: React.FC = () => {
         </div>
 
       </div>
-
-      {/* ─── Daily Attendance & Streak Modal ────────────────────────── */}
-      {isAttendanceModalOpen && (
-        <div className="fixed inset-0 z-[99999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#0c1424] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative space-y-6">
-            <button
-              onClick={() => setIsAttendanceModalOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="text-center space-y-2">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center mx-auto text-white shadow-lg shadow-emerald-500/30">
-                <Flame className="w-8 h-8 fill-white" />
-              </div>
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white">
-                {activeUser.streakDays}-Day Attendance Streak!
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                You've checked in today. Keep practicing at least once every 24 hours to maintain your streak and earn bonus Global XP.
-              </p>
-            </div>
-
-            {/* Attendance Status Banner */}
-            <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 flex items-center space-x-3">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-              <div>
-                <div className="text-xs font-bold text-emerald-950 dark:text-emerald-200">
-                  Today's Attendance Verified
-                </div>
-                <div className="text-[11px] text-emerald-700 dark:text-emerald-400">
-                  Daily Attendance bonus active (+50 XP)
-                </div>
-              </div>
-            </div>
-
-            {/* 7-Day Week Calendar View */}
-            <div className="space-y-2">
-              <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                This Week's Attendance
-              </div>
-              <div className="grid grid-cols-7 gap-1.5">
-                {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
-                  <div key={i} className="flex flex-col items-center space-y-1.5">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold">{day}</span>
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-emerald-500 text-white font-black text-xs shadow-sm shadow-emerald-500/20">
-                      ✓
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsAttendanceModalOpen(false);
-                  setCurrentView('leaderboard');
-                }}
-                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs shadow-md transition-all text-center"
-              >
-                View Global Ranks
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsAttendanceModalOpen(false)}
-                className="px-4 py-3 rounded-2xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

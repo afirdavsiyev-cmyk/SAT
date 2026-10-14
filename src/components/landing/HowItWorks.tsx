@@ -14,25 +14,25 @@ export const HowItWorks: React.FC = () => {
     {
       step: 1,
       icon: <Target className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />,
-      title: '1. Complete Adaptive Diagnostic',
-      desc: 'Take a short 15-minute diagnostic test to pinpoint your current mastery level across Math (Algebra, Geometry, Advanced) and Reading & Writing.',
-      highlight: 'Pinpoint weakness down to exact SAT topic domain',
+      title: '1. Take an adaptive diagnostic',
+      desc: 'Take a 15-minute diagnostic to identify which math topics need the most practice, from algebra to trigonometry.',
+      highlight: 'Find weaknesses across all four SAT math domains',
       actionText: 'Start Diagnostic'
     },
     {
       step: 2,
       icon: <Cpu className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
-      title: '2. AI Guided Practice & Desmos Training',
-      desc: 'Work through tailored drill modules. Receive step-by-step KaTeX math solutions and master Desmos calculator shortcuts for rapid speed.',
-      highlight: 'Step-by-step hints powered by Preppy AI 24/7',
+      title: '2. Practice with AI guidance and Desmos',
+      desc: 'Work through targeted practice sets. Review step-by-step solutions and learn Desmos shortcuts that save time on test day.',
+      highlight: 'Step-by-step hints from the ScoreUp AI tutor',
       actionText: 'Explore Drills'
     },
     {
       step: 3,
       icon: <Award className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />,
-      title: '3. Crush Test Day in Bluebook Environment',
-      desc: 'Practice under full timed exam conditions with College Board standard layouts, equation scratchpads, formula reference sheets, and score analytics.',
-      highlight: '+140 points average score increase verified',
+      title: '3. Practice in a Bluebook exam environment',
+      desc: 'Practice under timed conditions with a Bluebook-style layout, digital scratchpad, formula sheets, and detailed score analytics.',
+      highlight: 'Realistic exam simulation and score predictions',
       actionText: 'Launch Bluebook Exam'
     }
   ];
@@ -53,13 +53,13 @@ export const HowItWorks: React.FC = () => {
           }}
         >
           <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-800 dark:text-emerald-400 mb-3 bg-emerald-100 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800/50 px-3 py-1 rounded-full inline-block">
-            Simple 3-Step Journey
+            How it works
           </h2>
           <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            How SAT Master Prepares You
+            How ScoreUp Prepares You
           </h3>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
-            From initial score diagnosis to test day mastery in three structured phases.
+            Diagnose your strengths, drill weak topics, and practice under real exam conditions.
           </p>
         </div>
 

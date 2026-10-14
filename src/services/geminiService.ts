@@ -403,7 +403,7 @@ function getOfflineFallbackContent(
           focusReason: 'Eliminate pacing errors on final 5 problems.'
         }
       ],
-      psychometricSummary: 'Customized adaptive roadmap structured from official College Board psychometric standards.'
+      psychometricSummary: 'Personalized study roadmap based on your current math strengths and target score.'
     });
   }
 
@@ -414,14 +414,14 @@ function getOfflineFallbackContent(
     || query === 'hi' || query === 'hello';
 
   if (isGreeting) {
-    return `Hello! 👋 I'm **ScoreUP AI**, your personal Digital SAT Math tutor.
+    return `Hello! 👋 I'm **ScoreUp AI**, your Digital SAT Math tutor.
 
-I'm here to help you achieve your target score! Here is how we can work together:
+I'm here to help you work through questions step by step. Here is what we can do:
 
-- 💡 **Step-by-step KaTeX explanations** for tricky algebra and geometry
-- ⚡ **High-speed Desmos strategies** to save 30–60 seconds per problem
-- 🔍 **Targeted Socratic hints** to guide your thinking without spoiling the answer
-- 📐 **Essential formulas & rules** (Quadratics, Circles, Trigonometry, Systems)
+- 💡 **Step-by-step math explanations** for algebra, advanced math, and geometry
+- ⚡ **Desmos calculator strategies** to save 30-60 seconds on complex problems
+- 🔍 **Targeted hints** to guide you through without giving away the answer
+- 📐 **Essential formulas and shortcuts** (quadratics, circles, trigonometry, linear systems)
 
 ${questionContext ? `Feel free to ask about this active question, or click one of the quick action chips below!` : `What topic or problem would you like to explore today?`}`;
   }

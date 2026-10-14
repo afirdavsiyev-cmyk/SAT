@@ -165,8 +165,8 @@ export function generateDailySprintQueue(params: {
   const speedRunBlock: SprintBlockItem = {
     type: 'speed_run',
     title: 'Timed Hard Module 2 Speed Run',
-    badgeLabel: 'Module 2 High-Pressure Simulator (~75s/q)',
-    subtopicName: 'Mixed Official College Board Domains',
+    badgeLabel: 'Module 2 Timed Practice (75s/q)',
+    subtopicName: 'Mixed Math Topics',
     questionCount: speedRunQuestions.length,
     estimatedMinutes: 7,
     timeLimitSecondsPerQuestion: 75, // 75 seconds per question = strict 6m 15s module simulation

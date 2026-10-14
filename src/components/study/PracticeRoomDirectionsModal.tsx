@@ -29,7 +29,7 @@ export const PracticeRoomDirectionsModal: React.FC<PracticeRoomDirectionsModalPr
             </div>
             <div>
               <h3 className="font-extrabold text-white text-base">Digital SAT Math Directions</h3>
-              <p className="text-xs text-slate-400">Official Bluebook & OnePrep Test Specification</p>
+              <p className="text-xs text-slate-400">Digital SAT Math Specification</p>
             </div>
           </div>
 

@@ -19,7 +19,7 @@
     ],
     "satFocus": "Understand how the adaptive test routes you to the harder Module 2 and master time management for the first 22 questions.",
     "desmosTip": "Desmos is embedded inside every question on the Digital SAT. Use it to verify answers and solve graphical systems in seconds.",
-    "detailedDescription": "An indispensable strategic roadmap for the Digital SAT Math section. Learn the inner mechanics of multistage adaptive testing, how the routing engine between Module 1 and Module 2 determines your ceiling score, and how to allocate time across 44 total questions.",
+    "detailedDescription": "A strategic overview of the Digital SAT Math section. Learn how adaptive routing works between Module 1 and Module 2, how it affects your score ceiling, and how to pace across all 44 questions.",
     "theory": {
       "overview": "The Digital SAT Math test consists of two 35-minute modules with 22 questions each (44 total). Module 1 contains a mix of easy, medium, and hard questions. Your accuracy on Module 1 decides whether you are routed to the harder Module 2 (which unlocks scores up to 800) or the easier Module 2 (which caps your score around 590-600).",
       "formulas": [
@@ -432,10 +432,10 @@
     "satFocus": "Identify equivalent expressions across algebraic equations, tables, and word problem scenarios.",
     "commonTraps": [
       "Sign errors when distributing negative signs: -(2x - 5) = -2x + 5",
-      "Combining unlike terms like x� with x"
+      "Combining unlike terms like x^2 with x"
     ],
     "desmosTip": "Graph both expressions as y = [expr1] and y = [expr2]. If the two lines overlap completely, they are equivalent!",
-    "detailedDescription": "Deep dive into algebraic expressions, factoring identities, distributive properties, and spotting equivalent polynomials. Learn how the Digital SAT disguises simple terms and how to check equivalence in Desmos in under 15 seconds.",
+    "detailedDescription": "Covers algebraic expressions, factoring identities, distributive properties, and spotting equivalent polynomials. Learn how the Digital SAT disguises simple terms and how to verify equivalence in Desmos in seconds.",
     "theory": {
       "overview": "Algebraic manipulation questions test your mastery of polynomial expansion, common factor extraction, difference of squares, and perfect square trinomials. When expressions look intimidating, factoring or testing test values ($x = 2$ or $x = 3$) instantly cuts through algebraic complexity.",
       "formulas": [
@@ -1450,13 +1450,13 @@
     "keyConcepts": [
       "Exponent & Radical Identities",
       "Vertex & Axis of Symmetry Formulas: x = -b/(2a)",
-      "Quadratic Formula & Discriminant: b� - 4ac",
+      "Quadratic Formula & Discriminant: b^2 - 4ac",
       "Polynomial Factor Theorem & Remainder Theorem",
       "Strategic Decision Making: \"When do I use this formula?\""
     ],
-    "satFocus": "Not memorization�learn how to recognize instantly which formula or algebraic rule unlocks a complex question.",
+    "satFocus": "Focus on recognizing which formula or algebraic rule unlocks each question type.",
     "commonTraps": [
-      "Applying (a + b)� as a� + b� (missing the 2ab term)",
+      "Applying (a + b)^2 as a^2 + b^2 (missing the 2ab term)",
       "Sign errors when computing -b/(2a)"
     ],
     "desmosTip": "Evaluate discriminants in Desmos to confirm whether a quadratic has 2, 1, or 0 real solutions.",
@@ -1864,11 +1864,11 @@
     "thumbnailUrl": "/videos/thumbnails/lesson-9.jpg",
     "description": "Master exponent arithmetic, radical conversions, fractional exponents, and defeat tricky College Board trap questions.",
     "keyConcepts": [
-      "Product Rule: x? � x? = x???",
-      "Quotient Rule: x? / x? = x???",
-      "Power of a Power: (x?)? = x??",
-      "Radicals & Fractional Exponents: nvx? = x^(m/n)",
-      "Negative Exponents: x?? = 1 / x?"
+      "Product Rule: x^a * x^b = x^(a+b)",
+      "Quotient Rule: x^a / x^b = x^(a-b)",
+      "Power of a Power: (x^a)^b = x^(a*b)",
+      "Radicals & Fractional Exponents: n-th root(x^m) = x^(m/n)",
+      "Negative Exponents: x^(-n) = 1 / x^n"
     ],
     "satFocus": "Master the most common exponential formats and connect radicals with fractional powers smoothly.",
     "commonTraps": [
@@ -2070,7 +2070,7 @@
     "duration": "08:20",
     "videoUrl": "/videos/lesson-10.mp4",
     "thumbnailUrl": "/videos/thumbnails/lesson-10.jpg",
-    "description": "Deep dive into f(x) notation, composite functions, domain and range, tables, and function transformations.",
+    "description": "Covers f(x) notation, composite functions, domain and range, tables, and function transformations.",
     "keyConcepts": [
       "Function Concept & Mapping Rules",
       "Evaluating f(x) and Nested Functions f(g(x))",
@@ -2084,9 +2084,9 @@
       "Treating f(x) as f multiplied by x"
     ],
     "desmosTip": "Define f(x) = ... on row 1 in Desmos, then type f(4) or f(a) on row 2 to evaluate instantly.",
-    "detailedDescription": "Deep dive into f(x) notation, composite functions, domain and range, tables, and function transformations.",
+    "detailedDescription": "Covers f(x) notation, composite functions, domain and range, tables, and function transformations.",
     "theory": {
-      "overview": "Deep dive into f(x) notation, composite functions, domain and range, tables, and function transformations. This module covers the theoretical foundations, algebraic mechanics, and College Board question patterns for Functions&Function Notation.",
+      "overview": "Covers f(x) notation, composite functions, domain and range, tables, and function transformations. This module walks through theoretical foundations, algebraic mechanics, and question patterns for Functions & Function Notation.",
       "formulas": [
         {
           "label": "Quadratic Formula",
@@ -2488,15 +2488,15 @@
     "thumbnailUrl": "/videos/thumbnails/lesson-12.jpg",
     "description": "Master the three standard quadratic forms, vertex coordinates, line of symmetry, roots, and how to pick the right form fast.",
     "keyConcepts": [
-      "Standard Form: y = ax� + bx + c (c is y-intercept)",
+      "Standard Form: y = ax^2 + bx + c (c is y-intercept)",
       "Factored Form: y = a(x - r1)(x - r2) (r1, r2 are roots)",
-      "Vertex Form: y = a(x - h)� + k (vertex is (h, k))",
+      "Vertex Form: y = a(x - h)^2 + k (vertex is (h, k))",
       "Axis of Symmetry: x = -b/(2a) or (r1 + r2)/2",
       "Parabola Orientation & Minimum/Maximum Values"
     ],
     "satFocus": "Recognize which form is immediately useful: Factored for roots, Vertex for min/max, Standard for y-intercept.",
     "commonTraps": [
-      "Sign error in vertex form: (x - 3)� + 5 means h = +3",
+      "Sign error in vertex form: (x - 3)^2 + 5 means h = +3",
       "Forgetting the leading coefficient a when expanding factored form"
     ],
     "desmosTip": "Graph the quadratic in Desmos; tap the apex to read the vertex (h, k) and tap the x-axis for roots.",
@@ -2696,9 +2696,9 @@
     "thumbnailUrl": "/videos/thumbnails/lesson-13.jpg",
     "description": "Formulas for averages, rates, percent change, and the high-speed weighted average shortcut technique.",
     "keyConcepts": [
-      "Average Formula: Sum = Average � Count",
+      "Average Formula: Sum = Average * Count",
       "Weighted Average Shortcut: (n1x1 + n2x2) / (n1 + n2)",
-      "Rate, Work & Motion Formulas (D = r � t)",
+      "Rate, Work & Motion Formulas (D = r * t)",
       "Proportional Relationships",
       "Formula Recognition Speed on Multi-step Problems"
     ],
@@ -2906,7 +2906,7 @@
     "keyConcepts": [
       "Percent Calculations & Decimal Conversions",
       "Ratios & Proportions Setup via Cross-Multiplication",
-      "Percent Change: (New - Old) / Old � 100%",
+      "Percent Change: (New - Old) / Old * 100%",
       "Direct & Inverse Proportions",
       "Discounts, Taxes, Markups & Mixture Scenarios"
     ],
@@ -3115,8 +3115,8 @@
       "Conversion Factors & Chain Multipliers",
       "Unit Cancellation Technique",
       "Compound Unit Conversions (e.g. miles/hr to feet/sec)",
-      "Area Unit Conversions (Square the Factor: 1 ft� = 144 in�)",
-      "Volume Unit Conversions (Cube the Factor: 1 yd� = 27 ft�)"
+      "Area Unit Conversions (Square the Factor: 1 ft^2 = 144 in^2)",
+      "Volume Unit Conversions (Cube the Factor: 1 yd^3 = 27 ft^3)"
     ],
     "satFocus": "The biggest point: Track the units explicitly throughout the calculation chain to guarantee the right answer.",
     "commonTraps": [
@@ -4155,14 +4155,14 @@
     "keyConcepts": [
       "College Board Built-in Reference Sheet",
       "Triangle Area (1/2 bh) & Rectangle Area (lw)",
-      "Circle Area (pr�) & Circumference (2pr)",
+      "Circle Area (pi*r^2) & Circumference (2*pi*r)",
       "Solid Volumes (Prism, Cylinder, Pyramid, Cone, Sphere)",
-      "Pythagorean Theorem: a� + b� = c�"
+      "Pythagorean Theorem: a^2 + b^2 = c^2"
     ],
     "satFocus": "Recognize which formula is needed immediately without searching through reference materials.",
     "commonTraps": [
       "Forgetting the 1/3 factor in cone and pyramid volume formulas",
-      "Using diameter instead of radius in sphere formulas (4/3 pr�)"
+      "Using diameter instead of radius in sphere formulas (4/3 pi*r^3)"
     ],
     "desmosTip": "Compute complex multi-step geometry volumes in Desmos in a single line to avoid rounding errors.",
     "detailedDescription": "Complete walkthrough of College Board reference formulas: triangles, rectangles, circles, volume, and Pythagorean theorem.",
@@ -4368,14 +4368,14 @@
     "keyConcepts": [
       "Parallel Lines (Equal Slopes) & Perpendicular Lines (Opposite Reciprocal Slopes)",
       "Vertical Angles (Always Equal)",
-      "Supplementary (Sum = 180�) & Complementary (Sum = 90�)",
+      "Supplementary (Sum = 180 deg) & Complementary (Sum = 90 deg)",
       "Transversal Angle Pairs: Alternate Interior, Corresponding, Consecutive Interior",
       "Diagram Clues & Geometric Encoding"
     ],
     "satFocus": "Learn how diagrams encode angle relationships and translate visual geometric clues into algebraic equations.",
     "commonTraps": [
       "Assuming lines are parallel or perpendicular based solely on appearance without given markers",
-      "Subtracting from 90� instead of 180� for supplementary angles"
+      "Subtracting from 90 deg instead of 180 deg for supplementary angles"
     ],
     "desmosTip": "Solve multi-variable angle systems in Desmos by typing the equations directly.",
     "detailedDescription": "Decode angle diagrams, parallel lines cut by a transversal, vertical angles, and supplementary relationships.",
@@ -4579,10 +4579,10 @@
     "thumbnailUrl": "/videos/thumbnails/lesson-22.jpg",
     "description": "Master triangle angle sum, isosceles/equilateral properties, similar triangles, and special right triangle speed tricks.",
     "keyConcepts": [
-      "Triangle Angle Sum = 180�",
+      "Triangle Angle Sum = 180 deg",
       "Isosceles & Equilateral Triangle Theorems",
       "Pythagorean Theorem & Common Triples (3-4-5, 5-12-13, 8-15-17)",
-      "Special Right Triangles: 30�-60�-90� (x, xv3, 2x) & 45�-45�-90� (x, x, xv2)",
+      "Special Right Triangles: 30-60-90 (x, x*sqrt(3), 2x) & 45-45-90 (x, x, x*sqrt(2))",
       "Similar vs Congruent Triangles (Proportional Sides)"
     ],
     "satFocus": "Identify missing side lengths quickly using Pythagorean triples and similar triangle ratios.",
@@ -4793,11 +4793,11 @@
     "description": "SOH-CAH-TOA definitions, right triangle trigonometry, radian conversions, and the complementary angle identity.",
     "keyConcepts": [
       "SOH-CAH-TOA: sin = opp/hyp, cos = adj/hyp, tan = opp/adj",
-      "Complementary Angle Identity: sin(x) = cos(90� - x) or sin(x) = cos(p/2 - x)",
-      "Radian ? Degree Conversions: 180� = p radians",
+      "Complementary Angle Identity: sin(x) = cos(90 deg - x) or sin(x) = cos(pi/2 - x)",
+      "Radian to Degree Conversions: 180 deg = pi radians",
       "Right Triangle Trigonometry Applications"
     ],
-    "satFocus": "Master the top SAT trigonometry identity: if sin(A) = cos(B) in a right triangle, then A + B = 90� (or p/2).",
+    "satFocus": "Master the top SAT trigonometry identity: if sin(A) = cos(B) in a right triangle, then A + B = 90 deg (or pi/2).",
     "commonTraps": [
       "Incorrect calculator angle mode (Degrees vs Radians)",
       "Confusing adjacent and opposite sides when perspective switches"
@@ -5004,15 +5004,15 @@
     "thumbnailUrl": "/videos/thumbnails/lesson-24.jpg",
     "description": "From circle geometry (radius, arcs, sector areas) to coordinate algebra: circle equation and completing the square.",
     "keyConcepts": [
-      "Radius, Diameter, Circumference (2pr) & Area (pr�)",
+      "Radius, Diameter, Circumference (2*pi*r) & Area (pi*r^2)",
       "Central Angles, Arc Lengths & Sector Areas",
-      "Circle Standard Equation: (x - h)� + (y - k)� = r�",
+      "Circle Standard Equation: (x - h)^2 + (y - k)^2 = r^2",
       "Completing the Square to Find Center (h, k) and Radius r",
       "Connecting Geometric Circles to Coordinate Algebra"
     ],
-    "satFocus": "Bridge geometry and algebra: converting expanded equations x� + y� + Dx + Ey + F = 0 into standard circle form.",
+    "satFocus": "Bridge geometry and algebra: converting expanded equations x^2 + y^2 + Dx + Ey + F = 0 into standard circle form.",
     "commonTraps": [
-      "Forgetting that the equation right side is r�, not r (e.g. = 25 means r = 5)",
+      "Forgetting that the equation right side is r^2, not r (e.g. = 25 means r = 5)",
       "Sign errors in center coordinates (h, k)"
     ],
     "desmosTip": "Paste the expanded circle equation directly into Desmos; Desmos graphs the circle and you can click the center or boundary points!",
@@ -5215,23 +5215,23 @@
     "duration": "08:37",
     "videoUrl": "/videos/lesson-25.mp4",
     "thumbnailUrl": "/videos/thumbnails/lesson-25.jpg",
-    "description": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k�, k�).",
+    "description": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k^2, k^3).",
     "keyConcepts": [
       "2D Areas: Rectangles, Triangles, Trapezoids, Circles",
-      "3D Volumes: Prisms, Cylinders (pr�h), Pyramids, Cones (1/3 pr�h), Spheres (4/3 pr�)",
+      "3D Volumes: Prisms, Cylinders (pi*r^2*h), Pyramids, Cones (1/3 pi*r^2*h), Spheres (4/3 pi*r^3)",
       "Composite Figures (Additive & Subtractive Regions)",
-      "Scale Factors: Length ratio k, Area ratio k�, Volume ratio k�",
+      "Scale Factors: Length ratio k, Area ratio k^2, Volume ratio k^3",
       "Reconstructing Missing Dimensions from Given Volume/Area"
     ],
-    "satFocus": "Master dimensional scaling: if lengths scale by k, area scales by k�, and volume scales by k�.",
+    "satFocus": "Master dimensional scaling: if lengths scale by k, area scales by k^2, and volume scales by k^3.",
     "commonTraps": [
       "Using diameter instead of radius in cylinder or cone volume",
       "Neglecting units when working with composite areas"
     ],
     "desmosTip": "Calculate multi-step composite volume expressions in Desmos in a single line.",
-    "detailedDescription": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k�, k�).",
+    "detailedDescription": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k^2, k^3).",
     "theory": {
-      "overview": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k�, k�). This module covers the theoretical foundations, algebraic mechanics, and College Board question patterns for Areas&Volumes.",
+      "overview": "Calculate 2D areas, 3D volumes, composite shapes, missing dimensions, and dimensional scaling rules (k, k^2, k^3). This module covers theoretical foundations, algebraic mechanics, and question patterns for Areas & Volumes.",
       "formulas": [
         {
           "label": "Circle Standard Equation",

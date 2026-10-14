@@ -98,7 +98,7 @@ export const mockLeaderboardUsers: LeaderboardUser[] = [
   { id: 'u1', rank: 1, name: 'Alex Chen', avatar: '⚡', score: 800, xp: 14850, streak: 34, badge: 'Desmos Master' },
   { id: 'u2', rank: 2, name: 'Sarah Jenkins', avatar: '🌟', score: 790, xp: 13200, streak: 28, badge: 'Algebra Wizard' },
   { id: 'u3', rank: 3, name: 'Marcus Vance', avatar: '🔥', score: 780, xp: 12450, streak: 21, badge: 'Geometry Titan' },
-  { id: 'u4', rank: 4, name: 'You (Student)', avatar: '🚀', score: 750, xp: 9850, streak: 12, badge: '750+ Scholar', isCurrentUser: true },
+  { id: 'u4', rank: 4, name: 'You (Student)', avatar: '🚀', score: 750, xp: 9850, streak: 13, badge: '750+ Scholar', isCurrentUser: true },
   { id: 'u5', rank: 5, name: 'Maya Patel', avatar: '🎯', score: 740, xp: 9400, streak: 15, badge: 'Perfect Attendance' },
   { id: 'u6', rank: 6, name: 'Liam O\'Connor', avatar: '💡', score: 730, xp: 8900, streak: 9, badge: 'Streak Demon' },
   { id: 'u7', rank: 7, name: 'Sophia Rodriguez', avatar: '✨', score: 710, xp: 8250, streak: 7, badge: 'Math Prodigy' }

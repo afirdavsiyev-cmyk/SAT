@@ -151,7 +151,7 @@ export const GEOMETRY_TRIG_VOCAB: VocabTerm[] = [
     partOfSpeech: "noun",
     translationUz: "to'ldiruvchi burchak",
     translationRu: "дополнительные углы (в сумме 90°)",
-    definition: "Two angles whose measures add up to 90°; crucial on the SAT: sin(θ) = cos(90° - θ).",
+    definition: "Two angles whose measures add up to 90°. Frequently tested on the SAT: sin(θ) = cos(90° - θ).",
     example: "The acute angles of any right triangle are always complementary angles.",
     exampleTranslationUz: "Har qanday to'g'ri burchakli uchburchakning o'tkir burchaklari doimo to'ldiruvchi burchaklardir.",
     exampleTranslationRu: "Острые углы любого прямоугольного треугольника всегда являются дополнительными (в сумме 90°)."

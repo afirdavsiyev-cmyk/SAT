@@ -105,7 +105,7 @@ export const ReferenceSheetModal: React.FC<ReferenceSheetModalProps> = ({ isOpen
             {/* 30-60-90 */}
             <div className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-sm">
               <div>
-                <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-semibold">Special 30° – 60° – 90°</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-semibold">Special 30°-60°-90°</span>
                 <p className="text-sm font-extrabold text-slate-900 dark:text-white">Side Ratio: x : x√3 : 2x</p>
                 <ul className="text-xs text-slate-600 dark:text-slate-400 mt-2 space-y-1 font-mono">
                   <li>• Short leg (opp 30°) = x</li>
@@ -127,7 +127,7 @@ export const ReferenceSheetModal: React.FC<ReferenceSheetModalProps> = ({ isOpen
             {/* 45-45-90 */}
             <div className="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 flex items-center justify-between shadow-sm">
               <div>
-                <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-semibold">Special 45° – 45° – 90°</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1 font-semibold">Special 45°-45°-90°</span>
                 <p className="text-sm font-extrabold text-slate-900 dark:text-white">Side Ratio: s : s : s√2</p>
                 <ul className="text-xs text-slate-600 dark:text-slate-400 mt-2 space-y-1 font-mono">
                   <li>• Legs (opp 45°) = s</li>

@@ -93,33 +93,33 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
   ];
 
   const scoreBands = [
-    { label: '500–600', score: 580, desc: 'Foundation Builder (Focus on core Algebra basics)' },
-    { label: '600–650', score: 630, desc: 'Competitive Standard (Solid algebra & linear modeling)' },
-    { label: '650–700', score: 680, desc: 'Top 50 Benchmark (Quadratic functions & Desmos speed)' },
-    { label: '700–750', score: 730, desc: 'High Distinction (Advanced nonlinear & circle theorems)' },
-    { label: '750–800', score: 800, desc: 'Ivy League & MIT Benchmark (Eliminate all trap questions)' },
+    { label: '500-600', score: 580, desc: 'Foundation (Core algebra basics)' },
+    { label: '600-650', score: 630, desc: 'Solid Foundation (Algebra and linear models)' },
+    { label: '650-700', score: 680, desc: 'Competitive (Quadratic functions and Desmos shortcuts)' },
+    { label: '700-750', score: 730, desc: 'Advanced (Nonlinear functions and circle geometry)' },
+    { label: '750-800', score: 800, desc: 'Top Benchmark (Challenging module 2 questions)' },
   ];
 
   const strategyGoals = [
     {
       id: 'highest_possible' as StrategyGoal,
       title: 'Highest Possible Score',
-      badge: 'Aggressive 800 Elite',
-      desc: 'Heavy dosage of hard Level 4–5 trap problems, circle theorems, and polynomial roots.',
+      badge: 'Target 800',
+      desc: 'Focuses on hard level 4 and 5 problems, circle theorems, and polynomial roots.',
       icon: <Award className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
     },
     {
       id: 'efficient_target' as StrategyGoal,
-      title: 'Efficient Target Mastery',
-      badge: 'Balanced High-Yield',
-      desc: 'Focuses strictly on the highest-frequency topics to hit your target score with minimal wasted time.',
+      title: 'Target Score Path',
+      badge: 'Balanced Practice',
+      desc: 'Focuses on high-frequency topics to reach your target score directly.',
       icon: <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
     },
     {
       id: 'fast_bump' as StrategyGoal,
-      title: 'Fast Score Bump',
-      badge: 'Quick +80pt Sprint',
-      desc: 'Focuses on rapid Desmos shortcuts and eliminating careless calculation slips for an upcoming test.',
+      title: 'Score Boost Sprint',
+      badge: 'Short-term Sprint',
+      desc: 'Focuses on Desmos shortcuts and catching calculation slips before test day.',
       icon: <Flame className="w-5 h-5 text-rose-600 dark:text-rose-400" />
     },
   ];
@@ -832,7 +832,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
               What causes you to lose the most points?
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
-              Select all common failure points so the Priority Engine can calibrate targeted drills.
+              Choose what usually trips you up so your study plan can address those areas first.
             </p>
           </div>
 
@@ -912,7 +912,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
 
           <div className="space-y-2 max-w-md mx-auto">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-              {genProgress < 100 ? 'Synthesizing Your Adaptive Engine' : 'Roadmap Configured & Active!'}
+              {genProgress < 100 ? 'Building your study plan...' : 'Study plan ready!'}
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 min-h-[40px] font-mono leading-relaxed">
               {genStatusText}

@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2 space-y-4">
             <ScoreUpLogo onClick={() => setCurrentView('landing')} />
             <p className="text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
-              The premier AI-powered Digital SAT Math preparation platform. Built with authentic College Board Bluebook test room, Desmos integration, and KaTeX step-by-step resolution.
+              A Digital SAT Math preparation platform featuring Bluebook-style test rooms, built-in Desmos graphing, and step-by-step math explanations.
             </p>
             <div className="flex items-center space-x-3 pt-2">
               <div className="flex items-center space-x-1.5 text-xs text-emerald-800 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/40 px-2.5 py-1 rounded-full">
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Resources</h4>
             <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
               <li><a href="#features" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Desmos Shortcuts</a></li>
-              <li><a href="#features" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">KaTeX Math Formula Sheet</a></li>
+              <li><a href="#features" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">SAT Math Formula Sheet</a></li>
               <li><a href="#estimator" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Score Estimator Widget</a></li>
               <li><button onClick={() => setCurrentView('leaderboard')} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Global Ranks & Badges</button></li>
             </ul>
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 space-y-4 sm:space-y-0">
-          <p>© 2026 SAT Master Inc. Not affiliated with College Board (SAT® is a registered trademark).</p>
+          <p>© 2026 ScoreUp. Not affiliated with the College Board (SAT® is a registered trademark of the College Board).</p>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-slate-700 dark:hover:text-slate-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-slate-700 dark:hover:text-slate-400 transition-colors">Terms of Service</a>

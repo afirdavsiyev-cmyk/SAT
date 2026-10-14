@@ -27,7 +27,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.2,
-    description: 'Full 2-module official exam simulation featuring authentic 35-minute module pacing, Desmos calculator, and 200–800 scoring.'
+    description: 'Standard 2-module practice exam covering linear equations, ratios, and quadratic basics with standard 35-minute module pacing.'
   },
   {
     id: 'pt2',
@@ -41,7 +41,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.4,
-    description: 'Full 2-module official exam simulation from official practice set with exponential functions, geometry solids, and algebra models.'
+    description: 'Features exponential functions, geometry solids, and algebraic models.'
   },
   {
     id: 'pt3',
@@ -55,7 +55,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.5,
-    description: 'Full 2-module official exam simulation from official practice set with similar triangles, quadratic dive models, and unit rates.'
+    description: 'Focuses on similar triangles, quadratic motion models, and unit rates.'
   },
   {
     id: 'pt4',
@@ -69,7 +69,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.3,
-    description: 'Full 2-module official exam simulation with scatterplots, cubic polynomials, dot plots, circle tangents, and rational expressions.'
+    description: 'Includes scatterplots, cubic polynomials, dot plots, and circle tangents.'
   },
   {
     id: 'pt5',
@@ -83,7 +83,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.6,
-    description: 'Full 2-module official exam simulation with parabola equations, linear systems, inequality graphs, and circle geometry.'
+    description: 'Covers parabola equations, linear systems, inequality graphs, and circle geometry.'
   },
   {
     id: 'pt6',
@@ -97,7 +97,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.8,
-    description: 'Full 2-module official exam simulation featuring authentic tablet depreciation models, projectile motion graphs, and scatterplots.'
+    description: 'Features depreciation models, projectile motion graphs, and scatterplots.'
   },
   {
     id: 'pt7',
@@ -111,7 +111,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.4,
-    description: 'Full 2-module official exam simulation with right triangle trigonometry, capacitor dot plots, and polynomial systems.'
+    description: 'Covers right triangle trigonometry, dot plots, and polynomial systems.'
   },
   {
     id: 'pt8',
@@ -125,7 +125,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.7,
-    description: 'Full 2-module official exam simulation with orbital periods dot plots, linear systems, and geometric congruence proofs.'
+    description: 'Challenging set covering orbital period models, linear systems, and geometric proofs.'
   },
   {
     id: 'pt9',
@@ -139,7 +139,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 1.5,
-    description: 'Full 2-module official exam simulation featuring circle equations, quadratic models, system of inequalities, and solid geometry.'
+    description: 'Includes circle equations, quadratic models, inequalities, and solid geometry.'
   },
   {
     id: 'pt10',
@@ -153,7 +153,7 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 2.1,
-    description: 'Full 2-module authentic December Math Mock Turbo 1 with absolute value systems, polynomial factorization, and right-triangle trigonometry.'
+    description: 'Covers absolute value systems, polynomial factorization, and right-triangle trigonometry.'
   },
   {
     id: 'pt11',
@@ -167,6 +167,6 @@ export const FULL_PRACTICE_TESTS: FullPracticeTestItem[] = [
     moduleTimeMinutes: 35,
     totalQuestions: 44,
     sizeMB: 2.4,
-    description: 'Full 2-module authentic SAT Turbo Prep Test 1 with pyramid geometry, exponential growth models, and statistical margin of error analysis.'
+    description: 'Advanced mock covering pyramid geometry, exponential growth models, and margin of error.'
   }
 ];

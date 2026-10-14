@@ -297,7 +297,7 @@ export const ScoreCalculatorView: React.FC = () => {
                     {isHardRoute ? 'Module 2 (Hard Adaptive Route)' : 'Module 2 (Easy Adaptive Route)'}
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    {isHardRoute ? 'Uncapped Potential (Scores up to 800)' : 'Capped Potential (Max Score ~590–610)'}
+                    {isHardRoute ? 'Uncapped Potential (Scores up to 800)' : 'Capped Potential (Max Score ~590-610)'}
                   </p>
                 </div>
               </div>

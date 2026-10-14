@@ -31,9 +31,9 @@ export const CtaBanner: React.FC = () => {
                   translateZ="65"
                   className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight"
                 >
-                  Start Practicing in the Official <br />
+                  Start practicing in a <br />
                   <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:to-teal-300 bg-clip-text text-transparent">
-                    Digital Bluebook Room Now
+                    Bluebook-style exam room
                   </span>
                 </CardItem>
 
@@ -42,7 +42,7 @@ export const CtaBanner: React.FC = () => {
                   translateZ="40"
                   className="text-slate-700 dark:text-slate-300 text-base max-w-xl mx-auto"
                 >
-                  Join over 42,000 students achieving their target scores. Unlimited adaptive math & reading modules with instant KaTeX solutions.
+                  Join students working toward an 800 in Math with adaptive question banks, Desmos practice, and step-by-step solutions.
                 </CardItem>
 
                 <CardItem

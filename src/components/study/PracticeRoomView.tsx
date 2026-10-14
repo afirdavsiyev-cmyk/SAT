@@ -935,7 +935,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
               <ShieldAlert className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" />
               <div>
                 <span className="font-bold">Still Tricky!</span>
-                <span className="ml-1 opacity-90">Review the step-by-step KaTeX breakdown below or try again.</span>
+                <span className="ml-1 opacity-90">Review the step-by-step explanation below or try again.</span>
               </div>
             </>
           )}
@@ -1563,8 +1563,8 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
             }`}
           >
             <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            <span className="hidden sm:inline">View Step-by-Step KaTeX Breakdown</span>
-            <span className="sm:hidden">KaTeX Solution</span>
+            <span className="hidden sm:inline">View Step-by-Step Explanation</span>
+            <span className="sm:hidden">Explanation</span>
             <ChevronUp className={`w-3.5 h-3.5 transition-transform ${isExplanationOpen ? 'rotate-180' : ''}`} />
           </button>
 

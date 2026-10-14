@@ -393,7 +393,7 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
                 Rest & Burnout Guard Active: Scheduled Recovery Day
               </h3>
               <p className="text-xs text-amber-800/80 dark:text-amber-300/80">
-                Students retain 30% more when taking structured rest days. You have 0 overdue backlogs—your workload is balanced.
+                Scheduled rest days help maintain focus and prevent burnout. You have no overdue assignments, and your schedule is on track.
               </p>
             </div>
           </div>
@@ -1107,10 +1107,10 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
               <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
-                Dynamic 18-Subtopic Skill Matrix
+                18-Topic Skill Matrix
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Live mastery status across the official College Board® Digital SAT Math framework.
+                Mastery status across all Digital SAT Math skill areas.
               </p>
             </div>
 

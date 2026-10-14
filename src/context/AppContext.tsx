@@ -58,7 +58,7 @@ import {
 } from '../data/officialPracticeTest11';
 import { generatePrescriptiveStudyPlan } from '../utils/studyPlanGenerator';
 import { isAnswerEquivalent } from '../utils/answerVerification';
-import { getAttendanceData } from '../services/attendanceService';
+import { getAttendanceData, recordDailyAttendance } from '../services/attendanceService';
 
 const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
@@ -151,15 +151,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const userKey = getProgressStorageKey();
       const saved = localStorage.getItem(userKey);
       const targetDateFromStorage = localStorage.getItem('study_planner_target_date');
+      const attendance = getAttendanceData();
+
+      let state: UserProgressState = DEFAULT_USER_PROGRESS_STATE;
       if (saved) {
-        const parsed = JSON.parse(saved);
-        if (targetDateFromStorage && (!parsed.planner || !parsed.planner.targetExamDate)) {
-          parsed.planner = { ...parsed.planner, targetExamDate: targetDateFromStorage };
+        state = JSON.parse(saved);
+        if (targetDateFromStorage && (!state.planner || !state.planner.targetExamDate)) {
+          state.planner = { ...state.planner, targetExamDate: targetDateFromStorage };
         }
-        return parsed;
-      }
-      if (targetDateFromStorage) {
-        return {
+      } else if (targetDateFromStorage) {
+        state = {
           ...DEFAULT_USER_PROGRESS_STATE,
           planner: {
             ...DEFAULT_USER_PROGRESS_STATE.planner,
@@ -167,10 +168,32 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           },
         };
       }
+
+      // Reconcile streak across attendanceService, activeUser, and progress state
+      let resolvedStreak = attendance.streakDays || 0;
+      try {
+        const activeRaw = localStorage.getItem('scoreup_active_user');
+        if (activeRaw) {
+          const active = JSON.parse(activeRaw);
+          if (typeof active.streakDays === 'number' && active.streakDays > resolvedStreak) {
+            resolvedStreak = active.streakDays;
+          }
+        }
+      } catch {}
+      if (state.stats?.streakDays && state.stats.streakDays > resolvedStreak) {
+        resolvedStreak = state.stats.streakDays;
+      }
+      if (resolvedStreak === 0) resolvedStreak = 1;
+
+      if (state.stats) {
+        state.stats.streakDays = resolvedStreak;
+      }
+
+      return state;
     } catch (e) {
       console.error('Failed to load user progress state from localStorage', e);
+      return DEFAULT_USER_PROGRESS_STATE;
     }
-    return DEFAULT_USER_PROGRESS_STATE;
   };
 
   const [userProgressState, setUserProgressState] = useState<UserProgressState>(loadUserProgressState);
@@ -184,6 +207,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (userProgressState.planner?.targetExamDate) {
         localStorage.setItem('study_planner_target_date', userProgressState.planner.targetExamDate);
       }
+      window.dispatchEvent(new CustomEvent('study_planner_updated'));
+      window.dispatchEvent(new Event('scoreup_progress_updated'));
     } catch (e) {
       console.error('Failed to save user progress state to localStorage', e);
     }
@@ -204,14 +229,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     const handleAttendanceUpdate = (e: any) => {
-      if (e.detail?.streakDays) {
-        setUserProgressState((prev) => ({
-          ...prev,
-          stats: {
-            ...prev.stats,
-            streakDays: e.detail.streakDays,
-          },
-        }));
+      const newStreak = e.detail?.streakDays;
+      if (typeof newStreak === 'number') {
+        setUserProgressState((prev) => {
+          if (prev.stats?.streakDays === newStreak) return prev;
+          return {
+            ...prev,
+            stats: {
+              ...prev.stats,
+              streakDays: newStreak,
+            },
+          };
+        });
       }
     };
     window.addEventListener('scoreup_attendance_updated', handleAttendanceUpdate);
@@ -453,6 +482,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const recordPracticeQuestion = (domain: MathDomain, isCorrect: boolean) => {
+    try {
+      recordDailyAttendance();
+    } catch {}
     setUserProgressState((prev) => {
       const xpEarned = isCorrect ? 10 : 2;
       const keyMap: Record<MathDomain, keyof UserProgressState['stats']['domainMastery']> = {
@@ -503,6 +535,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const finishExam = () => {
+    try {
+      recordDailyAttendance();
+    } catch {}
     setExamFinished(true);
 
     let correctCount = 0;

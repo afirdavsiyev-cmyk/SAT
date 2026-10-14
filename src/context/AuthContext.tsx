@@ -39,7 +39,7 @@ export const buildActiveUserProfile = (
 
   const email = onboarding?.email || authUser?.email || existingActive?.email || 'student@scoreup.app';
   const avatar = authUser?.photoUrl || existingActive?.avatar;
-  const streakDays = existingActive?.streakDays ?? attendance.streakDays ?? 1;
+  const streakDays = Math.max(attendance.streakDays || 0, existingActive?.streakDays || 0, 1);
   const currentEstimatedMath = existingActive?.currentEstimatedMath || baseline || 650;
   const mainReason = onboarding?.mainReason || existingActive?.mainReason || 'Get into my dream university';
   const biggestMotivation = onboarding?.biggestMotivation || existingActive?.biggestMotivation || 'My future';
@@ -145,7 +145,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const handleAttendanceUpdate = (e: any) => {
-      if (e.detail?.streakDays) {
+      if (typeof e.detail?.streakDays === 'number') {
         setActiveUser((prev) => ({
           ...prev,
           streakDays: e.detail.streakDays,

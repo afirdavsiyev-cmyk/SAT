@@ -37,21 +37,21 @@ export const HeroSection: React.FC = () => {
         {/* Animated Badge */}
         <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-emerald-100/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/60 text-emerald-900 dark:text-emerald-300 text-xs font-bold shadow-[0_0_20px_rgba(16,185,129,0.15)] dark:shadow-[0_0_20px_rgba(16,185,129,0.15)] mb-8 animate-float">
           <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400 animate-pulse" />
-          <span>NEW: 2026/2027 Official Digital SAT Math Engine</span>
+          <span>Updated for 2026/2027 Digital SAT Math</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"></span>
         </div>
 
         {/* Main Headline */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-4xl mx-auto leading-[1.1] font-sans">
-          Feel like an SAT <br className="hidden sm:inline" />
+          Master Digital SAT <br className="hidden sm:inline" />
           <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent drop-shadow-sm">
-            Math Master
+            Math
           </span>
         </h1>
 
         {/* Subtext */}
         <p className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
-          Train inside an exact replica of College Board's <span className="text-emerald-700 dark:text-emerald-300 font-semibold">Bluebook test room</span> with built-in Desmos shortcuts, <span className="text-teal-700 dark:text-teal-300 font-semibold">ScoreUP AI</span> tutor, and step-by-step KaTeX math breakdowns.
+          Practice in a Bluebook-style test room with built-in Desmos shortcuts, the <span className="text-teal-700 dark:text-teal-300 font-semibold">ScoreUp AI</span> tutor, and step-by-step math explanations.
         </p>
 
         {/* Action Buttons */}
@@ -70,7 +70,7 @@ export const HeroSection: React.FC = () => {
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-emerald-200 dark:border-emerald-500/30 text-emerald-900 dark:text-emerald-300 hover:text-emerald-950 dark:hover:text-white hover:bg-emerald-50/60 dark:hover:bg-slate-800/90 font-bold text-base transition-all active:scale-95 flex items-center justify-center space-x-2 shadow-[0_4px_20px_rgba(16,185,129,0.08)]"
           >
             <Sparkles className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-            <span>Create Study Roadmap</span>
+            <span>Create Study Plan</span>
           </button>
         </div>
 
@@ -86,7 +86,7 @@ export const HeroSection: React.FC = () => {
           </div>
           <div className="flex items-center space-x-2">
             <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-            <span>Official College Board Scoring</span>
+            <span>Authentic SAT Scoring</span>
           </div>
         </div>
 

@@ -24,6 +24,7 @@ import {
   PanelLeft,
   Gauge
 } from 'lucide-react';
+import { getAttendanceData } from '../../services/attendanceService';
 
 export type StudySidebarTab =
   | 'home'
@@ -73,7 +74,7 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
   const displayName = activeUser.firstName || 'Student';
   const userEmail = activeUser.email || 'student@scoreup.app';
   const targetScore = activeUser.targetScore || '800';
-  const streakDays = activeUser.streakDays ?? 1;
+  const streakDays = Math.max(activeUser.streakDays || 0, getAttendanceData().streakDays || 0, 1);
 
   const handleOpenEditProfile = () => {
     setIsProfileMenuOpen(false);
@@ -110,7 +111,7 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
           <div
             onClick={() => setCurrentView('landing')}
             className="flex items-center space-x-2.5 cursor-pointer group"
-            title="SAT Master Study Hub (Click to return Home)"
+            title="ScoreUp Study Hub (Click to return Home)"
           >
             <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.25)] dark:shadow-[0_0_15px_rgba(16,185,129,0.25)] group-hover:scale-105 transition-transform flex-shrink-0 font-black text-base">
               S

@@ -137,7 +137,7 @@ export const ResultsReviewView: React.FC = () => {
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60'
               }`}
             >
-              Module 1 (Q1–22 • {module1Correct}/22)
+              Module 1 (Q1-22 • {module1Correct}/22)
             </button>
             <button
               onClick={() => setModuleFilter('m2')}
@@ -147,7 +147,7 @@ export const ResultsReviewView: React.FC = () => {
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60'
               }`}
             >
-              Module 2 (Q23–44 • {module2Correct}/22)
+              Module 2 (Q23-44 • {module2Correct}/22)
             </button>
           </div>
         )}

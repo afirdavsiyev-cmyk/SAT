@@ -22,13 +22,13 @@ export const ScoreComparisonWidget: React.FC = () => {
         
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-800 dark:text-emerald-400 mb-3 bg-emerald-100 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800/50 px-3 py-1 rounded-full inline-block">
-            Interactive AI Score Calculator
+            Score calculator
           </h2>
           <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Calculate Your Predicted SAT Score Gain
+            Estimate your score improvement
           </h3>
           <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
-            See how targeted Bluebook & Desmos practice increases your score in real-time.
+            See how targeted practice with Bluebook-style questions and Desmos can improve your math score.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export const ScoreComparisonWidget: React.FC = () => {
                 <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span>Adaptive practice focuses 100% on weak math/reading skills</span>
+                    <span>Adaptive drills focus on your weakest math skills</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />

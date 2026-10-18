@@ -31,6 +31,8 @@ import {
   BookOpen,
   CalendarDays,
   ShieldCheck,
+  Printer,
+  FileText,
 } from 'lucide-react';
 import {
   SATDomain,
@@ -58,6 +60,7 @@ import {
 } from '../../utils/spacedRepetitionEngine';
 import { generateDailySprintQueue } from '../../utils/dailySprintGenerator';
 import { ALL_QUESTIONS } from '../../data/questions';
+import { TestDayReviewSheetModal } from './TestDayReviewSheetModal';
 
 interface DailyPlanRoadmapViewProps {
   onStartDrill?: (params: {
@@ -82,7 +85,7 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
   onStartDrill,
   onReconfigureWizard,
 }) => {
-  const { setCurrentView } = useApp();
+  const { setCurrentView, startExam } = useApp();
 
   // Load adaptive planner data from engine
   const [plannerData, setPlannerData] = useState(() => getStoredAdaptiveData());
@@ -98,6 +101,7 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
   const [simulatedMissedSessions, setSimulatedMissedSessions] = useState<number>(1);
   const [isQuestionInspectorOpen, setIsQuestionInspectorOpen] = useState<boolean>(false);
   const [inspectingBlockType, setInspectingBlockType] = useState<'warmup' | 'core_focus' | 'speed_run' | 'all'>('all');
+  const [isReviewSheetOpen, setIsReviewSheetOpen] = useState<boolean>(false);
 
   // Spaced Repetition queue state
   const [spacedRepetitionList, setSpacedRepetitionList] = useState<SpacedRepetitionRecord[]>(() => getSpacedRepetitionQueue());
@@ -362,10 +366,20 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
               <button
                 type="button"
                 onClick={() => setIsQuestionInspectorOpen(!isQuestionInspectorOpen)}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-xs font-bold text-white transition-all flex items-center justify-center space-x-1.5"
+                className="flex-1 px-3 sm:px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-xs font-bold text-white transition-all flex items-center justify-center space-x-1.5"
               >
                 <Eye className="w-3.5 h-3.5 text-emerald-300" />
                 <span>{isQuestionInspectorOpen ? 'Hide Question Tray' : 'Inspect Exact Qs'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsReviewSheetOpen(true)}
+                className="px-3.5 py-2.5 rounded-xl bg-emerald-500/25 hover:bg-emerald-500/40 backdrop-blur-md border border-emerald-400/40 text-xs font-bold text-white transition-all flex items-center justify-center space-x-1.5 shadow-sm"
+                title="Print Test-Day Review Sheet & Mistake Notebook"
+              >
+                <Printer className="w-3.5 h-3.5 text-emerald-300" />
+                <span className="hidden sm:inline">Review Sheet</span>
               </button>
 
               <button
@@ -871,7 +885,17 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
                 </p>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsReviewSheetOpen(true)}
+                  className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all flex items-center space-x-1.5 shadow-sm"
+                  title="Export Mistake Notebook & Print Review Sheet"
+                >
+                  <Printer className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>Export Mistake Notebook</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={() => handleLaunchBlock(dailySprint.warmup)}
@@ -1030,7 +1054,7 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
 
               <button
                 type="button"
-                onClick={() => setCurrentView('exam')}
+                onClick={() => startExam('full')}
                 className="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shadow-md transition-all active:scale-95 flex items-center space-x-2"
               >
                 <PlayCircle className="w-4 h-4" />
@@ -1209,6 +1233,12 @@ export const DailyPlanRoadmapView: React.FC<DailyPlanRoadmapViewProps> = ({
           </div>
         </div>
       )}
+
+      {/* ─── 4. TEST-DAY REVIEW SHEET & MISTAKE NOTEBOOK PRINT MODAL ─── */}
+      <TestDayReviewSheetModal
+        isOpen={isReviewSheetOpen}
+        onClose={() => setIsReviewSheetOpen(false)}
+      />
 
     </div>
   );

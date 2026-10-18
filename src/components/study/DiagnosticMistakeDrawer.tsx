@@ -81,7 +81,7 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
   onClose,
   questionId,
   domain = 'Algebra',
-  subtopicId = 'alg-linear-one',
+  subtopicId,
   subtopicName = 'Linear equations in one variable',
   difficulty = 'Medium',
   isCorrect = false,
@@ -113,7 +113,7 @@ export const DiagnosticMistakeDrawer: React.FC<DiagnosticMistakeDrawerProps> = (
     const attempt: QuestionAttempt = {
       questionId,
       domain: normalizedDomain,
-      subtopicId,
+      subtopicId: subtopicId || '',
       subtopicName,
       difficulty,
       correct: isCorrect,

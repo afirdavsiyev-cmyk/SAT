@@ -197,7 +197,7 @@ export const Navbar: React.FC = () => {
                       type="button"
                       onClick={() => {
                         setUserMenuOpen(false);
-                        alert('Account & Study Settings');
+                        openOnboardingModal();
                       }}
                       className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-700 dark:hover:text-emerald-400 rounded-xl transition-colors text-left"
                     >

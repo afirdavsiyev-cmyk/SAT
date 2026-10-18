@@ -52,7 +52,8 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
   const [targetScoreBand, setTargetScoreBand] = useState<string>('750–800');
   const [targetScore, setTargetScore] = useState<number>(800);
   const [targetExamDate, setTargetExamDate] = useState<string>(() => {
-    return userProgressState.planner.targetExamDate || 'October 2026';
+    const saved = userProgressState.planner.targetExamDate;
+    return saved && saved !== 'October 2026' ? saved : 'December 2026';
   });
   const [strategyGoal, setStrategyGoal] = useState<StrategyGoal>('highest_possible');
 
@@ -72,11 +73,23 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
   ]);
   const [peakTimeWindow, setPeakTimeWindow] = useState<PeakStudyTime>('afternoon');
 
-  // ─── Step 4: Primary Friction Points States ──────────────────────────────
+  // ─── Step 4: Primary Friction Points & Weak Domains States ───────────────
   const [selectedFrictions, setSelectedFrictions] = useState<FrictionPoint[]>([
     'careless_slips',
     'running_out_of_time'
   ]);
+  const [selectedWeakDomains, setSelectedWeakDomains] = useState<SATDomain[]>(() => {
+    const savedWeak = userProgressState.planner.weakDomains as string[] | undefined;
+    if (savedWeak && savedWeak.length > 0) {
+      return savedWeak.map((d): SATDomain =>
+        d === 'Advanced Math' ? 'Advanced Math'
+        : d.includes('Problem') ? 'Problem Solving'
+        : d.includes('Geometry') ? 'Geometry & Trig'
+        : 'Algebra'
+      );
+    }
+    return ['Advanced Math', 'Geometry & Trig'];
+  });
 
   // ─── Step 5: Generating Custom Roadmap States ────────────────────────────
   const [genProgress, setGenProgress] = useState<number>(0);
@@ -84,12 +97,35 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
   const [geminiRoadmapModel, setGeminiRoadmapModel] = useState<string>('gemini-3.8-flash');
 
   const testDates = [
-    'October 2026',
     'November 2026',
     'December 2026',
     'March 2027',
     'May 2027',
-    'June 2027'
+    'June 2027',
+    'August 2027'
+  ];
+
+  const domainFocusOptions: { domain: SATDomain; weight: string; keyTopics: string }[] = [
+    {
+      domain: 'Algebra',
+      weight: '35% of SAT Math',
+      keyTopics: 'Linear equations, systems of equations, slopes & inequalities'
+    },
+    {
+      domain: 'Advanced Math',
+      weight: '35% of SAT Math',
+      keyTopics: 'Quadratics, discriminant, polynomials, radicals & exponentials'
+    },
+    {
+      domain: 'Problem Solving',
+      weight: '15% of SAT Math',
+      keyTopics: 'Ratios, percentages, probability, scatterplots & margin of error'
+    },
+    {
+      domain: 'Geometry & Trig',
+      weight: '15% of SAT Math',
+      keyTopics: 'Circle equations, radians, right-triangle trig & 3D volume'
+    },
   ];
 
   const scoreBands = [
@@ -186,6 +222,14 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
     );
   };
 
+  const toggleWeakDomain = (domain: SATDomain) => {
+    setSelectedWeakDomains((prev) =>
+      prev.includes(domain)
+        ? prev.length > 1 ? prev.filter((d) => d !== domain) : prev
+        : [...prev, domain]
+    );
+  };
+
   const handleAnswerChange = (qId: string, val: string) => {
     setDiagnosticAnswers((prev) => ({
       ...prev,
@@ -206,18 +250,42 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
   // Diagnostic mini submit
   const handleScoreDiagnostic = () => {
     let correctCount = 0;
+    const domainStats: Record<SATDomain, { total: number; correct: number }> = {
+      'Algebra': { total: 0, correct: 0 },
+      'Advanced Math': { total: 0, correct: 0 },
+      'Problem Solving': { total: 0, correct: 0 },
+      'Geometry & Trig': { total: 0, correct: 0 },
+    };
+
     diagnosticSampleQuestions.forEach((q, idx) => {
+      const dom: SATDomain =
+        q.domain === 'Advanced Math' ? 'Advanced Math'
+        : q.domain.includes('Problem') ? 'Problem Solving'
+        : q.domain.includes('Geometry') ? 'Geometry & Trig'
+        : 'Algebra';
+      if (domainStats[dom]) domainStats[dom].total += 1;
       const userAns = diagnosticAnswers[q.id] || diagnosticAnswers[idx];
       if (!userAns) return;
       const isCorrect = isAnswerEquivalent(userAns, q.correctAnswer, q);
 
       if (isCorrect) {
         correctCount++;
+        if (domainStats[dom]) domainStats[dom].correct += 1;
       }
     });
 
+    // Identify weakest domains from diagnostic performance
+    const detectedWeak = (Object.keys(domainStats) as SATDomain[])
+      .filter((dom) => {
+        const s = domainStats[dom];
+        return s.total > 0 && s.correct / s.total < 0.75;
+      });
+    if (detectedWeak.length > 0) {
+      setSelectedWeakDomains(detectedWeak);
+    }
+
     // Score conversion: 0/15 -> 400, 15/15 -> 800
-    const calculated = Math.min(800, Math.max(400, Math.round(400 + (correctCount / 15) * 400)));
+    const calculated = Math.min(800, Math.max(400, Math.round((400 + (correctCount / 15) * 400) / 10) * 10));
     setDiagnosticScoreCalc(calculated);
     setBaselineScore(calculated);
     setDiagnosticSubmitted(true);
@@ -277,8 +345,18 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
       lastUpdated: new Date().toISOString(),
     };
 
-    // 2. Initialize skills & plan with Priority Engine
-    const skills = initializeSubtopicSkills(baselineScore);
+    const effectiveWeakDomains: SATDomain[] = selectedWeakDomains.length > 0
+      ? selectedWeakDomains
+      : ['Advanced Math', 'Algebra'];
+
+    const mappedMathDomains = effectiveWeakDomains.map((d) =>
+      d === 'Problem Solving' ? 'Problem-Solving & Data Analysis'
+      : d === 'Geometry & Trig' ? 'Geometry & Trigonometry'
+      : d
+    ) as any;
+
+    // 2. Initialize skills & plan with Priority Engine + weak domains customization
+    const skills = initializeSubtopicSkills(baselineScore, effectiveWeakDomains);
     const todayPlan = generateDailyActionPlan(profile, skills, 2);
 
     saveStoredAdaptiveData({
@@ -294,7 +372,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
       targetExamDate,
       baselineScore,
       dailyGoalMinutes: dailyMinutes,
-      weakDomains: ['Advanced Math', 'Algebra'],
+      weakDomains: mappedMathDomains,
       currentDay: 1,
     });
 
@@ -303,7 +381,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
       targetScore,
       currentScore: baselineScore,
       baselineBand: targetScoreBand,
-      weakAreas: ['Algebra', 'Advanced Math'],
+      weakAreas: mappedMathDomains,
       dailyMinutes,
       pacePreference: strategyGoal === 'highest_possible' ? 'aggressive_hard' : strategyGoal === 'fast_bump' ? 'confidence_first' : 'balanced',
     });
@@ -576,10 +654,21 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
 
               {/* Sample question list with KaTeX rendering, multiple-choice options and student-produced inputs */}
               <div className="max-h-[520px] overflow-y-auto space-y-4 pr-2 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
-                {diagnosticSampleQuestions.map((q, idx) => (
+                {diagnosticSampleQuestions.map((q, idx) => {
+                  const userAns = diagnosticAnswers[q.id] || diagnosticAnswers[idx];
+                  const isCorrect = diagnosticSubmitted && userAns
+                    ? isAnswerEquivalent(userAns, q.correctAnswer, q)
+                    : null;
+                  return (
                   <div
                     key={q.id}
-                    className="bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-2xl space-y-3 transition-all shadow-sm hover:shadow-md"
+                    className={`bg-slate-50/50 dark:bg-slate-900/40 border p-5 rounded-2xl space-y-3 transition-all shadow-sm hover:shadow-md ${
+                      diagnosticSubmitted
+                        ? isCorrect
+                          ? 'border-emerald-400/80 dark:border-emerald-500/60'
+                          : 'border-rose-300 dark:border-rose-500/50'
+                        : 'border-slate-200/80 dark:border-slate-800/80'
+                    }`}
                   >
                     {/* Top Badges Row */}
                     <div className="flex items-center justify-between gap-2">
@@ -590,6 +679,15 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
                         <span className="text-[11px] font-semibold font-mono uppercase text-slate-500">
                           {q.domain}
                         </span>
+                        {diagnosticSubmitted && (
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
+                            isCorrect
+                              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300'
+                              : 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300'
+                          }`}>
+                            {isCorrect ? '✓ Correct' : `✕ Ans: ${q.correctAnswer}`}
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center space-x-2">
@@ -658,7 +756,8 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
                       </div>
                     )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
@@ -670,7 +769,7 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
                   onClick={handleScoreDiagnostic}
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 text-xs font-bold transition-all shadow-md active:scale-95"
                 >
-                  Score My Diagnostic
+                  {diagnosticSubmitted ? 'Recalculate Score' : 'Score My Diagnostic'}
                 </button>
               </div>
             </div>
@@ -689,7 +788,12 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
 
             <button
               type="button"
-              onClick={() => setStep(3)}
+              onClick={() => {
+                if (calibrationMode === 'diagnostic' && !diagnosticSubmitted && Object.keys(diagnosticAnswers).length > 0) {
+                  handleScoreDiagnostic();
+                }
+                setStep(3);
+              }}
               className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-extrabold text-xs shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald flex items-center space-x-2 transition-all active:scale-95"
             >
               <span>Set Study Constraints</span>
@@ -820,24 +924,76 @@ export const StudyPlanWizard: React.FC<{ onComplete?: () => void }> = ({ onCompl
         </div>
       )}
 
-      {/* ─── STEP 4: PRIMARY FRICTION POINTS ────────────────────────────── */}
+      {/* ─── STEP 4: PRIMARY FRICTION POINTS & WEAK DOMAINS ─────────────── */}
       {step === 4 && (
         <div className="space-y-6 bg-white dark:bg-slate-900/80 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm animate-in fade-in">
           <div>
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-700/60 text-xs font-bold shadow-sm mb-2">
               <ShieldAlert className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>ERROR VULNERABILITY ANALYSIS</span>
+              <span>DIAGNOSTIC & VULNERABILITY ANALYSIS</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-              What causes you to lose the most points?
+              Which math domains & error traps trip you up most?
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
-              Choose what usually trips you up so your study plan can address those areas first.
+              Select the SAT Math domains where you want priority focus and the habits that cost you points.
             </p>
           </div>
 
-          {/* Friction Checklist */}
+          {/* Priority Math Domains Selection */}
           <div className="space-y-2.5">
+            <label className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center justify-between">
+              <span>Priority SAT Math Domains to Target First</span>
+              <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
+                {selectedWeakDomains.length} selected
+              </span>
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {domainFocusOptions.map((item) => {
+                const isSelected = selectedWeakDomains.includes(item.domain);
+                return (
+                  <div
+                    key={item.domain}
+                    onClick={() => toggleWeakDomain(item.domain)}
+                    className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-start justify-between gap-3 ${
+                      isSelected
+                        ? 'bg-emerald-50/90 border-emerald-600 shadow-sm dark:bg-emerald-950/40 dark:border-emerald-500'
+                        : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 hover:border-emerald-400'
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs font-bold ${
+                          isSelected ? 'text-emerald-950 dark:text-emerald-200' : 'text-slate-900 dark:text-white'
+                        }`}>
+                          {item.domain}
+                        </span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                          {item.weight}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
+                        {item.keyTopics}
+                      </p>
+                    </div>
+                    <div className={`w-4 h-4 rounded border flex-shrink-0 mt-0.5 flex items-center justify-center ${
+                      isSelected
+                        ? 'border-emerald-600 bg-emerald-600 dark:border-emerald-400 dark:bg-emerald-400'
+                        : 'border-slate-300 dark:border-slate-700'
+                    }`}>
+                      {isSelected && <Check className="w-3 h-3 text-white dark:text-slate-950" />}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Friction Checklist */}
+          <div className="space-y-2.5 pt-2">
+            <label className="text-xs font-bold text-slate-800 dark:text-slate-200 block">
+              Test-Day Friction & Error Habits
+            </label>
             {frictionOptions.map((opt) => {
               const isSelected = selectedFrictions.includes(opt.id);
               return (

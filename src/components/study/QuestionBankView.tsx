@@ -1,12 +1,14 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
 import { useApp } from '../../context/AppContext';
 import { QuestionItem, QuestionDomain } from '../../types/questionBank';
 import { ALL_QUESTIONS } from '../../data/questions';
 import { SAT_DOMAINS } from '../../data/questionTaxonomy';
 import { QuestionBankFilterToolbar, DropdownFiltersState } from './QuestionBankFilterToolbar';
-import { PracticeRoomView } from './PracticeRoomView';
 import { DomainInteractiveCanvas } from './DomainInteractiveCanvas';
 import { AITutorDrawer } from '../exam/AITutorDrawer';
+import { ViewSkeleton } from '../common/ViewSkeleton';
+
+const PracticeRoomView = lazy(() => import('./PracticeRoomView'));
 import { getProgress, recordAttempt, getBookmarks, toggleBookmark } from '../../services/userProgress';
 import {
   Search,
@@ -412,12 +414,14 @@ export const QuestionBankView: React.FC = () => {
   // Full-Screen Bluebook Practice Room Session View (starts at Question 1)
   if (practiceSession && practiceSession.questions.length > 0) {
     return (
-      <PracticeRoomView
-        questions={practiceSession.questions}
-        selectedTopicName={practiceSession.topicName}
-        initialIndex={practiceSession.initialIndex}
-        onGoBack={() => setPracticeSession(null)}
-      />
+      <Suspense fallback={<ViewSkeleton title="Loading Practice Room..." />}>
+        <PracticeRoomView
+          questions={practiceSession.questions}
+          selectedTopicName={practiceSession.topicName}
+          initialIndex={practiceSession.initialIndex}
+          onGoBack={() => setPracticeSession(null)}
+        />
+      </Suspense>
     );
   }
 

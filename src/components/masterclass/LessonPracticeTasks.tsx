@@ -3,6 +3,7 @@ import { LessonExercise } from '../../data/videoLessonsData';
 import { KaTeXRenderer } from '../common/KaTeXRenderer';
 import { CheckCircle2, XCircle, HelpCircle, Sparkles, RotateCcw, Lightbulb } from 'lucide-react';
 import { isAnswerEquivalent } from '../../utils/answerVerification';
+import { useApp } from '../../context/AppContext';
 
 interface LessonPracticeTasksProps {
   exercises: LessonExercise[];
@@ -10,6 +11,7 @@ interface LessonPracticeTasksProps {
 }
 
 export const LessonPracticeTasks: React.FC<LessonPracticeTasksProps> = ({ exercises, lessonTitle }) => {
+  const { recordPracticeQuestion } = useApp();
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [submittedTasks, setSubmittedTasks] = useState<Record<string, boolean>>({});
   const [showHints, setShowHints] = useState<Record<string, boolean>>({});
@@ -20,8 +22,15 @@ export const LessonPracticeTasks: React.FC<LessonPracticeTasksProps> = ({ exerci
   };
 
   const handleCheckAnswer = (exerciseId: string) => {
-    if (!selectedAnswers[exerciseId]) return;
+    if (!selectedAnswers[exerciseId] || submittedTasks[exerciseId]) return;
     setSubmittedTasks(prev => ({ ...prev, [exerciseId]: true }));
+    const ex = exercises.find(e => e.id === exerciseId);
+    if (ex && recordPracticeQuestion) {
+      const isCorrect = isAnswerEquivalent(selectedAnswers[exerciseId], ex.correctAnswer, ex as any);
+      const normDiff: 'Easy' | 'Medium' | 'Hard' =
+        ex.difficulty === 'Easy' ? 'Easy' : ex.difficulty === 'Hard' || ex.difficulty === 'Medium-Hard' ? 'Hard' : 'Medium';
+      recordPracticeQuestion('Algebra', isCorrect, lessonTitle, normDiff, ex.id);
+    }
   };
 
   const handleResetTask = (exerciseId: string) => {

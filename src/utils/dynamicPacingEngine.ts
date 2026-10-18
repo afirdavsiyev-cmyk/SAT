@@ -2,27 +2,32 @@ import { DynamicPacingMetrics, MilestoneExamSchedule, AdaptivePlannerProfile } f
 import { formatDateISO, addDays } from './spacedRepetitionEngine';
 
 export const KNOWN_EXAM_DATES: Record<string, string> = {
-  'October 2026': '2026-10-03T08:00:00',
+  'October 2026': '2026-11-07T08:00:00', // Roll past Oct 3, 2026 to next official test date
   'November 2026': '2026-11-07T08:00:00',
   'December 2026': '2026-12-05T08:00:00',
   'March 2027': '2027-03-13T08:00:00',
   'May 2027': '2027-05-01T08:00:00',
   'June 2027': '2027-06-05T08:00:00',
+  'August 2027': '2027-08-28T08:00:00',
 };
 
 /**
- * Resolve target exam date string to Date object
+ * Resolve target exam date string to Date object, ensuring default/legacy dates are in the future
  */
 export function resolveTargetDate(dateStr?: string | null): Date {
-  if (!dateStr) return new Date('2026-10-03T08:00:00');
+  const defaultFutureDate = new Date('2026-12-05T08:00:00');
+  if (!dateStr) return defaultFutureDate;
   if (KNOWN_EXAM_DATES[dateStr]) {
     return new Date(KNOWN_EXAM_DATES[dateStr]);
   }
   const parsed = new Date(dateStr);
   if (!isNaN(parsed.getTime())) {
+    if (parsed.getTime() <= Date.now()) {
+      return defaultFutureDate;
+    }
     return parsed;
   }
-  return new Date('2026-10-03T08:00:00');
+  return defaultFutureDate;
 }
 
 /**

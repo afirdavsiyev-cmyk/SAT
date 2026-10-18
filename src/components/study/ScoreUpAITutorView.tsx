@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Sparkles,
   Send,
@@ -15,9 +15,11 @@ import {
   Copy,
   Check,
   Zap,
-  Flame
+  Flame,
+  X
 } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
+import { DesmosSplitPanel } from './DesmosSplitPanel';
 import {
   generateInstantHint,
   generateStepByStepSolution,
@@ -55,8 +57,36 @@ export const ScoreUpAITutorView: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [hasApiKey, setHasApiKey] = useState(false);
-  const [activeModel, setActiveModel] = useState<string>('qwen/qwen3.8-27b');
+  const [activeModel, setActiveModel] = useState<string>('llama-3.3-70b-versatile');
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const resizeCalcRef = useRef<(() => void) | null>(null);
+
+  const toggleCalculator = useCallback(() => {
+    setIsCalculatorOpen((prev) => {
+      const next = !prev;
+      if (next) {
+        // Multi-stage auto-resize passes to adapt to CSS transitions and layout expansion
+        [30, 80, 150, 300, 500, 800].forEach((delay) => {
+          setTimeout(() => {
+            resizeCalcRef.current?.();
+          }, delay);
+        });
+      }
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isCalculatorOpen) {
+      const timers = [30, 80, 150, 300, 500, 800].map((delay) =>
+        setTimeout(() => {
+          resizeCalcRef.current?.();
+        }, delay)
+      );
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [isCalculatorOpen]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -93,76 +123,45 @@ export const ScoreUpAITutorView: React.FC = () => {
     setInputText('');
     setIsLoading(true);
 
-    // 1. Guard: If VITE_GROQ_API_KEY is undefined at runtime, display a clean message
-    // without attempting to fetch from generativelanguage.googleapis.com and dumping 401 errors
-    if (!hasGroqApiKey()) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: 'ai',
-          text: '⚠️ **Groq API Key Not Configured**: `VITE_GROQ_API_KEY` is not defined in your runtime environment. Please configure `VITE_GROQ_API_KEY` in your GitHub repository secrets or environment variables to enable live AI responses.',
-          modelUsed: 'offline'
-        }
-      ]);
-      setIsLoading(false);
-      return;
-    }
-
-    // 2. FIRST and DEFAULT AI provider: Groq (via getTutorReplyDetailed from src/services/aiTutor.ts)
-    const chatPayload: TutorMessage[] = [
-      {
-        role: 'system',
-        content: 'You are ScoreUP AI, an encouraging Digital SAT Math tutor. Guide students step-by-step using clear, intuitive explanations. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide helpful Desmos calculator tips when appropriate. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
-      },
-      ...messages.map((m) => ({
-        role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
-        content: m.text
-      })),
-      { role: 'user', content: textToSend }
-    ];
+    const historyItems: ChatMessageItem[] = messages.map((m) => ({
+      role: m.sender === 'user' ? 'user' : 'model',
+      text: m.text,
+    }));
 
     try {
-      const res = await getTutorReplyDetailed(chatPayload);
-      setActiveModel(res.modelUsed);
-      setMessages((prev) => [...prev, { sender: 'ai', text: res.content, modelUsed: res.modelUsed }]);
-    } catch (err: any) {
-      const errMsg = err?.message || '';
-      console.warn("Groq AI tutor encountered an error:", errMsg);
-      const isRateLimit = /429|rate limit|rate_limit|quota|tpm|rpm/i.test(errMsg);
-
-      // Do NOT attempt to contact Google Generative AI / Gemini unless Groq fails with an error other than rate-limiting
-      if (!isRateLimit && hasValidApiKey()) {
-        try {
-          console.info("Groq failed with non-rate-limit error; attempting secondary Gemini fallback...");
-          const historyItems: ChatMessageItem[] = messages.map((m) => ({
-            role: m.sender === 'user' ? 'user' : 'model',
-            text: m.text,
-          }));
-          const res = await sendSocraticChatMessage(historyItems, textToSend);
-          setActiveModel(res.usedModel);
-          setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
-          return;
-        } catch (geminiErr: any) {
-          console.warn("Secondary Gemini fallback error:", geminiErr?.message || geminiErr);
-        }
-      }
-
-      // Display appropriate friendly error in chat box without dumping 401 errors
-      if (isRateLimit) {
-        setMessages((prev) => [
-          ...prev,
+      if (hasGroqApiKey()) {
+        const chatPayload: TutorMessage[] = [
           {
-            sender: 'ai',
-            text: '⏳ **Rate Limit Reached**: The Groq AI service is currently receiving high demand. Please wait a moment and try asking again.',
-            modelUsed: 'offline'
-          }
-        ]);
+            role: 'system',
+            content: 'You are ScoreUP AI, an encouraging Digital SAT Math tutor. Guide students step-by-step using clear, intuitive explanations. Format all mathematical expressions using KaTeX ($...$ for inline, $$...$$ for display equations). Provide helpful Desmos calculator tips when appropriate. If the student gives feedback, expresses confusion, or says "dislike", kindly acknowledge it and ask what specific step was unclear or how they would like to approach it differently.'
+          },
+          ...messages.map((m) => ({
+            role: (m.sender === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+            content: m.text
+          })),
+          { role: 'user', content: textToSend }
+        ];
+
+        const res = await getTutorReplyDetailed(chatPayload);
+        setActiveModel(res.modelUsed);
+        setMessages((prev) => [...prev, { sender: 'ai', text: res.content, modelUsed: res.modelUsed }]);
       } else {
+        const res = await sendSocraticChatMessage(historyItems, textToSend);
+        setActiveModel(res.usedModel);
+        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
+      }
+    } catch (err: any) {
+      console.warn("Primary Groq AI tutor encountered an error, falling back to Socratic engine:", err?.message || err);
+      try {
+        const res = await sendSocraticChatMessage(historyItems, textToSend);
+        setActiveModel(res.usedModel);
+        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
+      } catch (fallbackErr: any) {
         setMessages((prev) => [
           ...prev,
           {
             sender: 'ai',
-            text: `⚠️ **AI Service Notice**: ${errMsg || 'Could not connect to the AI model'}. Please check your connection or try again.`,
+            text: `⚠️ **AI Service Notice**: ${fallbackErr?.message || 'Could not connect to the AI model'}. Please check your connection or try again.`,
             modelUsed: 'offline'
           }
         ]);
@@ -202,7 +201,9 @@ export const ScoreUpAITutorView: React.FC = () => {
   ];
 
   return (
-    <div className="h-full flex flex-col justify-between max-w-4xl mx-auto py-4 px-2 sm:px-6 relative select-none transition-colors">
+    <div className={`h-full flex flex-col justify-between w-full mx-auto py-3 sm:py-4 px-2 sm:px-4 md:px-6 relative select-none transition-all duration-300 ${
+      isCalculatorOpen ? 'max-w-[1600px]' : 'max-w-4xl'
+    }`}>
       
       {/* Top Floating Control Bar */}
       <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-white/[0.06] flex-shrink-0">
@@ -233,6 +234,26 @@ export const ScoreUpAITutorView: React.FC = () => {
             </button>
           )}
 
+          {/* Desmos Graphing Calculator Collapsible Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleCalculator}
+            className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-sm ${
+              isCalculatorOpen
+                ? 'bg-emerald-600 text-white border-emerald-500 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:text-slate-950 dark:border-emerald-400 font-bold'
+                : 'bg-white dark:bg-white/[0.05] hover:bg-slate-100 dark:hover:bg-white/[0.1] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-white/[0.08]'
+            }`}
+            title={isCalculatorOpen ? 'Collapse Desmos Calculator' : 'Open Desmos Graphing Calculator'}
+            aria-expanded={isCalculatorOpen}
+          >
+            <Calculator className="w-3.5 h-3.5 text-current" />
+            <span className="hidden sm:inline">{isCalculatorOpen ? 'Hide Calculator' : 'Desmos Calculator'}</span>
+            <span className="sm:hidden">{isCalculatorOpen ? 'Hide Calc' : 'Desmos'}</span>
+            {isCalculatorOpen && (
+              <span className="w-1.5 h-1.5 rounded-full bg-white dark:bg-slate-950 animate-pulse ml-0.5" />
+            )}
+          </button>
+
           <button
             onClick={() => setShowSettings(!showSettings)}
             className={`p-2 rounded-xl border transition-all ${
@@ -247,206 +268,258 @@ export const ScoreUpAITutorView: React.FC = () => {
         </div>
       </div>
 
-      {/* Gemini Settings Modal Overlay */}
-      {showSettings && (
-        <div className="my-3 p-4 bg-white/95 dark:bg-slate-900/95 border border-emerald-300 dark:border-emerald-500/40 rounded-2xl space-y-3 backdrop-blur-xl animate-in fade-in duration-200 shadow-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
-              <Key className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>AI Engine Configuration</span>
+      {/* Main Workspace: Side-by-Side Flex on Desktop, Slide-over Drawer on Tablet/Mobile */}
+      <div className="flex-1 min-h-0 flex flex-row overflow-hidden relative pt-3">
+        {/* Left Side: Conversation Column */}
+        <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden justify-between">
+          
+          {/* Gemini Settings Modal Overlay */}
+          {showSettings && (
+            <div className="mb-3 p-4 bg-white/95 dark:bg-slate-900/95 border border-emerald-300 dark:border-emerald-500/40 rounded-2xl space-y-3 backdrop-blur-xl animate-in fade-in duration-200 shadow-xl flex-shrink-0">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
+                  <Key className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>AI Engine Configuration</span>
+                </div>
+                <a
+                  href="https://aistudio.google.com/app/apikey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1 font-semibold"
+                >
+                  <span>Get Free Gemini Key</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                Groq high-speed AI (Qwen 3.8 / GPT-OSS / Llama 3.3) is active as your primary live tutor. You can optionally add a Google Gemini key as a secondary fallback.
+              </p>
+
+              <form onSubmit={handleSaveApiKey} className="flex gap-2">
+                <input
+                  type="password"
+                  value={apiKeyInput}
+                  onChange={(e) => setApiKeyInput(e.target.value)}
+                  placeholder="Paste Gemini API key (AIzaSy... or AQ...)"
+                  className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-emerald-500 dark:focus:border-emerald-500 font-mono shadow-inner"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-colors shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald"
+                >
+                  Save Key
+                </button>
+              </form>
             </div>
-            <a
-              href="https://aistudio.google.com/app/apikey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1 font-semibold"
-            >
-              <span>Get Free Gemini Key</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
+          )}
 
-          <p className="text-[11px] text-slate-500 dark:text-slate-400">
-            Groq high-speed AI (Qwen 3.8 / GPT-OSS / Llama 3.3) is active as your primary live tutor. You can optionally add a Google Gemini key as a secondary fallback.
-          </p>
-
-          <form onSubmit={handleSaveApiKey} className="flex gap-2">
-            <input
-              type="password"
-              value={apiKeyInput}
-              onChange={(e) => setApiKeyInput(e.target.value)}
-              placeholder="Paste Gemini API key (AIzaSy... or AQ...)"
-              className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none focus:border-emerald-500 dark:focus:border-emerald-500 font-mono shadow-inner"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-colors shadow-md shadow-emerald-500/25 dark:shadow-glow-emerald"
-            >
-              Save Key
-            </button>
-          </form>
-        </div>
-      )}
-
-      {/* Main Conversation Canvas */}
-      <div className="flex-1 overflow-y-auto py-4 space-y-6 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-800">
-        
-        {/* State 1: Zero Messages Initial Welcome View */}
-        {messages.length === 0 ? (
-          <div className="h-full flex flex-col justify-center items-center text-center space-y-8 py-6">
+          {/* Main Conversation Canvas */}
+          <div className="flex-1 overflow-y-auto py-2 sm:py-3 space-y-6 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-800 pr-1 sm:pr-2">
             
-            {/* Center Animated Logo */}
-            <div className="space-y-4 flex flex-col items-center">
-              <div className="relative">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-[0_0_24px_rgba(16,185,129,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950">
-                  <Bot className="w-10 h-10 stroke-[2.2]" />
-                </div>
-                <div className="absolute -inset-1.5 rounded-3xl border border-emerald-400/30 dark:border-emerald-400/30 animate-pulse pointer-events-none" />
-              </div>
-
-              <div className="space-y-2 max-w-lg">
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                  Ask <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">ScoreUP AI</span> anything about SAT® Math
-                </h1>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Ask for step-by-step algebra explanations, Desmos calculator shortcuts, and test-taking strategies.
-                </p>
-              </div>
-            </div>
-
-            {/* Starter Prompt Cards 2x2 Grid with Warm Frame Borders & Hover */}
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-              {starterCards.map((card, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => handleSendMessage(card.prompt)}
-                  className="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-50/50 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/30 transition-all duration-200 cursor-pointer text-left flex items-center justify-between group active:scale-[0.98] shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)]"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-white/[0.04] border border-emerald-200 dark:border-transparent group-hover:scale-110 transition-transform">
-                      {card.icon}
+            {/* State 1: Zero Messages Initial Welcome View */}
+            {messages.length === 0 ? (
+              <div className="h-full flex flex-col justify-center items-center text-center space-y-8 py-6">
+                
+                {/* Center Animated Logo */}
+                <div className="space-y-4 flex flex-col items-center">
+                  <div className="relative">
+                    <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-[0_0_24px_rgba(16,185,129,0.3)] dark:from-emerald-500 dark:to-teal-600 flex items-center justify-center text-white dark:text-slate-950">
+                      <Bot className="w-10 h-10 stroke-[2.2]" />
                     </div>
-                    <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
-                      {card.title}
-                    </span>
+                    <div className="absolute -inset-1.5 rounded-3xl border border-emerald-400/30 dark:border-emerald-400/30 animate-pulse pointer-events-none" />
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" />
-                </div>
-              ))}
-            </div>
 
-          </div>
-        ) : (
-          /* State 2: Active Chat Thread */
-          <div className="space-y-6">
-            {messages.map((m, idx) => (
-              <div
-                key={idx}
-                className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-[85%] sm:max-w-[78%] rounded-3xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed ${
-                    m.sender === 'user'
-                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold shadow-md rounded-br-sm dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950'
-                      : 'bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-emerald-500/40 text-slate-800 dark:text-slate-100 space-y-3 shadow-sm hover:shadow-md dark:shadow-xl backdrop-blur-xl rounded-bl-sm transition-all'
-                  }`}
-                >
-                  {m.sender === 'ai' ? (
-                    <div>
-                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-white/[0.06]">
-                        <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs">
-                          <div className="w-5 h-5 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-center">
-                            <Bot className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                          </div>
-                          <span>ScoreUP AI</span>
+                  <div className="space-y-2 max-w-lg">
+                    <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                      Ask <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">ScoreUP AI</span> anything about SAT® Math
+                    </h1>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                      Ask for step-by-step algebra explanations, Desmos calculator shortcuts, and test-taking strategies.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Starter Prompt Cards Grid with Responsive Multi-Column Adaptation */}
+                <div className={`w-full grid gap-3 max-w-2xl ${isCalculatorOpen ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2'}`}>
+                  {starterCards.map((card, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => handleSendMessage(card.prompt)}
+                      className="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-50/50 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/30 transition-all duration-200 cursor-pointer text-left flex items-center justify-between group active:scale-[0.98] shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)]"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-white/[0.04] border border-emerald-200 dark:border-transparent group-hover:scale-110 transition-transform">
+                          {card.icon}
                         </div>
-                        <button
-                          onClick={() => handleCopyText(m.text, idx)}
-                          className="p-1 rounded-md text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors"
-                          title="Copy text"
-                        >
-                          {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                        </button>
+                        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
+                          {card.title}
+                        </span>
                       </div>
-                      <div className="prose-slate dark:prose-invert">
-                        <MathRenderer content={m.text} />
-                      </div>
+                      <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" />
                     </div>
-                  ) : (
-                    <span>{m.text}</span>
-                  )}
+                  ))}
                 </div>
-              </div>
-            ))}
 
-            {/* AI Loading Bubble */}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-500/40 rounded-3xl p-4 flex items-center space-x-3 text-xs text-emerald-700 dark:text-emerald-400 shadow-sm dark:shadow-xl">
-                  <Loader2 className="w-4 h-4 animate-spin text-emerald-600 dark:text-emerald-400" />
-                  <span>ScoreUP AI is computing mathematical breakdown...</span>
-                </div>
+              </div>
+            ) : (
+              /* State 2: Active Chat Thread */
+              <div className="space-y-6">
+                {messages.map((m, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-[85%] sm:max-w-[78%] rounded-3xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed ${
+                        m.sender === 'user'
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold shadow-md rounded-br-sm dark:from-emerald-500 dark:to-teal-500 dark:text-slate-950'
+                          : 'bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-emerald-500/40 text-slate-800 dark:text-slate-100 space-y-3 shadow-sm hover:shadow-md dark:shadow-xl backdrop-blur-xl rounded-bl-sm transition-all'
+                      }`}
+                    >
+                      {m.sender === 'ai' ? (
+                        <div>
+                          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-white/[0.06]">
+                            <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs">
+                              <div className="w-5 h-5 rounded-lg bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-center">
+                                <Bot className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                              </div>
+                              <span>ScoreUP AI</span>
+                            </div>
+                            <button
+                              onClick={() => handleCopyText(m.text, idx)}
+                              className="p-1 rounded-md text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors"
+                              title="Copy text"
+                            >
+                              {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                            </button>
+                          </div>
+                          <div className="prose-slate dark:prose-invert">
+                            <MathRenderer content={m.text} />
+                          </div>
+                        </div>
+                      ) : (
+                        <span>{m.text}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+
+                {/* AI Loading Bubble */}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-500/40 rounded-3xl p-4 flex items-center space-x-3 text-xs text-emerald-700 dark:text-emerald-400 shadow-sm dark:shadow-xl">
+                      <Loader2 className="w-4 h-4 animate-spin text-emerald-600 dark:text-emerald-400" />
+                      <span>ScoreUP AI is computing mathematical breakdown...</span>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
               </div>
             )}
-            <div ref={messagesEndRef} />
+
           </div>
+
+          {/* Bottom Input Dock with Warm Border and Glow */}
+          <div className="pt-2 flex-shrink-0 space-y-2">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage(inputText);
+              }}
+              className="bg-white dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200 dark:border-emerald-500/40 rounded-2xl p-1.5 flex items-center space-x-2 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] dark:shadow-2xl focus-within:border-emerald-500 dark:focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/25 dark:focus-within:ring-emerald-500/25 transition-all"
+            >
+              {/* Quick Action Tools */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsCalculatorOpen(true);
+                  handleSendMessage("Show me a quick Desmos speed shortcut.");
+                }}
+                className={`p-2 rounded-xl transition-colors ${
+                  isCalculatorOpen
+                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-white/[0.06]'
+                }`}
+                title="Desmos Tips & Open Calculator"
+              >
+                <Calculator className="w-4 h-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSendMessage("Give me the essential Digital SAT Math formula cheat sheet for quadratics, circles, and geometry.")}
+                className="p-2 text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors hidden sm:block"
+                title="Formula Query"
+              >
+                <Paperclip className="w-4 h-4" />
+              </button>
+
+              {/* Text Input Field */}
+              <input
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                disabled={isLoading}
+                placeholder="Ask ScoreUP AI anything about SAT Math, formulas, or Desmos..."
+                className="flex-1 bg-transparent px-2 py-2 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none font-sans"
+              />
+
+              {/* Send Action Button */}
+              <button
+                type="submit"
+                disabled={isLoading || !inputText.trim()}
+                className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold disabled:opacity-40 transition-all active:scale-95 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:text-slate-950 dark:hover:bg-emerald-400 dark:shadow-glow-emerald flex-shrink-0"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+
+            {/* Disclaimer Text */}
+            <p className="text-[10px] text-center text-slate-500 dark:text-slate-500 font-mono">
+              ScoreUP AI is powered by Groq Socratic Engine. Check critical exam calculations.
+            </p>
+          </div>
+        </div>
+
+        {/* Backdrop Overlay for Tablet / Mobile Drawer (< lg) */}
+        {isCalculatorOpen && (
+          <div
+            className="lg:hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 transition-opacity animate-in fade-in duration-200"
+            onClick={() => setIsCalculatorOpen(false)}
+            aria-label="Close calculator backdrop"
+          />
         )}
 
-      </div>
+        {/* Collapsible Desmos Calculator: Responsive Side-by-Side (Desktop lg+) or Slide-Over Drawer (Tablet/Mobile < lg) */}
+        <div
+          className={`
+            /* Mobile/Tablet (< lg): Slide-over drawer */
+            fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] h-full bg-white dark:bg-[#0c101a]
+            shadow-2xl border-l border-slate-200 dark:border-slate-800 flex flex-col
+            transition-transform duration-300 ease-in-out
+            ${isCalculatorOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'}
 
-      {/* Bottom Input Dock with Warm Border and Glow */}
-      <div className="pt-2 flex-shrink-0 space-y-2">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSendMessage(inputText);
-          }}
-          className="bg-white dark:bg-slate-900/90 backdrop-blur-2xl border border-slate-200 dark:border-emerald-500/40 rounded-2xl p-1.5 flex items-center space-x-2 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)] dark:shadow-2xl focus-within:border-emerald-500 dark:focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/25 dark:focus-within:ring-emerald-500/25 transition-all"
+            /* Desktop (lg+): Static side-by-side panel in flex row */
+            lg:static lg:inset-auto lg:z-auto lg:h-full lg:shadow-md lg:translate-x-0
+            lg:rounded-2xl lg:border lg:border-slate-200 lg:dark:border-slate-800
+            ${isCalculatorOpen ? 'lg:flex lg:w-[480px] xl:w-[540px] 2xl:w-[600px] lg:ml-4 lg:pointer-events-auto' : 'lg:hidden'}
+          `}
         >
-          {/* Quick Action Tools */}
-          <button
-            type="button"
-            onClick={() => handleSendMessage("Show me a quick Desmos speed shortcut.")}
-            className="p-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors"
-            title="Desmos Tips"
-          >
-            <Calculator className="w-4 h-4" />
-          </button>
-
-          <button
-            type="button"
-            className="p-2 text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-white/[0.06] rounded-xl transition-colors hidden sm:block"
-            title="Formula Query"
-          >
-            <Paperclip className="w-4 h-4" />
-          </button>
-
-          {/* Text Input Field */}
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            disabled={isLoading}
-            placeholder="Ask ScoreUP AI anything about SAT Math, formulas, or Desmos..."
-            className="flex-1 bg-transparent px-2 py-2 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none font-sans"
+          <DesmosSplitPanel
+            isOpen={isCalculatorOpen}
+            keepMounted={true}
+            className="border-0 rounded-2xl"
+            onClose={() => setIsCalculatorOpen(false)}
+            onResizeCalculatorRef={(fn) => {
+              resizeCalcRef.current = fn;
+            }}
           />
-
-          {/* Send Action Button */}
-          <button
-            type="submit"
-            disabled={isLoading || !inputText.trim()}
-            className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold disabled:opacity-40 transition-all active:scale-95 shadow-md shadow-emerald-500/25 dark:bg-emerald-500 dark:text-slate-950 dark:hover:bg-emerald-400 dark:shadow-glow-emerald flex-shrink-0"
-          >
-            <Send className="w-4 h-4" />
-          </button>
-        </form>
-
-        {/* Disclaimer Text */}
-        <p className="text-[10px] text-center text-slate-500 dark:text-slate-500 font-mono">
-          ScoreUP AI is powered by Groq Socratic Engine. Check critical exam calculations.
-        </p>
+        </div>
       </div>
 
     </div>
   );
 };
+
+export default ScoreUpAITutorView;

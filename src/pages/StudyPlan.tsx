@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { DailyPlanRoadmapView } from '../components/study/DailyPlanRoadmapView';
 import { StudyPlanWizard } from '../components/onboarding/StudyPlanWizard';
-import { PracticeRoomView } from '../components/study/PracticeRoomView';
 import { useApp } from '../context/AppContext';
 import { getStoredAdaptiveData } from '../utils/adaptivePlannerEngine';
+import { ViewSkeleton } from '../components/common/ViewSkeleton';
+
+const PracticeRoomView = lazy(() => import('../components/study/PracticeRoomView'));
 
 export const StudyPlanPage: React.FC = () => {
   const { setCurrentView } = useApp();
@@ -23,11 +25,13 @@ export const StudyPlanPage: React.FC = () => {
 
   if (practiceSession && practiceSession.questions.length > 0) {
     return (
-      <PracticeRoomView
-        questions={practiceSession.questions}
-        selectedTopicName={practiceSession.topicName}
-        onGoBack={() => setPracticeSession(null)}
-      />
+      <Suspense fallback={<ViewSkeleton title="Loading Practice Room..." />}>
+        <PracticeRoomView
+          questions={practiceSession.questions}
+          selectedTopicName={practiceSession.topicName}
+          onGoBack={() => setPracticeSession(null)}
+        />
+      </Suspense>
     );
   }
 

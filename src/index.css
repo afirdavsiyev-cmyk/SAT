@@ -398,4 +398,91 @@ html.light .bg-radial-glow {
   will-change: transform;
 }
 
+/* ─── Print / PDF Export Token System ─────────────────────────────── */
+@media print {
+  @page {
+    margin: 12mm 15mm;
+    size: auto;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide everything on the page except the Review Sheet portal */
+  body > *:not(#test-day-review-sheet-portal) {
+    display: none !important;
+  }
+
+  #test-day-review-sheet-portal {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Hide interactive controls, modal backdrops, and screen toolbars during print */
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Prevent page breaks inside cards */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Force page breaks between major sections */
+  .print-force-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Ensure colors, borders, and fills print faithfully */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Subtle Stealth Passkey Shake Keyframes */
+@keyframes stealth-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-7px);
+  }
+  40%, 80% {
+    transform: translateX(7px);
+  }
+}
+
+.animate-stealth-shake {
+  animation: stealth-shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
 

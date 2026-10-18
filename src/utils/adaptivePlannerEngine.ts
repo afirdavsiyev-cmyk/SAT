@@ -64,11 +64,16 @@ export function getStatusFromMastery(mastery: number): SkillStatus {
   return 'Mastered';
 }
 
-// ─── 3. Seed Initial Subtopic Skills based on Baseline Score ───────────────
-export function initializeSubtopicSkills(baselineScore: number = 720): SubtopicSkill[] {
+// ─── 3. Seed Initial Subtopic Skills based on Baseline Score & Weak Domains ───
+export function initializeSubtopicSkills(
+  baselineScore: number = 720,
+  weakDomains?: string[]
+): SubtopicSkill[] {
   // Baseline mastery ratio (500 = 45%, 700 = 75%, 800 = 92%)
   const clampedBaseline = Math.min(800, Math.max(400, baselineScore));
   const baseMastery = Math.round(35 + ((clampedBaseline - 400) / 400) * 58);
+
+  const normalizedWeaks = (weakDomains || []).map((w) => w.toLowerCase());
 
   return OFFICIAL_18_SUBTOPICS.map((sub, idx) => {
     // Generate realistic organic variance across domains
@@ -78,9 +83,22 @@ export function initializeSubtopicSkills(baselineScore: number = 720): SubtopicS
     else if (sub.domain === 'Problem Solving') domainOffset = 2;
     else if (sub.domain === 'Geometry & Trig') domainOffset = -5;
 
+    // Apply targeted diagnostic / wizard weakness adjustment if student flagged this domain or topic
+    const isFlaggedWeak = normalizedWeaks.some(
+      (w) =>
+        sub.domain.toLowerCase().includes(w) ||
+        w.includes(sub.domain.toLowerCase()) ||
+        sub.name.toLowerCase().includes(w) ||
+        (w.includes('problem') && sub.domain === 'Problem Solving') ||
+        (w.includes('geometry') && sub.domain === 'Geometry & Trig')
+    );
+    if (isFlaggedWeak) {
+      domainOffset -= 14;
+    }
+
     // Additional subtopic difficulty adjustments (e.g. circles and nonlinear functions are harder)
     const specificOffset = (idx % 5 === 0 ? -6 : idx % 3 === 0 ? 3 : 0);
-    const mastery = Math.max(28, Math.min(96, baseMastery + domainOffset + specificOffset));
+    const mastery = Math.max(25, Math.min(96, baseMastery + domainOffset + specificOffset));
     
     // Estimate baseline accuracy
     const easyAcc = Math.min(100, Math.max(50, Math.round(mastery * 1.15)));
@@ -241,6 +259,86 @@ export function generateDailyActionPlan(
 
 import { recordSpacedRepetitionAttempt } from './spacedRepetitionEngine';
 
+export function resolveSubtopicSkillIndex(
+  skills: SubtopicSkill[],
+  subtopicId?: string,
+  subtopicName?: string,
+  domain?: SATDomain | string
+): number {
+  if (!skills || skills.length === 0) return -1;
+
+  // 1. Direct ID match (if not a generic fallback that conflicts with subtopicName)
+  if (subtopicId) {
+    const byId = skills.findIndex((s) => s.id === subtopicId);
+    if (byId !== -1 && (!subtopicName || skills[byId].name.toLowerCase() === subtopicName.toLowerCase())) {
+      return byId;
+    }
+  }
+
+  // 2. Exact or keyword subtopicName match
+  const rawName = (subtopicName || '').toLowerCase().trim();
+  if (rawName) {
+    const exactNameIdx = skills.findIndex((s) => s.name.toLowerCase() === rawName);
+    if (exactNameIdx !== -1) return exactNameIdx;
+
+    // Keyword heuristics across the 18 official SAT Math subtopics
+    let targetId = '';
+    if (rawName.includes('circle') || rawName.includes('radian') || rawName.includes('arc')) targetId = 'geo-circles';
+    else if (rawName.includes('trig') || rawName.includes('right triangle') || rawName.includes('pythagor')) targetId = 'geo-right-tri-trig';
+    else if (rawName.includes('area') || rawName.includes('volume') || rawName.includes('cylinder') || rawName.includes('cone') || rawName.includes('sphere')) targetId = 'geo-area-vol';
+    else if (rawName.includes('angle') || rawName.includes('triangle') || rawName.includes('congruen') || rawName.includes('similar')) targetId = 'geo-lines-triangles';
+    else if (rawName.includes('system')) targetId = 'alg-systems';
+    else if (rawName.includes('inequalit')) targetId = 'alg-inequalities';
+    else if (rawName.includes('two variable') || rawName.includes('slope') || rawName.includes('intercept')) targetId = 'alg-linear-two';
+    else if (rawName.includes('linear function')) targetId = 'alg-linear-funcs';
+    else if (rawName.includes('one variable') && rawName.includes('linear')) targetId = 'alg-linear-one';
+    else if (rawName.includes('quadratic') || rawName.includes('parabola') || rawName.includes('vertex') || rawName.includes('exponential') || rawName.includes('nonlinear function') || rawName.includes('polynomial')) targetId = 'adv-nonlinear-funcs';
+    else if (rawName.includes('nonlinear') || rawName.includes('radical') || rawName.includes('rational') || rawName.includes('discriminant')) targetId = 'adv-nonlinear-one';
+    else if (rawName.includes('equivalent') || rawName.includes('factor') || rawName.includes('exponent')) targetId = 'adv-equiv-expr';
+    else if (rawName.includes('percent')) targetId = 'ps-percentages';
+    else if (rawName.includes('ratio') || rawName.includes('rate') || rawName.includes('proportion') || rawName.includes('unit')) targetId = 'ps-ratios';
+    else if (rawName.includes('probabilit') || rawName.includes('two-way')) targetId = 'ps-probability';
+    else if (rawName.includes('scatter') || rawName.includes('two-variable') || rawName.includes('regression') || rawName.includes('line of best fit')) targetId = 'ps-two-var-data';
+    else if (rawName.includes('mean') || rawName.includes('median') || rawName.includes('deviation') || rawName.includes('distribution') || rawName.includes('one-variable')) targetId = 'ps-one-var-data';
+    else if (rawName.includes('inference') || rawName.includes('margin of error') || rawName.includes('sample') || rawName.includes('survey')) targetId = 'ps-inference';
+
+    if (targetId) {
+      const kwIdx = skills.findIndex((s) => s.id === targetId);
+      if (kwIdx !== -1) return kwIdx;
+    }
+
+    const partialIdx = skills.findIndex(
+      (s) => s.name.toLowerCase().includes(rawName) || rawName.includes(s.name.toLowerCase())
+    );
+    if (partialIdx !== -1) return partialIdx;
+  }
+
+  // 3. Fallback to subtopicId if provided
+  if (subtopicId) {
+    const byId = skills.findIndex((s) => s.id === subtopicId);
+    if (byId !== -1) return byId;
+  }
+
+  // 4. Fallback to matching domain (pick the subtopic in that domain with lowest attempts or first match)
+  const rawDomain = (domain || '').toLowerCase();
+  const normalizedDomain: SATDomain =
+    rawDomain.includes('advanced') ? 'Advanced Math'
+    : rawDomain.includes('problem') || rawDomain.includes('data') ? 'Problem Solving'
+    : rawDomain.includes('geometry') || rawDomain.includes('trig') ? 'Geometry & Trig'
+    : 'Algebra';
+
+  let bestDomainIdx = -1;
+  let minAttempts = Infinity;
+  skills.forEach((s, idx) => {
+    if (s.domain === normalizedDomain && (s.totalAttempts || 0) < minAttempts) {
+      minAttempts = s.totalAttempts || 0;
+      bestDomainIdx = idx;
+    }
+  });
+
+  return bestDomainIdx !== -1 ? bestDomainIdx : 0;
+}
+
 // ─── 7. Attempt Feedback Loop & Subtopic Mastery Recalculation ────────────
 export function recordQuestionAttemptInEngine(
   data: StoredAdaptivePlannerData,
@@ -255,9 +353,12 @@ export function recordQuestionAttemptInEngine(
 
   const updatedAttempts = [attempt, ...data.attempts].slice(0, 200); // retain last 200 attempts
 
-  // Find corresponding skill by subtopicId or domain
-  const skillIndex = data.skills.findIndex(
-    (s) => s.id === attempt.subtopicId || s.name.toLowerCase() === (attempt.subtopicName || '').toLowerCase()
+  // Find corresponding skill by subtopicId, subtopicName, or domain
+  const skillIndex = resolveSubtopicSkillIndex(
+    data.skills,
+    attempt.subtopicId,
+    attempt.subtopicName,
+    attempt.domain
   );
 
   let updatedSkills = [...data.skills];
@@ -293,7 +394,7 @@ export function recordQuestionAttemptInEngine(
 
     // Update accuracy metrics
     const diffKey = attempt.difficulty.toLowerCase() as 'easy' | 'medium' | 'hard';
-    const curDiffAcc = currentSkill.accuracy[diffKey];
+    const curDiffAcc = currentSkill.accuracy[diffKey] ?? 70;
     const updatedDiffAcc = Math.round(curDiffAcc * 0.85 + (isCorrect ? 100 : 0) * 0.15);
 
     const updatedSkill: SubtopicSkill = {
@@ -332,6 +433,9 @@ export function getStoredAdaptiveData(): StoredAdaptivePlannerData {
     if (raw) {
       const parsed: StoredAdaptivePlannerData = JSON.parse(raw);
       if (parsed.skills && parsed.skills.length > 0 && parsed.profile) {
+        if (parsed.profile.targetExamDate === 'October 2026') {
+          parsed.profile.targetExamDate = 'December 2026';
+        }
         return parsed;
       }
     }
@@ -342,7 +446,7 @@ export function getStoredAdaptiveData(): StoredAdaptivePlannerData {
   // Fallback initialize
   const defaultProfile: AdaptivePlannerProfile = {
     targetScore: 800,
-    targetExamDate: 'October 2026',
+    targetExamDate: 'December 2026',
     strategyGoal: 'highest_possible',
     baselineScore: 720,
     dailyMinutes: 45,

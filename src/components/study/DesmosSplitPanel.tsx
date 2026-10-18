@@ -14,11 +14,13 @@ import { useTheme } from '../../context/ThemeContext';
 
 export type CalculatorMode = 'graphing' | 'scientific' | 'four-function';
 
-interface DesmosSplitPanelProps {
+export interface DesmosSplitPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onPopOut?: () => void;
   onResizeCalculatorRef?: (resizeFn: () => void) => void;
+  keepMounted?: boolean;
+  className?: string;
 }
 
 declare global {
@@ -36,6 +38,8 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
   onClose,
   onPopOut,
   onResizeCalculatorRef,
+  keepMounted = false,
+  className,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const calculatorInstance = useRef<any>(null);
@@ -44,6 +48,13 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
   const [useIframeFallback, setUseIframeFallback] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [reloadKey, setReloadKey] = useState(0);
+  const [hasBeenOpened, setHasBeenOpened] = useState(isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      setHasBeenOpened(true);
+    }
+  }, [isOpen]);
 
   // Safe theme detection from App ThemeContext with fallback to HTML class
   let currentAppDark = true;
@@ -80,7 +91,10 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
 
   // Initialize or re-instantiate calculator with resilient polling & iframe fallback
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen && !hasBeenOpened) return;
+    if (keepMounted && !isOpen && calculatorInstance.current) {
+      return;
+    }
 
     let isMounted = true;
     setIsLoading(true);
@@ -227,6 +241,45 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
       isMounted = false;
       if (pollInterval) clearInterval(pollInterval);
       window.removeEventListener('resize', handleWindowResize);
+      if (!keepMounted && calculatorInstance.current) {
+        try {
+          calculatorInstance.current.destroy?.();
+        } catch (e) {
+          // ignore
+        }
+        calculatorInstance.current = null;
+      }
+    };
+  }, [isOpen, calculatorMode, reloadKey, hasBeenOpened, keepMounted]);
+
+  // Auto-resize when reopened in keepMounted mode
+  useEffect(() => {
+    if (isOpen && keepMounted && calculatorInstance.current) {
+      [20, 50, 150, 300, 500, 800].forEach((delay) => {
+        setTimeout(() => {
+          if (calculatorInstance.current?.resize) {
+            calculatorInstance.current.resize();
+          }
+        }, delay);
+      });
+    }
+  }, [isOpen, keepMounted]);
+
+  // ResizeObserver to automatically resize Desmos whenever container changes size
+  useEffect(() => {
+    if (!containerRef.current || typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver(() => {
+      if (calculatorInstance.current?.resize) {
+        calculatorInstance.current.resize();
+      }
+    });
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [isLoading]);
+
+  // Guaranteed destruction when component unmounts from React tree
+  useEffect(() => {
+    return () => {
       if (calculatorInstance.current) {
         try {
           calculatorInstance.current.destroy?.();
@@ -236,7 +289,7 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
         calculatorInstance.current = null;
       }
     };
-  }, [isOpen, calculatorMode, reloadKey]);
+  }, []);
 
   const handleClearExpressions = useCallback(() => {
     if (calculatorInstance.current?.setBlank) {
@@ -255,10 +308,11 @@ export const DesmosSplitPanel: React.FC<DesmosSplitPanelProps> = memo(({
     'four-function': 'Four-Function',
   };
 
-  if (!isOpen) return null;
+  if (!isOpen && !keepMounted) return null;
+  if (!isOpen && !hasBeenOpened) return null;
 
   return (
-    <div className="h-full w-full flex flex-col bg-white dark:bg-[#0c101a] border-r border-slate-200 dark:border-slate-800 overflow-hidden relative select-auto">
+    <div className={`h-full w-full flex flex-col bg-white dark:bg-[#0c101a] overflow-hidden relative select-auto ${className || 'border-r border-slate-200 dark:border-slate-800'}`}>
       
       {/* ─── Header Bar Above Desmos ───────────────────────────────── */}
       <div className="h-12 bg-white/95 dark:bg-[#0e1320] border-b border-slate-200 dark:border-slate-800 px-3 sm:px-4 flex items-center justify-between flex-shrink-0 z-20 select-none">

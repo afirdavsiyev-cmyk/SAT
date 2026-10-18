@@ -59,6 +59,8 @@ import {
 import { generatePrescriptiveStudyPlan } from '../utils/studyPlanGenerator';
 import { isAnswerEquivalent } from '../utils/answerVerification';
 import { getAttendanceData, recordDailyAttendance } from '../services/attendanceService';
+import { getStoredAdaptiveData, recordQuestionAttemptInEngine } from '../utils/adaptivePlannerEngine';
+import { SATDomain } from '../types/planner';
 
 const STORAGE_KEY = 'sat_user_progress_state';
 const PLAN_STORAGE_KEY = 'sat_user_study_plan';
@@ -87,7 +89,7 @@ const getProgressStorageKey = (): string => {
 
 const DEFAULT_USER_PROGRESS_STATE: UserProgressState = {
   planner: {
-    targetExamDate: 'October 2026',
+    targetExamDate: 'December 2026',
     targetScore: 800,
     baselineScore: 650,
     dailyGoalMinutes: 45,
@@ -116,7 +118,13 @@ interface AppContextType {
   userProgressState: UserProgressState;
   setUserProgressState: React.Dispatch<React.SetStateAction<UserProgressState>>;
   updatePlanner: (updates: Partial<UserProgressState['planner']>) => void;
-  recordPracticeQuestion: (domain: MathDomain, isCorrect: boolean) => void;
+  recordPracticeQuestion: (
+    domain: MathDomain,
+    isCorrect: boolean,
+    topic?: string,
+    difficulty?: 'Easy' | 'Medium' | 'Hard',
+    questionId?: string
+  ) => void;
   userProgress: UserProgress;
   setUserProgress: React.Dispatch<React.SetStateAction<UserProgress>>;
   studyPlan: StudyPlan | null;
@@ -138,12 +146,53 @@ interface AppContextType {
   proceedToModule2: () => void;
   mockExamResults: Record<string, MockExamResult>;
   reviewExam: (mode?: 'full' | 'module1' | 'module2', testId?: string) => void;
+  isDisputeModalOpen: boolean;
+  disputeTargetQuestion: Question | null;
+  openDisputeModal: (question?: Question | null) => void;
+  closeDisputeModal: () => void;
+  isAdminPasskeyModalOpen: boolean;
+  openAdminPasskeyModal: () => void;
+  closeAdminPasskeyModal: () => void;
+  isStealthShortcutArmed: boolean;
+  armStealthShortcut: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentView, setCurrentView] = useState<AppView>('landing');
+  const [isDisputeModalOpen, setIsDisputeModalOpen] = useState<boolean>(false);
+  const [disputeTargetQuestion, setDisputeTargetQuestion] = useState<Question | null>(null);
+
+  // Dual-factor stealth passkey modal state
+  const [isAdminPasskeyModalOpen, setIsAdminPasskeyModalOpen] = useState<boolean>(false);
+  const [isStealthShortcutArmed, setIsStealthShortcutArmed] = useState<boolean>(false);
+
+  const openAdminPasskeyModal = () => {
+    setIsAdminPasskeyModalOpen(true);
+  };
+
+  const closeAdminPasskeyModal = () => {
+    setIsAdminPasskeyModalOpen(false);
+  };
+
+  const armStealthShortcut = () => {
+    setIsStealthShortcutArmed(true);
+    // Disarm after 15 seconds of inactivity
+    setTimeout(() => {
+      setIsStealthShortcutArmed(false);
+    }, 15000);
+  };
+
+  const openDisputeModal = (question?: Question | null) => {
+    setDisputeTargetQuestion(question || null);
+    setIsDisputeModalOpen(true);
+  };
+
+  const closeDisputeModal = () => {
+    setIsDisputeModalOpen(false);
+    setDisputeTargetQuestion(null);
+  };
 
   // Unified persistent UserProgressState
   const loadUserProgressState = (): UserProgressState => {
@@ -167,6 +216,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             targetExamDate: targetDateFromStorage,
           },
         };
+      }
+
+      if (state.planner?.targetExamDate === 'October 2026') {
+        state.planner = { ...state.planner, targetExamDate: 'December 2026' };
       }
 
       // Reconcile streak across attendanceService, activeUser, and progress state
@@ -481,9 +534,37 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }));
   };
 
-  const recordPracticeQuestion = (domain: MathDomain, isCorrect: boolean) => {
+  const recordPracticeQuestion = (
+    domain: MathDomain,
+    isCorrect: boolean,
+    topic?: string,
+    difficulty?: 'Easy' | 'Medium' | 'Hard',
+    questionId?: string
+  ) => {
     try {
       recordDailyAttendance();
+    } catch {}
+    try {
+      const currentPlannerData = getStoredAdaptiveData();
+      const normalizedDomain =
+        domain === 'Advanced Math' ? 'Advanced Math'
+        : domain === 'Problem-Solving & Data Analysis' ? 'Problem Solving'
+        : domain === 'Geometry & Trigonometry' ? 'Geometry & Trig'
+        : 'Algebra';
+      recordQuestionAttemptInEngine(currentPlannerData, {
+        questionId: questionId || `practice-${Date.now()}`,
+        subtopicId: '',
+        subtopicName: topic || domain,
+        domain: normalizedDomain,
+        difficulty: difficulty || 'Medium',
+        correct: isCorrect,
+        timeSpentSeconds: 60,
+        usedHint: false,
+        usedDesmos: false,
+        preConfidence: 3,
+        mistakeReason: isCorrect ? undefined : 'concept_gap',
+        timestamp: new Date().toISOString(),
+      });
     } catch {}
     setUserProgressState((prev) => {
       const xpEarned = isCorrect ? 10 : 2;
@@ -549,13 +630,39 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     let module1Correct = 0;
     let module2Correct = 0;
 
+    let adaptivePlannerData = getStoredAdaptiveData();
+
     examQuestions.forEach((q, idx) => {
       if (!domainCounts[q.domain]) {
         domainCounts[q.domain] = { total: 0, correct: 0 };
       }
       domainCounts[q.domain].total += 1;
 
-      const isCorrect = isAnswerEquivalent(currentExamAnswers[q.id], q.correctAnswer, q);
+      const userAns = currentExamAnswers[q.id];
+      const isCorrect = isAnswerEquivalent(userAns, q.correctAnswer, q);
+      if (userAns !== undefined) {
+        try {
+          const normalizedDomain =
+            q.domain === 'Advanced Math' ? 'Advanced Math'
+            : q.domain === 'Problem-Solving & Data Analysis' ? 'Problem Solving'
+            : q.domain === 'Geometry & Trigonometry' ? 'Geometry & Trig'
+            : 'Algebra';
+          adaptivePlannerData = recordQuestionAttemptInEngine(adaptivePlannerData, {
+            questionId: q.id,
+            subtopicId: '',
+            subtopicName: (q as any).topic || q.domain,
+            domain: normalizedDomain,
+            difficulty: q.difficulty || 'Medium',
+            correct: isCorrect,
+            timeSpentSeconds: 75,
+            usedHint: false,
+            usedDesmos: false,
+            preConfidence: 3,
+            mistakeReason: isCorrect ? undefined : 'concept_gap',
+            timestamp: new Date().toISOString(),
+          });
+        } catch {}
+      }
       if (isCorrect) {
         correctCount += 1;
         domainCounts[q.domain].correct += 1;
@@ -714,6 +821,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         proceedToModule2,
         mockExamResults,
         reviewExam,
+        isDisputeModalOpen,
+        disputeTargetQuestion,
+        openDisputeModal,
+        closeDisputeModal,
+        isAdminPasskeyModalOpen,
+        openAdminPasskeyModal,
+        closeAdminPasskeyModal,
+        isStealthShortcutArmed,
+        armStealthShortcut,
       }}
     >
       {children}

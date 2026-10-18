@@ -6,16 +6,18 @@ interface HeroExamCountdownProps {
 }
 
 const KNOWN_EXAM_DATES: Record<string, string> = {
-  'October 2026': '2026-10-03T08:00:00',
+  'October 2026': '2026-11-07T08:00:00',
   'November 2026': '2026-11-07T08:00:00',
   'December 2026': '2026-12-05T08:00:00',
   'March 2027': '2027-03-13T08:00:00',
   'May 2027': '2027-05-01T08:00:00',
   'June 2027': '2027-06-05T08:00:00',
+  'August 2027': '2027-08-28T08:00:00',
 };
 
 const resolveExamDate = (rawDate?: string | null): Date => {
-  if (!rawDate) return new Date('2026-10-03T08:00:00');
+  const defaultFutureDate = new Date('2026-12-05T08:00:00');
+  if (!rawDate) return defaultFutureDate;
 
   if (KNOWN_EXAM_DATES[rawDate]) {
     return new Date(KNOWN_EXAM_DATES[rawDate]);
@@ -23,10 +25,13 @@ const resolveExamDate = (rawDate?: string | null): Date => {
 
   const parsed = new Date(rawDate);
   if (!isNaN(parsed.getTime())) {
+    if (parsed.getTime() <= Date.now()) {
+      return defaultFutureDate;
+    }
     return parsed;
   }
 
-  return new Date('2026-10-03T08:00:00');
+  return defaultFutureDate;
 };
 
 const HeroExamCountdownComponent: React.FC<HeroExamCountdownProps> = ({ targetDate: propTargetDate, className = '' }) => {
@@ -38,7 +43,7 @@ const HeroExamCountdownComponent: React.FC<HeroExamCountdownProps> = ({ targetDa
     } catch {
       // ignore
     }
-    return '2026-10-03T08:00:00';
+    return '2026-12-05T08:00:00';
   });
 
   useEffect(() => {

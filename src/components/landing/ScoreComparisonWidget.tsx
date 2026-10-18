@@ -4,7 +4,7 @@ import { useApp } from '../../context/AppContext';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 
 export const ScoreComparisonWidget: React.FC = () => {
-  const { setCurrentView } = useApp();
+  const { startExam } = useApp();
   const [currentScore, setCurrentScore] = useState<number>(1180);
   const [weeklyHours, setWeeklyHours] = useState<number>(6);
 
@@ -134,7 +134,7 @@ export const ScoreComparisonWidget: React.FC = () => {
 
                 <div className="pt-2">
                   <button
-                    onClick={() => setCurrentView('exam')}
+                    onClick={() => startExam('full')}
                     className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg shadow-emerald-500/30 dark:from-emerald-500 dark:to-teal-500 dark:bg-emerald-500 dark:text-slate-950 font-extrabold text-sm dark:shadow-glow-emerald transition-all active:scale-95 flex items-center justify-center space-x-2"
                   >
                     <span>Verify with Free Test</span>

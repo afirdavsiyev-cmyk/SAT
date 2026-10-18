@@ -1,4 +1,15 @@
-export type AppView = 'landing' | 'onboarding' | 'dashboard' | 'exam' | 'review' | 'leaderboard';
+export type AppView =
+  | 'landing'
+  | 'onboarding'
+  | 'dashboard'
+  | 'exam'
+  | 'review'
+  | 'leaderboard'
+  | 'admin'
+  | 'practice'
+  | 'books'
+  | 'ai_tutor';
+
 
 export type MathDomain = 
   | 'Algebra'
@@ -24,8 +35,10 @@ export interface Question {
   acceptableAnswers?: string[];
   explanation: string;
   type: 'multiple_choice' | 'student_produced';
+  topic?: string;
   hint?: string;
   desmosEquation?: string;
+  calculatorTip?: string;
   image?: string;
 }
 
@@ -153,4 +166,5 @@ export interface Achievement {
 }
 
 export * from './question';
+export * from './admin';
 

@@ -133,8 +133,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </button>
 
         <div className="text-center mb-6 pt-2">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-black text-lg mb-2.5 shadow-lg shadow-emerald-500/20">
-            S
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-slate-200/90 dark:border-white/10 p-1 mb-2.5 shadow-lg shadow-amber-500/10">
+            <img src="/scoreup-logo.png" alt="ScoreUp Logo" className="w-full h-full object-contain" />
           </div>
           <h2 className="text-2xl font-black tracking-tight text-white">
             Welcome to ScoreUp

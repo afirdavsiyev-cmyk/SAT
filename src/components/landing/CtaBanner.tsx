@@ -5,7 +5,7 @@ import { ScrollReveal } from '../common/ScrollReveal';
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
 
 export const CtaBanner: React.FC = () => {
-  const { setCurrentView } = useApp();
+  const { setCurrentView, startExam } = useApp();
 
   return (
     <section className="py-20 relative overflow-hidden transition-colors">
@@ -50,7 +50,7 @@ export const CtaBanner: React.FC = () => {
                   className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
                 >
                   <button
-                    onClick={() => setCurrentView('exam')}
+                    onClick={() => startExam('full')}
                     className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400 dark:text-slate-950 font-extrabold text-base shadow-[0_4px_14px_rgba(16,185,129,0.35)] dark:shadow-glow-emerald hover:scale-105 transition-all flex items-center justify-center space-x-2"
                   >
                     <Zap className="w-5 h-5 fill-white stroke-emerald-600 dark:fill-slate-950 dark:stroke-emerald-400" />

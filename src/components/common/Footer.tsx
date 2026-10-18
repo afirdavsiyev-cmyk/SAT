@@ -4,7 +4,18 @@ import { useApp } from '../../context/AppContext';
 import { ScoreUpLogo } from './ScoreUpLogo';
 
 export const Footer: React.FC = () => {
-  const { setCurrentView } = useApp();
+  const { setCurrentView, startExam, isStealthShortcutArmed, openAdminPasskeyModal } = useApp();
+
+  const handleVersionDoubleClick = (e: React.MouseEvent) => {
+    // Sequence Step 1: User pressed Ctrl + Shift + A AND double-clicks the version text in footer
+    const isModifierActive = (e.ctrlKey || e.metaKey) && e.shiftKey;
+    if (isStealthShortcutArmed || isModifierActive) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('scoreup_trigger_admin_stealth'));
+      }
+      openAdminPasskeyModal?.();
+    }
+  };
 
   return (
     <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-slate-100/70 dark:bg-slate-950 pt-16 pb-12 relative overflow-hidden transition-colors">
@@ -48,7 +59,7 @@ export const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => setCurrentView('exam')} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                <button onClick={() => startExam('full')} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                   Bluebook Exam Room
                 </button>
               </li>
@@ -104,7 +115,17 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 space-y-4 sm:space-y-0">
-          <p>© 2026 ScoreUp. Not affiliated with the College Board (SAT® is a registered trademark of the College Board).</p>
+          <div className="flex items-center gap-2">
+            <p>© 2026 ScoreUp. Not affiliated with the College Board (SAT® is a registered trademark of the College Board).</p>
+            <span
+              onDoubleClick={handleVersionDoubleClick}
+              className="text-[11px] text-slate-400 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-400 cursor-default select-none transition-colors"
+              title="ScoreUp v1.0.0"
+              data-testid="footer-version"
+            >
+              v1.0.0
+            </span>
+          </div>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-slate-700 dark:hover:text-slate-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-slate-700 dark:hover:text-slate-400 transition-colors">Terms of Service</a>

@@ -628,7 +628,13 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
     });
 
     if (recordPracticeQuestion) {
-      recordPracticeQuestion(currentQuestion.domain, isAnswerCorrect);
+      recordPracticeQuestion(
+        currentQuestion.domain,
+        isAnswerCorrect,
+        currentQuestion.topic,
+        currentQuestion.difficulty,
+        currentQuestion.id
+      );
     }
 
     if (!isAnswerCorrect && !isMuteAiPopups) {
@@ -679,7 +685,13 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
     });
 
     if (recordPracticeQuestion) {
-      recordPracticeQuestion(currentQuestion.domain, isAnswerCorrect);
+      recordPracticeQuestion(
+        currentQuestion.domain,
+        isAnswerCorrect,
+        currentQuestion.topic,
+        currentQuestion.difficulty,
+        currentQuestion.id
+      );
     }
 
     if (!isAnswerCorrect) {
@@ -1111,7 +1123,7 @@ export const PracticeRoomView: React.FC<PracticeRoomViewProps> = ({
                   {isCorrect ? 'Correct! Outstanding work.' : `Incorrect. The correct answer is (${currentQuestion.correctAnswer}).`}
                 </p>
                 <p className="text-xs text-slate-600 dark:text-slate-300">
-                  {isCorrect ? 'You earned +30 XP on this problem.' : 'Review the step-by-step breakdown to learn this concept.'}
+                  {isCorrect ? 'You earned +10 XP on this problem.' : 'Review the step-by-step breakdown to learn this concept.'}
                 </p>
               </div>
             </div>
@@ -1922,3 +1934,5 @@ function highlightSnippetInElement(
     }
   });
 }
+
+export default PracticeRoomView;

@@ -81,6 +81,41 @@ export default defineConfig({
       ],
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // KaTeX vendor chunk
+          if (id.includes('node_modules/katex') || id.includes('KaTeX')) {
+            return 'katex-vendor';
+          }
+          // PDF viewer dependencies
+          if (
+            id.includes('node_modules/pdf-parse') ||
+            id.includes('node_modules/pdfjs') ||
+            id.includes('pdf-lib') ||
+            id.includes('react-pdf')
+          ) {
+            return 'pdf-vendor';
+          }
+          // Large data tables under src/data/
+          if (id.includes('/src/data/') || id.includes('\\src\\data\\')) {
+            if (id.includes('officialPracticeTest')) {
+              return 'sat-official-tests-data';
+            }
+            if (id.includes('questions') || id.includes('mockData')) {
+              return 'sat-questions-data';
+            }
+            if (id.includes('videoLessons')) {
+              return 'sat-lessons-data';
+            }
+            return 'sat-data-tables';
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1200,
+  },
   test: {
     globals: true,
     environment: 'jsdom',

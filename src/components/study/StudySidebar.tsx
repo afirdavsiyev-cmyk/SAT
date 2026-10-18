@@ -22,7 +22,7 @@ import {
   ChevronRight,
   PanelLeftClose,
   PanelLeft,
-  Gauge
+  Gauge,
 } from 'lucide-react';
 import { getAttendanceData } from '../../services/attendanceService';
 
@@ -88,7 +88,7 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
 
   const handleOpenAccountSettings = () => {
     setIsProfileMenuOpen(false);
-    alert('Account & Study Settings');
+    openOnboardingModal();
   };
 
   const handleLogout = () => {
@@ -113,8 +113,8 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
             className="flex items-center space-x-2.5 cursor-pointer group"
             title="ScoreUp Study Hub (Click to return Home)"
           >
-            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.25)] dark:shadow-[0_0_15px_rgba(16,185,129,0.25)] group-hover:scale-105 transition-transform flex-shrink-0 font-black text-base">
-              S
+            <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 dark:border-white/10 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform flex-shrink-0 p-0.5">
+              <img src="/scoreup-logo.png" alt="ScoreUp Logo" className="w-full h-full object-contain" />
             </div>
             {!isCollapsed && (
               <div className="overflow-hidden">
@@ -293,7 +293,6 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
               onClick={() => onSelectTab('analytics')}
             />
           </div>
-
         </div>
 
       </div>

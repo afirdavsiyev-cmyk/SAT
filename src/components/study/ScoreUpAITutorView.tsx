@@ -19,6 +19,7 @@ import {
   X
 } from 'lucide-react';
 import { MathRenderer } from '../common/MathRenderer';
+import { ErrorBoundary, MathErrorBoundary } from '../common/ErrorBoundary';
 import { DesmosSplitPanel } from './DesmosSplitPanel';
 import {
   generateInstantHint,
@@ -57,7 +58,7 @@ export const ScoreUpAITutorView: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [hasApiKey, setHasApiKey] = useState(false);
-  const [activeModel, setActiveModel] = useState<string>('llama-3.3-70b-versatile');
+  const [activeModel, setActiveModel] = useState<string>('qwen/qwen3.8-27b');
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const resizeCalcRef = useRef<(() => void) | null>(null);
@@ -143,19 +144,22 @@ export const ScoreUpAITutorView: React.FC = () => {
         ];
 
         const res = await getTutorReplyDetailed(chatPayload);
-        setActiveModel(res.modelUsed);
-        setMessages((prev) => [...prev, { sender: 'ai', text: res.content, modelUsed: res.modelUsed }]);
+        const replyText = res?.content?.trim() || "I couldn't generate a complete response. Please try asking again.";
+        setActiveModel(res?.modelUsed || 'qwen/qwen3.8-27b');
+        setMessages((prev) => [...prev, { sender: 'ai', text: replyText, modelUsed: res?.modelUsed }]);
       } else {
         const res = await sendSocraticChatMessage(historyItems, textToSend);
-        setActiveModel(res.usedModel);
-        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
+        const replyText = res?.data?.trim() || "I couldn't generate a complete response. Please try asking again.";
+        setActiveModel(res?.usedModel || 'gemini-3.6-flash');
+        setMessages((prev) => [...prev, { sender: 'ai', text: replyText, modelUsed: res?.usedModel }]);
       }
     } catch (err: any) {
       console.warn("Primary Groq AI tutor encountered an error, falling back to Socratic engine:", err?.message || err);
       try {
         const res = await sendSocraticChatMessage(historyItems, textToSend);
-        setActiveModel(res.usedModel);
-        setMessages((prev) => [...prev, { sender: 'ai', text: res.data, modelUsed: res.usedModel }]);
+        const replyText = res?.data?.trim() || "I couldn't generate a complete response. Please try asking again.";
+        setActiveModel(res?.usedModel || 'gemini-3.6-flash');
+        setMessages((prev) => [...prev, { sender: 'ai', text: replyText, modelUsed: res?.usedModel }]);
       } catch (fallbackErr: any) {
         setMessages((prev) => [
           ...prev,
@@ -201,7 +205,8 @@ export const ScoreUpAITutorView: React.FC = () => {
   ];
 
   return (
-    <div className={`h-full flex flex-col justify-between w-full mx-auto py-3 sm:py-4 px-2 sm:px-4 md:px-6 relative select-none transition-all duration-300 ${
+    <ErrorBoundary name="ScoreUP AI Tutor" onReset={() => setMessages([])}>
+      <div className={`h-full flex flex-col justify-between w-full mx-auto py-3 sm:py-4 px-2 sm:px-4 md:px-6 relative select-none transition-all duration-300 ${
       isCalculatorOpen ? 'max-w-[1600px]' : 'max-w-4xl'
     }`}>
       
@@ -395,8 +400,23 @@ export const ScoreUpAITutorView: React.FC = () => {
                             </button>
                           </div>
                           <div className="prose-slate dark:prose-invert">
-                            <MathRenderer content={m.text} />
+                            <MathErrorBoundary fallbackText={m.text}>
+                              <MathRenderer content={m.text} />
+                            </MathErrorBoundary>
                           </div>
+                          {m.modelUsed === 'offline' && idx > 0 && messages[idx - 1]?.sender === 'user' && (
+                            <div className="pt-2">
+                              <button
+                                type="button"
+                                onClick={() => handleSendMessage(messages[idx - 1].text)}
+                                disabled={isLoading}
+                                className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-[11px] font-semibold transition-colors disabled:opacity-50 shadow-xs"
+                              >
+                                <RefreshCw className="w-3 h-3" />
+                                <span>Retry Question</span>
+                              </button>
+                            </div>
+                          )}
                         </div>
                       ) : (
                         <span>{m.text}</span>
@@ -519,6 +539,7 @@ export const ScoreUpAITutorView: React.FC = () => {
       </div>
 
     </div>
+    </ErrorBoundary>
   );
 };
 

@@ -15,6 +15,7 @@ import { AuthModal } from './components/auth/AuthModal';
 import { SessionTimeoutModal } from './components/auth/SessionTimeoutModal';
 import { useSessionTimeout } from './hooks/useSessionTimeout';
 import { ViewSkeleton } from './components/common/ViewSkeleton';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 // Code-split heavy views with React.lazy
 const ExamView = lazy(() => import('./components/exam/ExamView'));
@@ -150,7 +151,9 @@ const MainContent: React.FC = () => {
         )}
         {currentView === 'ai_tutor' && (
           <Suspense fallback={<ViewSkeleton title="Loading ScoreUP AI Tutor..." />}>
-            <ScoreUpAITutorView />
+            <ErrorBoundary name="ScoreUp AI Tutor">
+              <ScoreUpAITutorView />
+            </ErrorBoundary>
           </Suspense>
         )}
         {currentView === 'admin' && (

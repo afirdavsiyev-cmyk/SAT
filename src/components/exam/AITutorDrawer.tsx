@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Sparkles, Send, Bot, Settings, Key, ExternalLink, Loader2, Zap } from 'lucide-react';
 import { Question } from '../../types';
 import { MathRenderer } from '../common/MathRenderer';
+import { ErrorBoundary, MathErrorBoundary } from '../common/ErrorBoundary';
 import { ThemeToggle } from '../common/ThemeToggle';
 import {
   generateInstantHint,
@@ -139,10 +140,11 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
           '',
           question?.domain || 'Advanced Math'
         );
+        const hintText = hintResult?.data?.trim() || "Here is a hint: examine the algebraic relationships and isolate the unknown variables.";
         setActiveModel(hintResult.usedModel);
         setMessages((prev) => [
           ...prev,
-          { sender: 'ai', text: hintResult.data, modelUsed: hintResult.usedModel }
+          { sender: 'ai', text: hintText, modelUsed: hintResult.usedModel }
         ]);
         return;
       }
@@ -157,10 +159,11 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
           options: question?.options,
           explanation: question?.explanation
         });
+        const solutionText = solutionResult?.data?.trim() || "Here is a step-by-step breakdown: substitute known values and solve step by step.";
         setActiveModel(solutionResult.usedModel);
         setMessages((prev) => [
           ...prev,
-          { sender: 'ai', text: solutionResult.data, modelUsed: solutionResult.usedModel }
+          { sender: 'ai', text: solutionText, modelUsed: solutionResult.usedModel }
         ]);
         return;
       }
@@ -176,15 +179,20 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
         : undefined;
 
       const chatResult = await sendSocraticChatMessage(chatHistoryItems, textToSend, contextPrompt);
+      const chatText = chatResult?.data?.trim() || "I couldn't generate a complete response. Please try asking again.";
       setActiveModel(chatResult.usedModel);
       setMessages((prev) => [
         ...prev,
-        { sender: 'ai', text: chatResult.data, modelUsed: chatResult.usedModel }
+        { sender: 'ai', text: chatText, modelUsed: chatResult.usedModel }
       ]);
-    } catch {
+    } catch (err: any) {
       setMessages((prev) => [
         ...prev,
-        { sender: 'ai', text: 'Sorry, I encountered an issue processing your request. Please try again.', modelUsed: 'offline' }
+        {
+          sender: 'ai',
+          text: `⚠️ **AI Service Notice**: ${err?.message || 'Sorry, I encountered an issue processing your request. Please try again.'}`,
+          modelUsed: 'offline'
+        }
       ]);
     } finally {
       setIsLoading(false);
@@ -216,7 +224,8 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
         aria-label="Close AI Tutor"
       />
 
-      <div
+      <ErrorBoundary name="ScoreUP AI Tutor Drawer" onReset={() => setMessages([])}>
+        <div
         ref={drawerRef}
         onClick={(e) => e.stopPropagation()}
         className="fixed inset-y-0 right-0 z-50 w-full sm:w-[460px] bg-white dark:bg-[#0c1017] border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between select-none animate-in slide-in-from-right-4 duration-200 transition-colors text-slate-900 dark:text-white"
@@ -311,7 +320,9 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
               }`}
             >
               {msg.sender === 'ai' ? (
-                <MathRenderer content={msg.text} />
+                <MathErrorBoundary fallbackText={msg.text}>
+                  <MathRenderer content={msg.text} />
+                </MathErrorBoundary>
               ) : (
                 <span>{msg.text}</span>
               )}
@@ -376,6 +387,7 @@ export const AITutorDrawer: React.FC<AITutorDrawerProps> = ({
       </div>
 
     </div>
+      </ErrorBoundary>
     </>
   );
 };

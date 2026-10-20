@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import katex from 'katex';
+import DOMPurify from 'dompurify';
 
 export interface MathRendererProps {
   content?: string;
@@ -219,11 +220,13 @@ function renderProseContent(content: string, blockKey: string | number) {
       let formula = token.slice(2, -2).trim();
       formula = formula.replace(new RegExp(LITERAL_DOLLAR_TOKEN, 'g'), '\\$');
       try {
-        const html = katex.renderToString(formula, {
+        const rawHtml = katex.renderToString(formula, {
           displayMode: true,
           throwOnError: false,
           output: 'html',
+          trust: false,
         });
+        const html = DOMPurify.sanitize(rawHtml);
         return (
           <div
             key={`${blockKey}-block-math-${index}`}
@@ -260,11 +263,13 @@ function renderProseContent(content: string, blockKey: string | number) {
       formula = formula.replace(new RegExp(LITERAL_DOLLAR_TOKEN, 'g'), '\\$');
 
       try {
-        const html = katex.renderToString(formula, {
+        const rawHtml = katex.renderToString(formula, {
           displayMode: false,
           throwOnError: false,
           output: 'html',
+          trust: false,
         });
+        const html = DOMPurify.sanitize(rawHtml);
         return (
           <span
             key={`${blockKey}-inline-math-${index}`}
